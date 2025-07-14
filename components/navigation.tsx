@@ -185,7 +185,11 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2">
+          <nav
+            className="hidden md:flex items-center space-x-2"
+            role="navigation"
+            aria-label="Main menu"
+          >
             {navItems.map((item) => (
               <Button
                 key={item.href}
