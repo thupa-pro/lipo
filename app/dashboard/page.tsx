@@ -222,9 +222,9 @@ export default function PremiumDashboardPage() {
         {/* Enhanced Header with AI Welcome */}
         <div className="mb-8 sm:mb-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 sm:mb-8">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
               <div className="relative">
-                <Avatar className="w-20 h-20 border-4 border-white dark:border-white/20 shadow-xl">
+                <Avatar className="w-16 sm:w-20 h-16 sm:h-20 border-4 border-white dark:border-white/20 shadow-xl">
                   <AvatarImage src="/placeholder.svg?height=80&width=80" />
                   <AvatarFallback className="bg-gradient-to-br from-blue-600 to-emerald-600 dark:from-violet-600 dark:to-purple-600 text-white font-bold text-2xl">
                     JD
