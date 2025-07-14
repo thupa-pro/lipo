@@ -77,6 +77,7 @@ export default function Navigation() {
     { href: "/", label: "Home", icon: Home },
     { href: "/browse", label: "Services", icon: Search },
     { href: "/request-service", label: "Request", icon: Briefcase },
+    { href: "/analytics", label: "Analytics", icon: BarChart3 },
   ];
 
   // Mock user data
