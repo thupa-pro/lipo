@@ -370,15 +370,21 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section
+        className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6"
+        aria-labelledby="services-heading"
+      >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2
+              id="services-heading"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+            >
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                 Why Choose Loconomy
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto px-4 sm:px-0">
               Experience the next generation of local services with AI-powered
               matching and verified professionals
             </p>
