@@ -220,8 +220,8 @@ export default function PremiumDashboardPage() {
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Enhanced Header with AI Welcome */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-8">
+        <div className="mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 sm:mb-8">
             <div className="flex items-center gap-6">
               <div className="relative">
                 <Avatar className="w-20 h-20 border-4 border-white dark:border-white/20 shadow-xl">
