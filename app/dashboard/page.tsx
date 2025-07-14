@@ -218,7 +218,7 @@ export default function PremiumDashboardPage() {
         <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Enhanced Header with AI Welcome */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-8">
