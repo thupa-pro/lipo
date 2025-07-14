@@ -324,33 +324,43 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className="relative bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl p-8 group hover:bg-white/10 transition-all duration-500 hover:scale-105"
+                className="relative bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl p-6 sm:p-8 group hover:bg-white/10 transition-all duration-500 hover:scale-105 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-black"
+                role="article"
+                aria-labelledby={`stat-${index}-label`}
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"
                   style={{
                     background: `linear-gradient(135deg, ${stat.color.replace("from-", "").replace(" to-", ", ")})`,
                   }}
+                  aria-hidden="true"
                 />
                 <CardContent className="p-0 relative z-10">
                   <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}
+                    className={`w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500`}
+                    aria-hidden="true"
                   >
-                    <stat.icon className="w-8 h-8 text-white" />
+                    <stat.icon className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
                   </div>
-                  <div className="text-4xl font-black mb-2 text-white">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2 text-white">
                     {stat.value}
                   </div>
-                  <div className="text-gray-400 mb-3 font-medium">
+                  <div
+                    id={`stat-${index}-label`}
+                    className="text-gray-400 mb-3 font-medium text-sm sm:text-base"
+                  >
                     {stat.label}
                   </div>
-                  <div className="text-sm text-emerald-400 font-semibold flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3" />
-                    {stat.trend}
+                  <div className="text-xs sm:text-sm text-emerald-400 font-semibold flex items-center gap-1">
+                    <TrendingUp
+                      className="w-3 h-3 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span>{stat.trend}</span>
                   </div>
                 </CardContent>
               </Card>
