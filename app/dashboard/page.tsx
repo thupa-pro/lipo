@@ -218,13 +218,13 @@ export default function PremiumDashboardPage() {
         <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Enhanced Header with AI Welcome */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-6">
+        <div className="mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 sm:mb-8">
+            <div className="flex items-center gap-4 sm:gap-6">
               <div className="relative">
-                <Avatar className="w-20 h-20 border-4 border-white dark:border-white/20 shadow-xl">
+                <Avatar className="w-16 sm:w-20 h-16 sm:h-20 border-4 border-white dark:border-white/20 shadow-xl">
                   <AvatarImage src="/placeholder.svg?height=80&width=80" />
                   <AvatarFallback className="bg-gradient-to-br from-blue-600 to-emerald-600 dark:from-violet-600 dark:to-purple-600 text-white font-bold text-2xl">
                     JD
@@ -235,12 +235,12 @@ export default function PremiumDashboardPage() {
                 </div>
               </div>
               <div>
-                <h1 className="text-4xl md:text-5xl font-black mb-2">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-2">
                   <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
                     Good morning, John! ☀️
                   </span>
                 </h1>
-                <p className="text-xl text-slate-600 dark:text-gray-300 flex items-center gap-3">
+                <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                   <Brain className="w-5 h-5 text-blue-500" />
                   AI has found 3 new recommendations for you
                   {mounted && currentTime ? (

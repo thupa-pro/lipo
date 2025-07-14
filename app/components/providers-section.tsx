@@ -24,7 +24,8 @@ const featuredProviders = [
     reviews: 347,
     price: "$28/hr",
     location: "Downtown District",
-    avatar: "/placeholder.svg?height=80&width=80",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face",
     badges: ["Top Rated", "Background Verified", "Insured"],
     completedJobs: 1289,
     responseTime: "< 30 min",
@@ -38,7 +39,8 @@ const featuredProviders = [
     reviews: 512,
     price: "$65/hr",
     location: "Metro Area",
-    avatar: "/placeholder.svg?height=80&width=80",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     badges: ["Master Licensed", "Emergency 24/7", "Insured"],
     completedJobs: 2156,
     responseTime: "< 15 min",
@@ -52,7 +54,8 @@ const featuredProviders = [
     reviews: 423,
     price: "$24/hr",
     location: "Uptown Area",
-    avatar: "/placeholder.svg?height=80&width=80",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     badges: ["Pet Certified", "Bonded", "Background Checked"],
     completedJobs: 1876,
     responseTime: "< 45 min",

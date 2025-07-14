@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 import {
   Select,
   SelectContent,
@@ -15,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  Calendar,
+  CalendarIcon,
   MapPin,
   DollarSign,
   Clock,
@@ -97,20 +105,60 @@ export default function RequestServicePage() {
     location: "",
     budget: "",
     urgency: "",
-    preferredDate: "",
+    preferredDate: null as Date | null,
     contactMethod: "both",
     phone: "",
     email: "",
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
   const { toast } = useToast();
 
   const totalSteps = 4;
 
+  const validateStep = (step: number): boolean => {
+    const errors: Record<string, string> = {};
+
+    switch (step) {
+      case 1:
+        if (!formData.category)
+          errors.category = "Please select a service category";
+        break;
+      case 2:
+        if (!formData.title?.trim()) errors.title = "Service title is required";
+        if (!formData.description?.trim())
+          errors.description = "Description is required";
+        if (!formData.location?.trim())
+          errors.location = "Location is required";
+        break;
+      case 3:
+        if (!formData.budget) errors.budget = "Please select a budget range";
+        if (!formData.urgency) errors.urgency = "Please select timeline";
+        break;
+      case 4:
+        if (!formData.email?.trim()) errors.email = "Email is required";
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (formData.email && !emailRegex.test(formData.email)) {
+          errors.email = "Please enter a valid email address";
+        }
+        if (formData.phone && !/^[\d\s\(\)\-\+]+$/.test(formData.phone)) {
+          errors.phone = "Please enter a valid phone number";
+        }
+        break;
+    }
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleNext = () => {
-    if (currentStep < totalSteps) {
+    if (validateStep(currentStep) && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
+      setValidationErrors({});
     }
   };
 

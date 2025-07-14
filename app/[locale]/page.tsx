@@ -167,19 +167,32 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
+      <section
+        className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6"
+        role="main"
+        aria-labelledby="hero-heading"
+      >
         <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6 sm:mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
+            <div
+              className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
+              aria-hidden="true"
+            />
+            <span className="text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Trusted by 2.1M+ Users Globally
             </span>
-            <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+            <Sparkles
+              className="w-3 sm:w-4 h-3 sm:h-4 text-emerald-500 dark:text-emerald-400"
+              aria-hidden="true"
+            />
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-none">
+          <h1
+            id="hero-heading"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-6 sm:mb-8 leading-none"
+          >
             <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
               Local Services
             </span>
@@ -190,7 +203,7 @@ export default function HomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-8 sm:mb-10 lg:mb-12 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
             Connect with AI-matched, verified local professionals who deliver
             <span className="text-transparent bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text font-semibold">
               {" "}
@@ -200,55 +213,75 @@ export default function HomePage() {
           </p>
 
           {/* Search Interface */}
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000" />
+              <div
+                className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000"
+                aria-hidden="true"
+              />
               <div className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl rounded-3xl p-2 border border-blue-200/50 dark:border-white/20 shadow-xl">
-                <div className="flex items-center gap-4 px-6 py-4">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 flex items-center justify-center">
-                    <Search className="w-4 h-4 text-white" />
+                <form role="search" aria-label="Search for local services">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 flex items-center justify-center flex-shrink-0">
+                      <Search
+                        className="w-4 h-4 text-white"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Find trusted local help near you..."
+                      className="flex-1 w-full sm:w-auto bg-transparent border-none outline-none text-slate-700 dark:text-white placeholder-slate-400 dark:placeholder-gray-400 text-base sm:text-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-transparent rounded-lg py-2 sm:py-0"
+                      aria-label="Search for services"
+                    />
+                    <Button
+                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl px-6 sm:px-8 py-3 font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
+                      type="submit"
+                      aria-label="Search for services"
+                    >
+                      <span className="hidden sm:inline">Find Services</span>
+                      <span className="sm:hidden">Search</span>
+                      <MapPin className="w-4 h-4 ml-2" aria-hidden="true" />
+                    </Button>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Find trusted local help near you..."
-                    className="flex-1 bg-transparent border-none outline-none text-slate-700 dark:text-white placeholder-slate-400 dark:placeholder-gray-400 text-lg"
-                  />
-                  <Button className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl px-8 py-3 font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25">
-                    Find Services
-                    <MapPin className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
             <Button
               size="lg"
-              className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500 group"
+              className="relative w-full sm:w-auto bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
               asChild
             >
-              <Link href="/browse">
-                <Search className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
+              <Link href="/browse" aria-label="Browse and find local services">
+                <Search
+                  className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform"
+                  aria-hidden="true"
+                />
                 Find Services Now
               </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="rounded-2xl px-12 py-4 font-bold text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500"
+              className="w-full sm:w-auto rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
               asChild
             >
-              <Link href="/become-provider">
+              <Link
+                href="/become-provider"
+                aria-label="Join as a service provider"
+              >
                 Become a Provider
-                <ChevronRight className="w-5 h-5 ml-3" />
+                <ChevronRight className="w-5 h-5 ml-3" aria-hidden="true" />
               </Link>
             </Button>
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-70 dark:opacity-60">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 opacity-70 dark:opacity-60 px-4 sm:px-0">
             {[
               { icon: Shield, text: "Verified Professionals" },
               { icon: Award, text: "5-Star Quality" },
@@ -257,10 +290,13 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 text-sm text-slate-600 dark:text-gray-300"
+                className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-gray-300"
               >
-                <item.icon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                <span>{item.text}</span>
+                <item.icon
+                  className="w-4 h-4 text-emerald-500 dark:text-emerald-400 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="text-center sm:text-left">{item.text}</span>
               </div>
             ))}
           </div>
@@ -268,47 +304,63 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section
+        className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6"
+        aria-labelledby="stats-heading"
+      >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2
+              id="stats-heading"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+            >
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Redefining Excellence
               </span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto px-4 sm:px-0">
               Real-time metrics from our revolutionary platform that's changing
               how the world connects
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className="relative bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl p-8 group hover:bg-white/10 transition-all duration-500 hover:scale-105"
+                className="relative bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl p-6 sm:p-8 group hover:bg-white/10 transition-all duration-500 hover:scale-105 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-black"
+                role="article"
+                aria-labelledby={`stat-${index}-label`}
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"
                   style={{
                     background: `linear-gradient(135deg, ${stat.color.replace("from-", "").replace(" to-", ", ")})`,
                   }}
+                  aria-hidden="true"
                 />
                 <CardContent className="p-0 relative z-10">
                   <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}
+                    className={`w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500`}
+                    aria-hidden="true"
                   >
-                    <stat.icon className="w-8 h-8 text-white" />
+                    <stat.icon className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
                   </div>
-                  <div className="text-4xl font-black mb-2 text-white">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2 text-white">
                     {stat.value}
                   </div>
-                  <div className="text-gray-400 mb-3 font-medium">
+                  <div
+                    id={`stat-${index}-label`}
+                    className="text-gray-400 mb-3 font-medium text-sm sm:text-base"
+                  >
                     {stat.label}
                   </div>
-                  <div className="text-sm text-emerald-400 font-semibold flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3" />
-                    {stat.trend}
+                  <div className="text-xs sm:text-sm text-emerald-400 font-semibold flex items-center gap-1">
+                    <TrendingUp
+                      className="w-3 h-3 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span>{stat.trend}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -318,25 +370,33 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section
+        className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6"
+        aria-labelledby="services-heading"
+      >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2
+              id="services-heading"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+            >
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                 Why Choose Loconomy
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto px-4 sm:px-0">
               Experience the next generation of local services with AI-powered
               matching and verified professionals
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl p-8 group hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl p-6 sm:p-8 group hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-black"
+                role="article"
+                aria-labelledby={`service-${index}-title`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-5 transition-opacity duration-700`}
@@ -452,12 +512,21 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-32 px-6">
+      <section
+        className="relative z-10 py-20 sm:py-24 lg:py-32 px-4 sm:px-6"
+        aria-labelledby="cta-heading"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur-2xl opacity-10 dark:opacity-20" />
-            <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-blue-200/50 dark:border-white/10 shadow-2xl">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <div
+              className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur-2xl opacity-10 dark:opacity-20"
+              aria-hidden="true"
+            />
+            <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-blue-200/50 dark:border-white/10 shadow-2xl">
+              <h2
+                id="cta-heading"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+              >
                 <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
                   Ready to Find Your
                 </span>
@@ -466,30 +535,36 @@ export default function HomePage() {
                   Perfect Match?
                 </span>
               </h2>
-              <p className="text-xl text-slate-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0">
                 Join over 2 million users who trust Loconomy to connect them
                 with exceptional local professionals.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                 <Button
                   size="lg"
-                  className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500"
+                  className="relative w-full sm:w-auto bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
                   asChild
                 >
-                  <Link href="/auth/signup">
-                    <Search className="w-5 h-5 mr-3" />
+                  <Link
+                    href="/auth/signup"
+                    aria-label="Sign up to find services"
+                  >
+                    <Search className="w-5 h-5 mr-3" aria-hidden="true" />
                     Find Services Now
                   </Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-2xl px-12 py-4 font-bold text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500"
+                  className="w-full sm:w-auto rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
                   asChild
                 >
-                  <Link href="/become-provider">
-                    <Heart className="w-5 h-5 mr-3" />
+                  <Link
+                    href="/become-provider"
+                    aria-label="Join as a service provider"
+                  >
+                    <Heart className="w-5 h-5 mr-3" aria-hidden="true" />
                     Join as Provider
                   </Link>
                 </Button>

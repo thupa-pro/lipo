@@ -34,15 +34,18 @@ import {
   Brain,
   Shield,
   Activity,
+  BarChart3,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import { NotificationDropdown } from "@/components/notifications/NotificationDropdown";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [notifications, setNotifications] = useState(3);
+
   const [mounted, setMounted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const router = useRouter();
@@ -53,14 +56,28 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // ESC key to close mobile menu
+      if (e.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
 
   const navItems = [
     { href: "/", label: "Home", icon: Home },
     { href: "/browse", label: "Services", icon: Search },
     { href: "/request-service", label: "Request", icon: Briefcase },
+    { href: "/analytics", label: "Analytics", icon: BarChart3 },
   ];
 
   // Mock user data
@@ -115,17 +132,10 @@ export default function Navigation() {
     router.push("/auth/signin");
   };
 
-  const handleNotificationsClick = () => {
-    setNotifications(0);
-    toast({
-      title: "Notifications",
-      description: "Viewing your latest notifications.",
-      variant: "default",
-    });
-  };
-
   return (
     <header
+      role="banner"
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 safe-area-inset-top ${
         isScrolled
           ? "bg-white/95 dark:bg-black/95 backdrop-blur-xl shadow-2xl border-b border-slate-200/50 dark:border-white/10"
@@ -135,21 +145,32 @@ export default function Navigation() {
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link
+            href="/"
+            className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black rounded-2xl"
+            aria-label="Loconomy home page - AI-powered local services platform"
+          >
             <div className="relative">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F9b6a94f5ad4e4f5da77763a1b642522a%2F3e1a76e9d75d4b80aa493462f16bc984?format=webp&width=800"
-                alt="Loconomy"
+                alt=""
                 className="w-10 h-10 rounded-2xl shadow-lg group-hover:shadow-violet-500/50 transition-all duration-500 group-hover:scale-110"
+                role="presentation"
               />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse status-neural-active"></div>
+              <div
+                className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse status-neural-active"
+                aria-label="Online status indicator"
+              ></div>
             </div>
             <div>
               <span className="font-black text-xl bg-gradient-to-r from-slate-700 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
                 Loconomy
               </span>
               <div className="flex items-center gap-1 -mt-1">
-                <Sparkles className="w-3 h-3 text-blue-500 dark:text-violet-400 animate-pulse" />
+                <Sparkles
+                  className="w-3 h-3 text-blue-500 dark:text-violet-400 animate-pulse"
+                  aria-hidden="true"
+                />
                 <span className="text-xs text-blue-600 dark:text-violet-300 font-medium">
                   AI-Powered
                 </span>
@@ -158,21 +179,29 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2">
+          <nav
+            className="hidden md:flex items-center space-x-2"
+            role="navigation"
+            aria-label="Main menu"
+          >
             {navItems.map((item) => (
               <Button
                 key={item.href}
                 variant={isActive(item.href) ? "default" : "ghost"}
                 size="sm"
                 asChild
-                className={`h-10 px-6 rounded-2xl transition-all duration-300 ${
+                className={`h-10 px-6 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black ${
                   isActive(item.href)
                     ? "bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-600 dark:to-purple-600 text-white shadow-lg hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 hover:scale-105"
                     : "bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 hover:scale-105"
                 }`}
               >
-                <Link href={item.href} className="flex items-center gap-2">
-                  <item.icon className="w-4 h-4" />
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-2"
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                >
+                  <item.icon className="w-4 h-4" aria-hidden="true" />
                   {item.label}
                 </Link>
               </Button>
@@ -213,19 +242,7 @@ export default function Navigation() {
             <ThemeToggle />
 
             {/* Notifications */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="relative h-10 w-10 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
-              onClick={handleNotificationsClick}
-            >
-              <Bell className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-              {notifications > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-gradient-to-r from-violet-500 to-purple-500 text-white border-2 border-black animate-pulse shadow-lg">
-                  {notifications}
-                </Badge>
-              )}
-            </Button>
+            <NotificationDropdown />
 
             {/* User Menu */}
             <DropdownMenu>
@@ -308,14 +325,20 @@ export default function Navigation() {
             </DropdownMenu>
 
             {/* Mobile Menu */}
-            <Sheet>
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="md:hidden h-10 w-10 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                  className="md:hidden h-10 w-10 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
+                  aria-label="Open navigation menu"
+                  aria-expanded={isMenuOpen}
+                  aria-controls="mobile-menu"
                 >
-                  <Menu className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+                  <Menu
+                    className="w-5 h-5 text-slate-600 dark:text-slate-300"
+                    aria-hidden="true"
+                  />
                 </Button>
               </SheetTrigger>
               <SheetContent

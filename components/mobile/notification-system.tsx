@@ -124,21 +124,47 @@ export function NotificationSystem({ className }: NotificationSystemProps) {
       setNotifications((prev) => [newNotification, ...prev.slice(0, 9)]);
       setUnreadCount((prev) => prev + 1);
 
-      // Browser notification
+      // Browser notification with better options
       if (Notification.permission === "granted") {
-        new Notification(newNotification.title, {
+        const browserNotification = new Notification(newNotification.title, {
           body: newNotification.message,
           icon: "/placeholder.svg?height=64&width=64",
           badge: "/placeholder.svg?height=32&width=32",
           tag: newNotification.id,
+          requireInteraction: newNotification.priority === "urgent",
+          silent: false,
+          timestamp: Date.now(),
         });
+
+        // Auto close after 5 seconds unless urgent
+        if (newNotification.priority !== "urgent") {
+          setTimeout(() => browserNotification.close(), 5000);
+        }
+
+        // Handle click events
+        browserNotification.onclick = () => {
+          window.focus();
+          browserNotification.close();
+          if (newNotification.actionUrl) {
+            window.location.href = newNotification.actionUrl;
+          }
+        };
       }
 
-      // Haptic feedback
+      // Enhanced haptic feedback based on priority
       if (navigator.vibrate) {
-        navigator.vibrate([200, 100, 200]);
+        switch (newNotification.priority) {
+          case "urgent":
+            navigator.vibrate([300, 100, 300, 100, 300]);
+            break;
+          case "high":
+            navigator.vibrate([200, 100, 200]);
+            break;
+          default:
+            navigator.vibrate([100]);
+        }
       }
-    }, 30000); // Every 30 seconds
+    }, 15000); // Every 15 seconds
 
     return () => clearInterval(interval);
   }, []);
