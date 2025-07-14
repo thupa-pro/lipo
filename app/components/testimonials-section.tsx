@@ -10,7 +10,8 @@ const testimonials = [
     content:
       "Loconomy transformed how I manage my home services. The quality of providers is exceptional, and the booking process is seamless.",
     rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     company: "Tech Startup Founder",
   },
   {
@@ -19,7 +20,8 @@ const testimonials = [
     content:
       "Since joining Loconomy, my business has grown 300%. The platform connects me with quality clients and handles everything professionally.",
     rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     company: "Elite Home Services",
   },
   {
@@ -28,7 +30,8 @@ const testimonials = [
     content:
       "The peace of mind knowing all providers are verified and insured is invaluable. Customer support is white-glove level.",
     rating: 5,
-    avatar: "/placeholder.svg?height=60&width=60",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face",
     company: "Marketing Director",
   },
 ];
