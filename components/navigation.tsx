@@ -151,14 +151,22 @@ export default function Navigation() {
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link
+            href="/"
+            className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black rounded-2xl"
+            aria-label="Loconomy home page - AI-powered local services platform"
+          >
             <div className="relative">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F9b6a94f5ad4e4f5da77763a1b642522a%2F3e1a76e9d75d4b80aa493462f16bc984?format=webp&width=800"
-                alt="Loconomy"
+                alt=""
                 className="w-10 h-10 rounded-2xl shadow-lg group-hover:shadow-violet-500/50 transition-all duration-500 group-hover:scale-110"
+                role="presentation"
               />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse status-neural-active"></div>
+              <div
+                className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse status-neural-active"
+                aria-label="Online status indicator"
+              ></div>
             </div>
             <div>
               <span className="font-black text-xl bg-gradient-to-r from-slate-700 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
