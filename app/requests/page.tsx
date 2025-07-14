@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
+import { ReviewModal } from "@/components/reviews/ReviewModal";
 import {
   Briefcase,
   Plus,
@@ -22,16 +26,14 @@ import {
   Trash2,
   DollarSign,
   Users,
+  MessageSquare,
+  CheckCircle,
 } from "lucide-react";
-import { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "My Requests - Loconomy",
-  description: "Manage your service requests",
-};
-
 export default function RequestsPage() {
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [selectedBooking, setSelectedBooking] = useState<any>(null);
   const requests = [
     {
       id: 1,
@@ -61,6 +63,8 @@ export default function RequestsPage() {
         name: "Mike Rodriguez",
         avatar: "/placeholder.svg?height=32&width=32",
         rating: 4.8,
+        totalReviews: 47,
+        verified: true,
       },
     },
     {
@@ -79,6 +83,8 @@ export default function RequestsPage() {
         name: "Emma Thompson",
         avatar: "/placeholder.svg?height=32&width=32",
         rating: 5.0,
+        totalReviews: 152,
+        verified: true,
       },
     },
     {
@@ -121,6 +127,45 @@ export default function RequestsPage() {
         return "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300";
       default:
         return "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300";
+    }
+  };
+
+  const handleLeaveReview = (request: any) => {
+    const booking = {
+      id: request.id.toString(),
+      serviceTitle: request.title,
+      provider: {
+        id: request.provider?.name.toLowerCase().replace(" ", "_") || "",
+        name: request.provider?.name || "",
+        avatar: request.provider?.avatar || "",
+        rating: request.provider?.rating || 0,
+        totalReviews: request.provider?.totalReviews || 0,
+        verified: request.provider?.verified || false,
+      },
+      completedDate: new Date(
+        Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000,
+      ), // Random date within last week
+      totalAmount: parseFloat(
+        request.budget.replace(/[^\d.-]/g, "").split("-")[0] || "100",
+      ),
+      duration: "2 hours",
+    };
+
+    setSelectedBooking(booking);
+    setReviewModalOpen(true);
+  };
+
+  const handleReviewSubmit = async (reviewData: any) => {
+    try {
+      console.log("Submitting review:", reviewData);
+      // Here you would typically send the review to your API
+      // await submitReview(reviewData);
+
+      // Show success message
+      alert("Review submitted successfully!");
+    } catch (error) {
+      console.error("Failed to submit review:", error);
+      alert("Failed to submit review. Please try again.");
     }
   };
 
@@ -329,9 +374,25 @@ export default function RequestsPage() {
                         </div>
                       </div>
                       {request.status === "completed" && (
-                        <Button variant="outline" size="sm">
-                          Leave Review
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleLeaveReview(request)}
+                            className="flex items-center gap-1"
+                          >
+                            <MessageSquare className="w-3 h-3" />
+                            Leave Review
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-blue-600"
+                          >
+                            <CheckCircle className="w-3 h-3 mr-1" />
+                            View Receipt
+                          </Button>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -363,6 +424,19 @@ export default function RequestsPage() {
           </Card>
         )}
       </div>
+
+      {/* Review Modal */}
+      {selectedBooking && (
+        <ReviewModal
+          booking={selectedBooking}
+          isOpen={reviewModalOpen}
+          onClose={() => {
+            setReviewModalOpen(false);
+            setSelectedBooking(null);
+          }}
+          onSubmit={handleReviewSubmit}
+        />
+      )}
     </div>
   );
 }
