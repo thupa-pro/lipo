@@ -512,12 +512,21 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-32 px-6">
+      <section
+        className="relative z-10 py-20 sm:py-24 lg:py-32 px-4 sm:px-6"
+        aria-labelledby="cta-heading"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur-2xl opacity-10 dark:opacity-20" />
-            <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-blue-200/50 dark:border-white/10 shadow-2xl">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <div
+              className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur-2xl opacity-10 dark:opacity-20"
+              aria-hidden="true"
+            />
+            <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-blue-200/50 dark:border-white/10 shadow-2xl">
+              <h2
+                id="cta-heading"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+              >
                 <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
                   Ready to Find Your
                 </span>
@@ -526,30 +535,36 @@ export default function HomePage() {
                   Perfect Match?
                 </span>
               </h2>
-              <p className="text-xl text-slate-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0">
                 Join over 2 million users who trust Loconomy to connect them
                 with exceptional local professionals.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                 <Button
                   size="lg"
-                  className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500"
+                  className="relative w-full sm:w-auto bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
                   asChild
                 >
-                  <Link href="/auth/signup">
-                    <Search className="w-5 h-5 mr-3" />
+                  <Link
+                    href="/auth/signup"
+                    aria-label="Sign up to find services"
+                  >
+                    <Search className="w-5 h-5 mr-3" aria-hidden="true" />
                     Find Services Now
                   </Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-2xl px-12 py-4 font-bold text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500"
+                  className="w-full sm:w-auto rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
                   asChild
                 >
-                  <Link href="/become-provider">
-                    <Heart className="w-5 h-5 mr-3" />
+                  <Link
+                    href="/become-provider"
+                    aria-label="Join as a service provider"
+                  >
+                    <Heart className="w-5 h-5 mr-3" aria-hidden="true" />
                     Join as Provider
                   </Link>
                 </Button>
