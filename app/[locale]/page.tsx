@@ -189,7 +189,10 @@ export default function HomePage() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-none">
+          <h1
+            id="hero-heading"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-6 sm:mb-8 leading-none"
+          >
             <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
               Local Services
             </span>
