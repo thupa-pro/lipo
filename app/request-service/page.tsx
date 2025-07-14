@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  Calendar,
+  CalendarIcon,
   MapPin,
   DollarSign,
   Clock,
