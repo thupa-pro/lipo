@@ -213,24 +213,38 @@ export default function HomePage() {
           </p>
 
           {/* Search Interface */}
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000" />
+              <div
+                className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000"
+                aria-hidden="true"
+              />
               <div className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl rounded-3xl p-2 border border-blue-200/50 dark:border-white/20 shadow-xl">
-                <div className="flex items-center gap-4 px-6 py-4">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 flex items-center justify-center">
-                    <Search className="w-4 h-4 text-white" />
+                <form role="search" aria-label="Search for local services">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 flex items-center justify-center flex-shrink-0">
+                      <Search
+                        className="w-4 h-4 text-white"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Find trusted local help near you..."
+                      className="flex-1 w-full sm:w-auto bg-transparent border-none outline-none text-slate-700 dark:text-white placeholder-slate-400 dark:placeholder-gray-400 text-base sm:text-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-transparent rounded-lg py-2 sm:py-0"
+                      aria-label="Search for services"
+                    />
+                    <Button
+                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl px-6 sm:px-8 py-3 font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
+                      type="submit"
+                      aria-label="Search for services"
+                    >
+                      <span className="hidden sm:inline">Find Services</span>
+                      <span className="sm:hidden">Search</span>
+                      <MapPin className="w-4 h-4 ml-2" aria-hidden="true" />
+                    </Button>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Find trusted local help near you..."
-                    className="flex-1 bg-transparent border-none outline-none text-slate-700 dark:text-white placeholder-slate-400 dark:placeholder-gray-400 text-lg"
-                  />
-                  <Button className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl px-8 py-3 font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25">
-                    Find Services
-                    <MapPin className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
