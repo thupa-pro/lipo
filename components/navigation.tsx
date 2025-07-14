@@ -140,6 +140,8 @@ export default function Navigation() {
 
   return (
     <header
+      role="banner"
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 safe-area-inset-top ${
         isScrolled
           ? "bg-white/95 dark:bg-black/95 backdrop-blur-xl shadow-2xl border-b border-slate-200/50 dark:border-white/10"
