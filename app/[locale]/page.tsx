@@ -504,7 +504,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SmartRecommendations
             location="Global"
-            context="elite-homepage"
+            context="homepage"
             maxRecommendations={3}
             showAIInsights={true}
           />
@@ -527,7 +527,7 @@ export default function HomePage() {
                 id="cta-heading"
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent">
                   Ready to Find Your
                 </span>
                 <br />
@@ -535,7 +535,7 @@ export default function HomePage() {
                   Perfect Match?
                 </span>
               </h2>
-              <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0">
+              <p className="text-lg sm:text-xl text-blue-700 dark:text-white mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0 font-medium">
                 Join over 2 million users who trust Loconomy to connect them
                 with exceptional local professionals.
               </p>
