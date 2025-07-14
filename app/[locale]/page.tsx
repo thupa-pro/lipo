@@ -167,15 +167,25 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
+      <section
+        className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6"
+        role="main"
+        aria-labelledby="hero-heading"
+      >
         <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6 sm:mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
+            <div
+              className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
+              aria-hidden="true"
+            />
+            <span className="text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Trusted by 2.1M+ Users Globally
             </span>
-            <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+            <Sparkles
+              className="w-3 sm:w-4 h-3 sm:h-4 text-emerald-500 dark:text-emerald-400"
+              aria-hidden="true"
+            />
           </div>
 
           {/* Main Headline */}
