@@ -196,7 +196,7 @@ export default function Navigation() {
                 variant={isActive(item.href) ? "default" : "ghost"}
                 size="sm"
                 asChild
-                className={`h-10 px-6 rounded-2xl transition-all duration-300 ${
+                className={`h-10 px-6 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black ${
                   isActive(item.href)
                     ? "bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-600 dark:to-purple-600 text-white shadow-lg hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 hover:scale-105"
                     : "bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 hover:scale-105"
