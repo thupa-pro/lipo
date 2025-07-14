@@ -43,6 +43,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [notifications, setNotifications] = useState(3);
   const [mounted, setMounted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const router = useRouter();
