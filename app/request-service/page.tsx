@@ -105,13 +105,17 @@ export default function RequestServicePage() {
     location: "",
     budget: "",
     urgency: "",
-    preferredDate: "",
+    preferredDate: null as Date | null,
     contactMethod: "both",
     phone: "",
     email: "",
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
   const { toast } = useToast();
 
   const totalSteps = 4;
