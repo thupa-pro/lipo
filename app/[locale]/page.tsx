@@ -281,7 +281,7 @@ export default function HomePage() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-70 dark:opacity-60">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 opacity-70 dark:opacity-60 px-4 sm:px-0">
             {[
               { icon: Shield, text: "Verified Professionals" },
               { icon: Award, text: "5-Star Quality" },
@@ -290,10 +290,13 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 text-sm text-slate-600 dark:text-gray-300"
+                className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-gray-300"
               >
-                <item.icon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                <span>{item.text}</span>
+                <item.icon
+                  className="w-4 h-4 text-emerald-500 dark:text-emerald-400 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="text-center sm:text-left">{item.text}</span>
               </div>
             ))}
           </div>
