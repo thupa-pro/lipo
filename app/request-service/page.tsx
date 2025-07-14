@@ -120,9 +120,45 @@ export default function RequestServicePage() {
 
   const totalSteps = 4;
 
+  const validateStep = (step: number): boolean => {
+    const errors: Record<string, string> = {};
+
+    switch (step) {
+      case 1:
+        if (!formData.category)
+          errors.category = "Please select a service category";
+        break;
+      case 2:
+        if (!formData.title?.trim()) errors.title = "Service title is required";
+        if (!formData.description?.trim())
+          errors.description = "Description is required";
+        if (!formData.location?.trim())
+          errors.location = "Location is required";
+        break;
+      case 3:
+        if (!formData.budget) errors.budget = "Please select a budget range";
+        if (!formData.urgency) errors.urgency = "Please select timeline";
+        break;
+      case 4:
+        if (!formData.email?.trim()) errors.email = "Email is required";
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (formData.email && !emailRegex.test(formData.email)) {
+          errors.email = "Please enter a valid email address";
+        }
+        if (formData.phone && !/^[\d\s\(\)\-\+]+$/.test(formData.phone)) {
+          errors.phone = "Please enter a valid phone number";
+        }
+        break;
+    }
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleNext = () => {
-    if (currentStep < totalSteps) {
+    if (validateStep(currentStep) && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
+      setValidationErrors({});
     }
   };
 
