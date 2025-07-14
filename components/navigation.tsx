@@ -34,6 +34,7 @@ import {
   Brain,
   Shield,
   Activity,
+  BarChart3,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
