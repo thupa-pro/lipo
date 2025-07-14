@@ -202,8 +202,12 @@ export default function Navigation() {
                     : "bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 hover:scale-105"
                 }`}
               >
-                <Link href={item.href} className="flex items-center gap-2">
-                  <item.icon className="w-4 h-4" />
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-2"
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                >
+                  <item.icon className="w-4 h-4" aria-hidden="true" />
                   {item.label}
                 </Link>
               </Button>
