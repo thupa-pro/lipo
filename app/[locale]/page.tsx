@@ -304,15 +304,21 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section
+        className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6"
+        aria-labelledby="stats-heading"
+      >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2
+              id="stats-heading"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+            >
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Redefining Excellence
               </span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto px-4 sm:px-0">
               Real-time metrics from our revolutionary platform that's changing
               how the world connects
             </p>
