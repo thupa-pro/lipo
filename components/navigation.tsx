@@ -173,7 +173,10 @@ export default function Navigation() {
                 Loconomy
               </span>
               <div className="flex items-center gap-1 -mt-1">
-                <Sparkles className="w-3 h-3 text-blue-500 dark:text-violet-400 animate-pulse" />
+                <Sparkles
+                  className="w-3 h-3 text-blue-500 dark:text-violet-400 animate-pulse"
+                  aria-hidden="true"
+                />
                 <span className="text-xs text-blue-600 dark:text-violet-300 font-medium">
                   AI-Powered
                 </span>
