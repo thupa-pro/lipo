@@ -38,10 +38,11 @@ import {
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import { NotificationDropdown } from "@/components/notifications/NotificationDropdown";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [notifications, setNotifications] = useState(3);
+
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -127,15 +128,6 @@ export default function Navigation() {
       variant: "default",
     });
     router.push("/auth/signin");
-  };
-
-  const handleNotificationsClick = () => {
-    setNotifications(0);
-    toast({
-      title: "Notifications",
-      description: "Viewing your latest notifications.",
-      variant: "default",
-    });
   };
 
   return (
@@ -248,19 +240,7 @@ export default function Navigation() {
             <ThemeToggle />
 
             {/* Notifications */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="relative h-10 w-10 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
-              onClick={handleNotificationsClick}
-            >
-              <Bell className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-              {notifications > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-gradient-to-r from-violet-500 to-purple-500 text-white border-2 border-black animate-pulse shadow-lg">
-                  {notifications}
-                </Badge>
-              )}
-            </Button>
+            <NotificationDropdown />
 
             {/* User Menu */}
             <DropdownMenu>
