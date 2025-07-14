@@ -235,12 +235,12 @@ export default function PremiumDashboardPage() {
                 </div>
               </div>
               <div>
-                <h1 className="text-4xl md:text-5xl font-black mb-2">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-2">
                   <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
                     Good morning, John! ☀️
                   </span>
                 </h1>
-                <p className="text-xl text-slate-600 dark:text-gray-300 flex items-center gap-3">
+                <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                   <Brain className="w-5 h-5 text-blue-500" />
                   AI has found 3 new recommendations for you
                   {mounted && currentTime ? (
