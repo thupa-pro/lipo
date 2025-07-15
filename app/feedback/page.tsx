@@ -30,7 +30,7 @@ export default function FeedbackPage() {
       variant: "default",
     });
     // Simulate form reset
-    e.currentTarget.reset();
+    (e.currentTarget as HTMLFormElement).reset();
   };
 
   return (
