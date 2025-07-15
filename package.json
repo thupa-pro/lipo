@@ -64,7 +64,6 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
     "vite": "7.0.0",
-    "vitest": "latest",
     "zod": "^3.22.0"
   },
   "devDependencies": {
@@ -77,15 +76,15 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.0",
-    "@vitest/browser": "^1.0.0",
-    "@vitest/ui": "^1.0.0",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
     "happy-dom": "18.0.1",
     "jsdom": "^24.0.0",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.5.4",
     "vite": "7.0.0",
-    "vitest": "^1.0.0",
+    "vitest": "^3.2.4",
     "webpack-bundle-analyzer": "^4.10.1"
   },
   "scripts": {
