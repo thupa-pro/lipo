@@ -18,7 +18,6 @@ import {
   DollarSign,
   BarChart3,
   Calendar,
-  Users,
   Star,
   TrendingUp,
   Plus,
