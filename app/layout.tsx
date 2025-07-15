@@ -2,7 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/app/globals.css";
-import { notFound } from "next/navigation";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
@@ -102,7 +102,7 @@ export default function RootLayout({
         className={`${inter.className} ${jakarta.variable}`}
         suppressHydrationWarning
       >
-        {children}
+        <ClerkProvider>{children}</ClerkProvider>
       </body>
     </html>
   );
