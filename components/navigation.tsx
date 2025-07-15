@@ -40,14 +40,17 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { NotificationDropdown } from "@/components/notifications/NotificationDropdown";
+import { useUser, useClerk } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  const { isLoaded, isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
   const router = useRouter();
   const { toast } = useToast();
 
@@ -124,12 +127,13 @@ export default function Navigation() {
   };
 
   const handleLogout = async () => {
+    await signOut();
     toast({
       title: "Signed Out",
       description: "You have been successfully signed out.",
       variant: "default",
     });
-    router.push("/auth/signin");
+    router.push("/");
   };
 
   return (
