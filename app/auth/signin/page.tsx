@@ -1,116 +1,11 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
 import Link from "next/link";
+import { SignIn } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  ArrowLeft,
-  AlertCircle,
-  Chrome,
-  Facebook,
-  Sparkles,
-  Shield,
-  Zap,
-  Heart,
-  Star,
-  Users,
-  Brain,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
+import { ArrowLeft, Shield, Zap, Star, Users, Brain } from "lucide-react";
 
 export default function SignInPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    rememberMe: false,
-  });
-
-  const router = useRouter();
-  const { toast } = useToast();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError("");
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    if (
-      formData.email === "test@example.com" &&
-      formData.password === "password123"
-    ) {
-      toast({
-        title: "Sign In Successful!",
-        description: "You have been successfully logged in.",
-        variant: "default",
-      });
-      router.push("/dashboard"); // Redirect to dashboard on success
-    } else {
-      setError("Invalid email or password.");
-      toast({
-        title: "Sign In Failed",
-        description: "Please check your credentials and try again.",
-        variant: "destructive",
-      });
-    }
-    setIsLoading(false);
-  };
-
-  const handleSocialLogin = async (provider: "google" | "facebook") => {
-    setIsLoading(true);
-    setError("");
-
-    // Simulate social login
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    if (provider === "google") {
-      toast({
-        title: "Google Login Successful!",
-        description: "You have been successfully logged in with Google.",
-        variant: "default",
-      });
-      router.push("/dashboard");
-    } else if (provider === "facebook") {
-      toast({
-        title: "Facebook Login Successful!",
-        description: "You have been successfully logged in with Facebook.",
-        variant: "default",
-      });
-      router.push("/dashboard");
-    } else {
-      setError("Social login failed. Please try again.");
-      toast({
-        title: "Social Login Failed",
-        description: "Please try again.",
-        variant: "destructive",
-      });
-    }
-    setIsLoading(false);
-  };
-
   return (
     <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white overflow-hidden relative">
       {/* Animated Background - Same as Homepage */}
@@ -234,205 +129,36 @@ export default function SignInPage() {
               </div>
             </div>
 
-            {/* Right Side - Login Form */}
+            {/* Right Side - Clerk SignIn Form */}
             <div className="w-full max-w-md mx-auto">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30" />
-                <Card className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl border-blue-200/50 dark:border-white/20 shadow-2xl rounded-3xl">
-                  <CardHeader className="text-center pb-6">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-4 mx-auto">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                      <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                        Secure Access Portal
-                      </span>
-                      <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                    </div>
-
-                    <CardTitle className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                      Sign In to Continue
-                    </CardTitle>
-                    <CardDescription className="text-slate-600 dark:text-gray-300">
-                      Access your personalized experience
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="space-y-6 px-8 pb-8">
-                    {error && (
-                      <Alert
-                        variant="destructive"
-                        className="border-red-200 bg-red-50/50 dark:bg-red-950/20"
-                      >
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>{error}</AlertDescription>
-                      </Alert>
-                    )}
-
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="email"
-                          className="text-slate-700 dark:text-gray-300 font-medium"
-                        >
-                          Email Address
-                        </Label>
-                        <div className="relative">
-                          <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 flex items-center justify-center absolute left-3 top-1/2 transform -translate-y-1/2">
-                            <Mail className="w-3 h-3 text-white" />
-                          </div>
-                          <Input
-                            id="email"
-                            type="email"
-                            placeholder="Enter your email"
-                            value={formData.email}
-                            onChange={(e) =>
-                              setFormData((prev) => ({
-                                ...prev,
-                                email: e.target.value,
-                              }))
-                            }
-                            className="pl-12 h-12 bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/20 rounded-2xl focus:ring-2 focus:ring-blue-500/20 transition-all"
-                            disabled={isLoading}
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="password"
-                          className="text-slate-700 dark:text-gray-300 font-medium"
-                        >
-                          Password
-                        </Label>
-                        <div className="relative">
-                          <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 dark:from-pink-500 dark:to-violet-500 flex items-center justify-center absolute left-3 top-1/2 transform -translate-y-1/2">
-                            <Lock className="w-3 h-3 text-white" />
-                          </div>
-                          <Input
-                            id="password"
-                            type={showPassword ? "text" : "password"}
-                            placeholder="Enter your password"
-                            value={formData.password}
-                            onChange={(e) =>
-                              setFormData((prev) => ({
-                                ...prev,
-                                password: e.target.value,
-                              }))
-                            }
-                            className="pl-12 pr-12 h-12 bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/20 rounded-2xl focus:ring-2 focus:ring-blue-500/20 transition-all"
-                            disabled={isLoading}
-                            required
-                          />
-                          <Button
-                            type="button"
-                            variant="ghost"
-                            size="sm"
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8 rounded-xl hover:bg-slate-100 dark:hover:bg-white/10"
-                            onClick={() => setShowPassword(!showPassword)}
-                            disabled={isLoading}
-                          >
-                            {showPassword ? (
-                              <EyeOff className="w-4 h-4 text-slate-500" />
-                            ) : (
-                              <Eye className="w-4 h-4 text-slate-500" />
-                            )}
-                          </Button>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <Checkbox
-                            id="remember"
-                            checked={formData.rememberMe}
-                            onCheckedChange={(checked) =>
-                              setFormData((prev) => ({
-                                ...prev,
-                                rememberMe: !!checked,
-                              }))
-                            }
-                            disabled={isLoading}
-                            className="rounded-md"
-                          />
-                          <Label
-                            htmlFor="remember"
-                            className="text-sm text-slate-600 dark:text-gray-300"
-                          >
-                            Remember me
-                          </Label>
-                        </div>
-                        <Link
-                          href="/auth/forgot-password"
-                          className="text-sm text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                        >
-                          Forgot password?
-                        </Link>
-                      </div>
-
-                      <Button
-                        type="submit"
-                        className="w-full h-12 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25 transition-all duration-300"
-                        disabled={isLoading}
-                      >
-                        {isLoading ? (
-                          <>
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
-                            Signing In...
-                          </>
-                        ) : (
-                          <>
-                            Sign In Securely
-                            <Sparkles className="w-4 h-4 ml-2" />
-                          </>
-                        )}
-                      </Button>
-                    </form>
-
-                    <div className="relative">
-                      <div className="absolute inset-0 flex items-center">
-                        <Separator className="bg-slate-200 dark:bg-white/20" />
-                      </div>
-                      <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-white dark:bg-black px-4 text-slate-500 dark:text-gray-400 font-medium">
-                          Or continue with
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <Button
-                        variant="outline"
-                        onClick={() => handleSocialLogin("google")}
-                        disabled={isLoading}
-                        className="h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                      >
-                        <Chrome className="w-5 h-5 mr-2" />
-                        Google
-                      </Button>
-                      <Button
-                        variant="outline"
-                        onClick={() => handleSocialLogin("facebook")}
-                        disabled={isLoading}
-                        className="h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                      >
-                        <Facebook className="w-5 h-5 mr-2" />
-                        Facebook
-                      </Button>
-                    </div>
-
-                    <div className="text-center text-sm">
-                      <span className="text-slate-600 dark:text-gray-300">
-                        Don't have an account?{" "}
-                      </span>
-                      <Link
-                        href="/auth/signup"
-                        className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
-                      >
-                        Sign up free
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-blue-200/50 dark:border-white/20 shadow-2xl rounded-3xl p-8">
+                  <SignIn
+                    appearance={{
+                      elements: {
+                        rootBox: "mx-auto",
+                        card: "bg-transparent shadow-none border-none",
+                        headerTitle:
+                          "text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent",
+                        headerSubtitle: "text-slate-600 dark:text-gray-300",
+                        socialButtonsBlockButton:
+                          "h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all",
+                        formButtonPrimary:
+                          "h-12 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25 transition-all duration-300",
+                        formFieldInput:
+                          "h-12 bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/20 rounded-2xl focus:ring-2 focus:ring-blue-500/20 transition-all",
+                        footerActionLink:
+                          "text-blue-600 dark:text-blue-400 hover:underline font-semibold",
+                        dividerLine: "bg-slate-200 dark:bg-white/20",
+                        dividerText:
+                          "text-slate-500 dark:text-gray-400 font-medium",
+                      },
+                    }}
+                    redirectUrl="/dashboard"
+                    signUpUrl="/auth/signup"
+                  />
+                </div>
               </div>
 
               <div className="mt-6 text-center text-xs text-slate-500 dark:text-gray-400">
