@@ -3,6 +3,8 @@
  * Defines user roles and permissions for the Loconomy platform
  */
 
+import React from "react";
+
 export type UserRole = "guest" | "consumer" | "provider" | "admin";
 
 export interface RolePermissions {
