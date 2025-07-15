@@ -1,27 +1,46 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Progress } from "@/components/ui/progress"
-import { TrendingUp, Target, Zap, Brain, CheckCircle, BarChart3, Settings } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import FunnelAnalyzer from "@/components/analytics/funnel-analyzer"
-import SmartFormAssistant from "@/components/ui/smart-form-assistant"
-import UrgencyNotificationSystem from "@/components/provider/urgency-notification-system"
-import EscrowExplainer from "@/components/ui/escrow-explainer"
-import Link from "next/link"
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Progress } from "@/components/ui/progress";
+import {
+  TrendingUp,
+  Target,
+  Zap,
+  Brain,
+  CheckCircle,
+  BarChart3,
+  Settings,
+} from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import FunnelAnalyzer from "@/components/analytics/funnel-analyzer";
+import SmartFormAssistant from "@/components/ui/smart-form-assistant";
+import UrgencyNotificationSystem from "@/components/provider/urgency-notification-system";
+import EscrowExplainer from "@/components/ui/escrow-explainer";
+import Link from "next/link";
 
 export default function FunnelOptimizationPage() {
-  const [optimizationScore, setOptimizationScore] = useState(87)
+  const [optimizationScore] = useState(87);
 
   const impactMetrics = [
     { label: "Form Completion", before: 42, after: 58, improvement: "+38%" },
-    { label: "Provider Acceptance", before: 27, after: 33, improvement: "+23%" },
+    {
+      label: "Provider Acceptance",
+      before: 27,
+      after: 33,
+      improvement: "+23%",
+    },
     { label: "Payment Conversion", before: 24, after: 28, improvement: "+15%" },
     { label: "Overall Funnel", before: 20, after: 22, improvement: "+12%" },
-  ]
+  ];
 
   const optimizationFeatures = [
     {
@@ -56,7 +75,7 @@ export default function FunnelOptimizationPage() {
       icon: BarChart3,
       color: "bg-blue-500",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -72,7 +91,9 @@ export default function FunnelOptimizationPage() {
             </span>
           </Link>
           <div className="flex items-center space-x-4">
-            <Badge className="bg-green-500 text-white">Optimization Active</Badge>
+            <Badge className="bg-green-500 text-white">
+              Optimization Active
+            </Badge>
             <ThemeToggle />
           </div>
         </div>
@@ -88,20 +109,29 @@ export default function FunnelOptimizationPage() {
             Funnel Optimization Engine
           </h1>
           <p className="text-xl text-muted-foreground mb-6">
-            AI-powered conversion optimization eliminating bottlenecks and boosting user engagement
+            AI-powered conversion optimization eliminating bottlenecks and
+            boosting user engagement
           </p>
           <div className="flex items-center justify-center space-x-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">{optimizationScore}%</div>
-              <div className="text-sm text-muted-foreground">Optimization Score</div>
+              <div className="text-3xl font-bold text-green-600">
+                {optimizationScore}%
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Optimization Score
+              </div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600">+27%</div>
-              <div className="text-sm text-muted-foreground">Conversion Uplift</div>
+              <div className="text-sm text-muted-foreground">
+                Conversion Uplift
+              </div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-purple-600">4.2min</div>
-              <div className="text-sm text-muted-foreground">Avg Response Time</div>
+              <div className="text-sm text-muted-foreground">
+                Avg Response Time
+              </div>
             </div>
           </div>
         </div>
@@ -113,22 +143,30 @@ export default function FunnelOptimizationPage() {
               <BarChart3 className="w-5 h-5 mr-2" />
               Optimization Impact
             </CardTitle>
-            <CardDescription>Measurable improvements across the conversion funnel</CardDescription>
+            <CardDescription>
+              Measurable improvements across the conversion funnel
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-4 gap-6">
               {impactMetrics.map((metric, index) => (
                 <div key={index} className="text-center">
                   <div className="mb-3">
-                    <div className="text-2xl font-bold text-muted-foreground mb-1">{metric.before}%</div>
+                    <div className="text-2xl font-bold text-muted-foreground mb-1">
+                      {metric.before}%
+                    </div>
                     <div className="text-xs text-muted-foreground">Before</div>
                   </div>
                   <div className="flex items-center justify-center mb-3">
                     <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                    <span className="text-lg font-bold text-green-600">{metric.improvement}</span>
+                    <span className="text-lg font-bold text-green-600">
+                      {metric.improvement}
+                    </span>
                   </div>
                   <div className="mb-3">
-                    <div className="text-2xl font-bold text-primary mb-1">{metric.after}%</div>
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      {metric.after}%
+                    </div>
                     <div className="text-xs text-muted-foreground">After</div>
                   </div>
                   <div className="text-sm font-medium">{metric.label}</div>
@@ -146,7 +184,9 @@ export default function FunnelOptimizationPage() {
               <Settings className="w-5 h-5 mr-2" />
               Active Optimizations
             </CardTitle>
-            <CardDescription>AI-powered features improving user experience and conversions</CardDescription>
+            <CardDescription>
+              AI-powered features improving user experience and conversions
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
@@ -155,17 +195,35 @@ export default function FunnelOptimizationPage() {
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start space-x-3">
-                        <div className={`w-10 h-10 ${feature.color} rounded-lg flex items-center justify-center`}>
+                        <div
+                          className={`w-10 h-10 ${feature.color} rounded-lg flex items-center justify-center`}
+                        >
                           <feature.icon className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1">{feature.title}</h4>
-                          <p className="text-sm text-muted-foreground mb-2">{feature.description}</p>
+                          <h4 className="font-semibold mb-1">
+                            {feature.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-2">
+                            {feature.description}
+                          </p>
                           <div className="flex items-center space-x-2">
-                            <Badge variant={feature.impact === "High" ? "default" : "secondary"}>
+                            <Badge
+                              variant={
+                                feature.impact === "High"
+                                  ? "default"
+                                  : "secondary"
+                              }
+                            >
                               {feature.impact} Impact
                             </Badge>
-                            <Badge variant={feature.status === "Active" ? "default" : "outline"}>
+                            <Badge
+                              variant={
+                                feature.status === "Active"
+                                  ? "default"
+                                  : "outline"
+                              }
+                            >
                               {feature.status}
                             </Badge>
                           </div>
@@ -212,23 +270,33 @@ export default function FunnelOptimizationPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Optimization Engine Fully Deployed!</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                Optimization Engine Fully Deployed!
+              </h3>
               <p className="text-muted-foreground mb-4">
-                Your conversion funnel is now optimized with AI-powered improvements that eliminate bottlenecks and
-                boost engagement.
+                Your conversion funnel is now optimized with AI-powered
+                improvements that eliminate bottlenecks and boost engagement.
               </p>
               <div className="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-green-600">+38%</div>
-                  <div className="text-sm text-muted-foreground">Form Completion</div>
+                  <div className="text-sm text-muted-foreground">
+                    Form Completion
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600">87%</div>
-                  <div className="text-sm text-muted-foreground">AI Match Accuracy</div>
+                  <div className="text-sm text-muted-foreground">
+                    AI Match Accuracy
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-600">4.8/5</div>
-                  <div className="text-sm text-muted-foreground">User Satisfaction</div>
+                  <div className="text-3xl font-bold text-purple-600">
+                    4.8/5
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    User Satisfaction
+                  </div>
                 </div>
               </div>
             </div>
@@ -236,5 +304,5 @@ export default function FunnelOptimizationPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
