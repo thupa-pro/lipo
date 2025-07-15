@@ -3,7 +3,9 @@
  * Only accessible to users with 'provider' or 'admin' role
  */
 
-import { RoleGate } from "@/components/rbac/RoleGate";
+"use client";
+
+import { ClientRoleGate } from "@/components/rbac/ClientRoleGate";
 import {
   Card,
   CardContent,
