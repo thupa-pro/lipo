@@ -36,10 +36,9 @@ export default function ProviderSupportPage() {
       description:
         "We've received your message and will get back to you shortly.",
       variant: "default",
-    })(
-      // Simulate form reset
-      e.currentTarget as HTMLFormElement,
-    ).reset();
+    });
+    // Simulate form reset
+    (e.currentTarget as HTMLFormElement).reset();
   };
 
   return (
