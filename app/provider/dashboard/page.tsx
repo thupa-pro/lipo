@@ -30,7 +30,7 @@ import Link from "next/link";
 
 export default function ProviderDashboard() {
   return (
-    <RoleGate allowedRoles={["provider", "admin"]}>
+        <ClientRoleGate allowedRoles={["provider", "admin"]}>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-emerald-50 dark:from-slate-950 dark:via-blue-950/20 dark:to-slate-950 pt-20">
         <div className="container mx-auto px-6 py-8">
           {/* Header */}
