@@ -3,6 +3,7 @@
  * Conditionally renders content based on user roles and permissions
  */
 
+import React from "react";
 import { getCurrentSession } from "@/lib/rbac/utils";
 import { RoleGateProps } from "@/lib/rbac/types";
 import { Alert, AlertDescription } from "@/components/ui/alert";
