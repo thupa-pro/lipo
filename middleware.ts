@@ -12,12 +12,12 @@ const isProtectedRoute = createRouteMatcher([
   "/requests(.*)",
 ]);
 
-export default clerkMiddleware((auth, req) => {
+export default clerkMiddleware(async (auth, req) => {
   // Exclude mock routes from Clerk protection
   if (req.nextUrl.pathname.startsWith('/mock-')) {
     return;
   }
-  if (isProtectedRoute(req)) auth().protect();
+  if (isProtectedRoute(req)) await auth().protect();
 });
 
 export const config = {
