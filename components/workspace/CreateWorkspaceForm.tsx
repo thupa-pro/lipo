@@ -19,7 +19,7 @@ import {
   Building2,
   Users,
   Briefcase,
-  Enterprise,
+  Crown,
   Loader2,
   Check,
 } from "lucide-react";
