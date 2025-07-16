@@ -3,7 +3,7 @@
  */
 
 import { auth } from "@clerk/nextjs/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server-client";
 import { UserRole, UserSession } from "./types";
 
 /**
