@@ -47,15 +47,28 @@ export async function GET() {
       checks,
     });
   } catch (error) {
+    console.error("Health check error:", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    const errorDetails =
+      error instanceof Error
+        ? JSON.stringify(error, Object.getOwnPropertyNames(error))
+        : "Unknown error";
+
     return NextResponse.json(
       {
         status: "unhealthy",
         timestamp: new Date().toISOString(),
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: errorMessage,
+        errorDetails: errorDetails,
+        envCheck: {
+          hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+          hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+        },
         checks: {
           database: {
             status: "unhealthy",
-            error: error instanceof Error ? error.message : "Unknown error",
+            error: errorMessage,
             timestamp: new Date().toISOString(),
           },
         },
