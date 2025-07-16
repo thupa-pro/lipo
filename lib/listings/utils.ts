@@ -17,7 +17,7 @@ export async function getProviderListings(
   const supabase = createClient();
 
   const { data, error } = await supabase
-    .from("listings")
+    .from("service_listings")
     .select("*")
     .eq("provider_id", providerId)
     .order("created_at", { ascending: false });
@@ -34,7 +34,7 @@ export async function getListing(listingId: string): Promise<Listing | null> {
   const supabase = createClient();
 
   const { data, error } = await supabase
-    .from("listings")
+    .from("service_listings")
     .select("*")
     .eq("id", listingId)
     .single();
@@ -101,7 +101,7 @@ export function useListingsClient() {
   return {
     async getListings(providerId?: string): Promise<Listing[]> {
       let query = supabase
-        .from("listings")
+        .from("service_listings")
         .select("*")
         .order("created_at", { ascending: false });
 
@@ -121,7 +121,7 @@ export function useListingsClient() {
 
     async getListing(listingId: string): Promise<Listing | null> {
       const { data, error } = await supabase
-        .from("listings")
+        .from("service_listings")
         .select("*")
         .eq("id", listingId)
         .single();
@@ -136,7 +136,7 @@ export function useListingsClient() {
 
     async createListing(formData: ListingFormData): Promise<Listing | null> {
       const { data, error } = await supabase
-        .from("listings")
+        .from("service_listings")
         .insert({
           title: formData.title,
           description: formData.description,
@@ -172,7 +172,7 @@ export function useListingsClient() {
       formData: ListingFormData,
     ): Promise<Listing | null> {
       const { data, error } = await supabase
-        .from("listings")
+        .from("service_listings")
         .update({
           title: formData.title,
           description: formData.description,
@@ -207,7 +207,7 @@ export function useListingsClient() {
 
     async deleteListing(listingId: string): Promise<boolean> {
       const { error } = await supabase
-        .from("listings")
+        .from("service_listings")
         .delete()
         .eq("id", listingId);
 
