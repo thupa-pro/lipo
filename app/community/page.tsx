@@ -1,111 +1,220 @@
-"use client"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  ArrowLeft,
+  Users,
+  MessageSquare,
+  Calendar,
+  Star,
+  Heart,
+  Share2,
+} from "lucide-react";
+import Link from "next/link";
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, MessageSquare, Lightbulb, Award, ArrowRight } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from "next/navigation"
-import AIChat from "@/components/ai/AIChat"
+const communityPosts = [
+  {
+    id: 1,
+    author: {
+      name: "Sarah Mitchell",
+      avatar: "/placeholder.svg",
+      badge: "Top Provider",
+    },
+    title: "Tips for excellent customer service",
+    content: "Sharing some insights from my 3 years on the platform...",
+    likes: 24,
+    comments: 8,
+    timeAgo: "2 hours ago",
+  },
+  {
+    id: 2,
+    author: {
+      name: "Mike Rodriguez",
+      avatar: "/placeholder.svg",
+      badge: "Verified",
+    },
+    title: "How I grew my handyman business",
+    content:
+      "Started with 0 reviews, now I'm fully booked. Here's what worked...",
+    likes: 45,
+    comments: 12,
+    timeAgo: "1 day ago",
+  },
+];
 
 export default function CommunityPage() {
-  const { toast } = useToast()
-  const router = useRouter()
-
-  const communitySections = [
-    {
-      icon: MessageSquare,
-      title: "Discussion Forums",
-      description: "Engage with other users, ask questions, and share your experiences.",
-      action: { label: "Visit Forums", onClick: () => toast({ title: "Forums", description: "Opening community forums...", variant: "default" }) },
-    },
-    {
-      icon: Lightbulb,
-      title: "Tips & Best Practices",
-      description: "Discover and share valuable advice for both customers and providers.",
-      action: { label: "Explore Tips", onClick: () => toast({ title: "Tips & Tricks", description: "Loading tips and best practices...", variant: "default" }) },
-    },
-    {
-      icon: Award,
-      title: "Success Stories",
-      description: "Read inspiring stories from users who have achieved great things with Loconomy.",
-      action: { label: "Read Stories", href: "/success-stories" },
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-background">
-      <header className="py-16 px-4 text-center bg-gradient-to-br from-purple-50 to-pink-50">
-        <div className="container mx-auto max-w-4xl">
-          <Users className="w-16 h-16 text-purple-600 mx-auto mb-4" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Loconomy Community
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            Connect, share, and grow with fellow Loconomy users and service providers.
-          </p>
-          <Button size="lg" onClick={() => toast({ title: "Join Community", description: "Joining the Loconomy Community...", variant: "default" })}>
-            Join Our Community
-            <ArrowRight className="w-4 h-4 ml-2" />
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="outline" asChild>
+            <Link href="/">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Home
+            </Link>
           </Button>
-        </div>
-      </header>
-
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What You'll Find Here</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              A vibrant space for interaction, learning, and support.
-            </p>
+          <div className="flex items-center gap-3">
+            <Users className="w-8 h-8 text-primary" />
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Community
+              </h1>
+              <p className="text-muted-foreground">
+                Connect with fellow providers and customers
+              </p>
+            </div>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {communitySections.map((section, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto mb-4">
-                    <section.icon className="w-7 h-7" />
+        {/* Community Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <Card>
+            <CardContent className="p-6 text-center">
+              <Users className="w-8 h-8 mx-auto mb-2 text-blue-600" />
+              <p className="text-2xl font-bold">2.1M+</p>
+              <p className="text-sm text-muted-foreground">Community Members</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 text-center">
+              <MessageSquare className="w-8 h-8 mx-auto mb-2 text-green-600" />
+              <p className="text-2xl font-bold">150K+</p>
+              <p className="text-sm text-muted-foreground">Discussions</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 text-center">
+              <Star className="w-8 h-8 mx-auto mb-2 text-yellow-600" />
+              <p className="text-2xl font-bold">98%</p>
+              <p className="text-sm text-muted-foreground">Helpful Content</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Community Categories */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Provider Hub</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p>
+                Connect with other service providers, share tips, and grow your
+                business.
+              </p>
+              <div className="space-y-2">
+                <Button className="w-full justify-start">
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  Business Tips & Strategies
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <Users className="w-4 h-4 mr-2" />
+                  Provider Success Stories
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Local Meetups & Events
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Customer Forum</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p>Get advice from other customers and share your experiences.</p>
+              <div className="space-y-2">
+                <Button className="w-full justify-start">
+                  <Star className="w-4 h-4 mr-2" />
+                  Service Reviews & Recommendations
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  Questions & Support
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <Heart className="w-4 h-4 mr-2" />
+                  Community Feedback
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Recent Discussions */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Recent Discussions</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {communityPosts.map((post) => (
+              <div key={post.id} className="border-b pb-6 last:border-b-0">
+                <div className="flex items-start gap-4">
+                  <Avatar>
+                    <AvatarImage src={post.author.avatar} />
+                    <AvatarFallback>
+                      {post.author.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold">{post.author.name}</span>
+                      <Badge variant="secondary" className="text-xs">
+                        {post.author.badge}
+                      </Badge>
+                      <span className="text-sm text-muted-foreground">
+                        {post.timeAgo}
+                      </span>
+                    </div>
+                    <h3 className="font-medium mb-2">{post.title}</h3>
+                    <p className="text-muted-foreground mb-3">{post.content}</p>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <button className="flex items-center gap-1 hover:text-red-500">
+                        <Heart className="w-4 h-4" />
+                        {post.likes}
+                      </button>
+                      <button className="flex items-center gap-1 hover:text-blue-500">
+                        <MessageSquare className="w-4 h-4" />
+                        {post.comments}
+                      </button>
+                      <button className="flex items-center gap-1 hover:text-green-500">
+                        <Share2 className="w-4 h-4" />
+                        Share
+                      </button>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl">{section.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <CardDescription className="mb-4">{section.description}</CardDescription>
-                  <Button variant="outline" onClick={section.action.onClick || (() => router.push(section.action.href || "/"))}>
-                    {section.action.label}
-                  </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
+          </CardContent>
+        </Card>
 
-      <section className="py-16 px-4 bg-muted/50 text-center">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-4">Be a Part of Something Bigger</h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Your contributions help shape the future of Loconomy and support fellow users.
-          </p>
-          <Button size="lg" onClick={() => router.push("/feedback")}>
-            Share Your Feedback
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </section>
-
-      {/* AI Community Guardian */}
-      <AIChat 
-        agentId="sage"
-        context={{
-          currentPage: 'community',
-          accountType: 'community_member',
-          communityLevel: 'member'
-        }}
-        position="floating"
-        theme="brand"
-        proactiveMessage={true}
-      />
+        {/* Join Community CTA */}
+        <Card>
+          <CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Join Our Community</h2>
+            <p className="text-muted-foreground mb-6">
+              Connect with thousands of providers and customers sharing
+              knowledge and experiences.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button asChild>
+                <Link href="/auth/signup">Join Community</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/help">Community Guidelines</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
-  )
+  );
 }
