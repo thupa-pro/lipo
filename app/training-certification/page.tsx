@@ -1,111 +1,117 @@
-"use client"
-
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { GraduationCap, Award, CheckCircle, BookOpen, Video, ArrowRight } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from "next/navigation"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Award, BookOpen, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function TrainingCertificationPage() {
-  const { toast } = useToast()
-  const router = useRouter()
-
-  const programs = [
-    {
-      icon: BookOpen,
-      title: "Loconomy Service Excellence Course",
-      description: "Learn best practices for customer communication, service delivery, and reputation management.",
-      modules: ["Customer Service Fundamentals", "Effective Communication", "Handling Difficult Situations", "Building Repeat Business"],
-      action: { label: "Start Course", onClick: () => toast({ title: "Course Enrollment", description: "Enrolling in Service Excellence Course...", variant: "default" }) },
-    },
-    {
-      icon: Video,
-      title: "Platform Mastery Workshop",
-      description: "A comprehensive guide to using the Loconomy app and dashboard to its full potential.",
-      modules: ["Profile Optimization", "Job Management", "Payment & Payouts", "Analytics & Insights"],
-      action: { label: "Join Workshop", onClick: () => toast({ title: "Workshop Registration", description: "Registering for Platform Mastery Workshop...", variant: "default" }) },
-    },
-    {
-      icon: Award,
-      title: "Certified Loconomy Professional",
-      description: "Achieve official certification by completing advanced training and passing a final assessment.",
-      modules: ["Advanced Service Techniques", "Legal & Compliance", "Marketing Your Services", "Final Certification Exam"],
-      action: { label: "Apply for Certification", onClick: () => toast({ title: "Certification Application", description: "Applying for Certified Loconomy Professional...", variant: "default" }) },
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-background">
-      <header className="py-16 px-4 text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20">
-        <div className="container mx-auto max-w-4xl">
-          <GraduationCap className="w-16 h-16 text-purple-600 mx-auto mb-4" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Training & Certification
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            Enhance your skills, boost your reputation, and unlock new opportunities with our professional programs.
-          </p>
-          <Button size="lg" onClick={() => router.push("/provider-resources")}>
-            Explore All Resources
-            <ArrowRight className="w-4 h-4 ml-2" />
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="outline" asChild>
+            <Link href="/">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Home
+            </Link>
           </Button>
+          <div className="flex items-center gap-3">
+            <Award className="w-8 h-8 text-primary" />
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Training & Certification
+              </h1>
+              <p className="text-muted-foreground">
+                Enhance your skills and earn certifications
+              </p>
+            </div>
+          </div>
         </div>
-      </header>
 
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Professional Development Programs</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Invest in yourself and your business with our tailored training and certification pathways.
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Professional Development */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="w-5 h-5" />
+                Professional Development
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p>
+                Access our comprehensive training modules to improve your
+                service quality and customer satisfaction.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  Customer Service Excellence
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  Safety and Compliance
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  Business Best Practices
+                </li>
+              </ul>
+              <Button className="w-full">Start Learning</Button>
+            </CardContent>
+          </Card>
+
+          {/* Certification Programs */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Award className="w-5 h-5" />
+                Certification Programs
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p>
+                Earn industry-recognized certifications to boost your
+                credibility and attract more customers.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  Loconomy Verified Professional
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  Safety and Insurance Certified
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  Customer Excellence Badge
+                </li>
+              </ul>
+              <Button variant="outline" className="w-full">
+                View Certifications
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Card className="mt-8">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
+            <p className="text-muted-foreground mb-6">
+              Join thousands of providers who have enhanced their skills through
+              our training programs.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {programs.map((program, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto mb-4">
-                    <program.icon className="w-7 h-7" />
-                  </div>
-                  <CardTitle className="text-xl">{program.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <CardDescription>{program.description}</CardDescription>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-sm">Key Modules:</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {program.modules.map((module, i) => (
-                        <li key={i} className="flex items-center">
-                          <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
-                          {module}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <Button className="w-full" onClick={program.action.onClick || (() => router.push(program.action.href || "/"))}>
-                    {program.action.label}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-4 bg-muted/50 dark:bg-muted/30 text-center">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-4">Boost Your Credibility</h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Becoming a certified Loconomy professional signals trust and expertise to potential customers.
-          </p>
-          <Button size="lg" onClick={() => router.push("/become-provider")}>
-            Join Our Network
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </section>
+            <div className="flex gap-4 justify-center">
+              <Button asChild>
+                <Link href="/auth/signup">Get Started</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/contact">Contact Support</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
-  )
+  );
 }
