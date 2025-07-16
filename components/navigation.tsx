@@ -40,18 +40,12 @@ export default function Navigation() {
         if (error || !data) {
           // Default to consumer for authenticated users without explicit role
           setUserRole("consumer");
-
-          // Optionally create the role in the database
-          await supabase
-            .from("user_roles")
-            .insert({ user_id: user.id, role: "consumer" })
-            .select()
-            .single();
+          console.log("No user role found, defaulting to consumer");
         } else {
           setUserRole(data.role as UserRole);
         }
       } catch (error) {
-        console.error("Error fetching user role:", error);
+        console.log("Database not ready, using default role");
         setUserRole("consumer"); // Default fallback
       }
     };
