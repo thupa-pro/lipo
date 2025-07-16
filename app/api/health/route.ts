@@ -10,8 +10,11 @@ export async function GET() {
   const startTime = Date.now();
 
   try {
-    // Check database connectivity with a simple query that doesn't require specific tables
-    const { data, error } = await supabase.rpc("now");
+    // Check database connectivity with a simple PostgreSQL query
+    const { data, error } = await supabase
+      .from("information_schema.tables")
+      .select("table_name")
+      .limit(1);
 
     if (error) {
       throw error;
