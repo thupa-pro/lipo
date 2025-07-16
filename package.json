@@ -91,7 +91,7 @@
     "webpack-bundle-analyzer": "^4.10.1"
   },
   "scripts": {
-    "dev": "node --max-old-space-size=4096 ./node_modules/.bin/next dev",
+    "dev": "NODE_OPTIONS='--max-old-space-size=4096' next dev",
     "build": "next build",
     "start": "next start",
     "analyze": "ANALYZE=true npm run build",
