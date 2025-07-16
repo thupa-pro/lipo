@@ -10,11 +10,8 @@ export async function GET() {
   const startTime = Date.now();
 
   try {
-    // Check database connectivity using user_roles table (which should exist)
-    const { data, error } = await supabase
-      .from("user_roles")
-      .select("count")
-      .limit(1);
+    // Check database connectivity with a simple query that doesn't require specific tables
+    const { data, error } = await supabase.rpc("now");
 
     if (error) {
       throw error;
