@@ -32,7 +32,8 @@ import {
   Loader2,
 } from "lucide-react";
 import { format } from "date-fns";
-import { BookingFormData, AvailableSlot, Listing } from "@/lib/booking/types";
+import { BookingFormData, AvailableSlot } from "@/lib/booking/types";
+import { Listing } from "@/lib/listings/types";
 import {
   useBookingClient,
   formatTime,
