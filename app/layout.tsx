@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: "Loconomy - Find Local Services You Can Trust",
     description:
       "Connect with verified local professionals for all your service needs.",
-    images: ["/og-image.png"],
+    images: ["/placeholder.svg"],
     creator: "@loconomy",
   },
   robots: {
