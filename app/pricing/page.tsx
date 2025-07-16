@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { RoleGate } from "@/components/rbac/RoleGate";
+import AdminPricing from "@/components/pricing/AdminPricing";
 
 export default function PricingPage() {
   const { toast } = useToast();
@@ -275,231 +277,239 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* Customer Pricing */}
-        <section className="py-24 relative">
-          <div className="container mx-auto max-w-7xl px-4">
-            <div className="text-center mb-16">
-              <Badge className="badge-premium mb-6">
-                <Users className="w-4 h-4 mr-1" />
-                For Customers
-              </Badge>
-              <h2 className="text-display-lg mb-6 gradient-text">
-                Premium Service Plans
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Experience seamless service booking with transparent costs and
-                premium features.
-              </p>
-            </div>
+        <RoleGate allowedRoles={["guest", "consumer"]}>
+          {/* Customer Pricing */}
+          <section className="py-24 relative">
+            <div className="container mx-auto max-w-7xl px-4">
+              <div className="text-center mb-16">
+                <Badge className="badge-premium mb-6">
+                  <Users className="w-4 h-4 mr-1" />
+                  For Customers
+                </Badge>
+                <h2 className="text-display-lg mb-6 gradient-text">
+                  Premium Service Plans
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                  Experience seamless service booking with transparent costs and
+                  premium features.
+                </p>
+              </div>
 
-            <div className="grid lg:grid-cols-3 gap-8 mb-16">
-              {customerPricing.map((plan, index) => (
-                <Card
-                  key={index}
-                  className={`card-premium relative overflow-hidden border-0 ${plan.popular ? "scale-105 shadow-2xl" : "shadow-xl"}`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  {plan.popular && (
-                    <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600" />
-                  )}
+              <div className="grid lg:grid-cols-3 gap-8 mb-16">
+                {customerPricing.map((plan, index) => (
+                  <Card
+                    key={index}
+                    className={`card-premium relative overflow-hidden border-0 ${plan.popular ? "scale-105 shadow-2xl" : "shadow-xl"}`}
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    {plan.popular && (
+                      <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600" />
+                    )}
 
-                  {plan.badge && (
-                    <div className="absolute top-6 right-6">
-                      <Badge
-                        className={`${plan.popular ? "badge-premium" : "badge-secondary"}`}
-                      >
-                        {plan.badge}
-                      </Badge>
-                    </div>
-                  )}
-
-                  <CardHeader className="pb-8 pt-8">
-                    <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${plan.gradient} mb-6 shadow-lg`}
-                    >
-                      <Crown className="w-8 h-8 text-white" />
-                    </div>
-
-                    <CardTitle className="text-2xl mb-2">
-                      {plan.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400">
-                      {plan.description}
-                    </CardDescription>
-
-                    <div className="flex items-baseline gap-2 mt-6">
-                      <span className="text-5xl font-black gradient-text">
-                        {plan.price}
-                      </span>
-                      {plan.period && (
-                        <span className="text-lg text-gray-500">
-                          /{plan.period}
-                        </span>
-                      )}
-                    </div>
-
-                    {plan.originalPrice && (
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="text-lg line-through text-gray-400">
-                          {plan.originalPrice}
-                        </span>
-                        <Badge className="bg-green-100 text-green-800 text-xs">
-                          50% OFF
+                    {plan.badge && (
+                      <div className="absolute top-6 right-6">
+                        <Badge
+                          className={`${plan.popular ? "badge-premium" : "badge-secondary"}`}
+                        >
+                          {plan.badge}
                         </Badge>
                       </div>
                     )}
-                  </CardHeader>
 
-                  <CardContent className="pt-0 space-y-6">
-                    <ul className="space-y-4">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700 dark:text-gray-300">
-                            {feature}
+                    <CardHeader className="pb-8 pt-8">
+                      <div
+                        className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${plan.gradient} mb-6 shadow-lg`}
+                      >
+                        <Crown className="w-8 h-8 text-white" />
+                      </div>
+
+                      <CardTitle className="text-2xl mb-2">
+                        {plan.title}
+                      </CardTitle>
+                      <CardDescription className="text-gray-600 dark:text-gray-400">
+                        {plan.description}
+                      </CardDescription>
+
+                      <div className="flex items-baseline gap-2 mt-6">
+                        <span className="text-5xl font-black gradient-text">
+                          {plan.price}
+                        </span>
+                        {plan.period && (
+                          <span className="text-lg text-gray-500">
+                            /{plan.period}
                           </span>
-                        </li>
-                      ))}
-                    </ul>
+                        )}
+                      </div>
 
-                    <Button
-                      className={`w-full ${plan.popular ? "btn-premium" : "bg-gradient-to-r " + plan.gradient + " text-white hover:opacity-90"} transition-all duration-300`}
-                      size="lg"
-                      onClick={
-                        plan.action.onClick ||
-                        (() => router.push(plan.action.href || "/"))
-                      }
-                    >
-                      {plan.action.label}
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                      {plan.originalPrice && (
+                        <div className="flex items-center gap-2 mt-2">
+                          <span className="text-lg line-through text-gray-400">
+                            {plan.originalPrice}
+                          </span>
+                          <Badge className="bg-green-100 text-green-800 text-xs">
+                            50% OFF
+                          </Badge>
+                        </div>
+                      )}
+                    </CardHeader>
 
-            {/* Money Back Guarantee */}
-            <div className="text-center">
-              <div className="inline-flex items-center gap-3 glass-strong rounded-2xl px-8 py-4">
-                <Shield className="w-6 h-6 text-green-500" />
-                <div>
-                  <div className="font-semibold text-gray-900 dark:text-white">
-                    30-Day Money-Back Guarantee
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Not satisfied? Get a full refund, no questions asked.
+                    <CardContent className="pt-0 space-y-6">
+                      <ul className="space-y-4">
+                        {plan.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-gray-700 dark:text-gray-300">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Button
+                        className={`w-full ${plan.popular ? "btn-premium" : "bg-gradient-to-r " + plan.gradient + " text-white hover:opacity-90"} transition-all duration-300`}
+                        size="lg"
+                        onClick={
+                          plan.action.onClick ||
+                          (() => router.push(plan.action.href || "/"))
+                        }
+                      >
+                        {plan.action.label}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Money Back Guarantee */}
+              <div className="text-center">
+                <div className="inline-flex items-center gap-3 glass-strong rounded-2xl px-8 py-4">
+                  <Shield className="w-6 h-6 text-green-500" />
+                  <div>
+                    <div className="font-semibold text-gray-900 dark:text-white">
+                      30-Day Money-Back Guarantee
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Not satisfied? Get a full refund, no questions asked.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </RoleGate>
 
-        {/* Provider Pricing */}
-        <section className="py-24 bg-white dark:bg-gray-950 relative">
-          <div className="absolute inset-0 dot-pattern opacity-20" />
-          <div className="container mx-auto max-w-7xl px-4 relative">
-            <div className="text-center mb-16">
-              <Badge className="badge-premium mb-6">
-                <Award className="w-4 h-4 mr-1" />
-                For Providers
-              </Badge>
-              <h2 className="text-display-lg mb-6 gradient-text">
-                Professional Growth Plans
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Scale your business with transparent fees and powerful tools
-                designed for service professionals.
-              </p>
-            </div>
+        <RoleGate allowedRoles={["provider"]}>
+          {/* Provider Pricing */}
+          <section className="py-24 bg-white dark:bg-gray-950 relative">
+            <div className="absolute inset-0 dot-pattern opacity-20" />
+            <div className="container mx-auto max-w-7xl px-4 relative">
+              <div className="text-center mb-16">
+                <Badge className="badge-premium mb-6">
+                  <Award className="w-4 h-4 mr-1" />
+                  For Providers
+                </Badge>
+                <h2 className="text-display-lg mb-6 gradient-text">
+                  Professional Growth Plans
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                  Scale your business with transparent fees and powerful tools
+                  designed for service professionals.
+                </p>
+              </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
-              {providerPricing.map((plan, index) => (
-                <Card
-                  key={index}
-                  className={`card-premium relative overflow-hidden border-0 ${plan.popular ? "scale-105 shadow-2xl" : "shadow-xl"}`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  {plan.popular && (
-                    <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500" />
-                  )}
+              <div className="grid lg:grid-cols-3 gap-8">
+                {providerPricing.map((plan, index) => (
+                  <Card
+                    key={index}
+                    className={`card-premium relative overflow-hidden border-0 ${plan.popular ? "scale-105 shadow-2xl" : "shadow-xl"}`}
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    {plan.popular && (
+                      <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500" />
+                    )}
 
-                  {plan.badge && (
-                    <div className="absolute top-6 right-6">
-                      <Badge
-                        className={`${plan.popular ? "badge-premium" : "badge-secondary"}`}
+                    {plan.badge && (
+                      <div className="absolute top-6 right-6">
+                        <Badge
+                          className={`${plan.popular ? "badge-premium" : "badge-secondary"}`}
+                        >
+                          {plan.badge}
+                        </Badge>
+                      </div>
+                    )}
+
+                    <CardHeader className="pb-8 pt-8">
+                      <div
+                        className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${plan.gradient} mb-6 shadow-lg`}
                       >
-                        {plan.badge}
-                      </Badge>
-                    </div>
-                  )}
+                        <Zap className="w-8 h-8 text-white" />
+                      </div>
 
-                  <CardHeader className="pb-8 pt-8">
-                    <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${plan.gradient} mb-6 shadow-lg`}
-                    >
-                      <Zap className="w-8 h-8 text-white" />
-                    </div>
+                      <CardTitle className="text-2xl mb-2">
+                        {plan.title}
+                      </CardTitle>
+                      <CardDescription className="text-gray-600 dark:text-gray-400">
+                        {plan.description}
+                      </CardDescription>
 
-                    <CardTitle className="text-2xl mb-2">
-                      {plan.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400">
-                      {plan.description}
-                    </CardDescription>
-
-                    <div className="space-y-3 mt-6">
-                      {plan.commission && (
-                        <div className="flex items-center justify-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
-                          <Percent className="w-5 h-5 text-blue-500" />
-                          <span className="font-bold text-lg">
-                            {plan.commission}
-                          </span>
-                        </div>
-                      )}
-
-                      {plan.price && (
-                        <div className="text-center">
-                          <div className="text-4xl font-black gradient-text">
-                            ${plan.price}
+                      <div className="space-y-3 mt-6">
+                        {plan.commission && (
+                          <div className="flex items-center justify-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                            <Percent className="w-5 h-5 text-blue-500" />
+                            <span className="font-bold text-lg">
+                              {plan.commission}
+                            </span>
                           </div>
-                          <div className="text-sm text-gray-500">
-                            per {plan.period}
+                        )}
+
+                        {plan.price && (
+                          <div className="text-center">
+                            <div className="text-4xl font-black gradient-text">
+                              ${plan.price}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              per {plan.period}
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  </CardHeader>
+                        )}
+                      </div>
+                    </CardHeader>
 
-                  <CardContent className="pt-0 space-y-6">
-                    <ul className="space-y-4">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700 dark:text-gray-300">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    <CardContent className="pt-0 space-y-6">
+                      <ul className="space-y-4">
+                        {plan.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-gray-700 dark:text-gray-300">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
 
-                    <Button
-                      className={`w-full ${plan.popular ? "btn-premium" : "bg-gradient-to-r " + plan.gradient + " text-white hover:opacity-90"} transition-all duration-300`}
-                      size="lg"
-                      onClick={
-                        plan.action.onClick ||
-                        (() => router.push(plan.action.href || "/"))
-                      }
-                    >
-                      {plan.action.label}
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+                      <Button
+                        className={`w-full ${plan.popular ? "btn-premium" : "bg-gradient-to-r " + plan.gradient + " text-white hover:opacity-90"} transition-all duration-300`}
+                        size="lg"
+                        onClick={
+                          plan.action.onClick ||
+                          (() => router.push(plan.action.href || "/"))
+                        }
+                      >
+                        {plan.action.label}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </RoleGate>
+
+        <RoleGate allowedRoles={["admin"]}>
+          <AdminPricing />
+        </RoleGate>
 
         {/* Enterprise Section */}
         <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950">

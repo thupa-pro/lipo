@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ConsentProvider } from "@/components/consent/ConsentContext";
+import { CookieConsent } from "@/components/consent/CookieConsent";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
@@ -102,7 +104,12 @@ export default function RootLayout({
         className={`${inter.className} ${jakarta.variable}`}
         suppressHydrationWarning
       >
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider>
+          <ConsentProvider>
+            {children}
+            <CookieConsent />
+          </ConsentProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
