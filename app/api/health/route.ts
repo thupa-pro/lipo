@@ -1,21 +1,26 @@
-import { NextResponse } from "next/server"
-import { createClient } from "@supabase/supabase-js"
+import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!)
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+);
 
 export async function GET() {
-  const startTime = Date.now()
+  const startTime = Date.now();
 
   try {
-    // Check database connectivity
-    const { data, error } = await supabase.from("health_check").select("*").limit(1)
+    // Check database connectivity using user_roles table (which should exist)
+    const { data, error } = await supabase
+      .from("user_roles")
+      .select("count")
+      .limit(1);
 
-    if (error && error.code !== "PGRST116") {
-      // PGRST116 = table doesn't exist, which is fine
-      throw error
+    if (error) {
+      throw error;
     }
 
-    const dbLatency = Date.now() - startTime
+    const dbLatency = Date.now() - startTime;
 
     // Check external services
     const checks = {
@@ -32,7 +37,7 @@ export async function GET() {
         seconds: process.uptime(),
         timestamp: new Date().toISOString(),
       },
-    }
+    };
 
     return NextResponse.json({
       status: "healthy",
@@ -40,7 +45,7 @@ export async function GET() {
       version: process.env.npm_package_version || "1.0.0",
       environment: process.env.NODE_ENV,
       checks,
-    })
+    });
   } catch (error) {
     return NextResponse.json(
       {
@@ -56,6 +61,6 @@ export async function GET() {
         },
       },
       { status: 503 },
-    )
+    );
   }
 }
