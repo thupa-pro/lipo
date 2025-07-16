@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { MockAuthProvider } from "@/lib/mock/auth";
+import { MockAuthProvider } from "@/lib/mock/auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
