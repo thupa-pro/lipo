@@ -10,17 +10,33 @@ import { useUser } from "@clerk/nextjs";
 import { RoleAwareNavigation } from "./navigation/RoleAwareNavigation";
 import { UserRole } from "@/lib/rbac/types";
 import { createClient } from "@/lib/supabase/client";
+import { usePathname } from "next/navigation";
+import { useMockAuth } from "@/lib/mock/auth";
 
 export default function Navigation() {
   const { user, isLoaded } = useUser();
   const [userRole, setUserRole] = useState<UserRole>("guest");
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const isMockMode = pathname.startsWith("/mock-");
+
+  // Use mock auth if in mock mode
+  const mockAuth = isMockMode ? useMockAuth() : null;
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
+    if (isMockMode) {
+      if (mockAuth?.user) {
+        setUserRole(mockAuth.user.role as UserRole);
+      } else {
+        setUserRole("guest");
+      }
+      return;
+    }
+
     if (!isLoaded) return;
 
     const fetchUserRole = async () => {
@@ -51,7 +67,7 @@ export default function Navigation() {
     };
 
     fetchUserRole();
-  }, [user?.id, isLoaded]);
+  }, [user?.id, isLoaded, isMockMode, mockAuth]);
 
   // Don't render until mounted to avoid hydration issues
   if (!mounted) {
