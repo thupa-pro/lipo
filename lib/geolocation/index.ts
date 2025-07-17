@@ -3,6 +3,10 @@ export {
   geolocationService,
   default as GeolocationService,
 } from "./geolocation-service";
+export {
+  hyperlocalService,
+  default as HyperlocalService,
+} from "./hyperlocal-service";
 export type {
   Coordinates,
   Address,
@@ -14,3 +18,4 @@ export type {
   HyperlocalOptions,
   ProviderWithLocation,
 } from "./types";
+export type { HyperlocalMatch, DiscoveryFilters } from "./hyperlocal-service";
