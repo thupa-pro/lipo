@@ -4,6 +4,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { MockAuthProvider } from "@/lib/mock/auth";
+import EnhancedErrorBoundary from "@/components/enhanced-error-boundary";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
@@ -103,9 +104,11 @@ export default function RootLayout({
         className={`${inter.className} ${jakarta.variable}`}
         suppressHydrationWarning
       >
-        <MockAuthProvider>
-          <ClerkProvider>{children}</ClerkProvider>
-        </MockAuthProvider>
+        <EnhancedErrorBoundary>
+          <MockAuthProvider>
+            <ClerkProvider>{children}</ClerkProvider>
+          </MockAuthProvider>
+        </EnhancedErrorBoundary>
       </body>
     </html>
   );
