@@ -48,7 +48,7 @@ import {
   getStatusColor,
   getStatusText,
   formatPrice,
-} from "@/lib/listings/utils";
+} from "@/lib/listings/shared-utils";
 
 export function ListingsTable({
   listings,
