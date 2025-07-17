@@ -219,7 +219,7 @@ export default function Footer() {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="rounded-full transition-colors hover:bg-accent hover:text-accent-foreground"
+                  className="rounded-full border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white hover:border-gray-500 transition-colors"
                 >
                   <Link
                     href={social.href}
