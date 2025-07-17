@@ -489,6 +489,9 @@ class HyperlocalService {
   }
 
   private getTrafficMultiplier(): number {
+    // Return neutral multiplier on server-side to prevent hydration mismatch
+    if (typeof window === "undefined") return 1.0;
+
     const hour = new Date().getHours();
     const day = new Date().getDay();
 
