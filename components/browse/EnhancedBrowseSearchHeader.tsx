@@ -22,7 +22,6 @@ import {
   List,
   Loader2,
   Target,
-  Settings2,
   Filter,
   X,
   Navigation,
