@@ -1,15 +1,22 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import { securityHeaders } from "./lib/security/headers.js";
 
 const withNextIntl = createNextIntlPlugin("./lib/i18n/config.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: process.env.NODE_ENV === "development",
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: process.env.NODE_ENV === "development",
   },
+  headers: async () => [
+    {
+      source: "/(.*)",
+      headers: securityHeaders,
+    },
+  ],
   images: {
     unoptimized: false,
     formats: ["image/webp", "image/avif"],
