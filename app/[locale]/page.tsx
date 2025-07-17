@@ -9,6 +9,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SmartRecommendations from "@/components/ai/smart-recommendations";
+import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
+import AIServiceDiscovery from "@/components/ai/ai-service-discovery";
 import {
   Star,
   MapPin,
@@ -499,6 +501,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* AI Service Discovery */}
+      <section className="relative z-10 py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                AI-Powered Discovery
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Experience the future of service discovery with intelligent
+              matching and personalized recommendations
+            </p>
+          </div>
+          <AIServiceDiscovery
+            context={{ currentPage: "homepage", location: "Global" }}
+            showAdvancedFeatures={true}
+            onServiceSelect={(service) => {
+              console.log("Selected service:", service);
+              // Handle service selection
+            }}
+          />
+        </div>
+      </section>
+
       {/* AI Recommendations */}
       <section className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
@@ -573,6 +600,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* AI Assistant Widget */}
+      <AIAssistantWidget
+        position="floating"
+        size="normal"
+        context={{
+          currentPage: "homepage",
+          userType: "visitor",
+          location: "Global",
+        }}
+        theme="auto"
+        showAgentSelector={true}
+        enableVoice={true}
+        autoSuggest={true}
+        persistConversation={true}
+        onAction={(action, data) => {
+          console.log("AI Assistant action:", action, data);
+          // Handle AI assistant actions
+        }}
+      />
     </div>
   );
 }
