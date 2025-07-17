@@ -2,6 +2,7 @@
   "extends": ["next/core-web-vitals"],
   "rules": {
     "@next/next/no-img-element": "off",
+    "react/no-unescaped-entities": "warn",
     "react-hooks/exhaustive-deps": "warn"
   },
   "ignorePatterns": ["node_modules/", ".next/", "out/", "build/"]
