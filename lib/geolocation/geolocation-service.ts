@@ -36,7 +36,11 @@ class GeolocationService {
 
   // Check if geolocation is supported
   isSupported(): boolean {
-    return "geolocation" in navigator;
+    return (
+      typeof window !== "undefined" &&
+      "navigator" in window &&
+      "geolocation" in navigator
+    );
   }
 
   // Check current permission status
