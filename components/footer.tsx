@@ -254,7 +254,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <Separator className="my-8 bg-border" />
+        <Separator className="my-8 bg-gray-700" />
 
         {/* Trust Indicators */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
