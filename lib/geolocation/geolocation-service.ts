@@ -24,7 +24,10 @@ class GeolocationService {
   };
 
   private constructor() {
-    this.loadCachedLocation();
+    // Only initialize on client-side to prevent SSR issues
+    if (typeof window !== "undefined") {
+      this.loadCachedLocation();
+    }
   }
 
   static getInstance(): GeolocationService {
