@@ -12,7 +12,7 @@ import {
   OnboardingStep,
   OnboardingProgress,
 } from "@/lib/onboarding/types";
-import { getNextStep, getPreviousStep } from "@/lib/onboarding/utils";
+import { getNextStep, getPreviousStep } from "@/lib/onboarding/shared-utils";
 import { useOnboardingClient } from "@/lib/onboarding/client-utils";
 
 // Import step components
