@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, MapPin, Phone, User } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
-import { useOnboardingClient } from "@/lib/onboarding/utils";
+import { useOnboardingClient } from "@/lib/onboarding/client-utils";
 
 interface ProfileSetupStepProps extends OnboardingStepProps {
   role: "consumer" | "provider";
