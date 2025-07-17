@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -361,133 +360,116 @@ export default function SmartNotifications({
 
   return (
     <div className={`${getPositionClasses()} ${className}`}>
-      <AnimatePresence>
-        {visibleNotifications.map((notification, index) => {
-          const Icon = getNotificationIcon(notification);
+      {visibleNotifications.map((notification, index) => {
+        const Icon = getNotificationIcon(notification);
 
-          return (
-            <motion.div
-              key={notification.id}
-              initial={{
-                opacity: 0,
-                x: position.includes("right") ? 100 : -100,
-                scale: 0.8,
-              }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{
-                opacity: 0,
-                x: position.includes("right") ? 100 : -100,
-                scale: 0.8,
-              }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="mb-3 w-80"
+        return (
+          <div
+            key={notification.id}
+            className="mb-3 w-80 animate-fade-in"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <Card
+              className={`shadow-2xl border-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl hover:shadow-3xl transition-all duration-300 ${
+                !notification.read
+                  ? "ring-2 ring-blue-200 dark:ring-blue-800"
+                  : ""
+              }`}
             >
-              <Card
-                className={`shadow-2xl border-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl hover:shadow-3xl transition-all duration-300 ${
-                  !notification.read
-                    ? "ring-2 ring-blue-200 dark:ring-blue-800"
-                    : ""
-                }`}
-              >
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-10 h-10 rounded-full bg-gradient-to-r ${getNotificationColor(notification)} flex items-center justify-center`}
-                      >
-                        <Icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white">
-                          {notification.title}
-                        </CardTitle>
-                        <div className="flex items-center gap-2 mt-1">
-                          {notification.aiGenerated && (
-                            <Badge
-                              variant="secondary"
-                              className="text-xs bg-blue-100 text-blue-700"
-                            >
-                              <Sparkles className="w-3 h-3 mr-1" />
-                              AI
-                            </Badge>
-                          )}
-                          <Badge
-                            variant="outline"
-                            className={`text-xs ${
-                              notification.priority === "urgent"
-                                ? "border-red-500 text-red-700"
-                                : notification.priority === "high"
-                                  ? "border-orange-500 text-orange-700"
-                                  : notification.priority === "medium"
-                                    ? "border-blue-500 text-blue-700"
-                                    : "border-gray-500 text-gray-700"
-                            }`}
-                          >
-                            {notification.priority}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => handleDismiss(notification.id)}
-                      className="h-6 w-6 p-0 hover:bg-gray-100 dark:hover:bg-gray-800"
+              <CardHeader className="pb-3">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`w-10 h-10 rounded-full bg-gradient-to-r ${getNotificationColor(notification)} flex items-center justify-center`}
                     >
-                      <X className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="pt-0">
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                    {notification.message}
-                  </p>
-
-                  <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {notification.timestamp.toLocaleTimeString()}
+                      <Icon className="w-5 h-5 text-white" />
                     </div>
-                    {notification.agentId && (
-                      <div className="flex items-center gap-1">
-                        <Brain className="w-3 h-3" />
-                        {notification.agentId}
-                      </div>
-                    )}
-                  </div>
-
-                  {notification.actionable && notification.actions && (
-                    <div className="flex gap-2">
-                      {notification.actions.map((action, actionIndex) => (
-                        <Button
-                          key={actionIndex}
-                          size="sm"
-                          variant={action.variant || "default"}
-                          onClick={() =>
-                            handleAction(notification.id, action.action)
-                          }
-                          className="text-xs"
+                    <div className="flex-1">
+                      <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white">
+                        {notification.title}
+                      </CardTitle>
+                      <div className="flex items-center gap-2 mt-1">
+                        {notification.aiGenerated && (
+                          <Badge
+                            variant="secondary"
+                            className="text-xs bg-blue-100 text-blue-700"
+                          >
+                            <Sparkles className="w-3 h-3 mr-1" />
+                            AI
+                          </Badge>
+                        )}
+                        <Badge
+                          variant="outline"
+                          className={`text-xs ${
+                            notification.priority === "urgent"
+                              ? "border-red-500 text-red-700"
+                              : notification.priority === "high"
+                                ? "border-orange-500 text-orange-700"
+                                : notification.priority === "medium"
+                                  ? "border-blue-500 text-blue-700"
+                                  : "border-gray-500 text-gray-700"
+                          }`}
                         >
-                          {action.label}
-                        </Button>
-                      ))}
+                          {notification.priority}
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => handleDismiss(notification.id)}
+                    className="h-6 w-6 p-0 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  >
+                    <X className="h-3 w-3" />
+                  </Button>
+                </div>
+              </CardHeader>
+
+              <CardContent className="pt-0">
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                  {notification.message}
+                </p>
+
+                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3">
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
+                    {notification.timestamp.toLocaleTimeString()}
+                  </div>
+                  {notification.agentId && (
+                    <div className="flex items-center gap-1">
+                      <Brain className="w-3 h-3" />
+                      {notification.agentId}
                     </div>
                   )}
-                </CardContent>
-              </Card>
-            </motion.div>
-          );
-        })}
-      </AnimatePresence>
+                </div>
+
+                {notification.actionable && notification.actions && (
+                  <div className="flex gap-2">
+                    {notification.actions.map((action, actionIndex) => (
+                      <Button
+                        key={actionIndex}
+                        size="sm"
+                        variant={action.variant || "default"}
+                        onClick={() =>
+                          handleAction(notification.id, action.action)
+                        }
+                        className="text-xs"
+                      >
+                        {action.label}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        );
+      })}
 
       {/* Notification Center Button */}
       {notifications.length > maxVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-3"
-        >
+        <div className="mt-3 animate-fade-in">
           <Button
             onClick={() => setShowAll(!showAll)}
             variant="outline"
@@ -501,16 +483,12 @@ export default function SmartNotifications({
               </Badge>
             )}
           </Button>
-        </motion.div>
+        </div>
       )}
 
       {/* Mark All Read Button */}
       {unreadCount > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-2"
-        >
+        <div className="mt-2 animate-fade-in">
           <Button
             onClick={markAllAsRead}
             variant="ghost"
@@ -519,7 +497,7 @@ export default function SmartNotifications({
           >
             Mark all as read
           </Button>
-        </motion.div>
+        </div>
       )}
     </div>
   );
