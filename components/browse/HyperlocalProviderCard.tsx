@@ -21,7 +21,6 @@ import {
   Share2,
   Navigation2,
   Zap,
-  TrendingUp,
   Award,
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
