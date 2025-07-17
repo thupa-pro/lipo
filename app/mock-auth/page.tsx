@@ -1,7 +1,7 @@
 "use client";
 
-
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -12,370 +12,248 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useMockAuth } from "@/lib/mock/use-mock-auth";
-import { UserRole } from "@/lib/mock/types";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 import {
-  User,
-  LogOut,
-  Crown,
-  ShoppingBag,
-  Store,
-  Shield,
-  CheckCircle,
-  Info,
-} from "lucide-react";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { MockAuthProvider, useMockAuth } from "@/lib/mock/auth-provider";
+import { Shield, User, Settings, AlertCircle } from "lucide-react";
 
-const roleConfig = {
-  guest: {
-    icon: User,
-    label: "Guest",
-    description: "Browse listings and view public content",
-    color: "bg-gray-100 text-gray-800",
-  },
-  consumer: {
-    icon: ShoppingBag,
-    label: "Consumer",
-    description: "Book services and manage your appointments",
-    color: "bg-blue-100 text-blue-800",
-  },
-  provider: {
-    icon: Store,
-    label: "Service Provider",
-    description: "Create listings and manage your services",
-    color: "bg-green-100 text-green-800",
-  },
-  admin: {
-    icon: Shield,
-    label: "Administrator",
-    description: "Full platform access and management tools",
-    color: "bg-purple-100 text-purple-800",
-  },
-};
-
-export default function MockAuthPage() {
-  const { user, isLoading, signIn, signOut, switchRole } = useMockAuth();
+function AuthForm() {
+  const { user, signIn, signOut, signUp, updateRole, loading, error } =
+    useMockAuth();
   const [email, setEmail] = useState("");
-  const [selectedRole, setSelectedRole] = useState<UserRole>("consumer");
-  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("customer");
+  const [rememberMe, setRememberMe] = useState(false);
+  const router = useRouter();
 
   const handleSignIn = async () => {
-    if (!email.trim()) return;
-
-    setIsSigningIn(true);
-    try {
-      await signIn(email, selectedRole);
-    } catch (error) {
-      console.error("Sign in failed:", error);
-    } finally {
-      setIsSigningIn(false);
+    const success = await signIn({ email, password, rememberMe });
+    if (success) {
+      // Redirect based on role after successful sign in
+      const dashboardPath = role === "admin" ? "/admin" : "/dashboard";
+      router.push(dashboardPath);
     }
   };
 
-  const handleRoleSwitch = (role: UserRole) => {
-    switchRole(role);
+  const handleSignUp = async () => {
+    const success = await signUp({ email, password, role });
+    if (success) {
+      router.push("/dashboard");
+    }
   };
 
-  const handleSignOut = () => {
-    signOut();
-    setEmail("");
+  const handleSignOut = async () => {
+    await signOut();
+    router.push("/");
   };
 
-  if (isLoading) {
+  if (user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-          Loading...
+      <div className="space-y-6">
+        <div className="text-center space-y-4">
+          <div className="flex items-center justify-center space-x-2">
+            <User className="h-8 w-8 text-blue-600" />
+            <div>
+              <h2 className="text-2xl font-bold">Welcome back!</h2>
+              <p className="text-gray-600">You are signed in as {user.email}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center space-x-2">
+            <Badge variant={user.role === "admin" ? "destructive" : "default"}>
+              {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+            </Badge>
+            {user.metadata?.isVerified && (
+              <Badge variant="secondary">Verified</Badge>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <Label htmlFor="roleSwitch">Change Role (Development Only)</Label>
+            <div className="mt-2">
+              <Select value={user.role} onValueChange={updateRole}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="customer">Customer</SelectItem>
+                  <SelectItem value="provider">Provider</SelectItem>
+                  <SelectItem value="admin">Admin</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <Button onClick={() => router.push("/dashboard")} variant="outline">
+              <User className="h-4 w-4 mr-2" />
+              Dashboard
+            </Button>
+            <Button onClick={() => router.push("/admin")} variant="outline">
+              <Settings className="h-4 w-4 mr-2" />
+              Admin Panel
+            </Button>
+          </div>
+
+          <Button
+            onClick={handleSignOut}
+            variant="destructive"
+            className="w-full"
+          >
+            Sign Out
+          </Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Loconomy Mock Authentication
-          </h1>
-          <p className="text-gray-600">
-            Experience the platform from different user perspectives
-          </p>
+    <Tabs defaultValue="signin" className="w-full">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="signin">Sign In</TabsTrigger>
+        <TabsTrigger value="signup">Sign Up</TabsTrigger>
+      </TabsList>
+
+      {error && (
+        <Alert variant="destructive" className="mt-4">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      <TabsContent value="signin" className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSignIn()}
+          />
         </div>
 
-        {user ? (
-          <div className="space-y-6">
-            {/* Current User Status */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                      <User className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <CardTitle className="flex items-center gap-2">
-                        {user.name}
-                        <Badge className={roleConfig[user.role].color}>
-                          {roleConfig[user.role].label}
-                        </Badge>
-                      </CardTitle>
-                      <CardDescription>{user.email}</CardDescription>
-                    </div>
-                  </div>
-                  <Button variant="outline" onClick={handleSignOut}>
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Sign Out
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Alert>
-                  <CheckCircle className="h-4 w-4" />
-                  <AlertDescription>
-                    Signed in as <strong>{roleConfig[user.role].label}</strong>.
-                    {roleConfig[user.role].description}
-                  </AlertDescription>
-                </Alert>
-              </CardContent>
-            </Card>
+        <div className="space-y-2">
+          <Label htmlFor="password">Password</Label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSignIn()}
+          />
+        </div>
 
-            {/* Subscription Info */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Crown className="h-5 w-5 text-yellow-500" />
-                  Current Subscription
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <Label className="text-sm font-medium text-gray-500">
-                      Plan
-                    </Label>
-                    <p className="text-lg font-semibold capitalize">
-                      {user.subscription.plan}
-                    </p>
-                  </div>
-                  <div>
-                    <Label className="text-sm font-medium text-gray-500">
-                      Status
-                    </Label>
-                    <p className="text-lg font-semibold capitalize">
-                      {user.subscription.status}
-                    </p>
-                  </div>
-                  <div>
-                    <Label className="text-sm font-medium text-gray-500">
-                      Renews
-                    </Label>
-                    <p className="text-lg font-semibold">
-                      {user.subscription.currentPeriodEnd.toLocaleDateString()}
-                    </p>
-                  </div>
-                </div>
+        <div className="flex items-center space-x-2">
+          <Switch
+            id="remember"
+            checked={rememberMe}
+            onCheckedChange={setRememberMe}
+          />
+          <Label htmlFor="remember">Remember me</Label>
+        </div>
 
-                <div className="mt-4 pt-4 border-t">
-                  <Label className="text-sm font-medium text-gray-500 mb-2 block">
-                    Features
-                  </Label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                    <div>
-                      Listings: {user.subscription.features.maxListings}
-                    </div>
-                    <div>
-                      Bookings: {user.subscription.features.maxBookings}
-                    </div>
-                    <div>
-                      AI Support:{" "}
-                      {user.subscription.features.aiSupport ? "✓" : "✗"}
-                    </div>
-                    <div>
-                      Analytics:{" "}
-                      {user.subscription.features.analytics ? "✓" : "✗"}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        <Button onClick={handleSignIn} disabled={loading} className="w-full">
+          {loading ? "Signing in..." : "Sign In"}
+        </Button>
 
-            {/* Role Switcher */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Switch Roles</CardTitle>
-                <CardDescription>
-                  Experience the platform from different user perspectives
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {(Object.keys(roleConfig) as UserRole[]).map((role) => {
-                    const config = roleConfig[role];
-                    const Icon = config.icon;
-                    const isCurrentRole = user.role === role;
+        <div className="text-center text-sm text-gray-600">
+          <p>Demo credentials:</p>
+          <p>
+            <strong>Customer:</strong> customer@demo.com / password
+          </p>
+          <p>
+            <strong>Provider:</strong> provider@demo.com / password
+          </p>
+          <p>
+            <strong>Admin:</strong> admin@demo.com / password
+          </p>
+        </div>
+      </TabsContent>
 
-                    return (
-                      <Card
-                        key={role}
-                        className={`cursor-pointer transition-all hover:shadow-md ${
-                          isCurrentRole ? "ring-2 ring-blue-500 bg-blue-50" : ""
-                        }`}
-                        onClick={() => !isCurrentRole && handleRoleSwitch(role)}
-                      >
-                        <CardContent className="p-4 text-center">
-                          <Icon className="h-8 w-8 mx-auto mb-2 text-gray-600" />
-                          <h3 className="font-semibold">{config.label}</h3>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {config.description}
-                          </p>
-                          {isCurrentRole && (
-                            <Badge className="mt-2" variant="default">
-                              Current
-                            </Badge>
-                          )}
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
+      <TabsContent value="signup" className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="signup-email">Email</Label>
+          <Input
+            id="signup-email"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-                <CardDescription>
-                  Navigate to key areas of the platform
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Button
-                    variant="outline"
-                    className="h-auto p-4 flex flex-col items-center gap-2"
-                  >
-                    <ShoppingBag className="h-6 w-6" />
-                    <span>View Dashboard</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-auto p-4 flex flex-col items-center gap-2"
-                  >
-                    <Store className="h-6 w-6" />
-                    <span>Browse Listings</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-auto p-4 flex flex-col items-center gap-2"
-                  >
-                    <Crown className="h-6 w-6" />
-                    <span>Billing Settings</span>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        ) : (
-          /* Sign In Form */
-          <Card className="max-w-md mx-auto">
-            <CardHeader>
-              <CardTitle>Mock Sign In</CardTitle>
-              <CardDescription>
-                Choose a role and email to simulate authentication
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Enter any email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleSignIn()}
-                />
-              </div>
+        <div className="space-y-2">
+          <Label htmlFor="signup-password">Password</Label>
+          <Input
+            id="signup-password"
+            type="password"
+            placeholder="Create a password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-              <div className="space-y-3">
-                <Label>Select Role</Label>
-                <div className="grid grid-cols-1 gap-2">
-                  {(Object.keys(roleConfig) as UserRole[]).map((role) => {
-                    const config = roleConfig[role];
-                    const Icon = config.icon;
+        <div className="space-y-2">
+          <Label htmlFor="role">Role</Label>
+          <Select value={role} onValueChange={setRole}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="customer">Customer</SelectItem>
+              <SelectItem value="provider">Provider</SelectItem>
+              <SelectItem value="admin">Admin</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
 
-                    return (
-                      <Card
-                        key={role}
-                        className={`cursor-pointer transition-all hover:shadow-sm ${
-                          selectedRole === role
-                            ? "ring-2 ring-blue-500 bg-blue-50"
-                            : ""
-                        }`}
-                        onClick={() => setSelectedRole(role)}
-                      >
-                        <CardContent className="p-3 flex items-center gap-3">
-                          <Icon className="h-5 w-5 text-gray-600" />
-                          <div className="flex-1">
-                            <h4 className="font-medium">{config.label}</h4>
-                            <p className="text-xs text-gray-500">
-                              {config.description}
-                            </p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <Button
-                onClick={handleSignIn}
-                disabled={!email.trim() || isSigningIn}
-                className="w-full"
-              >
-                {isSigningIn ? (
-                  <div className="flex items-center gap-2">
-                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                    Signing In...
-                  </div>
-                ) : (
-                  "Sign In"
-                )}
-              </Button>
-
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertDescription>
-                  This is a mock authentication system. Any email will work, and
-                  you can switch between roles at any time.
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          </Card>
-        )}
-      </div>
-    </div>
+        <Button onClick={handleSignUp} disabled={loading} className="w-full">
+          {loading ? "Creating account..." : "Sign Up"}
+        </Button>
+      </TabsContent>
+    </Tabs>
   );
-import React from 'react';
-import { MockAuthProvider } from '@/lib/mock/auth';
-import AuthForm from '@/components/mock/AuthForm';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+}
 
-const MockAuthPage = () => {
+export default function MockAuthPage() {
   return (
     <MockAuthProvider>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold">Mock Auth Control</CardTitle>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
+        <Card className="w-full max-w-md shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+          <CardHeader className="text-center">
+            <div className="flex items-center justify-center space-x-2 mb-2">
+              <Shield className="h-8 w-8 text-blue-600" />
+              <CardTitle className="text-2xl">Mock Authentication</CardTitle>
+            </div>
             <CardDescription>
-              Sign in as different user roles to test the application.
+              Development environment authentication system
             </CardDescription>
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
+              <div className="flex items-center space-x-2">
+                <AlertCircle className="h-4 w-4 text-yellow-600" />
+                <span className="text-sm font-medium text-yellow-800">
+                  Development Only
+                </span>
+              </div>
+              <p className="text-xs text-yellow-700 mt-1">
+                This is a mock authentication system for development purposes
+                only. Do not use in production.
+              </p>
+            </div>
           </CardHeader>
           <CardContent>
             <AuthForm />
@@ -384,6 +262,4 @@ const MockAuthPage = () => {
       </div>
     </MockAuthProvider>
   );
-};
-
-export default MockAuthP main
+}
