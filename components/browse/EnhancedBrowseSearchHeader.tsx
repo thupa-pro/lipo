@@ -99,7 +99,7 @@ export default function EnhancedBrowseSearchHeader({
     const newFilters = { ...filters, radius: radiusKm[0] };
     setFilters(newFilters);
     onFiltersChange?.(newFilters);
-  }, [radiusKm[0]]);
+  }, [radiusKm, filters, onFiltersChange]);
 
   const updateLocationDisplay = (loc: Location) => {
     setLocation(`${loc.address.city}, ${loc.address.state}`);
