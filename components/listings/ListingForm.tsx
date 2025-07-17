@@ -33,7 +33,7 @@ import {
   LocationType,
   ListingStatus,
 } from "@/lib/listings/types";
-import { validateListingForm } from "@/lib/listings/utils";
+import { validateListingForm } from "@/lib/listings/shared-utils";
 import { uploadListingImage } from "@/lib/listings/client-utils";
 
 export function ListingForm({
