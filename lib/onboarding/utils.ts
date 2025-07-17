@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server-client";
+import { createClient } from "@/lib/supabase/server";
 import { createClient as createClientClient } from "@/lib/supabase/client";
 import {
   OnboardingProgress,
