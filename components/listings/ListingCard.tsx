@@ -31,7 +31,7 @@ import {
   formatPricingDisplay,
   getStatusColor,
   getStatusText,
-} from "@/lib/listings/utils";
+} from "@/lib/listings/shared-utils";
 
 export function ListingCard({
   listing,
