@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import Stripe from "stripe";
 import { createClient } from "@/lib/supabase/server";
+import { logger } from "@/lib/utils/logger";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-11-20.acacia",
@@ -18,7 +19,7 @@ export async function POST(request: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err: any) {
-    console.error("Webhook signature verification failed:", err.message);
+    logger.error("Webhook signature verification failed", err);
     return NextResponse.json(
       { error: "Webhook signature verification failed" },
       { status: 400 },
@@ -74,7 +75,7 @@ export async function POST(request: NextRequest) {
       }
 
       default:
-        console.log(`Unhandled event type: ${event.type}`);
+        logger.info(`Unhandled event type: ${event.type}`);
     }
 
     // Log the event
@@ -89,7 +90,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error("Error processing webhook:", error);
+    logger.error("Error processing webhook", error);
 
     // Log the failed event
     await supabase.from("subscription_events").insert({
@@ -117,7 +118,7 @@ async function handleSubscriptionUpdate(
   const billingCycle = subscription.metadata.billing_cycle || "monthly";
 
   if (!userId) {
-    console.error("No user_id in subscription metadata");
+    logger.error("No user_id in subscription metadata");
     return;
   }
 
@@ -159,7 +160,7 @@ async function handleSubscriptionUpdate(
     });
 
   if (error) {
-    console.error("Error upserting subscription:", error);
+    logger.error("Error upserting subscription", error);
     throw error;
   }
 }
@@ -177,7 +178,7 @@ async function handleSubscriptionDeleted(
     .eq("stripe_subscription_id", subscription.id);
 
   if (error) {
-    console.error("Error updating deleted subscription:", error);
+    logger.error("Error updating deleted subscription", error);
     throw error;
   }
 }
@@ -200,7 +201,7 @@ async function handleInvoicePaymentSucceeded(
   }
 
   if (!userId) {
-    console.error("Could not find user for invoice");
+    logger.error("Could not find user for invoice");
     return;
   }
 
@@ -237,7 +238,7 @@ async function handleInvoicePaymentSucceeded(
   });
 
   if (error) {
-    console.error("Error upserting invoice:", error);
+    logger.error("Error upserting invoice", error);
     throw error;
   }
 }
@@ -259,7 +260,7 @@ async function handleInvoicePaymentFailed(
 async function handleCustomerUpdate(customer: Stripe.Customer, supabase: any) {
   // Update customer information if needed
   // This is mainly for keeping customer data in sync
-  console.log(`Customer ${customer.id} updated`);
+  logger.info(`Customer ${customer.id} updated`);
 }
 
 async function handlePaymentMethodAttached(
@@ -300,7 +301,7 @@ async function handlePaymentMethodAttached(
     });
 
   if (error) {
-    console.error("Error upserting payment method:", error);
+    logger.error("Error upserting payment method", error);
   }
 }
 
@@ -314,6 +315,6 @@ async function handlePaymentMethodDetached(
     .eq("stripe_payment_method_id", paymentMethod.id);
 
   if (error) {
-    console.error("Error deactivating payment method:", error);
+    logger.error("Error deactivating payment method", error);
   }
 }
