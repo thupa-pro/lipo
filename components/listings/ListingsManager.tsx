@@ -30,7 +30,7 @@ import {
   ListingStatus,
   ListingStats,
 } from "@/lib/listings/types";
-import { useListingsClient } from "@/lib/listings/utils";
+import { useListingsClient } from "@/lib/listings/client-utils";
 import { useToast } from "@/hooks/use-toast";
 
 export function ListingsManager() {
