@@ -12,11 +12,8 @@ import {
   OnboardingStep,
   OnboardingProgress,
 } from "@/lib/onboarding/types";
-import {
-  getNextStep,
-  getPreviousStep,
-  useOnboardingClient,
-} from "@/lib/onboarding/utils";
+import { getNextStep, getPreviousStep } from "@/lib/onboarding/utils";
+import { useOnboardingClient } from "@/lib/onboarding/client-utils";
 
 // Import step components
 import { WelcomeStep } from "./steps/WelcomeStep";
