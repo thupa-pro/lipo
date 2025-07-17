@@ -48,7 +48,10 @@ class HyperlocalService {
   };
 
   private constructor() {
-    this.initializeLocationTracking();
+    // Only initialize on client-side to prevent SSR issues
+    if (typeof window !== "undefined") {
+      this.initializeLocationTracking();
+    }
   }
 
   static getInstance(): HyperlocalService {
