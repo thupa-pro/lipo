@@ -17,7 +17,6 @@ import {
   Shield,
   Clock,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface Props {
   children: ReactNode;
@@ -169,23 +168,14 @@ class EnhancedErrorBoundary extends Component<Props, State> {
 
       return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl w-full"
-          >
+          <div className="max-w-2xl w-full animate-fade-in">
             <Card className="shadow-2xl border-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl">
               <CardHeader className="text-center pb-6">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring" }}
-                  className="mx-auto mb-4"
-                >
+                <div className="mx-auto mb-4 animate-scale-in">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
                     <AlertTriangle className="w-10 h-10 text-white" />
                   </div>
-                </motion.div>
+                </div>
 
                 <CardTitle className="text-2xl mb-2">
                   Oops! Something went wrong
@@ -227,16 +217,14 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                   </div>
                   <div className="space-y-2">
                     {suggestions.map((suggestion, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + index * 0.1 }}
-                        className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-200"
+                        className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-200 animate-fade-in"
+                        style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                       >
                         <Lightbulb className="w-4 h-4 text-yellow-500" />
                         {suggestion}
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -351,7 +339,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       );
     }
