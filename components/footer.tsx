@@ -139,7 +139,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-border">
+    <footer className="bg-gray-900 border-t border-gray-800">
       {/* Newsletter Section */}
       <div className="bg-gradient-to-r from-blue-600 to-teal-500">
         <div className="container mx-auto px-4 py-12">
@@ -189,7 +189,7 @@ export default function Footer() {
                 Loconomy
               </span>
             </Link>
-            <p className="text-muted-foreground mb-6 max-w-sm">
+            <p className="text-gray-300 mb-6 max-w-sm">
               Connecting communities with trusted local service providers. From
               home cleaning to professional services, we make it easy to find
               help when you need it.
@@ -197,21 +197,17 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-sm text-foreground">
-                <Phone className="w-4 h-4 text-muted-foreground" />
-                <span>1-800-LOCONOMY</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-foreground">
-                <Mail className="w-4 h-4 text-muted-foreground" />
+              <div className="flex items-center gap-3 text-sm text-white">
+                <Mail className="w-4 h-4 text-gray-400" />
                 <span>hello@loconomy.com</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-foreground">
-                <MapPin className="w-4 h-4 text-muted-foreground" />
+              <div className="flex items-center gap-3 text-sm text-white">
+                <Globe className="w-4 h-4 text-gray-400" />
                 <span>Available in 500+ cities</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-foreground">
-                <Globe className="w-4 h-4 text-muted-foreground" />
-                <span>24/7 Customer Support</span>
+              <div className="flex items-center gap-3 text-sm text-white">
+                <MessageSquare className="w-4 h-4 text-gray-400" />
+                <span>24/7 Online Support</span>
               </div>
             </div>
 
@@ -223,7 +219,7 @@ export default function Footer() {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="rounded-full transition-colors hover:bg-accent hover:text-accent-foreground"
+                  className="rounded-full border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white hover:border-gray-500 transition-colors"
                 >
                   <Link
                     href={social.href}
@@ -241,15 +237,13 @@ export default function Footer() {
           {/* Footer Links */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h4 className="font-semibold text-foreground mb-4">
-                {section.title}
-              </h4>
+              <h4 className="font-semibold text-white mb-4">{section.title}</h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                      className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
                     >
                       {link.label}
                     </Link>
@@ -260,57 +254,69 @@ export default function Footer() {
           ))}
         </div>
 
-        <Separator className="my-8 bg-border" />
+        <Separator className="my-8 bg-gray-700" />
 
         {/* Trust Indicators */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {trustIndicators.map((indicator, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 text-sm text-muted-foreground"
+              className="flex items-center gap-2 text-sm text-gray-300"
             >
-              <indicator.icon className="w-4 h-4 text-primary" />
+              <indicator.icon className="w-4 h-4 text-blue-400" />
               <span>{indicator.text}</span>
             </div>
           ))}
         </div>
 
-        <Separator className="mb-8 bg-border" />
+        <Separator className="mb-8 bg-gray-700" />
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300">
             <span>© {currentYear} Loconomy, Inc. All rights reserved.</span>
-            <Link href="/privacy" className="hover:underline transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:underline transition-colors">
+            <Link
+              href="/terms"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               Terms of Service
             </Link>
-            <Link href="/cookies" className="hover:underline transition-colors">
+            <Link
+              href="/cookies"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               Cookie Policy
             </Link>
-            <Link href="/gdpr" className="hover:underline transition-colors">
+            <Link
+              href="/gdpr"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               GDPR
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-4 text-sm text-gray-300">
             {/* Language Selector in Footer */}
             <Select
               value={selectedLanguage}
               onValueChange={handleLanguageChange}
             >
-              <SelectTrigger className="w-[180px] transition-colors">
-                <Globe className="w-4 h-4 mr-2" />
+              <SelectTrigger className="w-[180px] border-gray-600 bg-gray-800 text-white hover:bg-gray-700 transition-colors">
+                <Globe className="w-4 h-4 mr-2 text-gray-400" />
                 <SelectValue placeholder="Select Language" />
               </SelectTrigger>
-              <SelectContent className="rounded-md shadow-lg">
+              <SelectContent className="bg-gray-800 border-gray-600 rounded-md shadow-lg">
                 {availableLanguages.map((lang) => (
                   <SelectItem
                     key={lang.code}
                     value={lang.code}
-                    className="transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="text-white hover:bg-gray-700 focus:bg-gray-700 transition-colors"
                   >
                     {lang.flag} {lang.name}
                   </SelectItem>
