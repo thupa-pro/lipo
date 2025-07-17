@@ -41,7 +41,6 @@ import {
   ChevronUp,
   X,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface ServiceProvider {
   id: string;
@@ -377,19 +376,12 @@ export default function AIServiceDiscovery({
           </div>
 
           {/* Search Mode Indicator */}
-          <AnimatePresence>
-            {isListening && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="flex items-center gap-2 text-sm text-blue-600 bg-blue-50 p-3 rounded-lg"
-              >
-                <Mic className="w-4 h-4 animate-pulse" />
-                <span>Listening... Speak naturally about what you need</span>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {isListening && (
+            <div className="flex items-center gap-2 text-sm text-blue-600 bg-blue-50 p-3 rounded-lg animate-fade-in">
+              <Mic className="w-4 h-4 animate-pulse" />
+              <span>Listening... Speak naturally about what you need</span>
+            </div>
+          )}
 
           {/* Quick Filters & Sort */}
           <div className="flex items-center gap-4 text-sm">
@@ -425,123 +417,109 @@ export default function AIServiceDiscovery({
           </div>
 
           {/* Advanced Filters */}
-          <AnimatePresence>
-            {showFilters && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="border-t pt-4 space-y-4"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div>
-                    <label className="text-xs font-medium text-gray-700 mb-1 block">
-                      Distance (miles)
-                    </label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="50"
-                      value={filters.distance}
-                      onChange={(e) =>
-                        setFilters((prev) => ({
-                          ...prev,
-                          distance: parseInt(e.target.value),
-                        }))
-                      }
-                      className="w-full"
-                    />
-                    <span className="text-xs text-gray-500">
-                      {filters.distance} miles
-                    </span>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-medium text-gray-700 mb-1 block">
-                      Minimum Rating
-                    </label>
-                    <select
-                      value={filters.rating}
-                      onChange={(e) =>
-                        setFilters((prev) => ({
-                          ...prev,
-                          rating: parseFloat(e.target.value),
-                        }))
-                      }
-                      className="w-full border border-gray-200 rounded px-2 py-1 text-sm"
-                    >
-                      <option value={0}>Any Rating</option>
-                      <option value={4.5}>4.5+ Stars</option>
-                      <option value={4.0}>4.0+ Stars</option>
-                      <option value={3.5}>3.5+ Stars</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-medium text-gray-700 mb-1 block">
-                      Availability
-                    </label>
-                    <select
-                      value={filters.availability}
-                      onChange={(e) =>
-                        setFilters((prev) => ({
-                          ...prev,
-                          availability: e.target.value,
-                        }))
-                      }
-                      className="w-full border border-gray-200 rounded px-2 py-1 text-sm"
-                    >
-                      <option value="any">Any Time</option>
-                      <option value="today">Available Today</option>
-                      <option value="week">This Week</option>
-                      <option value="emergency">Emergency/24-7</option>
-                    </select>
-                  </div>
-
-                  <div className="flex items-center">
-                    <label className="flex items-center gap-2 text-sm">
-                      <input
-                        type="checkbox"
-                        checked={filters.verified}
-                        onChange={(e) =>
-                          setFilters((prev) => ({
-                            ...prev,
-                            verified: e.target.checked,
-                          }))
-                        }
-                        className="rounded"
-                      />
-                      Verified Only
-                    </label>
-                  </div>
+          {showFilters && (
+            <div className="border-t pt-4 space-y-4 animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">
+                    Distance (miles)
+                  </label>
+                  <input
+                    type="range"
+                    min="1"
+                    max="50"
+                    value={filters.distance}
+                    onChange={(e) =>
+                      setFilters((prev) => ({
+                        ...prev,
+                        distance: parseInt(e.target.value),
+                      }))
+                    }
+                    className="w-full"
+                  />
+                  <span className="text-xs text-gray-500">
+                    {filters.distance} miles
+                  </span>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+
+                <div>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">
+                    Minimum Rating
+                  </label>
+                  <select
+                    value={filters.rating}
+                    onChange={(e) =>
+                      setFilters((prev) => ({
+                        ...prev,
+                        rating: parseFloat(e.target.value),
+                      }))
+                    }
+                    className="w-full border border-gray-200 rounded px-2 py-1 text-sm"
+                  >
+                    <option value={0}>Any Rating</option>
+                    <option value={4.5}>4.5+ Stars</option>
+                    <option value={4.0}>4.0+ Stars</option>
+                    <option value={3.5}>3.5+ Stars</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">
+                    Availability
+                  </label>
+                  <select
+                    value={filters.availability}
+                    onChange={(e) =>
+                      setFilters((prev) => ({
+                        ...prev,
+                        availability: e.target.value,
+                      }))
+                    }
+                    className="w-full border border-gray-200 rounded px-2 py-1 text-sm"
+                  >
+                    <option value="any">Any Time</option>
+                    <option value="today">Available Today</option>
+                    <option value="week">This Week</option>
+                    <option value="emergency">Emergency/24-7</option>
+                  </select>
+                </div>
+
+                <div className="flex items-center">
+                  <label className="flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={filters.verified}
+                      onChange={(e) =>
+                        setFilters((prev) => ({
+                          ...prev,
+                          verified: e.target.checked,
+                        }))
+                      }
+                      className="rounded"
+                    />
+                    Verified Only
+                  </label>
+                </div>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
 
       {/* AI Insight */}
-      <AnimatePresence>
-        {aiInsight && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-4"
-          >
-            <div className="flex items-start gap-3">
-              <div className="p-2 bg-blue-600 rounded-full">
-                <Brain className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <h4 className="font-medium text-blue-900 mb-1">AI Insight</h4>
-                <p className="text-sm text-blue-800">{aiInsight}</p>
-              </div>
+      {aiInsight && (
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-4 animate-fade-in">
+          <div className="flex items-start gap-3">
+            <div className="p-2 bg-blue-600 rounded-full">
+              <Brain className="w-4 h-4 text-white" />
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div>
+              <h4 className="font-medium text-blue-900 mb-1">AI Insight</h4>
+              <p className="text-sm text-blue-800">{aiInsight}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Results */}
       <div className="space-y-4">
@@ -566,11 +544,10 @@ export default function AIServiceDiscovery({
         ) : services.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service, index) => (
-              <motion.div
+              <div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Card className="hover:shadow-xl transition-all duration-300 border hover:border-blue-300 group relative overflow-hidden">
                   {/* Special Badges */}
@@ -708,7 +685,7 @@ export default function AIServiceDiscovery({
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         ) : query && !isLoading ? (
