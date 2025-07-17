@@ -61,7 +61,7 @@ export default function LocationPermissionManager({
     if (autoRequest && permission.state === "prompt") {
       requestLocation();
     }
-  }, [autoRequest]);
+  }, [autoRequest, permission.state]);
 
   useEffect(() => {
     // Load cached location
