@@ -53,7 +53,11 @@ class GeolocationService {
       };
     }
 
-    if ("permissions" in navigator) {
+    if (
+      typeof window !== "undefined" &&
+      "navigator" in window &&
+      "permissions" in navigator
+    ) {
       try {
         const permission = await navigator.permissions.query({
           name: "geolocation",
