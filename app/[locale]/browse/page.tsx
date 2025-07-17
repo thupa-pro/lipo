@@ -345,7 +345,7 @@ export default function BrowsePage() {
   }, [filters]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Search Header */}
       <section className="relative bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950 border-b border-slate-200/50 dark:border-white/10">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
