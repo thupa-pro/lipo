@@ -85,19 +85,19 @@ export default function HelpPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     How to create an account
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Booking your first service
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Understanding pricing
@@ -119,19 +119,19 @@ export default function HelpPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Update payment methods
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     View billing history
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Change account settings
@@ -152,19 +152,19 @@ export default function HelpPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     How to find providers
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Scheduling appointments
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Canceling or rescheduling
@@ -185,19 +185,19 @@ export default function HelpPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Provider verification process
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Safety guidelines
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Reporting issues
@@ -218,19 +218,19 @@ export default function HelpPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     How to leave a review
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Understanding ratings
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Review guidelines
@@ -251,19 +251,19 @@ export default function HelpPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     App not working properly
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Payment failed
                   </a>
                   <a
-                    href="#"
+                    href="/contact"
                     className="block text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Can't find my booking

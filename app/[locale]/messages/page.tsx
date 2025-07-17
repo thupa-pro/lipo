@@ -334,9 +334,9 @@ export default function EnhancedMessagesPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-12rem)]">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 h-[calc(100vh-12rem)]">
           {/* Conversations List */}
-          <Card className="lg:col-span-1 bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-lg">
+          <Card className="xl:col-span-1 bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-lg">
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between mb-4">
                 <CardTitle className="flex items-center gap-2 text-lg font-bold">
@@ -455,7 +455,7 @@ export default function EnhancedMessagesPage() {
           </Card>
 
           {/* Chat Area */}
-          <Card className="lg:col-span-2 bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-lg flex flex-col">
+          <Card className="xl:col-span-2 bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-lg flex flex-col">
             {currentConversation ? (
               <>
                 {/* Chat Header */}

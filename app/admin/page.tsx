@@ -158,16 +158,6 @@ export default function AdminDashboard() {
                       View All Users
                     </Link>
                   </Button>
-                  <Button
-                    className="w-full justify-start"
-                    variant="outline"
-                    asChild
-                  >
-                    <Link href="/admin/roles">
-                      <Shield className="w-4 h-4 mr-2" />
-                      Manage Roles
-                    </Link>
-                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -236,16 +226,6 @@ export default function AdminDashboard() {
                     <Link href="/admin/settings">
                       <Settings className="w-4 h-4 mr-2" />
                       System Settings
-                    </Link>
-                  </Button>
-                  <Button
-                    className="w-full justify-start"
-                    variant="outline"
-                    asChild
-                  >
-                    <Link href="/admin/analytics">
-                      <BarChart3 className="w-4 h-4 mr-2" />
-                      Platform Analytics
                     </Link>
                   </Button>
                 </div>

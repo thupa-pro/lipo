@@ -606,9 +606,9 @@ export default function BrowsePage() {
           </div>
 
           {/* Results Section */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             {/* Results Header */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
               <div>
                 <h2 className="text-2xl font-bold flex items-center gap-2">
                   {searchQuery
@@ -628,7 +628,7 @@ export default function BrowsePage() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 mt-4 sm:mt-0">
                 <Button
                   variant="outline"
                   size="sm"

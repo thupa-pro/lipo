@@ -242,9 +242,9 @@ export default function AdminDashboard() {
           </div>
         </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
           {/* Recent Activity */}
-          <div className="lg:col-span-2">
+          <div className="xl:col-span-2">
             <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-xl">
               <CardHeader className="p-8">
                 <CardTitle className="flex items-center gap-3 text-2xl">
@@ -262,13 +262,13 @@ export default function AdminDashboard() {
                   {recentActivities.map((activity) => (
                     <div
                       key={activity.id}
-                      className="flex items-start gap-4 p-6 rounded-2xl bg-blue-50/50 dark:bg-white/5 border border-blue-200/50 dark:border-white/10 hover:bg-blue-50/70 dark:hover:bg-white/10 transition-all duration-300"
+                      className="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-blue-50/50 dark:bg-white/5 border border-blue-200/50 dark:border-white/10 hover:bg-blue-50/70 dark:hover:bg-white/10 transition-all duration-300"
                     >
                       <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
                         <div className="w-3 h-3 bg-white rounded-full" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-2">
                           <span className="font-bold text-slate-900 dark:text-white text-lg">
                             {activity.user}
                           </span>
@@ -288,7 +288,7 @@ export default function AdminDashboard() {
                         <p className="text-slate-600 dark:text-slate-400 mb-3">
                           {activity.action}
                         </p>
-                        <div className="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-500">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm text-slate-500 dark:text-slate-500">
                           <span className="flex items-center gap-2">
                             <MapPin className="w-4 h-4" />
                             {activity.location}
@@ -307,7 +307,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Alerts & Quick Actions */}
-          <div className="space-y-8">
+          <div className="xl:col-span-1 space-y-8">
             {/* Alerts */}
             <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-xl">
               <CardHeader className="p-8">

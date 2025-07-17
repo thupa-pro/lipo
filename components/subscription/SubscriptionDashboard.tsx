@@ -37,6 +37,7 @@ import {
   getPlanDisplayName,
 } from "@/lib/subscription/utils";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 export function SubscriptionDashboard() {
   const { user } = useUser();
@@ -52,6 +53,7 @@ export function SubscriptionDashboard() {
   >({});
   const [isLoading, setIsLoading] = useState(true);
   const [isCreatingPortal, setIsCreatingPortal] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (user) {
@@ -109,7 +111,7 @@ export function SubscriptionDashboard() {
         );
       }
 
-      window.location.href = data.url;
+      router.push(data.url);
     } catch (error: any) {
       console.error("Error creating billing portal:", error);
       toast({
@@ -299,7 +301,7 @@ export function SubscriptionDashboard() {
             <div className="text-center py-8">
               <p className="text-gray-500 mb-4">No active subscription</p>
               <Button
-                onClick={() => (window.location.href = "/subscription/plans")}
+                onClick={() => router.push("/subscription/plans")}
               >
                 View Plans
               </Button>
@@ -476,7 +478,7 @@ export function SubscriptionDashboard() {
                             variant="ghost"
                             size="sm"
                             onClick={() =>
-                              window.open(invoice.invoice_pdf, "_blank")
+                              router.push(invoice.invoice_pdf)
                             }
                           >
                             <Download className="w-4 h-4" />

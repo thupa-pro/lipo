@@ -220,7 +220,7 @@ export default function AdminUsersPage() {
         <section>
           <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-xl">
             <CardHeader className="p-8">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
                 <div>
                   <CardTitle className="flex items-center gap-3 text-2xl">
                     <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
@@ -232,7 +232,7 @@ export default function AdminUsersPage() {
                     Latest user registrations and activities
                   </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mt-4 sm:mt-0">
                   <Button variant="outline" className="rounded-2xl">
                     <Search className="w-4 h-4 mr-2" />
                     Search
@@ -249,32 +249,34 @@ export default function AdminUsersPage() {
                 {recentUsers.map((user) => (
                   <div
                     key={user.id}
-                    className="flex items-center justify-between p-6 rounded-2xl bg-blue-50/50 dark:bg-white/5 border border-blue-200/50 dark:border-white/10 hover:bg-blue-50/70 dark:hover:bg-white/10 transition-all duration-300"
+                    className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 rounded-2xl bg-blue-50/50 dark:bg-white/5 border border-blue-200/50 dark:border-white/10 hover:bg-blue-50/70 dark:hover:bg-white/10 transition-all duration-300"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg">
                         {user.avatar}
                       </div>
                       <div>
-                        <div className="flex items-center gap-3 mb-1">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-1">
                           <h3 className="font-bold text-slate-900 dark:text-white text-lg">
                             {user.name}
                           </h3>
-                          {user.verified && (
-                            <Badge className="bg-emerald-100 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800">
-                              <Shield className="w-3 h-3 mr-1" />
-                              Verified
+                          <div className="flex items-center gap-2">
+                            {user.verified && (
+                              <Badge className="bg-emerald-100 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800">
+                                <Shield className="w-3 h-3 mr-1" />
+                                Verified
+                              </Badge>
+                            )}
+                            <Badge
+                              variant={
+                                user.status === "active" ? "default" : "secondary"
+                              }
+                            >
+                              {user.status}
                             </Badge>
-                          )}
-                          <Badge
-                            variant={
-                              user.status === "active" ? "default" : "secondary"
-                            }
-                          >
-                            {user.status}
-                          </Badge>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-4 text-slate-600 dark:text-slate-400">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-slate-600 dark:text-slate-400">
                           <span className="flex items-center gap-1">
                             <Mail className="w-4 h-4" />
                             {user.email}
@@ -290,7 +292,7 @@ export default function AdminUsersPage() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mt-4 sm:mt-0">
                       <Button
                         variant="outline"
                         size="sm"

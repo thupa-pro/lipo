@@ -23,6 +23,7 @@ import {
 } from "@/lib/subscription/utils";
 import { useToast } from "@/hooks/use-toast";
 import { loadStripe } from "@stripe/stripe-js";
+import { useRouter } from "next/navigation";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
@@ -49,6 +50,7 @@ export function SubscriptionPlans({
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
   const [isLoading, setIsLoading] = useState(true);
   const [processingPlan, setProcessingPlan] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     loadPlansData();
@@ -131,7 +133,7 @@ export function SubscriptionPlans({
 
       if (data.url) {
         // Redirect to Stripe Checkout
-        window.location.href = data.url;
+        router.push(data.url);
       } else if (data.plan_id === "free") {
         // Free plan activated
         if (onUpgrade) onUpgrade(planId);
