@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Loader2, Users, Briefcase, ArrowRight } from "lucide-react";
 import { OnboardingFlow } from "@/components/onboarding/OnboardingFlow";
-import { useOnboardingClient } from "@/lib/onboarding/utils";
+import { useOnboardingClient } from "@/lib/onboarding/client-utils";
 import { OnboardingProgress } from "@/lib/onboarding/types";
 import { useToast } from "@/hooks/use-toast";
 
