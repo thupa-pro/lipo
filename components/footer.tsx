@@ -269,7 +269,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <Separator className="mb-8 bg-border" />
+        <Separator className="mb-8 bg-gray-700" />
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
