@@ -9,7 +9,7 @@ import {
   SERVICE_CATEGORIES,
   ServiceCategory,
 } from "@/lib/onboarding/types";
-import { useOnboardingClient } from "@/lib/onboarding/utils";
+import { useOnboardingClient } from "@/lib/onboarding/client-utils";
 
 export function ServiceCategoriesStep({
   onNext,
