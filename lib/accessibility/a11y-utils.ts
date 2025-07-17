@@ -34,11 +34,13 @@ export function useFocusTrap(isActive: boolean) {
 
     const container = containerRef.current;
     const focusableElements = container.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
-    
+
     const firstElement = focusableElements[0] as HTMLElement;
-    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
 
     function handleTabKey(e: KeyboardEvent) {
       if (e.key !== "Tab") return;
@@ -58,7 +60,6 @@ export function useFocusTrap(isActive: boolean) {
 
     function handleEscapeKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        // Let parent component handle escape
         container.dispatchEvent(new CustomEvent("escape-pressed"));
       }
     }
@@ -66,7 +67,6 @@ export function useFocusTrap(isActive: boolean) {
     document.addEventListener("keydown", handleTabKey);
     document.addEventListener("keydown", handleEscapeKey);
 
-    // Focus first element when trap becomes active
     if (firstElement) {
       firstElement.focus();
     }
@@ -81,7 +81,10 @@ export function useFocusTrap(isActive: boolean) {
 }
 
 // Screen reader announcements
-export function announceToScreenReader(message: string, priority: "polite" | "assertive" = "polite") {
+export function announceToScreenReader(
+  message: string,
+  priority: "polite" | "assertive" = "polite",
+) {
   const announcement = document.createElement("div");
   announcement.setAttribute("aria-live", priority);
   announcement.setAttribute("aria-atomic", "true");
@@ -92,13 +95,11 @@ export function announceToScreenReader(message: string, priority: "polite" | "as
   announcement.style.overflow = "hidden";
 
   document.body.appendChild(announcement);
-  
-  // Set content after adding to DOM
+
   setTimeout(() => {
     announcement.textContent = message;
   }, 10);
 
-  // Remove after announcement
   setTimeout(() => {
     document.body.removeChild(announcement);
   }, 1000);
@@ -109,7 +110,7 @@ export function handleArrowKeyNavigation(
   event: React.KeyboardEvent,
   items: HTMLElement[],
   currentIndex: number,
-  orientation: "horizontal" | "vertical" = "vertical"
+  orientation: "horizontal" | "vertical" = "vertical",
 ) {
   const { key } = event;
   let newIndex = currentIndex;
@@ -148,7 +149,7 @@ export function getButtonProps(
   label: string,
   isPressed?: boolean,
   isExpanded?: boolean,
-  controls?: string
+  controls?: string,
 ) {
   return {
     "aria-label": label,
@@ -164,10 +165,10 @@ export function getFormFieldProps(
   labelId?: string,
   errorId?: string,
   descriptionId?: string,
-  required = false
+  required = false,
 ) {
   const ariaDescribedBy = [errorId, descriptionId].filter(Boolean).join(" ");
-  
+
   return {
     id,
     "aria-required": required,
@@ -181,7 +182,7 @@ export function getFormFieldProps(
 export function getDialogProps(
   isOpen: boolean,
   titleId: string,
-  descriptionId?: string
+  descriptionId?: string,
 ) {
   return {
     role: "dialog",
@@ -197,73 +198,31 @@ export function getDialogProps(
 export function getSkipLinkProps(target: string) {
   return {
     href: `#${target}`,
-    className: "sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 bg-blue-600 text-white p-2 rounded",
-    onFocus: (e: React.FocusEvent) => {
-      e.currentTarget.classList.remove("sr-only");
-    },
-    onBlur: (e: React.FocusEvent) => {
-      e.currentTarget.classList.add("sr-only");
-    },
+    className:
+      "sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 bg-blue-600 text-white p-2 rounded",
   };
 }
 
 // Loading state accessibility
-export function getLoadingProps(isLoading: boolean, loadingText = "Loading...") {
+export function getLoadingProps(
+  isLoading: boolean,
+  loadingText = "Loading...",
+) {
   return {
     "aria-busy": isLoading,
     ...(isLoading && { "aria-label": loadingText }),
   };
 }
 
-// Live region for dynamic content updates
-export function useLiveRegion() {
-  const liveRegionRef = useRef<HTMLDivElement>(null);
-
-  const announce = (message: string, priority: "polite" | "assertive" = "polite") => {
-    if (liveRegionRef.current) {
-      liveRegionRef.current.setAttribute("aria-live", priority);
-      liveRegionRef.current.textContent = message;
-      
-      // Clear after announcement
-      setTimeout(() => {
-        if (liveRegionRef.current) {
-          liveRegionRef.current.textContent = "";
-        }
-      }, 1000);
-    }
-  };
-
-  const LiveRegion = () => (
-    <div
-      ref={liveRegionRef}
-      aria-live="polite"
-      aria-atomic="true"
-      className="sr-only"
-    />
-  );
-
-  return { announce, LiveRegion };
-}
-
-// Color contrast helpers
-export function hasMinimumContrast(
-  foreground: string,
-  background: string,
-  level: "AA" | "AAA" = "AA"
-): boolean {
-  // This is a simplified check - in production, use a proper color contrast library
-  const requiredRatio = level === "AA" ? 4.5 : 7;
-  // Implementation would calculate actual contrast ratio
-  return true; // Placeholder
-}
-
 // Reduced motion detection
 export function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 // High contrast detection
 export function prefersHighContrast(): boolean {
+  if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-contrast: high)").matches;
 }
 
@@ -271,7 +230,6 @@ export function prefersHighContrast(): boolean {
 export function addFocusVisiblePolyfill() {
   if (typeof document === "undefined") return;
 
-  // Add focus-visible polyfill behavior
   document.addEventListener("keydown", () => {
     document.body.classList.add("keyboard-user");
   });
@@ -285,7 +243,6 @@ export function addFocusVisiblePolyfill() {
 export function checkAccessibility(element: Element): string[] {
   const issues: string[] = [];
 
-  // Check for missing alt text on images
   const images = element.querySelectorAll("img");
   images.forEach((img) => {
     if (!img.getAttribute("alt")) {
@@ -293,26 +250,28 @@ export function checkAccessibility(element: Element): string[] {
     }
   });
 
-  // Check for missing labels on form inputs
   const inputs = element.querySelectorAll("input, textarea, select");
   inputs.forEach((input) => {
-    const hasLabel = 
+    const hasLabel =
       input.getAttribute("aria-label") ||
       input.getAttribute("aria-labelledby") ||
       element.querySelector(`label[for="${input.id}"]`);
-    
+
     if (!hasLabel) {
       issues.push(`Form input missing label: ${input.tagName}`);
     }
   });
 
-  // Check for missing headings hierarchy
-  const headings = Array.from(element.querySelectorAll("h1, h2, h3, h4, h5, h6"));
+  const headings = Array.from(
+    element.querySelectorAll("h1, h2, h3, h4, h5, h6"),
+  );
   let lastLevel = 0;
   headings.forEach((heading) => {
     const level = parseInt(heading.tagName.charAt(1));
     if (level > lastLevel + 1) {
-      issues.push(`Heading level skip detected: jumped from h${lastLevel} to h${level}`);
+      issues.push(
+        `Heading level skip detected: jumped from h${lastLevel} to h${level}`,
+      );
     }
     lastLevel = level;
   });
