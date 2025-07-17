@@ -189,7 +189,7 @@ export default function Footer() {
                 Loconomy
               </span>
             </Link>
-            <p className="text-muted-foreground mb-6 max-w-sm">
+            <p className="text-gray-300 mb-6 max-w-sm">
               Connecting communities with trusted local service providers. From
               home cleaning to professional services, we make it easy to find
               help when you need it.
