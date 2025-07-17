@@ -261,9 +261,9 @@ export default function Footer() {
           {trustIndicators.map((indicator, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 text-sm text-muted-foreground"
+              className="flex items-center gap-2 text-sm text-gray-300"
             >
-              <indicator.icon className="w-4 h-4 text-primary" />
+              <indicator.icon className="w-4 h-4 text-blue-400" />
               <span>{indicator.text}</span>
             </div>
           ))}
