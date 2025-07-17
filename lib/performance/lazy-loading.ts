@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import React from "react";
 
 // Heavy analytics components - should be lazy loaded
 export const BusinessIntelligence = lazy(() => 
@@ -100,19 +101,6 @@ export const AreaChart = lazy(() =>
   import("recharts").then(module => ({ default: module.AreaChart }))
 );
 
-// Heavy third-party components
-export const StripeElementsProvider = lazy(() => 
-  import("@stripe/react-stripe-js").then(module => ({ 
-    default: module.Elements 
-  }))
-);
-
-export const MapComponent = lazy(() => 
-  import("@/components/ui/map").then(module => ({ 
-    default: module.MapComponent 
-  })).catch(() => ({ default: () => null })) // Fallback if map component doesn't exist
-);
-
 // Calendar components
 export const CalendarComponent = lazy(() => 
   import("@/components/ui/calendar").then(module => ({ 
@@ -126,7 +114,7 @@ export const DateRangePicker = lazy(() =>
   }))
 );
 
-// Export all lazy components with proper loading fallbacks
+// Export all lazy components
 export const LazyComponents = {
   BusinessIntelligence,
   AnalyticsOverview,
@@ -145,19 +133,19 @@ export const LazyComponents = {
   BarChart,
   PieChart,
   AreaChart,
-  StripeElementsProvider,
-  MapComponent,
   CalendarComponent,
   DateRangePicker,
 } as const;
 
 // Common loading component for lazy loaded components
-export const ComponentLoader = ({ 
+interface ComponentLoaderProps {
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+}
+
+export const ComponentLoader: React.FC<ComponentLoaderProps> = ({ 
   children, 
   fallback = <div className="flex items-center justify-center p-8">Loading...</div> 
-}: { 
-  children: React.ReactNode; 
-  fallback?: React.ReactNode;
 }) => {
   return (
     <div className="min-h-0">
