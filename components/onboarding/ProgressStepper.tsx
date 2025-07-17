@@ -1,6 +1,9 @@
 import React from "react";
 import { OnboardingStep } from "@/lib/onboarding/types";
-import { getStepProgress, isStepCompleted } from "@/lib/onboarding/utils";
+import {
+  getStepProgress,
+  isStepCompleted,
+} from "@/lib/onboarding/shared-utils";
 import { CheckCircle, Circle, ArrowRight } from "lucide-react";
 
 interface ProgressStepperProps {
