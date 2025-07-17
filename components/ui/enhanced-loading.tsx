@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
   Loader2,
   Sparkles,
@@ -41,27 +40,23 @@ export function LoadingSpinner({
 
   if (variant === "gradient") {
     return (
-      <motion.div
-        className={cn("relative", sizeClasses[size], className)}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+      <div
+        className={cn("relative animate-spin", sizeClasses[size], className)}
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 animate-spin"></div>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600"></div>
         <div className="absolute inset-1 rounded-full bg-white dark:bg-gray-900"></div>
-      </motion.div>
+      </div>
     );
   }
 
   if (variant === "pulse") {
     return (
-      <motion.div
+      <div
         className={cn(
-          "rounded-full bg-gradient-to-r from-blue-600 to-purple-600",
+          "rounded-full bg-gradient-to-r from-blue-600 to-purple-600 animate-pulse",
           sizeClasses[size],
           className,
         )}
-        animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
       />
     );
   }
@@ -70,15 +65,10 @@ export function LoadingSpinner({
     return (
       <div className={cn("flex space-x-1", className)}>
         {[0, 1, 2].map((i) => (
-          <motion.div
+          <div
             key={i}
-            className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
-            animate={{ y: [-4, 4, -4] }}
-            transition={{
-              duration: 0.6,
-              repeat: Infinity,
-              delay: i * 0.1,
-            }}
+            className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-bounce"
+            style={{ animationDelay: `${i * 0.1}s` }}
           />
         ))}
       </div>
@@ -89,15 +79,10 @@ export function LoadingSpinner({
     return (
       <div className={cn("flex space-x-1", className)}>
         {[0, 1, 2, 3].map((i) => (
-          <motion.div
+          <div
             key={i}
-            className="w-1 bg-gradient-to-t from-blue-600 to-purple-600 rounded-full"
-            animate={{ height: [8, 20, 8] }}
-            transition={{
-              duration: 0.8,
-              repeat: Infinity,
-              delay: i * 0.1,
-            }}
+            className="w-1 h-5 bg-gradient-to-t from-blue-600 to-purple-600 rounded-full animate-pulse"
+            style={{ animationDelay: `${i * 0.1}s` }}
           />
         ))}
       </div>
@@ -130,21 +115,16 @@ export function LoadingCard({
 }: LoadingCardProps) {
   if (variant === "ai") {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div
         className={cn(
-          "bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6",
+          "bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 animate-fade-in",
           className,
         )}
       >
         <div className="flex items-center gap-3 mb-4">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          >
+          <div className="animate-spin">
             <Brain className="w-6 h-6 text-blue-600" />
-          </motion.div>
+          </div>
           <div>
             <h3 className="font-semibold text-blue-900 dark:text-blue-100">
               {title}
@@ -160,50 +140,37 @@ export function LoadingCard({
         {steps.length > 0 && (
           <div className="space-y-3">
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.5 }}
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 animate-fade-in"
+                style={{ animationDelay: `${index * 0.5}s` }}
               >
                 <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: index * 0.5 + 0.3 }}
-                  >
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </motion.div>
+                  <CheckCircle className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-sm text-blue-800 dark:text-blue-200">
                   {step}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
         )}
-      </motion.div>
+      </div>
     );
   }
 
   if (variant === "search") {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
         className={cn(
-          "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-lg",
+          "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-lg animate-scale-in",
           className,
         )}
       >
         <div className="text-center space-y-4">
-          <motion.div
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+          <div className="animate-pulse">
             <Search className="w-12 h-12 text-blue-600 mx-auto" />
-          </motion.div>
+          </div>
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white">
               {title}
@@ -216,16 +183,14 @@ export function LoadingCard({
           </div>
           <LoadingSpinner variant="dots" />
         </div>
-      </motion.div>
+      </div>
     );
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+    <div
       className={cn(
-        "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4",
+        "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 animate-fade-in",
         className,
       )}
     >
@@ -243,11 +208,9 @@ export function LoadingCard({
       {progress !== undefined && (
         <div className="mt-3">
           <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-            <motion.div
-              className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.5 }}
+            <div
+              className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-500"
+              style={{ width: `${progress}%` }}
             />
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -255,7 +218,7 @@ export function LoadingCard({
           </p>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -379,11 +342,9 @@ export function StatusIndicator({
   const Icon = config.icon;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+    <div
       className={cn(
-        "border rounded-lg p-4",
+        "border rounded-lg p-4 animate-fade-in",
         config.bgColor,
         config.borderColor,
         className,
@@ -412,7 +373,7 @@ export function StatusIndicator({
           {action && <div className="mt-3">{action}</div>}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
