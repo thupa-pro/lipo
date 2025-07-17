@@ -139,7 +139,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-border">
+    <footer className="bg-gray-900 border-t border-gray-800">
       {/* Newsletter Section */}
       <div className="bg-gradient-to-r from-blue-600 to-teal-500">
         <div className="container mx-auto px-4 py-12">
