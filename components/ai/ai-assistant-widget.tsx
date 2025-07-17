@@ -44,7 +44,6 @@ import {
   Monitor,
   Tablet,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   userAIClient,
   USER_AI_AGENTS,
@@ -380,12 +379,7 @@ export default function AIAssistantWidget({
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      className={`${getPositionClasses()} ${className}`}
-    >
+    <div className={`${getPositionClasses()} ${className} animate-scale-in`}>
       <Card
         className={`${getSizeClasses()} shadow-2xl border-gray-200 bg-white/95 backdrop-blur-sm`}
       >
@@ -482,68 +476,57 @@ export default function AIAssistantWidget({
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-0">
-              <AnimatePresence>
-                {messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"} animate-fade-in`}
+                >
+                  <div
+                    className={`max-w-[85%] p-3 rounded-lg group relative ${
+                      message.role === "user"
+                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                        : message.type === "action"
+                          ? "bg-yellow-50 text-yellow-800 border border-yellow-200"
+                          : "bg-gray-100 text-gray-900 border"
+                    }`}
                   >
+                    {message.role === "assistant" && (
+                      <div className="flex items-center gap-2 mb-1 text-xs text-gray-600">
+                        <span>{currentAgent.avatar}</span>
+                        <span className="font-medium">{currentAgent.name}</span>
+                      </div>
+                    )}
+                    <div className="text-sm whitespace-pre-wrap">
+                      {message.content}
+                    </div>
                     <div
-                      className={`max-w-[85%] p-3 rounded-lg ${
+                      className={`text-xs mt-1 flex items-center justify-between ${
                         message.role === "user"
-                          ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-                          : message.type === "action"
-                            ? "bg-yellow-50 text-yellow-800 border border-yellow-200"
-                            : "bg-gray-100 text-gray-900 border"
+                          ? "text-blue-100"
+                          : "text-gray-500"
                       }`}
                     >
+                      <span>{message.timestamp.toLocaleTimeString()}</span>
                       {message.role === "assistant" && (
-                        <div className="flex items-center gap-2 mb-1 text-xs text-gray-600">
-                          <span>{currentAgent.avatar}</span>
-                          <span className="font-medium">
-                            {currentAgent.name}
-                          </span>
+                        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button className="p-1 hover:bg-gray-200 rounded">
+                            <Copy className="w-3 h-3" />
+                          </button>
+                          <button className="p-1 hover:bg-green-100 rounded text-green-600">
+                            <ThumbsUp className="w-3 h-3" />
+                          </button>
+                          <button className="p-1 hover:bg-red-100 rounded text-red-600">
+                            <ThumbsDown className="w-3 h-3" />
+                          </button>
                         </div>
                       )}
-                      <div className="text-sm whitespace-pre-wrap">
-                        {message.content}
-                      </div>
-                      <div
-                        className={`text-xs mt-1 flex items-center justify-between ${
-                          message.role === "user"
-                            ? "text-blue-100"
-                            : "text-gray-500"
-                        }`}
-                      >
-                        <span>{message.timestamp.toLocaleTimeString()}</span>
-                        {message.role === "assistant" && (
-                          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button className="p-1 hover:bg-gray-200 rounded">
-                              <Copy className="w-3 h-3" />
-                            </button>
-                            <button className="p-1 hover:bg-green-100 rounded text-green-600">
-                              <ThumbsUp className="w-3 h-3" />
-                            </button>
-                            <button className="p-1 hover:bg-red-100 rounded text-red-600">
-                              <ThumbsDown className="w-3 h-3" />
-                            </button>
-                          </div>
-                        )}
-                      </div>
                     </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+                  </div>
+                </div>
+              ))}
 
               {isLoading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex justify-start"
-                >
+                <div className="flex justify-start animate-fade-in">
                   <div className="bg-gray-100 p-3 rounded-lg border">
                     <div className="flex items-center gap-2 mb-1 text-xs text-gray-600">
                       <span>{currentAgent.avatar}</span>
@@ -564,7 +547,7 @@ export default function AIAssistantWidget({
                       <span className="text-sm text-gray-600">Thinking...</span>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               )}
 
               <div ref={messagesEndRef} />
@@ -648,6 +631,6 @@ export default function AIAssistantWidget({
           </CardContent>
         )}
       </Card>
-    </motion.div>
+    </div>
   );
 }
