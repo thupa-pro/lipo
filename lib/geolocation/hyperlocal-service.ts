@@ -423,6 +423,9 @@ class HyperlocalService {
   }
 
   private getTimeOfDayBoost(): number {
+    // Return neutral boost on server-side to prevent hydration mismatch
+    if (typeof window === "undefined") return 1.0;
+
     const hour = new Date().getHours();
 
     // Peak hours: 9-11 AM and 2-5 PM (1.1x boost)
