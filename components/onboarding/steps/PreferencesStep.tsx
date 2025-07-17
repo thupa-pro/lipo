@@ -10,7 +10,7 @@ import {
   CONSUMER_INTERESTS,
   ConsumerInterest,
 } from "@/lib/onboarding/types";
-import { useOnboardingClient } from "@/lib/onboarding/utils";
+import { useOnboardingClient } from "@/lib/onboarding/client-utils";
 
 export function PreferencesStep({ onNext, initialData }: OnboardingStepProps) {
   const { user } = useUser();
