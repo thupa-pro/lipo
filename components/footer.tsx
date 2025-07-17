@@ -301,22 +301,22 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-4 text-sm text-gray-300">
             {/* Language Selector in Footer */}
             <Select
               value={selectedLanguage}
               onValueChange={handleLanguageChange}
             >
-              <SelectTrigger className="w-[180px] transition-colors">
-                <Globe className="w-4 h-4 mr-2" />
+              <SelectTrigger className="w-[180px] border-gray-600 bg-gray-800 text-white hover:bg-gray-700 transition-colors">
+                <Globe className="w-4 h-4 mr-2 text-gray-400" />
                 <SelectValue placeholder="Select Language" />
               </SelectTrigger>
-              <SelectContent className="rounded-md shadow-lg">
+              <SelectContent className="bg-gray-800 border-gray-600 rounded-md shadow-lg">
                 {availableLanguages.map((lang) => (
                   <SelectItem
                     key={lang.code}
                     value={lang.code}
-                    className="transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="text-white hover:bg-gray-700 focus:bg-gray-700 transition-colors"
                   >
                     {lang.flag} {lang.name}
                   </SelectItem>
