@@ -198,20 +198,16 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3 text-sm text-foreground">
-                <Phone className="w-4 h-4 text-muted-foreground" />
-                <span>1-800-LOCONOMY</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-foreground">
                 <Mail className="w-4 h-4 text-muted-foreground" />
                 <span>hello@loconomy.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-foreground">
-                <MapPin className="w-4 h-4 text-muted-foreground" />
+                <Globe className="w-4 h-4 text-muted-foreground" />
                 <span>Available in 500+ cities</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-foreground">
-                <Globe className="w-4 h-4 text-muted-foreground" />
-                <span>24/7 Customer Support</span>
+                <MessageSquare className="w-4 h-4 text-muted-foreground" />
+                <span>24/7 Online Support</span>
               </div>
             </div>
 
