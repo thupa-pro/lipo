@@ -273,18 +273,30 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300">
             <span>© {currentYear} Loconomy, Inc. All rights reserved.</span>
-            <Link href="/privacy" className="hover:underline transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:underline transition-colors">
+            <Link
+              href="/terms"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               Terms of Service
             </Link>
-            <Link href="/cookies" className="hover:underline transition-colors">
+            <Link
+              href="/cookies"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               Cookie Policy
             </Link>
-            <Link href="/gdpr" className="hover:underline transition-colors">
+            <Link
+              href="/gdpr"
+              className="hover:underline hover:text-blue-400 transition-colors"
+            >
               GDPR
             </Link>
           </div>
