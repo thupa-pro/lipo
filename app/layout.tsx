@@ -103,12 +103,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} ${jakarta.variable} text-foreground`}
+        className={`${inter.className} ${jakarta.variable}`}
         suppressHydrationWarning
       >
         <EnhancedErrorBoundary>
           <MockAuthProvider>
-            <ClerkProvider>{children}</ClerkProvider>
+            <ClerkProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+                suppressHydrationWarning
+              >
+                <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+                  {children}
+                </div>
+                <Toaster />
+              </ThemeProvider>
+            </ClerkProvider>
           </MockAuthProvider>
         </EnhancedErrorBoundary>
       </body>
