@@ -139,7 +139,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
+    <footer className="bg-gray-900 dark:bg-gray-950 border-t border-gray-800 dark:border-gray-900">
       {/* Newsletter Section */}
       <div className="bg-gradient-to-r from-blue-600 to-teal-500">
         <div className="container mx-auto px-4 py-12">
@@ -189,7 +189,7 @@ export default function Footer() {
                 Loconomy
               </span>
             </Link>
-            <p className="text-gray-300 mb-6 max-w-sm">
+            <p className="text-gray-300 dark:text-gray-400 mb-6 max-w-sm">
               Connecting communities with trusted local service providers. From
               home cleaning to professional services, we make it easy to find
               help when you need it.
@@ -197,16 +197,16 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-sm text-white">
-                <Mail className="w-4 h-4 text-gray-400" />
+              <div className="flex items-center gap-3 text-sm text-white dark:text-gray-200">
+                <Mail className="w-4 h-4 text-gray-400 dark:text-gray-500" />
                 <span>hello@loconomy.com</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-white">
-                <Globe className="w-4 h-4 text-gray-400" />
+              <div className="flex items-center gap-3 text-sm text-white dark:text-gray-200">
+                <Globe className="w-4 h-4 text-gray-400 dark:text-gray-500" />
                 <span>Available in 500+ cities</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-white">
-                <MessageSquare className="w-4 h-4 text-gray-400" />
+              <div className="flex items-center gap-3 text-sm text-white dark:text-gray-200">
+                <MessageSquare className="w-4 h-4 text-gray-400 dark:text-gray-500" />
                 <span>24/7 Online Support</span>
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function Footer() {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="rounded-full border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white hover:border-gray-500 transition-colors"
+                  className="rounded-full border-gray-600 dark:border-gray-700 text-gray-300 dark:text-gray-400 hover:bg-gray-700 dark:hover:bg-gray-800 hover:text-white dark:hover:text-gray-200 hover:border-gray-500 dark:hover:border-gray-600 transition-colors"
                 >
                   <Link
                     href={social.href}
@@ -237,13 +237,15 @@ export default function Footer() {
           {/* Footer Links */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h4 className="font-semibold text-white mb-4">{section.title}</h4>
+              <h4 className="font-semibold text-white dark:text-gray-200 mb-4">
+                {section.title}
+              </h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
+                      className="text-gray-300 dark:text-gray-400 hover:text-blue-400 dark:hover:text-blue-300 transition-colors text-sm"
                     >
                       {link.label}
                     </Link>
@@ -254,16 +256,16 @@ export default function Footer() {
           ))}
         </div>
 
-        <Separator className="my-8 bg-gray-700" />
+        <Separator className="my-8 bg-gray-700 dark:bg-gray-800" />
 
         {/* Trust Indicators */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {trustIndicators.map((indicator, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 text-sm text-gray-300"
+              className="flex items-center gap-2 text-sm text-gray-300 dark:text-gray-400"
             >
-              <indicator.icon className="w-4 h-4 text-blue-400" />
+              <indicator.icon className="w-4 h-4 text-blue-400 dark:text-blue-300" />
               <span>{indicator.text}</span>
             </div>
           ))}
@@ -273,50 +275,50 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300 dark:text-gray-400">
             <span>© {currentYear} Loconomy, Inc. All rights reserved.</span>
             <Link
               href="/privacy"
-              className="hover:underline hover:text-blue-400 transition-colors"
+              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="hover:underline hover:text-blue-400 transition-colors"
+              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
             >
               Terms of Service
             </Link>
             <Link
               href="/cookies"
-              className="hover:underline hover:text-blue-400 transition-colors"
+              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
             >
               Cookie Policy
             </Link>
             <Link
               href="/gdpr"
-              className="hover:underline hover:text-blue-400 transition-colors"
+              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
             >
               GDPR
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-gray-300">
+          <div className="flex items-center gap-4 text-sm text-gray-300 dark:text-gray-400">
             {/* Language Selector in Footer */}
             <Select
               value={selectedLanguage}
               onValueChange={handleLanguageChange}
             >
-              <SelectTrigger className="w-[180px] border-gray-600 bg-gray-800 text-white hover:bg-gray-700 transition-colors">
-                <Globe className="w-4 h-4 mr-2 text-gray-400" />
+              <SelectTrigger className="w-[180px] border-gray-600 dark:border-gray-700 bg-gray-800 dark:bg-gray-900 text-white dark:text-gray-200 hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors">
+                <Globe className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500" />
                 <SelectValue placeholder="Select Language" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-600 rounded-md shadow-lg">
+              <SelectContent className="bg-gray-800 dark:bg-gray-900 border-gray-600 dark:border-gray-700 rounded-md shadow-lg">
                 {availableLanguages.map((lang) => (
                   <SelectItem
                     key={lang.code}
                     value={lang.code}
-                    className="text-white hover:bg-gray-700 focus:bg-gray-700 transition-colors"
+                    className="text-white dark:text-gray-200 hover:bg-gray-700 dark:hover:bg-gray-800 focus:bg-gray-700 dark:focus:bg-gray-800 transition-colors"
                   >
                     {lang.flag} {lang.name}
                   </SelectItem>
