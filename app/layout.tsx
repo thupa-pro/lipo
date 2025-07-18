@@ -7,6 +7,8 @@ import { MockAuthProvider } from "@/lib/mock/auth";
 import EnhancedErrorBoundary from "@/components/enhanced-error-boundary";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { FloatingAgentBubble } from "@/components/ai/floating-agent-bubble";
+import { MobileNavWrapper } from "@/components/mobile/mobile-nav-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
@@ -119,6 +121,10 @@ export default function RootLayout({
                 <div className="relative flex min-h-screen flex-col bg-background text-foreground">
                   {children}
                 </div>
+                
+                {/* Global UI Components */}
+                <FloatingAgentBubble />
+                <MobileNavWrapper />
                 <Toaster />
               </ThemeProvider>
             </ClerkProvider>
@@ -128,3 +134,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+
