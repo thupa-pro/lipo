@@ -47,7 +47,17 @@ export default function SignInPage() {
                   src="https://cdn.builder.io/api/v1/image/assets%2F7db1aa9d72cc410a876ff9b626b97177%2F9572c145dca8439e88c28327615d849e?format=webp&width=800"
                   alt="Loconomy Logo"
                   className="w-12 h-12 rounded-2xl object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextElementSibling.style.display = "flex";
+                  }}
                 />
+                <div
+                  className="w-12 h-12 bg-gradient-to-r from-blue-600 to-teal-500 rounded-2xl flex items-center justify-center"
+                  style={{ display: "none" }}
+                >
+                  <span className="text-white font-bold text-xl">L</span>
+                </div>
                 <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
                   Loconomy
                 </span>
