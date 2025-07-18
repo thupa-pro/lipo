@@ -182,9 +182,11 @@ export default function Footer() {
               href="/"
               className="flex items-center space-x-2 mb-4 transition-opacity hover:opacity-80"
             >
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">L</span>
-              </div>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F7db1aa9d72cc410a876ff9b626b97177%2F9572c145dca8439e88c28327615d849e?format=webp&width=800"
+                alt="Loconomy Logo"
+                className="w-8 h-8 rounded-lg object-contain"
+              />
               <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
                 Loconomy
               </span>
