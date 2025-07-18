@@ -40,6 +40,7 @@ import { useUser } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
 import { UserRole } from "@/lib/rbac/types";
 import { getRoleNavigation } from "@/lib/rbac/utils";
+import { CitySelector } from "@/components/i18n/city-selector";
 
 interface NavigationProps {
   userRole?: UserRole;
@@ -207,6 +208,10 @@ export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
+            {/* City Selector */}
+            <div className="hidden lg:block">
+              <CitySelector />
+            </div>
             <ThemeToggle />
 
             {/* User Authentication */}
