@@ -157,7 +157,17 @@ export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
                 src="https://cdn.builder.io/api/v1/image/assets%2F7db1aa9d72cc410a876ff9b626b97177%2F9572c145dca8439e88c28327615d849e?format=webp&width=800"
                 alt="Loconomy Logo"
                 className="w-10 h-10 rounded-2xl shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110 object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  e.currentTarget.nextElementSibling.style.display = "flex";
+                }}
               />
+              <div
+                className="w-10 h-10 bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110"
+                style={{ display: "none" }}
+              >
+                <span className="text-white font-black text-lg">L</span>
+              </div>
             </div>
             <div className="flex items-center gap-2">
               <span className="font-black text-xl bg-gradient-to-r from-slate-700 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
@@ -319,7 +329,18 @@ export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
                         src="https://cdn.builder.io/api/v1/image/assets%2F7db1aa9d72cc410a876ff9b626b97177%2F9572c145dca8439e88c28327615d849e?format=webp&width=800"
                         alt="Loconomy Logo"
                         className="w-12 h-12 rounded-2xl shadow-lg object-contain"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                          e.currentTarget.nextElementSibling.style.display =
+                            "flex";
+                        }}
                       />
+                      <div
+                        className="w-12 h-12 bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg"
+                        style={{ display: "none" }}
+                      >
+                        <span className="text-white font-black text-xl">L</span>
+                      </div>
                       <div>
                         <span className="text-2xl font-black bg-gradient-to-r from-white via-violet-200 to-white bg-clip-text text-transparent">
                           Loconomy
