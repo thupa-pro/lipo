@@ -30,7 +30,7 @@ import {
 export default function InternationalDetectionDemo() {
   const [testAmount, setTestAmount] = useState(1000);
   const [testPhone, setTestPhone] = useState("");
-  const [manualCountry, setManualCountry] = useState("");
+  const [manualCountryInput, setManualCountryInput] = useState("");
 
   const {
     isDetecting,
@@ -46,7 +46,7 @@ export default function InternationalDetectionDemo() {
     formatPhone,
     validatePhone,
     detectLocation,
-    setManualCountry,
+    setManualCountry: setCountryManually,
     resetDetection,
   } = useInternationalDetection({
     enableGeolocation: true,
@@ -73,9 +73,9 @@ export default function InternationalDetectionDemo() {
   });
 
   const handleManualCountrySet = () => {
-    if (manualCountry.trim()) {
-      setManualCountry(manualCountry.trim());
-      setManualCountry("");
+          if (manualCountryInput.trim()) {
+        setCountryManually(manualCountryInput.trim());
+        setManualCountryInput("");
     }
   };
 
@@ -365,8 +365,8 @@ export default function InternationalDetectionDemo() {
             </p>
             <div className="flex gap-2">
               <Input
-                value={manualCountry}
-                onChange={(e) => setManualCountry(e.target.value)}
+                                  value={manualCountryInput}
+                onChange={(e) => setManualCountryInput(e.target.value)}
                 placeholder="Enter country name (e.g., Germany, Japan, Brazil)"
                 className="flex-1"
               />
