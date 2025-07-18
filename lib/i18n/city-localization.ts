@@ -247,7 +247,7 @@ export const cityConfigurations: Record<string, CityLocalizationData> = {
     timeFormat: "12h",
     firstDayOfWeek: 6,
     rtl: false,
-    localHolidays: ["ਵੈਸਾਖੀ", "ਈਦ", "ਯੋ�� ਪਾਕਿਸਤਾਨ"],
+    localHolidays: ["ਵੈਸਾਖੀ", "ਈਦ", "ਯੋਮ ਪਾਕਿਸਤਾਨ"],
     businessHours: { start: "09:00", end: "17:00", days: [1, 2, 3, 4, 5] },
     emergencyNumber: "15",
     addressFormat: "in",
@@ -751,7 +751,7 @@ export const cityConfigurations: Record<string, CityLocalizationData> = {
     timeFormat: "24h",
     firstDayOfWeek: 1,
     rtl: false,
-    localHolidays: ["Χριστούγεννα", "Πάσχα", "Εθνι��ή Επέτειος"],
+    localHolidays: ["Χριστούγεννα", "Πάσχα", "Εθνική Επέτειος"],
     businessHours: { start: "09:00", end: "17:00", days: [1, 2, 3, 4, 5] },
     emergencyNumber: "112",
     addressFormat: "eu",
@@ -1066,25 +1066,80 @@ export function detectCityFromLocation(coordinates: {
   return nearest.distance < 1 ? nearest.key : null; // Within ~111km
 }
 
-// Approximate coordinates for major cities
+// Comprehensive coordinates for all metropolitan cities
 function getCityCoordinates(
   cityKey: string,
 ): { lat: number; lng: number } | null {
   const coords: Record<string, { lat: number; lng: number }> = {
+    // Asia-Pacific
     tokyo: { lat: 35.6762, lng: 139.6503 },
-    beijing: { lat: 39.9042, lng: 116.4074 },
     delhi: { lat: 28.7041, lng: 77.1025 },
+    shanghai: { lat: 31.2304, lng: 121.4737 },
+    dhaka: { lat: 23.8103, lng: 90.4125 },
+    beijing: { lat: 39.9042, lng: 116.4074 },
+    mumbai: { lat: 19.076, lng: 72.8777 },
+    osaka: { lat: 34.6937, lng: 135.5023 },
+    karachi: { lat: 24.8607, lng: 67.0011 },
+    chongqing: { lat: 29.4316, lng: 106.9123 },
+    guangzhou: { lat: 23.1291, lng: 113.2644 },
+    tianjin: { lat: 39.3434, lng: 117.3616 },
+    shenzhen: { lat: 22.5431, lng: 114.0579 },
+    kolkata: { lat: 22.5726, lng: 88.3639 },
+    lahore: { lat: 31.5497, lng: 74.3436 },
     seoul: { lat: 37.5665, lng: 126.978 },
     bangkok: { lat: 13.7563, lng: 100.5018 },
-    london: { lat: 51.5074, lng: -0.1278 },
-    paris: { lat: 48.8566, lng: 2.3522 },
-    berlin: { lat: 52.52, lng: 13.405 },
-    moscow: { lat: 55.7558, lng: 37.6176 },
-    dubai: { lat: 25.2048, lng: 55.2708 },
-    cairo: { lat: 30.0444, lng: 31.2357 },
+    jakarta: { lat: -6.2088, lng: 106.8456 },
+    manila: { lat: 14.5995, lng: 120.9842 },
+    ho_chi_minh_city: { lat: 10.8231, lng: 106.6297 },
+    kuala_lumpur: { lat: 3.139, lng: 101.6869 },
+    taipei: { lat: 25.033, lng: 121.5654 },
+
+    // Americas
     new_york: { lat: 40.7128, lng: -74.006 },
     mexico_city: { lat: 19.4326, lng: -99.1332 },
     sao_paulo: { lat: -23.5505, lng: -46.6333 },
+    los_angeles: { lat: 34.0522, lng: -118.2437 },
+    rio_de_janeiro: { lat: -22.9068, lng: -43.1729 },
+    chicago: { lat: 41.8781, lng: -87.6298 },
+    lima: { lat: -12.0464, lng: -77.0428 },
+    buenos_aires: { lat: -34.6118, lng: -58.396 },
+
+    // Europe
+    london: { lat: 51.5074, lng: -0.1278 },
+    moscow: { lat: 55.7558, lng: 37.6176 },
+    istanbul: { lat: 41.0082, lng: 28.9784 },
+    paris: { lat: 48.8566, lng: 2.3522 },
+    berlin: { lat: 52.52, lng: 13.405 },
+    madrid: { lat: 40.4168, lng: -3.7038 },
+    rome: { lat: 41.9028, lng: 12.4964 },
+    barcelona: { lat: 41.3851, lng: 2.1734 },
+    milan: { lat: 45.4642, lng: 9.19 },
+    naples: { lat: 40.8518, lng: 14.2681 },
+    kiev: { lat: 50.4501, lng: 30.5234 },
+    saint_petersburg: { lat: 59.9311, lng: 30.3609 },
+    warsaw: { lat: 52.2297, lng: 21.0122 },
+    amsterdam: { lat: 52.3676, lng: 4.9041 },
+    vienna: { lat: 48.2082, lng: 16.3738 },
+    athens: { lat: 37.9755, lng: 23.7348 },
+    budapest: { lat: 47.4979, lng: 19.0402 },
+    prague: { lat: 50.0755, lng: 14.4378 },
+    stockholm: { lat: 59.3293, lng: 18.0686 },
+    copenhagen: { lat: 55.6761, lng: 12.5683 },
+    oslo: { lat: 59.9139, lng: 10.7522 },
+    helsinki: { lat: 60.1695, lng: 24.9354 },
+    bucharest: { lat: 44.4268, lng: 26.1025 },
+
+    // Middle East & Africa
+    cairo: { lat: 30.0444, lng: 31.2357 },
+    tehran: { lat: 35.6892, lng: 51.389 },
+    baghdad: { lat: 33.3152, lng: 44.3661 },
+    riyadh: { lat: 24.7136, lng: 46.6753 },
+    dubai: { lat: 25.2048, lng: 55.2708 },
+    tel_aviv: { lat: 32.0853, lng: 34.7818 },
+    nairobi: { lat: -1.2921, lng: 36.8219 },
+    kinshasa: { lat: -4.4419, lng: 15.2663 },
+    algiers: { lat: 36.7372, lng: 3.0865 },
+    lisbon: { lat: 38.7223, lng: -9.1393 },
   };
   return coords[cityKey] || null;
 }
