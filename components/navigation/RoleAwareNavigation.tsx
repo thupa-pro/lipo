@@ -40,6 +40,7 @@ import { useUser } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
 import { UserRole } from "@/lib/rbac/types";
 import { getRoleNavigation } from "@/lib/rbac/utils";
+import { CitySelector } from "@/components/i18n/city-selector";
 
 interface NavigationProps {
   userRole?: UserRole;
@@ -153,7 +154,19 @@ export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
             aria-label="Loconomy home"
           >
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F7db1aa9d72cc410a876ff9b626b97177%2F9572c145dca8439e88c28327615d849e?format=webp&width=800"
+                alt="Loconomy Logo"
+                className="w-10 h-10 rounded-2xl shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110 object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  e.currentTarget.nextElementSibling.style.display = "flex";
+                }}
+              />
+              <div
+                className="w-10 h-10 bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110"
+                style={{ display: "none" }}
+              >
                 <span className="text-white font-black text-lg">L</span>
               </div>
             </div>
@@ -195,6 +208,10 @@ export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
+            {/* City Selector */}
+            <div className="hidden lg:block">
+              <CitySelector />
+            </div>
             <ThemeToggle />
 
             {/* User Authentication */}
@@ -313,7 +330,20 @@ export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
                   <div className="flex flex-col h-full">
                     {/* Mobile Header */}
                     <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/10">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+                      <img
+                        src="https://cdn.builder.io/api/v1/image/assets%2F7db1aa9d72cc410a876ff9b626b97177%2F9572c145dca8439e88c28327615d849e?format=webp&width=800"
+                        alt="Loconomy Logo"
+                        className="w-12 h-12 rounded-2xl shadow-lg object-contain"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                          e.currentTarget.nextElementSibling.style.display =
+                            "flex";
+                        }}
+                      />
+                      <div
+                        className="w-12 h-12 bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg"
+                        style={{ display: "none" }}
+                      >
                         <span className="text-white font-black text-xl">L</span>
                       </div>
                       <div>

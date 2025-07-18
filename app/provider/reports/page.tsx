@@ -1,13 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -17,116 +11,162 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Download,
   FileText,
-  TrendingUp,
-  Calendar as CalendarIcon,
-  Filter,
-  Eye,
+  Download,
+  Calendar,
   DollarSign,
+  Star,
+  Users,
+  TrendingUp,
   Clock,
 } from "lucide-react";
-import { format } from "date-fns";
 
 export default function ProviderReportsPage() {
-  const [dateRange, setDateRange] = useState<{ from?: Date; to?: Date }>({
-    from: new Date(2024, 0, 1),
-    to: new Date(),
-  });
-  const [reportType, setReportType] = useState("earnings");
+  const [reportType, setReportType] = useState("revenue");
+  const [dateRange, setDateRange] = useState("30d");
 
   const reports = [
     {
-      id: 1,
-      title: "Monthly Earnings Report",
-      description:
-        "Detailed breakdown of your earnings for the selected period",
-      type: "earnings",
+      name: "Revenue Report",
+      description: "Detailed breakdown of earnings and payments",
+      lastGenerated: "2 hours ago",
+      type: "revenue",
       icon: DollarSign,
       color: "text-green-600",
-      generated: "2024-01-20",
-      status: "ready",
     },
     {
-      id: 2,
-      title: "Booking Analytics",
-      description: "Analysis of your booking patterns and customer behavior",
+      name: "Booking Summary",
+      description: "Client bookings and appointment analytics",
+      lastGenerated: "1 day ago",
       type: "bookings",
-      icon: CalendarIcon,
+      icon: Calendar,
       color: "text-blue-600",
-      generated: "2024-01-18",
-      status: "ready",
     },
     {
-      id: 3,
-      title: "Performance Metrics",
-      description: "Key performance indicators and trends",
+      name: "Performance Review",
+      description: "Ratings, reviews, and service quality metrics",
+      lastGenerated: "3 days ago",
       type: "performance",
-      icon: TrendingUp,
-      color: "text-purple-600",
-      generated: "2024-01-15",
-      status: "processing",
+      icon: Star,
+      color: "text-yellow-600",
     },
     {
-      id: 4,
-      title: "Customer Feedback Summary",
-      description: "Compilation of reviews and ratings",
-      type: "feedback",
-      icon: Eye,
-      color: "text-orange-600",
-      generated: "2024-01-12",
-      status: "ready",
+      name: "Client Analysis",
+      description: "Customer demographics and behavior insights",
+      lastGenerated: "1 week ago",
+      type: "clients",
+      icon: Users,
+      color: "text-purple-600",
     },
   ];
 
-  const quickStats = [
-    { label: "Total Reports", value: "24", period: "This Year" },
-    { label: "Avg. Response Time", value: "2.3h", period: "Last 30 Days" },
-    { label: "Report Accuracy", value: "98.5%", period: "All Time" },
+  const recentReports = [
+    {
+      name: "Monthly Revenue - November 2024",
+      generatedOn: "Dec 1, 2024",
+      size: "2.4 MB",
+      format: "PDF",
+    },
+    {
+      name: "Client Performance Report - Q4",
+      generatedOn: "Nov 28, 2024",
+      size: "1.8 MB",
+      format: "XLSX",
+    },
+    {
+      name: "Service Analytics - October",
+      generatedOn: "Nov 15, 2024",
+      size: "3.1 MB",
+      format: "PDF",
+    },
+  ];
+
+  const metrics = [
+    {
+      label: "Total Revenue",
+      value: "$12,847",
+      change: "+15.2%",
+      trend: "up",
+    },
+    {
+      label: "Completed Jobs",
+      value: "156",
+      change: "+8.4%",
+      trend: "up",
+    },
+    {
+      label: "Average Rating",
+      value: "4.8",
+      change: "+0.2",
+      trend: "up",
+    },
+    {
+      label: "Response Time",
+      value: "2.3h",
+      change: "-12%",
+      trend: "down",
+    },
   ];
 
   const generateReport = () => {
-    console.log("Generating report:", { reportType, dateRange });
-    // In a real app, this would trigger report generation
+    console.log(`Generating ${reportType} report for ${dateRange}`);
+    // Report generation logic would go here
   };
 
   return (
     <div className="container mx-auto p-6">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold">Reports & Analytics</h1>
-        <p className="text-muted-foreground">
-          Generate and download detailed reports
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          Reports & Analytics
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400">
+          Generate detailed reports and track your business performance
         </p>
       </div>
 
-      {/* Quick Stats */}
-      <div className="grid gap-4 md:grid-cols-3 mb-6">
-        {quickStats.map((stat, index) => (
+      {/* Quick Metrics */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {metrics.map((metric, index) => (
           <Card key={index}>
-            <CardContent className="p-4">
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-              <div className="text-xs text-muted-foreground">{stat.period}</div>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                    {metric.label}
+                  </p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                    {metric.value}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <TrendingUp
+                    className={`h-4 w-4 ${
+                      metric.trend === "up" ? "text-green-600" : "text-red-600"
+                    }`}
+                  />
+                  <span
+                    className={`text-xs font-medium ${
+                      metric.trend === "up" ? "text-green-600" : "text-red-600"
+                    }`}
+                  >
+                    {metric.change}
+                  </span>
+                </div>
+              </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        {/* Report Generator */}
-        <Card className="lg:col-span-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Generate New Report */}
+        <Card>
           <CardHeader>
-            <CardTitle>Generate New Report</CardTitle>
-            <CardDescription>
-              Create a custom report for your data
-            </CardDescription>
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="h-5 w-5" />
+              Generate New Report
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
@@ -138,13 +178,13 @@ export default function ProviderReportsPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="earnings">Earnings Report</SelectItem>
-                  <SelectItem value="bookings">Booking Analytics</SelectItem>
+                  <SelectItem value="revenue">Revenue Report</SelectItem>
+                  <SelectItem value="bookings">Booking Summary</SelectItem>
                   <SelectItem value="performance">
-                    Performance Metrics
+                    Performance Review
                   </SelectItem>
-                  <SelectItem value="feedback">Customer Feedback</SelectItem>
-                  <SelectItem value="tax">Tax Summary</SelectItem>
+                  <SelectItem value="clients">Client Analysis</SelectItem>
+                  <SelectItem value="custom">Custom Report</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -153,139 +193,90 @@ export default function ProviderReportsPage() {
               <label className="text-sm font-medium mb-2 block">
                 Date Range
               </label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start text-left"
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {dateRange.from && dateRange.to
-                      ? `${format(dateRange.from, "MMM d")} - ${format(dateRange.to, "MMM d, yyyy")}`
-                      : "Select date range"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="range"
-                    selected={dateRange}
-                    onSelect={(range) => setDateRange(range || {})}
-                    numberOfMonths={2}
-                  />
-                </PopoverContent>
-              </Popover>
+              <Select value={dateRange} onValueChange={setDateRange}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="7d">Last 7 days</SelectItem>
+                  <SelectItem value="30d">Last 30 days</SelectItem>
+                  <SelectItem value="90d">Last 90 days</SelectItem>
+                  <SelectItem value="1y">Last year</SelectItem>
+                  <SelectItem value="custom">Custom range</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <Button onClick={generateReport} className="w-full">
-              <FileText className="w-4 h-4 mr-2" />
+              <FileText className="h-4 w-4 mr-2" />
               Generate Report
             </Button>
           </CardContent>
         </Card>
 
         {/* Available Reports */}
-        <Card className="lg:col-span-2">
+        <Card>
           <CardHeader>
-            <CardTitle>Available Reports</CardTitle>
-            <CardDescription>
-              Download your previously generated reports
-            </CardDescription>
+            <CardTitle>Available Report Types</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {reports.map((report) => {
-                const Icon = report.icon;
-                return (
-                  <div
-                    key={report.id}
-                    className="flex items-center justify-between p-4 border rounded-lg"
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div
-                        className={`w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center`}
-                      >
-                        <Icon className={`w-5 h-5 ${report.color}`} />
-                      </div>
-                      <div>
-                        <h3 className="font-medium">{report.title}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {report.description}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Generated: {report.generated}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Badge
-                        variant={
-                          report.status === "ready" ? "default" : "secondary"
-                        }
-                      >
-                        {report.status}
-                      </Badge>
-                      {report.status === "ready" && (
-                        <Button size="sm" variant="outline">
-                          <Download className="w-4 h-4" />
-                        </Button>
-                      )}
-                    </div>
+          <CardContent className="space-y-4">
+            {reports.map((report, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 p-3 border border-gray-200 dark:border-gray-700 rounded-lg"
+              >
+                <report.icon className={`h-8 w-8 ${report.color}`} />
+                <div className="flex-1">
+                  <h4 className="font-medium text-gray-900 dark:text-white">
+                    {report.name}
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {report.description}
+                  </p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <Clock className="h-3 w-3 text-gray-400" />
+                    <span className="text-xs text-gray-500">
+                      Last generated {report.lastGenerated}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              </div>
+            ))}
           </CardContent>
         </Card>
       </div>
 
-      {/* Report Templates */}
+      {/* Recent Reports */}
       <Card className="mt-6">
         <CardHeader>
-          <CardTitle>Report Templates</CardTitle>
-          <CardDescription>
-            Pre-configured report templates for common needs
-          </CardDescription>
+          <CardTitle>Recent Reports</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                name: "Tax Summary",
-                description: "For tax filing purposes",
-                icon: FileText,
-              },
-              {
-                name: "Performance Review",
-                description: "Monthly performance",
-                icon: TrendingUp,
-              },
-              {
-                name: "Customer Analysis",
-                description: "Customer behavior insights",
-                icon: Eye,
-              },
-              {
-                name: "Time Tracking",
-                description: "Hours worked summary",
-                icon: Clock,
-              },
-            ].map((template, index) => {
-              const Icon = template.icon;
-              return (
-                <Card
-                  key={index}
-                  className="cursor-pointer hover:shadow-md transition-shadow"
-                >
-                  <CardContent className="p-4 text-center">
-                    <Icon className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
-                    <h3 className="font-medium">{template.name}</h3>
-                    <p className="text-xs text-muted-foreground">
-                      {template.description}
+          <div className="space-y-3">
+            {recentReports.map((report, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <FileText className="h-5 w-5 text-blue-600" />
+                  <div>
+                    <h4 className="font-medium text-gray-900 dark:text-white">
+                      {report.name}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Generated on {report.generatedOn} • {report.size}
                     </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline">{report.format}</Badge>
+                  <Button size="sm" variant="outline">
+                    <Download className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>

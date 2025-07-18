@@ -1,16 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -18,332 +13,254 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Clock,
-  Calendar as CalendarIcon,
-  Plus,
-  Edit,
-  Trash2,
-  Save,
-  RotateCcw,
-} from "lucide-react";
+import { Clock, Save, Calendar, Plus, X } from "lucide-react";
 
 export default function ProviderAvailabilityPage() {
-  const [isGenerallyAvailable, setIsGenerallyAvailable] = useState(true);
-  const [selectedDay, setSelectedDay] = useState("monday");
+  const [availability, setAvailability] = useState({
+    monday: { enabled: true, start: "09:00", end: "17:00" },
+    tuesday: { enabled: true, start: "09:00", end: "17:00" },
+    wednesday: { enabled: true, start: "09:00", end: "17:00" },
+    thursday: { enabled: true, start: "09:00", end: "17:00" },
+    friday: { enabled: true, start: "09:00", end: "17:00" },
+    saturday: { enabled: false, start: "10:00", end: "16:00" },
+    sunday: { enabled: false, start: "10:00", end: "16:00" },
+  });
 
-  const daysOfWeek = [
-    { id: "monday", name: "Monday" },
-    { id: "tuesday", name: "Tuesday" },
-    { id: "wednesday", name: "Wednesday" },
-    { id: "thursday", name: "Thursday" },
-    { id: "friday", name: "Friday" },
-    { id: "saturday", name: "Saturday" },
-    { id: "sunday", name: "Sunday" },
+  const [breakTimes, setBreakTimes] = useState([
+    { start: "12:00", end: "13:00", label: "Lunch Break" },
+  ]);
+
+  const [timeSlots, setTimeSlots] = useState({
+    duration: "60",
+    buffer: "15",
+  });
+
+  const days = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
   ];
 
-  const defaultSchedule = {
-    monday: { available: true, start: "09:00", end: "17:00" },
-    tuesday: { available: true, start: "09:00", end: "17:00" },
-    wednesday: { available: true, start: "09:00", end: "17:00" },
-    thursday: { available: true, start: "09:00", end: "17:00" },
-    friday: { available: true, start: "09:00", end: "17:00" },
-    saturday: { available: false, start: "10:00", end: "14:00" },
-    sunday: { available: false, start: "10:00", end: "14:00" },
-  };
-
-  const [schedule, setSchedule] = useState(defaultSchedule);
-
-  const timeSlots = [
-    "06:00",
-    "06:30",
-    "07:00",
-    "07:30",
-    "08:00",
-    "08:30",
-    "09:00",
-    "09:30",
-    "10:00",
-    "10:30",
-    "11:00",
-    "11:30",
-    "12:00",
-    "12:30",
-    "13:00",
-    "13:30",
-    "14:00",
-    "14:30",
-    "15:00",
-    "15:30",
-    "16:00",
-    "16:30",
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
-    "19:00",
-    "19:30",
-    "20:00",
-    "20:30",
-    "21:00",
-    "21:30",
-    "22:00",
-  ];
-
-  const upcomingBookings = [
-    {
-      id: 1,
-      date: "2024-01-22",
-      time: "10:00 AM",
-      service: "Home Cleaning",
-      customer: "Sarah J.",
-      duration: "2 hours",
-    },
-    {
-      id: 2,
-      date: "2024-01-23",
-      time: "2:00 PM",
-      service: "Plumbing Repair",
-      customer: "Mike R.",
-      duration: "1.5 hours",
-    },
-    {
-      id: 3,
-      date: "2024-01-25",
-      time: "9:00 AM",
-      service: "Garden Maintenance",
-      customer: "Lisa M.",
-      duration: "3 hours",
-    },
-  ];
-
-  const blockedDates = [
-    { date: "2024-01-24", reason: "Personal time off" },
-    { date: "2024-01-30", reason: "Equipment maintenance" },
-  ];
-
-  const updateDaySchedule = (
-    day: string,
-    field: string,
-    value: string | boolean,
-  ) => {
-    setSchedule((prev) => ({
+  const updateAvailability = (day: string, field: string, value: any) => {
+    setAvailability((prev) => ({
       ...prev,
-      [day]: {
-        ...prev[day as keyof typeof prev],
-        [field]: value,
-      },
+      [day]: { ...prev[day as keyof typeof prev], [field]: value },
     }));
   };
 
-  const saveSchedule = () => {
-    console.log("Saving schedule:", schedule);
-    // In a real app, this would save to backend
+  const addBreak = () => {
+    setBreakTimes([
+      ...breakTimes,
+      { start: "15:00", end: "15:30", label: "Break" },
+    ]);
+  };
+
+  const removeBreak = (index: number) => {
+    setBreakTimes(breakTimes.filter((_, i) => i !== index));
+  };
+
+  const handleSave = () => {
+    // Save availability settings
+    console.log("Saving availability:", {
+      availability,
+      breakTimes,
+      timeSlots,
+    });
   };
 
   return (
     <div className="container mx-auto p-6">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold">Availability Settings</h1>
-        <p className="text-muted-foreground">
-          Manage your working hours and availability
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          Availability Settings
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400">
+          Configure your working hours and time preferences
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Weekly Schedule */}
-        <Card className="lg:col-span-2">
+        <Card>
           <CardHeader>
-            <CardTitle>Weekly Schedule</CardTitle>
-            <CardDescription>
-              Set your regular working hours for each day
-            </CardDescription>
-            <div className="flex items-center space-x-2">
-              <Switch
-                checked={isGenerallyAvailable}
-                onCheckedChange={setIsGenerallyAvailable}
-              />
-              <Label>Available for bookings</Label>
-            </div>
+            <CardTitle className="flex items-center gap-2">
+              <Calendar className="h-5 w-5" />
+              Weekly Schedule
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {daysOfWeek.map((day) => (
+            {days.map((day) => (
               <div
-                key={day.id}
-                className="flex items-center justify-between p-4 border rounded-lg"
+                key={day}
+                className="flex items-center gap-4 p-3 border border-gray-200 dark:border-gray-700 rounded-lg"
               >
-                <div className="flex items-center space-x-4">
-                  <div className="w-20">
-                    <Label className="font-medium">{day.name}</Label>
-                  </div>
-                  <Switch
-                    checked={
-                      schedule[day.id as keyof typeof schedule].available
-                    }
-                    onCheckedChange={(checked) =>
-                      updateDaySchedule(day.id, "available", checked)
-                    }
-                  />
+                <div className="w-20">
+                  <Label className="font-medium capitalize">{day}</Label>
                 </div>
 
-                {schedule[day.id as keyof typeof schedule].available && (
-                  <div className="flex items-center space-x-2">
-                    <Select
-                      value={schedule[day.id as keyof typeof schedule].start}
-                      onValueChange={(value) =>
-                        updateDaySchedule(day.id, "start", value)
+                <Switch
+                  checked={
+                    availability[day as keyof typeof availability].enabled
+                  }
+                  onCheckedChange={(checked) =>
+                    updateAvailability(day, "enabled", checked)
+                  }
+                />
+
+                {availability[day as keyof typeof availability].enabled && (
+                  <div className="flex items-center gap-2 flex-1">
+                    <Input
+                      type="time"
+                      value={
+                        availability[day as keyof typeof availability].start
                       }
-                    >
-                      <SelectTrigger className="w-24">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {timeSlots.map((time) => (
-                          <SelectItem key={time} value={time}>
-                            {time}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <span className="text-muted-foreground">to</span>
-                    <Select
-                      value={schedule[day.id as keyof typeof schedule].end}
-                      onValueChange={(value) =>
-                        updateDaySchedule(day.id, "end", value)
+                      onChange={(e) =>
+                        updateAvailability(day, "start", e.target.value)
                       }
-                    >
-                      <SelectTrigger className="w-24">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {timeSlots.map((time) => (
-                          <SelectItem key={time} value={time}>
-                            {time}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      className="w-24"
+                    />
+                    <span className="text-gray-500">to</span>
+                    <Input
+                      type="time"
+                      value={availability[day as keyof typeof availability].end}
+                      onChange={(e) =>
+                        updateAvailability(day, "end", e.target.value)
+                      }
+                      className="w-24"
+                    />
                   </div>
                 )}
               </div>
             ))}
-
-            <div className="flex gap-2 pt-4">
-              <Button onClick={saveSchedule}>
-                <Save className="w-4 h-4 mr-2" />
-                Save Schedule
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => setSchedule(defaultSchedule)}
-              >
-                <RotateCcw className="w-4 h-4 mr-2" />
-                Reset to Default
-              </Button>
-            </div>
           </CardContent>
         </Card>
 
-        {/* Quick Actions & Status */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Manage your availability</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Button className="w-full" variant="outline">
-              <Plus className="w-4 h-4 mr-2" />
-              Block Time Off
-            </Button>
-            <Button className="w-full" variant="outline">
-              <CalendarIcon className="w-4 h-4 mr-2" />
-              Set Special Hours
-            </Button>
-            <Button className="w-full" variant="outline">
-              <Clock className="w-4 h-4 mr-2" />
-              Emergency Override
-            </Button>
-
-            <div className="pt-4 border-t">
-              <Label className="text-sm font-medium">Current Status</Label>
-              <div className="mt-2">
-                <Badge variant={isGenerallyAvailable ? "default" : "secondary"}>
-                  {isGenerallyAvailable ? "Available" : "Unavailable"}
-                </Badge>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-2 mt-6">
-        {/* Upcoming Bookings */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Upcoming Bookings</CardTitle>
-            <CardDescription>Your scheduled appointments</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {upcomingBookings.map((booking) => (
-                <div
-                  key={booking.id}
-                  className="flex items-center justify-between p-3 border rounded-lg"
+        {/* Time Slot Settings */}
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Clock className="h-5 w-5" />
+                Time Slot Settings
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label className="text-sm font-medium">
+                  Appointment Duration
+                </Label>
+                <Select
+                  value={timeSlots.duration}
+                  onValueChange={(value) =>
+                    setTimeSlots((prev) => ({ ...prev, duration: value }))
+                  }
                 >
-                  <div>
-                    <p className="font-medium">{booking.service}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {booking.customer} • {booking.duration}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm font-medium">{booking.date}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {booking.time}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <Button variant="outline" className="w-full mt-4">
-              View All Bookings
-            </Button>
-          </CardContent>
-        </Card>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="30">30 minutes</SelectItem>
+                    <SelectItem value="60">1 hour</SelectItem>
+                    <SelectItem value="90">1.5 hours</SelectItem>
+                    <SelectItem value="120">2 hours</SelectItem>
+                    <SelectItem value="custom">Custom</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-        {/* Blocked Dates */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Blocked Dates</CardTitle>
-            <CardDescription>Days when you're unavailable</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {blockedDates.map((blocked, index) => (
+              <div>
+                <Label className="text-sm font-medium">Buffer Time</Label>
+                <Select
+                  value={timeSlots.buffer}
+                  onValueChange={(value) =>
+                    setTimeSlots((prev) => ({ ...prev, buffer: value }))
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="0">No buffer</SelectItem>
+                    <SelectItem value="15">15 minutes</SelectItem>
+                    <SelectItem value="30">30 minutes</SelectItem>
+                    <SelectItem value="60">1 hour</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Break Times */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle>Break Times</CardTitle>
+                <Button size="sm" onClick={addBreak}>
+                  <Plus className="h-4 w-4 mr-1" />
+                  Add Break
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {breakTimes.map((breakTime, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-3 border rounded-lg"
+                  className="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg"
                 >
-                  <div>
-                    <p className="font-medium">{blocked.date}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {blocked.reason}
-                    </p>
-                  </div>
-                  <Button size="sm" variant="outline" className="text-red-600">
-                    <Trash2 className="w-4 h-4" />
+                  <Input
+                    placeholder="Break name"
+                    value={breakTime.label}
+                    onChange={(e) => {
+                      const newBreaks = [...breakTimes];
+                      newBreaks[index].label = e.target.value;
+                      setBreakTimes(newBreaks);
+                    }}
+                    className="flex-1"
+                  />
+                  <Input
+                    type="time"
+                    value={breakTime.start}
+                    onChange={(e) => {
+                      const newBreaks = [...breakTimes];
+                      newBreaks[index].start = e.target.value;
+                      setBreakTimes(newBreaks);
+                    }}
+                    className="w-24"
+                  />
+                  <span className="text-gray-500">to</span>
+                  <Input
+                    type="time"
+                    value={breakTime.end}
+                    onChange={(e) => {
+                      const newBreaks = [...breakTimes];
+                      newBreaks[index].end = e.target.value;
+                      setBreakTimes(newBreaks);
+                    }}
+                    className="w-24"
+                  />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => removeBreak(index)}
+                  >
+                    <X className="h-4 w-4" />
                   </Button>
                 </div>
               ))}
-            </div>
-            <Button variant="outline" className="w-full mt-4">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Blocked Date
-            </Button>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <div className="mt-6 flex justify-end">
+        <Button onClick={handleSave} className="flex items-center gap-2">
+          <Save className="h-4 w-4" />
+          Save Availability
+        </Button>
       </div>
     </div>
   );

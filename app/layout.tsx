@@ -5,6 +5,8 @@ import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { MockAuthProvider } from "@/lib/mock/auth";
 import EnhancedErrorBoundary from "@/components/enhanced-error-boundary";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
@@ -101,12 +103,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} ${jakarta.variable} text-foreground`}
+        className={`${inter.className} ${jakarta.variable}`}
         suppressHydrationWarning
       >
         <EnhancedErrorBoundary>
           <MockAuthProvider>
-            <ClerkProvider>{children}</ClerkProvider>
+            <ClerkProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+                suppressHydrationWarning
+              >
+                <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+                  {children}
+                </div>
+                <Toaster />
+              </ThemeProvider>
+            </ClerkProvider>
           </MockAuthProvider>
         </EnhancedErrorBoundary>
       </body>

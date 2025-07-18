@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "home": "Fandraisana",
+    "about": "Momba anay",
+    "services": "Serivisy",
+    "contact": "Fifandraisana",
+    "dashboard": "Dashboard",
+    "profile": "Mombamomba",
+    "settings": "Fandrindrana",
+    "help": "Fanampiana",
+    "login": "Hiditra",
+    "signup": "Misoratra anarana",
+    "logout": "Hivoaka"
+  },
+  "common": {
+    "loading": "Mampiditra...",
+    "error": "Hadisoana",
+    "success": "Nahomby",
+    "cancel": "Aoka ihany",
+    "save": "Tehirizo",
+    "submit": "Alefaso",
+    "back": "Miverina",
+    "next": "Manaraka",
+    "previous": "Teo aloha",
+    "search": "Hitady",
+    "welcome": "Tongasoa"
+  },
+  "footer": {
+    "company": "Orinasa",
+    "support": "Fanohizana",
+    "legal": "Ara-dalàna",
+    "copyright": "© 2024 Ny zo rehetra voatahiry",
+    "terms": "Fepetra momba ny serivisy",
+    "privacy": "Politika momba ny fiainana manokana",
+    "contact_us": "Mifandraisa aminay"
+  },
+  "showcase": {
+    "title": "Fampisehoana iraisam-pirenena avo lenta",
+    "description": "Fanohanana eo an-toerana mitondra AI avy amin'ny tanàna lehibe 50+"
+  }
+}

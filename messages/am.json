@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "home": "ቤት",
+    "about": "ስለ እኛ",
+    "services": "አገልግሎቶች",
+    "contact": "መገናኛ",
+    "dashboard": "ዳሽቦርድ",
+    "profile": "ፕሮፋይል",
+    "settings": "ቅንብሮች",
+    "help": "እርዳታ",
+    "login": "ግባ",
+    "signup": "ተመዝገብ",
+    "logout": "ውጣ"
+  },
+  "common": {
+    "loading": "በመጫን ላይ...",
+    "error": "ስህተት",
+    "success": "ተሳክቷል",
+    "cancel": "ሰርዝ",
+    "save": "አስቀምጥ",
+    "submit": "አስረክብ",
+    "back": "ተመለስ",
+    "next": "ቀጣይ",
+    "previous": "ቀደም",
+    "search": "ፈልግ",
+    "welcome": "እንኳን ደህና ��ጡ"
+  },
+  "footer": {
+    "company": "ኩባንያ",
+    "support": "ድጋፍ",
+    "legal": "ህጋዊ",
+    "copyright": "© 2024 ሁሉም መብቶች የተጠበቁ ናቸው",
+    "terms": "አገልግሎት ውሎች",
+    "privacy": "የግላዊነት ፖሊሲ",
+    "contact_us": "አግኙን"
+  },
+  "showcase": {
+    "title": "የዘመናዊ ዓለም አቀፍነት ማሳያ",
+    "description": "በ AI የተጎላበተ አካባቢያዊነት ከ50+ ዋና ዋና ከተሞች ድጋፍ"
+  }
+}

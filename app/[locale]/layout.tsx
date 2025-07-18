@@ -11,7 +11,8 @@ import { ErrorBoundary } from "@/components/error-boundary";
 import { ConsentProvider } from "@/components/consent/ConsentContext";
 import { CookieConsent } from "@/components/consent/CookieConsent";
 import { notFound } from "next/navigation";
-import { locales } from "@/lib/i18n/config";
+import { locales, localeDirections } from "@/lib/i18n/config";
+import { CityLocalizationProvider } from "@/hooks/use-city-localization";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
@@ -118,8 +119,16 @@ export default async function RootLayout({
     notFound();
   }
 
+  const direction =
+    localeDirections[locale as keyof typeof localeDirections] || "ltr";
+
   return (
-    <html lang={locale} suppressHydrationWarning className={jakarta.variable}>
+    <html
+      lang={locale}
+      dir={direction}
+      suppressHydrationWarning
+      className={jakarta.variable}
+    >
       <body
         className={`${inter.className} ${jakarta.variable}`}
         suppressHydrationWarning
@@ -133,15 +142,17 @@ export default async function RootLayout({
               disableTransitionOnChange
               suppressHydrationWarning
             >
-              <ConsentProvider>
-                <div className="relative flex min-h-screen flex-col bg-background">
-                  <Navigation />
-                  <main className="flex-1">{children}</main>
-                  <Footer />
-                </div>
-                <CookieConsent />
-                <Toaster />
-              </ConsentProvider>
+              <CityLocalizationProvider>
+                <ConsentProvider>
+                  <div className="relative flex min-h-screen flex-col bg-background">
+                    <Navigation />
+                    <main className="flex-1">{children}</main>
+                    <Footer />
+                  </div>
+                  <CookieConsent />
+                  <Toaster />
+                </ConsentProvider>
+              </CityLocalizationProvider>
             </ThemeProvider>
           </IntlProvider>
         </ErrorBoundary>
