@@ -1,8 +1,10 @@
 # 🌟 Loconomy - Premium Local Services Platform
 
-[![Next.js](https://img.shields.io/badge/Next.js-14.2.5-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.5.4-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.2-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1.0-61dafb?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.17-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![Turbopack](https://img.shields.io/badge/Turbopack-Stable-ff6154?logo=vercel)](https://turbo.build/pack)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -14,11 +16,20 @@ Loconomy is the world's leading platform for premium local services, connecting 
 
 ### 🎯 **Core Platform**
 - **AI-Powered Matching**: Intelligent provider-customer matching algorithm
+- **React Server Components**: Ultra-fast server-side rendering with React 19
 - **Real-time Messaging**: Secure in-app communication system
-- **Advanced Search & Filtering**: Multi-criteria service discovery
-- **Secure Payment Processing**: Escrow-based payment protection
-- **Review & Rating System**: Comprehensive feedback mechanism
-- **Multi-language Support**: Internationalization ready
+- **Advanced Search & Filtering**: Multi-criteria service discovery with concurrent rendering
+- **Secure Payment Processing**: Escrow-based payment protection with Actions API
+- **Review & Rating System**: Comprehensive feedback with optimistic updates
+- **Multi-language Support**: Internationalization with streaming metadata
+
+### ⚡ **Performance & Developer Experience**
+- **Turbopack**: 57% faster builds with Next.js 15 stable bundler
+- **Server Actions**: Async form handling with automatic error management
+- **Concurrent Rendering**: Non-blocking UI updates for better UX
+- **Streaming SSR**: Progressive HTML rendering for faster page loads
+- **Automatic Batching**: Optimized state updates for better performance
+- **Enhanced DevTools**: Improved debugging with React 19 error boundaries
 
 ### 👥 **For Customers**
 - **Premium Service Categories**: 15+ vetted service categories
@@ -44,8 +55,8 @@ Loconomy is the world's leading platform for premium local services, connecting 
 
 ### Prerequisites
 
-- **Node.js** 18.0.0 or higher
-- **pnpm** 8.0.0 or higher (recommended) or npm
+- **Node.js** 20.0.0 or higher (22.0+ recommended)
+- **pnpm** 10.0.0 or higher (recommended) or npm 10+
 - **Git** for version control
 
 ### Installation
@@ -103,8 +114,9 @@ Loconomy is the world's leading platform for premium local services, connecting 
 ## 🏗️ Tech Stack
 
 ### **Frontend**
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
+- **Framework**: Next.js 15.2 with App Router & Turbopack
+- **React**: React 19.1.0 with Server Components
+- **Language**: TypeScript 5.7
 - **Styling**: Tailwind CSS + Custom CSS Variables
 - **UI Components**: Radix UI + Custom Components
 - **Animations**: Framer Motion + CSS Animations
@@ -133,19 +145,24 @@ Loconomy is the world's leading platform for premium local services, connecting 
 
 ```
 loconomy/
-├── app/                     # Next.js 14 App Router
-│   ├── (auth)/             # Authentication pages
-│   ├── (dashboard)/        # Dashboard layouts
-│   ├── api/                # API routes
-│   ├── globals.css         # Global styles
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Homepage
+├── app/                     # Next.js 15 App Router with React 19
+│   ├── (auth)/             # Authentication pages with Server Components
+│   ├── (dashboard)/        # Dashboard layouts with streaming
+│   ├── api/                # API routes with Server Actions
+│   ├── globals.css         # Global styles with CSS-in-JS support
+│   ├── layout.tsx          # Root layout with metadata streaming
+│   └── page.tsx            # Homepage with Server Components
 ├── components/             # Reusable UI components
-│   ├── ui/                 # Base UI components
-│   ├── forms/              # Form components
+│   ├── ui/                 # Base UI components (React 19)
+│   ├── forms/              # Form components with Actions API
 │   ├── navigation/         # Navigation components
+│   ├── server/             # Server Components
 │   └── shared/             # Shared components
 ├── lib/                    # Utility libraries
+│   ├── actions/            # Server Actions
+│   ├── hooks/              # Custom hooks (useActionState, useOptimistic)
+│   ├── utils/              # Utility functions
+│   └── types/              # TypeScript definitions
 │   ├── auth/               # Authentication logic
 │   ├── database/           # Database utilities
 │   ├── payments/           # Payment processing

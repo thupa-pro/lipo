@@ -1,6 +1,6 @@
 # Architecture Overview
 
-This document provides a comprehensive overview of Loconomy's system architecture, design decisions, and technical implementation. It serves as a guide for developers, system architects, and stakeholders to understand how the platform is built and operates.
+This document provides a comprehensive overview of Loconomy's system architecture, design decisions, and technical implementation. Built with React 19 and Next.js 15, it leverages cutting-edge features like Server Components, concurrent rendering, and Turbopack for optimal performance. This serves as a guide for developers, system architects, and stakeholders to understand how the platform is built and operates.
 
 ## 🏗️ System Architecture
 
@@ -61,23 +61,26 @@ This document provides a comprehensive overview of Loconomy's system architectur
 ### **Technology Stack**
 
 #### **Frontend Layer**
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + Custom CSS Variables
-- **State Management**: Zustand + React Query
-- **UI Components**: Radix UI + Custom Components
-- **Forms**: React Hook Form + Zod Validation
-- **Testing**: Jest + React Testing Library + Playwright
+- **Framework**: Next.js 15.2 with App Router & Turbopack
+- **React**: React 19.1.0 with Server Components & Actions
+- **Language**: TypeScript 5.7
+- **Build Tool**: Turbopack (57% faster builds)
+- **Styling**: Tailwind CSS + CSS-in-JS + Native CSS support
+- **State Management**: Zustand + React Query + useActionState
+- **UI Components**: Radix UI + Custom Components (React 19)
+- **Forms**: React Hook Form + Server Actions + useOptimistic
+- **Testing**: Jest + React Testing Library + Playwright + Vitest
 
 #### **Backend Layer**
-- **Runtime**: Node.js 18+
-- **API**: Next.js API Routes (RESTful)
-- **Authentication**: NextAuth.js + JWT
+- **Runtime**: Node.js 20+ (22+ recommended)
+- **API**: Next.js API Routes + Server Actions
+- **Server Components**: React 19 Server Components (stable)
+- **Authentication**: NextAuth.js + JWT + Server Actions
 - **Database**: PostgreSQL with Prisma ORM
-- **Caching**: Redis
-- **File Storage**: AWS S3
-- **Email**: SendGrid
-- **Payments**: Stripe
+- **Caching**: Redis + Next.js Cache API
+- **File Storage**: AWS S3 + Next.js Image Optimization
+- **Email**: SendGrid + React Email
+- **Payments**: Stripe + Server Actions
 
 #### **Infrastructure Layer**
 - **Deployment**: Vercel (Primary) / AWS ECS (Enterprise)
@@ -85,6 +88,94 @@ This document provides a comprehensive overview of Loconomy's system architectur
 - **Monitoring**: Sentry + PostHog
 - **CI/CD**: GitHub Actions
 - **Analytics**: PostHog + Google Analytics
+
+---
+
+## ⚡ React 19 & Next.js 15 Architecture
+
+### **Server Components Architecture**
+
+Loconomy leverages React 19's stable Server Components to optimize performance and reduce client-side JavaScript:
+
+```typescript
+// Server Component (runs on server)
+async function ProviderList() {
+  const providers = await fetchProviders(); // Direct database access
+  
+  return (
+    <div>
+      {providers.map(provider => (
+        <ProviderCard key={provider.id} provider={provider} />
+      ))}
+    </div>
+  );
+}
+
+// Client Component (interactive)
+'use client'
+function BookingForm({ providerId }: { providerId: string }) {
+  const [formData, setFormData] = useState({});
+  
+  return <form>...</form>;
+}
+```
+
+### **Server Actions for Data Mutations**
+
+Server Actions handle form submissions and data mutations with automatic error handling:
+
+```typescript
+// Server Action
+async function bookService(formData: FormData) {
+  'use server'
+  
+  const booking = await createBooking({
+    providerId: formData.get('providerId'),
+    serviceId: formData.get('serviceId'),
+    date: formData.get('date')
+  });
+  
+  revalidatePath('/bookings');
+  return { success: true, booking };
+}
+
+// Component using Server Action
+function BookingForm() {
+  return (
+    <form action={bookService}>
+      <input name="providerId" />
+      <input name="serviceId" />
+      <input name="date" type="date" />
+      <button type="submit">Book Now</button>
+    </form>
+  );
+}
+```
+
+### **Concurrent Rendering & Suspense**
+
+React 19's enhanced concurrent rendering ensures smooth user experiences:
+
+```typescript
+function SearchResults() {
+  return (
+    <Suspense fallback={<SearchSkeleton />}>
+      <ProviderList />
+      <Suspense fallback={<MapLoading />}>
+        <InteractiveMap />
+      </Suspense>
+    </Suspense>
+  );
+}
+```
+
+### **Turbopack Build Optimization**
+
+Next.js 15's stable Turbopack provides:
+- **57% faster builds** compared to Webpack
+- **30% less memory usage** during development
+- **Hot Module Replacement** with sub-second updates
+- **Tree-shaking optimization** for smaller bundles
 
 ---
 
