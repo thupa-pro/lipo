@@ -1,0 +1,89 @@
+{
+  "Home": {
+    "hero": {
+      "badge": "Vertraut von 10.000+ Nutzern",
+      "title_part1": "Finde lokale Dienstleistungen,",
+      "title_part2": "denen du vertrauen kannst",
+      "description": "Verbinde dich mit verifizierten lokalen Fachkräften für alle deine Haus- und Privatdienstleistungen. Von Reinigung bis Reparaturen, von Nachhilfe bis Tierbetreuung - wir haben alles abgedeckt.",
+      "search_placeholder_service": "Welche Dienstleistung benötigst du?",
+      "search_placeholder_location": "Gib deinen Standort ein",
+      "search_button": "Suchen",
+      "request_service_button": "Service anfragen",
+      "become_provider_button": "Anbieter werden",
+      "watch_demo_button": "Demo ansehen"
+    },
+    "stats": {
+      "active_users": "Aktive Nutzer",
+      "jobs_completed": "Erledigte Aufträge",
+      "average_rating": "Durchschnittliche Bewertung",
+      "cities_served": "Bediente Städte"
+    },
+    "categories": {
+      "title": "Beliebte Service-Kategorien",
+      "description": "Entdecke die gefragtesten Services in deiner Region. Von alltäglichen Aufgaben bis zu spezialisierten Fähigkeiten.",
+      "view_all_button": "Alle Kategorien anzeigen"
+    },
+    "how_it_works": {
+      "title": "Wie Loconomy funktioniert",
+      "description": "Die Hilfe zu bekommen, die du brauchst, ist einfach. Folge einfach diesen drei einfachen Schritten.",
+      "step1_title": "1. Suchen & Durchstöbern",
+      "step1_description": "Suche nach dem Service, den du brauchst, oder durchstöbere unsere Kategorien, um den perfekten Anbieter in deiner Nähe zu finden.",
+      "step2_title": "2. Verbinden & Buchen",
+      "step2_description": "Schaue dir Profile an, lies Bewertungen und verbinde dich mit Anbietern. Buche deinen Service mit nur wenigen Klicks.",
+      "step3_title": "3. Erledigen lassen",
+      "step3_description": "Dein Anbieter erledigt die Arbeit. Bezahle sicher über unsere Plattform und hinterlasse eine Bewertung."
+    },
+    "testimonials": {
+      "title": "Was unsere Nutzer sagen",
+      "description": "Glaub nicht nur uns. Hier ist, was echte Kunden und Anbieter sagen."
+    },
+    "cta": {
+      "title": "Bereit loszulegen?",
+      "description": "Tritt noch heute tausenden zufriedenen Kunden und Anbietern auf Loconomy bei.",
+      "request_service_button": "Service anfragen",
+      "become_provider_button": "Anbieter werden",
+      "secure_payments": "Sichere Zahlungen",
+      "verified_providers": "Verifizierte Anbieter",
+      "fair_pricing": "Faire Preise"
+    }
+  },
+  "Navigation": {
+    "home": "Startseite",
+    "browse_services": "Services durchsuchen",
+    "request_service": "Service anfragen",
+    "dashboard": "Dashboard",
+    "profile": "Profil",
+    "my_bookings": "Meine Buchungen",
+    "payments": "Zahlungen",
+    "settings": "Einstellungen",
+    "help_center": "Hilfe-Center",
+    "log_out": "Abmelden",
+    "location_placeholder": "Berlin",
+    "select_language": "Sprache wählen",
+    "language_changed_title": "Sprache geändert",
+    "language_changed_description": "Anzeigesprache wurde auf {languageName} gesetzt."
+  },
+  "Common": {
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "warning": "Warnung",
+    "info": "Information",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "view": "Anzeigen",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "refresh": "Aktualisieren",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "try_again": "Erneut versuchen",
+    "learn_more": "Mehr erfahren"
+  }
+}
