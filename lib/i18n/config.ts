@@ -152,7 +152,7 @@ export const localeFlags: Record<Locale, string> = {
   mg: "🇲🇬",
 };
 
-// Top 50 Metropolitan Cities with their preferred languages and regions
+// Top 70+ Metropolitan Cities with their preferred languages and regions
 export const metropolitanCities = {
   // Asia-Pacific
   tokyo: {
@@ -532,6 +532,178 @@ export const metropolitanCities = {
     region: "Europe/Lisbon",
     country: "Portugal",
     population: 2900000,
+  },
+
+  // Additional African Cities
+  lagos: {
+    locale: "yo",
+    region: "Africa/Lagos",
+    country: "Nigeria",
+    population: 15300000,
+  },
+  johannesburg: {
+    locale: "zu",
+    region: "Africa/Johannesburg",
+    country: "South Africa",
+    population: 4400000,
+  },
+  khartoum: {
+    locale: "ar",
+    region: "Africa/Khartoum",
+    country: "Sudan",
+    population: 5200000,
+  },
+  luanda: {
+    locale: "pt",
+    region: "Africa/Luanda",
+    country: "Angola",
+    population: 8300000,
+  },
+  dar_es_salaam: {
+    locale: "sw",
+    region: "Africa/Dar_es_Salaam",
+    country: "Tanzania",
+    population: 6700000,
+  },
+  addis_ababa: {
+    locale: "am",
+    region: "Africa/Addis_Ababa",
+    country: "Ethiopia",
+    population: 4800000,
+  },
+  casablanca: {
+    locale: "ar",
+    region: "Africa/Casablanca",
+    country: "Morocco",
+    population: 3700000,
+  },
+  cape_town: {
+    locale: "af",
+    region: "Africa/Johannesburg",
+    country: "South Africa",
+    population: 4600000,
+  },
+  kano: {
+    locale: "ha",
+    region: "Africa/Lagos",
+    country: "Nigeria",
+    population: 3600000,
+  },
+  ibadan: {
+    locale: "yo",
+    region: "Africa/Lagos",
+    country: "Nigeria",
+    population: 3200000,
+  },
+  abidjan: {
+    locale: "fr",
+    region: "Africa/Abidjan",
+    country: "Ivory Coast",
+    population: 4400000,
+  },
+  alexandria: {
+    locale: "ar",
+    region: "Africa/Cairo",
+    country: "Egypt",
+    population: 5200000,
+  },
+  durban: {
+    locale: "zu",
+    region: "Africa/Johannesburg",
+    country: "South Africa",
+    population: 3500000,
+  },
+  accra: {
+    locale: "en",
+    region: "Africa/Accra",
+    country: "Ghana",
+    population: 2300000,
+  },
+  antananarivo: {
+    locale: "mg",
+    region: "Indian/Antananarivo",
+    country: "Madagascar",
+    population: 3100000,
+  },
+  tunis: {
+    locale: "ar",
+    region: "Africa/Tunis",
+    country: "Tunisia",
+    population: 2300000,
+  },
+
+  // Additional Cities from Other Continents
+  toronto: {
+    locale: "en",
+    region: "America/Toronto",
+    country: "Canada",
+    population: 6200000,
+  },
+  montreal: {
+    locale: "fr",
+    region: "America/Montreal",
+    country: "Canada",
+    population: 4100000,
+  },
+  sydney: {
+    locale: "en",
+    region: "Australia/Sydney",
+    country: "Australia",
+    population: 5300000,
+  },
+  melbourne: {
+    locale: "en",
+    region: "Australia/Melbourne",
+    country: "Australia",
+    population: 5000000,
+  },
+  bogota: {
+    locale: "es",
+    region: "America/Bogota",
+    country: "Colombia",
+    population: 10700000,
+  },
+  santiago: {
+    locale: "es",
+    region: "America/Santiago",
+    country: "Chile",
+    population: 6700000,
+  },
+  caracas: {
+    locale: "es",
+    region: "America/Caracas",
+    country: "Venezuela",
+    population: 2900000,
+  },
+  zurich: {
+    locale: "de",
+    region: "Europe/Zurich",
+    country: "Switzerland",
+    population: 1400000,
+  },
+  hanoi: {
+    locale: "vi",
+    region: "Asia/Ho_Chi_Minh",
+    country: "Vietnam",
+    population: 8100000,
+  },
+  busan: {
+    locale: "ko",
+    region: "Asia/Seoul",
+    country: "South Korea",
+    population: 3400000,
+  },
+  yokohama: {
+    locale: "ja",
+    region: "Asia/Tokyo",
+    country: "Japan",
+    population: 3700000,
+  },
+  ankara: {
+    locale: "tr",
+    region: "Europe/Istanbul",
+    country: "Turkey",
+    population: 5600000,
   },
 } as const;
 
