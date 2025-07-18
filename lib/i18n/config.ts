@@ -1,22 +1,22 @@
 import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 
-// Expanded locales to support top 50 metropolitan cities worldwide
+// Expanded locales to support 70+ metropolitan cities worldwide
 export const locales = [
-  "en", // English - New York, London, Los Angeles, Chicago, etc.
+  "en", // English - New York, London, Los Angeles, Chicago, Toronto, Sydney, etc.
   "zh", // Chinese (Mandarin) - Beijing, Shanghai, Guangzhou, Shenzhen, Tianjin
   "hi", // Hindi - Delhi, Mumbai
-  "es", // Spanish - Mexico City, Madrid, Barcelona, Buenos Aires, Lima
-  "ar", // Arabic - Cairo, Riyadh, Dubai, Baghdad
+  "es", // Spanish - Mexico City, Madrid, Barcelona, Buenos Aires, Lima, Bogotá
+  "ar", // Arabic - Cairo, Riyadh, Dubai, Baghdad, Casablanca, Tunis
   "pt", // Portuguese - São Paulo, Rio de Janeiro, Lisbon
   "bn", // Bengali - Dhaka, Kolkata
-  "ru", // Russian - Moscow, Saint Petersburg, Istanbul (partial)
+  "ru", // Russian - Moscow, Saint Petersburg
   "ja", // Japanese - Tokyo, Osaka, Yokohama
   "pa", // Punjabi - Lahore
-  "de", // German - Berlin, Hamburg, Munich, Vienna
+  "de", // German - Berlin, Hamburg, Munich, Vienna, Zurich
   "ur", // Urdu - Karachi
   "ko", // Korean - Seoul, Busan
-  "fr", // French - Paris, Lyon, Kinshasa, Algiers
+  "fr", // French - Paris, Lyon, Kinshasa, Algiers, Casablanca, Abidjan
   "tr", // Turkish - Istanbul, Ankara
   "it", // Italian - Rome, Milan, Naples
   "th", // Thai - Bangkok
@@ -26,7 +26,7 @@ export const locales = [
   "uk", // Ukrainian - Kyiv
   "vi", // Vietnamese - Ho Chi Minh City, Hanoi
   "he", // Hebrew - Tel Aviv
-  "sw", // Swahili - Nairobi
+  "sw", // Swahili - Nairobi, Dar es Salaam
   "ro", // Romanian - Bucharest
   "el", // Greek - Athens
   "cs", // Czech - Prague
@@ -39,6 +39,13 @@ export const locales = [
   "ms", // Malay - Kuala Lumpur
   "tl", // Filipino/Tagalog - Manila
   "zh-TW", // Traditional Chinese - Taipei
+  "am", // Amharic - Addis Ababa
+  "zu", // Zulu - Johannesburg, Durban
+  "af", // Afrikaans - Cape Town
+  "yo", // Yoruba - Lagos
+  "ha", // Hausa - Kano
+  "ig", // Igbo - Lagos (secondary)
+  "mg", // Malagasy - Antananarivo
 ] as const;
 export const defaultLocale = "en" as const;
 export type Locale = (typeof locales)[number];
