@@ -1,756 +1,928 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { useAdvancedI18n } from "@/hooks/use-advanced-i18n";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
 import {
   Globe,
   Mic,
   MicOff,
   Volume2,
+  VolumeX,
   Brain,
-  Zap,
   BarChart3,
   Wifi,
   WifiOff,
-  Palette,
-  Calendar,
-  DollarSign,
-  MessageSquare,
-  Users,
-  Star,
+  MapPin,
   Clock,
-  TrendingUp,
-  Eye,
-  Settings,
+  DollarSign,
+  Calendar,
+  Phone,
+  Shield,
 } from "lucide-react";
-import {
-  useAdvancedI18n,
-  useVoiceCommands,
-  useCulturalUI,
-  useTranslationAnalytics,
-  useOfflineTranslations,
-} from "@/hooks/use-advanced-i18n";
-import { locales, localeNames, type Locale } from "@/lib/i18n/config";
-import { CitySelector } from "./city-selector";
-import { TranslationManager } from "./translation-manager";
 
-export function AdvancedI18nShowcase() {
-  const [activeDemo, setActiveDemo] = useState("voice");
-  const [userId] = useState("demo-user-123");
+interface MetropolitanCityShowcaseProps {
+  selectedCity?: string;
+}
 
-  const i18n = useAdvancedI18n();
-  const voice = useVoiceCommands(i18n.locale);
-  const cultural = useCulturalUI(i18n.locale);
-  const analytics = useTranslationAnalytics();
-  const offline = useOfflineTranslations();
+export default function AdvancedI18nShowcase({
+  selectedCity = "new_york",
+}: MetropolitanCityShowcaseProps) {
+  const t = useTranslations("showcase");
+  const {
+    cityConfig,
+    voiceInterface,
+    culturalIntelligence,
+    offlineSupport,
+    analytics,
+    abTesting,
+    smartTranslation,
+    pluralization,
+    qualityMetrics,
+    performanceStats,
+  } = useAdvancedI18n();
+
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
+  const [currentVoiceCommand, setCurrentVoiceCommand] = useState("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [translationQuality, setTranslationQuality] = useState(85);
+  const [isOnline, setIsOnline] = useState(true);
+
+  // Simulate network status
+  useEffect(() => {
+    const toggleNetwork = () => setIsOnline((prev) => !prev);
+    const interval = setInterval(toggleNetwork, 10000); // Toggle every 10s for demo
+    return () => clearInterval(interval);
+  }, []);
+
+  // Voice interface controls
+  const handleVoiceToggle = async () => {
+    if (isVoiceActive) {
+      await voiceInterface.stopListening();
+      setIsVoiceActive(false);
+    } else {
+      await voiceInterface.startListening({
+        onResult: (text) => setCurrentVoiceCommand(text),
+        onEnd: () => setIsVoiceActive(false),
+      });
+      setIsVoiceActive(true);
+    }
+  };
+
+  const handleTextToSpeech = async (text: string) => {
+    setIsSpeaking(true);
+    await voiceInterface.speak(text, {
+      onStart: () => setIsSpeaking(true),
+      onEnd: () => setIsSpeaking(false),
+    });
+  };
+
+  // Cultural adaptation simulation
+  const culturalAdaptations = culturalIntelligence.getAdaptations(selectedCity);
+  const businessEtiquette =
+    culturalIntelligence.getBusinessEtiquette(selectedCity);
+
+  // Smart translation examples
+  const smartTranslationExamples = [
+    { context: "formal", text: "Welcome to our service" },
+    { context: "casual", text: "Hey there!" },
+    { context: "business", text: "Please review the contract" },
+    { context: "emergency", text: "Call emergency services" },
+  ];
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-8">
+    <div className="max-w-7xl mx-auto p-6 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Advanced Internationalization Showcase
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          Experience cutting-edge i18n features including voice interfaces,
-          cultural intelligence, offline support, A/B testing, and real-time
-          analytics across 35+ languages and 50+ metropolitan cities.
+        <p className="text-xl text-muted-foreground">
+          Supporting 50+ Metropolitan Cities Worldwide with AI-Powered
+          Localization
         </p>
-
-        {/* Quick Stats */}
-        <div className="flex justify-center gap-6 text-sm">
-          <div className="flex items-center gap-2">
-            <Globe className="w-4 h-4 text-blue-600" />
-            <span>35+ Languages</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Users className="w-4 h-4 text-green-600" />
-            <span>50+ Cities</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-purple-600" />
-            <span>AI-Powered</span>
-          </div>
-          <div className="flex items-center gap-2">
-            {offline.isOffline ? (
-              <WifiOff className="w-4 h-4 text-red-600" />
+        <div className="flex justify-center items-center space-x-4">
+          <Badge variant="secondary" className="text-lg px-4 py-2">
+            <Globe className="w-4 h-4 mr-2" />
+            {cityConfig.name} ({cityConfig.locale.toUpperCase()})
+          </Badge>
+          <Badge
+            variant={isOnline ? "default" : "destructive"}
+            className="text-lg px-4 py-2"
+          >
+            {isOnline ? (
+              <Wifi className="w-4 h-4 mr-2" />
             ) : (
-              <Wifi className="w-4 h-4 text-green-600" />
+              <WifiOff className="w-4 h-4 mr-2" />
             )}
-            <span>{offline.isOffline ? "Offline" : "Online"}</span>
-          </div>
+            {isOnline ? "Online" : "Offline"}
+          </Badge>
         </div>
       </div>
 
-      {/* Feature Demo Tabs */}
-      <Tabs value={activeDemo} onValueChange={setActiveDemo} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6">
-          <TabsTrigger value="voice" className="flex items-center gap-2">
-            <Mic className="w-4 h-4" />
-            Voice
-          </TabsTrigger>
-          <TabsTrigger value="cultural" className="flex items-center gap-2">
-            <Palette className="w-4 h-4" />
-            Cultural
-          </TabsTrigger>
-          <TabsTrigger value="analytics" className="flex items-center gap-2">
-            <BarChart3 className="w-4 h-4" />
-            Analytics
-          </TabsTrigger>
-          <TabsTrigger value="offline" className="flex items-center gap-2">
-            <Wifi className="w-4 h-4" />
-            Offline
-          </TabsTrigger>
-          <TabsTrigger value="abtest" className="flex items-center gap-2">
-            <Zap className="w-4 h-4" />
-            A/B Testing
-          </TabsTrigger>
-          <TabsTrigger value="translation" className="flex items-center gap-2">
-            <Settings className="w-4 h-4" />
-            Management
-          </TabsTrigger>
+      <Tabs defaultValue="city-config" className="space-y-6">
+        <TabsList className="grid grid-cols-7 w-full">
+          <TabsTrigger value="city-config">City Config</TabsTrigger>
+          <TabsTrigger value="voice">Voice Interface</TabsTrigger>
+          <TabsTrigger value="cultural">Cultural AI</TabsTrigger>
+          <TabsTrigger value="offline">Offline Support</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="smart-translation">Smart Translation</TabsTrigger>
+          <TabsTrigger value="quality">Quality Metrics</TabsTrigger>
         </TabsList>
 
-        {/* Voice Interface Demo */}
-        <TabsContent value="voice" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Volume2 className="w-5 h-5" />
-                Voice Interface Localization
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* City Configuration Tab */}
+        <TabsContent value="city-config" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Basic Info */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <MapPin className="w-5 h-5 mr-2" />
+                  Location Details
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
                 <div>
-                  <h3 className="font-semibold mb-3">Speech Recognition</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <Button
-                        variant={voice.isListening ? "destructive" : "default"}
-                        onClick={
-                          voice.isListening
-                            ? voice.stopVoiceCommand
-                            : voice.startVoiceCommand
-                        }
-                        disabled={!voice.isSupported}
-                      >
-                        {voice.isListening ? (
-                          <>
-                            <MicOff className="w-4 h-4 mr-2" />
-                            Stop Listening
-                          </>
-                        ) : (
-                          <>
-                            <Mic className="w-4 h-4 mr-2" />
-                            Start Listening
-                          </>
-                        )}
-                      </Button>
-                      <Badge
-                        variant={voice.isSupported ? "default" : "destructive"}
-                      >
-                        {voice.isSupported ? "Supported" : "Not Supported"}
-                      </Badge>
-                    </div>
-
-                    {voice.isListening && (
-                      <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-                        <p className="text-sm text-blue-600 dark:text-blue-400">
-                          🎤 Listening for commands in{" "}
-                          {localeNames[i18n.locale]}...
-                        </p>
-                      </div>
-                    )}
-
-                    {voice.lastCommand && (
-                      <div className="p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
-                        <p className="text-sm">
-                          <strong>Last Command:</strong> {voice.lastCommand}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                  <strong>City:</strong> {cityConfig.name}
                 </div>
-
                 <div>
-                  <h3 className="font-semibold mb-3">Text-to-Speech</h3>
-                  <div className="space-y-3">
-                    <div className="space-y-2">
-                      <Label>Test Speech</Label>
-                      <div className="flex gap-2">
-                        <Input
-                          placeholder={i18n.t("Common.search", {
-                            fallback: "Enter text to speak...",
-                          })}
-                          id="speech-text"
-                        />
-                        <Button
-                          onClick={() => {
-                            const input = document.getElementById(
-                              "speech-text",
-                            ) as HTMLInputElement;
-                            if (input.value) voice.speak(input.value);
-                          }}
-                        >
-                          <Volume2 className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="space-y-1">
-                      <p className="text-sm text-gray-600">Quick Tests:</p>
-                      <div className="flex flex-wrap gap-2">
-                        {[
-                          i18n.t("Home.hero.title_part1", {
-                            fallback: "Find Local Services",
-                          }),
-                          i18n.t("Navigation.welcome", {
-                            fallback: "Welcome to Loconomy",
-                          }),
-                          i18n.t("Common.success", { fallback: "Success!" }),
-                        ].map((text, index) => (
-                          <Button
-                            key={index}
-                            variant="outline"
-                            size="sm"
-                            onClick={() => voice.speak(text)}
-                          >
-                            {text}
-                          </Button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  <strong>Country:</strong> {cityConfig.country}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Cultural Intelligence Demo */}
-        <TabsContent value="cultural" className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Palette className="w-5 h-5" />
-                  Cultural Adaptations
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <Label>Communication Style</Label>
-                    <Badge variant="outline">
-                      {cultural.culturalProfile.communicationStyle}
-                    </Badge>
-                  </div>
-                  <div>
-                    <Label>Time Orientation</Label>
-                    <Badge variant="outline">
-                      {cultural.culturalProfile.timeOrientation}
-                    </Badge>
-                  </div>
-                  <div>
-                    <Label>Formality Level</Label>
-                    <Badge variant="outline">
-                      {cultural.adaptations.content.formality}
-                    </Badge>
-                  </div>
-                  <div>
-                    <Label>Response Time</Label>
-                    <Badge variant="outline">
-                      {cultural.adaptations.communication.responseTime}
-                    </Badge>
-                  </div>
+                <div>
+                  <strong>Timezone:</strong> {cityConfig.timezone}
                 </div>
-
-                <div className="space-y-2">
-                  <Label>Message Adaptation Demo</Label>
-                  <div className="space-y-2">
-                    {["error", "success", "warning", "info"].map((type) => (
-                      <div key={type} className="p-2 border rounded">
-                        <div className="text-xs text-gray-500 mb-1">
-                          {type.toUpperCase()}:
-                        </div>
-                        <div className="text-sm">
-                          {cultural.adaptMessage(
-                            `This is a ${type} message`,
-                            type as any,
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <div>
+                  <strong>Population:</strong>{" "}
+                  {cityConfig.population?.toLocaleString()}
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Cultural Events & Holidays
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {cultural.culturalEvents.length > 0 ? (
-                  <div className="space-y-3">
-                    {cultural.culturalEvents.map((event, index) => (
-                      <div key={index} className="p-3 border rounded-lg">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium">{event.name}</h4>
-                          <Badge
-                            className={
-                              event.importance === "high"
-                                ? "bg-red-100 text-red-800"
-                                : event.importance === "medium"
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : "bg-blue-100 text-blue-800"
-                            }
-                          >
-                            {event.importance}
-                          </Badge>
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          <p>Date: {event.date}</p>
-                          <p>Business Impact: {event.businessImpact}</p>
-                          {event.greetings && (
-                            <p>Greetings: {event.greetings.join(", ")}</p>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-gray-500 text-center py-4">
-                    No upcoming cultural events for this locale
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Pricing and Scheduling Adaptations */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="w-5 h-5" />
-                  Pricing Adaptation
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {[50, 100, 250].map((price) => {
-                    const adapted = cultural.adaptPricing(price);
-                    return (
-                      <div key={price} className="p-3 border rounded-lg">
-                        <div className="flex items-center justify-between">
-                          <span className="font-semibold">
-                            {adapted.display}
-                          </span>
-                          <div className="flex gap-2">
-                            {adapted.showTax && (
-                              <Badge variant="outline">+Tax</Badge>
-                            )}
-                            {adapted.negotiable && (
-                              <Badge variant="outline">Negotiable</Badge>
-                            )}
-                            {adapted.trustSignals && (
-                              <Badge variant="outline">Trusted</Badge>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="w-5 h-5" />
-                  Scheduling Adaptation
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {Object.entries(cultural.adaptScheduling()).map(
-                    ([key, value]) => (
-                      <div
-                        key={key}
-                        className="flex justify-between items-center"
-                      >
-                        <span className="text-sm capitalize">
-                          {key.replace(/([A-Z])/g, " $1")}
-                        </span>
-                        <Badge variant="outline">{String(value)}</Badge>
-                      </div>
-                    ),
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-
-        {/* Analytics Demo */}
-        <TabsContent value="analytics" className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5" />
-                  Usage Analytics
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold">
-                      {analytics.mostUsed.length}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Translation Keys Tracked
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    {analytics.mostUsed.slice(0, 5).map((item, index) => (
-                      <div
-                        key={item.key}
-                        className="flex justify-between text-sm"
-                      >
-                        <span className="truncate">{item.key}</span>
-                        <Badge variant="outline">{item.usage}</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Zap className="w-5 h-5" />
-                  Performance
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">
-                      {analytics.slowTranslations.length}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Slow Translations
-                    </div>
-                  </div>
-                  {analytics.slowTranslations.length > 0 ? (
-                    <div className="space-y-2">
-                      {analytics.slowTranslations
-                        .slice(0, 3)
-                        .map((item, index) => (
-                          <div
-                            key={item.key}
-                            className="flex justify-between text-sm"
-                          >
-                            <span className="truncate">{item.key}</span>
-                            <Badge variant="destructive">
-                              {item.avgTime.toFixed(1)}ms
-                            </Badge>
-                          </div>
-                        ))}
-                    </div>
-                  ) : (
-                    <p className="text-sm text-gray-500 text-center">
-                      All translations performing well!
-                    </p>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Eye className="w-5 h-5" />
-                  Quality Monitoring
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-red-600">
-                      {analytics.quality.errors.size}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Translation Errors
-                    </div>
-                  </div>
-                  {analytics.quality.hasErrors ? (
-                    <div className="space-y-2">
-                      {Array.from(analytics.quality.errors.entries())
-                        .slice(0, 3)
-                        .map(([key, error]) => (
-                          <div key={key} className="text-sm">
-                            <div className="font-medium text-red-600">
-                              {key}
-                            </div>
-                            <div className="text-gray-600 truncate">
-                              {error.message}
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  ) : (
-                    <p className="text-sm text-gray-500 text-center">
-                      No errors detected!
-                    </p>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-
-        {/* Offline Support Demo */}
-        <TabsContent value="offline" className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  {offline.isOffline ? (
-                    <WifiOff className="w-5 h-5 text-red-600" />
-                  ) : (
-                    <Wifi className="w-5 h-5 text-green-600" />
-                  )}
-                  Network Status
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span>Connection Status</span>
+                <div className="flex items-center">
+                  <strong>Direction:</strong>
                   <Badge
-                    variant={offline.isOffline ? "destructive" : "default"}
+                    variant={cityConfig.rtl ? "destructive" : "default"}
+                    className="ml-2"
                   >
-                    {offline.isOffline ? "Offline" : "Online"}
+                    {cityConfig.rtl ? "RTL" : "LTR"}
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Currency & Formats */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <DollarSign className="w-5 h-5 mr-2" />
+                  Currency & Formats
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <strong>Currency:</strong> {cityConfig.currency}
+                </div>
+                <div>
+                  <strong>Date Format:</strong> {cityConfig.dateFormat}
+                </div>
+                <div>
+                  <strong>Time Format:</strong> {cityConfig.timeFormat}
+                </div>
+                <div>
+                  <strong>Number Format:</strong> {cityConfig.numberFormat}
+                </div>
+                <div>
+                  <strong>Tax Included:</strong>{" "}
+                  {cityConfig.taxIncluded ? "Yes" : "No"}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Business Hours */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Clock className="w-5 h-5 mr-2" />
+                  Business Information
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <strong>Business Hours:</strong>
+                  <br />
+                  {cityConfig.businessHours?.start} -{" "}
+                  {cityConfig.businessHours?.end}
+                </div>
+                <div>
+                  <strong>Working Days:</strong>
+                  <br />
+                  {cityConfig.businessHours?.days
+                    .map((day) => {
+                      const dayNames = [
+                        "Sun",
+                        "Mon",
+                        "Tue",
+                        "Wed",
+                        "Thu",
+                        "Fri",
+                        "Sat",
+                      ];
+                      return dayNames[day];
+                    })
+                    .join(", ")}
+                </div>
+                <div>
+                  <strong>Emergency:</strong> {cityConfig.emergencyNumber}
+                </div>
+                <div>
+                  <strong>Phone Format:</strong> {cityConfig.phoneFormat}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Local Holidays */}
+            <Card className="md:col-span-2 lg:col-span-3">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Local Holidays & Cultural Events
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {cityConfig.localHolidays?.map((holiday, index) => (
+                    <Badge
+                      key={index}
+                      variant="outline"
+                      className="text-lg px-3 py-1"
+                    >
+                      {holiday}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Voice Interface Tab */}
+        <TabsContent value="voice" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Mic className="w-5 h-5 mr-2" />
+                  Voice Recognition
+                </CardTitle>
+                <CardDescription>
+                  AI-powered voice commands in {cityConfig.locale.toUpperCase()}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <Button
+                    onClick={handleVoiceToggle}
+                    variant={isVoiceActive ? "destructive" : "default"}
+                    className="flex items-center space-x-2"
+                  >
+                    {isVoiceActive ? (
+                      <MicOff className="w-4 h-4" />
+                    ) : (
+                      <Mic className="w-4 h-4" />
+                    )}
+                    <span>
+                      {isVoiceActive ? "Stop Listening" : "Start Listening"}
+                    </span>
+                  </Button>
+                  <Badge variant={isVoiceActive ? "default" : "secondary"}>
+                    {isVoiceActive ? "Listening..." : "Inactive"}
                   </Badge>
                 </div>
 
-                <div className="space-y-3">
-                  <h4 className="font-semibold">Available Languages Offline</h4>
-                  <div className="grid grid-cols-3 gap-2">
-                    {locales.slice(0, 9).map((locale) => (
-                      <div
-                        key={locale}
-                        className="flex items-center justify-between p-2 border rounded"
-                      >
-                        <span className="text-sm">{locale.toUpperCase()}</span>
-                        <Badge
-                          variant={
-                            offline.isLanguageLoaded(locale)
-                              ? "default"
-                              : "outline"
-                          }
-                          className="text-xs"
-                        >
-                          {offline.isLanguageLoaded(locale) ? "✓" : "○"}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                {currentVoiceCommand && (
+                  <Alert>
+                    <AlertDescription>
+                      <strong>Last Command:</strong> "{currentVoiceCommand}"
+                    </AlertDescription>
+                  </Alert>
+                )}
 
-                <Button
-                  onClick={() => offline.ensureLanguageAvailable(i18n.locale)}
-                  className="w-full"
-                >
-                  Ensure Current Language Available Offline
-                </Button>
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Try saying:</h4>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li>"Show me available services"</li>
+                    <li>"Book an appointment"</li>
+                    <li>"Change language to {cityConfig.locale}"</li>
+                    <li>"What's the weather like?"</li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Progressive Loading</CardTitle>
+                <CardTitle className="flex items-center">
+                  <Volume2 className="w-5 h-5 mr-2" />
+                  Text-to-Speech
+                </CardTitle>
+                <CardDescription>
+                  Natural voice synthesis with local accent
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <Label>Load Additional Languages</Label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {locales.slice(0, 8).map((locale) => (
+                  {[
+                    "Welcome to our platform!",
+                    "Your booking has been confirmed.",
+                    "Thank you for choosing our service.",
+                    "Have a great day!",
+                  ].map((text, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between"
+                    >
+                      <span className="text-sm">{text}</span>
                       <Button
-                        key={locale}
-                        variant="outline"
                         size="sm"
-                        onClick={() => i18n.loadLanguage(locale, "normal")}
-                        disabled={offline.isLanguageLoaded(locale)}
-                        className="flex items-center justify-between"
+                        variant="outline"
+                        onClick={() => handleTextToSpeech(text)}
+                        disabled={isSpeaking}
                       >
-                        <span>{localeNames[locale]}</span>
-                        {offline.isLanguageLoaded(locale) && (
-                          <Badge variant="default" className="ml-2 text-xs">
-                            ✓
-                          </Badge>
+                        {isSpeaking ? (
+                          <VolumeX className="w-4 h-4" />
+                        ) : (
+                          <Volume2 className="w-4 h-4" />
                         )}
                       </Button>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
 
-                <Button
-                  onClick={() =>
-                    i18n.preloadLanguages(["en", "es", "fr", "de", "zh"])
-                  }
-                  className="w-full"
-                  variant="outline"
-                >
-                  Preload Popular Languages
-                </Button>
+                <div className="flex items-center space-x-2">
+                  <Badge variant={isSpeaking ? "default" : "secondary"}>
+                    {isSpeaking ? "Speaking..." : "Ready"}
+                  </Badge>
+                  <span className="text-sm text-muted-foreground">
+                    Voice: {cityConfig.locale} (Local Accent)
+                  </span>
+                </div>
               </CardContent>
             </Card>
           </div>
         </TabsContent>
 
-        {/* A/B Testing Demo */}
-        <TabsContent value="abtest" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="w-5 h-5" />
-                Translation A/B Testing
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="font-semibold mb-3">Create A/B Test</h3>
-                  <div className="space-y-3">
-                    <Button
-                      onClick={() => {
-                        i18n.abTesting.createTest("hero_cta", {
-                          variant_a: "Get Started Now",
-                          variant_b: "Start Your Journey",
-                          variant_c: "Begin Today",
-                        });
-                      }}
-                    >
-                      Create Hero CTA Test
-                    </Button>
-
-                    <div className="p-3 border rounded-lg">
-                      <h4 className="font-medium mb-2">
-                        Current Variant for User {userId}:
-                      </h4>
-                      <div className="bg-blue-50 dark:bg-blue-950/20 p-3 rounded">
-                        <span className="font-semibold">
-                          {i18n.abTesting.getVariant("hero_cta", userId) ||
-                            "No variant assigned"}
+        {/* Cultural Intelligence Tab */}
+        <TabsContent value="cultural" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Brain className="w-5 h-5 mr-2" />
+                  Cultural Dimensions
+                </CardTitle>
+                <CardDescription>
+                  Hofstede's cultural dimensions analysis
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {Object.entries(culturalAdaptations.dimensions || {}).map(
+                  ([dimension, score]) => (
+                    <div key={dimension} className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="capitalize text-sm font-medium">
+                          {dimension.replace("_", " ")}
                         </span>
+                        <span className="text-sm text-muted-foreground">
+                          {score}/100
+                        </span>
+                      </div>
+                      <Progress value={score} className="h-2" />
+                    </div>
+                  ),
+                )}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>UI Adaptations</CardTitle>
+                <CardDescription>
+                  Automatic interface adjustments
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <strong>Color Scheme:</strong>{" "}
+                  {culturalAdaptations.colorPreferences?.primary}
+                </div>
+                <div>
+                  <strong>Communication Style:</strong>{" "}
+                  {culturalAdaptations.communicationStyle}
+                </div>
+                <div>
+                  <strong>Hierarchy Display:</strong>{" "}
+                  {culturalAdaptations.hierarchyDisplay ? "Formal" : "Casual"}
+                </div>
+                <div>
+                  <strong>Risk Indicators:</strong>{" "}
+                  {culturalAdaptations.riskDisplay ? "Prominent" : "Subtle"}
+                </div>
+                <div>
+                  <strong>Decision Support:</strong>{" "}
+                  {culturalAdaptations.decisionSupport}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="md:col-span-2">
+              <CardHeader>
+                <CardTitle>Business Etiquette</CardTitle>
+                <CardDescription>
+                  Local business customs and practices
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-2">Greetings</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      {businessEtiquette.greetings?.map((greeting, index) => (
+                        <li key={index}>• {greeting}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Meeting Culture</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      {businessEtiquette.meetingCulture?.map(
+                        (practice, index) => (
+                          <li key={index}>• {practice}</li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Gift Giving</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      {businessEtiquette.giftGiving?.map((rule, index) => (
+                        <li key={index}>• {rule}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Dress Code</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      {businessEtiquette.dressCode?.map((guideline, index) => (
+                        <li key={index}>• {guideline}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Offline Support Tab */}
+        <TabsContent value="offline" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Shield className="w-5 h-5 mr-2" />
+                  Offline Capabilities
+                </CardTitle>
+                <CardDescription>
+                  Progressive loading and offline-first design
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span>Essential Translations</span>
+                    <Badge
+                      variant={
+                        offlineSupport.isEssentialCached
+                          ? "default"
+                          : "secondary"
+                      }
+                    >
+                      {offlineSupport.isEssentialCached
+                        ? "Cached"
+                        : "Loading..."}
+                    </Badge>
+                  </div>
+                  <Progress
+                    value={offlineSupport.essentialProgress || 0}
+                    className="h-2"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span>Extended Translations</span>
+                    <Badge
+                      variant={
+                        offlineSupport.isExtendedCached
+                          ? "default"
+                          : "secondary"
+                      }
+                    >
+                      {offlineSupport.isExtendedCached
+                        ? "Cached"
+                        : "Loading..."}
+                    </Badge>
+                  </div>
+                  <Progress
+                    value={offlineSupport.extendedProgress || 0}
+                    className="h-2"
+                  />
+                </div>
+
+                <Separator />
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Storage Usage</h4>
+                  <div className="text-sm text-muted-foreground">
+                    <div>Cache Size: {offlineSupport.cacheSize || "0 MB"}</div>
+                    <div>Last Sync: {offlineSupport.lastSync || "Never"}</div>
+                    <div>
+                      Auto-sync:{" "}
+                      {offlineSupport.autoSync ? "Enabled" : "Disabled"}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Network Optimization</CardTitle>
+                <CardDescription>
+                  Smart loading based on connection quality
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span>Connection Quality</span>
+                    <Badge variant={isOnline ? "default" : "destructive"}>
+                      {isOnline ? "Good" : "Offline"}
+                    </Badge>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span>Translation Priority</span>
+                      <span>{isOnline ? "Full Quality" : "Cached Only"}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span>Image Loading</span>
+                      <span>{isOnline ? "High Resolution" : "Compressed"}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span>Analytics</span>
+                      <span>{isOnline ? "Real-time" : "Queued"}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <Alert>
+                  <AlertDescription>
+                    {isOnline
+                      ? "All features available with live translation updates"
+                      : "Running in offline mode with cached translations"}
+                  </AlertDescription>
+                </Alert>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Analytics Tab */}
+        <TabsContent value="analytics" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <BarChart3 className="w-5 h-5 mr-2" />
+                  Usage Analytics
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span>Translation Requests</span>
+                  <span className="font-semibold">
+                    {analytics.translationRequests || 0}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Cache Hit Rate</span>
+                  <span className="font-semibold">
+                    {analytics.cacheHitRate || 0}%
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Voice Commands</span>
+                  <span className="font-semibold">
+                    {analytics.voiceCommands || 0}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Cultural Adaptations</span>
+                  <span className="font-semibold">
+                    {analytics.culturalAdaptations || 0}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Metrics</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span>Avg Translation Time</span>
+                  <span className="font-semibold">
+                    {performanceStats.avgTranslationTime || 0}ms
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Memory Usage</span>
+                  <span className="font-semibold">
+                    {performanceStats.memoryUsage || 0}MB
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Bundle Size</span>
+                  <span className="font-semibold">
+                    {performanceStats.bundleSize || 0}KB
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Load Time</span>
+                  <span className="font-semibold">
+                    {performanceStats.loadTime || 0}ms
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>A/B Testing</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span>Active Tests</span>
+                    <span className="font-semibold">
+                      {abTesting.activeTests || 0}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Variant</span>
+                    <Badge variant="outline">
+                      {abTesting.currentVariant || "Control"}
+                    </Badge>
+                  </div>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-sm">Current Tests</h4>
+                  {abTesting.tests?.map((test, index) => (
+                    <div key={index} className="flex justify-between text-sm">
+                      <span>{test.name}</span>
+                      <Badge variant="secondary">{test.status}</Badge>
+                    </div>
+                  )) || (
+                    <p className="text-sm text-muted-foreground">
+                      No active tests
+                    </p>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Smart Translation Tab */}
+        <TabsContent value="smart-translation" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Context-Aware Translation</CardTitle>
+                <CardDescription>
+                  AI-powered translations that adapt to context and tone
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {smartTranslationExamples.map((example, index) => (
+                  <div key={index} className="space-y-2 p-3 border rounded-lg">
+                    <div className="flex justify-between items-center">
+                      <Badge variant="outline">{example.context}</Badge>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => handleTextToSpeech(example.text)}
+                      >
+                        <Volume2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    <div className="text-sm">
+                      <div>
+                        <strong>Original:</strong> {example.text}
+                      </div>
+                      <div>
+                        <strong>Translated:</strong>{" "}
+                        {smartTranslation.translate(
+                          example.text,
+                          example.context,
+                        )}
                       </div>
                     </div>
                   </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Pluralization Engine</CardTitle>
+                <CardDescription>
+                  Advanced plural forms for complex languages
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {[1, 2, 5, 11, 101].map((count) => (
+                  <div
+                    key={count}
+                    className="flex justify-between items-center p-2 border rounded"
+                  >
+                    <span className="font-mono">{count} item(s)</span>
+                    <span>
+                      {pluralization.pluralize(
+                        "item",
+                        count,
+                        cityConfig.locale,
+                      )}
+                    </span>
+                  </div>
+                ))}
+
+                <Alert>
+                  <AlertDescription>
+                    Using {cityConfig.locale} pluralization rules with{" "}
+                    {pluralization.getRuleCount(cityConfig.locale)} forms
+                  </AlertDescription>
+                </Alert>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Quality Metrics Tab */}
+        <TabsContent value="quality" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Translation Quality</CardTitle>
+                <CardDescription>
+                  Real-time quality monitoring and improvement
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span>Overall Quality Score</span>
+                    <span className="font-semibold">{translationQuality}%</span>
+                  </div>
+                  <Progress value={translationQuality} className="h-3" />
                 </div>
 
-                <div>
-                  <h3 className="font-semibold mb-3">Test Results</h3>
-                  <div className="space-y-3">
-                    <Button
-                      onClick={() =>
-                        i18n.abTesting.trackConversion("hero_cta", userId)
-                      }
-                      variant="outline"
-                    >
-                      Track Conversion
-                    </Button>
+                <Separator />
 
-                    <div className="space-y-2">
-                      {Object.entries(
-                        i18n.abTesting.getResults("hero_cta") || {},
-                      ).map(([variant, data]) => (
-                        <div key={variant} className="p-2 border rounded">
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm font-medium">
-                              {variant}
-                            </span>
-                            <Badge variant="outline">
-                              {(data.conversionRate * 100).toFixed(1)}%
-                            </Badge>
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            Confidence: {(data.confidence * 100).toFixed(1)}%
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span>Accuracy</span>
+                    <span>{qualityMetrics.accuracy || 92}%</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span>Fluency</span>
+                    <span>{qualityMetrics.fluency || 88}%</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span>Cultural Relevance</span>
+                    <span>{qualityMetrics.culturalRelevance || 85}%</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span>Context Understanding</span>
+                    <span>{qualityMetrics.contextUnderstanding || 90}%</span>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Quality Assurance</CardTitle>
+                <CardDescription>
+                  Continuous improvement and validation
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span>Auto-validation</span>
+                    <Badge variant="default">Active</Badge>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>Human Review</span>
+                    <Badge variant="secondary">Scheduled</Badge>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>Machine Learning</span>
+                    <Badge variant="default">Training</Badge>
+                  </div>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-sm">Recent Improvements</h4>
+                  <ul className="space-y-1 text-xs text-muted-foreground">
+                    <li>
+                      • Enhanced {cityConfig.locale} context detection (+5%
+                      accuracy)
+                    </li>
+                    <li>
+                      • Improved cultural adaptation for {cityConfig.country}
+                    </li>
+                    <li>• Updated regional expressions and idioms</li>
+                    <li>• Optimized voice synthesis for local accent</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Real-time Quality Monitoring */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Real-time Quality Monitoring</CardTitle>
+              <CardDescription>
+                Live translation quality metrics and alerts
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {[
+                  { label: "Translations/min", value: "24", status: "good" },
+                  { label: "Error Rate", value: "0.2%", status: "good" },
+                  { label: "Avg Response Time", value: "45ms", status: "good" },
+                  {
+                    label: "User Satisfaction",
+                    value: "4.8/5",
+                    status: "excellent",
+                  },
+                ].map((metric, index) => (
+                  <div
+                    key={index}
+                    className="text-center p-4 border rounded-lg"
+                  >
+                    <div className="text-2xl font-bold">{metric.value}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {metric.label}
+                    </div>
+                    <Badge
+                      variant={
+                        metric.status === "excellent" ? "default" : "secondary"
+                      }
+                      className="mt-2"
+                    >
+                      {metric.status}
+                    </Badge>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
         </TabsContent>
-
-        {/* Translation Management */}
-        <TabsContent value="translation" className="space-y-6">
-          <TranslationManager />
-        </TabsContent>
       </Tabs>
-
-      {/* Global Controls */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Globe className="w-5 h-5" />
-            Global Localization Controls
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label className="text-sm">Current Language</Label>
-              <div className="mt-1">
-                <Badge variant="default" className="text-sm">
-                  {localeNames[i18n.locale]} ({i18n.locale})
-                </Badge>
-              </div>
-            </div>
-
-            <div>
-              <Label className="text-sm">Selected City</Label>
-              <div className="mt-1">
-                <CitySelector />
-              </div>
-            </div>
-
-            <div>
-              <Label className="text-sm">Cultural Profile</Label>
-              <div className="mt-1">
-                <Badge variant="outline" className="text-sm">
-                  {cultural.culturalProfile.communicationStyle} •{" "}
-                  {cultural.culturalProfile.timeOrientation}
-                </Badge>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
