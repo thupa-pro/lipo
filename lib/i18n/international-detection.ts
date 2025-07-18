@@ -342,8 +342,8 @@ export function getUserLocationAndDetectCountry(): Promise<CountryDetectionResul
 
 // Format currency based on detected country
 export function formatCurrencyForCountry(
-  amount: number,
   country: string,
+  amount: number,
   options?: Intl.NumberFormatOptions,
 ): string {
   const currency = countryCurrencyMap[country] || "USD";
