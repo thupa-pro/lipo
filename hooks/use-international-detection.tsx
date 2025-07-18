@@ -271,7 +271,11 @@ export function useInternationalDetection(
 
 // Standalone utilities for one-off usage
 export const internationalUtils = {
-  formatCurrency: formatCurrencyForCountry,
+  formatCurrency: (
+    country: string,
+    amount: number,
+    options?: Intl.NumberFormatOptions,
+  ) => formatCurrencyForCountry(country, amount, options),
   formatPhone: formatPhoneNumber,
   validatePhone: validatePhoneNumber,
   detectCountry: getUserLocationAndDetectCountry,
