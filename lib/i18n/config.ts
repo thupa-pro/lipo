@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 
-// Expanded locales to support 70+ metropolitan cities worldwide
+// Expanded locales to support 70+ metropolitan cities worldwide (one language per country)
 export const locales = [
-  "en", // English - New York, London, Los Angeles, Chicago, Toronto, Sydney, etc.
+  "en", // English - New York, London, Los Angeles, Chicago, Toronto, Sydney, Lagos, Johannesburg, Accra
   "zh", // Chinese (Mandarin) - Beijing, Shanghai, Guangzhou, Shenzhen, Tianjin
   "hi", // Hindi - Delhi, Mumbai
   "es", // Spanish - Mexico City, Madrid, Barcelona, Buenos Aires, Lima, Bogotá
-  "ar", // Arabic - Cairo, Riyadh, Dubai, Baghdad, Casablanca, Tunis
-  "pt", // Portuguese - São Paulo, Rio de Janeiro, Lisbon
+  "ar", // Arabic - Cairo, Riyadh, Dubai, Baghdad, Casablanca, Tunis, Khartoum, Alexandria
+  "pt", // Portuguese - São Paulo, Rio de Janeiro, Lisbon, Luanda
   "bn", // Bengali - Dhaka, Kolkata
   "ru", // Russian - Moscow, Saint Petersburg
   "ja", // Japanese - Tokyo, Osaka, Yokohama
@@ -16,7 +16,7 @@ export const locales = [
   "de", // German - Berlin, Hamburg, Munich, Vienna, Zurich
   "ur", // Urdu - Karachi
   "ko", // Korean - Seoul, Busan
-  "fr", // French - Paris, Lyon, Kinshasa, Algiers, Casablanca, Abidjan
+  "fr", // French - Paris, Lyon, Kinshasa, Algiers, Abidjan, Montreal
   "tr", // Turkish - Istanbul, Ankara
   "it", // Italian - Rome, Milan, Naples
   "th", // Thai - Bangkok
@@ -40,11 +40,6 @@ export const locales = [
   "tl", // Filipino/Tagalog - Manila
   "zh-TW", // Traditional Chinese - Taipei
   "am", // Amharic - Addis Ababa
-  "zu", // Zulu - Johannesburg, Durban
-  "af", // Afrikaans - Cape Town
-  "yo", // Yoruba - Lagos
-  "ha", // Hausa - Kano
-  "ig", // Igbo - Lagos (secondary)
   "mg", // Malagasy - Antananarivo
 ] as const;
 export const defaultLocale = "en" as const;
