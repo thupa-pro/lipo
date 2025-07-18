@@ -143,6 +143,13 @@ export const localeFlags: Record<Locale, string> = {
   ms: "🇲🇾",
   tl: "🇵🇭",
   "zh-TW": "🇹🇼",
+  am: "🇪🇹",
+  zu: "🇿🇦",
+  af: "🇿🇦",
+  yo: "🇳🇬",
+  ha: "🇳🇬",
+  ig: "🇳🇬",
+  mg: "🇲🇬",
 };
 
 // Top 50 Metropolitan Cities with their preferred languages and regions
