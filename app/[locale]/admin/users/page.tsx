@@ -10,14 +10,12 @@ import {
   MoreHorizontal,
   Eye,
   Edit,
-  Trash2,
   Shield,
   Clock,
   Mail,
   MapPin,
   TrendingUp,
   ArrowUpRight,
-  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 
