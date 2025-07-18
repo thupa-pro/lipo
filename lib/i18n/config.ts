@@ -97,6 +97,13 @@ export const localeNames: Record<Locale, string> = {
   ms: "Bahasa Melayu",
   tl: "Filipino",
   "zh-TW": "中文 (繁體)",
+  am: "አማርኛ",
+  zu: "isiZulu",
+  af: "Afrikaans",
+  yo: "Yorùbá",
+  ha: "Hausa",
+  ig: "Igbo",
+  mg: "Malagasy",
 };
 
 export const localeFlags: Record<Locale, string> = {
