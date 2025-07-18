@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "home": "Ile",
+    "about": "Nipa wa",
+    "services": "Awọn iṣẹ",
+    "contact": "Olubasọrọ",
+    "dashboard": "Dashboard",
+    "profile": "Profaili",
+    "settings": "Awọn eto",
+    "help": "Iranlọwọ",
+    "login": "Wọle",
+    "signup": "Forukọsilẹ",
+    "logout": "Jade"
+  },
+  "common": {
+    "loading": "Ngbigba...",
+    "error": "Aṣiṣe",
+    "success": "Aṣeyọri",
+    "cancel": "Fagilee",
+    "save": "Fi pamọ",
+    "submit": "Fi silẹ",
+    "back": "Pada sẹhin",
+    "next": "Itẹle",
+    "previous": "Iṣaaju",
+    "search": "Wa",
+    "welcome": "Kaabo"
+  },
+  "footer": {
+    "company": "Ile-iṣẹ",
+    "support": "Atilẹyin",
+    "legal": "Ofin",
+    "copyright": "© 2024 Gbogbo ẹtọ ti wa ni ipamọ",
+    "terms": "Awọn ofin iṣẹ",
+    "privacy": "Eto imulo asiri",
+    "contact_us": "Kan si wa"
+  },
+  "showcase": {
+    "title": "Ifihan ti igbelarugbo agbaye to ga julọ",
+    "description": "Atilẹyin agbegbe ti AI ti nṣakoso lati awọn ilu pataki 50+"
+  }
+}
