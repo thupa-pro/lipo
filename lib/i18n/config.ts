@@ -65,7 +65,7 @@ export const localeNames: Record<Locale, string> = {
   bn: "বাংল���",
   ru: "Русский",
   ja: "日本語",
-  pa: "ਪੰਜਾਬ��",
+  pa: "ਪੰਜਾਬੀ",
   de: "Deutsch",
   ur: "اردو",
   ko: "한국어",
@@ -521,13 +521,13 @@ export const metropolitanCities = {
 
   // Additional African Cities
   lagos: {
-    locale: "yo",
+    locale: "en",
     region: "Africa/Lagos",
     country: "Nigeria",
     population: 15300000,
   },
   johannesburg: {
-    locale: "zu",
+    locale: "en",
     region: "Africa/Johannesburg",
     country: "South Africa",
     population: 4400000,
@@ -563,19 +563,19 @@ export const metropolitanCities = {
     population: 3700000,
   },
   cape_town: {
-    locale: "af",
+    locale: "en",
     region: "Africa/Johannesburg",
     country: "South Africa",
     population: 4600000,
   },
   kano: {
-    locale: "ha",
+    locale: "en",
     region: "Africa/Lagos",
     country: "Nigeria",
     population: 3600000,
   },
   ibadan: {
-    locale: "yo",
+    locale: "en",
     region: "Africa/Lagos",
     country: "Nigeria",
     population: 3200000,
@@ -593,7 +593,7 @@ export const metropolitanCities = {
     population: 5200000,
   },
   durban: {
-    locale: "zu",
+    locale: "en",
     region: "Africa/Johannesburg",
     country: "South Africa",
     population: 3500000,
