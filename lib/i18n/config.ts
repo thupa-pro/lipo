@@ -130,3 +130,444 @@ export const localeFlags: Record<Locale, string> = {
   tl: "🇵🇭",
   "zh-TW": "🇹🇼",
 };
+
+// Top 50 Metropolitan Cities with their preferred languages and regions
+export const metropolitanCities = {
+  // Asia-Pacific
+  tokyo: {
+    locale: "ja",
+    region: "Asia/Tokyo",
+    country: "Japan",
+    population: 37400000,
+  },
+  delhi: {
+    locale: "hi",
+    region: "Asia/Kolkata",
+    country: "India",
+    population: 32900000,
+  },
+  shanghai: {
+    locale: "zh",
+    region: "Asia/Shanghai",
+    country: "China",
+    population: 28500000,
+  },
+  dhaka: {
+    locale: "bn",
+    region: "Asia/Dhaka",
+    country: "Bangladesh",
+    population: 22600000,
+  },
+  beijing: {
+    locale: "zh",
+    region: "Asia/Shanghai",
+    country: "China",
+    population: 21700000,
+  },
+  mumbai: {
+    locale: "hi",
+    region: "Asia/Kolkata",
+    country: "India",
+    population: 20700000,
+  },
+  osaka: {
+    locale: "ja",
+    region: "Asia/Tokyo",
+    country: "Japan",
+    population: 19000000,
+  },
+  karachi: {
+    locale: "ur",
+    region: "Asia/Karachi",
+    country: "Pakistan",
+    population: 16100000,
+  },
+  chongqing: {
+    locale: "zh",
+    region: "Asia/Shanghai",
+    country: "China",
+    population: 16000000,
+  },
+  guangzhou: {
+    locale: "zh",
+    region: "Asia/Shanghai",
+    country: "China",
+    population: 15300000,
+  },
+  tianjin: {
+    locale: "zh",
+    region: "Asia/Shanghai",
+    country: "China",
+    population: 14100000,
+  },
+  shenzhen: {
+    locale: "zh",
+    region: "Asia/Shanghai",
+    country: "China",
+    population: 13400000,
+  },
+  kolkata: {
+    locale: "bn",
+    region: "Asia/Kolkata",
+    country: "India",
+    population: 13200000,
+  },
+  lahore: {
+    locale: "pa",
+    region: "Asia/Karachi",
+    country: "Pakistan",
+    population: 13100000,
+  },
+  seoul: {
+    locale: "ko",
+    region: "Asia/Seoul",
+    country: "South Korea",
+    population: 9900000,
+  },
+  bangkok: {
+    locale: "th",
+    region: "Asia/Bangkok",
+    country: "Thailand",
+    population: 10700000,
+  },
+  jakarta: {
+    locale: "id",
+    region: "Asia/Jakarta",
+    country: "Indonesia",
+    population: 10600000,
+  },
+  manila: {
+    locale: "tl",
+    region: "Asia/Manila",
+    country: "Philippines",
+    population: 13900000,
+  },
+  ho_chi_minh_city: {
+    locale: "vi",
+    region: "Asia/Ho_Chi_Minh",
+    country: "Vietnam",
+    population: 9000000,
+  },
+  kuala_lumpur: {
+    locale: "ms",
+    region: "Asia/Kuala_Lumpur",
+    country: "Malaysia",
+    population: 8000000,
+  },
+  taipei: {
+    locale: "zh-TW",
+    region: "Asia/Taipei",
+    country: "Taiwan",
+    population: 2700000,
+  },
+
+  // Americas
+  new_york: {
+    locale: "en",
+    region: "America/New_York",
+    country: "USA",
+    population: 18800000,
+  },
+  mexico_city: {
+    locale: "es",
+    region: "America/Mexico_City",
+    country: "Mexico",
+    population: 21600000,
+  },
+  sao_paulo: {
+    locale: "pt",
+    region: "America/Sao_Paulo",
+    country: "Brazil",
+    population: 22400000,
+  },
+  los_angeles: {
+    locale: "en",
+    region: "America/Los_Angeles",
+    country: "USA",
+    population: 12400000,
+  },
+  rio_de_janeiro: {
+    locale: "pt",
+    region: "America/Sao_Paulo",
+    country: "Brazil",
+    population: 13600000,
+  },
+  chicago: {
+    locale: "en",
+    region: "America/Chicago",
+    country: "USA",
+    population: 8900000,
+  },
+  lima: {
+    locale: "es",
+    region: "America/Lima",
+    country: "Peru",
+    population: 10900000,
+  },
+  buenos_aires: {
+    locale: "es",
+    region: "America/Argentina/Buenos_Aires",
+    country: "Argentina",
+    population: 15200000,
+  },
+
+  // Europe
+  london: {
+    locale: "en",
+    region: "Europe/London",
+    country: "UK",
+    population: 9600000,
+  },
+  moscow: {
+    locale: "ru",
+    region: "Europe/Moscow",
+    country: "Russia",
+    population: 12600000,
+  },
+  istanbul: {
+    locale: "tr",
+    region: "Europe/Istanbul",
+    country: "Turkey",
+    population: 15800000,
+  },
+  paris: {
+    locale: "fr",
+    region: "Europe/Paris",
+    country: "France",
+    population: 11000000,
+  },
+  berlin: {
+    locale: "de",
+    region: "Europe/Berlin",
+    country: "Germany",
+    population: 3700000,
+  },
+  madrid: {
+    locale: "es",
+    region: "Europe/Madrid",
+    country: "Spain",
+    population: 6700000,
+  },
+  rome: {
+    locale: "it",
+    region: "Europe/Rome",
+    country: "Italy",
+    population: 4300000,
+  },
+  barcelona: {
+    locale: "es",
+    region: "Europe/Madrid",
+    country: "Spain",
+    population: 5600000,
+  },
+  milan: {
+    locale: "it",
+    region: "Europe/Rome",
+    country: "Italy",
+    population: 3200000,
+  },
+  naples: {
+    locale: "it",
+    region: "Europe/Rome",
+    country: "Italy",
+    population: 2200000,
+  },
+  kiev: {
+    locale: "uk",
+    region: "Europe/Kiev",
+    country: "Ukraine",
+    population: 2900000,
+  },
+  saint_petersburg: {
+    locale: "ru",
+    region: "Europe/Moscow",
+    country: "Russia",
+    population: 5400000,
+  },
+  warsaw: {
+    locale: "pl",
+    region: "Europe/Warsaw",
+    country: "Poland",
+    population: 1800000,
+  },
+  amsterdam: {
+    locale: "nl",
+    region: "Europe/Amsterdam",
+    country: "Netherlands",
+    population: 1100000,
+  },
+  vienna: {
+    locale: "de",
+    region: "Europe/Vienna",
+    country: "Austria",
+    population: 1900000,
+  },
+  athens: {
+    locale: "el",
+    region: "Europe/Athens",
+    country: "Greece",
+    population: 3200000,
+  },
+  budapest: {
+    locale: "hu",
+    region: "Europe/Budapest",
+    country: "Hungary",
+    population: 1800000,
+  },
+  prague: {
+    locale: "cs",
+    region: "Europe/Prague",
+    country: "Czech Republic",
+    population: 1300000,
+  },
+  stockholm: {
+    locale: "sv",
+    region: "Europe/Stockholm",
+    country: "Sweden",
+    population: 1000000,
+  },
+  copenhagen: {
+    locale: "da",
+    region: "Europe/Copenhagen",
+    country: "Denmark",
+    population: 1400000,
+  },
+  oslo: {
+    locale: "no",
+    region: "Europe/Oslo",
+    country: "Norway",
+    population: 700000,
+  },
+  helsinki: {
+    locale: "fi",
+    region: "Europe/Helsinki",
+    country: "Finland",
+    population: 650000,
+  },
+  bucharest: {
+    locale: "ro",
+    region: "Europe/Bucharest",
+    country: "Romania",
+    population: 1900000,
+  },
+
+  // Middle East & Africa
+  cairo: {
+    locale: "ar",
+    region: "Africa/Cairo",
+    country: "Egypt",
+    population: 20900000,
+  },
+  tehran: {
+    locale: "fa",
+    region: "Asia/Tehran",
+    country: "Iran",
+    population: 9500000,
+  },
+  baghdad: {
+    locale: "ar",
+    region: "Asia/Baghdad",
+    country: "Iraq",
+    population: 7000000,
+  },
+  riyadh: {
+    locale: "ar",
+    region: "Asia/Riyadh",
+    country: "Saudi Arabia",
+    population: 7000000,
+  },
+  dubai: {
+    locale: "ar",
+    region: "Asia/Dubai",
+    country: "UAE",
+    population: 3400000,
+  },
+  tel_aviv: {
+    locale: "he",
+    region: "Asia/Jerusalem",
+    country: "Israel",
+    population: 1300000,
+  },
+  nairobi: {
+    locale: "sw",
+    region: "Africa/Nairobi",
+    country: "Kenya",
+    population: 4900000,
+  },
+  kinshasa: {
+    locale: "fr",
+    region: "Africa/Kinshasa",
+    country: "DR Congo",
+    population: 15600000,
+  },
+  algiers: {
+    locale: "ar",
+    region: "Africa/Algiers",
+    country: "Algeria",
+    population: 2700000,
+  },
+  lisbon: {
+    locale: "pt",
+    region: "Europe/Lisbon",
+    country: "Portugal",
+    population: 2900000,
+  },
+} as const;
+
+// Language direction for RTL languages
+export const localeDirections: Record<Locale, "ltr" | "rtl"> = {
+  en: "ltr",
+  zh: "ltr",
+  hi: "ltr",
+  es: "ltr",
+  pt: "ltr",
+  bn: "ltr",
+  ru: "ltr",
+  ja: "ltr",
+  pa: "ltr",
+  de: "ltr",
+  ko: "ltr",
+  fr: "ltr",
+  tr: "ltr",
+  it: "ltr",
+  th: "ltr",
+  pl: "ltr",
+  nl: "ltr",
+  uk: "ltr",
+  vi: "ltr",
+  sw: "ltr",
+  ro: "ltr",
+  el: "ltr",
+  cs: "ltr",
+  hu: "ltr",
+  fi: "ltr",
+  da: "ltr",
+  no: "ltr",
+  sv: "ltr",
+  id: "ltr",
+  ms: "ltr",
+  tl: "ltr",
+  "zh-TW": "ltr",
+  // RTL languages
+  ar: "rtl",
+  ur: "rtl",
+  fa: "rtl",
+  he: "rtl",
+};
+
+// Helper function to get city data
+export function getCityData(cityKey: string) {
+  return metropolitanCities[cityKey as keyof typeof metropolitanCities];
+}
+
+// Helper function to detect locale from city
+export function getLocaleFromCity(cityKey: string): Locale {
+  const cityData = getCityData(cityKey);
+  return cityData?.locale || defaultLocale;
+}
+
+// Helper function to get timezone from city
+export function getTimezoneFromCity(cityKey: string): string {
+  const cityData = getCityData(cityKey);
+  return cityData?.region || "UTC";
+}
