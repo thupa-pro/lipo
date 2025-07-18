@@ -1,6 +1,6 @@
 # API Documentation
 
-Loconomy provides a comprehensive RESTful API for integrating with our platform. This documentation covers authentication, endpoints, request/response formats, and best practices.
+Loconomy provides a comprehensive API built with Next.js 15 and React 19 Server Actions. This documentation covers both traditional RESTful endpoints and modern Server Actions, along with authentication, request/response formats, and best practices.
 
 ## 🔗 Base URL
 
@@ -45,6 +45,142 @@ Rate limit headers:
 X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 999
 X-RateLimit-Reset: 1640995200
+```
+
+---
+
+## 🚀 Server Actions (React 19)
+
+Loconomy leverages React 19's Server Actions for seamless server-side data mutations with automatic error handling and optimistic updates.
+
+### Booking a Service
+
+```typescript
+// Server Action
+async function bookService(formData: FormData) {
+  'use server'
+  
+  const bookingData = {
+    providerId: formData.get('providerId') as string,
+    serviceId: formData.get('serviceId') as string,
+    date: formData.get('date') as string,
+    notes: formData.get('notes') as string
+  };
+  
+  try {
+    const booking = await createBooking(bookingData);
+    revalidatePath('/bookings');
+    return { success: true, booking };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+// Component usage
+function BookingForm({ provider }: { provider: Provider }) {
+  const [formState, formAction] = useActionState(bookService, null);
+  
+  return (
+    <form action={formAction}>
+      <input name="providerId" value={provider.id} type="hidden" />
+      <select name="serviceId" required>
+        {provider.services.map(service => (
+          <option key={service.id} value={service.id}>
+            {service.name} - ${service.price}
+          </option>
+        ))}
+      </select>
+      <input name="date" type="datetime-local" required />
+      <textarea name="notes" placeholder="Special requirements..." />
+      <button type="submit">Book Service</button>
+      {formState?.error && <p className="error">{formState.error}</p>}
+    </form>
+  );
+}
+```
+
+### Provider Profile Update
+
+```typescript
+// Server Action with optimistic updates
+async function updateProviderProfile(formData: FormData) {
+  'use server'
+  
+  const profileData = {
+    businessName: formData.get('businessName') as string,
+    bio: formData.get('bio') as string,
+    category: formData.get('category') as string
+  };
+  
+  const updatedProfile = await updateProvider(profileData);
+  revalidatePath('/provider/profile');
+  return updatedProfile;
+}
+
+// Component with optimistic updates
+function ProfileForm({ provider }: { provider: Provider }) {
+  const [optimisticProfile, setOptimisticProfile] = useOptimistic(
+    provider,
+    (prev, updates) => ({ ...prev, ...updates })
+  );
+  
+  return (
+    <form action={async (formData) => {
+      setOptimisticProfile({
+        businessName: formData.get('businessName') as string,
+        bio: formData.get('bio') as string
+      });
+      await updateProviderProfile(formData);
+    }}>
+      <input 
+        name="businessName" 
+        defaultValue={optimisticProfile.businessName}
+        required 
+      />
+      <textarea 
+        name="bio" 
+        defaultValue={optimisticProfile.bio}
+        rows={4} 
+      />
+      <button type="submit">Update Profile</button>
+    </form>
+  );
+}
+```
+
+### Search with Real-time Updates
+
+```typescript
+// Server Action for search
+async function searchProviders(query: string, filters: SearchFilters) {
+  'use server'
+  
+  const results = await searchProvidersInDatabase({
+    query,
+    category: filters.category,
+    location: filters.location,
+    priceRange: filters.priceRange,
+    rating: filters.rating
+  });
+  
+  return {
+    providers: results,
+    total: results.length,
+    facets: calculateSearchFacets(results)
+  };
+}
+
+// Component with concurrent rendering
+function SearchResults() {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('q') || '';
+  
+  return (
+    <Suspense fallback={<SearchSkeleton />}>
+      <SearchProvider query={query} />
+    </Suspense>
+  );
+}
 ```
 
 ---

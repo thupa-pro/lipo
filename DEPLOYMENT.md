@@ -28,11 +28,11 @@ Full-stack deployment with database included.
 
 ### System Requirements
 
-- **Node.js** 18.0.0 or higher
-- **pnpm** 8.0.0 or higher (recommended) or npm
+- **Node.js** 20.0.0 or higher (22.0+ recommended for optimal performance)
+- **pnpm** 10.0.0 or higher (recommended) or npm 10+
 - **Git** for version control
-- **PostgreSQL** 14+ (for production)
-- **Redis** 6+ (for caching and sessions)
+- **PostgreSQL** 15+ (for production with React 19 Server Components)
+- **Redis** 7+ (for caching, sessions, and Next.js 15 cache)
 
 ### External Services
 

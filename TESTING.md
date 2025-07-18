@@ -1,6 +1,6 @@
 # Testing Guide
 
-Loconomy follows comprehensive testing practices to ensure code quality, reliability, and user satisfaction. This guide covers our testing strategy, tools, and best practices.
+Loconomy follows comprehensive testing practices to ensure code quality, reliability, and user satisfaction. This guide covers our testing strategy for React 19 Server Components, Server Actions, and modern Next.js 15 features, along with tools and best practices.
 
 ## 🧪 Testing Philosophy
 
@@ -13,11 +13,13 @@ We believe in **Test-Driven Development (TDD)** and maintain high test coverage 
 ## 🛠️ Testing Stack
 
 ### **Core Testing Tools**
-- **Jest** - JavaScript testing framework
-- **React Testing Library** - React component testing
-- **Playwright** - End-to-end testing
-- **MSW (Mock Service Worker)** - API mocking
+- **Vitest** - Fast testing framework (Vite-powered)
+- **Jest** - JavaScript testing framework (legacy support)
+- **React Testing Library** - React 19 component testing
+- **Playwright** - End-to-end testing with Server Components
+- **MSW (Mock Service Worker)** - API mocking for Server Actions
 - **Testing Library/User Event** - User interaction simulation
+- **React 19 Test Utils** - Server Component testing utilities
 
 ### **Additional Tools**
 - **Storybook** - Component isolation and visual testing
@@ -74,6 +76,203 @@ pnpm test:lighthouse        # Lighthouse performance tests
 
 # All tests
 pnpm test:all               # Run complete test suite
+```
+
+---
+
+## 🚀 Testing React 19 Features
+
+### **Server Components Testing**
+
+Testing Server Components requires special handling since they run on the server:
+
+```typescript
+// __tests__/components/ProviderList.server.test.tsx
+import { render } from '@testing-library/react';
+import { ProviderList } from '@/components/ProviderList';
+
+// Mock database calls
+jest.mock('@/lib/database', () => ({
+  getProviders: jest.fn()
+}));
+
+describe('ProviderList Server Component', () => {
+  it('renders provider list from server data', async () => {
+    const mockProviders = [
+      { id: '1', name: 'John Doe', rating: 4.5 },
+      { id: '2', name: 'Jane Smith', rating: 4.8 }
+    ];
+    
+    (getProviders as jest.Mock).mockResolvedValue(mockProviders);
+    
+    const { findByText } = render(await ProviderList());
+    
+    expect(await findByText('John Doe')).toBeInTheDocument();
+    expect(await findByText('Jane Smith')).toBeInTheDocument();
+  });
+});
+```
+
+### **Server Actions Testing**
+
+Testing Server Actions involves mocking database operations and validating state changes:
+
+```typescript
+// __tests__/actions/booking.test.ts
+import { bookService } from '@/lib/actions/booking';
+import { createBooking } from '@/lib/database';
+
+jest.mock('@/lib/database');
+
+describe('bookService Server Action', () => {
+  it('creates booking successfully', async () => {
+    const mockBooking = { id: 'booking_123', status: 'confirmed' };
+    (createBooking as jest.Mock).mockResolvedValue(mockBooking);
+    
+    const formData = new FormData();
+    formData.append('providerId', 'provider_123');
+    formData.append('serviceId', 'service_456');
+    formData.append('date', '2024-03-15T10:00');
+    
+    const result = await bookService(formData);
+    
+    expect(result.success).toBe(true);
+    expect(result.booking).toEqual(mockBooking);
+    expect(createBooking).toHaveBeenCalledWith({
+      providerId: 'provider_123',
+      serviceId: 'service_456',
+      date: '2024-03-15T10:00'
+    });
+  });
+  
+  it('handles booking errors gracefully', async () => {
+    (createBooking as jest.Mock).mockRejectedValue(
+      new Error('Provider not available')
+    );
+    
+    const formData = new FormData();
+    formData.append('providerId', 'provider_123');
+    
+    const result = await bookService(formData);
+    
+    expect(result.success).toBe(false);
+    expect(result.error).toBe('Provider not available');
+  });
+});
+```
+
+### **useActionState Hook Testing**
+
+Testing components that use the new React 19 hooks:
+
+```typescript
+// __tests__/components/BookingForm.test.tsx
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { BookingForm } from '@/components/BookingForm';
+
+// Mock the Server Action
+const mockBookService = jest.fn();
+jest.mock('@/lib/actions/booking', () => ({
+  bookService: mockBookService
+}));
+
+describe('BookingForm with useActionState', () => {
+  it('submits form and shows success state', async () => {
+    mockBookService.mockResolvedValue({ 
+      success: true, 
+      booking: { id: 'booking_123' } 
+    });
+    
+    render(<BookingForm providerId="provider_123" />);
+    
+    const submitButton = screen.getByRole('button', { name: /book now/i });
+    const dateInput = screen.getByLabelText(/date/i);
+    
+    fireEvent.change(dateInput, { target: { value: '2024-03-15T10:00' } });
+    fireEvent.click(submitButton);
+    
+    await waitFor(() => {
+      expect(screen.getByText(/booking confirmed/i)).toBeInTheDocument();
+    });
+  });
+  
+  it('shows error state on failure', async () => {
+    mockBookService.mockResolvedValue({ 
+      success: false, 
+      error: 'Provider not available' 
+    });
+    
+    render(<BookingForm providerId="provider_123" />);
+    
+    const submitButton = screen.getByRole('button', { name: /book now/i });
+    fireEvent.click(submitButton);
+    
+    await waitFor(() => {
+      expect(screen.getByText(/provider not available/i)).toBeInTheDocument();
+    });
+  });
+});
+```
+
+### **useOptimistic Hook Testing**
+
+Testing optimistic updates requires checking both immediate and eventual state:
+
+```typescript
+// __tests__/components/ProfileForm.test.tsx
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { ProfileForm } from '@/components/ProfileForm';
+
+describe('ProfileForm with useOptimistic', () => {
+  it('shows optimistic updates immediately', async () => {
+    const mockProvider = { 
+      id: 'provider_123', 
+      businessName: 'Old Name',
+      bio: 'Old bio' 
+    };
+    
+    render(<ProfileForm provider={mockProvider} />);
+    
+    const nameInput = screen.getByDisplayValue('Old Name');
+    const submitButton = screen.getByRole('button', { name: /update/i });
+    
+    fireEvent.change(nameInput, { target: { value: 'New Name' } });
+    fireEvent.click(submitButton);
+    
+    // Should show optimistic update immediately
+    expect(screen.getByDisplayValue('New Name')).toBeInTheDocument();
+  });
+});
+```
+
+### **Concurrent Rendering Testing**
+
+Testing components with Suspense boundaries and concurrent features:
+
+```typescript
+// __tests__/components/SearchResults.test.tsx
+import { render, screen, waitFor } from '@testing-library/react';
+import { SearchResults } from '@/components/SearchResults';
+
+describe('SearchResults with Suspense', () => {
+  it('shows loading state then results', async () => {
+    render(
+      <Suspense fallback={<div>Loading providers...</div>}>
+        <SearchResults query="plumber" />
+      </Suspense>
+    );
+    
+    // Should show loading state first
+    expect(screen.getByText(/loading providers/i)).toBeInTheDocument();
+    
+    // Wait for providers to load
+    await waitFor(() => {
+      expect(screen.getByTestId('provider-list')).toBeInTheDocument();
+    });
+    
+    expect(screen.queryByText(/loading providers/i)).not.toBeInTheDocument();
+  });
+});
 ```
 
 ---
