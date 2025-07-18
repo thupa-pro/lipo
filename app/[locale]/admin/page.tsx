@@ -8,28 +8,22 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Activity,
   Users,
   Briefcase,
-  Star,
-  TrendingUp,
-  TrendingDown,
-  Shield,
-  Settings,
-  Bell,
-  Eye,
   UserCheck,
   DollarSign,
   MapPin,
   Clock,
-  AlertTriangle,
   CheckCircle,
   ArrowUpRight,
-  ArrowDownRight,
-  Sparkles,
-  Brain,
+  Shield,
+  Activity,
+  Eye,
+  Settings,
+  Bell,
+  AlertTriangle,
   Zap,
-  Globe,
+  TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
 

@@ -20,12 +20,10 @@ import {
   ChevronRight,
   ChevronLeft,
   Loader2,
-  AlertCircle,
-  Shield,
-  Star
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { format, addDays, isSameDay, isAfter, isBefore } from "date-fns";
+import { format, addDays, isAfter, isBefore } from "date-fns";
 
 interface TimeSlot {
   time: string;

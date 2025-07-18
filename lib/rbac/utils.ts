@@ -132,3 +132,23 @@ export function canAccessRoute(userRole: UserRole, route: string): boolean {
   // Default: allow access to public routes
   return true;
 }
+
+/**
+ * Mock current session - for demo purposes
+ * In a real app, this would integrate with your auth system
+ */
+export function getCurrentSession(): {
+  user: { id: string; email: string; role: UserRole } | null;
+  isAuthenticated: boolean;
+} {
+  // This is a mock implementation for demo purposes
+  // In a real app, you'd get this from your auth provider (Clerk, Auth0, etc.)
+  return {
+    user: {
+      id: "demo-user-123",
+      email: "demo@loconomy.com",
+      role: "consumer" as UserRole,
+    },
+    isAuthenticated: true,
+  };
+}

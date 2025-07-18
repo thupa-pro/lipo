@@ -20,7 +20,7 @@ import {
   Shield,
   Info,
   LogOut,
-  Switch,
+  ToggleLeft,
   Settings,
   Eye,
 } from "lucide-react";
@@ -167,7 +167,7 @@ export default function MockAuthPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Switch className="w-5 h-5" />
+                  <ToggleLeft className="w-5 h-5" />
                   Switch Role
                 </CardTitle>
                 <CardDescription>

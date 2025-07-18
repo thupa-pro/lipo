@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SmartListingCard } from "@/components/ui/smart-listing-card";
 import { AgentCommandInput } from "@/components/ui/agent-command-input";
-import { BookingStepper } from "@/components/ui/booking-stepper";
+// import { BookingStepper } from "@/components/ui/booking-stepper";
 import { WalletSummaryCard } from "@/components/ui/wallet-summary-card";
 import { ReviewSummaryAgentBox } from "@/components/ui/review-summary-agent-box";
 import { Separator } from "@/components/ui/separator";
@@ -283,16 +283,10 @@ export default function MissingComponentsDemo() {
               </CardContent>
             </Card>
           ) : (
-            <BookingStepper
-              serviceId="demo-service"
-              providerId="demo-provider"
-              serviceName="Professional House Cleaning"
-              providerName="Sarah Johnson"
-              basePrice={85}
-              currency="$"
-              onBookingComplete={handleBookingComplete}
-              onCancel={() => setShowBookingStepper(false)}
-            />
+            <div className="p-4 text-center">
+              <p>BookingStepper component temporarily disabled due to build issues</p>
+              <Button onClick={() => setShowBookingStepper(false)}>Close</Button>
+            </div>
           )}
         </section>
 

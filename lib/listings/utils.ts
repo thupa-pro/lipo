@@ -8,6 +8,227 @@ import {
   ListingStatus,
   ListingValidationError,
 } from "./types";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// Listing status types
+export type ListingStatus = "active" | "pending" | "paused" | "expired" | "draft";
+
+// Pricing types
+export interface PricingData {
+  amount: number;
+  currency: string;
+  unit: string;
+  type: "fixed" | "hourly" | "negotiable";
+}
+
+// Status color mapping
+export function getStatusColor(status: ListingStatus): string {
+  switch (status) {
+    case "active":
+      return "text-green-600 bg-green-50 border-green-200";
+    case "pending":
+      return "text-yellow-600 bg-yellow-50 border-yellow-200";
+    case "paused":
+      return "text-gray-600 bg-gray-50 border-gray-200";
+    case "expired":
+      return "text-red-600 bg-red-50 border-red-200";
+    case "draft":
+      return "text-blue-600 bg-blue-50 border-blue-200";
+    default:
+      return "text-gray-600 bg-gray-50 border-gray-200";
+  }
+}
+
+// Status text mapping
+export function getStatusText(status: ListingStatus): string {
+  switch (status) {
+    case "active":
+      return "Active";
+    case "pending":
+      return "Pending Review";
+    case "paused":
+      return "Paused";
+    case "expired":
+      return "Expired";
+    case "draft":
+      return "Draft";
+    default:
+      return "Unknown";
+  }
+}
+
+// Format pricing display
+export function formatPricingDisplay(pricing: PricingData): string {
+  const { amount, currency, unit, type } = pricing;
+  
+  if (type === "negotiable") {
+    return "Negotiable";
+  }
+  
+  const formattedAmount = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency || 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
+  
+  const unitText = unit ? `/${unit}` : '';
+  
+  return `${formattedAmount}${unitText}`;
+}
+
+// Listing form validation
+export interface ListingFormData {
+  title: string;
+  description: string;
+  category: string;
+  pricing: PricingData;
+  location: string;
+  images: string[];
+  availability: string;
+  tags: string[];
+}
+
+export interface ValidationError {
+  field: string;
+  message: string;
+}
+
+export function validateListingForm(data: ListingFormData): ValidationError[] {
+  const errors: ValidationError[] = [];
+  
+  // Title validation
+  if (!data.title?.trim()) {
+    errors.push({ field: 'title', message: 'Title is required' });
+  } else if (data.title.length < 5) {
+    errors.push({ field: 'title', message: 'Title must be at least 5 characters' });
+  } else if (data.title.length > 100) {
+    errors.push({ field: 'title', message: 'Title must be less than 100 characters' });
+  }
+  
+  // Description validation
+  if (!data.description?.trim()) {
+    errors.push({ field: 'description', message: 'Description is required' });
+  } else if (data.description.length < 20) {
+    errors.push({ field: 'description', message: 'Description must be at least 20 characters' });
+  } else if (data.description.length > 2000) {
+    errors.push({ field: 'description', message: 'Description must be less than 2000 characters' });
+  }
+  
+  // Category validation
+  if (!data.category?.trim()) {
+    errors.push({ field: 'category', message: 'Category is required' });
+  }
+  
+  // Pricing validation
+  if (!data.pricing?.amount || data.pricing.amount <= 0) {
+    errors.push({ field: 'pricing.amount', message: 'Valid pricing amount is required' });
+  }
+  
+  if (!data.pricing?.currency) {
+    errors.push({ field: 'pricing.currency', message: 'Currency is required' });
+  }
+  
+  if (!data.pricing?.type) {
+    errors.push({ field: 'pricing.type', message: 'Pricing type is required' });
+  }
+  
+  // Location validation
+  if (!data.location?.trim()) {
+    errors.push({ field: 'location', message: 'Location is required' });
+  }
+  
+  // Images validation
+  if (!data.images || data.images.length === 0) {
+    errors.push({ field: 'images', message: 'At least one image is required' });
+  } else if (data.images.length > 10) {
+    errors.push({ field: 'images', message: 'Maximum 10 images allowed' });
+  }
+  
+  return errors;
+}
+
+// Generate listing slug
+export function generateListingSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+}
+
+// Calculate listing score based on various factors
+export interface ListingMetrics {
+  views: number;
+  bookings: number;
+  rating: number;
+  reviewCount: number;
+  responseTime: number; // in hours
+  completionRate: number; // percentage
+}
+
+export function calculateListingScore(metrics: ListingMetrics): number {
+  const {
+    views,
+    bookings,
+    rating,
+    reviewCount,
+    responseTime,
+    completionRate
+  } = metrics;
+  
+  // Base score from rating (0-50 points)
+  const ratingScore = (rating / 5) * 50;
+  
+  // Booking conversion rate (0-20 points)
+  const conversionRate = views > 0 ? (bookings / views) * 100 : 0;
+  const conversionScore = Math.min(conversionRate * 0.2, 20);
+  
+  // Review count influence (0-15 points)
+  const reviewScore = Math.min(reviewCount * 0.5, 15);
+  
+  // Response time bonus (0-10 points) - better response time = higher score
+  const responseScore = Math.max(0, 10 - (responseTime / 24) * 10);
+  
+  // Completion rate (0-5 points)
+  const completionScore = (completionRate / 100) * 5;
+  
+  const totalScore = ratingScore + conversionScore + reviewScore + responseScore + completionScore;
+  
+  return Math.round(Math.min(totalScore, 100));
+}
+
+// Format duration
+export function formatDuration(minutes: number): string {
+  if (minutes < 60) {
+    return `${minutes}m`;
+  }
+  
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  
+  if (remainingMinutes === 0) {
+    return `${hours}h`;
+  }
+  
+  return `${hours}h ${remainingMinutes}m`;
+}
+
+// Check if listing is available at a given time
+export function isListingAvailable(
+  availability: string[],
+  requestedTime: Date
+): boolean {
+  // This would typically check against the availability schedule
+  // For now, return true if availability array is not empty
+  return availability.length > 0;
+}
 
 // Client-side utilities
 export function useListingsClient() {

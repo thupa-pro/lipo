@@ -507,3 +507,5 @@ export function DataInjection({ onDataLoaded }: DataInjectionProps) {
     </div>
   );
 }
+
+export default DataInjection;

@@ -580,3 +580,5 @@ export function DeviceTesting({ onTestComplete }: DeviceTestingProps) {
     </div>
   );
 }
+
+export default DeviceTesting;
