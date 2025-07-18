@@ -5,6 +5,8 @@ import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { MockAuthProvider } from "@/lib/mock/auth";
 import EnhancedErrorBoundary from "@/components/enhanced-error-boundary";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({
