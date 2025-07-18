@@ -6,7 +6,7 @@ import {
 import { metropolitanCities, getCityData } from "@/lib/i18n/config";
 
 export default function TestCitiesPage() {
-  // Test some of the new African cities
+  // Test cities from different continents with one language per country
   const testCities = [
     "lagos",
     "johannesburg",
@@ -14,6 +14,8 @@ export default function TestCitiesPage() {
     "casablanca",
     "cape_town",
     "nairobi",
+    "kano",
+    "durban",
   ];
 
   return (
