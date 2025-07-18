@@ -70,6 +70,7 @@
     "zod": "^3.22.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@jest/globals": "^29.7.0",
     "@playwright/test": "^1.40.0",
     "@testing-library/dom": "^9.3.0",
@@ -81,6 +82,7 @@
     "@vitejs/plugin-react": "^4.2.0",
     "@vitest/browser": "^1.0.0",
     "@vitest/ui": "^1.0.0",
+    "cssnano": "^7.1.0",
     "happy-dom": "18.0.1",
     "jsdom": "^24.0.0",
     "postcss": "^8.5",

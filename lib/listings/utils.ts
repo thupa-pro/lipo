@@ -1,4 +1,3 @@
-import { createClient } from "@/lib/supabase/server";
 import { createClient as createClientClient } from "@/lib/supabase/client";
 import {
   Listing,
@@ -10,110 +9,21 @@ import {
   ListingValidationError,
 } from "./types";
 
-// Server-side utilities
-export async function getProviderListings(
-  providerId: string,
-): Promise<Listing[]> {
-  const supabase = createClient();
-
-  const { data, error } = await supabase
-    .from("service_listings")
-    .select("*")
-    .eq("provider_id", providerId)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error("Error fetching provider listings:", error);
-    return [];
-  }
-
-  return data || [];
-}
-
-export async function getListing(listingId: string): Promise<Listing | null> {
-  const supabase = createClient();
-
-  const { data, error } = await supabase
-    .from("service_listings")
-    .select("*")
-    .eq("id", listingId)
-    .single();
-
-  if (error || !data) return null;
-  return data as Listing;
-}
-
-export async function getListingStats(
-  providerId: string,
-): Promise<ListingStats | null> {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.rpc("get_listing_stats", {
-    p_provider_id: providerId,
-  });
-
-  if (error || !data) return null;
-  return data as ListingStats;
-}
-
-export async function searchListings(
-  filters: SearchFilters,
-): Promise<SearchResult[]> {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.rpc("search_listings", {
-    p_query: filters.query || null,
-    p_category: filters.category || null,
-    p_location_type: filters.location_type || null,
-    p_max_price: filters.max_price || null,
-    p_limit: filters.limit || 20,
-    p_offset: filters.offset || 0,
-  });
-
-  if (error) {
-    console.error("Error searching listings:", error);
-    return [];
-  }
-
-  return data || [];
-}
-
-export async function recordListingView(
-  listingId: string,
-  viewerIp?: string,
-  userAgent?: string,
-): Promise<boolean> {
-  const supabase = createClient();
-
-  const { error } = await supabase.rpc("record_listing_view", {
-    p_listing_id: listingId,
-    p_viewer_ip: viewerIp || null,
-    p_user_agent: userAgent || null,
-  });
-
-  return !error;
-}
-
 // Client-side utilities
 export function useListingsClient() {
   const supabase = createClientClient();
 
   return {
-    async getListings(providerId?: string): Promise<Listing[]> {
-      let query = supabase
+    async getProviderListings(providerId: string): Promise<Listing[]> {
+      const { data, error } = await supabase
         .from("service_listings")
         .select("*")
+        .eq("provider_id", providerId)
         .order("created_at", { ascending: false });
 
-      if (providerId) {
-        query = query.eq("provider_id", providerId);
-      }
-
-      const { data, error } = await query;
-
       if (error) {
-        console.error("Error fetching listings:", error);
-        throw error;
+        console.error("Error fetching provider listings:", error);
+        return [];
       }
 
       return data || [];
@@ -126,320 +36,216 @@ export function useListingsClient() {
         .eq("id", listingId)
         .single();
 
-      if (error) {
-        console.error("Error fetching listing:", error);
-        return null;
-      }
-
+      if (error || !data) return null;
       return data as Listing;
     },
 
-    async createListing(formData: ListingFormData): Promise<Listing | null> {
+    async createListing(
+      providerId: string,
+      formData: ListingFormData,
+    ): Promise<{ success: boolean; id?: string; error?: string }> {
       const { data, error } = await supabase
         .from("service_listings")
         .insert({
-          title: formData.title,
-          description: formData.description,
-          category: formData.category,
-          subcategory: formData.subcategory,
-          tags: formData.tags,
-          pricing_type: formData.pricing_type,
-          base_price: formData.base_price,
-          hourly_rate: formData.hourly_rate,
-          minimum_hours: formData.minimum_hours,
-          duration_minutes: formData.duration_minutes,
-          location_type: formData.location_type,
-          service_area: formData.service_area,
-          max_bookings_per_day: formData.max_bookings_per_day,
-          advance_booking_days: formData.advance_booking_days,
-          cancellation_policy: formData.cancellation_policy,
-          status: formData.status,
-          images: formData.existing_images || [],
+          provider_id: providerId,
+          ...formData,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
         })
         .select()
         .single();
 
       if (error) {
-        console.error("Error creating listing:", error);
-        throw error;
+        return { success: false, error: error.message };
       }
 
-      return data as Listing;
+      return { success: true, id: data.id };
     },
 
     async updateListing(
       listingId: string,
-      formData: ListingFormData,
-    ): Promise<Listing | null> {
-      const { data, error } = await supabase
+      formData: Partial<ListingFormData>,
+    ): Promise<{ success: boolean; error?: string }> {
+      const { error } = await supabase
         .from("service_listings")
         .update({
-          title: formData.title,
-          description: formData.description,
-          category: formData.category,
-          subcategory: formData.subcategory,
-          tags: formData.tags,
-          pricing_type: formData.pricing_type,
-          base_price: formData.base_price,
-          hourly_rate: formData.hourly_rate,
-          minimum_hours: formData.minimum_hours,
-          duration_minutes: formData.duration_minutes,
-          location_type: formData.location_type,
-          service_area: formData.service_area,
-          max_bookings_per_day: formData.max_bookings_per_day,
-          advance_booking_days: formData.advance_booking_days,
-          cancellation_policy: formData.cancellation_policy,
-          status: formData.status,
-          images: formData.existing_images || [],
+          ...formData,
           updated_at: new Date().toISOString(),
         })
-        .eq("id", listingId)
-        .select()
-        .single();
+        .eq("id", listingId);
 
       if (error) {
-        console.error("Error updating listing:", error);
-        throw error;
+        return { success: false, error: error.message };
       }
 
-      return data as Listing;
+      return { success: true };
     },
 
-    async deleteListing(listingId: string): Promise<boolean> {
+    async deleteListing(
+      listingId: string,
+    ): Promise<{ success: boolean; error?: string }> {
       const { error } = await supabase
         .from("service_listings")
         .delete()
         .eq("id", listingId);
 
       if (error) {
-        console.error("Error deleting listing:", error);
-        throw error;
+        return { success: false, error: error.message };
       }
 
-      return true;
+      return { success: true };
     },
 
     async updateListingStatus(
       listingId: string,
       status: ListingStatus,
-    ): Promise<boolean> {
-      const { error } = await supabase.rpc("update_listing_status", {
-        p_listing_id: listingId,
-        p_status: status,
-      });
+    ): Promise<{ success: boolean; error?: string }> {
+      const { error } = await supabase
+        .from("service_listings")
+        .update({
+          status,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", listingId);
 
       if (error) {
-        console.error("Error updating listing status:", error);
-        throw error;
+        return { success: false, error: error.message };
       }
 
-      return true;
+      return { success: true };
     },
 
-    async getStats(providerId: string): Promise<ListingStats | null> {
-      const { data, error } = await supabase.rpc("get_listing_stats", {
-        p_provider_id: providerId,
-      });
+    async searchListings(filters: SearchFilters): Promise<SearchResult> {
+      let query = supabase
+        .from("service_listings")
+        .select("*")
+        .eq("status", "active");
 
-      if (error) {
-        console.error("Error fetching listing stats:", error);
-        return null;
+      if (filters.category) {
+        query = query.eq("category", filters.category);
       }
 
-      return data as ListingStats;
-    },
+      if (filters.subcategory) {
+        query = query.eq("subcategory", filters.subcategory);
+      }
 
-    async searchListings(filters: SearchFilters): Promise<SearchResult[]> {
-      const { data, error } = await supabase.rpc("search_listings", {
-        p_query: filters.query || null,
-        p_category: filters.category || null,
-        p_location_type: filters.location_type || null,
-        p_max_price: filters.max_price || null,
-        p_limit: filters.limit || 20,
-        p_offset: filters.offset || 0,
-      });
+      if (filters.location) {
+        query = query.ilike("service_areas", `%${filters.location}%`);
+      }
+
+      if (filters.minPrice !== undefined) {
+        query = query.gte("base_price", filters.minPrice);
+      }
+
+      if (filters.maxPrice !== undefined) {
+        query = query.lte("base_price", filters.maxPrice);
+      }
+
+      if (filters.sortBy) {
+        const ascending = filters.sortOrder === "asc";
+        query = query.order(filters.sortBy, { ascending });
+      }
+
+      const from = ((filters.page || 1) - 1) * (filters.limit || 10);
+      const to = from + (filters.limit || 10) - 1;
+
+      const { data, error, count } = await query.range(from, to);
 
       if (error) {
         console.error("Error searching listings:", error);
-        throw error;
+        return {
+          listings: [],
+          total: 0,
+          page: filters.page || 1,
+          totalPages: 0,
+        };
       }
 
-      return data || [];
+      return {
+        listings: data || [],
+        total: count || 0,
+        page: filters.page || 1,
+        totalPages: Math.ceil((count || 0) / (filters.limit || 10)),
+      };
     },
   };
 }
 
-// Image upload utilities
-export async function uploadListingImage(
-  file: File,
-  listingId: string,
-): Promise<string | null> {
-  const supabase = createClientClient();
-
-  const fileExt = file.name.split(".").pop();
-  const fileName = `${listingId}/${Date.now()}.${fileExt}`;
-
-  const { data, error } = await supabase.storage
-    .from("listing-images")
-    .upload(fileName, file);
-
-  if (error) {
-    console.error("Error uploading image:", error);
-    return null;
-  }
-
-  const {
-    data: { publicUrl },
-  } = supabase.storage.from("listing-images").getPublicUrl(fileName);
-
-  return publicUrl;
-}
-
-export async function deleteListingImage(imageUrl: string): Promise<boolean> {
-  const supabase = createClientClient();
-
-  // Extract file path from URL
-  const url = new URL(imageUrl);
-  const filePath = url.pathname.split("/").slice(-2).join("/"); // Get listing-id/filename.ext
-
-  const { error } = await supabase.storage
-    .from("listing-images")
-    .remove([filePath]);
-
-  return !error;
-}
-
-// Validation utilities
-export function validateListingForm(
-  data: ListingFormData,
+// Validation helpers
+export function validateListingData(
+  data: Partial<ListingFormData>,
 ): ListingValidationError[] {
   const errors: ListingValidationError[] = [];
 
-  if (!data.title.trim()) {
-    errors.push({ field: "title", message: "Title is required" });
-  } else if (data.title.length < 10) {
+  if (!data.title || data.title.trim().length < 5) {
     errors.push({
       field: "title",
-      message: "Title must be at least 10 characters",
-    });
-  } else if (data.title.length > 100) {
-    errors.push({
-      field: "title",
-      message: "Title must be less than 100 characters",
+      message: "Title must be at least 5 characters long",
     });
   }
 
-  if (!data.description.trim()) {
-    errors.push({ field: "description", message: "Description is required" });
-  } else if (data.description.length < 50) {
+  if (!data.description || data.description.trim().length < 20) {
     errors.push({
       field: "description",
-      message: "Description must be at least 50 characters",
-    });
-  } else if (data.description.length > 2000) {
-    errors.push({
-      field: "description",
-      message: "Description must be less than 2000 characters",
+      message: "Description must be at least 20 characters long",
     });
   }
 
   if (!data.category) {
-    errors.push({ field: "category", message: "Category is required" });
-  }
-
-  // Pricing validation
-  if (data.pricing_type === "hourly") {
-    if (!data.hourly_rate || data.hourly_rate <= 0) {
-      errors.push({
-        field: "hourly_rate",
-        message: "Hourly rate must be greater than 0",
-      });
-    }
-    if (data.minimum_hours && data.minimum_hours < 1) {
-      errors.push({
-        field: "minimum_hours",
-        message: "Minimum hours must be at least 1",
-      });
-    }
-  } else if (data.pricing_type === "fixed") {
-    if (!data.base_price || data.base_price <= 0) {
-      errors.push({
-        field: "base_price",
-        message: "Fixed price must be greater than 0",
-      });
-    }
-  }
-
-  // Duration validation for fixed pricing
-  if (
-    data.pricing_type === "fixed" &&
-    data.duration_minutes &&
-    data.duration_minutes < 15
-  ) {
     errors.push({
-      field: "duration_minutes",
-      message: "Duration must be at least 15 minutes",
+      field: "category",
+      message: "Category is required",
     });
   }
 
-  // Booking settings validation
-  if (
-    data.max_bookings_per_day &&
-    (data.max_bookings_per_day < 1 || data.max_bookings_per_day > 50)
-  ) {
+  if (!data.subcategory) {
     errors.push({
-      field: "max_bookings_per_day",
-      message: "Max bookings per day must be between 1 and 50",
+      field: "subcategory",
+      message: "Subcategory is required",
     });
   }
 
-  if (
-    data.advance_booking_days &&
-    (data.advance_booking_days < 1 || data.advance_booking_days > 365)
-  ) {
+  if (data.base_price !== undefined && data.base_price < 0) {
     errors.push({
-      field: "advance_booking_days",
-      message: "Advance booking days must be between 1 and 365",
+      field: "base_price",
+      message: "Base price must be a positive number",
+    });
+  }
+
+  if (!data.service_areas || data.service_areas.length === 0) {
+    errors.push({
+      field: "service_areas",
+      message: "At least one service area is required",
     });
   }
 
   return errors;
 }
 
-// Formatting utilities
-export function formatPrice(amount: number, currency: string = "USD"): string {
+// Helper functions
+export function formatPrice(price: number, currency: string = "USD"): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency,
-  }).format(amount);
+  }).format(price);
 }
 
-export function formatPricingDisplay(listing: Listing): string {
-  if (listing.pricing_type === "hourly" && listing.hourly_rate) {
-    return `${formatPrice(listing.hourly_rate)}/hour`;
-  } else if (listing.pricing_type === "fixed" && listing.base_price) {
-    return formatPrice(listing.base_price);
-  } else {
-    return "Custom pricing";
-  }
-}
-
-export function getStatusColor(status: ListingStatus): string {
+export function getListingStatusColor(status: ListingStatus): string {
   switch (status) {
     case "active":
-      return "text-green-600 bg-green-100";
+      return "green";
     case "draft":
-      return "text-gray-600 bg-gray-100";
+      return "gray";
     case "paused":
-      return "text-yellow-600 bg-yellow-100";
-    case "inactive":
-      return "text-red-600 bg-red-100";
+      return "yellow";
+    case "rejected":
+      return "red";
     default:
-      return "text-gray-600 bg-gray-100";
+      return "gray";
   }
 }
 
-export function getStatusText(status: ListingStatus): string {
+export function getListingStatusLabel(status: ListingStatus): string {
   switch (status) {
     case "active":
       return "Active";
@@ -447,9 +253,115 @@ export function getStatusText(status: ListingStatus): string {
       return "Draft";
     case "paused":
       return "Paused";
-    case "inactive":
-      return "Inactive";
+    case "rejected":
+      return "Rejected";
     default:
       return "Unknown";
   }
+}
+
+export function truncateText(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + "...";
+}
+
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function generateListingUrl(listing: Listing): string {
+  const slug = slugify(listing.title);
+  return `/listings/${listing.id}/${slug}`;
+}
+
+// Search and filter helpers
+export function buildSearchQuery(filters: SearchFilters): string {
+  const params = new URLSearchParams();
+
+  if (filters.category) params.set("category", filters.category);
+  if (filters.subcategory) params.set("subcategory", filters.subcategory);
+  if (filters.location) params.set("location", filters.location);
+  if (filters.minPrice !== undefined)
+    params.set("minPrice", filters.minPrice.toString());
+  if (filters.maxPrice !== undefined)
+    params.set("maxPrice", filters.maxPrice.toString());
+  if (filters.sortBy) params.set("sortBy", filters.sortBy);
+  if (filters.sortOrder) params.set("sortOrder", filters.sortOrder);
+  if (filters.page && filters.page > 1)
+    params.set("page", filters.page.toString());
+  if (filters.limit && filters.limit !== 10)
+    params.set("limit", filters.limit.toString());
+
+  return params.toString();
+}
+
+export function parseSearchQuery(searchParams: URLSearchParams): SearchFilters {
+  return {
+    category: searchParams.get("category") || undefined,
+    subcategory: searchParams.get("subcategory") || undefined,
+    location: searchParams.get("location") || undefined,
+    minPrice: searchParams.get("minPrice")
+      ? Number(searchParams.get("minPrice"))
+      : undefined,
+    maxPrice: searchParams.get("maxPrice")
+      ? Number(searchParams.get("maxPrice"))
+      : undefined,
+    sortBy: (searchParams.get("sortBy") as any) || "created_at",
+    sortOrder: (searchParams.get("sortOrder") as "asc" | "desc") || "desc",
+    page: searchParams.get("page") ? Number(searchParams.get("page")) : 1,
+    limit: searchParams.get("limit") ? Number(searchParams.get("limit")) : 10,
+  };
+}
+
+// Category helpers (these would typically come from a categories config)
+export const CATEGORIES = [
+  "Home & Garden",
+  "Health & Wellness",
+  "Business Services",
+  "Personal Care",
+  "Events & Entertainment",
+  "Automotive",
+  "Technology",
+  "Education",
+] as const;
+
+export const SUBCATEGORIES: Record<string, string[]> = {
+  "Home & Garden": [
+    "Cleaning",
+    "Landscaping",
+    "Repairs & Maintenance",
+    "Interior Design",
+    "Pest Control",
+  ],
+  "Health & Wellness": [
+    "Personal Training",
+    "Massage Therapy",
+    "Nutrition Counseling",
+    "Mental Health",
+  ],
+  "Business Services": [
+    "Accounting",
+    "Legal Services",
+    "Marketing",
+    "Consulting",
+    "Web Development",
+  ],
+  "Personal Care": ["Hair & Beauty", "Pet Care", "Childcare", "Elder Care"],
+  "Events & Entertainment": [
+    "Photography",
+    "Catering",
+    "Music & DJ",
+    "Event Planning",
+  ],
+  Automotive: ["Car Repair", "Car Washing", "Towing", "Inspection"],
+  Technology: ["Computer Repair", "Phone Repair", "IT Support", "Setup"],
+  Education: ["Tutoring", "Music Lessons", "Language Learning", "Test Prep"],
+};
+
+export function getCategorySubcategories(category: string): string[] {
+  return SUBCATEGORIES[category] || [];
 }
