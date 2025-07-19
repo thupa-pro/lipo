@@ -1,24 +1,13 @@
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   UserCheck,
-  Users,
-  Search,
-  Filter,
-  MoreHorizontal,
-  Eye,
-  Edit,
-  Shield,
-  Clock,
-  Mail,
-  MapPin,
-  TrendingUp,
   ArrowUpRight,
+  CheckCircle,
+  Shield,
   Star,
   Award,
-  CheckCircle,
 } from "lucide-react";
 import Link from "next/link";
 

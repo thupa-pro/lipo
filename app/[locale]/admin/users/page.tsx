@@ -5,19 +5,17 @@ import { Badge } from "@/components/ui/badge";
 import {
   Users,
   UserCheck,
-  Search,
+  TrendingUp,
+  Shield,
+  ArrowUpRight,
   Filter,
-  MoreHorizontal,
   Eye,
   Edit,
-  Trash2,
-  Shield,
+  MoreHorizontal,
+  MapPin,
   Clock,
   Mail,
-  MapPin,
-  TrendingUp,
-  ArrowUpRight,
-  Sparkles,
+  Search,
 } from "lucide-react";
 import Link from "next/link";
 

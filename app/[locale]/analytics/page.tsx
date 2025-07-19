@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
-import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { AnalyticsOverview } from "@/components/analytics/analytics-overview";
 import { PerformanceMetrics } from "@/components/analytics/performance-metrics";
@@ -26,14 +25,11 @@ import {
   Download,
   RefreshCw,
   Filter,
-  Calendar,
   TrendingUp,
   Users,
   DollarSign,
   Activity,
   Eye,
-  Settings,
-  FileText,
   Share2,
 } from "lucide-react";
 
@@ -196,7 +192,7 @@ export default function AnalyticsPage() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Segments</label>
                   <Select
-                    value={filters.segments[0]}
+                    value={filters.segments[0] || ""}
                     onValueChange={(value) =>
                       handleFilterChange("segments", [value])
                     }

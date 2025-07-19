@@ -23,10 +23,7 @@ import {
   AlertTriangle,
   CheckCircle,
   ArrowUpRight,
-  Sparkles,
-  Brain,
   Zap,
-  Globe,
 } from "lucide-react";
 import Link from "next/link";
 
