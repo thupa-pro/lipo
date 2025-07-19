@@ -29,7 +29,7 @@ export default function ContactUsPage() {
       variant: "default",
     });
     // Simulate form reset
-    e.currentTarget.reset();
+    (e.currentTarget as HTMLFormElement).reset();
   };
 
   return (

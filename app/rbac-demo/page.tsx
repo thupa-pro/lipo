@@ -71,7 +71,7 @@ export default async function RBACDemo() {
                   </span>
                   {session.tenantId && (
                     <span className="text-slate-500 dark:text-gray-400">
-                      Tenant: {session.tenantId.slice(0, 8)}...
+                      Tenant: {session.tenantId?.slice(0, 8)}...
                     </span>
                   )}
                 </div>

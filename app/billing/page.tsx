@@ -79,11 +79,11 @@ export default function BillingPage() {
           billingClient.getUsageData(),
         ]);
 
-      if (overview.success) setBillingOverview(overview.data);
-      if (subscription.success) setCurrentSubscription(subscription.data);
+      if (overview.success && overview.data) setBillingOverview(overview.data);
+      if (subscription.success && subscription.data) setCurrentSubscription(subscription.data);
       if (methods.success) setPaymentMethods(methods.data || []);
       if (invoices.success) setRecentInvoices(invoices.data || []);
-      if (usage.success) setUsageData(usage.data);
+      if (usage.success && usage.data) setUsageData(usage.data);
     } catch (error) {
       console.error("Error loading billing data:", error);
       toast.error("Failed to load billing information");

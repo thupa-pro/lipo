@@ -81,7 +81,7 @@ export default function AnalyticsPage() {
     setLoading(true);
     try {
       const response = await analyticsClient.getKeyMetrics(timeframe);
-      if (response.success) {
+      if (response.success && response.data) {
         setKeyMetrics(response.data);
       } else {
         toast.error("Failed to load key metrics");
@@ -107,7 +107,7 @@ export default function AnalyticsPage() {
         timeframe,
         dateRange,
       );
-      if (response.success) {
+      if (response.success && response.data) {
         // Create and trigger download
         const blob = new Blob([response.data], { type: "text/csv" });
         const url = window.URL.createObjectURL(blob);
@@ -218,7 +218,11 @@ export default function AnalyticsPage() {
                   mode="range"
                   defaultMonth={dateRange?.from}
                   selected={dateRange}
-                  onSelect={setDateRange}
+                  onSelect={(range) => {
+                    if (range?.from && range?.to) {
+                      setDateRange({ from: range.from, to: range.to });
+                    }
+                  }}
                   numberOfMonths={2}
                 />
               </PopoverContent>

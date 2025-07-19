@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -27,14 +27,14 @@ import {
 import { useMockAuth } from "@/lib/mock/use-mock-auth";
 
 export default function MockAuthPage() {
-  const { user, role, signIn, signOut, switchRole } = useMockAuth();
+  const { user, signIn, signOut, switchRole } = useMockAuth();
   const { toast } = useToast();
   const [selectedRole, setSelectedRole] = useState<
     "consumer" | "provider" | "admin"
   >("consumer");
 
   const handleSignIn = (newRole: "consumer" | "provider" | "admin") => {
-    signIn(newRole);
+    signIn(`test-${newRole}@example.com`, newRole);
     toast({
       title: "Signed In",
       description: `Signed in as ${newRole}`,
@@ -117,16 +117,16 @@ export default function MockAuthPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`w-12 h-12 rounded-full ${roleData[role].color} flex items-center justify-center`}
+                      className={`w-12 h-12 rounded-full ${user?.role && user.role !== 'guest' ? roleData[user.role as keyof typeof roleData].color : ''} flex items-center justify-center`}
                     >
-                      {React.createElement(roleData[role].icon, {
+                      {user?.role && user.role !== 'guest' && React.createElement(roleData[user.role as keyof typeof roleData].icon, {
                         className: "w-6 h-6 text-white",
                       })}
                     </div>
                     <div>
                       <CardTitle className="text-xl">
                         Signed in as{" "}
-                        {role.charAt(0).toUpperCase() + role.slice(1)}
+                        {user?.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : 'No Role'}
                       </CardTitle>
                       <CardDescription>{user.email}</CardDescription>
                     </div>
@@ -142,7 +142,7 @@ export default function MockAuthPage() {
                   <div>
                     <h4 className="font-medium mb-2">Current Permissions:</h4>
                     <div className="flex flex-wrap gap-2">
-                      {roleData[role].permissions.map((permission, index) => (
+                      {user?.role && user.role !== 'guest' ? roleData[user.role as keyof typeof roleData].permissions.map((permission, index) => (
                         <Badge
                           key={index}
                           variant="outline"
@@ -150,7 +150,7 @@ export default function MockAuthPage() {
                         >
                           {permission}
                         </Badge>
-                      ))}
+                      )) : null}
                     </div>
                   </div>
                   <div className="flex gap-2">
@@ -176,7 +176,7 @@ export default function MockAuthPage() {
               </CardHeader>
               <CardContent>
                 <Tabs
-                  value={role}
+                  value={user?.role || ""}
                   onValueChange={(value) => handleSwitchRole(value as any)}
                 >
                   <TabsList className="grid w-full grid-cols-3">
@@ -239,7 +239,7 @@ export default function MockAuthPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {role === "consumer" && (
+                  {user?.role === "consumer" && (
                     <>
                       <Button
                         variant="outline"
@@ -261,7 +261,7 @@ export default function MockAuthPage() {
                       </Button>
                     </>
                   )}
-                  {role === "provider" && (
+                  {user?.role === "provider" && (
                     <>
                       <Button
                         variant="outline"
@@ -289,7 +289,7 @@ export default function MockAuthPage() {
                       </Button>
                     </>
                   )}
-                  {role === "admin" && (
+                  {user?.role === "admin" && (
                     <>
                       <Button
                         variant="outline"

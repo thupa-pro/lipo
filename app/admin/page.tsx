@@ -106,7 +106,7 @@ export default function AdminDashboard() {
     }
   };
 
-  const exportData = async (type: string) => {
+  const exportData = async (type: "users" | "analytics" | "listings" | "bookings") => {
     try {
       const data = await adminClient.exportData(type);
       const blob = new Blob([data], { type: "text/csv" });

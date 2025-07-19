@@ -95,7 +95,9 @@ export default function ChatPage() {
         } else {
           // Load the most recent conversation
           const latestConversation = conversationsResponse.data[0];
-          await loadConversation(latestConversation.id);
+          if (latestConversation) {
+            await loadConversation(latestConversation.id);
+          }
         }
       }
 
@@ -236,7 +238,7 @@ export default function ChatPage() {
   const loadSuggestions = async (context?: string) => {
     try {
       const response = await aiChatClient.getSuggestions(
-        activeConversationId,
+        activeConversationId || undefined,
         context,
       );
       if (response.success) {

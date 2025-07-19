@@ -206,7 +206,7 @@ export default function GPSTestPage() {
     }
 
     // Test 4: Distance calculation
-    if (mockProviders.length > 1) {
+    if (mockProviders.length > 1 && mockProviders[0]?.coordinates && mockProviders[1]?.coordinates) {
       const distance = geolocationService.calculateDistance(
         mockProviders[0].coordinates,
         mockProviders[1].coordinates,

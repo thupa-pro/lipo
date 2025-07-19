@@ -4,11 +4,11 @@ import Stripe from "stripe";
 import { createClient } from "@/lib/supabase/server";
 import { logger } from "@/lib/utils/logger";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-11-20.acacia",
+const stripe = new Stripe(process.env['STRIPE_SECRET_KEY']!, {
+  apiVersion: "2025-06-30.basil",
 });
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+const webhookSecret = process.env['STRIPE_WEBHOOK_SECRET']!;
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
@@ -113,9 +113,9 @@ async function handleSubscriptionUpdate(
   subscription: Stripe.Subscription,
   supabase: any,
 ) {
-  const userId = subscription.metadata.user_id;
-  const planId = subscription.metadata.plan_id;
-  const billingCycle = subscription.metadata.billing_cycle || "monthly";
+  const userId = subscription.metadata['user_id'];
+  const planId = subscription.metadata['plan_id'];
+  const billingCycle = subscription.metadata['billing_cycle'] || "monthly";
 
   if (!userId) {
     logger.error("No user_id in subscription metadata");
@@ -131,18 +131,18 @@ async function handleSubscriptionUpdate(
     status: subscription.status,
     billing_cycle: billingCycle,
     current_period_start: new Date(
-      subscription.current_period_start * 1000,
+      (subscription as any).current_period_start * 1000,
     ).toISOString(),
     current_period_end: new Date(
-      subscription.current_period_end * 1000,
+      (subscription as any).current_period_end * 1000,
     ).toISOString(),
-    trial_start: subscription.trial_start
-      ? new Date(subscription.trial_start * 1000).toISOString()
+    trial_start: (subscription as any).trial_start
+      ? new Date((subscription as any).trial_start * 1000).toISOString()
       : null,
-    trial_end: subscription.trial_end
-      ? new Date(subscription.trial_end * 1000).toISOString()
+    trial_end: (subscription as any).trial_end
+      ? new Date((subscription as any).trial_end * 1000).toISOString()
       : null,
-    cancel_at_period_end: subscription.cancel_at_period_end,
+    cancel_at_period_end: (subscription as any).cancel_at_period_end,
     canceled_at: subscription.canceled_at
       ? new Date(subscription.canceled_at * 1000).toISOString()
       : null,
@@ -190,11 +190,11 @@ async function handleInvoicePaymentSucceeded(
   // Get user_id from subscription
   let userId: string | null = null;
 
-  if (invoice.subscription) {
+  if ((invoice as any).subscription) {
     const { data: subscription } = await supabase
       .from("user_subscriptions")
       .select("user_id")
-      .eq("stripe_subscription_id", invoice.subscription)
+      .eq("stripe_subscription_id", (invoice as any).subscription)
       .single();
 
     userId = subscription?.user_id;
@@ -209,7 +209,7 @@ async function handleInvoicePaymentSucceeded(
   const { data: subscriptionRecord } = await supabase
     .from("user_subscriptions")
     .select("id")
-    .eq("stripe_subscription_id", invoice.subscription)
+    .eq("stripe_subscription_id", (invoice as any).subscription)
     .single();
 
   const invoiceData = {
@@ -217,7 +217,7 @@ async function handleInvoicePaymentSucceeded(
     subscription_id: subscriptionRecord?.id,
     stripe_invoice_id: invoice.id,
     stripe_customer_id: invoice.customer as string,
-    stripe_subscription_id: invoice.subscription as string,
+    stripe_subscription_id: (invoice as any).subscription as string,
     status: "paid",
     amount_due: invoice.amount_due / 100, // Convert from cents
     amount_paid: invoice.amount_paid / 100,

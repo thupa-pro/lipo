@@ -3,13 +3,13 @@ import { auth } from "@clerk/nextjs/server";
 import Stripe from "stripe";
 import { createClient } from "@/lib/supabase/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-11-20.acacia",
+const stripe = new Stripe(process.env['STRIPE_SECRET_KEY']!, {
+  apiVersion: "2025-06-30.basil",
 });
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: subscription.stripe_customer_id,
       return_url:
-        return_url || `${process.env.NEXT_PUBLIC_APP_URL}/subscription`,
+        return_url || `${process.env['NEXT_PUBLIC_APP_URL']}/subscription`,
     });
 
     return NextResponse.json({

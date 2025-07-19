@@ -31,7 +31,7 @@ import { useParams, useRouter } from "next/navigation";
 export default function ListingDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const listingId = params.id;
+  const listingId = params['id'];
 
   // Mock data - in a real app, this would be fetched based on the ID
   const listing = {

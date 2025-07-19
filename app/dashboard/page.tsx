@@ -64,6 +64,11 @@ const aiInsights = aiInsightsData.map(insight => ({
   icon: iconMap[insight.icon as keyof typeof iconMap]
 }));
 
+const mappedQuickStats = quickStats.map(stat => ({
+  ...stat,
+  icon: iconMap[stat.icon as keyof typeof iconMap]
+}));
+
 export default function PremiumDashboardPage() {
   const [currentTime, setCurrentTime] = useState("");
   const [showPriceOptimizer, setShowPriceOptimizer] = useState(false);
@@ -253,7 +258,7 @@ export default function PremiumDashboardPage() {
 
         {/* Enhanced Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {quickStats.map((stat, index) => (
+          {mappedQuickStats.map((stat, index) => (
             <Card
               key={stat.title}
               className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-2xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-500 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"

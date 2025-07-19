@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  process.env['NEXT_PUBLIC_SUPABASE_URL']!,
+  process.env['SUPABASE_SERVICE_ROLE_KEY']!,
 );
 
 export async function GET() {
@@ -38,8 +38,8 @@ export async function GET() {
     return NextResponse.json({
       status: "healthy",
       timestamp: new Date().toISOString(),
-      version: process.env.npm_package_version || "1.0.0",
-      environment: process.env.NODE_ENV,
+      version: process.env['npm_package_version'] || "1.0.0",
+      environment: process.env['NODE_ENV'],
       checks,
     });
   } catch (error) {
@@ -58,8 +58,8 @@ export async function GET() {
         error: errorMessage,
         errorDetails: errorDetails,
         envCheck: {
-          hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-          hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+                  hasSupabaseUrl: !!process.env['NEXT_PUBLIC_SUPABASE_URL'],
+        hasServiceKey: !!process.env['SUPABASE_SERVICE_ROLE_KEY'],
         },
         checks: {
           database: {

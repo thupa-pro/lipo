@@ -216,8 +216,10 @@ export default function ProviderAvailabilityPage() {
                     value={breakTime.label}
                     onChange={(e) => {
                       const newBreaks = [...breakTimes];
-                      newBreaks[index].label = e.target.value;
-                      setBreakTimes(newBreaks);
+                      if (newBreaks[index]) {
+                        newBreaks[index].label = e.target.value;
+                        setBreakTimes(newBreaks);
+                      }
                     }}
                     className="flex-1"
                   />
@@ -226,8 +228,10 @@ export default function ProviderAvailabilityPage() {
                     value={breakTime.start}
                     onChange={(e) => {
                       const newBreaks = [...breakTimes];
-                      newBreaks[index].start = e.target.value;
-                      setBreakTimes(newBreaks);
+                      if (newBreaks[index]) {
+                        newBreaks[index].start = e.target.value;
+                        setBreakTimes(newBreaks);
+                      }
                     }}
                     className="w-24"
                   />
@@ -237,8 +241,10 @@ export default function ProviderAvailabilityPage() {
                     value={breakTime.end}
                     onChange={(e) => {
                       const newBreaks = [...breakTimes];
-                      newBreaks[index].end = e.target.value;
-                      setBreakTimes(newBreaks);
+                      if (newBreaks[index]) {
+                        newBreaks[index].end = e.target.value;
+                        setBreakTimes(newBreaks);
+                      }
                     }}
                     className="w-24"
                   />

@@ -141,7 +141,9 @@ export function getCurrentSession() {
   // This is a mock implementation
   // In production, you would get this from your auth provider (Clerk, Auth0, etc.)
   return {
-    user: null,
+    id: "mock-user-123",
+    email: "demo@example.com",
     role: "guest" as UserRole,
+    tenantId: undefined,
   };
 }

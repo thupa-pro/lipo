@@ -28,7 +28,7 @@ export default function ProviderDetailPage() {
   useEffect(() => {
     // Mock provider data - in real app this would fetch from API
     const mockProvider = {
-      id: params.id,
+      id: params['id'],
       name: "Sarah Johnson",
       title: "Professional House Cleaner",
       avatar: "",
@@ -71,7 +71,7 @@ export default function ProviderDetailPage() {
       ],
     };
     setProvider(mockProvider);
-  }, [params.id]);
+  }, [params['id']]);
 
   if (!provider) {
     return (

@@ -250,12 +250,11 @@ export default function SystemHealthLogsPage() {
         {
           id: `log-${Date.now()}`,
           timestamp: new Date().toLocaleString(),
-          level:
-            Math.random() > 0.7
+          level: (Math.random() > 0.7
               ? "error"
               : Math.random() > 0.4
                 ? "warn"
-                : "info",
+                : "info") as "info" | "warn" | "error",
           message: `Simulated new log entry: ${Math.random() > 0.5 ? "Successful operation." : "Minor issue detected."}`,
           source: "sim-service",
         },
@@ -363,14 +362,13 @@ export default function SystemHealthLogsPage() {
                     </div>
                     <Progress
                       value={metric.value}
-                      className="h-2"
-                      indicatorColor={
+                      className={`h-2 ${
                         metric.status === "healthy"
-                          ? "bg-green-500"
+                          ? "text-green-500"
                           : metric.status === "warning"
-                            ? "bg-yellow-500"
-                            : "bg-red-500"
-                      }
+                            ? "text-yellow-500"
+                            : "text-red-500"
+                      }`}
                     />
                     <Badge className={getStatusColor(metric.status)}>
                       {metric.status}
