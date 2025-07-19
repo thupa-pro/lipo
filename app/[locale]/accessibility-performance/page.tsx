@@ -6,14 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AccessibilityAudit } from "@/components/accessibility/accessibility-audit";
 import { PerformanceOptimizer } from "@/components/performance/performance-optimizer";
 import {
   Eye,
   Zap,
   CheckCircle,
-  AlertTriangle,
   TrendingUp,
   Activity,
   BarChart3,

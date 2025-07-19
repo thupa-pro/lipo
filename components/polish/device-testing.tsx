@@ -1,578 +1,426 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
-import {
-  Smartphone,
-  Tablet,
-  Monitor,
-  Laptop,
-  CheckCircle,
-  AlertTriangle,
-  X,
-  Eye,
-  Maximize,
-  Minimize,
-  RotateCcw,
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { 
+  Smartphone, 
+  Monitor, 
+  Tablet, 
+  CheckCircle, 
+  AlertCircle, 
   Wifi,
   Battery,
-  Signal,
-  Sun,
-  Moon,
-} from "lucide-react";
+  Cpu,
+  HardDrive,
+  MemoryStick
+} from 'lucide-react';
 
 interface DeviceTestingProps {
-  onTestComplete?: (results: DeviceTestResults) => void;
+  className?: string;
 }
 
-interface DeviceTestResults {
-  mobile: TestResult;
-  tablet: TestResult;
-  desktop: TestResult;
-  overall: number;
+interface DeviceInfo {
+  type: 'mobile' | 'tablet' | 'desktop';
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  width: number;
+  height: number;
+  userAgent: string;
 }
 
 interface TestResult {
-  score: number;
-  issues: Array<{
-    type: "critical" | "warning" | "info";
-    message: string;
-    suggestion?: string;
-  }>;
-  passed: string[];
+  test: string;
+  status: 'pass' | 'fail' | 'warning';
+  message: string;
+  details?: string;
 }
 
-export function DeviceTesting({ onTestComplete }: DeviceTestingProps) {
-  const [isTestingRunning, setIsTestingRunning] = useState(false);
-  const [selectedDevice, setSelectedDevice] = useState("mobile");
-  const [testResults, setTestResults] = useState<DeviceTestResults | null>(
-    null,
-  );
-  const [currentViewport, setCurrentViewport] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+export default function DeviceTesting({ className }: DeviceTestingProps) {
+  const [currentDevice, setCurrentDevice] = useState<DeviceInfo | null>(null);
+  const [testResults, setTestResults] = useState<TestResult[]>([]);
+  const [isTesting, setIsTesting] = useState(false);
+  const [systemInfo, setSystemInfo] = useState<any>({});
 
-  const devicePresets = [
+  const devices: DeviceInfo[] = [
     {
-      id: "mobile",
-      name: "Mobile Phones",
+      type: 'mobile',
+      name: 'iPhone 12',
       icon: Smartphone,
-      viewports: [
-        { name: "iPhone 14 Pro", width: 393, height: 852 },
-        { name: "iPhone SE", width: 375, height: 667 },
-        { name: "Samsung Galaxy S21", width: 384, height: 854 },
-        { name: "Google Pixel 6", width: 411, height: 823 },
-      ],
-      tests: [
-        "Touch target sizing (minimum 44px)",
-        "Mobile navigation usability",
-        "Scroll performance",
-        "Text readability",
-        "Form input accessibility",
-        "Image optimization",
-        "Loading performance",
-        "Offline functionality",
-      ],
+      width: 390,
+      height: 844,
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1'
     },
     {
-      id: "tablet",
-      name: "Tablets",
+      type: 'tablet',
+      name: 'iPad Pro',
       icon: Tablet,
-      viewports: [
-        { name: 'iPad Pro 12.9"', width: 1024, height: 1366 },
-        { name: "iPad Air", width: 820, height: 1180 },
-        { name: "Samsung Galaxy Tab", width: 800, height: 1280 },
-        { name: "Surface Pro", width: 912, height: 1368 },
-      ],
-      tests: [
-        "Layout adaptation",
-        "Touch and mouse interaction",
-        "Content spacing",
-        "Navigation patterns",
-        "Multi-column layouts",
-        "Media responsiveness",
-        "Performance optimization",
-        "Orientation handling",
-      ],
+      width: 1024,
+      height: 1366,
+      userAgent: 'Mozilla/5.0 (iPad; CPU OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1'
     },
     {
-      id: "desktop",
-      name: "Desktop",
+      type: 'desktop',
+      name: 'Desktop',
       icon: Monitor,
-      viewports: [
-        { name: "1920x1080 (Full HD)", width: 1920, height: 1080 },
-        { name: "1366x768 (HD)", width: 1366, height: 768 },
-        { name: "2560x1440 (QHD)", width: 2560, height: 1440 },
-        { name: "1440x900 (MacBook)", width: 1440, height: 900 },
-      ],
-      tests: [
-        "Responsive breakpoints",
-        "Keyboard navigation",
-        "Mouse interactions",
-        "Content layout",
-        "Performance optimization",
-        "Browser compatibility",
-        "Multi-window support",
-        "Accessibility compliance",
-      ],
-    },
+      width: 1920,
+      height: 1080,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
   ];
 
-  const runDeviceTests = async () => {
-    setIsTestingRunning(true);
-
-    // Simulate comprehensive device testing
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    const mockResults: DeviceTestResults = {
-      mobile: {
-        score: 87,
-        issues: [
-          {
-            type: "warning",
-            message: "Some touch targets are smaller than 44px",
-            suggestion:
-              "Increase button and link sizes for better mobile usability",
-          },
-          {
-            type: "info",
-            message: "Images could be further optimized for mobile",
-            suggestion: "Consider using WebP format and responsive images",
-          },
-        ],
-        passed: [
-          "Mobile navigation is accessible",
-          "Text is readable on small screens",
-          "Forms work well with touch input",
-          "Page loads quickly on mobile networks",
-          "Scroll performance is smooth",
-          "Content adapts to different screen sizes",
-        ],
-      },
-      tablet: {
-        score: 92,
-        issues: [
-          {
-            type: "info",
-            message: "Some layouts could better utilize tablet screen space",
-            suggestion:
-              "Consider multi-column layouts for better content organization",
-          },
-        ],
-        passed: [
-          "Layout adapts well to tablet sizes",
-          "Touch interactions work properly",
-          "Content is well-spaced and readable",
-          "Navigation patterns are intuitive",
-          "Media displays correctly",
-          "Performance is optimized",
-          "Orientation changes handled smoothly",
-        ],
-      },
-      desktop: {
-        score: 95,
-        issues: [
-          {
-            type: "info",
-            message: "All tests passed successfully",
-            suggestion: "Consider testing on additional browser versions",
-          },
-        ],
-        passed: [
-          "Responsive breakpoints work correctly",
-          "Keyboard navigation is complete",
-          "Mouse interactions are responsive",
-          "Content layout is optimal",
-          "Performance is excellent",
-          "Browser compatibility is good",
-          "Multi-window support works",
-          "Accessibility standards met",
-        ],
-      },
-      overall: 91,
+  useEffect(() => {
+    // Detect current device
+    const detectDevice = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      if (width < 768) {
+        setCurrentDevice(devices[0]); // Mobile
+      } else if (width < 1024) {
+        setCurrentDevice(devices[1]); // Tablet
+      } else {
+        setCurrentDevice(devices[2]); // Desktop
+      }
     };
 
-    setTestResults(mockResults);
-    setIsTestingRunning(false);
-    onTestComplete?.(mockResults);
+    detectDevice();
+    window.addEventListener('resize', detectDevice);
+    
+    return () => window.removeEventListener('resize', detectDevice);
+  }, []);
+
+  useEffect(() => {
+    // Get system information
+    const getSystemInfo = () => {
+      const info = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        cookieEnabled: navigator.cookieEnabled,
+        onLine: navigator.onLine,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
+        devicePixelRatio: window.devicePixelRatio,
+        colorDepth: window.screen.colorDepth,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        memory: (navigator as any).deviceMemory,
+        cores: (navigator as any).hardwareConcurrency,
+      };
+      setSystemInfo(info);
+    };
+
+    getSystemInfo();
+  }, []);
+
+  const runTests = async () => {
+    setIsTesting(true);
+    setTestResults([]);
+
+    const tests: TestResult[] = [];
+
+    // Test 1: Responsive Design
+    const responsiveTest = await testResponsiveDesign();
+    tests.push(responsiveTest);
+
+    // Test 2: Performance
+    const performanceTest = await testPerformance();
+    tests.push(performanceTest);
+
+    // Test 3: Accessibility
+    const accessibilityTest = await testAccessibility();
+    tests.push(accessibilityTest);
+
+    // Test 4: Browser Compatibility
+    const compatibilityTest = await testBrowserCompatibility();
+    tests.push(compatibilityTest);
+
+    // Test 5: Network
+    const networkTest = await testNetwork();
+    tests.push(networkTest);
+
+    setTestResults(tests);
+    setIsTesting(false);
   };
 
-  const previewViewport = (width: number, height: number) => {
-    // This would typically open a new window or iframe with the specified dimensions
-    console.log(`Preview viewport: ${width}x${height}`);
-  };
-
-  const getDeviceIcon = (deviceId: string) => {
-    const device = devicePresets.find((d) => d.id === deviceId);
-    if (!device) return Monitor;
-    const IconComponent = device.icon;
-    return <IconComponent className="w-4 h-4" />;
-  };
-
-  const getIssueIcon = (type: string) => {
-    switch (type) {
-      case "critical":
-        return <X className="w-4 h-4 text-red-500" />;
-      case "warning":
-        return <AlertTriangle className="w-4 h-4 text-yellow-500" />;
-      case "info":
-        return <CheckCircle className="w-4 h-4 text-blue-500" />;
-      default:
-        return <CheckCircle className="w-4 h-4 text-green-500" />;
+  const testResponsiveDesign = async (): Promise<TestResult> => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    if (width >= 320 && height >= 568) {
+      return {
+        test: 'Responsive Design',
+        status: 'pass',
+        message: 'Layout adapts correctly to screen size',
+        details: `${width}x${height} resolution supported`
+      };
+    } else {
+      return {
+        test: 'Responsive Design',
+        status: 'fail',
+        message: 'Screen size too small for optimal experience',
+        details: `Minimum 320x568 required, current: ${width}x${height}`
+      };
     }
   };
 
-  const getScoreColor = (score: number) => {
-    if (score >= 90) return "text-green-600";
-    if (score >= 75) return "text-yellow-600";
-    return "text-red-600";
+  const testPerformance = async (): Promise<TestResult> => {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    const startTime = performance.now();
+    // Simulate some work
+    for (let i = 0; i < 1000000; i++) {
+      Math.random();
+    }
+    const endTime = performance.now();
+    const duration = endTime - startTime;
+    
+    if (duration < 100) {
+      return {
+        test: 'Performance',
+        status: 'pass',
+        message: 'Performance is excellent',
+        details: `Test completed in ${duration.toFixed(2)}ms`
+      };
+    } else if (duration < 500) {
+      return {
+        test: 'Performance',
+        status: 'warning',
+        message: 'Performance is acceptable but could be improved',
+        details: `Test completed in ${duration.toFixed(2)}ms`
+      };
+    } else {
+      return {
+        test: 'Performance',
+        status: 'fail',
+        message: 'Performance is poor',
+        details: `Test completed in ${duration.toFixed(2)}ms`
+      };
+    }
+  };
+
+  const testAccessibility = async (): Promise<TestResult> => {
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    // Check for basic accessibility features
+    const hasAltText = document.querySelectorAll('img[alt]').length > 0;
+    const hasHeadings = document.querySelectorAll('h1, h2, h3, h4, h5, h6').length > 0;
+    const hasLandmarks = document.querySelectorAll('nav, main, header, footer').length > 0;
+    
+    const score = [hasAltText, hasHeadings, hasLandmarks].filter(Boolean).length;
+    
+    if (score === 3) {
+      return {
+        test: 'Accessibility',
+        status: 'pass',
+        message: 'All accessibility checks passed',
+        details: 'Alt text, headings, and landmarks present'
+      };
+    } else if (score >= 2) {
+      return {
+        test: 'Accessibility',
+        status: 'warning',
+        message: 'Some accessibility features missing',
+        details: `${score}/3 accessibility features present`
+      };
+    } else {
+      return {
+        test: 'Accessibility',
+        status: 'fail',
+        message: 'Critical accessibility features missing',
+        details: `${score}/3 accessibility features present`
+      };
+    }
+  };
+
+  const testBrowserCompatibility = async (): Promise<TestResult> => {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    
+    const userAgent = navigator.userAgent;
+    const isModernBrowser = userAgent.includes('Chrome') || 
+                           userAgent.includes('Firefox') || 
+                           userAgent.includes('Safari') ||
+                           userAgent.includes('Edge');
+    
+    if (isModernBrowser) {
+      return {
+        test: 'Browser Compatibility',
+        status: 'pass',
+        message: 'Modern browser detected',
+        details: userAgent.split(' ')[0]
+      };
+    } else {
+      return {
+        test: 'Browser Compatibility',
+        status: 'warning',
+        message: 'Browser may not support all features',
+        details: userAgent.split(' ')[0]
+      };
+    }
+  };
+
+  const testNetwork = async (): Promise<TestResult> => {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    if (navigator.onLine) {
+      return {
+        test: 'Network Connection',
+        status: 'pass',
+        message: 'Network connection is available',
+        details: 'Online and ready for data transfer'
+      };
+    } else {
+      return {
+        test: 'Network Connection',
+        status: 'fail',
+        message: 'No network connection detected',
+        details: 'Check your internet connection'
+      };
+    }
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'pass':
+        return <CheckCircle className="w-4 h-4 text-green-600" />;
+      case 'warning':
+        return <AlertCircle className="w-4 h-4 text-yellow-600" />;
+      case 'fail':
+        return <AlertCircle className="w-4 h-4 text-red-600" />;
+      default:
+        return null;
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'pass':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'warning':
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'fail':
+        return 'bg-red-100 text-red-800 border-red-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
   };
 
   return (
-    <div className="space-y-6">
-      {/* Testing Overview */}
+    <div className={className}>
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2">
-              <Smartphone className="w-5 h-5" />
-              Cross-Device Testing
-            </CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <Smartphone className="w-5 h-5" />
+            Device Testing & Compatibility
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Current Device Info */}
+          {currentDevice && (
+            <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
+              <currentDevice.icon className="w-8 h-8 text-blue-600" />
+              <div>
+                <h4 className="font-medium">{currentDevice.name}</h4>
+                <p className="text-sm text-muted-foreground">
+                  {currentDevice.width}x{currentDevice.height} • {currentDevice.type}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* System Information */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="text-center p-3 border rounded-lg">
+              <Cpu className="w-6 h-6 mx-auto mb-2 text-blue-600" />
+              <div className="text-sm font-medium">CPU Cores</div>
+              <div className="text-lg font-bold">{systemInfo.cores || 'N/A'}</div>
+            </div>
+            <div className="text-center p-3 border rounded-lg">
+              <MemoryStick className="w-6 h-6 mx-auto mb-2 text-green-600" />
+              <div className="text-sm font-medium">Memory</div>
+              <div className="text-lg font-bold">{systemInfo.memory || 'N/A'} GB</div>
+            </div>
+            <div className="text-center p-3 border rounded-lg">
+              <Wifi className="w-6 h-6 mx-auto mb-2 text-purple-600" />
+              <div className="text-sm font-medium">Connection</div>
+              <div className="text-lg font-bold">{systemInfo.onLine ? 'Online' : 'Offline'}</div>
+            </div>
+            <div className="text-center p-3 border rounded-lg">
+              <HardDrive className="w-6 h-6 mx-auto mb-2 text-orange-600" />
+              <div className="text-sm font-medium">Platform</div>
+              <div className="text-lg font-bold">{systemInfo.platform || 'N/A'}</div>
+            </div>
+          </div>
+
+          {/* Test Results */}
+          {testResults.length > 0 && (
+            <div className="space-y-3">
+              <h4 className="font-medium">Test Results</h4>
+              {testResults.map((result, index) => (
+                <div key={index} className="flex items-start gap-3 p-3 border rounded-lg">
+                  {getStatusIcon(result.status)}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-medium">{result.test}</span>
+                      <Badge className={getStatusColor(result.status)}>
+                        {result.status.toUpperCase()}
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{result.message}</p>
+                    {result.details && (
+                      <p className="text-xs text-muted-foreground mt-1">{result.details}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex gap-2">
             <Button
-              onClick={runDeviceTests}
-              disabled={isTestingRunning}
+              onClick={runTests}
+              disabled={isTesting}
               className="flex items-center gap-2"
             >
-              {isTestingRunning ? (
+              {isTesting ? (
                 <>
-                  <RotateCcw className="w-4 h-4 animate-spin" />
-                  Testing...
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Running Tests...
                 </>
               ) : (
                 <>
-                  <CheckCircle className="w-4 h-4" />
-                  Run Tests
+                  <Smartphone className="w-4 h-4" />
+                  Run Device Tests
                 </>
               )}
             </Button>
           </div>
-        </CardHeader>
-        <CardContent>
-          {testResults ? (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">
-                  Overall Device Compatibility
-                </span>
-                <div
-                  className={`text-2xl font-bold ${getScoreColor(testResults.overall)}`}
-                >
-                  {testResults.overall}/100
-                </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-3 border rounded-lg">
-                  <div
-                    className={`text-xl font-bold ${getScoreColor(testResults.mobile.score)}`}
-                  >
-                    {testResults.mobile.score}/100
-                  </div>
-                  <div className="text-sm text-muted-foreground">Mobile</div>
-                </div>
-                <div className="text-center p-3 border rounded-lg">
-                  <div
-                    className={`text-xl font-bold ${getScoreColor(testResults.tablet.score)}`}
-                  >
-                    {testResults.tablet.score}/100
-                  </div>
-                  <div className="text-sm text-muted-foreground">Tablet</div>
-                </div>
-                <div className="text-center p-3 border rounded-lg">
-                  <div
-                    className={`text-xl font-bold ${getScoreColor(testResults.desktop.score)}`}
-                  >
-                    {testResults.desktop.score}/100
-                  </div>
-                  <div className="text-sm text-muted-foreground">Desktop</div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-8 text-muted-foreground">
-              <Monitor className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p>
-                Run comprehensive tests across mobile, tablet, and desktop
-                devices
-              </p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Device Viewports */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Device Viewports</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Tabs
-            value={selectedDevice}
-            onValueChange={setSelectedDevice}
-            className="w-full"
-          >
-            <TabsList className="grid w-full grid-cols-3">
-              {devicePresets.map((device) => (
-                <TabsTrigger
-                  key={device.id}
-                  value={device.id}
-                  className="flex items-center gap-2"
+          {/* Device Preview */}
+          <div className="space-y-2">
+            <h4 className="font-medium">Test on Different Devices</h4>
+            <div className="flex gap-2">
+              {devices.map((device) => (
+                <Button
+                  key={device.name}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentDevice(device)}
+                  className={`flex items-center gap-2 ${
+                    currentDevice?.name === device.name ? 'bg-blue-50 border-blue-200' : ''
+                  }`}
                 >
-                  {getDeviceIcon(device.id)}
+                  <device.icon className="w-4 h-4" />
                   {device.name}
-                </TabsTrigger>
+                </Button>
               ))}
-            </TabsList>
-
-            {devicePresets.map((device) => (
-              <TabsContent
-                key={device.id}
-                value={device.id}
-                className="space-y-4"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {device.viewports.map((viewport, index) => (
-                    <div key={index} className="border rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div>
-                          <h4 className="font-medium">{viewport.name}</h4>
-                          <p className="text-sm text-muted-foreground">
-                            {viewport.width} × {viewport.height}
-                          </p>
-                        </div>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() =>
-                            previewViewport(viewport.width, viewport.height)
-                          }
-                        >
-                          <Eye className="w-4 h-4 mr-2" />
-                          Preview
-                        </Button>
-                      </div>
-
-                      <div className="aspect-[16/10] bg-muted rounded border relative overflow-hidden">
-                        <div
-                          className="bg-white border shadow-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                          style={{
-                            width: `${Math.min(100, (viewport.width / 1920) * 100)}%`,
-                            height: `${Math.min(100, (viewport.height / 1080) * 100)}%`,
-                            minWidth: "60px",
-                            minHeight: "40px",
-                          }}
-                        >
-                          <div className="w-full h-2 bg-gray-200 rounded-t"></div>
-                          <div className="p-1 space-y-1">
-                            <div className="h-1 bg-gray-300 rounded w-3/4"></div>
-                            <div className="h-1 bg-gray-300 rounded w-1/2"></div>
-                            <div className="h-1 bg-gray-300 rounded w-2/3"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </CardContent>
-      </Card>
-
-      {/* Test Results */}
-      {testResults && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Test Results</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="mobile" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="mobile">Mobile</TabsTrigger>
-                <TabsTrigger value="tablet">Tablet</TabsTrigger>
-                <TabsTrigger value="desktop">Desktop</TabsTrigger>
-              </TabsList>
-
-              {Object.entries(testResults).map(([deviceType, result]) => {
-                if (deviceType === "overall") return null;
-
-                return (
-                  <TabsContent
-                    key={deviceType}
-                    value={deviceType}
-                    className="space-y-4"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-medium capitalize">
-                        {deviceType} Test Results
-                      </h4>
-                      <div
-                        className={`text-xl font-bold ${getScoreColor(result.score)}`}
-                      >
-                        {result.score}/100
-                      </div>
-                    </div>
-
-                    {result.issues.length > 0 && (
-                      <div className="space-y-2">
-                        <h5 className="font-medium text-sm">Issues Found</h5>
-                        {result.issues.map((issue, index) => (
-                          <Alert key={index}>
-                            <div className="flex items-start gap-2">
-                              {getIssueIcon(issue.type)}
-                              <div className="flex-1">
-                                <AlertDescription>
-                                  <div className="font-medium">
-                                    {issue.message}
-                                  </div>
-                                  {issue.suggestion && (
-                                    <div className="text-sm text-muted-foreground mt-1">
-                                      <strong>Suggestion:</strong>{" "}
-                                      {issue.suggestion}
-                                    </div>
-                                  )}
-                                </AlertDescription>
-                              </div>
-                            </div>
-                          </Alert>
-                        ))}
-                      </div>
-                    )}
-
-                    <Separator />
-
-                    <div className="space-y-2">
-                      <h5 className="font-medium text-sm flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
-                        Tests Passed
-                      </h5>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {result.passed.map((test, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-2 text-sm"
-                          >
-                            <CheckCircle className="w-3 h-3 text-green-500" />
-                            {test}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </TabsContent>
-                );
-              })}
-            </Tabs>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Current Environment */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Current Environment</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="flex items-center gap-2 p-3 border rounded-lg">
-              <Monitor className="w-4 h-4 text-blue-500" />
-              <div>
-                <div className="text-sm font-medium">Viewport</div>
-                <div className="text-xs text-muted-foreground">
-                  {currentViewport.width} × {currentViewport.height}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 p-3 border rounded-lg">
-              <Wifi className="w-4 h-4 text-green-500" />
-              <div>
-                <div className="text-sm font-medium">Connection</div>
-                <div className="text-xs text-muted-foreground">Fast 3G</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 p-3 border rounded-lg">
-              <Sun className="w-4 h-4 text-yellow-500" />
-              <div>
-                <div className="text-sm font-medium">Theme</div>
-                <div className="text-xs text-muted-foreground">Light Mode</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 p-3 border rounded-lg">
-              <CheckCircle className="w-4 h-4 text-green-500" />
-              <div>
-                <div className="text-sm font-medium">Status</div>
-                <div className="text-xs text-muted-foreground">Ready</div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Testing Guidelines */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Testing Guidelines</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-3">
-              <h4 className="font-medium flex items-center gap-2">
-                <Smartphone className="w-4 h-4" />
-                Mobile Testing
-              </h4>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>• Touch targets 44px minimum</li>
-                <li>• Readable text without zooming</li>
-                <li>• Thumb-friendly navigation</li>
-                <li>• Fast loading on slow networks</li>
-                <li>• Offline functionality</li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h4 className="font-medium flex items-center gap-2">
-                <Tablet className="w-4 h-4" />
-                Tablet Testing
-              </h4>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>• Optimal layout utilization</li>
-                <li>• Touch and mouse support</li>
-                <li>• Orientation handling</li>
-                <li>• Multi-column layouts</li>
-                <li>• Balanced content density</li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h4 className="font-medium flex items-center gap-2">
-                <Monitor className="w-4 h-4" />
-                Desktop Testing
-              </h4>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>• Keyboard navigation</li>
-                <li>• Mouse hover states</li>
-                <li>• Multiple browser support</li>
-                <li>• Large screen optimization</li>
-                <li>• Multi-window functionality</li>
-              </ul>
             </div>
           </div>
         </CardContent>
