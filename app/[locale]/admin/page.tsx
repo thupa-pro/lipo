@@ -11,9 +11,7 @@ import {
   Activity,
   Users,
   Briefcase,
-  Star,
   TrendingUp,
-  TrendingDown,
   Shield,
   Settings,
   Bell,
@@ -25,11 +23,7 @@ import {
   AlertTriangle,
   CheckCircle,
   ArrowUpRight,
-  ArrowDownRight,
-  Sparkles,
-  Brain,
   Zap,
-  Globe,
 } from "lucide-react";
 import Link from "next/link";
 

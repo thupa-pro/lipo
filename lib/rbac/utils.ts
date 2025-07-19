@@ -9,15 +9,98 @@ import {
   RolePermissions,
 } from "./types";
 
-/**
- * Check if a role has a specific permission
- */
-export function hasPermission(
-  role: UserRole,
-  permission: keyof RolePermissions,
-): boolean {
-  return ROLE_PERMISSIONS[role][permission];
+export interface UserSession {
+  id: string;
+  email: string;
+  role: string;
+  permissions: string[];
+  isAuthenticated: boolean;
 }
+
+export interface Permission {
+  id: string;
+  name: string;
+  description: string;
+  resource: string;
+  action: string;
+}
+
+export interface Role {
+  id: string;
+  name: string;
+  description: string;
+  permissions: string[];
+  isSystem: boolean;
+}
+
+export function getCurrentSession(): UserSession | null {
+  // In a real app, this would get the session from your auth provider
+  // For now, return a mock session
+  if (typeof window === 'undefined') return null;
+  
+  const mockSession: UserSession = {
+    id: 'user-123',
+    email: 'user@example.com',
+    role: 'provider',
+    permissions: ['read:listings', 'write:listings', 'read:bookings'],
+    isAuthenticated: true,
+  };
+  
+  return mockSession;
+}
+
+export function hasPermission(userSession: UserSession | null, permission: string): boolean {
+  if (!userSession || !userSession.isAuthenticated) return false;
+  return userSession.permissions.includes(permission);
+}
+
+export function hasRole(userSession: UserSession | null, role: string): boolean {
+  if (!userSession || !userSession.isAuthenticated) return false;
+  return userSession.role === role;
+}
+
+export function hasAnyRoleFromSession(userSession: UserSession | null, roles: string[]): boolean {
+  if (!userSession || !userSession.isAuthenticated) return false;
+  return roles.includes(userSession.role);
+}
+
+export function checkAccess(userSession: UserSession | null, requiredPermissions: string[]): boolean {
+  if (!userSession || !userSession.isAuthenticated) return false;
+  
+  return requiredPermissions.every(permission => 
+    userSession.permissions.includes(permission)
+  );
+}
+
+export const SYSTEM_ROLES = {
+  ADMIN: 'admin',
+  PROVIDER: 'provider',
+  CUSTOMER: 'customer',
+  MODERATOR: 'moderator',
+} as const;
+
+export const PERMISSIONS = {
+  // Listings
+  'read:listings': 'Read listings',
+  'write:listings': 'Create and update listings',
+  'delete:listings': 'Delete listings',
+  'moderate:listings': 'Moderate listings',
+  
+  // Bookings
+  'read:bookings': 'Read bookings',
+  'write:bookings': 'Create and update bookings',
+  'delete:bookings': 'Delete bookings',
+  
+  // Users
+  'read:users': 'Read user profiles',
+  'write:users': 'Update user profiles',
+  'delete:users': 'Delete users',
+  
+  // Admin
+  'admin:all': 'Full administrative access',
+  'admin:users': 'Manage users',
+  'admin:system': 'System administration',
+} as const;
 
 /**
  * Check if user has any of the allowed roles

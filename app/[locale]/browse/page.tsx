@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,16 +19,13 @@ import {
   Search,
   MapPin,
   Star,
-  Filter,
   SlidersHorizontal,
   Grid,
   List,
   Shield,
   Clock,
-  Award,
   Sparkles,
   Heart,
-  ChevronRight,
   Zap,
   Target,
   TrendingUp,
@@ -722,151 +719,4 @@ export default function BrowsePage() {
                         <div className="relative">
                           <Avatar className="w-16 h-16 border-4 border-white dark:border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
                             <AvatarImage
-                              src={`/placeholder.svg?height=64&width=64`}
-                            />
-                            <AvatarFallback className="bg-gradient-to-br from-blue-600 to-emerald-600 text-white font-bold text-lg">
-                              {provider.name
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join("")}
-                            </AvatarFallback>
-                          </Avatar>
-                          {provider.verified && (
-                            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-3 border-white dark:border-gray-800 flex items-center justify-center">
-                              <Shield className="w-3 h-3 text-white" />
-                            </div>
-                          )}
-                          {provider.aiOptimized && (
-                            <div className="absolute -top-1 -left-1 w-6 h-6 bg-purple-500 rounded-full border-3 border-white dark:border-gray-800 flex items-center justify-center animate-pulse">
-                              <Brain className="w-3 h-3 text-white" />
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between mb-2">
-                            <div>
-                              <h3 className="font-bold text-lg text-slate-800 dark:text-white mb-1">
-                                {provider.name}
-                              </h3>
-                              <p className="text-slate-600 dark:text-gray-300 font-medium">
-                                {provider.service}
-                              </p>
-                              <p className="text-sm text-slate-500 dark:text-gray-400">
-                                {provider.specialty}
-                              </p>
-                            </div>
-                            {viewMode === "grid" && (
-                              <div className="text-right">
-                                <p className="font-black text-2xl bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text text-transparent">
-                                  {provider.price}
-                                </p>
-                                {filters.sortBy === "aiMatch" && (
-                                  <div className="flex items-center gap-1 mt-1">
-                                    <Brain className="w-3 h-3 text-purple-500" />
-                                    <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">
-                                      {provider.aiMatchScore}% match
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="flex items-center gap-4 mb-3">
-                            <div className="flex items-center gap-1">
-                              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                              <span className="font-bold text-slate-800 dark:text-white">
-                                {provider.rating}
-                              </span>
-                              <span className="text-slate-500 dark:text-gray-400 text-sm">
-                                ({provider.reviews})
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-1 text-slate-500 dark:text-gray-400 text-sm">
-                              <MapPin className="w-3 h-3" />
-                              <span>{provider.distance}mi away</span>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-wrap gap-1 mb-3">
-                            {provider.badges.slice(0, 3).map((badge) => (
-                              <Badge
-                                key={badge}
-                                variant="secondary"
-                                className="text-xs bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300"
-                              >
-                                {badge}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Description & Actions */}
-                      <div
-                        className={viewMode === "list" ? "flex-1 min-w-0" : ""}
-                      >
-                        <p className="text-sm text-slate-600 dark:text-gray-300 mb-4 line-clamp-2">
-                          {provider.description}
-                        </p>
-
-                        <div className="flex items-center gap-2">
-                          <Button className="flex-1 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg">
-                            Contact Provider
-                            <MessageCircle className="w-4 h-4 ml-2" />
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10"
-                          >
-                            <Heart className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            )}
-
-            {/* No Results */}
-            {!loading && filteredProviders.length === 0 && (
-              <div className="text-center py-12">
-                <div className="text-slate-400 dark:text-gray-500 mb-4">
-                  <AlertCircle className="w-16 h-16 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2 text-slate-600 dark:text-gray-400">
-                    No providers found
-                  </h3>
-                  <p className="text-slate-500 dark:text-gray-500">
-                    Try adjusting your search criteria or filters
-                  </p>
-                </div>
-                <Button
-                  onClick={clearAllFilters}
-                  className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white rounded-2xl px-6 py-3 font-semibold"
-                >
-                  Clear All Filters
-                </Button>
-              </div>
-            )}
-
-            {/* Load More */}
-            {!loading && filteredProviders.length > 0 && (
-              <div className="text-center mt-8">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 px-8 py-3"
-                >
-                  Load More Results
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+                              src={`

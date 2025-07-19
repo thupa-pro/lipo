@@ -365,3 +365,94 @@ export const SUBCATEGORIES: Record<string, string[]> = {
 export function getCategorySubcategories(category: string): string[] {
   return SUBCATEGORIES[category] || [];
 }
+
+export function getStatusColor(status: string): string {
+  switch (status.toLowerCase()) {
+    case 'active':
+    case 'published':
+      return 'text-green-600 bg-green-100 dark:bg-green-900/20';
+    case 'pending':
+    case 'draft':
+      return 'text-yellow-600 bg-yellow-100 dark:bg-yellow-900/20';
+    case 'inactive':
+    case 'archived':
+      return 'text-gray-600 bg-gray-100 dark:bg-gray-900/20';
+    case 'rejected':
+    case 'suspended':
+      return 'text-red-600 bg-red-100 dark:bg-red-900/20';
+    default:
+      return 'text-gray-600 bg-gray-100 dark:bg-gray-900/20';
+  }
+}
+
+export function getStatusText(status: string): string {
+  switch (status.toLowerCase()) {
+    case 'active':
+      return 'Active';
+    case 'pending':
+      return 'Pending Review';
+    case 'draft':
+      return 'Draft';
+    case 'inactive':
+      return 'Inactive';
+    case 'archived':
+      return 'Archived';
+    case 'rejected':
+      return 'Rejected';
+    case 'suspended':
+      return 'Suspended';
+    case 'published':
+      return 'Published';
+    default:
+      return status.charAt(0).toUpperCase() + status.slice(1);
+  }
+}
+
+export function formatPricingDisplay(pricing: any): string {
+  if (!pricing) return 'Contact for pricing';
+  
+  if (typeof pricing === 'string') return pricing;
+  
+  if (pricing.type === 'fixed') {
+    return `$${pricing.amount}`;
+  }
+  
+  if (pricing.type === 'range') {
+    return `$${pricing.min} - $${pricing.max}`;
+  }
+  
+  if (pricing.type === 'hourly') {
+    return `$${pricing.rate}/hour`;
+  }
+  
+  return 'Contact for pricing';
+}
+
+export function validateListingForm(data: any): { isValid: boolean; errors: Record<string, string> } {
+  const errors: Record<string, string> = {};
+  
+  if (!data.title || data.title.trim().length < 3) {
+    errors.title = 'Title must be at least 3 characters long';
+  }
+  
+  if (!data.description || data.description.trim().length < 10) {
+    errors.description = 'Description must be at least 10 characters long';
+  }
+  
+  if (!data.category) {
+    errors.category = 'Please select a category';
+  }
+  
+  if (!data.location) {
+    errors.location = 'Please provide a location';
+  }
+  
+  if (!data.pricing || !data.pricing.type) {
+    errors.pricing = 'Please specify pricing information';
+  }
+  
+  return {
+    isValid: Object.keys(errors).length === 0,
+    errors
+  };
+}

@@ -37,7 +37,7 @@ import {
   EyeOff,
   Lock,
   Wallet,
-  Bank,
+  Building2,
   Smartphone,
 } from "lucide-react";
 
@@ -121,7 +121,7 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
       case "debit_card":
         return <CreditCard className="w-4 h-4" />;
       case "bank_account":
-        return <Bank className="w-4 h-4" />;
+        return <Building2 className="w-4 h-4" />;
       case "paypal":
         return <Wallet className="w-4 h-4" />;
       case "apple_pay":

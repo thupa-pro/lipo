@@ -17,6 +17,129 @@ import type {
   SocialShareTemplate,
   ReferralSource,
 } from "./types";
+import { useState, useEffect } from 'react';
+
+export interface ReferralCode {
+  id: string;
+  code: string;
+  discount: number;
+  maxUses: number;
+  currentUses: number;
+  expiresAt?: Date;
+  isActive: boolean;
+}
+
+export interface ReferralStats {
+  totalReferrals: number;
+  successfulReferrals: number;
+  totalEarnings: number;
+  pendingReferrals: number;
+}
+
+export function useReferralClient() {
+  const [referralCode, setReferralCode] = useState<ReferralCode | null>(null);
+  const [stats, setStats] = useState<ReferralStats>({
+    totalReferrals: 0,
+    successfulReferrals: 0,
+    totalEarnings: 0,
+    pendingReferrals: 0,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const generateReferralCode = async () => {
+    setIsLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const newCode: ReferralCode = {
+        id: Math.random().toString(36).substr(2, 9),
+        code: `REF${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
+        discount: 10,
+        maxUses: 100,
+        currentUses: 0,
+        expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+        isActive: true,
+      };
+      
+      setReferralCode(newCode);
+      return newCode;
+    } catch (error) {
+      console.error('Failed to generate referral code:', error);
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const getReferralStats = async () => {
+    setIsLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      const mockStats: ReferralStats = {
+        totalReferrals: 25,
+        successfulReferrals: 18,
+        totalEarnings: 450,
+        pendingReferrals: 7,
+      };
+      
+      setStats(mockStats);
+      return mockStats;
+    } catch (error) {
+      console.error('Failed to fetch referral stats:', error);
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const shareReferralCode = async (platform: string) => {
+    if (!referralCode) return;
+    
+    const shareText = `Join Loconomy using my referral code ${referralCode.code} and get ${referralCode.discount}% off your first service!`;
+    const shareUrl = `https://loconomy.com/ref/${referralCode.code}`;
+    
+    switch (platform) {
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`);
+        break;
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`);
+        break;
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`);
+        break;
+      case 'copy':
+        await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+        break;
+      default:
+        await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+    }
+  };
+
+  useEffect(() => {
+    getReferralStats();
+  }, []);
+
+  return {
+    referralCode,
+    stats,
+    isLoading,
+    generateReferralCode,
+    getReferralStats,
+    shareReferralCode,
+  };
+}
+
+export function validateReferralCode(code: string): boolean {
+  return /^[A-Z0-9]{6,12}$/.test(code);
+}
+
+export function calculateReferralReward(baseAmount: number, discountPercentage: number): number {
+  return (baseAmount * discountPercentage) / 100;
+}
 
 export class ReferralClient {
   private supabase = createClient();
