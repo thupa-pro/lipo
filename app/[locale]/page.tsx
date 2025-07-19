@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SmartRecommendations from "@/components/ai/smart-recommendations";
 import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
 import AIServiceDiscovery from "@/components/ai/ai-service-discovery";
+import { EnhancedHeroSection } from "@/components/home/enhanced-hero-section";
 import {
   Star,
   MapPin,
@@ -152,158 +153,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black overflow-hidden relative">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(139,92,246,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_40%_60%,rgba(16,185,129,0.08),transparent_50%)]" />
-      </div>
+      {/* Enhanced Hero Section */}
+      <EnhancedHeroSection />
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 dark:bg-violet-400 rounded-full animate-pulse opacity-30 dark:opacity-40" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-emerald-400 dark:bg-blue-400 rounded-full animate-ping opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-purple-400 dark:bg-emerald-400 rounded-full animate-bounce opacity-15 dark:opacity-20" />
-        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-cyan-400 dark:bg-pink-400 rounded-full animate-pulse opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
-      </div>
-
-      {/* Hero Section */}
-      <section
-        className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6"
-        role="main"
-        aria-labelledby="hero-heading"
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6 sm:mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
-            <div
-              className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
-              aria-hidden="true"
-            />
-            <span className="text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300">
-              Trusted by 2.1M+ Users Globally
-            </span>
-            <Sparkles
-              className="w-3 sm:w-4 h-3 sm:h-4 text-emerald-500 dark:text-emerald-400"
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Main Headline */}
-          <h1
-            id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-6 sm:mb-8 leading-none"
-          >
-            <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-              Local Services
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-              Redefined
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-8 sm:mb-10 lg:mb-12 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
-            Connect with AI-matched, verified local professionals who deliver
-            <span className="text-transparent bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text font-semibold">
-              {" "}
-              exceptional quality service{" "}
-            </span>
-            right in your neighborhood.
-          </p>
-
-          {/* Search Interface */}
-          <div className="max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0">
-            <div className="relative group">
-              <div
-                className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000"
-                aria-hidden="true"
-              />
-              <div className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl rounded-3xl p-2 border border-blue-200/50 dark:border-white/20 shadow-xl">
-                <form role="search" aria-label="Search for local services">
-                  <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 flex items-center justify-center flex-shrink-0">
-                      <Search
-                        className="w-4 h-4 text-white"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Find trusted local help near you..."
-                      className="flex-1 w-full sm:w-auto bg-transparent border-none outline-none text-slate-700 dark:text-white placeholder-slate-400 dark:placeholder-gray-400 text-base sm:text-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-transparent rounded-lg py-2 sm:py-0"
-                      aria-label="Search for services"
-                    />
-                    <Button
-                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl px-6 sm:px-8 py-3 font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
-                      type="submit"
-                      aria-label="Search for services"
-                    >
-                      <span className="hidden sm:inline">Find Services</span>
-                      <span className="sm:hidden">Search</span>
-                      <MapPin className="w-4 h-4 ml-2" aria-hidden="true" />
-                    </Button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
-            <Button
-              size="lg"
-              className="relative w-full sm:w-auto bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
-              asChild
-            >
-              <Link href="/browse" aria-label="Browse and find local services">
-                <Search
-                  className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform"
-                  aria-hidden="true"
-                />
-                Find Services Now
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto rounded-2xl px-8 sm:px-12 py-4 font-bold text-base sm:text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black"
-              asChild
-            >
-              <Link
-                href="/become-provider"
-                aria-label="Join as a service provider"
-              >
-                Become a Provider
-                <ChevronRight className="w-5 h-5 ml-3" aria-hidden="true" />
-              </Link>
-            </Button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 opacity-70 dark:opacity-60 px-4 sm:px-0">
-            {[
-              { icon: Shield, text: "Verified Professionals" },
-              { icon: Award, text: "5-Star Quality" },
-              { icon: Zap, text: "Instant Booking" },
-              { icon: Users, text: "Trusted Community" },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-gray-300"
-              >
-                <item.icon
-                  className="w-4 h-4 text-emerald-500 dark:text-emerald-400 flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span className="text-center sm:text-left">{item.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Stats Section */}
       <section

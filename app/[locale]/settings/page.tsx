@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -106,18 +106,7 @@ export default function EnhancedSettingsPage() {
     },
   });
 
-  // Auto-save functionality
-  useEffect(() => {
-    if (hasUnsavedChanges) {
-      const timer = setTimeout(() => {
-        handleSave();
-      }, 2000); // Auto-save after 2 seconds of no changes
-
-      return () => clearTimeout(timer);
-    }
-  }, [hasUnsavedChanges]);
-
-  const handleSave = async () => {
+  const handleSave = useCallback(async (): Promise<void> => {
     setSaveStatus("saving");
     setIsLoading(true);
 
@@ -133,10 +122,22 @@ export default function EnhancedSettingsPage() {
     } catch (error) {
       setSaveStatus("error");
       setTimeout(() => setSaveStatus("idle"), 3000);
-    } finally {
+        } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  // Auto-save functionality
+  useEffect(() => {
+    if (hasUnsavedChanges) {
+      const timer = setTimeout(() => {
+        handleSave();
+      }, 2000); // Auto-save after 2 seconds of no changes
+
+      return () => clearTimeout(timer);
+    }
+    return; // Ensure all code paths return a value
+  }, [hasUnsavedChanges, handleSave]);
 
   const handleTabChange = (newTab: string) => {
     if (hasUnsavedChanges) {
