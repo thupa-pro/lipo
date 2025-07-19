@@ -18,6 +18,7 @@ import {
   Signal,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MobileLogo } from "@/components/ui/logo";
 
 interface MobileHeaderProps {
   title?: string;
@@ -114,9 +115,7 @@ export function MobileHeader({
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-sm">L</span>
-            </div>
+            <MobileLogo className="w-8 h-8 rounded-xl shadow-lg" />
             {isOnline && (
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full animate-pulse" />
             )}

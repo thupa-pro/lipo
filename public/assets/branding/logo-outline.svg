@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <!-- Logo Icon -->
+  <rect x="8" y="8" width="34" height="34" rx="8" fill="none" stroke="#6b7280" stroke-width="2" />
+  <text x="25" y="32" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#6b7280" text-anchor="middle">L</text>
+  
+  <!-- Logo Text -->
+  <text x="52" y="32" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="#6b7280">Loconomy</text>
+</svg>
