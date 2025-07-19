@@ -1,21 +1,21 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+// import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@/app/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import { MockAuthProvider } from "@/lib/mock/auth";
-import EnhancedErrorBoundary from "@/components/enhanced-error-boundary";
+// import { ClerkProvider } from "@clerk/nextjs";
+// import { MockAuthProvider } from "@/lib/mock/auth";
+// import EnhancedErrorBoundary from "@/components/enhanced-error-boundary";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
-import { FloatingAgentBubble } from "@/components/ai/floating-agent-bubble";
-import { MobileNavWrapper } from "@/components/mobile/mobile-nav-wrapper";
+// import { Toaster } from "@/components/ui/toaster";
+// import { FloatingAgentBubble } from "@/components/ai/floating-agent-bubble";
+// import { MobileNavWrapper } from "@/components/mobile/mobile-nav-wrapper";
 
-const inter = Inter({ subsets: ["latin"] });
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jakarta",
-});
+// const inter = Inter({ subsets: ["latin"] });
+// const jakarta = Plus_Jakarta_Sans({
+//   subsets: ["latin"],
+//   display: "swap",
+//   variable: "--font-jakarta",
+// });
 
 export const viewport = {
   width: "device-width",
@@ -121,7 +121,7 @@ export default function RootLayout({
                 <div className="relative flex min-h-screen flex-col bg-background text-foreground">
                   {children}
                 </div>
-                
+
                 {/* Global UI Components */}
                 <FloatingAgentBubble />
                 <MobileNavWrapper />
@@ -134,5 +134,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
