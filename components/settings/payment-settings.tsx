@@ -37,7 +37,7 @@ import {
   EyeOff,
   Lock,
   Wallet,
-  Bank,
+  Landmark,
   Smartphone,
 } from "lucide-react";
 
@@ -121,7 +121,7 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
       case "debit_card":
         return <CreditCard className="w-4 h-4" />;
       case "bank_account":
-        return <Bank className="w-4 h-4" />;
+        return <Landmark className="w-4 h-4" />;
       case "paypal":
         return <Wallet className="w-4 h-4" />;
       case "apple_pay":
@@ -528,7 +528,7 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
               Credit/Debit Card
             </Button>
             <Button variant="outline" className="h-20 flex-col">
-              <Bank className="w-6 h-6 mb-2" />
+                                <Landmark className="w-6 h-6 mb-2" />
               Bank Account
             </Button>
             <Button variant="outline" className="h-20 flex-col">

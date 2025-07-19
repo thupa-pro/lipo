@@ -132,3 +132,16 @@ export function canAccessRoute(userRole: UserRole, route: string): boolean {
   // Default: allow access to public routes
   return true;
 }
+
+/**
+ * Mock function for getting current session (client-side safe)
+ * In a real app, this would integrate with your auth provider
+ */
+export function getCurrentSession() {
+  // This is a mock implementation
+  // In production, you would get this from your auth provider (Clerk, Auth0, etc.)
+  return {
+    user: null,
+    role: "guest" as UserRole,
+  };
+}

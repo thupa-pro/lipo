@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SmartListingCard } from "@/components/ui/smart-listing-card";
 import { AgentCommandInput } from "@/components/ui/agent-command-input";
-import { BookingStepper } from "@/components/ui/booking-stepper";
+
 import { WalletSummaryCard } from "@/components/ui/wallet-summary-card";
 import { ReviewSummaryAgentBox } from "@/components/ui/review-summary-agent-box";
 import { Separator } from "@/components/ui/separator";
@@ -124,7 +124,7 @@ const loyaltyTier = {
 };
 
 export default function MissingComponentsDemo() {
-  const [showBookingStepper, setShowBookingStepper] = React.useState(false);
+  // const [showBookingStepper, setShowBookingStepper] = React.useState(false);
 
   const handleSendMessage = (message: string, command?: any) => {
     console.log("Message sent:", message, command);
@@ -134,10 +134,10 @@ export default function MissingComponentsDemo() {
     console.log("Command executed:", command, args);
   };
 
-  const handleBookingComplete = (bookingData: any) => {
-    console.log("Booking completed:", bookingData);
-    setShowBookingStepper(false);
-  };
+  // const handleBookingComplete = (bookingData: any) => {
+  //   console.log("Booking completed:", bookingData);
+  //   setShowBookingStepper(false);
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
@@ -169,7 +169,7 @@ export default function MissingComponentsDemo() {
               {[
                 "SmartListingCard",
                 "AgentCommandInput", 
-                "BookingStepper",
+                // "BookingStepper", // Temporarily disabled
                 "WalletSummaryCard",
                 "ReviewSummaryAgentBox",
                 "FloatingAgentBubble",
@@ -260,7 +260,8 @@ export default function MissingComponentsDemo() {
 
         <Separator />
 
-        {/* BookingStepper Demo */}
+        {/* BookingStepper Demo - Temporarily Disabled */}
+        {/*
         <section className="space-y-4">
           <div className="flex items-center gap-2">
             <ArrowRight className="w-5 h-5 text-primary" />
@@ -271,30 +272,13 @@ export default function MissingComponentsDemo() {
             Step-by-step booking flow with real-time availability checking and payment integration.
           </p>
           
-          {!showBookingStepper ? (
-            <Card className="max-w-md">
-              <CardContent className="p-6">
-                <Button 
-                  onClick={() => setShowBookingStepper(true)}
-                  className="w-full"
-                >
-                  Launch Booking Demo
-                </Button>
-              </CardContent>
-            </Card>
-          ) : (
-            <BookingStepper
-              serviceId="demo-service"
-              providerId="demo-provider"
-              serviceName="Professional House Cleaning"
-              providerName="Sarah Johnson"
-              basePrice={85}
-              currency="$"
-              onBookingComplete={handleBookingComplete}
-              onCancel={() => setShowBookingStepper(false)}
-            />
-          )}
+          <Card className="max-w-md">
+            <CardContent className="p-6">
+              <p className="text-muted-foreground">BookingStepper component temporarily disabled for build fixes.</p>
+            </CardContent>
+          </Card>
         </section>
+        */}
 
         <Separator />
 

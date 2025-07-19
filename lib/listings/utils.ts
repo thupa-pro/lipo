@@ -365,3 +365,9 @@ export const SUBCATEGORIES: Record<string, string[]> = {
 export function getCategorySubcategories(category: string): string[] {
   return SUBCATEGORIES[category] || [];
 }
+
+// Export aliases for components expecting different function names
+export const getStatusColor = getListingStatusColor;
+export const getStatusText = getListingStatusLabel;
+export const formatPricingDisplay = formatPrice;
+export const validateListingForm = validateListingData;

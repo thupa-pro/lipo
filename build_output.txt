@@ -1,0 +1,213 @@
+
+> build
+> next build
+
+  ▲ Next.js 14.2.30
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · optimizeCss
+
+   Creating an optimized production build ...
+ ⚠ Compiled with warnings
+
+./app/[locale]/polish/page.tsx
+Attempted import error: '@/components/polish/data-injection' does not contain a default export (imported as 'DataInjection').
+
+Import trace for requested module:
+./app/[locale]/polish/page.tsx
+
+./app/[locale]/polish/page.tsx
+Attempted import error: '@/components/polish/device-testing' does not contain a default export (imported as 'DeviceTesting').
+
+Import trace for requested module:
+./app/[locale]/polish/page.tsx
+
+./app/mock-auth/page.tsx
+Attempted import error: 'Switch' is not exported from '__barrel_optimize__?names=Crown,Eye,Info,LogOut,Shield,Switch,User,Users!=!lucide-react' (imported as 'Switch').
+
+Import trace for requested module:
+./app/mock-auth/page.tsx
+
+./app/referrals/page.tsx
+Attempted import error: 'useReferralClient' is not exported from '@/lib/referral/utils' (imported as 'useReferralClient').
+
+Import trace for requested module:
+./app/referrals/page.tsx
+
+./components/listings/ListingCard.tsx
+Attempted import error: 'getStatusColor' is not exported from '@/lib/listings/utils' (imported as 'getStatusColor').
+
+Import trace for requested module:
+./components/listings/ListingCard.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingCard.tsx
+Attempted import error: 'getStatusText' is not exported from '@/lib/listings/utils' (imported as 'getStatusText').
+
+Import trace for requested module:
+./components/listings/ListingCard.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingCard.tsx
+Attempted import error: 'formatPricingDisplay' is not exported from '@/lib/listings/utils' (imported as 'formatPricingDisplay').
+
+Import trace for requested module:
+./components/listings/ListingCard.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingForm.tsx
+Attempted import error: 'validateListingForm' is not exported from '@/lib/listings/utils' (imported as 'validateListingForm').
+
+Import trace for requested module:
+./components/listings/ListingForm.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingsTable.tsx
+Attempted import error: 'formatPricingDisplay' is not exported from '@/lib/listings/utils' (imported as 'formatPricingDisplay').
+
+Import trace for requested module:
+./components/listings/ListingsTable.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingsTable.tsx
+Attempted import error: 'getStatusColor' is not exported from '@/lib/listings/utils' (imported as 'getStatusColor').
+
+Import trace for requested module:
+./components/listings/ListingsTable.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingsTable.tsx
+Attempted import error: 'getStatusText' is not exported from '@/lib/listings/utils' (imported as 'getStatusText').
+
+Import trace for requested module:
+./components/listings/ListingsTable.tsx
+./app/dashboard/listings/page.tsx
+
+./components/settings/payment-settings.tsx
+Attempted import error: 'Bank' is not exported from '__barrel_optimize__?names=Bank,Calendar,CheckCircle,CreditCard,DollarSign,Eye,EyeOff,Lock,Plus,Shield,Smartphone,Trash2,Wallet!=!lucide-react' (imported as 'Bank').
+
+Import trace for requested module:
+./components/settings/payment-settings.tsx
+./app/[locale]/settings/page.tsx
+
+./components/settings/payment-settings.tsx
+Attempted import error: 'Bank' is not exported from '__barrel_optimize__?names=Bank,Calendar,CheckCircle,CreditCard,DollarSign,Eye,EyeOff,Lock,Plus,Shield,Smartphone,Trash2,Wallet!=!lucide-react' (imported as 'Bank').
+
+Import trace for requested module:
+./components/settings/payment-settings.tsx
+./app/[locale]/settings/page.tsx
+
+./app/[locale]/polish/page.tsx
+Attempted import error: '@/components/polish/data-injection' does not contain a default export (imported as 'DataInjection').
+
+Import trace for requested module:
+./app/[locale]/polish/page.tsx
+
+./app/[locale]/polish/page.tsx
+Attempted import error: '@/components/polish/device-testing' does not contain a default export (imported as 'DeviceTesting').
+
+Import trace for requested module:
+./app/[locale]/polish/page.tsx
+
+./app/mock-auth/page.tsx
+Attempted import error: 'Switch' is not exported from '__barrel_optimize__?names=Crown,Eye,Info,LogOut,Shield,Switch,User,Users!=!lucide-react' (imported as 'Switch').
+
+Import trace for requested module:
+./app/mock-auth/page.tsx
+
+./app/referrals/page.tsx
+Attempted import error: 'useReferralClient' is not exported from '@/lib/referral/utils' (imported as 'useReferralClient').
+
+Import trace for requested module:
+./app/referrals/page.tsx
+
+./components/listings/ListingCard.tsx
+Attempted import error: 'getStatusColor' is not exported from '@/lib/listings/utils' (imported as 'getStatusColor').
+
+Import trace for requested module:
+./components/listings/ListingCard.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingCard.tsx
+Attempted import error: 'getStatusText' is not exported from '@/lib/listings/utils' (imported as 'getStatusText').
+
+Import trace for requested module:
+./components/listings/ListingCard.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingCard.tsx
+Attempted import error: 'formatPricingDisplay' is not exported from '@/lib/listings/utils' (imported as 'formatPricingDisplay').
+
+Import trace for requested module:
+./components/listings/ListingCard.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingForm.tsx
+Attempted import error: 'validateListingForm' is not exported from '@/lib/listings/utils' (imported as 'validateListingForm').
+
+Import trace for requested module:
+./components/listings/ListingForm.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingsTable.tsx
+Attempted import error: 'formatPricingDisplay' is not exported from '@/lib/listings/utils' (imported as 'formatPricingDisplay').
+
+Import trace for requested module:
+./components/listings/ListingsTable.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingsTable.tsx
+Attempted import error: 'getStatusColor' is not exported from '@/lib/listings/utils' (imported as 'getStatusColor').
+
+Import trace for requested module:
+./components/listings/ListingsTable.tsx
+./app/dashboard/listings/page.tsx
+
+./components/listings/ListingsTable.tsx
+Attempted import error: 'getStatusText' is not exported from '@/lib/listings/utils' (imported as 'getStatusText').
+
+Import trace for requested module:
+./components/listings/ListingsTable.tsx
+./app/dashboard/listings/page.tsx
+
+./components/settings/payment-settings.tsx
+Attempted import error: 'Bank' is not exported from '__barrel_optimize__?names=Bank,Calendar,CheckCircle,CreditCard,DollarSign,Eye,EyeOff,Lock,Plus,Shield,Smartphone,Trash2,Wallet!=!lucide-react' (imported as 'Bank').
+
+Import trace for requested module:
+./components/settings/payment-settings.tsx
+./app/[locale]/settings/page.tsx
+
+./components/settings/payment-settings.tsx
+Attempted import error: 'Bank' is not exported from '__barrel_optimize__?names=Bank,Calendar,CheckCircle,CreditCard,DollarSign,Eye,EyeOff,Lock,Plus,Shield,Smartphone,Trash2,Wallet!=!lucide-react' (imported as 'Bank').
+
+Import trace for requested module:
+./components/settings/payment-settings.tsx
+./app/[locale]/settings/page.tsx
+
+./app/rbac-demo/page.tsx
+Attempted import error: 'getCurrentSession' is not exported from '@/lib/rbac/utils' (imported as 'getCurrentSession').
+
+Import trace for requested module:
+./app/rbac-demo/page.tsx
+
+./components/rbac/RoleGate.tsx
+Attempted import error: 'getCurrentSession' is not exported from '@/lib/rbac/utils' (imported as 'getCurrentSession').
+
+Import trace for requested module:
+./components/rbac/RoleGate.tsx
+./app/rbac-demo/page.tsx
+
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/[locale]/accessibility-performance/page.tsx:9:1
+Type error: All imports in import declaration are unused.
+
+[0m [90m  7 |[39m [36mimport[39m { [33mProgress[39m } [36mfrom[39m [32m"@/components/ui/progress"[39m[33m;[39m[0m
+[0m [90m  8 |[39m [36mimport[39m { [33mTabs[39m[33m,[39m [33mTabsContent[39m[33m,[39m [33mTabsList[39m[33m,[39m [33mTabsTrigger[39m } [36mfrom[39m [32m"@/components/ui/tabs"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { [33mAlert[39m[33m,[39m [33mAlertDescription[39m } [36mfrom[39m [32m"@/components/ui/alert"[39m[33m;[39m[0m
+[0m [90m    |[39m [31m[1m^[22m[39m[0m
+[0m [90m 10 |[39m [36mimport[39m { [33mAccessibilityAudit[39m } [36mfrom[39m [32m"@/components/accessibility/accessibility-audit"[39m[33m;[39m[0m
+[0m [90m 11 |[39m [36mimport[39m { [33mPerformanceOptimizer[39m } [36mfrom[39m [32m"@/components/performance/performance-optimizer"[39m[33m;[39m[0m
+[0m [90m 12 |[39m [36mimport[39m {[0m
+Next.js build worker exited with code: 1 and signal: null

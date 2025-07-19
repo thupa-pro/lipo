@@ -481,3 +481,6 @@ export class ReferralClient {
 }
 
 export const referralClient = new ReferralClient();
+
+// Hook-style export for components expecting useReferralClient
+export const useReferralClient = () => referralClient;
