@@ -2,6 +2,7 @@ import type React from "react";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Navigation from "@/components/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,10 @@ export default function LocaleLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-screen flex-col bg-background text-foreground">
-            {children}
+            <Navigation />
+            <main className="flex-1 pt-16">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>
