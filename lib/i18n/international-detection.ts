@@ -1,5 +1,5 @@
 import { metropolitanCities, getCityData, type Locale } from "./config";
-import { getCityConfiguration, formatCurrency } from "./city-localization";
+import { getCityLocalization, CITY_LOCALIZATION_DATA } from './city-localization';
 
 // Country to currency mapping
 export const countryCurrencyMap: Record<string, string> = {
@@ -214,7 +214,7 @@ export function detectCountryFromCoords(
     let minDistance = Infinity;
 
     for (const [cityKey, cityData] of Object.entries(metropolitanCities)) {
-      const cityConfig = getCityConfiguration(cityKey);
+      const cityConfig = getCityLocalization(cityKey);
       if (!cityConfig) continue;
 
       // Get city coordinates (you'd use a proper geocoding service in production)

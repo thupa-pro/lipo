@@ -4,7 +4,6 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "@/components/providers/SessionProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import AppShell from "@/components/layout/AppShell";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -60,8 +59,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#ffffff" />
+        <meta name="color-scheme" content="light dark" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased theme-transition`}>
+      <body className={`${inter.variable} font-sans antialiased theme-transition min-h-screen bg-background text-foreground`}>
         <ThemeProvider
           defaultTheme="system"
           enableSystem={true}
@@ -69,9 +69,7 @@ export default function RootLayout({
           storageKey="loconomy-theme"
         >
           <SessionProvider>
-            <AppShell>
-              {children}
-            </AppShell>
+            {children}
           </SessionProvider>
           <Toaster />
         </ThemeProvider>
