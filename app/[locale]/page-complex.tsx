@@ -10,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SmartRecommendations from "@/components/ai/smart-recommendations";
-import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
+import AIAssistantWrapper from "@/components/ai/AIAssistantWrapper";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import AIServiceDiscoveryWrapper from "@/components/ai/AIServiceDiscoveryWrapper";
 import {
@@ -600,7 +600,7 @@ export default function HomePage() {
       </section>
 
       {/* AI Assistant Widget */}
-      <AIAssistantWidget
+      <AIAssistantWrapper
         position="floating"
         size="normal"
         context={{
@@ -613,10 +613,6 @@ export default function HomePage() {
         enableVoice={true}
         autoSuggest={true}
         persistConversation={true}
-        onAction={(action, data) => {
-          console.log("AI Assistant action:", action, data);
-          // Handle AI assistant actions
-        }}
       />
     </div>
   );
