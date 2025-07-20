@@ -1,30 +1,18 @@
-// Temporarily disabled middleware for debugging
-// import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import createMiddleware from 'next-intl/middleware';
+import { locales, defaultLocale } from './lib/i18n/config';
 
-// const isProtectedRoute = createRouteMatcher([
-//   "/dashboard(.*)",
-//   "/admin(.*)",
-//   "/profile(.*)",
-//   "/settings(.*)",
-//   "/messages(.*)",
-//   "/notifications(.*)",
-//   "/payments(.*)",
-//   "/my-bookings(.*)",
-//   "/requests(.*)",
-// ]);
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales,
 
-// export default clerkMiddleware(async (auth, req) => {
-//   // Exclude mock routes from Clerk protection
-//   if (req.nextUrl.pathname.startsWith('/mock-')) {
-//     return;
-//   }
-//   if (isProtectedRoute(req)) await auth().protect();
-// });
+  // Used when no locale matches
+  defaultLocale,
 
-export default function middleware() {
-  // No-op middleware for debugging
-}
+  // Hide the default locale in the URL
+  localePrefix: 'as-needed'
+});
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  // Match only internationalized pathnames
+  matcher: ['/', '/(de|en|es|fr|it|ja|ko|pt|zh)/:path*']
 };
