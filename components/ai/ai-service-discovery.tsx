@@ -67,14 +67,12 @@ interface ServiceProvider {
 }
 
 interface AIServiceDiscoveryProps {
-  onServiceSelect?: (service: ServiceProvider) => void;
   context?: Record<string, any>;
   initialQuery?: string;
   showAdvancedFeatures?: boolean;
 }
 
 const AIServiceDiscovery: React.FC<AIServiceDiscoveryProps> = memo(({
-  onServiceSelect,
   context = {},
   initialQuery = "",
   showAdvancedFeatures = true,
@@ -98,10 +96,15 @@ const AIServiceDiscovery: React.FC<AIServiceDiscoveryProps> = memo(({
   });
   const { toast } = useToast();
 
-  // Memoize the service selection handler
+  // Handle service selection internally
   const handleServiceSelect = useCallback((service: ServiceProvider) => {
     try {
-      onServiceSelect?.(service);
+      console.log("Selected service:", service);
+      toast({
+        title: "Service Selected",
+        description: `You selected ${service.name} for ${service.title}`,
+      });
+      // Here you could add navigation logic, state updates, etc.
     } catch (error) {
       console.error('Error in service selection:', error);
       toast({
@@ -110,7 +113,7 @@ const AIServiceDiscovery: React.FC<AIServiceDiscoveryProps> = memo(({
         variant: "destructive",
       });
     }
-  }, [onServiceSelect, toast]);
+  }, [toast]);
 
   const mockServices: ServiceProvider[] = [
     {

@@ -11,7 +11,6 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SmartRecommendations from "@/components/ai/smart-recommendations";
 import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
-import { useCallback } from "react";
 import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import {
@@ -57,11 +56,6 @@ const AIServiceDiscovery = dynamic(
 );
 
 export default function HomePage() {
-  // Memoize the service selection handler to ensure it's stable
-  const handleServiceSelect = useCallback((service: any) => {
-    console.log("Selected service:", service);
-    // Handle service selection
-  }, []);
 
   const stats = [
     {
@@ -538,7 +532,6 @@ export default function HomePage() {
             <AIServiceDiscovery
               context={{ currentPage: "homepage", location: "Global" }}
               showAdvancedFeatures={true}
-              onServiceSelect={handleServiceSelect}
             />
           </ErrorBoundary>
         </div>
