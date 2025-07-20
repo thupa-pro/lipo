@@ -165,7 +165,7 @@ export default function SignInPage() {
 
             <div className="text-center">
               <Link
-                href="#"
+                href="/auth/forgot-password"
                 className="text-sm text-blue-600 hover:text-blue-500"
               >
                 Forgot your password?

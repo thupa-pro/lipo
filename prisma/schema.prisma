@@ -38,24 +38,30 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime? @map("email_verified")
-  image         String?
-  password      String?
-  role          Role      @default(CUSTOMER)
-  status        UserStatus @default(ACTIVE)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id                String    @id @default(cuid())
+  name              String?
+  email             String    @unique
+  emailVerified     DateTime? @map("email_verified")
+  image             String?
+  password          String?
+  role              Role      @default(CUSTOMER)
+  status            UserStatus @default(PENDING_VERIFICATION)
+  emailVerificationToken String? @map("email_verification_token")
+  passwordResetToken String? @map("password_reset_token")
+  passwordResetExpires DateTime? @map("password_reset_expires")
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
   
   // Relations
-  accounts      Account[]
-  sessions      Session[]
-  profile       UserProfile?
-  services      Service[]
-  bookings      Booking[]
-  reviews       Review[]
+  accounts          Account[]
+  sessions          Session[]
+  profile           UserProfile?
+  services          Service[]
+  bookings          Booking[]
+  reviews           Review[]
+  notifications     Notification[]
+  sentNotifications Notification[] @relation("NotificationSender")
+  uploads           FileUpload[]
 
   @@map("users")
 }
@@ -99,6 +105,7 @@ model Service {
   status      ServiceStatus @default(ACTIVE)
   images      String?     // JSON string of image URLs
   tags        String?     // JSON string of tags
+  searchVector String?    // For advanced search indexing
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 
@@ -143,6 +150,40 @@ model Review {
   @@map("reviews")
 }
 
+model Notification {
+  id          String           @id @default(cuid())
+  userId      String           @map("user_id")
+  senderId    String?          @map("sender_id")
+  type        NotificationType
+  title       String
+  message     String
+  data        String?          // JSON string for additional data
+  read        Boolean          @default(false)
+  readAt      DateTime?        @map("read_at")
+  createdAt   DateTime         @default(now())
+
+  user   User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sender User? @relation("NotificationSender", fields: [senderId], references: [id], onDelete: SetNull)
+
+  @@map("notifications")
+}
+
+model FileUpload {
+  id          String     @id @default(cuid())
+  userId      String     @map("user_id")
+  filename    String
+  originalName String    @map("original_name")
+  mimeType    String     @map("mime_type")
+  size        Int
+  url         String
+  type        FileType
+  createdAt   DateTime   @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("file_uploads")
+}
+
 model VerificationToken {
   identifier String
   token      String
@@ -180,4 +221,24 @@ enum BookingStatus {
   COMPLETED
   CANCELLED
   REFUNDED
+}
+
+enum NotificationType {
+  BOOKING_RECEIVED
+  BOOKING_CONFIRMED
+  BOOKING_COMPLETED
+  BOOKING_CANCELLED
+  REVIEW_RECEIVED
+  PAYMENT_RECEIVED
+  VERIFICATION_APPROVED
+  SYSTEM_ALERT
+  MESSAGE_RECEIVED
+}
+
+enum FileType {
+  AVATAR
+  SERVICE_IMAGE
+  DOCUMENT
+  CERTIFICATE
+  OTHER
 }
