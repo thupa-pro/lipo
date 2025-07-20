@@ -719,4 +719,102 @@ export default function BrowsePage() {
                         <div className="relative">
                           <Avatar className="w-16 h-16 border-4 border-white dark:border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
                             <AvatarImage
-                              src={`
+                              src={provider.avatar}
+                              alt={provider.name}
+                            />
+                            <AvatarFallback className="bg-gradient-to-br from-blue-500 to-emerald-500 text-white font-bold text-lg">
+                              {provider.name.split(" ").map((n) => n[0]).join("")}
+                            </AvatarFallback>
+                          </Avatar>
+                          
+                          {/* Online Status */}
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-3 border-white dark:border-black flex items-center justify-center">
+                            <div className="w-2 h-2 bg-white rounded-full" />
+                          </div>
+                        </div>
+                        
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between mb-2">
+                            <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-violet-400 transition-colors duration-300">
+                              {provider.name}
+                            </h3>
+                            <div className="flex items-center gap-1">
+                              <Heart className="w-4 h-4 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" />
+                            </div>
+                          </div>
+                          
+                          <p className="text-blue-600 dark:text-violet-400 font-semibold mb-2">
+                            {provider.service}
+                          </p>
+                          
+                          <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                            <div className="flex items-center gap-1">
+                              <MapPin className="w-4 h-4" />
+                              <span>{provider.location}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                              <span className="font-medium">{provider.rating}</span>
+                              <span>({provider.reviews})</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Service Details */}
+                      <div className={`space-y-4 ${viewMode === "list" ? "flex-1" : ""}`}>
+                        <div className="flex flex-wrap gap-2">
+                          {provider.badges.map((badge) => (
+                            <Badge
+                              key={badge}
+                              variant="secondary"
+                              className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                            >
+                              {badge}
+                            </Badge>
+                          ))}
+                        </div>
+                        
+                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                          {provider.description}
+                        </p>
+                        
+                        <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                          <div className="flex flex-col">
+                            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                              ${provider.price}
+                            </span>
+                            <span className="text-sm text-gray-500">per hour</span>
+                          </div>
+                          
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-violet-400 dark:text-violet-400 dark:hover:bg-violet-950/30"
+                            >
+                              <MessageCircle className="w-4 h-4 mr-2" />
+                              Message
+                            </Button>
+                            <Button 
+                              size="sm"
+                              className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white"
+                            >
+                              Book Now
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+export default BrowsePage;
