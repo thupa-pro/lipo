@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { EmailService } from "@/lib/email";
+import { generateVerificationToken } from "@/lib/tokens";
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,6 +33,9 @@ export async function POST(request: NextRequest) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
 
+    // Generate email verification token
+    const verificationToken = generateVerificationToken();
+
     // Create user
     const user = await prisma.user.create({
       data: {
@@ -38,6 +43,8 @@ export async function POST(request: NextRequest) {
         email,
         password: hashedPassword,
         role,
+        emailVerificationToken: verificationToken,
+        status: 'PENDING_VERIFICATION',
       },
     });
 
@@ -50,8 +57,31 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // Send verification email
+    const emailService = EmailService.getInstance();
+    const emailResult = await emailService.sendVerificationEmail(
+      email,
+      verificationToken,
+      name
+    );
+
+    if (!emailResult.success) {
+      console.error('Failed to send verification email:', emailResult.error);
+      // Don't fail registration if email fails in development
+      if (process.env.NODE_ENV === 'production') {
+        return NextResponse.json(
+          { message: "User created but failed to send verification email" },
+          { status: 201 }
+        );
+      }
+    }
+
     return NextResponse.json(
-      { message: "User created successfully" },
+      { 
+        message: "User created successfully. Please check your email to verify your account.",
+        userId: user.id,
+        emailSent: emailResult.success 
+      },
       { status: 201 }
     );
   } catch (error) {
