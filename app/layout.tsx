@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { SessionProvider } from "@/components/providers/SessionProvider";
+import { AuthProvider } from "@/components/providers/AuthProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({ 
@@ -69,9 +69,9 @@ export default function RootLayout({
           disableTransitionOnChange={false}
           storageKey="loconomy-theme"
         >
-          <SessionProvider>
+          <AuthProvider>
             {children}
-          </SessionProvider>
+          </AuthProvider>
           <Toaster />
         </ThemeProvider>
       </body>

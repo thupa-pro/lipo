@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -54,7 +54,7 @@ interface AdminStats {
 }
 
 export default function AdminDashboard() {
-  const { user } = useUser();
+  const { user, isAdmin, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
   const adminClient = useAdminClient();
@@ -64,11 +64,42 @@ export default function AdminDashboard() {
   const [currentTab, setCurrentTab] = useState("overview");
 
   useEffect(() => {
+    if (authLoading) return;
+    
+    if (!user.isSignedIn) {
+      router.push("/auth/signin");
+      return;
+    }
+    
+    if (!isAdmin) {
+      router.push("/");
+      return;
+    }
+    
     if (user?.id) {
       checkAdminAccess();
       loadAdminStats();
     }
-  }, [user?.id]);
+  }, [user?.id, authLoading, isAdmin]);
+
+  // Loading state
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  // Not authenticated
+  if (!user.isSignedIn) {
+    return null; // Will redirect in useEffect
+  }
+
+  // Not admin
+  if (!isAdmin) {
+    return null; // Will redirect in useEffect
+  }
 
   const checkAdminAccess = async () => {
     try {
