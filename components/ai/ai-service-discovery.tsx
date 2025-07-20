@@ -42,6 +42,7 @@ import {
   X,
 } from "lucide-react";
 
+// Clean interface without any event handler props
 interface ServiceProvider {
   id: string;
   name: string;
@@ -66,13 +67,14 @@ interface ServiceProvider {
   instantBook: boolean;
 }
 
-interface AIServiceDiscoveryProps {
+// Clean props interface - no function props
+interface CleanAIServiceDiscoveryProps {
   context?: Record<string, any>;
   initialQuery?: string;
   showAdvancedFeatures?: boolean;
 }
 
-const AIServiceDiscovery: React.FC<AIServiceDiscoveryProps> = memo(({
+const AIServiceDiscovery: React.FC<CleanAIServiceDiscoveryProps> = memo(({
   context = {},
   initialQuery = "",
   showAdvancedFeatures = true,
