@@ -45,6 +45,7 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import useSWR from 'swr';
 
 interface Transaction {
   id: string;
@@ -106,9 +107,14 @@ interface PaymentStats {
   nextPayoutDate: Date;
 }
 
+const fetcher = (url: string) => fetch(url).then(res => res.json());
+
 export default function PaymentsDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const { data: transactions, error, isLoading } = useSWR<Transaction[]>(
+    '/api/payments/transactions',
+    fetcher
+  );
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
   const [kycStatus, setKycStatus] = useState<KYCStatus | null>(null);
   const [stats, setStats] = useState<PaymentStats | null>(null);
@@ -116,69 +122,7 @@ export default function PaymentsDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Mock data
-  const mockTransactions: Transaction[] = [
-    {
-      id: "txn_1",
-      type: "payout",
-      status: "completed",
-      amount: 485.50,
-      currency: "USD",
-      description: "Weekly payout - Services rendered",
-      date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-      paymentMethod: "Bank Transfer",
-      reference: "PAY_001234567",
-    },
-    {
-      id: "txn_2", 
-      type: "payment",
-      status: "completed",
-      amount: 75.00,
-      currency: "USD",
-      description: "Professional House Cleaning",
-      date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-      paymentMethod: "Credit Card",
-      reference: "PMT_987654321",
-      customer: {
-        name: "Jessica Thompson",
-        email: "jessica@email.com",
-      },
-      booking: {
-        id: "booking_1",
-        service: "Professional House Cleaning",
-      },
-    },
-    {
-      id: "txn_3",
-      type: "fee",
-      status: "completed", 
-      amount: -7.50,
-      currency: "USD",
-      description: "Platform service fee (10%)",
-      date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-      paymentMethod: "Platform",
-      reference: "FEE_111222333",
-    },
-    {
-      id: "txn_4",
-      type: "payment",
-      status: "pending",
-      amount: 150.00,
-      currency: "USD", 
-      description: "Office Deep Clean",
-      date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
-      paymentMethod: "Bank Transfer",
-      reference: "PMT_444555666",
-      customer: {
-        name: "Tech Startup Inc.",
-        email: "admin@techstartup.com",
-      },
-      booking: {
-        id: "booking_2",
-        service: "Office Deep Clean",
-      },
-    },
-  ];
+  // Remove mockTransactions, use SWR data
 
   const mockPaymentMethods: PaymentMethod[] = [
     {
@@ -252,7 +196,7 @@ export default function PaymentsDashboard() {
 
   useEffect(() => {
     setTimeout(() => {
-      setTransactions(mockTransactions);
+      // setTransactions(mockTransactions); // This line is no longer needed
       setPaymentMethods(mockPaymentMethods);
       setKycStatus(mockKYCStatus);
       setStats(mockStats);
@@ -295,7 +239,7 @@ export default function PaymentsDashboard() {
     }
   };
 
-  const filteredTransactions = transactions.filter(txn => {
+  const filteredTransactions = transactions?.filter(txn => {
     const matchesFilter = filter === "all" || txn.type === filter;
     const matchesSearch = searchQuery === "" || 
       txn.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -319,6 +263,8 @@ export default function PaymentsDashboard() {
       </div>
     );
   }
+
+  if (error) return <div>Error loading transactions.</div>;
 
   return (
     <div className="space-y-6">
@@ -445,7 +391,7 @@ export default function PaymentsDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {transactions.slice(0, 5).map((transaction) => (
+                {transactions?.slice(0, 5).map((transaction) => (
                   <div key={transaction.id} className="flex items-center gap-4 p-4 border rounded-lg">
                     <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
                       {getTransactionIcon(transaction.type)}
@@ -512,7 +458,7 @@ export default function PaymentsDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                {filteredTransactions.map((transaction) => (
+                {filteredTransactions?.map((transaction) => (
                   <motion.div
                     key={transaction.id}
                     initial={{ opacity: 0, y: 10 }}
