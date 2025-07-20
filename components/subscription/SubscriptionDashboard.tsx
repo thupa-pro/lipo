@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@/hooks/useAuth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -39,7 +39,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 export function SubscriptionDashboard() {
-  const { user } = useUser();
+  const { user, isLoading: authLoading } = useAuth();
   const { toast } = useToast();
   const subscriptionClient = useSubscriptionClient();
 

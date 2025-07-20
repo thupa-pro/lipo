@@ -1,6 +1,16 @@
+"use client";
+
 import OnboardingChatAssistant from "@/components/ai/OnboardingChatAssistant";
 
 export default function OnboardingAssistantPage() {
+  const handleStepComplete = (stepId: string) => {
+    console.log("Step completed:", stepId);
+  };
+
+  const handleOnboardingComplete = () => {
+    console.log("Onboarding completed!");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-4xl mx-auto">
@@ -14,8 +24,8 @@ export default function OnboardingAssistantPage() {
         <OnboardingChatAssistant 
           position="embedded"
           userType="customer"
-          onStepComplete={(stepId) => console.log("Step completed:", stepId)}
-          onOnboardingComplete={() => console.log("Onboarding completed!")}
+          onStepComplete={handleStepComplete}
+          onOnboardingComplete={handleOnboardingComplete}
         />
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -41,7 +41,7 @@ import { useListingsClient } from "@/lib/listings/utils";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ListingsPage() {
-  const { user } = useUser();
+  const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
   const listingsClient = useListingsClient();
@@ -61,10 +61,35 @@ export default function ListingsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    if (authLoading) return;
+    
+    if (!user.isSignedIn) return;
+    
     if (user?.id) {
       loadData();
     }
-  }, [user?.id]);
+  }, [user?.id, authLoading]);
+
+  // Loading state
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  // Not authenticated
+  if (!user.isSignedIn) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">Please sign in</h2>
+          <p className="text-gray-600">You need to be signed in to manage your listings.</p>
+        </div>
+      </div>
+    );
+  }
 
   const loadData = async () => {
     if (!user?.id) return;

@@ -1,11 +1,25 @@
 import {
-  getCityConfiguration,
-  formatCurrency,
-  formatDate,
+  getCityLocalization,
 } from "@/lib/i18n/city-localization";
 import { metropolitanCities, getCityData } from "@/lib/i18n/config";
 
 export default function TestCitiesPage() {
+  // Simple format functions
+  const formatCurrency = (amount: number, currency: string = "USD") => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+    }).format(amount);
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(date);
+  };
+
   // Test cities from different continents with one language per country
   const testCities = [
     "lagos",
@@ -25,7 +39,7 @@ export default function TestCitiesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testCities.map((cityKey) => {
           const cityData = getCityData(cityKey);
-          const cityConfig = getCityConfiguration(cityKey);
+          const cityConfig = getCityLocalization(cityKey);
           const testAmount = 1000;
           const testDate = new Date();
 

@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import {
   Users,
   User,
@@ -24,41 +24,43 @@ import {
   Settings,
   Eye,
 } from "lucide-react";
-import { useMockAuth } from "@/lib/mock/use-mock-auth";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function MockAuthPage() {
-  const { user, role, signIn, signOut, switchRole } = useMockAuth();
+  const { user, isLoading } = useAuth();
   const { toast } = useToast();
-  const [selectedRole, setSelectedRole] = useState<
-    "consumer" | "provider" | "admin"
-  >("consumer");
+  const [selectedRole, setSelectedRole] = useState<string>("customer");
 
-  const handleSignIn = (newRole: "consumer" | "provider" | "admin") => {
-    signIn(newRole);
+  // Mock functions for demo purposes
+  const signIn = (role: string) => {
     toast({
-      title: "Signed In",
-      description: `Signed in as ${newRole}`,
-      variant: "default",
+      title: "Mock Sign In",
+      description: `Signed in as ${role}`,
     });
   };
 
-  const handleSwitchRole = (newRole: "consumer" | "provider" | "admin") => {
-    switchRole(newRole);
+  const signOut = () => {
+    toast({
+      title: "Mock Sign Out",
+      description: "Signed out successfully",
+    });
+  };
+
+  const switchRole = (newRole: string) => {
+    setSelectedRole(newRole);
     toast({
       title: "Role Switched",
-      description: `Switched to ${newRole} role`,
-      variant: "default",
+      description: `Switched to ${newRole}`,
     });
   };
 
-  const handleSignOut = () => {
-    signOut();
-    toast({
-      title: "Signed Out",
-      description: "Successfully signed out",
-      variant: "default",
-    });
-  };
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   const roleData = {
     consumer: {
@@ -117,16 +119,16 @@ export default function MockAuthPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`w-12 h-12 rounded-full ${roleData[role].color} flex items-center justify-center`}
+                      className={`w-12 h-12 rounded-full ${roleData[selectedRole].color} flex items-center justify-center`}
                     >
-                      {React.createElement(roleData[role].icon, {
+                      {React.createElement(roleData[selectedRole].icon, {
                         className: "w-6 h-6 text-white",
                       })}
                     </div>
                     <div>
                       <CardTitle className="text-xl">
                         Signed in as{" "}
-                        {role.charAt(0).toUpperCase() + role.slice(1)}
+                        {selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}
                       </CardTitle>
                       <CardDescription>{user.email}</CardDescription>
                     </div>
@@ -142,7 +144,7 @@ export default function MockAuthPage() {
                   <div>
                     <h4 className="font-medium mb-2">Current Permissions:</h4>
                     <div className="flex flex-wrap gap-2">
-                      {roleData[role].permissions.map((permission, index) => (
+                      {roleData[selectedRole].permissions.map((permission, index) => (
                         <Badge
                           key={index}
                           variant="outline"
@@ -154,7 +156,7 @@ export default function MockAuthPage() {
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button onClick={handleSignOut} variant="outline">
+                    <Button onClick={signOut} variant="outline">
                       <LogOut className="w-4 h-4 mr-2" />
                       Sign Out
                     </Button>
@@ -176,8 +178,8 @@ export default function MockAuthPage() {
               </CardHeader>
               <CardContent>
                 <Tabs
-                  value={role}
-                  onValueChange={(value) => handleSwitchRole(value as any)}
+                  value={selectedRole}
+                  onValueChange={(value) => switchRole(value)}
                 >
                   <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="consumer">Consumer</TabsTrigger>
@@ -239,7 +241,7 @@ export default function MockAuthPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {role === "consumer" && (
+                  {selectedRole === "consumer" && (
                     <>
                       <Button
                         variant="outline"
@@ -261,7 +263,7 @@ export default function MockAuthPage() {
                       </Button>
                     </>
                   )}
-                  {role === "provider" && (
+                  {selectedRole === "provider" && (
                     <>
                       <Button
                         variant="outline"
@@ -289,7 +291,7 @@ export default function MockAuthPage() {
                       </Button>
                     </>
                   )}
-                  {role === "admin" && (
+                  {selectedRole === "admin" && (
                     <>
                       <Button
                         variant="outline"
@@ -331,7 +333,7 @@ export default function MockAuthPage() {
               {Object.entries(roleData).map(([roleKey, data]) => (
                 <Button
                   key={roleKey}
-                  onClick={() => handleSignIn(roleKey as any)}
+                  onClick={() => signIn(roleKey)}
                   variant="outline"
                   className="w-full p-4 h-auto justify-start"
                 >

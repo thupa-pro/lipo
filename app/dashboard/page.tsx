@@ -24,7 +24,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useTheme } from "@/components/providers/ThemeProvider";
+import { useAuth } from "@/hooks/useAuth";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const stats = [
@@ -129,7 +129,7 @@ const notifications = [
 ];
 
 export default function DashboardPage() {
-  const { resolvedTheme } = useTheme();
+  const { user, isLoading } = useAuth();
   const [mounted, setMounted] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState("7d");
 
@@ -137,7 +137,7 @@ export default function DashboardPage() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
+  if (!mounted || isLoading) {
     return null;
   }
 
