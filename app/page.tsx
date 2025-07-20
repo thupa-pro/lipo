@@ -11,6 +11,21 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+// NoSSR wrapper component
+function NoSSR({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return <>{children}</>;
+}
+
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
 
@@ -129,7 +144,9 @@ export default function HomePage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <ThemeToggle />
+            <NoSSR>
+              <ThemeToggle />
+            </NoSSR>
             <Button variant="ghost" asChild>
               <Link href="/auth/signin">Sign In</Link>
             </Button>
