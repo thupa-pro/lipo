@@ -1,25 +1,15 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Search,
   MapPin,
   Star,
-  SlidersHorizontal,
   Grid,
   List,
   Shield,
@@ -27,319 +17,89 @@ import {
   Sparkles,
   Heart,
   Zap,
-  Target,
-  TrendingUp,
-  Users,
   Brain,
   CheckCircle,
   MessageCircle,
-  Activity,
-  X,
-  Loader2,
-  AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
-import { useToast } from "@/components/ui/use-toast";
 
-// Enhanced provider data with AI-matching features
-const allProviders = [
+// Sample provider data
+const providers = [
   {
     id: 1,
     name: "Sarah Mitchell",
     service: "House Cleaning",
     category: "cleaning",
     rating: 4.9,
-    reviews: 247,
+    reviews: 127,
     price: "$35/hr",
     hourlyRate: 35,
     location: "Downtown",
-    distance: 1.2,
+    distance: 2.1,
     verified: true,
     responseTime: "Usually responds in 2 hours",
-    completedJobs: 892,
-    aiOptimized: true,
-    specialty: "Eco-Friendly Cleaning",
+    completedJobs: 89,
+    specialty: "Deep Cleaning",
     trustScore: 98,
-    badges: ["Verified", "Eco-Friendly", "Same-Day"],
-    description:
-      "Professional eco-friendly cleaning services with 5+ years experience. Specializing in green cleaning products and sustainable practices.",
+    badges: ["Verified", "Top Rated", "Eco-Friendly"],
+    description: "Professional house cleaning with eco-friendly products. 5+ years experience.",
     availability: "Available Today",
-    aiMatchScore: 95,
+    avatar: "/api/placeholder/64/64",
   },
   {
     id: 2,
-    name: "Mike Rodriguez",
+    name: "Mike Johnson",
     service: "Handyman Services",
     category: "handyman",
     rating: 4.8,
-    reviews: 189,
+    reviews: 203,
     price: "$45/hr",
     hourlyRate: 45,
     location: "Midtown",
-    distance: 2.1,
+    distance: 3.5,
     verified: true,
     responseTime: "Usually responds in 1 hour",
-    completedJobs: 654,
-    aiOptimized: true,
-    specialty: "Smart Home Setup",
-    trustScore: 96,
-    badges: ["Verified", "Smart Home", "24/7"],
-    description:
-      "Expert handyman specializing in smart home installations, electrical work, and general repairs. Licensed and insured.",
-    availability: "Available Tomorrow",
-    aiMatchScore: 88,
+    completedJobs: 156,
+    specialty: "Home Repairs",
+    trustScore: 95,
+    badges: ["Verified", "Licensed", "Insured"],
+    description: "Licensed handyman specializing in home repairs and maintenance.",
+    availability: "Available This Week",
+    avatar: "/api/placeholder/64/64",
   },
   {
     id: 3,
-    name: "Emma Thompson",
-    service: "Pet Grooming",
+    name: "Luna Martinez",
+    service: "Pet Walking",
     category: "petcare",
     rating: 5.0,
-    reviews: 312,
-    price: "$60/session",
-    hourlyRate: 60,
-    location: "Uptown",
-    distance: 3.4,
-    verified: true,
-    responseTime: "Usually responds in 3 hours",
-    completedJobs: 1205,
-    aiOptimized: false,
-    specialty: "Premium Pet Care",
-    trustScore: 99,
-    badges: ["Verified", "Premium", "Award Winner"],
-    description:
-      "Award-winning pet groomer with certifications in breed-specific styling. Gentle approach with anxious pets.",
-    availability: "Booking for Next Week",
-    aiMatchScore: 92,
-  },
-  {
-    id: 4,
-    name: "David Chen",
-    service: "Personal Training",
-    category: "fitness",
-    rating: 4.9,
-    reviews: 428,
-    price: "$75/session",
-    hourlyRate: 75,
-    location: "Central",
+    reviews: 78,
+    price: "$25/hr",
+    hourlyRate: 25,
+    location: "Park District",
     distance: 1.8,
     verified: true,
-    responseTime: "Usually responds in 1 hour",
-    completedJobs: 890,
-    aiOptimized: true,
-    specialty: "Strength & Conditioning",
-    trustScore: 97,
-    badges: ["Verified", "Certified", "Nutrition"],
-    description:
-      "Certified personal trainer specializing in strength training and nutrition coaching. 10+ years experience.",
-    availability: "Available Today",
-    aiMatchScore: 90,
-  },
-  {
-    id: 5,
-    name: "Lisa Wang",
-    service: "Tutoring",
-    category: "education",
-    rating: 4.8,
-    reviews: 156,
-    price: "$50/hr",
-    hourlyRate: 50,
-    location: "Westside",
-    distance: 2.8,
-    verified: true,
-    responseTime: "Usually responds in 4 hours",
-    completedJobs: 423,
-    aiOptimized: true,
-    specialty: "Math & Science",
-    trustScore: 94,
-    badges: ["Verified", "PhD", "K-12"],
-    description:
-      "PhD in Mathematics with 8 years tutoring experience. Specializing in K-12 math and science subjects.",
-    availability: "Available This Week",
-    aiMatchScore: 85,
-  },
-  {
-    id: 6,
-    name: "Alex Johnson",
-    service: "Tech Support",
-    category: "technology",
-    rating: 4.7,
-    reviews: 98,
-    price: "$65/hr",
-    hourlyRate: 65,
-    location: "Tech District",
-    distance: 4.2,
-    verified: true,
-    responseTime: "Usually responds in 1 hour",
+    responseTime: "Usually responds in 30 minutes",
     completedJobs: 234,
-    aiOptimized: true,
-    specialty: "Computer Repair & Setup",
-    trustScore: 91,
-    badges: ["Verified", "Remote", "Same-Day"],
-    description:
-      "Certified IT professional providing computer repair, software installation, and tech support services.",
+    specialty: "Dog Walking & Pet Sitting",
+    trustScore: 99,
+    badges: ["Verified", "Pet Certified", "Background Check"],
+    description: "Certified pet care specialist with extensive experience in dog training.",
     availability: "Available Today",
-    aiMatchScore: 82,
+    avatar: "/api/placeholder/64/64",
   },
 ];
-
-const categories = [
-  { value: "all", label: "All Categories" },
-  { value: "cleaning", label: "House Cleaning" },
-  { value: "handyman", label: "Handyman Services" },
-  { value: "petcare", label: "Pet Care" },
-  { value: "fitness", label: "Fitness & Wellness" },
-  { value: "education", label: "Education & Tutoring" },
-  { value: "technology", label: "Technology Support" },
-];
-
-const sortOptions = [
-  { value: "aiMatch", label: "AI Match Score" },
-  { value: "rating", label: "Highest Rated" },
-  { value: "price", label: "Lowest Price" },
-  { value: "distance", label: "Closest Distance" },
-  { value: "availability", label: "Available Now" },
-  { value: "reviews", label: "Most Reviews" },
-];
-
-interface FilterState {
-  category: string;
-  priceRange: [number, number];
-  sortBy: string;
-  verifiedOnly: boolean;
-  availableToday: boolean;
-  topRated: boolean;
-  aiOptimized: boolean;
-}
 
 export default function BrowsePage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [location, setLocation] = useState("Current Location");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [loading, setLoading] = useState(false);
-  const [showFilters, setShowFilters] = useState(true);
-  const { toast } = useToast();
 
-  const [filters, setFilters] = useState<FilterState>({
-    category: "all",
-    priceRange: [0, 200],
-    sortBy: "aiMatch",
-    verifiedOnly: false,
-    availableToday: false,
-    topRated: false,
-    aiOptimized: false,
-  });
-
-  // Advanced filtering and sorting logic
-  const filteredProviders = useMemo(() => {
-    let filtered = [...allProviders];
-
-    // Text search
-    if (searchQuery) {
-      filtered = filtered.filter(
-        (provider) =>
-          provider.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          provider.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          provider.specialty
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          provider.description
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()),
-      );
-    }
-
-    // Category filter
-    if (filters.category !== "all") {
-      filtered = filtered.filter(
-        (provider) => provider.category === filters.category,
-      );
-    }
-
-    // Price range filter
-    filtered = filtered.filter(
-      (provider) =>
-        provider.hourlyRate >= filters.priceRange[0] &&
-        provider.hourlyRate <= filters.priceRange[1],
-    );
-
-    // Quick filters
-    if (filters.verifiedOnly) {
-      filtered = filtered.filter((provider) => provider.verified);
-    }
-
-    if (filters.availableToday) {
-      filtered = filtered.filter(
-        (provider) => provider.availability === "Available Today",
-      );
-    }
-
-    if (filters.topRated) {
-      filtered = filtered.filter((provider) => provider.rating >= 4.5);
-    }
-
-    if (filters.aiOptimized) {
-      filtered = filtered.filter((provider) => provider.aiOptimized);
-    }
-
-    // Sorting
-    filtered.sort((a, b) => {
-      switch (filters.sortBy) {
-        case "aiMatch":
-          return b.aiMatchScore - a.aiMatchScore;
-        case "rating":
-          return b.rating - a.rating;
-        case "price":
-          return a.hourlyRate - b.hourlyRate;
-        case "distance":
-          return a.distance - b.distance;
-        case "availability":
-          return a.availability === "Available Today" ? -1 : 1;
-        case "reviews":
-          return b.reviews - a.reviews;
-        default:
-          return 0;
-      }
-    });
-
-    return filtered;
-  }, [searchQuery, filters]);
-
-  const handleSearch = () => {
-    setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: "Search Complete",
-        description: `Found ${filteredProviders.length} providers matching your criteria`,
-      });
-    }, 1000);
-  };
-
-  const clearAllFilters = () => {
-    setFilters({
-      category: "all",
-      priceRange: [0, 200],
-      sortBy: "aiMatch",
-      verifiedOnly: false,
-      availableToday: false,
-      topRated: false,
-      aiOptimized: false,
-    });
-    setSearchQuery("");
-  };
-
-  const activeFilterCount = useMemo(() => {
-    let count = 0;
-    if (filters.category !== "all") count++;
-    if (filters.priceRange[0] > 0 || filters.priceRange[1] < 200) count++;
-    if (filters.verifiedOnly) count++;
-    if (filters.availableToday) count++;
-    if (filters.topRated) count++;
-    if (filters.aiOptimized) count++;
-    return count;
-  }, [filters]);
+  const filteredProviders = providers.filter(
+    (provider) =>
+      provider.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      provider.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      provider.specialty.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
@@ -361,460 +121,180 @@ export default function BrowsePage() {
               </span>
             </h1>
 
-            <p className="text-lg text-slate-600 dark:text-gray-300 mb-8">
-              Discover verified professionals matched to your exact needs with
-              our AI-powered platform
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+              Discover top-rated local professionals for all your needs. Our AI matches you with the perfect service provider based on your preferences and location.
             </p>
 
-            {/* Enhanced Search Interface */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000" />
-              <div className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl rounded-3xl p-2 border border-blue-200/50 dark:border-white/20 shadow-xl">
-                <div className="flex flex-col sm:flex-row gap-3 p-4">
-                  <div className="relative flex-1">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-                    <Input
-                      placeholder="Search services or providers..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-12 h-12 bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/20 rounded-2xl text-base"
-                      onKeyPress={(e) => e.key === "Enter" && handleSearch()}
-                    />
-                  </div>
-                  <div className="relative flex-1 sm:flex-initial sm:w-48">
-                    <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-                    <Input
-                      placeholder="Location"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      className="pl-12 h-12 bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/20 rounded-2xl text-base"
-                    />
-                  </div>
-                  <Button
-                    onClick={handleSearch}
-                    disabled={loading}
-                    className="h-12 px-8 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg"
-                  >
-                    {loading ? (
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                    ) : (
-                      <Search className="w-5 h-5" />
-                    )}
-                  </Button>
-                </div>
+            {/* Search Bar */}
+            <div className="relative max-w-2xl mx-auto">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400 dark:text-gray-500" />
               </div>
+              <Input
+                type="text"
+                placeholder="Search for services, providers, or specialties..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-11 pr-4 py-6 text-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-white/20 dark:border-gray-700/50 shadow-lg focus:shadow-xl transition-all duration-300"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filters Sidebar */}
-          <div
-            className={`lg:w-80 ${showFilters ? "block" : "hidden lg:block"}`}
-          >
-            <Card className="sticky top-4 bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-lg">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <SlidersHorizontal className="w-5 h-5 text-blue-600 dark:text-violet-400" />
-                    <h2 className="text-lg font-bold">Filters</h2>
-                  </div>
-                  {activeFilterCount > 0 && (
-                    <div className="flex items-center gap-2">
-                      <Badge className="bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300">
-                        {activeFilterCount} active
-                      </Badge>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={clearAllFilters}
-                        className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                      >
-                        Clear all
-                      </Button>
-                    </div>
-                  )}
-                </div>
-
-                <div className="space-y-6">
-                  {/* Category Filter */}
-                  <div>
-                    <label className="text-sm font-medium mb-3 block">
-                      Service Category
-                    </label>
-                    <Select
-                      value={filters.category}
-                      onValueChange={(value) =>
-                        setFilters((prev) => ({ ...prev, category: value }))
-                      }
-                    >
-                      <SelectTrigger className="rounded-2xl border-slate-200 dark:border-white/20">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="rounded-2xl">
-                        {categories.map((cat) => (
-                          <SelectItem key={cat.value} value={cat.value}>
-                            {cat.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Price Range */}
-                  <div>
-                    <label className="text-sm font-medium mb-3 block">
-                      Price Range: ${filters.priceRange[0]} - $
-                      {filters.priceRange[1]}/hr
-                    </label>
-                    <Slider
-                      value={filters.priceRange}
-                      onValueChange={(value) =>
-                        setFilters((prev) => ({
-                          ...prev,
-                          priceRange: value as [number, number],
-                        }))
-                      }
-                      max={200}
-                      min={0}
-                      step={5}
-                      className="mt-2"
-                    />
-                  </div>
-
-                  {/* Sort By */}
-                  <div>
-                    <label className="text-sm font-medium mb-3 block">
-                      Sort By
-                    </label>
-                    <Select
-                      value={filters.sortBy}
-                      onValueChange={(value) =>
-                        setFilters((prev) => ({ ...prev, sortBy: value }))
-                      }
-                    >
-                      <SelectTrigger className="rounded-2xl border-slate-200 dark:border-white/20">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="rounded-2xl">
-                        {sortOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Quick Filters */}
-                  <div>
-                    <label className="text-sm font-medium mb-3 block">
-                      Quick Filters
-                    </label>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <Checkbox
-                          id="verified"
-                          checked={filters.verifiedOnly}
-                          onCheckedChange={(checked) =>
-                            setFilters((prev) => ({
-                              ...prev,
-                              verifiedOnly: !!checked,
-                            }))
-                          }
-                          className="rounded-md"
-                        />
-                        <label
-                          htmlFor="verified"
-                          className="text-sm flex items-center gap-2"
-                        >
-                          <Shield className="w-4 h-4 text-emerald-500" />
-                          Verified Only
-                        </label>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Checkbox
-                          id="available"
-                          checked={filters.availableToday}
-                          onCheckedChange={(checked) =>
-                            setFilters((prev) => ({
-                              ...prev,
-                              availableToday: !!checked,
-                            }))
-                          }
-                          className="rounded-md"
-                        />
-                        <label
-                          htmlFor="available"
-                          className="text-sm flex items-center gap-2"
-                        >
-                          <Clock className="w-4 h-4 text-blue-500" />
-                          Available Today
-                        </label>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Checkbox
-                          id="toprated"
-                          checked={filters.topRated}
-                          onCheckedChange={(checked) =>
-                            setFilters((prev) => ({
-                              ...prev,
-                              topRated: !!checked,
-                            }))
-                          }
-                          className="rounded-md"
-                        />
-                        <label
-                          htmlFor="toprated"
-                          className="text-sm flex items-center gap-2"
-                        >
-                          <Star className="w-4 h-4 text-amber-500" />
-                          Top Rated (4.5+)
-                        </label>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Checkbox
-                          id="aioptimized"
-                          checked={filters.aiOptimized}
-                          onCheckedChange={(checked) =>
-                            setFilters((prev) => ({
-                              ...prev,
-                              aiOptimized: !!checked,
-                            }))
-                          }
-                          className="rounded-md"
-                        />
-                        <label
-                          htmlFor="aioptimized"
-                          className="text-sm flex items-center gap-2"
-                        >
-                          <Brain className="w-4 h-4 text-purple-500" />
-                          AI Optimized
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-
-          {/* Results Section */}
-          <div className="flex-1">
-            {/* Results Header */}
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="text-2xl font-bold flex items-center gap-2">
-                  {searchQuery
-                    ? `Results for "${searchQuery}"`
-                    : "Browse Services"}
-                  {filters.sortBy === "aiMatch" && (
-                    <Badge className="bg-purple-100 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300">
-                      <Brain className="w-3 h-3 mr-1" />
-                      AI Matched
-                    </Badge>
-                  )}
-                </h2>
-                <p className="text-slate-600 dark:text-gray-400">
-                  {loading
-                    ? "Searching..."
-                    : `${filteredProviders.length} providers found`}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="lg:hidden rounded-2xl"
-                >
-                  <SlidersHorizontal className="w-4 h-4 mr-2" />
-                  Filters
-                  {activeFilterCount > 0 && (
-                    <Badge className="ml-2 bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300">
-                      {activeFilterCount}
-                    </Badge>
-                  )}
-                </Button>
-
-                <div className="flex rounded-2xl border border-slate-200 dark:border-white/20 overflow-hidden">
-                  <Button
-                    variant={viewMode === "grid" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("grid")}
-                    className="rounded-none"
-                  >
-                    <Grid className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant={viewMode === "list" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("list")}
-                    className="rounded-none"
-                  >
-                    <List className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
+      {/* Results Section */}
+      <section className="py-8">
+        <div className="container mx-auto px-4 sm:px-6">
+          {/* View Controls */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                {filteredProviders.length} Service Providers Found
+              </h2>
+              <Badge variant="secondary" className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                AI Matched
+              </Badge>
             </div>
 
-            {/* Loading State */}
-            {loading && (
-              <div
-                className={
-                  viewMode === "grid"
-                    ? "grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-                    : "space-y-4"
-                }
+            <div className="flex items-center gap-2">
+              <Button
+                variant={viewMode === "grid" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setViewMode("grid")}
               >
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <Card
-                    key={i}
-                    className="animate-pulse bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full" />
-                        <div className="flex-1">
-                          <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded mb-2" />
-                          <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded w-2/3" />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded" />
-                        <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded w-3/4" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            )}
+                <Grid className="w-4 h-4" />
+              </Button>
+              <Button
+                variant={viewMode === "list" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setViewMode("list")}
+              >
+                <List className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
 
-            {/* Results Grid/List */}
-            {!loading && filteredProviders.length > 0 && (
-              <div
-                className={
-                  viewMode === "grid"
-                    ? "grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-                    : "space-y-4"
-                }
+          {/* Providers Grid */}
+          <div className={`grid gap-6 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}>
+            {filteredProviders.map((provider) => (
+              <Card
+                key={provider.id}
+                className="group relative overflow-hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-white/20 dark:border-gray-700/50 hover:shadow-xl transition-all duration-500 hover:scale-[1.02]"
               >
-                {filteredProviders.map((provider) => (
-                  <Card
-                    key={provider.id}
-                    className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-500 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl cursor-pointer"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <CardContent
-                      className={`p-6 relative z-10 ${viewMode === "list" ? "flex items-center gap-6" : ""}`}
-                    >
-                      {/* Provider Avatar & Basic Info */}
-                      <div
-                        className={`flex items-start gap-4 ${viewMode === "list" ? "flex-shrink-0" : "mb-4"}`}
-                      >
-                        <div className="relative">
-                          <Avatar className="w-16 h-16 border-4 border-white dark:border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
-                            <AvatarImage
-                              src={provider.avatar}
-                              alt={provider.name}
-                            />
-                            <AvatarFallback className="bg-gradient-to-br from-blue-500 to-emerald-500 text-white font-bold text-lg">
-                              {provider.name.split(" ").map((n) => n[0]).join("")}
-                            </AvatarFallback>
-                          </Avatar>
-                          
-                          {/* Online Status */}
-                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-3 border-white dark:border-black flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full" />
-                          </div>
-                        </div>
-                        
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between mb-2">
-                            <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-violet-400 transition-colors duration-300">
-                              {provider.name}
-                            </h3>
-                            <div className="flex items-center gap-1">
-                              <Heart className="w-4 h-4 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" />
-                            </div>
-                          </div>
-                          
-                          <p className="text-blue-600 dark:text-violet-400 font-semibold mb-2">
-                            {provider.service}
-                          </p>
-                          
-                          <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                            <div className="flex items-center gap-1">
-                              <MapPin className="w-4 h-4" />
-                              <span>{provider.location}</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                              <span className="font-medium">{provider.rating}</span>
-                              <span>({provider.reviews})</span>
-                            </div>
-                          </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className={`p-6 relative z-10 ${viewMode === "list" ? "flex items-center gap-6" : ""}`}>
+                  {/* Provider Avatar & Basic Info */}
+                  <div className={`flex items-start gap-4 ${viewMode === "list" ? "flex-shrink-0" : "mb-4"}`}>
+                    <div className="relative">
+                      <Avatar className="w-16 h-16 border-4 border-white dark:border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                        <AvatarImage src={provider.avatar} alt={provider.name} />
+                        <AvatarFallback className="bg-gradient-to-br from-blue-500 to-emerald-500 text-white font-bold text-lg">
+                          {provider.name.split(" ").map((n) => n[0]).join("")}
+                        </AvatarFallback>
+                      </Avatar>
+                      
+                      {/* Online Status */}
+                      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-3 border-white dark:border-black flex items-center justify-center">
+                        <div className="w-2 h-2 bg-white rounded-full" />
+                      </div>
+                    </div>
+                    
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-violet-400 transition-colors duration-300">
+                          {provider.name}
+                        </h3>
+                        <div className="flex items-center gap-1">
+                          <Heart className="w-4 h-4 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" />
                         </div>
                       </div>
                       
-                      {/* Service Details */}
-                      <div className={`space-y-4 ${viewMode === "list" ? "flex-1" : ""}`}>
-                        <div className="flex flex-wrap gap-2">
-                          {provider.badges.map((badge) => (
-                            <Badge
-                              key={badge}
-                              variant="secondary"
-                              className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
-                            >
-                              {badge}
-                            </Badge>
-                          ))}
+                      <p className="text-blue-600 dark:text-violet-400 font-semibold mb-2">
+                        {provider.service}
+                      </p>
+                      
+                      <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <MapPin className="w-4 h-4" />
+                          <span>{provider.location}</span>
                         </div>
-                        
-                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                          {provider.description}
-                        </p>
-                        
-                        <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-                          <div className="flex flex-col">
-                            <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                              ${provider.price}
-                            </span>
-                            <span className="text-sm text-gray-500">per hour</span>
-                          </div>
-                          
-                          <div className="flex gap-2">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-violet-400 dark:text-violet-400 dark:hover:bg-violet-950/30"
-                            >
-                              <MessageCircle className="w-4 h-4 mr-2" />
-                              Message
-                            </Button>
-                            <Button 
-                              size="sm"
-                              className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white"
-                            >
-                              Book Now
-                            </Button>
-                          </div>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <span className="font-medium">{provider.rating}</span>
+                          <span>({provider.reviews})</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            )}
+                    </div>
+                  </div>
+                  
+                  {/* Service Details */}
+                  <div className={`space-y-4 ${viewMode === "list" ? "flex-1" : ""}`}>
+                    <div className="flex flex-wrap gap-2">
+                      {provider.badges.map((badge) => (
+                        <Badge
+                          key={badge}
+                          variant="secondary"
+                          className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                        >
+                          {badge}
+                        </Badge>
+                      ))}
+                    </div>
+                    
+                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                      {provider.description}
+                    </p>
+                    
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <div className="flex flex-col">
+                        <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                          {provider.price}
+                        </span>
+                        <span className="text-sm text-gray-500">per hour</span>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-violet-400 dark:text-violet-400 dark:hover:bg-violet-950/30"
+                        >
+                          <MessageCircle className="w-4 h-4 mr-2" />
+                          Message
+                        </Button>
+                        <Button 
+                          size="sm"
+                          className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white"
+                        >
+                          Book Now
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
-      </div>
+
+          {/* No Results */}
+          {filteredProviders.length === 0 && (
+            <div className="text-center py-12">
+              <div className="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                No providers found
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Try adjusting your search terms or filters
+              </p>
+              <Button onClick={() => setSearchQuery("")}>
+                Clear Search
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
-
-export default BrowsePage;
