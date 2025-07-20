@@ -240,7 +240,41 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: any) {
+      addUtilities({
+        '.theme-transition': {
+          'transition-property': 'background-color, border-color, color, fill, stroke, box-shadow',
+          'transition-timing-function': 'cubic-bezier(0.4, 0, 0.2, 1)',
+          'transition-duration': '300ms',
+        },
+        '.glass-bg': {
+          'background': 'var(--glass-bg)',
+          'backdrop-filter': 'var(--glass-blur)',
+          'border': '1px solid var(--glass-border)',
+        },
+        '.shadow-glow': {
+          'box-shadow': 'var(--shadow-glow)',
+        },
+        '.shadow-glow-strong': {
+          'box-shadow': 'var(--shadow-glow-strong)',
+        },
+        '.shadow-neural': {
+          'box-shadow': 'var(--shadow-neural)',
+        },
+        '.gradient-primary': {
+          'background': 'var(--gradient-primary)',
+        },
+        '.gradient-secondary': {
+          'background': 'var(--gradient-secondary)',
+        },
+        '.gradient-accent': {
+          'background': 'var(--gradient-accent)',
+        },
+      });
+    },
+  ],
 } satisfies Config;
 
 export default config;

@@ -1,592 +1,515 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SmartRecommendations from "@/components/ai/smart-recommendations";
-import PriceOptimizer from "@/components/ai/price-optimizer";
-import AIChat from "@/components/ai/AIChat";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
-  User,
-  Star,
   Calendar,
-  CreditCard,
+  DollarSign,
+  TrendingUp,
+  Users,
+  Bell,
+  Settings,
+  Star,
   MapPin,
   Clock,
   CheckCircle,
-  TrendingUp,
-  Bell,
-  MessageSquare,
-  Settings,
-  Brain,
-  Sparkles,
-  Zap,
-  Target,
-  Crown,
-  Gift,
-  Activity,
-  Award,
-  Heart,
-  DollarSign,
-  Users,
+  AlertCircle,
   Plus,
-  ArrowRight,
-  Shield,
-  Lightbulb,
-  Rocket,
-  PiggyBank,
   Search,
-  Eye,
-  Flame,
-  ThumbsUp,
-  TrendingDown,
-  ChevronRight,
+  Filter,
+  MoreHorizontal,
 } from "lucide-react";
-import { recentBookings, aiInsights as aiInsightsData, quickStats } from "@/lib/data/dashboard-data";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
-const iconMap = {
-  PiggyBank,
-  Brain,
-  Shield,
-  Calendar,
-  Sparkles,
-  Star,
-  Clock,
-};
+const stats = [
+  {
+    title: "Total Revenue",
+    value: "$12,426",
+    change: "+12.5%",
+    changeType: "positive" as const,
+    icon: DollarSign,
+    color: "text-green-600 dark:text-green-400"
+  },
+  {
+    title: "Active Bookings",
+    value: "23",
+    change: "+3",
+    changeType: "positive" as const,
+    icon: Calendar,
+    color: "text-blue-600 dark:text-blue-400"
+  },
+  {
+    title: "Customer Rating",
+    value: "4.8",
+    change: "+0.2",
+    changeType: "positive" as const,
+    icon: Star,
+    color: "text-yellow-600 dark:text-yellow-400"
+  },
+  {
+    title: "Response Time",
+    value: "2.3h",
+    change: "-0.5h",
+    changeType: "positive" as const,
+    icon: Clock,
+    color: "text-purple-600 dark:text-purple-400"
+  }
+];
 
-const aiInsights = aiInsightsData.map(insight => ({
-  ...insight,
-  icon: iconMap[insight.icon as keyof typeof iconMap]
-}));
+const recentBookings = [
+  {
+    id: 1,
+    customer: "Sarah Johnson",
+    service: "House Cleaning",
+    date: "Today, 2:00 PM",
+    status: "confirmed",
+    amount: "$85",
+    avatar: "/avatars/sarah.jpg"
+  },
+  {
+    id: 2,
+    customer: "Mike Chen",
+    service: "Handyman Work",
+    date: "Tomorrow, 10:00 AM",
+    status: "pending",
+    amount: "$120",
+    avatar: "/avatars/mike.jpg"
+  },
+  {
+    id: 3,
+    customer: "Emma Wilson",
+    service: "Pet Care",
+    date: "Dec 28, 3:00 PM",
+    status: "confirmed",
+    amount: "$45",
+    avatar: "/avatars/emma.jpg"
+  },
+  {
+    id: 4,
+    customer: "David Rodriguez",
+    service: "Tutoring",
+    date: "Dec 29, 7:00 PM",
+    status: "completed",
+    amount: "$60",
+    avatar: "/avatars/david.jpg"
+  }
+];
 
-export default function PremiumDashboardPage() {
-  const [currentTime, setCurrentTime] = useState("");
-  const [showPriceOptimizer, setShowPriceOptimizer] = useState(false);
+const notifications = [
+  {
+    id: 1,
+    type: "booking",
+    title: "New booking request",
+    description: "Sarah Johnson requested house cleaning service",
+    time: "5 minutes ago",
+    isRead: false
+  },
+  {
+    id: 2,
+    type: "payment",
+    title: "Payment received",
+    description: "$60 payment from David Rodriguez",
+    time: "1 hour ago",
+    isRead: false
+  },
+  {
+    id: 3,
+    type: "review",
+    title: "New 5-star review",
+    description: "Emma Wilson left a great review for your pet care service",
+    time: "3 hours ago",
+    isRead: true
+  }
+];
+
+export default function DashboardPage() {
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [selectedPeriod, setSelectedPeriod] = useState("7d");
 
   useEffect(() => {
     setMounted(true);
-    const updateTime = () => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      });
-      setCurrentTime(timeString);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
   }, []);
 
+  if (!mounted) {
+    return null;
+  }
+
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case "completed":
-        return "bg-emerald-100 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800";
-      case "confirmed":
-        return "bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800";
-      case "pending":
-        return "bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800";
-      default:
-        return "bg-slate-100 dark:bg-slate-950/30 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800";
-    }
+    const colors = {
+      confirmed: resolvedTheme === "dark" ? "bg-blue-900/30 text-blue-300 border-blue-700" : "bg-blue-100 text-blue-700 border-blue-200",
+      pending: resolvedTheme === "dark" ? "bg-yellow-900/30 text-yellow-300 border-yellow-700" : "bg-yellow-100 text-yellow-700 border-yellow-200",
+      completed: resolvedTheme === "dark" ? "bg-green-900/30 text-green-300 border-green-700" : "bg-green-100 text-green-700 border-green-200",
+      cancelled: resolvedTheme === "dark" ? "bg-red-900/30 text-red-300 border-red-700" : "bg-red-100 text-red-700 border-red-200"
+    };
+    return colors[status as keyof typeof colors] || colors.pending;
   };
 
-  const getUrgencyIcon = (urgency: string) => {
-    switch (urgency) {
-      case "high":
-        return <Flame className="w-3 h-3 text-red-500" />;
-      case "medium":
-        return <Zap className="w-3 h-3 text-amber-500" />;
-      case "low":
-        return <Clock className="w-3 h-3 text-green-500" />;
-      default:
-        return null;
+  const getNotificationIcon = (type: string) => {
+    switch (type) {
+      case "booking": return Calendar;
+      case "payment": return DollarSign;
+      case "review": return Star;
+      default: return Bell;
     }
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white overflow-hidden relative">
-      {/* Animated Background - Same as Homepage */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(139,92,246,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_40%_60%,rgba(16,185,129,0.08),transparent_50%)]" />
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 dark:bg-violet-400 rounded-full animate-pulse opacity-30 dark:opacity-40" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-emerald-400 dark:bg-blue-400 rounded-full animate-ping opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-purple-400 dark:bg-emerald-400 rounded-full animate-bounce opacity-15 dark:opacity-20" />
-        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-cyan-400 dark:bg-pink-400 rounded-full animate-pulse opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        {/* Enhanced Header with AI Welcome */}
-        <div className="mb-8 sm:mb-12">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 sm:mb-8">
-            <div className="flex items-center gap-4 sm:gap-6">
-              <div className="relative">
-                <Avatar className="w-16 sm:w-20 h-16 sm:h-20 border-4 border-white dark:border-white/20 shadow-xl">
-                  <AvatarImage src="/placeholder.svg?height=80&width=80" />
-                  <AvatarFallback className="bg-gradient-to-br from-blue-600 to-emerald-600 dark:from-violet-600 dark:to-purple-600 text-white font-bold text-2xl">
-                    JD
-                  </AvatarFallback>
-                </Avatar>
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-500 rounded-full border-4 border-white dark:border-gray-800 flex items-center justify-center">
-                  <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-2">
-                  <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-                    Good morning, John! ☀️
-                  </span>
-                </h1>
-                <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                  <Brain className="w-5 h-5 text-blue-500" />
-                  AI has found 3 new recommendations for you
-                  {mounted && currentTime ? (
-                    <>
-                      <span className="text-slate-400">•</span>
-                      <span className="font-medium">{currentTime}</span>
-                    </>
-                  ) : null}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="icon"
-                className="relative rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-              >
-                <Bell className="w-5 h-5" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
-              </Button>
-              <Button className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25">
-                <Crown className="w-4 h-4 mr-2" />
-                Upgrade Pro
-              </Button>
-            </div>
+    <div className={`min-h-screen transition-all duration-500 ${
+      resolvedTheme === "dark" 
+        ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" 
+        : "bg-gradient-to-br from-slate-50 via-white to-slate-50"
+    }`}>
+      <div className="container mx-auto px-4 py-8 space-y-8">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="space-y-1">
+            <h1 className={`text-3xl font-bold ${
+              resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+            }`}>
+              Dashboard
+            </h1>
+            <p className={`${
+              resolvedTheme === "dark" ? "text-slate-400" : "text-slate-600"
+            }`}>
+              Welcome back! Here's what's happening with your services.
+            </p>
           </div>
-
-          {/* AI Insights Bar */}
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30" />
-            <Card className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl border-blue-200/50 dark:border-white/20 shadow-xl rounded-3xl">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-violet-500 dark:to-purple-500 rounded-2xl flex items-center justify-center">
-                      <Sparkles className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-800 dark:text-white">
-                        AI Assistant Active
-                      </h3>
-                      <p className="text-slate-600 dark:text-gray-300">
-                        Monitoring prices and finding optimal booking times for
-                        your next service
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="animate-pulse w-3 h-3 bg-emerald-400 rounded-full"></div>
-                    <span className="text-slate-600 dark:text-gray-300 font-medium">
-                      Live Monitoring
-                    </span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <Bell className={`w-6 h-6 ${
+                resolvedTheme === "dark" ? "text-slate-400" : "text-slate-600"
+              }`} />
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+            </div>
+            <ThemeToggle size="sm" />
+            <Button variant="outline" size="sm">
+              <Settings className="w-4 h-4 mr-2" />
+              Settings
+            </Button>
           </div>
         </div>
 
-        {/* Enhanced AI Insights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {aiInsights.map((insight, index) => (
-            <Card
-              key={insight.title}
-              className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${insight.color} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-5 transition-opacity duration-700`}
-              />
-              <CardContent className="p-8 relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <p className="text-sm text-slate-600 dark:text-gray-400 mb-1">
-                      {insight.title}
-                    </p>
-                    <p className="text-3xl font-black bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                      {insight.value}
-                    </p>
-                    <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">
-                      {insight.description}
-                    </p>
-                  </div>
-                  <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${insight.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}
-                  >
-                    <insight.icon className="w-7 h-7 text-white" />
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-                  <TrendingUp className="w-4 h-4" />
-                  {insight.trend}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Enhanced Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {quickStats.map((stat, index) => (
-            <Card
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <motion.div
               key={stat.title}
-              className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-2xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-500 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`}
-              />
-              <CardContent className="p-6 relative z-10">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <p className="text-sm text-slate-600 dark:text-gray-400">
-                      {stat.title}
-                    </p>
-                    <p className="text-2xl font-bold text-slate-800 dark:text-white">
-                      {stat.value}
-                    </p>
+              <Card className={`theme-transition ${
+                resolvedTheme === "dark"
+                  ? "bg-slate-800/50 border-slate-700 hover:bg-slate-800"
+                  : "bg-white border-slate-200 hover:bg-slate-50"
+              } hover:shadow-lg transition-all duration-300`}>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-2">
+                      <p className={`text-sm font-medium ${
+                        resolvedTheme === "dark" ? "text-slate-400" : "text-slate-600"
+                      }`}>
+                        {stat.title}
+                      </p>
+                      <p className={`text-2xl font-bold ${
+                        resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                      }`}>
+                        {stat.value}
+                      </p>
+                      <div className="flex items-center gap-1">
+                        <TrendingUp className="w-4 h-4 text-green-500" />
+                        <span className="text-sm text-green-500 font-medium">
+                          {stat.change}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={`p-3 rounded-full ${
+                      resolvedTheme === "dark" ? "bg-slate-700" : "bg-slate-100"
+                    }`}>
+                      <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                    </div>
                   </div>
-                  <div
-                    className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-                  <TrendingUp className="w-3 h-3" />
-                  {stat.change}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {/* Enhanced Recent Bookings */}
-          <Card className="lg:col-span-2 bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 shadow-xl rounded-3xl">
-            <CardHeader className="pb-4">
-              <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center gap-3 text-xl font-bold text-slate-800 dark:text-white">
-                  <Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  Recent Bookings
-                </CardTitle>
-                <Badge className="bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800">
-                  <Brain className="w-3 h-3 mr-1" />
-                  AI Enhanced
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {recentBookings.map((booking) => (
-                  <div
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Recent Bookings */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="lg:col-span-2"
+          >
+            <Card className={`theme-transition ${
+              resolvedTheme === "dark"
+                ? "bg-slate-800/50 border-slate-700"
+                : "bg-white border-slate-200"
+            }`}>
+              <CardHeader className="pb-4">
+                <div className="flex items-center justify-between">
+                  <CardTitle className={`text-xl font-semibold ${
+                    resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                  }`}>
+                    Recent Bookings
+                  </CardTitle>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="sm">
+                      <Filter className="w-4 h-4 mr-2" />
+                      Filter
+                    </Button>
+                    <Button size="sm">
+                      <Plus className="w-4 h-4 mr-2" />
+                      New Booking
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mt-4">
+                  <div className="relative flex-1">
+                    <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
+                      resolvedTheme === "dark" ? "text-slate-400" : "text-slate-500"
+                    }`} />
+                    <Input 
+                      placeholder="Search bookings..." 
+                      className="pl-10"
+                    />
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {recentBookings.map((booking, index) => (
+                  <motion.div
                     key={booking.id}
-                    className="group flex items-center justify-between p-6 border border-slate-200 dark:border-white/10 rounded-2xl hover:border-blue-300 dark:hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-all duration-300"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className={`flex items-center justify-between p-4 rounded-lg border theme-transition ${
+                      resolvedTheme === "dark"
+                        ? "border-slate-700 hover:bg-slate-700/30"
+                        : "border-slate-200 hover:bg-slate-50"
+                    }`}
                   >
-                    <div className="flex items-center gap-5">
-                      <div className="relative">
-                        <Avatar className="w-14 h-14 border-3 border-white dark:border-white/20 shadow-lg">
-                          <AvatarImage src={booking.providerImage} />
-                          <AvatarFallback className="bg-gradient-to-br from-blue-600 to-emerald-600 dark:from-violet-600 dark:to-purple-600 text-white font-bold">
-                            {booking.provider
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
-                          </AvatarFallback>
-                        </Avatar>
-                        {booking.aiOptimized && (
-                          <div className="absolute -top-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
-                            <Sparkles className="w-3 h-3 text-white" />
-                          </div>
-                        )}
-                        <div className="absolute -bottom-1 -left-1">
-                          {getUrgencyIcon(booking.urgency)}
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-slate-800 dark:text-white">
-                          {booking.service}
-                        </h4>
-                        <p className="text-slate-600 dark:text-gray-300 flex items-center gap-2 mb-1">
-                          {booking.provider}
-                          <div className="flex items-center gap-1">
-                            <Star className="w-3 h-3 fill-emerald-400 text-emerald-400" />
-                            <span className="text-sm font-medium">
-                              {booking.rating}
-                            </span>
-                          </div>
+                    <div className="flex items-center gap-4">
+                      <Avatar className="w-10 h-10">
+                        <AvatarImage src={booking.avatar} alt={booking.customer} />
+                        <AvatarFallback>
+                          {booking.customer.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="space-y-1">
+                        <p className={`font-medium ${
+                          resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                        }`}>
+                          {booking.customer}
                         </p>
-                        <p className="text-sm text-slate-500 dark:text-gray-400">
+                        <p className={`text-sm ${
+                          resolvedTheme === "dark" ? "text-slate-400" : "text-slate-600"
+                        }`}>
+                          {booking.service}
+                        </p>
+                        <p className={`text-xs ${
+                          resolvedTheme === "dark" ? "text-slate-500" : "text-slate-500"
+                        }`}>
                           {booking.date}
                         </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-bold text-xl bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text text-transparent">
-                        {booking.price}
-                      </p>
-                      <Badge
-                        className={`${getStatusColor(booking.status)} text-xs mb-1`}
-                      >
+                    <div className="flex items-center gap-3">
+                      <Badge className={getStatusColor(booking.status)}>
                         {booking.status}
                       </Badge>
-                      {booking.aiOptimized && (
-                        <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-                          AI Optimized
-                        </p>
-                      )}
+                      <span className={`font-semibold ${
+                        resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                      }`}>
+                        {booking.amount}
+                      </span>
+                      <Button variant="ghost" size="sm">
+                        <MoreHorizontal className="w-4 h-4" />
+                      </Button>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-              <Button
-                variant="outline"
-                className="w-full mt-6 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                asChild
-              >
-                <Link href="/my-bookings">
-                  View All Bookings
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
 
-          {/* Enhanced Quick Actions */}
-          <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 shadow-xl rounded-3xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-xl font-bold text-slate-800 dark:text-white">
-                <Zap className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                Smart Actions
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <Button
-                className="w-full justify-start h-12 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25"
-                asChild
-              >
-                <Link href="/browse">
-                  <Search className="w-5 h-5 mr-3" />
-                  Find Services with AI
-                </Link>
-              </Button>
-
-              <Button
-                variant="outline"
-                className="w-full justify-start h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                onClick={() => setShowPriceOptimizer(!showPriceOptimizer)}
-              >
-                <Target className="w-5 h-5 mr-3" />
-                AI Price Optimizer
-              </Button>
-
-              <Button
-                variant="outline"
-                className="w-full justify-start h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                asChild
-              >
-                <Link href="/payments">
-                  <CreditCard className="w-5 h-5 mr-3" />
-                  Smart Payments
-                </Link>
-              </Button>
-
-              <Button
-                variant="outline"
-                className="w-full justify-start h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                asChild
-              >
-                <Link href="/profile">
-                  <User className="w-5 h-5 mr-3" />
-                  AI Preferences
-                </Link>
-              </Button>
-
-              <Button
-                variant="ghost"
-                className="w-full justify-start h-12 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
-                asChild
-              >
-                <Link href="/settings">
-                  <Settings className="w-5 h-5 mr-3" />
-                  Settings
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* AI Recommendations Section */}
-        <div className="mb-12">
-          <SmartRecommendations
-            userId="user123"
-            location="New York, NY"
-            context="dashboard"
-            maxRecommendations={6}
-            showAIInsights={true}
-          />
-        </div>
-
-        {/* Price Optimizer Modal */}
-        {showPriceOptimizer && (
-          <div className="mb-12">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30" />
-              <Card className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl border-blue-200/50 dark:border-white/20 shadow-2xl rounded-3xl">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-3 text-xl font-bold text-slate-800 dark:text-white">
-                      <Brain className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                      AI Price Optimizer
-                    </CardTitle>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="rounded-xl"
-                      onClick={() => setShowPriceOptimizer(false)}
+          {/* Notifications & Quick Actions */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="space-y-6"
+          >
+            {/* Notifications */}
+            <Card className={`theme-transition ${
+              resolvedTheme === "dark"
+                ? "bg-slate-800/50 border-slate-700"
+                : "bg-white border-slate-200"
+            }`}>
+              <CardHeader className="pb-4">
+                <CardTitle className={`text-lg font-semibold ${
+                  resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                }`}>
+                  Notifications
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {notifications.map((notification, index) => {
+                  const IconComponent = getNotificationIcon(notification.type);
+                  return (
+                    <motion.div
+                      key={notification.id}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className={`flex items-start gap-3 p-3 rounded-lg theme-transition ${
+                        notification.isRead
+                          ? resolvedTheme === "dark" ? "bg-slate-700/30" : "bg-slate-50"
+                          : resolvedTheme === "dark" ? "bg-blue-900/20 border border-blue-800" : "bg-blue-50 border border-blue-200"
+                      }`}
                     >
-                      ✕
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <PriceOptimizer
-                    serviceType="House Cleaning"
-                    location="New York, NY"
-                    flexibility="medium"
-                  />
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        )}
+                      <div className={`p-2 rounded-full ${
+                        resolvedTheme === "dark" ? "bg-slate-700" : "bg-white"
+                      }`}>
+                        <IconComponent className="w-4 h-4 text-blue-600" />
+                      </div>
+                      <div className="flex-1 space-y-1">
+                        <p className={`text-sm font-medium ${
+                          resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                        }`}>
+                          {notification.title}
+                        </p>
+                        <p className={`text-xs ${
+                          resolvedTheme === "dark" ? "text-slate-400" : "text-slate-600"
+                        }`}>
+                          {notification.description}
+                        </p>
+                        <p className={`text-xs ${
+                          resolvedTheme === "dark" ? "text-slate-500" : "text-slate-500"
+                        }`}>
+                          {notification.time}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </CardContent>
+            </Card>
 
-        {/* Enhanced Recent Activity with AI Insights */}
-        <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 shadow-xl rounded-3xl">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-xl font-bold text-slate-800 dark:text-white">
-              <Activity className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-              AI Activity Feed
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 rounded-2xl border border-emerald-200 dark:border-emerald-800">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-lg text-slate-800 dark:text-white">
-                    Service Completed & AI Analyzed
-                  </p>
-                  <p className="text-slate-600 dark:text-gray-300">
-                    Pet grooming with Emma Thompson • Quality score: 98% •
-                    Perfect match!
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-sm text-slate-500 dark:text-gray-400">
-                    2 hours ago
-                  </span>
-                  <div className="flex items-center gap-1 mt-1">
-                    <ThumbsUp className="w-3 h-3 text-emerald-500" />
-                    <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-                      Excellent
-                    </span>
-                  </div>
+            {/* Quick Actions */}
+            <Card className={`theme-transition ${
+              resolvedTheme === "dark"
+                ? "bg-slate-800/50 border-slate-700"
+                : "bg-white border-slate-200"
+            }`}>
+              <CardHeader className="pb-4">
+                <CardTitle className={`text-lg font-semibold ${
+                  resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                }`}>
+                  Quick Actions
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Button className="w-full justify-start" variant="outline">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Create New Service
+                </Button>
+                <Button className="w-full justify-start" variant="outline">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Schedule Availability
+                </Button>
+                <Button className="w-full justify-start" variant="outline">
+                  <Users className="w-4 h-4 mr-2" />
+                  View Customer Reviews
+                </Button>
+                <Button className="w-full justify-start" variant="outline">
+                  <TrendingUp className="w-4 h-4 mr-2" />
+                  Analytics Report
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+
+        {/* Performance Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <Card className={`theme-transition ${
+            resolvedTheme === "dark"
+              ? "bg-slate-800/50 border-slate-700"
+              : "bg-white border-slate-200"
+          }`}>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className={`text-xl font-semibold ${
+                  resolvedTheme === "dark" ? "text-white" : "text-slate-900"
+                }`}>
+                  Performance Overview
+                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <Button 
+                    variant={selectedPeriod === "7d" ? "default" : "outline"} 
+                    size="sm"
+                    onClick={() => setSelectedPeriod("7d")}
+                  >
+                    7 Days
+                  </Button>
+                  <Button 
+                    variant={selectedPeriod === "30d" ? "default" : "outline"} 
+                    size="sm"
+                    onClick={() => setSelectedPeriod("30d")}
+                  >
+                    30 Days
+                  </Button>
+                  <Button 
+                    variant={selectedPeriod === "90d" ? "default" : "outline"} 
+                    size="sm"
+                    onClick={() => setSelectedPeriod("90d")}
+                  >
+                    90 Days
+                  </Button>
                 </div>
               </div>
-
-              <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-2xl border border-blue-200 dark:border-blue-800">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
-                  <Brain className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-lg text-slate-800 dark:text-white">
-                    AI Found Better Price
+            </CardHeader>
+            <CardContent>
+              <div className={`h-64 rounded-lg flex items-center justify-center border-2 border-dashed ${
+                resolvedTheme === "dark" 
+                  ? "border-slate-600 bg-slate-700/30" 
+                  : "border-slate-300 bg-slate-50"
+              }`}>
+                <div className="text-center space-y-2">
+                  <TrendingUp className={`w-12 h-12 mx-auto ${
+                    resolvedTheme === "dark" ? "text-slate-400" : "text-slate-500"
+                  }`} />
+                  <p className={`text-lg font-medium ${
+                    resolvedTheme === "dark" ? "text-slate-300" : "text-slate-700"
+                  }`}>
+                    Performance Chart
                   </p>
-                  <p className="text-slate-600 dark:text-gray-300">
-                    $25 savings available for your next cleaning service • Book
-                    within 48hrs
+                  <p className={`text-sm ${
+                    resolvedTheme === "dark" ? "text-slate-500" : "text-slate-500"
+                  }`}>
+                    Analytics visualization would appear here
                   </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-sm text-slate-500 dark:text-gray-400">
-                    4 hours ago
-                  </span>
-                  <div className="flex items-center gap-1 mt-1">
-                    <DollarSign className="w-3 h-3 text-blue-500" />
-                    <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
-                      Save $25
-                    </span>
-                  </div>
                 </div>
               </div>
-
-              <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-2xl border border-purple-200 dark:border-purple-800">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
-                  <Lightbulb className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-lg text-slate-800 dark:text-white">
-                    Smart Recommendation
-                  </p>
-                  <p className="text-slate-600 dark:text-gray-300">
-                    AI suggests booking Tuesday morning for best rates and
-                    provider availability
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-sm text-slate-500 dark:text-gray-400">
-                    1 day ago
-                  </span>
-                  <div className="flex items-center gap-1 mt-1">
-                    <Target className="w-3 h-3 text-purple-500" />
-                    <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">
-                      Optimal
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
-
-      {/* AI Chat Assistant */}
-      <AIChat
-        agentId="maya"
-        context={{ currentPage: "dashboard", userId: "user123" }}
-        position="floating"
-        theme="brand"
-        autoOpen={false}
-        proactiveMessage={true}
-      />
     </div>
   );
 }
