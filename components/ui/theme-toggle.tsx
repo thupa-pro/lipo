@@ -1,6 +1,8 @@
 "use client";
 
-import { Monitor, Moon, Sun } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Moon, Sun, Monitor, Palette, Zap } from "lucide-react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,164 +10,211 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
 
-interface ThemeToggleProps {
-  variant?: "button" | "dropdown";
-  size?: "sm" | "md" | "lg";
-  showLabel?: boolean;
-  className?: string;
-}
-
-export function ThemeToggle({ 
-  variant = "dropdown", 
-  size = "md", 
-  showLabel = false,
-  className 
-}: ThemeToggleProps) {
+export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const iconSize = {
-    sm: "h-4 w-4",
-    md: "h-5 w-5", 
-    lg: "h-6 w-6"
-  }[size];
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const buttonSize = {
-    sm: "sm",
-    md: "default",
-    lg: "lg"
-  }[size] as "sm" | "default" | "lg";
-
-  if (variant === "button") {
+  if (!mounted) {
     return (
-      <Button
-        variant="ghost"
-        size={buttonSize}
-        onClick={toggleTheme}
-        className={cn("relative overflow-hidden", className)}
-        aria-label={`Switch to ${resolvedTheme === "light" ? "dark" : "light"} mode`}
-      >
-        <Sun className={cn(
-          iconSize,
-          "absolute transition-all duration-300 ease-in-out",
-          resolvedTheme === "dark" 
-            ? "rotate-90 scale-0 opacity-0" 
-            : "rotate-0 scale-100 opacity-100"
-        )} />
-        <Moon className={cn(
-          iconSize,
-          "absolute transition-all duration-300 ease-in-out",
-          resolvedTheme === "dark" 
-            ? "rotate-0 scale-100 opacity-100" 
-            : "-rotate-90 scale-0 opacity-0"
-        )} />
-        {showLabel && (
-          <span className="ml-2 hidden sm:inline-block">
-            {resolvedTheme === "light" ? "Dark" : "Light"} Mode
-          </span>
-        )}
+      <Button variant="ghost" size="sm" className="w-9 h-9">
+        <Sun className="h-4 w-4" />
       </Button>
     );
   }
+
+  const themes = [
+    {
+      key: "light",
+      label: "Light",
+      icon: Sun,
+      description: "Clean and bright interface",
+      gradient: "from-yellow-400 to-orange-500",
+    },
+    {
+      key: "dark",
+      label: "Dark",
+      icon: Moon,
+      description: "Easy on the eyes",
+      gradient: "from-blue-600 to-purple-600",
+    },
+    {
+      key: "system",
+      label: "System",
+      icon: Monitor,
+      description: "Follows your device setting",
+      gradient: "from-slate-500 to-slate-700",
+    },
+  ];
+
+  const currentTheme = themes.find(t => t.key === theme) || themes[0];
+  const CurrentIcon = currentTheme.icon;
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button 
           variant="ghost" 
-          size={buttonSize}
-          className={cn("relative overflow-hidden", className)}
-          aria-label="Toggle theme"
+          size="sm" 
+          className="relative w-9 h-9 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 group"
         >
-          <Sun className={cn(
-            iconSize,
-            "transition-all duration-300 ease-in-out",
-            resolvedTheme === "dark" 
-              ? "rotate-90 scale-0 opacity-0" 
-              : "rotate-0 scale-100 opacity-100"
-          )} />
-          <Moon className={cn(
-            iconSize,
-            "absolute transition-all duration-300 ease-in-out",
-            resolvedTheme === "dark" 
-              ? "rotate-0 scale-100 opacity-100" 
-              : "-rotate-90 scale-0 opacity-0"
-          )} />
-          {showLabel && (
-            <span className="ml-2 hidden sm:inline-block">
-              Theme
-            </span>
-          )}
+          <motion.div
+            key={theme}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="relative"
+          >
+            <CurrentIcon className="h-4 w-4 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
+            
+            {/* Subtle glow effect */}
+            <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${currentTheme.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm`} />
+          </motion.div>
+          
+          {/* Active theme indicator */}
+          <motion.div
+            className="absolute -bottom-0.5 left-1/2 w-1 h-1 bg-blue-500 rounded-full"
+            initial={{ scale: 0, x: "-50%" }}
+            animate={{ scale: 1, x: "-50%" }}
+            transition={{ delay: 0.1 }}
+          />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[140px]">
-        <DropdownMenuItem 
-          onClick={() => setTheme("light")}
-          className="flex items-center gap-2 cursor-pointer"
+
+      <DropdownMenuContent 
+        align="end" 
+        className="w-56 p-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl rounded-2xl"
+      >
+        <div className="px-2 py-2 mb-2">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+              <Palette className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                Theme
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Choose your interface style
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <DropdownMenuSeparator className="my-2 bg-slate-200/50 dark:bg-slate-700/50" />
+
+        {themes.map((themeOption) => {
+          const IconComponent = themeOption.icon;
+          const isActive = theme === themeOption.key;
+          
+          return (
+            <DropdownMenuItem
+              key={themeOption.key}
+              onClick={() => setTheme(themeOption.key as any)}
+              className={`
+                relative p-3 rounded-xl cursor-pointer transition-all duration-200 mb-1
+                ${isActive 
+                  ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300' 
+                  : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                }
+              `}
+            >
+              <div className="flex items-center gap-3 w-full">
+                <div className={`
+                  w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200
+                  ${isActive 
+                    ? `bg-gradient-to-r ${themeOption.gradient} shadow-lg` 
+                    : 'bg-slate-100 dark:bg-slate-800'
+                  }
+                `}>
+                  <IconComponent className={`
+                    w-5 h-5 transition-colors duration-200
+                    ${isActive 
+                      ? 'text-white' 
+                      : 'text-slate-600 dark:text-slate-400'
+                    }
+                  `} />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className={`
+                      text-sm font-medium transition-colors duration-200
+                      ${isActive 
+                        ? 'text-blue-700 dark:text-blue-300' 
+                        : 'text-slate-700 dark:text-slate-300'
+                      }
+                    `}>
+                      {themeOption.label}
+                    </p>
+                    
+                    {isActive && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="w-2 h-2 bg-blue-500 rounded-full"
+                      />
+                    )}
+                  </div>
+                  
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    {themeOption.description}
+                  </p>
+                </div>
+
+                {/* Active theme indicator */}
+                {isActive && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"
+                  />
+                )}
+              </div>
+            </DropdownMenuItem>
+          );
+        })}
+
+        <DropdownMenuSeparator className="my-2 bg-slate-200/50 dark:bg-slate-700/50" />
+
+        {/* Quick toggle button */}
+        <DropdownMenuItem
+          onClick={toggleTheme}
+          className="p-3 rounded-xl cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200"
         >
-          <Sun className="h-4 w-4" />
-          <span>Light</span>
-          {theme === "light" && (
-            <div className="ml-auto h-2 w-2 rounded-full bg-primary" />
-          )}
+          <div className="flex items-center gap-3 w-full">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg">
+              <Zap className="w-5 h-5 text-white" />
+            </div>
+            
+            <div className="flex-1">
+              <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                Quick Toggle
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Switch between light and dark
+              </p>
+            </div>
+          </div>
         </DropdownMenuItem>
-        <DropdownMenuItem 
-          onClick={() => setTheme("dark")}
-          className="flex items-center gap-2 cursor-pointer"
-        >
-          <Moon className="h-4 w-4" />
-          <span>Dark</span>
-          {theme === "dark" && (
-            <div className="ml-auto h-2 w-2 rounded-full bg-primary" />
-          )}
-        </DropdownMenuItem>
-        <DropdownMenuItem 
-          onClick={() => setTheme("system")}
-          className="flex items-center gap-2 cursor-pointer"
-        >
-          <Monitor className="h-4 w-4" />
-          <span>System</span>
-          {theme === "system" && (
-            <div className="ml-auto h-2 w-2 rounded-full bg-primary" />
-          )}
-        </DropdownMenuItem>
+
+        {/* Current resolved theme info */}
+        <div className="px-3 py-2 mt-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              Currently using <span className="font-medium text-slate-700 dark:text-slate-300">{resolvedTheme}</span> theme
+            </p>
+          </div>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-}
-
-// Simple toggle button component for quick switching
-export function ThemeToggleButton({ className }: { className?: string }) {
-  return (
-    <ThemeToggle 
-      variant="button" 
-      size="md" 
-      className={className}
-    />
-  );
-}
-
-// Compact dropdown for navigation bars
-export function ThemeToggleCompact({ className }: { className?: string }) {
-  return (
-    <ThemeToggle 
-      variant="dropdown" 
-      size="sm" 
-      className={className}
-    />
-  );
-}
-
-// Extended toggle with label for settings pages
-export function ThemeToggleExtended({ className }: { className?: string }) {
-  return (
-    <ThemeToggle 
-      variant="dropdown" 
-      size="md" 
-      showLabel 
-      className={className}
-    />
   );
 }
