@@ -255,13 +255,13 @@ export default function Navigation() {
                   variant="ghost"
                   className="relative h-10 w-10 rounded-2xl p-0 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
                 >
-                  <Avatar className="h-8 w-8 border-2 border-violet-500/50 shadow-lg">
+                                    <Avatar className="h-8 w-8 border-2 border-violet-500/50 shadow-lg">
                     <AvatarImage
-                      src={user.avatar || "/placeholder.svg"}
-                      alt={user.name}
+                      src={mockUser.avatar || "/placeholder.svg"}
+                      alt={mockUser.name}
                     />
                     <AvatarFallback className="bg-gradient-to-br from-violet-600 to-purple-600 text-white text-sm font-bold">
-                      {user.name.charAt(0)}
+                      {mockUser.name.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
                   <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-black animate-pulse" />
