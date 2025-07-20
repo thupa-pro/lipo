@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -28,6 +27,12 @@ export function ThemeToggle() {
       </Button>
     );
   }
+
+  return <ThemeToggleContent />;
+}
+
+function ThemeToggleContent() {
+  const { theme, setTheme, resolvedTheme, toggleTheme } = useTheme();
 
   const themes = [
     {
