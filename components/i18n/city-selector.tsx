@@ -1,382 +1,431 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  MapPin,
-  Globe,
-  Clock,
-  DollarSign,
-  Search,
-  Star,
-  Users,
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Search, MapPin, Globe, TrendingUp, Zap, DollarSign, Users, Star } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   metropolitanCities,
-  localeNames,
+  cityTiers,
+  economyTypes,
   localeFlags,
   type Locale,
 } from "@/lib/i18n/config";
 import {
-  getCityConfiguration,
-  formatCurrency,
-  formatTime,
-  detectCityFromLocation,
+  cityConfigurations,
+  citiesByMarketPotential,
+  citiesByDigitalAdoption,
+  type CityLocalizationData,
 } from "@/lib/i18n/city-localization";
-import { useToast } from "@/components/ui/use-toast";
 
 interface CitySelectorProps {
   selectedCity?: string;
-  onCityChange?: (cityKey: string) => void;
-  showDetection?: boolean;
+  onCitySelect: (cityKey: string, cityData: CityLocalizationData) => void;
+  className?: string;
 }
 
-export function CitySelector({
-  selectedCity,
-  onCityChange,
-  showDetection = true,
-}: CitySelectorProps) {
-  const [open, setOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isDetecting, setIsDetecting] = useState(false);
-  const { toast } = useToast();
+interface CityInfo {
+  key: string;
+  data: typeof metropolitanCities[keyof typeof metropolitanCities];
+  localization: CityLocalizationData;
+}
 
-  const cities = Object.entries(metropolitanCities).map(([key, data]) => ({
-    key,
-    ...data,
-    config: getCityConfiguration(key),
-  }));
+// Region groupings for 100+ cities
+const regionGroups = {
+  "Asia-Pacific": {
+    icon: "🌏",
+    description: "High-growth markets with massive urbanization",
+    countries: ["Japan", "China", "South Korea", "Taiwan", "Hong Kong", "India", "Bangladesh", "Pakistan", "Sri Lanka", "Nepal", "Indonesia", "Philippines", "Thailand", "Vietnam", "Malaysia", "Singapore", "Cambodia", "Myanmar"],
+  },
+  "Americas": {
+    icon: "🌎",
+    description: "Mature and emerging markets with strong service economies",
+    countries: ["USA", "Canada", "Mexico", "Brazil", "Argentina", "Peru", "Colombia", "Chile", "Venezuela", "Uruguay"],
+  },
+  "Europe": {
+    icon: "🌍",
+    description: "Developed markets with high digital adoption",
+    countries: ["UK", "France", "Germany", "Spain", "Italy", "Netherlands", "Belgium", "Switzerland", "Austria", "Portugal", "Ireland", "Russia", "Poland", "Czech Republic", "Hungary", "Romania", "Bulgaria", "Greece", "Croatia"],
+  },
+  "Middle East & Africa": {
+    icon: "🌍",
+    description: "Emerging markets with growing middle class",
+    countries: ["Turkey", "UAE", "Saudi Arabia", "Israel", "Iran", "Iraq", "Jordan", "Lebanon", "Egypt", "Nigeria", "South Africa", "Kenya", "Ethiopia", "Morocco"],
+  },
+  "Oceania": {
+    icon: "🏝️",
+    description: "Developed markets with high living standards",
+    countries: ["Australia", "New Zealand"],
+  },
+} as const;
 
-  const filteredCities = cities.filter(
-    (city) =>
-      city.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      key.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      localeNames[city.locale]
-        ?.toLowerCase()
-        .includes(searchTerm.toLowerCase()),
-  );
+const getTierIcon = (tier: string) => {
+  switch (tier) {
+    case "mega": return "🏙️";
+    case "large": return "🌆";
+    case "medium": return "🏘️";
+    case "small": return "🏠";
+    default: return "📍";
+  }
+};
 
-  const selectedCityData = selectedCity
-    ? cities.find((c) => c.key === selectedCity)
-    : null;
+const getEconomyColor = (economy: string) => {
+  switch (economy) {
+    case "developed": return "bg-green-100 text-green-800 border-green-200";
+    case "emerging": return "bg-yellow-100 text-yellow-800 border-yellow-200";
+    case "developing": return "bg-blue-100 text-blue-800 border-blue-200";
+    default: return "bg-gray-100 text-gray-800 border-gray-200";
+  }
+};
 
-  const detectLocation = async () => {
-    if (!navigator.geolocation) {
-      toast({
-        title: "Location not supported",
-        description: "Your browser doesn't support location detection.",
-        variant: "destructive",
-      });
-      return;
-    }
+const getMarketPotentialColor = (potential: string) => {
+  switch (potential) {
+    case "high": return "text-green-600";
+    case "medium": return "text-yellow-600";
+    case "low": return "text-red-600";
+    default: return "text-gray-600";
+  }
+};
 
-    setIsDetecting(true);
+export default function CitySelector({ selectedCity, onCitySelect, className }: CitySelectorProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState<string>("all");
+  const [selectedTier, setSelectedTier] = useState<string>("all");
+  const [selectedEconomy, setSelectedEconomy] = useState<string>("all");
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        const detectedCity = detectCityFromLocation({
-          lat: latitude,
-          lng: longitude,
-        });
-
-        if (detectedCity && onCityChange) {
-          onCityChange(detectedCity);
-          toast({
-            title: "Location detected",
-            description: `Set to ${cities.find((c) => c.key === detectedCity)?.country}`,
-          });
-        } else {
-          toast({
-            title: "City not found",
-            description:
-              "We couldn't find a supported city near your location.",
-            variant: "destructive",
-          });
-        }
-        setIsDetecting(false);
+  // Combine city data with localization info
+  const allCities: CityInfo[] = useMemo(() => {
+    return Object.entries(metropolitanCities).map(([key, data]) => ({
+      key,
+      data,
+      localization: cityConfigurations[key] || {
+        locale: data.locale,
+        timezone: data.region,
+        currency: "USD",
+        currencySymbol: "$",
+        numberFormat: "en-US",
+        dateFormat: "MM/DD/YYYY",
+        timeFormat: "12h" as const,
+        firstDayOfWeek: 0,
+        rtl: false,
+        localHolidays: [],
+        businessHours: { start: "09:00", end: "17:00", days: [1, 2, 3, 4, 5] },
+        emergencyNumber: "911",
+        addressFormat: "us" as const,
+        phoneFormat: "+1-XXX-XXX-XXXX",
+        taxIncluded: false,
+        tippingCulture: "expected" as const,
+        serviceTypes: ["General Services"],
+        marketPotential: "medium" as const,
+        digitalAdoption: "medium" as const,
+        economicIndicators: { gdpPerCapita: 20000, averageIncome: 15000, serviceEconomyShare: 50 },
       },
-      (error) => {
-        toast({
-          title: "Location error",
-          description:
-            "Could not access your location. Please select manually.",
-          variant: "destructive",
-        });
-        setIsDetecting(false);
-      },
-    );
-  };
+    }));
+  }, []);
 
-  const handleCitySelect = (cityKey: string) => {
-    if (onCityChange) {
-      onCityChange(cityKey);
-    }
-    setOpen(false);
-  };
+  // Filter cities based on search and filters
+  const filteredCities = useMemo(() => {
+    return allCities.filter((city) => {
+      const matchesSearch = 
+        city.key.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        city.data.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        city.localization.serviceTypes.some(service => 
+          service.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
-  const getCityDisplayName = (city: any) => {
-    const cityNames: Record<string, string> = {
-      new_york: "New York",
-      mexico_city: "Mexico City",
-      sao_paulo: "São Paulo",
-      rio_de_janeiro: "Rio de Janeiro",
-      buenos_aires: "Buenos Aires",
-      los_angeles: "Los Angeles",
-      saint_petersburg: "Saint Petersburg",
-      ho_chi_minh_city: "Ho Chi Minh City",
-      kuala_lumpur: "Kuala Lumpur",
-      tel_aviv: "Tel Aviv",
+      const matchesRegion = selectedRegion === "all" || 
+        Object.entries(regionGroups).some(([region, info]) => 
+          region === selectedRegion && info.countries.includes(city.data.country)
+        );
+
+      const matchesTier = selectedTier === "all" || city.data.tier === selectedTier;
+      const matchesEconomy = selectedEconomy === "all" || city.data.economy === selectedEconomy;
+
+      return matchesSearch && matchesRegion && matchesTier && matchesEconomy;
+    });
+  }, [allCities, searchQuery, selectedRegion, selectedTier, selectedEconomy]);
+
+  // Group cities by region
+  const citiesByRegion = useMemo(() => {
+    const grouped: Record<string, CityInfo[]> = {};
+    
+    Object.entries(regionGroups).forEach(([region, info]) => {
+      grouped[region] = filteredCities.filter(city => 
+        info.countries.includes(city.data.country)
+      );
+    });
+
+    return grouped;
+  }, [filteredCities]);
+
+  // Statistics
+  const stats = useMemo(() => {
+    const totalPopulation = filteredCities.reduce((sum, city) => sum + city.data.population, 0);
+    const avgGDP = filteredCities.reduce((sum, city) => sum + city.localization.economicIndicators.gdpPerCapita, 0) / filteredCities.length;
+    const highPotentialCities = filteredCities.filter(city => city.localization.marketPotential === "high").length;
+    const highDigitalCities = filteredCities.filter(city => city.localization.digitalAdoption === "high").length;
+
+    return {
+      totalCities: filteredCities.length,
+      totalPopulation: Math.round(totalPopulation / 1000000),
+      avgGDP: Math.round(avgGDP),
+      highPotentialCities,
+      highDigitalCities,
     };
+  }, [filteredCities]);
 
-    return (
-      cityNames[city.key] ||
-      city.key.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
-    );
+  const handleCitySelect = (city: CityInfo) => {
+    onCitySelect(city.key, city.localization);
   };
-
-  const groupedCities = filteredCities.reduce(
-    (groups, city) => {
-      const continent = getContinentFromCity(city.key);
-      if (!groups[continent]) groups[continent] = [];
-      groups[continent].push(city);
-      return groups;
-    },
-    {} as Record<string, typeof filteredCities>,
-  );
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
-          <MapPin className="w-4 h-4" />
-          {selectedCityData ? (
-            <>
-              <span className="font-medium">
-                {getCityDisplayName(selectedCityData)}
-              </span>
-              <Badge variant="secondary" className="text-xs">
-                {localeFlags[selectedCityData.locale]}{" "}
-                {localeNames[selectedCityData.locale]}
-              </Badge>
-            </>
-          ) : (
-            <span>Select City</span>
-          )}
-        </Button>
-      </DialogTrigger>
+    <div className={cn("w-full space-y-6", className)}>
+      {/* Header & Stats */}
+      <div className="space-y-4">
+        <div className="text-center space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Global Market Presence
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Loconomy serves 100+ metropolitan cities worldwide, connecting hyperlocal services across continents
+          </p>
+        </div>
 
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Globe className="w-5 h-5" />
-            Choose Your City
-          </DialogTitle>
-        </DialogHeader>
+        {/* Statistics Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-blue-600">{stats.totalCities}</div>
+              <div className="text-sm text-muted-foreground">Cities</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-green-600">{stats.totalPopulation}M</div>
+              <div className="text-sm text-muted-foreground">Total Population</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-purple-600">${stats.avgGDP.toLocaleString()}</div>
+              <div className="text-sm text-muted-foreground">Avg GDP/Capita</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-orange-600">{stats.highPotentialCities}</div>
+              <div className="text-sm text-muted-foreground">High Potential</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-cyan-600">{stats.highDigitalCities}</div>
+              <div className="text-sm text-muted-foreground">High Digital</div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
 
-        <div className="space-y-4">
-          {/* Search and Auto-detect */}
-          <div className="flex gap-2">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <Input
-                placeholder="Search cities or countries..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            {showDetection && (
-              <Button
-                variant="outline"
-                onClick={detectLocation}
-                disabled={isDetecting}
-                className="flex-shrink-0"
-              >
-                <MapPin className="w-4 h-4 mr-2" />
-                {isDetecting ? "Detecting..." : "Auto-detect"}
-              </Button>
-            )}
-          </div>
+      {/* Search and Filters */}
+      <div className="space-y-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+          <Input
+            placeholder="Search cities, countries, or service types..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
 
-          {/* Selected City Info */}
-          {selectedCityData && (
-            <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-semibold text-lg flex items-center gap-2">
-                  {localeFlags[selectedCityData.locale]}{" "}
-                  {getCityDisplayName(selectedCityData)}
-                </h3>
-                <Badge variant="outline">
-                  <Users className="w-3 h-3 mr-1" />
-                  {(selectedCityData.population / 1000000).toFixed(1)}M
-                </Badge>
-              </div>
+        <div className="flex flex-wrap gap-2">
+          <select
+            value={selectedRegion}
+            onChange={(e) => setSelectedRegion(e.target.value)}
+            className="px-3 py-1 border rounded-md text-sm"
+          >
+            <option value="all">All Regions</option>
+            {Object.keys(regionGroups).map(region => (
+              <option key={region} value={region}>{region}</option>
+            ))}
+          </select>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-blue-500" />
-                  <span>{localeNames[selectedCityData.locale]}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-green-500" />
-                  <span>{formatTime(new Date(), selectedCityData.key)}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <DollarSign className="w-4 h-4 text-yellow-500" />
-                  <span>{selectedCityData.config?.currency}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-red-500" />
-                  <span>{selectedCityData.country}</span>
-                </div>
-              </div>
-            </div>
-          )}
+          <select
+            value={selectedTier}
+            onChange={(e) => setSelectedTier(e.target.value)}
+            className="px-3 py-1 border rounded-md text-sm"
+          >
+            <option value="all">All Sizes</option>
+            <option value="mega">Mega Cities (10M+)</option>
+            <option value="large">Large Cities (5-10M)</option>
+            <option value="medium">Medium Cities (1-5M)</option>
+            <option value="small">Small Cities (1M-)</option>
+          </select>
 
-          {/* Cities List */}
-          <div className="border rounded-lg max-h-96 overflow-auto">
-            <Command>
-              <CommandList>
-                <CommandEmpty>No cities found.</CommandEmpty>
-                {Object.entries(groupedCities).map(
-                  ([continent, continentCities]) => (
-                    <CommandGroup key={continent} heading={continent}>
-                      {continentCities.map((city) => (
-                        <CommandItem
-                          key={city.key}
-                          value={city.key}
-                          onSelect={() => handleCitySelect(city.key)}
-                          className="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="text-lg">
-                              {localeFlags[city.locale]}
-                            </span>
-                            <div>
-                              <div className="font-medium">
-                                {getCityDisplayName(city)}
-                              </div>
-                              <div className="text-sm text-gray-500">
-                                {city.country} • {localeNames[city.locale]}
+          <select
+            value={selectedEconomy}
+            onChange={(e) => setSelectedEconomy(e.target.value)}
+            className="px-3 py-1 border rounded-md text-sm"
+          >
+            <option value="all">All Economies</option>
+            <option value="developed">Developed</option>
+            <option value="emerging">Emerging</option>
+            <option value="developing">Developing</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Cities Grid by Region */}
+      <Tabs value={selectedRegion === "all" ? "regions" : "list"} className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="regions">By Region</TabsTrigger>
+          <TabsTrigger value="list">City List</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="regions" className="space-y-6">
+          {Object.entries(regionGroups).map(([region, info]) => {
+            const cities = citiesByRegion[region] || [];
+            if (cities.length === 0) return null;
+
+            return (
+              <Card key={region}>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <span className="text-2xl">{info.icon}</span>
+                    {region}
+                    <Badge variant="secondary">{cities.length} cities</Badge>
+                  </CardTitle>
+                  <CardDescription>{info.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                    {cities.map((city) => (
+                      <Button
+                        key={city.key}
+                        variant={selectedCity === city.key ? "default" : "outline"}
+                        className="h-auto p-4 justify-start"
+                        onClick={() => handleCitySelect(city)}
+                      >
+                        <div className="flex items-start gap-3 w-full">
+                          <div className="text-2xl">
+                            {localeFlags[city.data.locale as Locale] || "🏙️"}
+                          </div>
+                          <div className="text-left space-y-1 flex-1 min-w-0">
+                            <div className="font-semibold capitalize truncate">
+                              {city.key.replace(/_/g, " ")}
+                            </div>
+                            <div className="text-xs text-muted-foreground">
+                              {city.data.country}
+                            </div>
+                            <div className="flex items-center gap-1 text-xs">
+                              <span>{getTierIcon(city.data.tier)}</span>
+                              <span className="text-muted-foreground">
+                                {(city.data.population / 1000000).toFixed(1)}M
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Badge 
+                                variant="outline" 
+                                className={cn("text-xs px-1 py-0", getEconomyColor(city.data.economy))}
+                              >
+                                {city.data.economy}
+                              </Badge>
+                              <div className={cn("text-xs", getMarketPotentialColor(city.localization.marketPotential))}>
+                                <TrendingUp className="w-3 h-3 inline mr-1" />
+                                {city.localization.marketPotential}
                               </div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Badge variant="outline" className="text-xs">
-                              {(city.population / 1000000).toFixed(1)}M
-                            </Badge>
-                            {city.config && (
-                              <Badge variant="secondary" className="text-xs">
-                                {city.config.currency}
-                              </Badge>
-                            )}
-                          </div>
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  ),
+                        </div>
+                      </Button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </TabsContent>
+
+        <TabsContent value="list" className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredCities.map((city) => (
+              <Card
+                key={city.key}
+                className={cn(
+                  "cursor-pointer transition-all hover:shadow-md",
+                  selectedCity === city.key && "ring-2 ring-primary"
                 )}
-              </CommandList>
-            </Command>
+                onClick={() => handleCitySelect(city)}
+              >
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="text-3xl">
+                      {localeFlags[city.data.locale as Locale] || "🏙️"}
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div>
+                        <h3 className="font-semibold capitalize">
+                          {city.key.replace(/_/g, " ")}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {city.data.country} • {(city.data.population / 1000000).toFixed(1)}M people
+                        </p>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-1">
+                        <Badge variant="outline" className={getEconomyColor(city.data.economy)}>
+                          {city.data.economy}
+                        </Badge>
+                        <Badge variant="outline">
+                          {getTierIcon(city.data.tier)} {city.data.tier}
+                        </Badge>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        <div className="flex items-center gap-1">
+                          <TrendingUp className={cn("w-3 h-3", getMarketPotentialColor(city.localization.marketPotential))} />
+                          <span>Market: {city.localization.marketPotential}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Zap className="w-3 h-3 text-blue-500" />
+                          <span>Digital: {city.localization.digitalAdoption}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <DollarSign className="w-3 h-3 text-green-500" />
+                          <span>${(city.localization.economicIndicators.gdpPerCapita / 1000).toFixed(0)}k</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Users className="w-3 h-3 text-purple-500" />
+                          <span>{city.localization.economicIndicators.serviceEconomyShare}% Services</span>
+                        </div>
+                      </div>
+
+                      <div className="text-xs text-muted-foreground">
+                        <strong>Services:</strong> {city.localization.serviceTypes.slice(0, 3).join(", ")}
+                        {city.localization.serviceTypes.length > 3 && " +more"}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
+        </TabsContent>
+      </Tabs>
+
+      {filteredCities.length === 0 && (
+        <div className="text-center py-12">
+          <MapPin className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold mb-2">No cities found</h3>
+          <p className="text-muted-foreground">
+            Try adjusting your search criteria or filters
+          </p>
         </div>
-      </DialogContent>
-    </Dialog>
+      )}
+    </div>
   );
-}
-
-// Helper function to group cities by continent
-function getContinentFromCity(cityKey: string): string {
-  const continentMap: Record<string, string> = {
-    // Asia-Pacific
-    tokyo: "Asia-Pacific",
-    delhi: "Asia-Pacific",
-    shanghai: "Asia-Pacific",
-    dhaka: "Asia-Pacific",
-    beijing: "Asia-Pacific",
-    mumbai: "Asia-Pacific",
-    osaka: "Asia-Pacific",
-    karachi: "Asia-Pacific",
-    chongqing: "Asia-Pacific",
-    guangzhou: "Asia-Pacific",
-    tianjin: "Asia-Pacific",
-    shenzhen: "Asia-Pacific",
-    kolkata: "Asia-Pacific",
-    lahore: "Asia-Pacific",
-    seoul: "Asia-Pacific",
-    bangkok: "Asia-Pacific",
-    jakarta: "Asia-Pacific",
-    manila: "Asia-Pacific",
-    ho_chi_minh_city: "Asia-Pacific",
-    kuala_lumpur: "Asia-Pacific",
-    taipei: "Asia-Pacific",
-
-    // Europe
-    london: "Europe",
-    moscow: "Europe",
-    istanbul: "Europe",
-    paris: "Europe",
-    berlin: "Europe",
-    madrid: "Europe",
-    rome: "Europe",
-    barcelona: "Europe",
-    milan: "Europe",
-    naples: "Europe",
-    kiev: "Europe",
-    saint_petersburg: "Europe",
-    warsaw: "Europe",
-    amsterdam: "Europe",
-    vienna: "Europe",
-    athens: "Europe",
-    budapest: "Europe",
-    prague: "Europe",
-    stockholm: "Europe",
-    copenhagen: "Europe",
-    oslo: "Europe",
-    helsinki: "Europe",
-    bucharest: "Europe",
-    lisbon: "Europe",
-
-    // Americas
-    new_york: "Americas",
-    mexico_city: "Americas",
-    sao_paulo: "Americas",
-    los_angeles: "Americas",
-    rio_de_janeiro: "Americas",
-    chicago: "Americas",
-    lima: "Americas",
-    buenos_aires: "Americas",
-
-    // Middle East & Africa
-    cairo: "Middle East & Africa",
-    tehran: "Middle East & Africa",
-    baghdad: "Middle East & Africa",
-    riyadh: "Middle East & Africa",
-    dubai: "Middle East & Africa",
-    tel_aviv: "Middle East & Africa",
-    nairobi: "Middle East & Africa",
-    kinshasa: "Middle East & Africa",
-    algiers: "Middle East & Africa",
-  };
-
-  return continentMap[cityKey] || "Other";
 }
