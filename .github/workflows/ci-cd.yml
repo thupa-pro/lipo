@@ -1,0 +1,398 @@
+name: 🚀 Loconomy CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8'
+
+jobs:
+  # 🔍 Code Quality & Testing
+  test:
+    name: 🧪 Test & Lint
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔧 Generate Prisma client
+        run: pnpm prisma generate
+
+      - name: 🔍 Lint code
+        run: pnpm lint
+
+      - name: 🎯 Type check
+        run: pnpm tsc --noEmit
+
+      - name: 🧪 Run unit tests
+        run: pnpm test
+        env:
+          DATABASE_URL: file:./test.db
+          NEXTAUTH_SECRET: test-secret
+          NEXTAUTH_URL: http://localhost:3000
+
+      - name: 📊 Upload coverage reports
+        uses: codecov/codecov-action@v3
+        if: success()
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  # 🏗️ Build Application
+  build:
+    name: 🏗️ Build Application
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔧 Generate Prisma client
+        run: pnpm prisma generate
+
+      - name: 🏗️ Build application
+        run: pnpm build
+        env:
+          DATABASE_URL: file:./build.db
+          NEXTAUTH_SECRET: build-secret
+          NEXTAUTH_URL: http://localhost:3000
+
+      - name: 📦 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            .next/
+            public/
+          retention-days: 7
+
+  # 🎭 End-to-End Testing
+  e2e:
+    name: 🎭 E2E Tests
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 📦 Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+
+      - name: 🎭 Install Playwright browsers
+        run: pnpm playwright install --with-deps
+
+      - name: 🔧 Setup test database
+        run: |
+          pnpm prisma generate
+          pnpm prisma migrate deploy
+        env:
+          DATABASE_URL: file:./e2e.db
+
+      - name: 🚀 Start application
+        run: pnpm start &
+        env:
+          DATABASE_URL: file:./e2e.db
+          NEXTAUTH_SECRET: e2e-secret
+          NEXTAUTH_URL: http://localhost:3000
+          PORT: 3000
+
+      - name: ⏳ Wait for application
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: 🎭 Run E2E tests
+        run: pnpm test:e2e
+        env:
+          BASE_URL: http://localhost:3000
+
+      - name: 📊 Upload E2E results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
+
+  # 🔒 Security Scanning
+  security:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔍 Run security audit
+        run: pnpm audit
+
+      - name: 🛡️ Run CodeQL analysis
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, typescript
+
+      - name: 🔍 Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+
+  # 🚀 Deploy to Staging
+  deploy-staging:
+    name: 🚀 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [build, e2e, security]
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy to Vercel (Staging)
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          alias-domains: staging-loconomy.vercel.app
+
+      - name: 🔧 Run staging migrations
+        run: |
+          pnpm prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+
+      - name: 📊 Deploy staging telemetry
+        run: |
+          curl -X POST "${{ secrets.STAGING_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d '{"deployment": "staging", "commit": "${{ github.sha }}", "branch": "${{ github.ref_name }}"}'
+
+  # 🎯 Deploy to Production
+  deploy-production:
+    name: 🎯 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [build, e2e, security]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy to Vercel (Production)
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: 🔧 Run production migrations
+        run: |
+          pnpm prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+
+      - name: 🔄 Warm up application
+        run: |
+          curl -f https://loconomy.com/api/health || exit 1
+          curl -f https://loconomy.com/landing || exit 1
+
+      - name: 📊 Deploy production telemetry
+        run: |
+          curl -X POST "${{ secrets.PRODUCTION_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d '{"deployment": "production", "commit": "${{ github.sha }}", "branch": "${{ github.ref_name }}"}'
+
+      - name: 🏷️ Create GitHub release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          body: |
+            🚀 **Loconomy Production Release**
+            
+            **Changes in this release:**
+            - Commit: ${{ github.sha }}
+            - Branch: ${{ github.ref_name }}
+            - Deployed to: https://loconomy.com
+            
+            **Features:**
+            - ✅ AI-First UX with slash commands
+            - ✅ Vector search and recommendations
+            - ✅ Event-driven architecture
+            - ✅ Comprehensive API documentation
+            - ✅ Real-time notifications
+            - ✅ Advanced search and filtering
+            
+            View the [API Documentation](https://loconomy.com/api/docs) 📚
+          draft: false
+          prerelease: false
+
+  # 📊 Performance Testing
+  performance:
+    name: 📊 Performance Test
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.12.x
+
+      - name: 🔍 Run Lighthouse CI
+        run: |
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_SERVER_BASE_URL: https://staging-loconomy.vercel.app
+
+  # 🧹 Cleanup
+  cleanup:
+    name: 🧹 Cleanup
+    runs-on: ubuntu-latest
+    needs: [deploy-staging, deploy-production]
+    if: always()
+    
+    steps:
+      - name: 🧹 Clean up old artifacts
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: artifacts } = await github.rest.actions.listArtifactsForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            
+            const oldArtifacts = artifacts.artifacts
+              .filter(artifact => {
+                const age = Date.now() - new Date(artifact.created_at).getTime();
+                return age > 7 * 24 * 60 * 60 * 1000; // 7 days
+              });
+            
+            for (const artifact of oldArtifacts) {
+              await github.rest.actions.deleteArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: artifact.id,
+              });
+            }
+
+# 📊 Workflow Status Notifications
+  notify:
+    name: 📢 Notify Status
+    runs-on: ubuntu-latest
+    needs: [test, build, e2e, security, deploy-staging, deploy-production]
+    if: always()
+    
+    steps:
+      - name: 📢 Send Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#loconomy-deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: 📧 Send email notification
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "🚨 Loconomy CI/CD Pipeline Failed"
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: GitHub Actions <noreply@github.com>
+          body: |
+            ❌ **Pipeline Failed**
+            
+            **Repository:** ${{ github.repository }}
+            **Branch:** ${{ github.ref_name }}
+            **Commit:** ${{ github.sha }}
+            **Author:** ${{ github.actor }}
+            **Workflow:** ${{ github.workflow }}
+            
+            **View Details:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            Please check the logs and fix the issues.

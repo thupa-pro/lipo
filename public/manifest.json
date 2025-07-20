@@ -1,83 +1,164 @@
 {
-  "name": "Loconomy Elite - Premium Local Services",
+  "name": "Loconomy - Local Services Platform",
   "short_name": "Loconomy",
-  "description": "Elite local services platform with enterprise-grade security and real-time tracking",
+  "description": "Connect with trusted local service providers in your area. From cleaning to repairs, find verified professionals for all your needs.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1A2A44",
-  "theme_color": "#1A2A44",
-  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
   "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home screen showing local services"
+    },
+    {
+      "src": "/screenshots/mobile-search.png", 
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Search and filter services"
+    },
+    {
+      "src": "/screenshots/desktop-dashboard.png",
+      "sizes": "1920x1080", 
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Provider dashboard with analytics"
+    }
+  ],
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable any"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-apple-touch.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable any"
     }
   ],
-  "categories": ["business", "productivity", "lifestyle"],
   "shortcuts": [
     {
-      "name": "Request Service",
-      "short_name": "Request",
-      "description": "Quickly request a premium service",
-      "url": "/request-service",
+      "name": "Search Services",
+      "short_name": "Search", 
+      "description": "Find local service providers",
+      "url": "/search",
       "icons": [
         {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192"
+          "src": "/icons/search-shortcut.png",
+          "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "Browse Services",
-      "short_name": "Browse",
-      "description": "Explore available services",
-      "url": "/browse",
+      "name": "My Bookings",
+      "short_name": "Bookings",
+      "description": "View your appointments",
+      "url": "/customer/bookings",
       "icons": [
         {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192"
+          "src": "/icons/bookings-shortcut.png", 
+          "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "My Dashboard",
-      "short_name": "Dashboard",
-      "description": "View your account dashboard",
-      "url": "/dashboard",
+      "name": "Messages",
+      "short_name": "Messages",
+      "description": "Chat with providers",
+      "url": "/messages",
       "icons": [
         {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192"
+          "src": "/icons/messages-shortcut.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Provider Dashboard",
+      "short_name": "Dashboard", 
+      "description": "Manage your services",
+      "url": "/provider/dashboard",
+      "icons": [
+        {
+          "src": "/icons/dashboard-shortcut.png",
+          "sizes": "96x96"
         }
       ]
     }
   ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "images",
+          "accept": ["image/*"]
+        }
+      ]
+    }
+  },
   "protocol_handlers": [
     {
       "protocol": "web+loconomy",
-      "url": "/?protocol=%s"
+      "url": "/handle?type=%s"
     }
   ],
-  "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 400
   },
-  "handle_links": "preferred",
   "launch_handler": {
     "client_mode": "navigate-existing"
   }

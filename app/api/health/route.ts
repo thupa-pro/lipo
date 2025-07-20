@@ -1,75 +1,35 @@
-import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { NextRequest, NextResponse } from "next/server";
+import { getHealthStatus } from "@/lib/observability/sentry";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-);
-
-export async function GET() {
-  const startTime = Date.now();
-
+export async function GET(request: NextRequest) {
   try {
-    // Check database connectivity - if we can make any request without auth errors, connection is working
-    const { error } = await supabase.auth.getSession();
-
-    // If we get here without a network/connection error, the database is reachable
-    // We expect this to work even if no session exists
-
-    const dbLatency = Date.now() - startTime;
-
-    // Check external services
-    const checks = {
-      database: {
-        status: "healthy",
-        latency: dbLatency,
-        timestamp: new Date().toISOString(),
+    const status = await getHealthStatus();
+    
+    const httpStatus = status.status === 'healthy' ? 200 : 503;
+    
+    return NextResponse.json(status, {
+      status: httpStatus,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Content-Type': 'application/json',
       },
-      memory: {
-        usage: process.memoryUsage(),
-        timestamp: new Date().toISOString(),
-      },
-      uptime: {
-        seconds: process.uptime(),
-        timestamp: new Date().toISOString(),
-      },
-    };
-
-    return NextResponse.json({
-      status: "healthy",
-      timestamp: new Date().toISOString(),
-      version: process.env.npm_package_version || "1.0.0",
-      environment: process.env.NODE_ENV,
-      checks,
     });
   } catch (error) {
-    console.error("Health check error:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    const errorDetails =
-      error instanceof Error
-        ? JSON.stringify(error, Object.getOwnPropertyNames(error))
-        : "Unknown error";
-
+    console.error('Health check failed:', error);
+    
     return NextResponse.json(
       {
-        status: "unhealthy",
+        status: 'unhealthy',
+        error: 'Health check failed',
         timestamp: new Date().toISOString(),
-        error: errorMessage,
-        errorDetails: errorDetails,
-        envCheck: {
-          hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-          hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
-        },
-        checks: {
-          database: {
-            status: "unhealthy",
-            error: errorMessage,
-            timestamp: new Date().toISOString(),
-          },
-        },
       },
-      { status: 503 },
+      { 
+        status: 503,
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Content-Type': 'application/json',
+        },
+      }
     );
   }
 }
