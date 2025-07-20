@@ -24,6 +24,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import Image from 'next/image';
 
 interface PaymentFormProps {
   service: {
@@ -167,10 +168,13 @@ export default function PaymentForm({
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="flex items-start gap-3">
-            <img
+            <Image
               src={service.provider.image || "/api/placeholder/40/40"}
               alt={service.provider.name}
+              width={40}
+              height={40}
               className="w-10 h-10 rounded-full object-cover"
+              loading="lazy"
             />
             <div className="flex-1">
               <h4 className="font-medium text-sm">{service.title}</h4>

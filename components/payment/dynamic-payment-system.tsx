@@ -30,6 +30,8 @@ import {
   Smartphone as PhoneIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {loadStripe} from '@stripe/stripe-js';
+import {Elements, useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 
 interface PaymentMethod {
   id: string;
@@ -118,6 +120,20 @@ const paymentMethods: PaymentMethod[] = [
   },
 ];
 
+// Add a new payment method for Stripe
+const stripePaymentMethod: PaymentMethod = {
+  id: 'stripe',
+  type: 'card',
+  name: 'Credit/Debit Card (Stripe)',
+  icon: CreditCard,
+  isDefault: false,
+  fee: 0.029,
+  processingTime: 'Instant',
+  connected: true,
+};
+
+const allPaymentMethods = [stripePaymentMethod, ...paymentMethods];
+
 export function DynamicPaymentSystem({
   amount = 125.0,
   currency = "USD",
@@ -137,6 +153,8 @@ export function DynamicPaymentSystem({
   const [progress, setProgress] = useState(0);
   const [securityCheck, setSecurityCheck] = useState(false);
   const [biometricAuth, setBiometricAuth] = useState(false);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
   // Card form states
   const [cardNumber, setCardNumber] = useState("");
@@ -291,9 +309,76 @@ export function DynamicPaymentSystem({
     setCardErrors({});
   };
 
+  // When Stripe is selected, create a PaymentIntent
+  useEffect(() => {
+    if (selectedMethod?.id === 'stripe' && amount > 0) {
+      fetch('/api/payments/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: Math.round(getTotalAmount() * 100), currency }),
+      })
+        .then(res => res.json())
+        .then(data => setClientSecret(data.clientSecret));
+    }
+  }, [selectedMethod, amount, currency]);
+
+  // Stripe Elements form component
+  function StripePaymentForm({ clientSecret }: { clientSecret: string }) {
+    const stripe = useStripe();
+    const elements = useElements();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!stripe || !elements) return;
+      setLoading(true);
+      const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: { return_url: window.location.href },
+        redirect: 'if_required',
+      });
+      if (error) setError(error.message || 'Payment failed');
+      setLoading(false);
+      if (!error) {
+        setCurrentStep(3);
+        setTransaction({
+          id: `tx_${Date.now()}`,
+          amount: getTotalAmount(),
+          currency,
+          description,
+          recipient,
+          status: 'completed',
+          timestamp: new Date(),
+          fee: calculateFee(),
+        });
+        onComplete?.({
+          id: `tx_${Date.now()}`,
+          amount: getTotalAmount(),
+          currency,
+          description,
+          recipient,
+          status: 'completed',
+          timestamp: new Date(),
+          fee: calculateFee(),
+        });
+      }
+    };
+
+    return (
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <PaymentElement />
+        <Button type="submit" disabled={!stripe || loading} className="w-full">
+          {loading ? 'Processing...' : 'Pay with Stripe'}
+        </Button>
+        {error && <div className="text-red-500 text-sm">{error}</div>}
+      </form>
+    );
+  }
+
   const renderPaymentMethods = () => (
     <div className="space-y-3">
-      {paymentMethods.map((method) => {
+      {allPaymentMethods.map((method) => {
         const Icon = method.icon;
         return (
           <Card
@@ -545,7 +630,7 @@ export function DynamicPaymentSystem({
           Payment Successful!
         </h3>
         <p className="text-muted-foreground">
-          Your payment has been processed successfully
+          your payment has been processed successfully
         </p>
       </div>
 
@@ -652,7 +737,13 @@ export function DynamicPaymentSystem({
 
         {currentStep === 3 && (
           <>
-            {renderSuccess()}
+            {selectedMethod?.id === 'stripe' && clientSecret ? (
+              <Elements stripe={stripePromise} options={{ clientSecret }}>
+                <StripePaymentForm clientSecret={clientSecret} />
+              </Elements>
+            ) : (
+              renderSuccess()
+            )}
             <div className="flex gap-3">
               <Button
                 variant="outline"
