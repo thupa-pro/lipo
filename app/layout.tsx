@@ -4,6 +4,9 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { CookieConsent } from "@/components/consent/CookieConsent";
+import { RoleAwareNavigation } from "@/components/navigation/RoleAwareNavigation";
+import { getCurrentUser } from "@/lib/auth/session";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -51,11 +54,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Get server session for role-aware rendering
+  const user = await getCurrentUser();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -70,9 +76,25 @@ export default function RootLayout({
           storageKey="loconomy-theme"
         >
           <AuthProvider>
-            {children}
+            {/* Role-aware navigation */}
+            <RoleAwareNavigation user={user} />
+            
+            {/* Main content */}
+            <main className="flex-1">
+              {children}
+            </main>
+            
+            {/* Cookie consent banner */}
+            <CookieConsent 
+              user={user}
+              onConsentChange={(settings) => {
+                console.log('Consent updated:', settings);
+              }}
+            />
+            
+            {/* Toast notifications */}
+            <Toaster />
           </AuthProvider>
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>

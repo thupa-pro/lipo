@@ -1,16 +1,10 @@
-"use client";
+// Role-Aware Navigation for Loconomy Platform
+// Adapts navigation based on user role and subscription tier
 
-/**
- * Role-Aware Navigation Component
- * Renders navigation items based on user role and permissions
- */
-
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Link from 'next/link';
+import { User } from '@/types/rbac';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,358 +12,339 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Menu,
-  Search,
-  Home,
-  Briefcase,
-  Sun,
-  Moon,
-  BarChart3,
-  Shield,
-  Users,
-  Settings,
-  User,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { 
+  Sparkles, 
+  User as UserIcon, 
+  Settings, 
+  LogOut, 
   Crown,
+  Shield,
+  BarChart3,
   Calendar,
-  FileText,
-} from "lucide-react";
-import { useTheme } from "next-themes";
-import { useUser } from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
-import { NavigationLogo, MobileLogo } from "@/components/ui/logo";
-import { UserRole } from "@/lib/rbac/types";
-import { getRoleNavigation } from "@/lib/rbac/utils";
-import { CitySelector } from "@/components/i18n/city-selector";
+  MapPin,
+  MessageSquare,
+  Bell,
+  Menu,
+  X
+} from 'lucide-react';
+import { useState } from 'react';
+import { getUserRole, getUserSubscriptionTier, getInitials } from '@/lib/rbac/utils';
 
-interface NavigationProps {
-  userRole?: UserRole;
+interface RoleAwareNavigationProps {
+  user: User | null;
 }
 
-export function RoleAwareNavigation({ userRole = "guest" }: NavigationProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const { isLoaded, isSignedIn, user } = useUser();
+interface NavItem {
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  badge?: string;
+  roles: Array<'guest' | 'consumer' | 'provider' | 'admin'>;
+  requiresSubscription?: Array<'starter' | 'professional' | 'enterprise'>;
+}
 
-  useEffect(() => {
-    setMounted(true);
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isMenuOpen]);
-
-  const navItems = getRoleNavigation(userRole);
-
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
-
-  const ThemeToggle = () => {
-    if (!mounted) return null;
-
-    return (
-      <Button
-        variant="ghost"
-        size="sm"
-        className="h-10 w-10 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      >
-        {theme === "dark" ? (
-          <Sun className="h-4 w-4" />
-        ) : (
-          <Moon className="h-4 w-4" />
-        )}
-        <span className="sr-only">Toggle theme</span>
-      </Button>
-    );
-  };
-
-  const getRoleBadge = (role: UserRole) => {
-    switch (role) {
-      case "admin":
-        return (
-          <Badge className="bg-red-500 text-white">
-            <Crown className="w-3 h-3 mr-1" />
-            Admin
-          </Badge>
-        );
-      case "provider":
-        return (
-          <Badge className="bg-blue-500 text-white">
-            <Briefcase className="w-3 h-3 mr-1" />
-            Provider
-          </Badge>
-        );
-      case "consumer":
-        return (
-          <Badge className="bg-green-500 text-white">
-            <User className="w-3 h-3 mr-1" />
-            Consumer
-          </Badge>
-        );
-      default:
-        return null;
-    }
-  };
-
-  // Don't render until mounted to avoid hydration issues
-  if (!mounted) {
-    return null;
+const NAVIGATION_ITEMS: NavItem[] = [
+  {
+    href: '/',
+    label: 'Home',
+    icon: Sparkles,
+    roles: ['guest', 'consumer', 'provider', 'admin']
+  },
+  {
+    href: '/browse',
+    label: 'Browse Services',
+    icon: MapPin,
+    roles: ['guest', 'consumer', 'provider', 'admin']
+  },
+  {
+    href: '/dashboard',
+    label: 'Dashboard',
+    icon: BarChart3,
+    roles: ['consumer']
+  },
+  {
+    href: '/provider/dashboard',
+    label: 'Provider Dashboard',
+    icon: BarChart3,
+    roles: ['provider', 'admin']
+  },
+  {
+    href: '/provider/listings',
+    label: 'My Listings',
+    icon: Calendar,
+    roles: ['provider', 'admin']
+  },
+  {
+    href: '/provider/analytics',
+    label: 'Analytics',
+    icon: BarChart3,
+    badge: 'Pro',
+    roles: ['provider', 'admin'],
+    requiresSubscription: ['professional', 'enterprise']
+  },
+  {
+    href: '/messages',
+    label: 'Messages',
+    icon: MessageSquare,
+    roles: ['consumer', 'provider', 'admin']
+  },
+  {
+    href: '/admin',
+    label: 'Admin Panel',
+    icon: Shield,
+    roles: ['admin']
   }
+];
+
+export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const userRole = getUserRole(user);
+  const subscriptionTier = getUserSubscriptionTier(user);
+
+  // Filter navigation items based on user role and subscription
+  const visibleNavItems = NAVIGATION_ITEMS.filter(item => {
+    // Check role access
+    if (!item.roles.includes(userRole)) {
+      return false;
+    }
+
+    // Check subscription requirements
+    if (item.requiresSubscription && user) {
+      return item.requiresSubscription.includes(subscriptionTier);
+    }
+
+    return true;
+  });
+
+  const getRoleDisplayName = (role: typeof userRole) => {
+    const names = {
+      guest: 'Guest',
+      consumer: 'Customer',
+      provider: 'Service Provider',
+      admin: 'Administrator'
+    };
+    return names[role];
+  };
+
+  const getSubscriptionColor = (tier: typeof subscriptionTier) => {
+    const colors = {
+      free: 'bg-gray-100 text-gray-700',
+      starter: 'bg-blue-100 text-blue-700',
+      professional: 'bg-purple-100 text-purple-700',
+      enterprise: 'bg-gold-100 text-gold-700'
+    };
+    return colors[tier] || colors.free;
+  };
 
   return (
-    <header
-      role="banner"
-      aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 safe-area-inset-top ${
-        isScrolled
-          ? "bg-white/95 dark:bg-black/95 backdrop-blur-xl shadow-2xl border-b border-slate-200/50 dark:border-white/10"
-          : "bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-slate-200/30 dark:border-white/5"
-      }`}
-    >
-      <div className="container mx-auto px-6">
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-black rounded-2xl"
-            aria-label="Loconomy home"
-          >
-            <NavigationLogo className="rounded-2xl shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110" />
-            <div className="flex items-center gap-2">
-              <span className="font-black text-xl bg-gradient-to-r from-slate-700 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-                Loconomy
-              </span>
-              {getRoleBadge(userRole)}
-            </div>
-          </Link>
+          {/* Logo and brand */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-white" />
+              </div>
+              <div className="hidden sm:block">
+                <span className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Loconomy
+                </span>
+                <div className="text-xs text-muted-foreground -mt-1">
+                  AI-Powered Platform
+                </div>
+              </div>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <nav
-            className="hidden md:flex items-center space-x-2"
-            role="navigation"
-          >
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant={isActive(item.href) ? "default" : "ghost"}
-                size="sm"
-                asChild
-                className={`h-10 px-6 rounded-2xl transition-all duration-300 ${
-                  isActive(item.href)
-                    ? "bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-blue-500/30 hover:scale-105"
-                    : "bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 hover:scale-105"
-                }`}
-              >
+            {/* Desktop navigation */}
+            <div className="hidden lg:flex items-center gap-6 ml-6">
+              {visibleNavItems.slice(0, 4).map((item) => (
                 <Link
+                  key={item.href}
                   href={item.href}
-                  className="flex items-center gap-2"
-                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
+                  <item.icon className="w-4 h-4" />
                   {item.label}
+                  {item.badge && (
+                    <Badge variant="secondary" className="text-xs">
+                      {item.badge}
+                    </Badge>
+                  )}
                 </Link>
-              </Button>
-            ))}
-          </nav>
-
-          {/* Right Side Actions */}
-          <div className="flex items-center space-x-3">
-            {/* City Selector */}
-            <div className="hidden lg:block">
-              <CitySelector />
-            </div>
-            <ThemeToggle />
-
-            {/* User Authentication */}
-            {isSignedIn ? (
-              <div className="flex items-center space-x-3">
-                {/* Quick Actions for Authenticated Users */}
-                {userRole === "provider" && (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hidden lg:flex h-10 px-4 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 rounded-2xl"
-                      >
-                        <Briefcase className="w-4 h-4 mr-2" />
-                        Provider Tools
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56 bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-slate-200/50 dark:border-white/20 rounded-2xl">
-                      <DropdownMenuLabel>Provider Actions</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/provider/listings"
-                          className="flex items-center"
-                        >
-                          <FileText className="w-4 h-4 mr-2" />
-                          Manage Listings
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/provider/analytics"
-                          className="flex items-center"
-                        >
-                          <BarChart3 className="w-4 h-4 mr-2" />
-                          View Analytics
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/provider/calendar"
-                          className="flex items-center"
-                        >
-                          <Calendar className="w-4 h-4 mr-2" />
-                          Calendar
-                        </Link>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                )}
-
-                {userRole === "admin" && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="hidden lg:flex h-10 px-4 bg-red-50 dark:bg-red-950/20 backdrop-blur-xl border border-red-200/50 dark:border-red-800/20 hover:bg-red-100 dark:hover:bg-red-950/30 transition-all duration-300 rounded-2xl text-red-700 dark:text-red-300"
-                    asChild
-                  >
-                    <Link href="/admin">
-                      <Shield className="w-4 h-4 mr-2" />
-                      Admin Panel
-                    </Link>
-                  </Button>
-                )}
-
-                <UserButton
-                  appearance={{
-                    elements: {
-                      avatarBox:
-                        "h-10 w-10 border-2 border-violet-500/50 shadow-lg rounded-2xl",
-                      userButtonPopoverCard:
-                        "bg-white/95 dark:bg-black/95 backdrop-blur-xl border-slate-200/50 dark:border-white/20 shadow-2xl rounded-3xl",
-                    },
-                  }}
-                  afterSignOutUrl="/"
-                />
-              </div>
-            ) : (
-              <div className="hidden md:flex items-center space-x-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-10 px-4 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 rounded-2xl"
-                  asChild
-                >
-                  <Link href="/auth/signin">Sign In</Link>
-                </Button>
-                <Button
-                  size="sm"
-                  className="h-10 px-4 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white rounded-2xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105"
-                  asChild
-                >
-                  <Link href="/auth/signup">Sign Up</Link>
-                </Button>
-              </div>
-            )}
-
-            {/* Mobile Menu */}
-            <div className="md:hidden">
-              <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-                <SheetTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-10 w-10 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300"
-                  >
-                    <Menu className="h-5 w-5" />
-                    <span className="sr-only">Toggle menu</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="w-80 bg-gradient-to-br from-slate-950 via-violet-950 to-slate-950 border-slate-800 text-white"
-                >
-                  <div className="flex flex-col h-full">
-                    {/* Mobile Header */}
-                    <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/10">
-                      <MobileLogo className="w-12 h-12 rounded-2xl shadow-lg" />
-                      <div>
-                        <span className="text-2xl font-black bg-gradient-to-r from-white via-violet-200 to-white bg-clip-text text-transparent">
-                          Loconomy
-                        </span>
-                        <div className="mt-1">{getRoleBadge(userRole)}</div>
-                      </div>
-                    </div>
-
-                    {/* Mobile Navigation */}
-                    <nav className="flex-1 space-y-2" role="navigation">
-                      {navItems.map((item) => (
-                        <Button
-                          key={item.href}
-                          variant="ghost"
-                          className="justify-start h-12 w-full bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-all duration-300 rounded-2xl mb-2 text-white"
-                          asChild
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          <Link
-                            href={item.href}
-                            className="flex items-center gap-3"
-                          >
-                            {item.label}
-                          </Link>
-                        </Button>
-                      ))}
-
-                      {!isSignedIn && (
-                        <div className="border-t border-white/10 pt-4 space-y-2">
-                          <Button
-                            variant="ghost"
-                            className="justify-start h-12 w-full bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 transition-all duration-300 rounded-2xl mb-2 text-white"
-                            asChild
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            <Link href="/auth/signin">Sign In</Link>
-                          </Button>
-                          <Button
-                            className="justify-start h-12 w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white rounded-2xl"
-                            asChild
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            <Link href="/auth/signup">Sign Up</Link>
-                          </Button>
-                        </div>
-                      )}
-                    </nav>
-                  </div>
-                </SheetContent>
-              </Sheet>
+              ))}
             </div>
           </div>
+
+          {/* Right side actions */}
+          <div className="flex items-center gap-3">
+            {/* Theme toggle */}
+            <ThemeToggle />
+
+            {/* Notifications (for authenticated users) */}
+            {user && (
+              <Button variant="ghost" size="sm" className="relative">
+                <Bell className="w-4 h-4" />
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              </Button>
+            )}
+
+            {/* User menu or auth buttons */}
+            {user ? (
+              <UserMenu user={user} userRole={userRole} subscriptionTier={subscriptionTier} />
+            ) : (
+              <GuestActions />
+            )}
+
+            {/* Mobile menu button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="lg:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </Button>
+          </div>
         </div>
+
+        {/* Mobile navigation */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden border-t py-4">
+            <div className="space-y-2">
+              {visibleNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="flex items-center gap-3 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <item.icon className="w-4 h-4" />
+                  {item.label}
+                  {item.badge && (
+                    <Badge variant="secondary" className="text-xs ml-auto">
+                      {item.badge}
+                    </Badge>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-    </header>
+    </nav>
+  );
+}
+
+// User menu component for authenticated users
+function UserMenu({ 
+  user, 
+  userRole, 
+  subscriptionTier 
+}: { 
+  user: User; 
+  userRole: ReturnType<typeof getUserRole>;
+  subscriptionTier: ReturnType<typeof getUserSubscriptionTier>;
+}) {
+  const getRoleIcon = (role: typeof userRole) => {
+    const icons = {
+      guest: UserIcon,
+      consumer: UserIcon,
+      provider: Crown,
+      admin: Shield
+    };
+    return icons[role];
+  };
+
+  const RoleIcon = getRoleIcon(userRole);
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+          <Avatar className="h-10 w-10">
+            <AvatarImage src={user.email} alt={user.email} />
+            <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              {getInitials(user.email)}
+            </AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-64" align="end" forceMount>
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center gap-2">
+              <RoleIcon className="w-4 h-4" />
+              <p className="text-sm font-medium leading-none">{user.email}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="text-xs">
+                {userRole.charAt(0).toUpperCase() + userRole.slice(1)}
+              </Badge>
+              {subscriptionTier !== 'free' && (
+                <Badge className={`text-xs ${subscriptionTier === 'enterprise' ? 'bg-yellow-100 text-yellow-800' : 'bg-purple-100 text-purple-800'}`}>
+                  {subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1)}
+                </Badge>
+              )}
+            </div>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        
+        <DropdownMenuItem asChild>
+          <Link href="/profile" className="flex items-center gap-2">
+            <UserIcon className="w-4 h-4" />
+            Profile Settings
+          </Link>
+        </DropdownMenuItem>
+        
+        {userRole === 'provider' && (
+          <DropdownMenuItem asChild>
+            <Link href="/subscription" className="flex items-center gap-2">
+              <Crown className="w-4 h-4" />
+              Subscription
+              {subscriptionTier === 'free' && (
+                <Badge variant="outline" className="text-xs ml-auto">
+                  Upgrade
+                </Badge>
+              )}
+            </Link>
+          </DropdownMenuItem>
+        )}
+        
+        <DropdownMenuItem asChild>
+          <Link href="/settings" className="flex items-center gap-2">
+            <Settings className="w-4 h-4" />
+            Account Settings
+          </Link>
+        </DropdownMenuItem>
+        
+        <DropdownMenuSeparator />
+        
+        <DropdownMenuItem className="text-red-600 focus:text-red-600" asChild>
+          <Link href="/auth/signout" className="flex items-center gap-2">
+            <LogOut className="w-4 h-4" />
+            Sign Out
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+// Guest actions component for unauthenticated users
+function GuestActions() {
+  return (
+    <div className="flex items-center gap-2">
+      <Button variant="ghost" size="sm" asChild>
+        <Link href="/auth/signin">Sign In</Link>
+      </Button>
+      <Button size="sm" asChild className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+        <Link href="/auth/signup">Get Started</Link>
+      </Button>
+    </div>
   );
 }
