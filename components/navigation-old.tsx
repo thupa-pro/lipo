@@ -83,8 +83,8 @@ export default function Navigation() {
     { href: "/analytics", label: "Analytics", icon: BarChart3 },
   ];
 
-  // Mock user data
-  const user = {
+    // Mock user data - renamed to avoid conflict with Clerk user
+  const mockUser = {
     name: "Alex Chen",
     email: "alex@neural.com",
     avatar: "/placeholder.svg?height=32&width=32",
