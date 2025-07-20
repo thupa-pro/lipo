@@ -350,17 +350,17 @@ export default function Navigation() {
                 className="w-80 bg-white/95 dark:bg-black/95 backdrop-blur-xl border-slate-200/50 dark:border-white/10"
               >
                 <div className="flex flex-col space-y-6 mt-8">
-                  <div className="flex items-center space-x-3 pb-6 border-b border-white/10">
+                                    <div className="flex items-center space-x-3 pb-6 border-b border-white/10">
                     <Avatar className="h-12 w-12 border-2 border-violet-500/50">
-                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarImage src={mockUser.avatar} alt={mockUser.name} />
                       <AvatarFallback className="bg-gradient-to-br from-violet-600 to-purple-600 text-white font-bold">
-                        {user.name.charAt(0)}
+                        {mockUser.name.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="font-semibold text-white">{user.name}</p>
+                      <p className="font-semibold text-white">{mockUser.name}</p>
                       <Badge className="bg-gradient-to-r from-violet-500 to-purple-500 text-white text-xs">
-                        {user.plan}
+                        {mockUser.plan}
                       </Badge>
                     </div>
                   </div>
