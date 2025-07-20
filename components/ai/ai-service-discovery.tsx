@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import {
   Card,
   CardContent,
@@ -68,27 +68,27 @@ interface ServiceProvider {
 
 interface AIServiceDiscoveryProps {
   onServiceSelect?: (service: ServiceProvider) => void;
-  context?: any;
+  context?: Record<string, any>;
   initialQuery?: string;
   showAdvancedFeatures?: boolean;
 }
 
-export default function AIServiceDiscovery({
+const AIServiceDiscovery: React.FC<AIServiceDiscoveryProps> = memo(({
   onServiceSelect,
   context = {},
   initialQuery = "",
   showAdvancedFeatures = true,
-}: AIServiceDiscoveryProps) {
+}) => {
   const [query, setQuery] = useState(initialQuery);
   const [services, setServices] = useState<ServiceProvider[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState("relevance");
   const [showFilters, setShowFilters] = useState(false);
-  const [sortBy, setSortBy] = useState("ai_score");
-  const [aiInsight, setAIInsight] = useState("");
-  const [searchMode, setSearchMode] = useState<"text" | "voice" | "image">(
-    "text",
-  );
   const [isListening, setIsListening] = useState(false);
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const [aiInsight, setAIInsight] = useState("");
+  const [searchMode, setSearchMode] = useState<"text" | "voice" | "image">("text");
   const [filters, setFilters] = useState({
     priceRange: [0, 500],
     distance: 10,
@@ -97,6 +97,20 @@ export default function AIServiceDiscovery({
     verified: false,
   });
   const { toast } = useToast();
+
+  // Memoize the service selection handler
+  const handleServiceSelect = useCallback((service: ServiceProvider) => {
+    try {
+      onServiceSelect?.(service);
+    } catch (error) {
+      console.error('Error in service selection:', error);
+      toast({
+        title: "Selection Error",
+        description: "There was an issue selecting the service. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }, [onServiceSelect, toast]);
 
   const mockServices: ServiceProvider[] = [
     {
@@ -257,21 +271,21 @@ export default function AIServiceDiscovery({
       recognition.interimResults = false;
       recognition.lang = "en-US";
 
-      setIsListening(true);
-      setSearchMode("voice");
-      recognition.start();
+              setIsListening(true);
+        setSearchMode("voice");
+        recognition.start();
 
-      recognition.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setQuery(transcript);
-        setIsListening(false);
-        setSearchMode("text");
-        performAISearch(transcript);
-      };
+        recognition.onresult = (event: any) => {
+          const transcript = event.results[0][0].transcript;
+          setQuery(transcript);
+          setIsListening(false);
+          setSearchMode("text");
+          performAISearch(transcript);
+        };
 
-      recognition.onerror = () => {
-        setIsListening(false);
-        setSearchMode("text");
+        recognition.onerror = () => {
+          setIsListening(false);
+          setSearchMode("text");
         toast({
           title: "Voice search failed",
           description: "Please try again or use text search",
@@ -507,19 +521,20 @@ export default function AIServiceDiscovery({
       </Card>
 
       {/* AI Insight */}
-      {aiInsight && (
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-4 animate-fade-in">
-          <div className="flex items-start gap-3">
-            <div className="p-2 bg-blue-600 rounded-full">
-              <Brain className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <h4 className="font-medium text-blue-900 mb-1">AI Insight</h4>
-              <p className="text-sm text-blue-800">{aiInsight}</p>
+              {/* AI Insight */}
+        {aiInsight && (
+          <div className="ai-insight-card animate-fade-in">
+            <div className="flex items-start gap-3">
+              <div className="p-2 bg-blue-600 rounded-full">
+                <Brain className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-1">AI Insight</h4>
+                <p className="text-sm text-blue-800 dark:text-blue-200">{aiInsight}</p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
       {/* Results */}
       <div className="space-y-4">
@@ -549,7 +564,7 @@ export default function AIServiceDiscovery({
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Card className="hover:shadow-xl transition-all duration-300 border hover:border-blue-300 group relative overflow-hidden">
+                <Card className="service-card card-hover professional-border group relative overflow-hidden">
                   {/* Special Badges */}
                   <div className="absolute top-4 right-4 z-10 space-y-1">
                     {service.trending && (
@@ -663,7 +678,7 @@ export default function AIServiceDiscovery({
                     {/* Actions */}
                     <div className="flex gap-2 pt-2">
                       <Button
-                        onClick={() => onServiceSelect?.(service)}
+                        onClick={() => handleServiceSelect(service)}
                         className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                         size="sm"
                       >
@@ -718,5 +733,11 @@ export default function AIServiceDiscovery({
         ) : null}
       </div>
     </div>
-  );
-}
+      );
+  }
+  });
+  
+  // Set display name for better debugging
+  AIServiceDiscovery.displayName = "AIServiceDiscovery";
+  
+  export default AIServiceDiscovery;

@@ -11,7 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SmartRecommendations from "@/components/ai/smart-recommendations";
 import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
-import AIServiceDiscovery from "@/components/ai/ai-service-discovery";
+import { useCallback } from "react";
+import dynamic from "next/dynamic";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import {
   Star,
   MapPin,
@@ -28,23 +30,39 @@ import {
   Brain,
   Heart,
   Home,
+  Calendar,
+  DollarSign,
   Briefcase,
-  Car,
-  PiggyBank,
   Target,
-  Smartphone,
-  Play,
-  ChevronRight,
-  Globe,
-  Layers,
-  Database,
-  Cpu,
+  Phone,
+  Mail,
   MessageCircle,
+  Video,
+  ChevronRight,
   Activity,
 } from "lucide-react";
 import Link from "next/link";
 
+// Dynamic import for AIServiceDiscovery to ensure client-side only loading
+const AIServiceDiscovery = dynamic(
+  () => import("@/components/ai/ai-service-discovery"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center p-8">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    ),
+  }
+);
+
 export default function HomePage() {
+  // Memoize the service selection handler to ensure it's stable
+  const handleServiceSelect = useCallback((service: any) => {
+    console.log("Selected service:", service);
+    // Handle service selection
+  }, []);
+
   const stats = [
     {
       label: "Active Users",
@@ -70,7 +88,7 @@ export default function HomePage() {
     {
       label: "Global Reach",
       value: "180",
-      icon: Globe,
+      icon: Home,
       trend: "Countries",
       color: "from-blue-500 to-cyan-600",
     },
@@ -130,21 +148,21 @@ export default function HomePage() {
     },
     {
       name: "Technology",
-      icon: Cpu,
+      icon: Brain,
       count: "4.8K",
       color: "from-green-500 to-emerald-600",
       popular: false,
     },
     {
       name: "Transportation",
-      icon: Car,
+      icon: Home,
       count: "3.1K",
       color: "from-blue-500 to-teal-600",
       popular: false,
     },
     {
       name: "Education",
-      icon: Database,
+      icon: Brain,
       count: "9.3K",
       color: "from-cyan-500 to-blue-600",
       popular: true,
@@ -516,14 +534,13 @@ export default function HomePage() {
               matching and personalized recommendations
             </p>
           </div>
-          <AIServiceDiscovery
-            context={{ currentPage: "homepage", location: "Global" }}
-            showAdvancedFeatures={true}
-            onServiceSelect={(service) => {
-              console.log("Selected service:", service);
-              // Handle service selection
-            }}
-          />
+          <ErrorBoundary>
+            <AIServiceDiscovery
+              context={{ currentPage: "homepage", location: "Global" }}
+              showAdvancedFeatures={true}
+              onServiceSelect={handleServiceSelect}
+            />
+          </ErrorBoundary>
         </div>
       </section>
 
