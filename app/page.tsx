@@ -31,3 +31,10 @@ export default function RootPage() {
     </div>
   );
 }
+
+import { redirect } from "next/navigation";
+
+export default function RootPage() {
+  redirect("/en");
+  main
+}
