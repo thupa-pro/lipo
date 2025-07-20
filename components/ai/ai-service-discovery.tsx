@@ -67,17 +67,19 @@ interface ServiceProvider {
   instantBook: boolean;
 }
 
-// Clean props interface - no function props
+// Clean props interface - including onServiceSelect for proper Client Component handling
 interface CleanAIServiceDiscoveryProps {
   context?: Record<string, any>;
   initialQuery?: string;
   showAdvancedFeatures?: boolean;
+  onServiceSelect?: (service: ServiceProvider) => void;
 }
 
 const AIServiceDiscovery: React.FC<CleanAIServiceDiscoveryProps> = memo(({
   context = {},
   initialQuery = "",
   showAdvancedFeatures = true,
+  onServiceSelect,
 }) => {
   const [query, setQuery] = useState(initialQuery);
   const [services, setServices] = useState<ServiceProvider[]>([]);
@@ -98,15 +100,18 @@ const AIServiceDiscovery: React.FC<CleanAIServiceDiscoveryProps> = memo(({
   });
   const { toast } = useToast();
 
-  // Handle service selection internally
+  // Handle service selection - use prop if provided, otherwise internal handling
   const handleServiceSelect = useCallback((service: ServiceProvider) => {
     try {
-      console.log("Selected service:", service);
-      toast({
-        title: "Service Selected",
-        description: `You selected ${service.name} for ${service.title}`,
-      });
-      // Here you could add navigation logic, state updates, etc.
+      if (onServiceSelect) {
+        onServiceSelect(service);
+      } else {
+        console.log("Selected service:", service);
+        toast({
+          title: "Service Selected",
+          description: `You selected ${service.name} for ${service.title}`,
+        });
+      }
     } catch (error) {
       console.error('Error in service selection:', error);
       toast({
@@ -115,7 +120,7 @@ const AIServiceDiscovery: React.FC<CleanAIServiceDiscoveryProps> = memo(({
         variant: "destructive",
       });
     }
-  }, [toast]);
+  }, [onServiceSelect, toast]);
 
   const mockServices: ServiceProvider[] = [
     {
