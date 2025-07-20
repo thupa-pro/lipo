@@ -274,23 +274,23 @@ export default function Navigation() {
               >
                 <DropdownMenuLabel className="font-normal p-4">
                   <div className="flex flex-col space-y-2">
-                    <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-3">
                       <Avatar className="h-10 w-10 border-2 border-violet-500/50">
-                        <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarImage src={mockUser.avatar} alt={mockUser.name} />
                         <AvatarFallback className="bg-gradient-to-br from-violet-600 to-purple-600 text-white font-bold">
-                          {user.name.charAt(0)}
+                          {mockUser.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                       <div>
                         <p className="text-sm font-semibold text-white">
-                          {user.name}
+                          {mockUser.name}
                         </p>
                         <Badge className="bg-gradient-to-r from-violet-500 to-purple-500 text-white text-xs">
-                          {user.plan}
+                          {mockUser.plan}
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400">{user.email}</p>
+                    <p className="text-xs text-gray-400">{mockUser.email}</p>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-white/10" />
