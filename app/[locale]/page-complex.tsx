@@ -11,8 +11,8 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SmartRecommendations from "@/components/ai/smart-recommendations";
 import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
-import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import AIServiceDiscoveryWrapper from "@/components/ai/AIServiceDiscoveryWrapper";
 import {
   Star,
   MapPin,
@@ -41,19 +41,6 @@ import {
   Activity,
 } from "lucide-react";
 import Link from "next/link";
-
-// Dynamic import for AIServiceDiscovery to ensure client-side only loading
-const AIServiceDiscovery = dynamic(
-  () => import("@/components/ai/ai-service-discovery"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex items-center justify-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-      </div>
-    ),
-  }
-);
 
 export default function HomePage() {
 
@@ -529,7 +516,7 @@ export default function HomePage() {
             </p>
           </div>
           <ErrorBoundary>
-            <AIServiceDiscovery
+            <AIServiceDiscoveryWrapper
               context={{ currentPage: "homepage", location: "Global" }}
               showAdvancedFeatures={true}
             />
