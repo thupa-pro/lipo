@@ -83,8 +83,8 @@ export default function Navigation() {
     { href: "/analytics", label: "Analytics", icon: BarChart3 },
   ];
 
-  // Mock user data
-  const user = {
+    // Mock user data - renamed to avoid conflict with Clerk user
+  const mockUser = {
     name: "Alex Chen",
     email: "alex@neural.com",
     avatar: "/placeholder.svg?height=32&width=32",
@@ -210,7 +210,7 @@ export default function Navigation() {
                 </Link>
               </Button>
             ))}
-            {user.isAdmin && (
+                        {mockUser.isAdmin && (
               <Button
                 variant={isActive("/admin") ? "default" : "ghost"}
                 size="sm"
@@ -255,13 +255,13 @@ export default function Navigation() {
                   variant="ghost"
                   className="relative h-10 w-10 rounded-2xl p-0 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
                 >
-                  <Avatar className="h-8 w-8 border-2 border-violet-500/50 shadow-lg">
+                                    <Avatar className="h-8 w-8 border-2 border-violet-500/50 shadow-lg">
                     <AvatarImage
-                      src={user.avatar || "/placeholder.svg"}
-                      alt={user.name}
+                      src={mockUser.avatar || "/placeholder.svg"}
+                      alt={mockUser.name}
                     />
                     <AvatarFallback className="bg-gradient-to-br from-violet-600 to-purple-600 text-white text-sm font-bold">
-                      {user.name.charAt(0)}
+                      {mockUser.name.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
                   <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-black animate-pulse" />
@@ -274,23 +274,23 @@ export default function Navigation() {
               >
                 <DropdownMenuLabel className="font-normal p-4">
                   <div className="flex flex-col space-y-2">
-                    <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-3">
                       <Avatar className="h-10 w-10 border-2 border-violet-500/50">
-                        <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarImage src={mockUser.avatar} alt={mockUser.name} />
                         <AvatarFallback className="bg-gradient-to-br from-violet-600 to-purple-600 text-white font-bold">
-                          {user.name.charAt(0)}
+                          {mockUser.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                       <div>
                         <p className="text-sm font-semibold text-white">
-                          {user.name}
+                          {mockUser.name}
                         </p>
                         <Badge className="bg-gradient-to-r from-violet-500 to-purple-500 text-white text-xs">
-                          {user.plan}
+                          {mockUser.plan}
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400">{user.email}</p>
+                    <p className="text-xs text-gray-400">{mockUser.email}</p>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-white/10" />
@@ -350,17 +350,17 @@ export default function Navigation() {
                 className="w-80 bg-white/95 dark:bg-black/95 backdrop-blur-xl border-slate-200/50 dark:border-white/10"
               >
                 <div className="flex flex-col space-y-6 mt-8">
-                  <div className="flex items-center space-x-3 pb-6 border-b border-white/10">
+                                    <div className="flex items-center space-x-3 pb-6 border-b border-white/10">
                     <Avatar className="h-12 w-12 border-2 border-violet-500/50">
-                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarImage src={mockUser.avatar} alt={mockUser.name} />
                       <AvatarFallback className="bg-gradient-to-br from-violet-600 to-purple-600 text-white font-bold">
-                        {user.name.charAt(0)}
+                        {mockUser.name.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="font-semibold text-white">{user.name}</p>
+                      <p className="font-semibold text-white">{mockUser.name}</p>
                       <Badge className="bg-gradient-to-r from-violet-500 to-purple-500 text-white text-xs">
-                        {user.plan}
+                        {mockUser.plan}
                       </Badge>
                     </div>
                   </div>
