@@ -7,8 +7,8 @@ import { SessionProvider } from "@/components/providers/SessionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ServiceHub - Local Services Redefined",
-  description: "Connect with AI-matched, verified local professionals who deliver exceptional quality service right in your neighborhood.",
+  title: "Loconomy - Local Economy Platform",
+  description: "Connecting local communities through trusted service providers and seamless booking experiences.",
 };
 
 export default function RootLayout({

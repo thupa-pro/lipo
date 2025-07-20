@@ -32,7 +32,7 @@ export class EmailService {
       }
 
       const { data, error } = await resend.emails.send({
-        from: 'ServiceHub <noreply@servicehub.com>',
+        from: 'Loconomy <noreply@loconomy.com>',
         to: [to],
         subject,
         html,
@@ -74,14 +74,14 @@ export class EmailService {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">✨ ServiceHub</div>
-              <div class="subtitle">Welcome to the future of local services</div>
+                             <div class="logo">✨ Loconomy</div>
+               <div class="subtitle">Welcome to the future of local economy</div>
             </div>
             <div class="content">
               <h1 style="color: #1e293b; margin-bottom: 20px;">Verify Your Email Address</h1>
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
                 ${name ? `Hi ${name},` : 'Hello!'}<br><br>
-                Thank you for joining ServiceHub! To complete your registration and start connecting with amazing local service providers, please verify your email address.
+                                 Thank you for joining Loconomy! To complete your registration and start connecting with amazing local service providers, please verify your email address.
               </p>
               <div style="text-align: center; margin: 30px 0;">
                 <a href="${verificationUrl}" class="button">Verify Email Address</a>
@@ -91,7 +91,7 @@ export class EmailService {
                 <a href="${verificationUrl}" style="color: #3b82f6;">${verificationUrl}</a>
               </p>
               <p style="color: #64748b; font-size: 14px;">
-                This verification link will expire in 24 hours. If you didn't create an account with ServiceHub, you can safely ignore this email.
+                                 This verification link will expire in 24 hours. If you didn't create an account with Loconomy, you can safely ignore this email.
               </p>
             </div>
             <div class="footer">
@@ -107,7 +107,7 @@ export class EmailService {
     
     return this.sendEmail({
       to: email,
-      subject: '✨ Verify your ServiceHub account',
+      subject: '✨ Verify your Loconomy account',
       html,
     });
   }
@@ -137,14 +137,14 @@ export class EmailService {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">🔐 ServiceHub</div>
+                             <div class="logo">🔐 Loconomy</div>
               <div class="subtitle">Secure password reset</div>
             </div>
             <div class="content">
               <h1 style="color: #1e293b; margin-bottom: 20px;">Reset Your Password</h1>
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
                 ${name ? `Hi ${name},` : 'Hello!'}<br><br>
-                We received a request to reset your ServiceHub account password. Click the button below to create a new password.
+                                 We received a request to reset your Loconomy account password. Click the button below to create a new password.
               </p>
               <div style="text-align: center; margin: 30px 0;">
                 <a href="${resetUrl}" class="button">Reset Password</a>
@@ -170,7 +170,7 @@ export class EmailService {
 
     return this.sendEmail({
       to: email,
-      subject: '🔐 Reset your ServiceHub password',
+      subject: '🔐 Reset your Loconomy password',
       html,
     });
   }
@@ -201,13 +201,13 @@ export class EmailService {
         <body>
           <div class="container">
             <div class="header">
-              <div class="logo">🎉 Welcome to ServiceHub!</div>
+                             <div class="logo">🎉 Welcome to Loconomy!</div>
               <div class="subtitle">Your journey to amazing local services begins now</div>
             </div>
             <div class="content">
               <h1 style="color: #1e293b; margin-bottom: 20px;">Welcome, ${name}!</h1>
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Congratulations! Your ServiceHub account has been successfully verified. You're now part of a growing community of ${role === 'CUSTOMER' ? 'satisfied customers' : 'trusted service providers'}.
+                                 Congratulations! Your Loconomy account has been successfully verified. You're now part of a growing community of ${role === 'CUSTOMER' ? 'satisfied customers' : 'trusted service providers'}.
               </p>
               
               <div class="features">
@@ -244,7 +244,7 @@ export class EmailService {
 
     return this.sendEmail({
       to: email,
-      subject: '🎉 Welcome to ServiceHub - Get Started!',
+      subject: '🎉 Welcome to Loconomy - Get Started!',
       html,
     });
   }

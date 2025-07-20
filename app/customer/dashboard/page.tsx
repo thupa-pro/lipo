@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import AgentCommandInput from "@/components/ai/AgentCommandInput";
+import SmartListingCard from "@/components/ai/SmartListingCard";
 import {
   Search,
   MapPin,
@@ -26,6 +28,8 @@ import {
   Laptop,
   Phone,
   Sparkles,
+  Bot,
+  Zap,
 } from "lucide-react";
 
 export default function CustomerDashboard() {
@@ -94,7 +98,7 @@ export default function CustomerDashboard() {
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                ServiceHub
+                Loconomy
               </span>
             </div>
 
@@ -152,6 +156,39 @@ export default function CustomerDashboard() {
           <p className="text-gray-600 dark:text-gray-400">
             Find the perfect service provider for your needs
           </p>
+        </div>
+
+        {/* AI Agent Interface */}
+        <div className="mb-8">
+          <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 border-blue-200 dark:border-blue-800/50">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-2">
+                    Loconomy AI Assistant
+                    <Badge variant="secondary" className="text-xs">
+                      <Zap className="w-3 h-3 mr-1" />
+                      Intelligence-First
+                    </Badge>
+                  </h2>
+                  <p className="text-sm text-slate-600 dark:text-gray-400">
+                    Ask anything or use slash commands: /find, /book, /status, /reschedule, /cancel
+                  </p>
+                </div>
+              </div>
+              <AgentCommandInput
+                placeholder="Try: '/find plumber' or 'I need house cleaning tomorrow'"
+                currentPage="customer-dashboard"
+                onResponse={(response) => {
+                  console.log('Agent response:', response);
+                  // Handle agent responses here - could trigger searches, bookings, etc.
+                }}
+              />
+            </CardContent>
+          </Card>
         </div>
 
         {/* Quick Stats */}
