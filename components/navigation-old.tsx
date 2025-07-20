@@ -210,7 +210,7 @@ export default function Navigation() {
                 </Link>
               </Button>
             ))}
-            {user.isAdmin && (
+                        {mockUser.isAdmin && (
               <Button
                 variant={isActive("/admin") ? "default" : "ghost"}
                 size="sm"
