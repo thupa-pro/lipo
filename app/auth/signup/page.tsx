@@ -1,228 +1,260 @@
 "use client";
 
-import Link from "next/link";
-import { SignUp } from "@clerk/nextjs";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowLeft,
-  Shield,
-  Brain,
-  Star,
-  Zap,
-  Gift,
-  Heart,
-  Target,
-  Award,
-} from "lucide-react";
-import { AuthLogo } from "@/components/ui/logo";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Sparkles, Mail, Lock, User, ArrowLeft, Loader2, Users, Briefcase } from "lucide-react";
+import Link from "next/link";
+import { useToast } from "@/components/ui/use-toast";
 
-export default function PremiumSignupPage() {
+export default function SignUpPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("CUSTOMER");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setIsLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          role,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Success",
+          description: "Account created successfully! Please sign in.",
+        });
+        router.push("/auth/signin");
+      } else {
+        const data = await response.json();
+        setError(data.message || "An error occurred");
+        toast({
+          title: "Error",
+          description: data.message || "An error occurred",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      setError("An error occurred. Please try again.");
+      toast({
+        title: "Error",
+        description: "An error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white dark:bg-black overflow-hidden relative">
-      {/* Animated Background - Same as Homepage */}
+    <div className="min-h-screen bg-white dark:bg-black relative overflow-hidden flex items-center justify-center">
+      {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(139,92,246,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_40%_60%,rgba(16,185,129,0.08),transparent_50%)]" />
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 dark:bg-violet-400 rounded-full animate-pulse opacity-30 dark:opacity-40" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-emerald-400 dark:bg-blue-400 rounded-full animate-ping opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-purple-400 dark:bg-emerald-400 rounded-full animate-bounce opacity-15 dark:opacity-20" />
-        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-cyan-400 dark:bg-pink-400 rounded-full animate-pulse opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
-      </div>
+      {/* Back to Landing */}
+      <Link
+        href="/landing"
+        className="absolute top-6 left-6 z-20 flex items-center gap-2 text-slate-600 dark:text-gray-300 hover:text-blue-600 transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back to Home
+      </Link>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <div className="w-full max-w-7xl">
-          {/* Back Button */}
-          <Button
-            variant="ghost"
-            className="mb-8 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/10 transition-all group"
-            asChild
-          >
-            <Link href="/">
-              <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Home
-            </Link>
-          </Button>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Side - Branding & Benefits */}
-            <div className="text-center lg:text-left">
-              {/* Logo & Brand */}
-              <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
-                <AuthLogo className="rounded-2xl shadow-lg" />
-                <div>
-                  <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
-                    Loconomy
-                  </span>
-                  <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-gray-400">
-                    <Brain className="w-3 h-3" />
-                    AI-Powered Platform
-                  </div>
-                </div>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-                  Join the Future of
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Local Services
-                </span>
-              </h1>
-
-              <p className="text-xl text-slate-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Connect with verified professionals and unlock
-                <span className="text-transparent bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text font-semibold">
-                  {" "}
-                  AI-powered matching{" "}
-                </span>
-                that finds your perfect service provider.
-              </p>
-
-              {/* Benefits Grid */}
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                {[
-                  {
-                    icon: Brain,
-                    title: "AI Matching",
-                    desc: "Smart recommendations",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Verified Pros",
-                    desc: "100% background checked",
-                  },
-                  {
-                    icon: Zap,
-                    title: "Instant Booking",
-                    desc: "Book in seconds",
-                  },
-                  {
-                    icon: Heart,
-                    title: "Love Guarantee",
-                    desc: "100% satisfaction",
-                  },
-                  {
-                    icon: Target,
-                    title: "Best Prices",
-                    desc: "AI-optimized rates",
-                  },
-                  {
-                    icon: Award,
-                    title: "5-Star Quality",
-                    desc: "Exceptional service",
-                  },
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-blue-500/20 to-emerald-500/20 flex items-center justify-center">
-                      <benefit.icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-800 dark:text-white text-sm">
-                        {benefit.title}
-                      </p>
-                      <p className="text-xs text-slate-500 dark:text-gray-400">
-                        {benefit.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Social Proof */}
-              <div className="bg-white/60 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-blue-200/50 dark:border-white/10">
-                <div className="flex items-center justify-center lg:justify-start gap-4 mb-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <div
-                        key={i}
-                        className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-emerald-400 border-2 border-white dark:border-gray-800"
-                      />
-                    ))}
-                  </div>
-                  <div className="text-left">
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-emerald-400 text-emerald-400" />
-                      <span className="font-bold text-lg">4.9</span>
-                    </div>
-                    <p className="text-xs text-slate-500 dark:text-gray-400">
-                      From 2.1M+ users
-                    </p>
-                  </div>
-                </div>
-                <p className="text-sm text-slate-600 dark:text-gray-300 italic">
-                  "Loconomy changed how I find local services. The AI matching
-                  is incredible!"
-                </p>
-              </div>
+      {/* Sign Up Form */}
+      <div className="relative z-10 w-full max-w-md mx-auto p-6">
+        <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl">
+          <CardHeader className="text-center space-y-4">
+            <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+              <Sparkles className="w-6 h-6 text-white" />
             </div>
+            <CardTitle className="text-2xl font-bold">
+              Join ServiceHub
+            </CardTitle>
+            <p className="text-slate-600 dark:text-gray-400">
+              Create your account and start your journey
+            </p>
+          </CardHeader>
 
-            {/* Right Side - Clerk SignUp Form */}
-            <div className="w-full max-w-lg mx-auto">
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur opacity-20 dark:opacity-30" />
-                <div className="relative bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-blue-200/50 dark:border-white/20 shadow-2xl rounded-3xl p-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6 mx-auto">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                      Free to Join • Premium Features
-                    </span>
-                    <Gift className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                  </div>
+          <CardContent className="space-y-6">
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
 
-                  <SignUp
-                    appearance={{
-                      elements: {
-                        rootBox: "mx-auto",
-                        card: "bg-transparent shadow-none border-none",
-                        headerTitle:
-                          "text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent",
-                        headerSubtitle: "text-slate-600 dark:text-gray-300",
-                        socialButtonsBlockButton:
-                          "h-12 rounded-2xl border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all",
-                        formButtonPrimary:
-                          "h-12 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25 transition-all duration-300",
-                        formFieldInput:
-                          "h-12 bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/20 rounded-2xl focus:ring-2 focus:ring-blue-500/20 transition-all",
-                        footerActionLink:
-                          "text-blue-600 dark:text-blue-400 hover:underline font-semibold",
-                        dividerLine: "bg-slate-200 dark:bg-white/20",
-                        dividerText:
-                          "text-slate-500 dark:text-gray-400 font-medium",
-                      },
-                    }}
-                    redirectUrl="/dashboard"
-                    signInUrl="/auth/signin"
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name</Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder="Enter your full name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="pl-10"
+                    required
                   />
                 </div>
               </div>
 
-              <div className="mt-6 text-center text-xs text-slate-500 dark:text-gray-400">
-                By creating an account, you agree to our{" "}
-                <Link
-                  href="/terms"
-                  className="hover:underline text-blue-600 dark:text-blue-400"
-                >
-                  Terms of Service
-                </Link>{" "}
-                and{" "}
-                <Link
-                  href="/privacy"
-                  className="hover:underline text-blue-600 dark:text-blue-400"
-                >
-                  Privacy Policy
-                </Link>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="pl-10"
+                    required
+                  />
+                </div>
               </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Create a password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="pl-10"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="Confirm your password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="pl-10"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <Label>I want to join as</Label>
+                <RadioGroup value={role} onValueChange={setRole}>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border border-slate-200 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                    <RadioGroupItem value="CUSTOMER" id="customer" />
+                    <Label htmlFor="customer" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Users className="w-4 h-4 text-blue-600" />
+                      <div>
+                        <div className="font-medium">Customer</div>
+                        <div className="text-xs text-slate-500 dark:text-gray-400">
+                          Find and book services
+                        </div>
+                      </div>
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-lg border border-slate-200 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                    <RadioGroupItem value="PROVIDER" id="provider" />
+                    <Label htmlFor="provider" className="flex items-center gap-2 cursor-pointer flex-1">
+                      <Briefcase className="w-4 h-4 text-purple-600" />
+                      <div>
+                        <div className="font-medium">Service Provider</div>
+                        <div className="text-xs text-slate-500 dark:text-gray-400">
+                          Offer and manage services
+                        </div>
+                      </div>
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl h-12 font-semibold"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Creating Account...
+                  </>
+                ) : (
+                  "Create Account"
+                )}
+              </Button>
+            </form>
+
+            <div className="text-center">
+              <p className="text-sm text-slate-600 dark:text-gray-400">
+                Already have an account?{" "}
+                <Link
+                  href="/auth/signin"
+                  className="text-blue-600 hover:text-blue-500 font-semibold"
+                >
+                  Sign in
+                </Link>
+              </p>
             </div>
-          </div>
-        </div>
+
+            <div className="text-center text-xs text-slate-500 dark:text-gray-400">
+              By creating an account, you agree to our{" "}
+              <Link href="/terms" className="text-blue-600 hover:text-blue-500">
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link href="/privacy" className="text-blue-600 hover:text-blue-500">
+                Privacy Policy
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

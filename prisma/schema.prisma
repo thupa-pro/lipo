@@ -1,0 +1,183 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  password      String?
+  role          Role      @default(CUSTOMER)
+  status        UserStatus @default(ACTIVE)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  profile       UserProfile?
+  services      Service[]
+  bookings      Booking[]
+  reviews       Review[]
+
+  @@map("users")
+}
+
+model UserProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique @map("user_id")
+  firstName   String?  @map("first_name")
+  lastName    String?  @map("last_name")
+  phone       String?
+  address     String?
+  city        String?
+  state       String?
+  zipCode     String?  @map("zip_code")
+  country     String?
+  bio         String?
+  avatar      String?
+  website     String?
+  linkedin    String?
+  twitter     String?
+  verified    Boolean  @default(false)
+  rating      Float?
+  totalReviews Int     @default(0) @map("total_reviews")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+model Service {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  category    String
+  price       Float
+  duration    Int         // in minutes
+  location    String
+  providerId  String      @map("provider_id")
+  status      ServiceStatus @default(ACTIVE)
+  images      String?     // JSON string of image URLs
+  tags        String?     // JSON string of tags
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  provider User     @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+  reviews  Review[]
+
+  @@map("services")
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  serviceId   String        @map("service_id")
+  customerId  String        @map("customer_id")
+  providerId  String        @map("provider_id")
+  status      BookingStatus @default(PENDING)
+  scheduledAt DateTime      @map("scheduled_at")
+  completedAt DateTime?     @map("completed_at")
+  totalAmount Float         @map("total_amount")
+  notes       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  service  Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  customer User    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@map("bookings")
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  serviceId  String   @map("service_id")
+  customerId String   @map("customer_id")
+  rating     Int      // 1-5 stars
+  comment    String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  service  Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  customer User    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+enum Role {
+  CUSTOMER
+  PROVIDER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+}
+
+enum ServiceStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  DRAFT
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
