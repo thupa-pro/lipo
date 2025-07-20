@@ -58,12 +58,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <head>
+        <meta name="theme-color" content="#ffffff" />
+      </head>
+      <body className={`${inter.variable} font-sans antialiased theme-transition`}>
         <ThemeProvider
-          attribute="class"
           defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          enableSystem={true}
+          disableTransitionOnChange={false}
+          storageKey="loconomy-theme"
         >
           <SessionProvider>
             <AppShell>
