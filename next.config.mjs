@@ -59,7 +59,9 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+    tsconfigPath: "./tsconfig.json",
   },
+  swcMinify: false,
   // headers: async () => [
   //   {
   //     source: "/(.*)",
