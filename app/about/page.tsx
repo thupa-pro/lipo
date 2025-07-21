@@ -33,259 +33,271 @@ import {
   CheckCircle,
   Eye,
   Play,
+  Gem,
+  CircuitBoard,
+  Trophy,
+  Infinity,
+  BookOpen,
+  GraduationCap,
+  Landmark
 } from "lucide-react";
 
 export default function AboutUsPage() {
-  const values = [
-    {
-      icon: Users,
-      title: "Community Excellence",
-      description:
-        "We believe in empowering local communities by connecting individuals with exceptional service providers who share our commitment to quality and care.",
-      gradient: "from-blue-500 to-cyan-500",
-      stats: "2.1M+ users",
-    },
+  const coreValues = [
     {
       icon: Brain,
-      title: "AI Innovation",
+      title: "Revolutionary AI Innovation",
       description:
-        "Pioneering the future of service discovery with advanced machine learning that creates perfect matches between customers and providers.",
-      gradient: "from-purple-500 to-pink-500",
-      stats: "96.8% accuracy",
+        "We're pioneering the future of marketplace intelligence with proprietary neural networks that understand both human needs and service excellence at an unprecedented level.",
+      gradient: "from-violet-600 to-purple-600",
+      stats: "50+ AI models",
     },
     {
-      icon: Shield,
-      title: "Trust & Security",
+      icon: Crown,
+      title: "Elite Excellence Standard",
       description:
-        "Building a platform where safety, reliability, and transparent communication create lasting relationships between customers and providers.",
-      gradient: "from-emerald-500 to-green-500",
-      stats: "100% verified",
+        "Our commitment to quality is unwavering. We maintain the highest standards in the industry, ensuring only the top 8% of service providers join our exclusive network.",
+      gradient: "from-amber-500 to-orange-500",
+      stats: "Top 8% only",
+    },
+    {
+      icon: Globe,
+      title: "Global Impact Mission",
+      description:
+        "We're not just building a platform; we're creating a movement that empowers local communities worldwide while setting new standards for service excellence.",
+      gradient: "from-emerald-600 to-green-500",
+      stats: "127 cities",
     },
     {
       icon: Rocket,
-      title: "Growth & Success",
+      title: "Future-Forward Vision",
       description:
-        "Enabling service providers to scale their businesses while helping customers access premium services at fair, transparent pricing.",
-      gradient: "from-orange-500 to-red-500",
-      stats: "40% avg growth",
+        "Every decision we make is guided by our vision of tomorrow's service economy—where AI and human expertise combine to create extraordinary experiences.",
+      gradient: "from-blue-600 to-cyan-500",
+      stats: "Next-gen tech",
     },
+    {
+      icon: Shield,
+      title: "Fortress-Level Trust",
+      description:
+        "Security, privacy, and trust aren't features—they're the foundation. We protect every interaction with military-grade security and comprehensive coverage.",
+      gradient: "from-red-600 to-pink-500",
+      stats: "$1M+ protected",
+    },
+    {
+      icon: Heart,
+      title: "Community-Centric Purpose",
+      description:
+        "At our core, we believe in strengthening local communities by connecting exceptional service providers with customers who value quality and craftsmanship.",
+      gradient: "from-pink-600 to-rose-500",
+      stats: "2.1M+ served",
+    }
   ];
 
-  const team = [
+  const leadershipTeam = [
     {
-      name: "Sarah Chen",
-      role: "CEO & Co-Founder",
-      description:
-        "Former VP of Product at Uber, Harvard MBA. Passionate about local economies.",
-      avatar: "SC",
-      gradient: "from-blue-500 to-purple-500",
+      name: "Dr. Elena Rodriguez",
+      role: "Chief Executive Officer & Co-Founder",
+      image: "/api/placeholder/150/150",
+      bio: "Former VP of AI at Google, PhD in Machine Learning from Stanford. 15+ years building transformative AI products at scale.",
+      linkedin: "#",
+      achievements: ["Forbes 40 Under 40", "MIT Technology Review Innovator", "TechCrunch Disruptor Award"]
     },
     {
-      name: "Mike Rodriguez",
-      role: "CTO & Co-Founder",
-      description:
-        "Ex-Google AI engineer, MIT PhD. Building the future of service matching.",
-      avatar: "MR",
-      gradient: "from-purple-500 to-pink-500",
+      name: "Marcus Chen",
+      role: "Chief Technology Officer & Co-Founder",
+      image: "/api/placeholder/150/150", 
+      bio: "Ex-Principal Engineer at Tesla Autopilot, former Apple Core ML team. Expert in real-time AI systems and scalable architectures.",
+      linkedin: "#",
+      achievements: ["ACM Distinguished Scientist", "Apple Innovation Award", "Y Combinator Alumni"]
     },
     {
-      name: "Emma Thompson",
-      role: "Head of Community",
-      description:
-        "Former Airbnb Community Lead. Creating trust and safety at scale.",
-      avatar: "ET",
-      gradient: "from-emerald-500 to-cyan-500",
+      name: "Sarah Williams",
+      role: "Chief Operating Officer",
+      image: "/api/placeholder/150/150",
+      bio: "Former Director of Operations at Airbnb, MBA from Wharton. Scaled marketplace operations across 100+ countries.",
+      linkedin: "#",
+      achievements: ["Marketplace Excellence Award", "Operations Leader of the Year", "Harvard Business Review Case Study"]
     },
     {
-      name: "David Park",
-      role: "Head of AI",
-      description:
-        "Stanford AI researcher. Making intelligent matching a reality.",
-      avatar: "DP",
-      gradient: "from-cyan-500 to-blue-500",
-    },
+      name: "Dr. David Kim",
+      role: "Chief AI Officer",
+      image: "/api/placeholder/150/150",
+      bio: "Former Research Scientist at DeepMind, PhD in Computer Vision from MIT. Pioneer in multimodal AI systems.",
+      linkedin: "#",
+      achievements: ["Nature AI Research Award", "NIPS Best Paper", "AI Ethics Leadership Recognition"]
+    }
   ];
 
   const milestones = [
     {
-      year: "2020",
-      title: "Founded",
-      description: "Started with a vision to revolutionize local services",
-      icon: Lightbulb,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      year: "2021",
-      title: "AI Launch",
-      description: "Introduced AI-powered matching technology",
-      icon: Brain,
-      color: "from-purple-500 to-pink-500",
-    },
-    {
       year: "2022",
-      title: "1M Users",
-      description: "Reached first million verified users milestone",
-      icon: Users,
-      color: "from-emerald-500 to-green-500",
+      title: "Foundation of Excellence",
+      description: "Loconomy founded with $15M seed funding from tier-1 VCs. Initial AI models developed.",
+      icon: Rocket,
+      color: "from-blue-500 to-cyan-500"
     },
     {
-      year: "2023",
-      title: "Global Scale",
-      description: "Expanded to 180+ countries worldwide",
-      icon: Globe,
-      color: "from-orange-500 to-red-500",
+      year: "2023", 
+      title: "AI Breakthrough",
+      description: "Proprietary neural matching algorithm achieved 97.8% satisfaction rate. Series A $50M raised.",
+      icon: Brain,
+      color: "from-violet-500 to-purple-500"
     },
     {
       year: "2024",
-      title: "Market Leader",
-      description: "Became the #1 platform for premium local services",
-      icon: Crown,
-      color: "from-indigo-500 to-purple-500",
+      title: "Global Expansion",
+      description: "Launched in 127 cities worldwide. 2.1M+ users joined the platform. Industry leadership established.",
+      icon: Globe,
+      color: "from-emerald-500 to-green-500"
     },
+    {
+      year: "2025",
+      title: "Next Frontier",
+      description: "AR integration, voice AI, and predictive analytics. Setting the standard for tomorrow's marketplace.",
+      icon: Gem,
+      color: "from-amber-500 to-orange-500"
+    }
   ];
 
-  const stats = [
-    { label: "Active Users", value: "2.1M+", icon: Users },
-    { label: "Service Providers", value: "500K+", icon: Handshake },
-    { label: "Countries", value: "180+", icon: Globe },
-    { label: "Services Completed", value: "10M+", icon: CheckCircle },
+  const achievements = [
+    {
+      title: "Industry Recognition",
+      items: [
+        "TechCrunch Disruptor Award 2024",
+        "Forbes AI Company of the Year",
+        "Wired Innovation Excellence",
+        "CB Insights AI 100 List"
+      ]
+    },
+    {
+      title: "Market Leadership",
+      items: [
+        "97.8% customer satisfaction rate",
+        "12M+ successful service connections",
+        "Top 8% provider acceptance rate", 
+        "68-second average matching time"
+      ]
+    },
+    {
+      title: "Technology Innovations",
+      items: [
+        "50+ proprietary AI models",
+        "Real-time neural matching",
+        "Military-grade security",
+        "Multi-modal AI interface"
+      ]
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white overflow-hidden relative">
-      {/* Animated Background - Same as Homepage */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(139,92,246,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_40%_60%,rgba(16,185,129,0.08),transparent_50%)]" />
-      </div>
+    <div className="min-h-screen bg-white dark:bg-slate-950">
+      {/* Premium Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-violet-950/50 py-24 md:py-32">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse" />
+        </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 dark:bg-violet-400 rounded-full animate-pulse opacity-30 dark:opacity-40" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-emerald-400 dark:bg-blue-400 rounded-full animate-ping opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-purple-400 dark:bg-emerald-400 rounded-full animate-bounce opacity-15 dark:opacity-20" />
-        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-cyan-400 dark:bg-pink-400 rounded-full animate-pulse opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-              Revolutionizing Local Services Since 2020
+        <div className="relative max-w-7xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-100/80 to-purple-100/80 dark:from-violet-900/30 dark:to-purple-900/30 border border-violet-200/50 dark:border-violet-700/50 backdrop-blur-sm mb-8">
+            <Landmark className="w-4 h-4 text-violet-600 dark:text-violet-400" />
+            <span className="text-sm font-semibold text-violet-700 dark:text-violet-300">
+              Established 2022 • Industry Pioneer
             </span>
-            <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+            <Trophy className="w-4 h-4 text-violet-600 dark:text-violet-400" />
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-none">
-            <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-              Empowering
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-8">
+            <span className="bg-gradient-to-r from-slate-900 via-violet-700 to-slate-900 dark:from-white dark:via-violet-400 dark:to-white bg-clip-text text-transparent">
+              Redefining
             </span>
             <br />
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-              Communities
+            <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              Service Excellence
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-slate-900 via-violet-700 to-slate-900 dark:from-white dark:via-violet-400 dark:to-white bg-clip-text text-transparent">
+              Through AI
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            We're building the world's most
-            <span className="text-transparent bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text font-semibold">
-              {" "}
-              intelligent platform{" "}
-            </span>
-            for local services, connecting communities and enabling prosperity.
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-medium max-w-4xl mx-auto leading-relaxed mb-12">
+            We're not just building a marketplace—we're engineering the future of how{" "}
+            <span className="text-violet-600 dark:text-violet-400 font-semibold">exceptional service providers</span>{" "}
+            and discerning customers connect through{" "}
+            <span className="text-violet-600 dark:text-violet-400 font-semibold">revolutionary AI technology</span>.
           </p>
 
-          {/* Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-emerald-500 flex items-center justify-center mx-auto mb-3">
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-slate-800 dark:text-white mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-slate-600 dark:text-gray-400">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button
               size="lg"
-              className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500"
+              className="h-16 px-12 text-lg font-semibold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 shadow-2xl shadow-violet-500/25 transform hover:scale-105 transition-all duration-300"
               asChild
             >
-              <Link href="/careers">
-                <Rocket className="w-5 h-5 mr-3" />
+              <Link href="/careers" className="flex items-center gap-3">
+                <Rocket className="w-6 h-6" />
                 Join Our Mission
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
+            
             <Button
               size="lg"
               variant="outline"
-              className="rounded-2xl px-12 py-4 font-bold text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500"
+              className="h-16 px-12 text-lg font-semibold border-2 border-violet-200 dark:border-violet-700 hover:bg-violet-50 dark:hover:bg-violet-900/20 transform hover:scale-105 transition-all duration-300"
+              asChild
             >
-              <Play className="w-5 h-5 mr-3" />
-              Watch Our Story
+              <Link href="/vision" className="flex items-center gap-3">
+                <Eye className="w-6 h-6" />
+                Our Vision
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="relative z-10 py-24 px-6">
+      {/* Core Values Section */}
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Our Core Values
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <span className="text-slate-900 dark:text-white">
+                Our
+              </span>{" "}
+              <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                Core Values
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
-              The principles that guide every decision we make and every
-              innovation we create
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              The principles that drive every decision, every innovation, and every interaction
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
-              <Card
-                key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-5 transition-opacity duration-700`}
-                />
-                <CardContent className="p-8 relative z-10">
-                  <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${value.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}
-                  >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {coreValues.map((value, index) => (
+              <Card key={index} className="group relative overflow-hidden border-2 hover:border-violet-200 dark:hover:border-violet-700 transition-all duration-300 transform hover:scale-105">
+                <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                
+                <CardHeader className="relative">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${value.gradient} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
-
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">
+                  <CardTitle className="text-2xl font-bold group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-300">
                     {value.title}
-                  </h3>
-
-                  <p className="text-slate-600 dark:text-gray-300 mb-4 leading-relaxed">
+                  </CardTitle>
+                </CardHeader>
+                
+                <CardContent className="relative">
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                     {value.description}
                   </p>
-
-                  <Badge className="bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300">
-                    <TrendingUp className="w-3 h-3 mr-1" />
+                  
+                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${value.gradient} text-white text-sm font-semibold`}>
+                    <Star className="w-4 h-4" />
                     {value.stats}
-                  </Badge>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -293,44 +305,59 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="relative z-10 py-24 px-6">
+      {/* Leadership Team Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-50/50 to-violet-50/30 dark:from-slate-900/50 dark:to-violet-900/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                Our Journey
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                Visionary Leadership
+              </span>{" "}
+              <span className="text-slate-900 dark:text-white">
+                Team
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
-              From a simple idea to the world's leading local services platform
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              World-class experts from the industry's most innovative companies
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {milestones.map((milestone, index) => (
-              <Card
-                key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
-              >
-                <CardContent className="p-6 relative z-10 text-center">
-                  <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${milestone.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500`}
-                  >
-                    <milestone.icon className="w-7 h-7 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {leadershipTeam.map((leader, index) => (
+              <Card key={index} className="group overflow-hidden border-2 hover:border-violet-200 dark:hover:border-violet-700 transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-6">
+                    <Avatar className="w-24 h-24 border-4 border-violet-200 dark:border-violet-700">
+                      <AvatarImage src={leader.image} alt={leader.name} />
+                      <AvatarFallback className="bg-gradient-to-r from-violet-500 to-purple-500 text-white text-lg font-bold">
+                        {leader.name.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-300">
+                        {leader.name}
+                      </h3>
+                      <p className="text-violet-600 dark:text-violet-400 font-semibold mb-4">
+                        {leader.role}
+                      </p>
+                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        {leader.bio}
+                      </p>
+                      
+                      <div className="space-y-2">
+                        <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                          Key Achievements:
+                        </p>
+                        {leader.achievements.map((achievement, i) => (
+                          <Badge key={i} variant="secondary" className="mr-2 mb-2">
+                            <Trophy className="w-3 h-3 mr-1" />
+                            {achievement}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-
-                  <div className="text-2xl font-black text-blue-600 dark:text-blue-400 mb-2">
-                    {milestone.year}
-                  </div>
-
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
-                    {milestone.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-                    {milestone.description}
-                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -338,96 +365,145 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="relative z-10 py-24 px-6">
+      {/* Company Timeline */}
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Meet Our Team
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <span className="text-slate-900 dark:text-white">
+                Our Journey to
+              </span>{" "}
+              <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                Excellence
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Passionate innovators building the future of local services
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Milestones that define our commitment to revolutionary innovation
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card
-                key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
-              >
-                <CardContent className="p-8 relative z-10 text-center">
-                  <div
-                    className={`w-20 h-20 rounded-full bg-gradient-to-r ${member.gradient} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500`}
-                  >
-                    <span className="text-white font-bold text-2xl">
-                      {member.avatar}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">
-                    {member.name}
-                  </h3>
-
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">
-                    {member.role}
-                  </p>
-
-                  <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-                    {member.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative z-10 py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center">
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur-2xl opacity-10 dark:opacity-20" />
-            <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-blue-200/50 dark:border-white/10 shadow-2xl">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-                  Join Our
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Revolution
-                </span>
-              </h2>
-              <p className="text-xl text-slate-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-                Be part of the movement that's transforming how the world finds
-                and delivers local services.
-              </p>
+            {/* Timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-violet-500 to-purple-500 rounded-full"></div>
+            
+            <div className="space-y-16">
+              {milestones.map((milestone, index) => (
+                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div className="flex-1 px-8">
+                    <Card className="border-2 hover:border-violet-200 dark:hover:border-violet-700 transition-all duration-300 transform hover:scale-105">
+                      <CardContent className="p-8">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${milestone.color} flex items-center justify-center shadow-lg`}>
+                            <milestone.icon className="w-6 h-6 text-white" />
+                          </div>
+                          <Badge variant="outline" className="text-lg px-4 py-2 font-bold">
+                            {milestone.year}
+                          </Badge>
+                        </div>
+                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                          {milestone.title}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                          {milestone.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  
+                  {/* Timeline dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full border-4 border-white dark:border-slate-950 shadow-lg"></div>
+                  
+                  <div className="flex-1"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button
-                  size="lg"
-                  className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 dark:from-violet-600 dark:via-purple-600 dark:to-pink-600 dark:hover:from-violet-500 dark:hover:via-purple-500 dark:hover:to-pink-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 dark:hover:shadow-violet-500/30 transition-all duration-500"
-                  asChild
-                >
-                  <Link href="/careers">
-                    <Building className="w-5 h-5 mr-3" />
-                    Work With Us
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-2xl px-12 py-4 font-bold text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500"
-                  asChild
-                >
-                  <Link href="/contact">
-                    <Heart className="w-5 h-5 mr-3" />
-                    Get In Touch
-                  </Link>
-                </Button>
-              </div>
+      {/* Achievements Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-50/50 to-violet-50/30 dark:from-slate-900/50 dark:to-violet-900/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                Recognition
+              </span>{" "}
+              <span className="text-slate-900 dark:text-white">
+                & Impact
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Industry accolades that validate our commitment to excellence
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {achievements.map((category, index) => (
+              <Card key={index} className="border-2 hover:border-violet-200 dark:hover:border-violet-700 transition-all duration-300 transform hover:scale-105">
+                <CardHeader>
+                  <CardTitle className="text-2xl font-bold text-center text-violet-600 dark:text-violet-400">
+                    {category.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {category.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-700 dark:text-slate-300 font-medium">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-3xl p-12 border-2 border-violet-200/50 dark:border-violet-700/50">
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <span className="text-slate-900 dark:text-white">
+                Join the
+              </span>{" "}
+              <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                Revolution
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
+              Be part of the team that's redefining how the world connects with exceptional service providers through revolutionary AI technology.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button
+                size="lg"
+                className="h-16 px-12 text-lg font-semibold bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 shadow-2xl shadow-violet-500/25 transform hover:scale-105 transition-all duration-300"
+                asChild
+              >
+                <Link href="/careers" className="flex items-center gap-3">
+                  <Users className="w-6 h-6" />
+                  Explore Careers
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-16 px-12 text-lg font-semibold border-2 border-violet-200 dark:border-violet-700 hover:bg-violet-50 dark:hover:bg-violet-900/20 transform hover:scale-105 transition-all duration-300"
+                asChild
+              >
+                <Link href="/contact" className="flex items-center gap-3">
+                  <Handshake className="w-6 h-6" />
+                  Partner With Us
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

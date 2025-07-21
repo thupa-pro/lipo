@@ -27,6 +27,16 @@ import {
   MessageSquare,
   Accessibility,
   DollarSign,
+  Crown,
+  Brain,
+  Rocket,
+  Gem,
+  Zap,
+  Building2,
+  Sparkles,
+  ArrowRight,
+  CheckCircle,
+  TrendingUp
 } from "lucide-react";
 import {
   Select,
@@ -41,316 +51,362 @@ import { useState } from "react";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { toast } = useToast();
-  const [selectedLanguage, setSelectedLanguage] = useState("en"); // Default to English
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
 
-  const footerSections = [
+  const premiumFooterSections = [
     {
-      title: "For Customers",
+      title: "For Elite Customers",
       links: [
-        { href: "/browse", label: "Browse Services" },
-        { href: "/request-service", label: "Request Service" },
-        { href: "/how-it-works", label: "How It Works" },
-        { href: "/pricing", label: "Pricing" },
-        { href: "/safety", label: "Safety & Trust" },
-        { href: "/customer-support", label: "Customer Support" },
+        { href: "/browse-elite", label: "Browse Elite Services", icon: Crown },
+        { href: "/ai-concierge", label: "AI Personal Concierge", icon: Brain },
+        { href: "/enterprise-solutions", label: "Enterprise Solutions", icon: Building2 },
+        { href: "/vip-support", label: "VIP Support", icon: Star },
+        { href: "/customer-success", label: "Success Stories", icon: TrendingUp },
       ],
     },
     {
-      title: "For Providers",
+      title: "For Service Professionals",
       links: [
-        { href: "/become-provider", label: "Become a Provider" },
-        { href: "/provider-resources", label: "Provider Resources" },
-        { href: "/provider-app", label: "Provider App" },
-        { href: "/provider-support", label: "Provider Support" },
-        { href: "/success-stories", label: "Success Stories" },
-        { href: "/training-certification", label: "Training & Certification" },
+        { href: "/provider-elite", label: "Join Elite Network", icon: Crown },
+        { href: "/ai-tools", label: "AI Business Tools", icon: Brain },
+        { href: "/growth-academy", label: "Growth Academy", icon: GraduationCap },
+        { href: "/provider-success", label: "Success Center", icon: Award },
+        { href: "/provider-analytics", label: "Advanced Analytics", icon: TrendingUp },
       ],
     },
     {
-      title: "Company",
+      title: "Platform Excellence",
       links: [
-        { href: "/about", label: "About Us" },
-        { href: "/careers", label: "Careers" },
-        { href: "/press", label: "Press & Media" },
-        { href: "/blog", label: "Blog" },
-        { href: "/investors", label: "Investors" },
-        { href: "/partnerships", label: "Partnerships" },
+        { href: "/ai-technology", label: "AI Technology", icon: Brain },
+        { href: "/security-fortress", label: "Security Fortress", icon: Shield },
+        { href: "/quality-standards", label: "Quality Standards", icon: Award },
+        { href: "/innovation-lab", label: "Innovation Lab", icon: Lightbulb },
+        { href: "/platform-status", label: "Platform Status", icon: CheckCircle },
       ],
     },
     {
-      title: "Support",
+      title: "Company & Vision",
       links: [
-        { href: "/help", label: "Help Center" },
-        { href: "/contact", label: "Contact Us" },
-        { href: "/community", label: "Community" },
-        { href: "/feedback", label: "Feedback" },
-        { href: "/accessibility", label: "Accessibility" },
-        { href: "/sitemap", label: "Sitemap" },
+        { href: "/about-vision", label: "Our Vision", icon: Rocket },
+        { href: "/leadership", label: "Leadership Team", icon: Users },
+        { href: "/careers-elite", label: "Elite Careers", icon: Gem },
+        { href: "/press-media", label: "Press & Media", icon: Newspaper },
+        { href: "/investor-relations", label: "Investor Relations", icon: DollarSign },
       ],
+    },
+  ];
+
+  const trustSignals = [
+    { 
+      icon: Shield, 
+      label: "SOC 2 Type II Certified",
+      description: "Enterprise-grade security"
+    },
+    { 
+      icon: Award, 
+      label: "ISO 27001 Compliant",
+      description: "Global security standard"
+    },
+    { 
+      icon: Users, 
+      label: "2.1M+ Global Users",
+      description: "Trusted worldwide"
+    },
+    { 
+      icon: Star, 
+      label: "97.8% Satisfaction Rate",
+      description: "Exceptional quality"
     },
   ];
 
   const socialLinks = [
-    {
-      href: "https://facebook.com/loconomy",
-      icon: Facebook,
-      label: "Facebook",
+    { 
+      icon: Twitter, 
+      href: "https://twitter.com/loconomy", 
+      label: "Twitter",
+      followers: "125K"
     },
-    { href: "https://twitter.com/loconomy", icon: Twitter, label: "Twitter" },
-    {
-      href: "https://instagram.com/loconomy",
-      icon: Instagram,
-      label: "Instagram",
-    },
-    {
-      href: "https://linkedin.com/company/loconomy",
-      icon: Linkedin,
+    { 
+      icon: Linkedin, 
+      href: "https://linkedin.com/company/loconomy", 
       label: "LinkedIn",
+      followers: "89K"
     },
-    { href: "https://youtube.com/loconomy", icon: Youtube, label: "YouTube" },
+    { 
+      icon: Instagram, 
+      href: "https://instagram.com/loconomy", 
+      label: "Instagram",
+      followers: "156K"
+    },
+    { 
+      icon: Youtube, 
+      href: "https://youtube.com/c/loconomy", 
+      label: "YouTube",
+      followers: "67K"
+    },
   ];
 
-  const trustIndicators = [
-    { icon: Shield, text: "Secure & Safe" },
-    { icon: Award, text: "Award Winning" },
-    { icon: Users, text: "10K+ Users" },
-    { icon: Star, text: "4.9 Rating" },
-  ];
-
-  const availableLanguages = [
+  const languages = [
     { code: "en", name: "English", flag: "🇺🇸" },
-    { code: "zh", name: "中文 (简体)", flag: "🇨🇳" },
-    { code: "hi", name: "हिंदी", flag: "🇮🇳" },
     { code: "es", name: "Español", flag: "🇪🇸" },
-    { code: "ar", name: "العربية", flag: "🇸🇦" },
-    { code: "pt", name: "Português", flag: "🇧🇷" },
-    { code: "bn", name: "বাংলা", flag: "🇧🇩" },
-    { code: "ru", name: "Русский", flag: "🇷🇺" },
-    { code: "ja", name: "日本語", flag: "🇯🇵" },
-    { code: "pa", name: "ਪੰਜਾਬੀ", flag: "🇵🇰" },
-    { code: "de", name: "Deutsch", flag: "🇩🇪" },
-    { code: "ur", name: "اردو", flag: "🇵🇰" },
-    { code: "ko", name: "한국어", flag: "🇰🇷" },
     { code: "fr", name: "Français", flag: "🇫🇷" },
-    { code: "tr", name: "Türkçe", flag: "🇹🇷" },
+    { code: "de", name: "Deutsch", flag: "🇩🇪" },
     { code: "it", name: "Italiano", flag: "🇮🇹" },
-    { code: "th", name: "ไทย", flag: "🇹🇭" },
-    { code: "fa", name: "فارسی", flag: "🇮🇷" },
-    { code: "pl", name: "Polski", flag: "🇵🇱" },
-    { code: "nl", name: "Nederlands", flag: "🇳🇱" },
-    { code: "uk", name: "Українська", flag: "🇺🇦" },
-    { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
-    { code: "he", name: "עברית", flag: "🇮🇱" },
-    { code: "sw", name: "Kiswahili", flag: "🇰🇪" },
-    { code: "ro", name: "Română", flag: "🇷🇴" },
-    { code: "el", name: "Ελληνικά", flag: "🇬🇷" },
-    { code: "cs", name: "Čeština", flag: "🇨🇿" },
-    { code: "hu", name: "Magyar", flag: "🇭🇺" },
-    { code: "fi", name: "Suomi", flag: "🇫🇮" },
-    { code: "da", name: "Dansk", flag: "🇩🇰" },
-    { code: "no", name: "Norsk", flag: "🇳🇴" },
-    { code: "sv", name: "Svenska", flag: "🇸🇪" },
-    { code: "id", name: "Bahasa Indonesia", flag: "🇮🇩" },
-    { code: "ms", name: "Bahasa Melayu", flag: "🇲🇾" },
-    { code: "tl", name: "Filipino", flag: "🇵🇭" },
-    { code: "zh-TW", name: "中文 (繁體)", flag: "🇹🇼" },
+    { code: "pt", name: "Português", flag: "🇵🇹" },
+    { code: "ja", name: "日本語", flag: "🇯🇵" },
+    { code: "zh", name: "中文", flag: "🇨🇳" },
   ];
 
-  const handleLanguageChange = (langCode: string) => {
-    setSelectedLanguage(langCode);
+  const handleNewsletterSubscription = () => {
     toast({
-      title: "Language Changed",
-      description: `Display language set to ${availableLanguages.find((l) => l.code === langCode)?.name}.`,
+      title: "🎉 Welcome to the Elite Circle!",
+      description: "You've subscribed to exclusive insights from industry leaders. Premium content incoming!",
       variant: "default",
     });
   };
 
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 border-t border-gray-800 dark:border-gray-900">
-      {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-teal-500">
-        <div className="container mx-auto px-4 py-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Stay Connected with Loconomy
+    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      {/* Premium Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-600/20 to-purple-600/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-600/15 to-cyan-600/15 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-amber-600/10 to-orange-600/10 rounded-full blur-3xl animate-pulse" />
+      </div>
+
+      {/* Premium Newsletter Section */}
+      <div className="relative border-b border-slate-700/50 bg-gradient-to-r from-violet-900/30 to-purple-900/30 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-violet-500/20 to-purple-500/20 border border-violet-400/30 mb-6">
+              <Sparkles className="w-4 h-4 text-violet-400" />
+              <span className="text-sm font-semibold text-violet-300">
+                Exclusive Elite Insights
+              </span>
+              <Crown className="w-4 h-4 text-violet-400" />
+            </div>
+            
+            <h3 className="text-3xl md:text-4xl font-black mb-4">
+              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                Join the
+              </span>{" "}
+              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
+                Inner Circle
+              </span>
             </h3>
-            <p className="text-lg text-white mb-6 opacity-90">
-              Get the latest updates on new services, special offers, and tips
-              for your home and business.
+            
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
+              Get exclusive access to industry insights, AI innovations, and premium content from the world's leading service marketplace.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          </div>
+
+          <div className="max-w-md mx-auto">
+            <div className="flex gap-3">
               <Input
                 type="email"
-                placeholder="Enter your email address"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:bg-white/20 transition-colors"
+                placeholder="Enter your elite email address"
+                className="flex-1 h-14 px-6 bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-violet-400 focus:ring-violet-400/20"
               />
               <Button
-                variant="secondary"
-                className="bg-white text-blue-600 hover:bg-gray-100 transition-colors"
+                onClick={handleNewsletterSubscription}
+                size="lg"
+                className="h-14 px-8 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 font-semibold shadow-lg shadow-violet-500/25 transform hover:scale-105 transition-all duration-300"
               >
-                <Mail className="w-4 h-4 mr-2" />
-                Subscribe
+                <Rocket className="w-5 h-5 mr-2" />
+                Join Elite
               </Button>
             </div>
-            <p className="text-sm mt-4 text-white opacity-75">
-              Join 50,000+ subscribers. Unsubscribe anytime. Privacy policy
-              applies.
+            
+            <p className="text-xs text-slate-400 mt-3 text-center">
+              🔒 Your privacy is fortress-protected. Unsubscribe anytime.
             </p>
           </div>
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="flex items-center space-x-2 mb-4 transition-opacity hover:opacity-80"
-            >
-              <FooterLogo className="rounded-lg" />
-              <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
-                Loconomy
-              </span>
-            </Link>
-            <p className="text-gray-300 dark:text-gray-400 mb-6 max-w-sm">
-              Connecting communities with trusted local service providers. From
-              home cleaning to professional services, we make it easy to find
-              help when you need it.
-            </p>
-
-            {/* Contact Info */}
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-sm text-white dark:text-gray-200">
-                <Mail className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                <span>hello@loconomy.com</span>
+      <div className="relative max-w-7xl mx-auto px-6 py-16">
+        {/* Top Section - Logo & Mission */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 flex items-center justify-center shadow-xl">
+                <Sparkles className="w-6 h-6 text-white" />
               </div>
-              <div className="flex items-center gap-3 text-sm text-white dark:text-gray-200">
-                <Globe className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                <span>Available in 500+ cities</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-white dark:text-gray-200">
-                <MessageSquare className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                <span>24/7 Online Support</span>
+              <div>
+                <span className="text-3xl font-black bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                  Loconomy
+                </span>
+                <div className="flex items-center gap-2 -mt-1">
+                  <Crown className="w-3 h-3 text-amber-400" />
+                  <span className="text-xs text-violet-400 font-semibold tracking-wider uppercase">
+                    Elite AI Platform
+                  </span>
+                </div>
               </div>
             </div>
+            
+            <p className="text-slate-300 leading-relaxed mb-6 text-lg">
+              Revolutionizing how{" "}
+              <span className="text-violet-400 font-semibold">elite professionals</span>{" "}
+              and discerning customers connect through the world's most advanced{" "}
+              <span className="text-violet-400 font-semibold">AI marketplace</span>.
+            </p>
 
-            {/* Social Links */}
-            <div className="flex space-x-3">
-              {socialLinks.map((social) => (
-                <Button
-                  key={social.label}
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className="rounded-full border-gray-600 dark:border-gray-700 text-gray-300 dark:text-gray-400 hover:bg-gray-700 dark:hover:bg-gray-800 hover:text-white dark:hover:text-gray-200 hover:border-gray-500 dark:hover:border-gray-600 transition-colors"
+            {/* Trust Signals */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {trustSignals.map((signal, index) => (
+                <div key={index} className="flex items-start gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                  <signal.icon className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-semibold text-sm text-white">{signal.label}</div>
+                    <div className="text-xs text-slate-400">{signal.description}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Language Selection */}
+            <div className="mb-8">
+              <label className="block text-sm font-semibold text-slate-300 mb-3">
+                <Globe className="w-4 h-4 inline mr-2" />
+                Global Language
+              </label>
+              <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
+                <SelectTrigger className="w-full bg-slate-800/50 border-slate-600 text-white">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-800 border-slate-600">
+                  {languages.map((lang) => (
+                    <SelectItem key={lang.code} value={lang.code} className="text-white hover:bg-slate-700">
+                      <span className="mr-2">{lang.flag}</span>
+                      {lang.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {premiumFooterSections.map((section, index) => (
+                <div key={index}>
+                  <h4 className="font-bold text-white mb-6 text-lg">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-4">
+                    {section.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <Link
+                          href={link.href}
+                          className="group flex items-center gap-3 text-slate-300 hover:text-violet-400 transition-colors duration-300"
+                        >
+                          <link.icon className="w-4 h-4 text-slate-500 group-hover:text-violet-400 transition-colors duration-300" />
+                          <span className="group-hover:translate-x-1 transition-transform duration-300">
+                            {link.label}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <Separator className="bg-slate-700/50 mb-12" />
+
+        {/* Social Media & Contact */}
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+          <div>
+            <h4 className="font-bold text-white mb-4 text-lg">
+              Connect with Excellence
+            </h4>
+            <div className="flex gap-4">
+              {socialLinks.map((social, index) => (
+                <Link
+                  key={index}
+                  href={social.href}
+                  className="group relative w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center hover:bg-gradient-to-r hover:from-violet-600 hover:to-purple-600 hover:border-transparent transition-all duration-300 transform hover:scale-110"
+                  aria-label={social.label}
                 >
-                  <Link
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <social.icon className="w-4 h-4" />
-                    <span className="sr-only">{social.label}</span>
-                  </Link>
-                </Button>
+                  <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors duration-300" />
+                  
+                  {/* Follower count tooltip */}
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {social.followers} followers
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Footer Links */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="font-semibold text-white dark:text-gray-200 mb-4">
-                {section.title}
-              </h4>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-300 dark:text-gray-400 hover:text-blue-400 dark:hover:text-blue-300 transition-colors text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Contact Information */}
+          <div className="text-center lg:text-right">
+            <h4 className="font-bold text-white mb-4 text-lg">
+              Elite Support
+            </h4>
+            <div className="space-y-3">
+              <div className="flex items-center justify-center lg:justify-end gap-3 text-slate-300">
+                <Mail className="w-4 h-4 text-violet-400" />
+                <span>elite@loconomy.com</span>
+              </div>
+              <div className="flex items-center justify-center lg:justify-end gap-3 text-slate-300">
+                <Phone className="w-4 h-4 text-violet-400" />
+                <span>+1 (855) ELITE-AI</span>
+              </div>
+              <div className="flex items-center justify-center lg:justify-end gap-3 text-slate-300">
+                <MapPin className="w-4 h-4 text-violet-400" />
+                <span>San Francisco, CA • Global</span>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        <Separator className="my-8 bg-gray-700 dark:bg-gray-800" />
+        <Separator className="bg-slate-700/50 my-12" />
 
-        {/* Trust Indicators */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {trustIndicators.map((indicator, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 text-sm text-gray-300 dark:text-gray-400"
-            >
-              <indicator.icon className="w-4 h-4 text-blue-400 dark:text-blue-300" />
-              <span>{indicator.text}</span>
-            </div>
-          ))}
-        </div>
-
-        <Separator className="mb-8 bg-gray-700" />
-
-        {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300 dark:text-gray-400">
+        {/* Bottom Section */}
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
             <span>© {currentYear} Loconomy, Inc. All rights reserved.</span>
-            <Link
-              href="/privacy"
-              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
-            >
+            <Link href="/privacy" className="hover:text-violet-400 transition-colors duration-300">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
-            >
+            <Link href="/terms" className="hover:text-violet-400 transition-colors duration-300">
               Terms of Service
             </Link>
-            <Link
-              href="/cookies"
-              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
-            >
+            <Link href="/cookies" className="hover:text-violet-400 transition-colors duration-300">
               Cookie Policy
             </Link>
-            <Link
-              href="/gdpr"
-              className="hover:underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
-            >
-              GDPR
+            <Link href="/accessibility" className="hover:text-violet-400 transition-colors duration-300 flex items-center gap-2">
+              <Accessibility className="w-4 h-4" />
+              Accessibility
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-gray-300 dark:text-gray-400">
-            {/* Language Selector in Footer */}
-            <Select
-              value={selectedLanguage}
-              onValueChange={handleLanguageChange}
-            >
-              <SelectTrigger className="w-[180px] border-gray-600 dark:border-gray-700 bg-gray-800 dark:bg-gray-900 text-white dark:text-gray-200 hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors">
-                <Globe className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500" />
-                <SelectValue placeholder="Select Language" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 dark:bg-gray-900 border-gray-600 dark:border-gray-700 rounded-md shadow-lg">
-                {availableLanguages.map((lang) => (
-                  <SelectItem
-                    key={lang.code}
-                    value={lang.code}
-                    className="text-white dark:text-gray-200 hover:bg-gray-700 dark:hover:bg-gray-800 focus:bg-gray-700 dark:focus:bg-gray-800 transition-colors"
-                  >
-                    {lang.flag} {lang.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <span>Made with ❤️ for local communities</span>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-sm text-slate-400">
+              <Shield className="w-4 h-4 text-emerald-400" />
+              <span>Platform Status:</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span className="text-emerald-400 font-semibold">All Systems Operational</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Elite Badge */}
+        <div className="text-center mt-12">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-600/20 to-purple-600/20 border border-violet-400/30">
+            <Crown className="w-4 h-4 text-amber-400" />
+            <span className="text-sm font-semibold text-violet-300">
+              Powered by Revolutionary AI • Trusted by Elite Professionals Worldwide
+            </span>
+            <Gem className="w-4 h-4 text-violet-400" />
           </div>
         </div>
       </div>
