@@ -1,7 +1,8 @@
 "use client";
 
-// Role-Aware Navigation for Loconomy Platform
+// Role-Aware Navigation for Loconomy Platform  
 // Adapts navigation based on user role and subscription tier
+// Fixed: Added "use client" directive to resolve React hooks usage in server components
 
 import Link from 'next/link';
 import { User } from '@/types/rbac';
