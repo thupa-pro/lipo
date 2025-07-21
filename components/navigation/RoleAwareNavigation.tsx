@@ -1,3 +1,5 @@
+"use client";
+
 // Role-Aware Navigation for Loconomy Platform
 // Adapts navigation based on user role and subscription tier
 
@@ -32,7 +34,8 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { getUserRole, getUserSubscriptionTier, getInitials } from '@/lib/rbac/utils';
-import { HeaderLogo, MobileNavLogo } from '@/components/ui/Logo';
+import { Logo } from '@/components/ui/logo';
+import { UIContext } from '@/lib/types/logo';
 import { useRouter } from 'next/navigation';
 
 interface RoleAwareNavigationProps {
@@ -148,11 +151,12 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
         <div className="flex h-16 items-center justify-between">
           {/* Logo and brand */}
           <div className="flex items-center gap-4">
-            <HeaderLogo 
-              interactive 
+            <div 
               onClick={() => router.push('/')} 
-              className="hover:opacity-80 transition-opacity"
-            />
+              className="hover:opacity-80 transition-opacity cursor-pointer"
+            >
+              <Logo context={UIContext.NAVIGATION} />
+            </div>
 
             {/* Desktop navigation */}
             <div className="hidden lg:flex items-center gap-6 ml-6">

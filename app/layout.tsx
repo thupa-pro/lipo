@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { getUnifiedSession } from '@/lib/auth/session';
 import { RoleAwareNavigation } from '@/components/navigation/RoleAwareNavigation';
 import { CookieConsent } from '@/components/consent/CookieConsent';
-import { getLogoUrl, LogoVariant, FooterLogo } from '@/components/ui/Logo';
+import { Logo } from '@/components/ui/logo';
+import { UIContext, LogoVariant } from '@/lib/types/logo';
+import { getLogoPath } from '@/lib/utils/logo';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: getLogoUrl(LogoVariant.COLORED),
+                 url: getLogoPath(LogoVariant.COLORED),
         width: 220,
         height: 40,
         alt: 'Loconomy - Premium Local Services Platform',
@@ -47,12 +49,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Loconomy - Premium Local Services Platform',
     description: 'Revolutionizing local service discovery with premium design and AI-powered matching.',
-    images: [getLogoUrl(LogoVariant.COLORED)],
+         images: [getLogoPath(LogoVariant.COLORED)],
     creator: '@loconomy',
   },
   icons: {
     icon: [
-      { url: '/assets/branding/logo-icon.svg', type: 'image/svg+xml' },
+             { url: getLogoPath(LogoVariant.ICON), type: 'image/svg+xml' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
@@ -96,19 +98,19 @@ export default async function RootLayout({
         {/* Preload critical logo assets */}
         <link
           rel="preload"
-          href="/assets/branding/logo-dark.svg"
+          href={getLogoPath(LogoVariant.DARK)}
           as="image"
           type="image/svg+xml"
         />
         <link
           rel="preload"
-          href="/assets/branding/logo-light.svg"
+          href={getLogoPath(LogoVariant.LIGHT)}
           as="image"
           type="image/svg+xml"
         />
         <link
           rel="preload"
-          href="/assets/branding/logo-icon.svg"
+          href={getLogoPath(LogoVariant.ICON)}
           as="image"
           type="image/svg+xml"
         />
@@ -120,7 +122,6 @@ export default async function RootLayout({
       </head>
       <body className={cn(inter.className, 'min-h-screen bg-background font-sans antialiased')}>
         <ThemeProvider
-          attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
@@ -137,9 +138,9 @@ export default async function RootLayout({
           <footer className="border-t bg-muted/50">
             <div className="container mx-auto px-4 py-8">
               <div className="grid gap-8 lg:grid-cols-4">
-                <div className="lg:col-span-2">
-                  <FooterLogo className="mb-4" />
-                  <p className="text-sm text-muted-foreground max-w-md">
+                                 <div className="lg:col-span-2">
+                   <Logo context={UIContext.FOOTER} className="mb-4" />
+                   <p className="text-sm text-muted-foreground max-w-md">
                     Revolutionizing local service discovery with premium design and AI-powered matching. 
                     Connect with verified service providers across 1,200+ cities globally.
                   </p>
@@ -176,11 +177,8 @@ export default async function RootLayout({
             </div>
           </footer>
           
-          {/* Cookie consent with tenant awareness */}
-          <CookieConsent 
-            tenantId={session.tenantId || 'global'}
-            position="bottom"
-          />
+          {/* Cookie consent with user awareness */}
+          <CookieConsent user={session.user} />
           
           {/* Toast notifications */}
           <Toaster />
