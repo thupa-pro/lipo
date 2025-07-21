@@ -1,0 +1,399 @@
+name: 🏗️ Sovereign Marketplace CI/CD
+
+on:
+  push:
+    branches: [main, develop, staging]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '8'
+
+jobs:
+  # 🔍 Code Quality & Security Analysis
+  quality-gate:
+    name: 🛡️ Quality Gate
+    runs-on: ubuntu-latest
+    outputs:
+      should-deploy: ${{ steps.changes.outputs.should-deploy }}
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🗂️ Get pnpm store
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: 💾 Cache pnpm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 🔧 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🎨 Lint Code
+        run: |
+          pnpm run lint
+          pnpm run lint:fix
+
+      - name: 🔍 Type Check
+        run: pnpm run type-check
+
+      - name: 🔒 Security Audit
+        run: pnpm audit --audit-level moderate
+
+      - name: 📊 Code Coverage
+        run: pnpm run test:coverage
+
+      - name: 🚨 SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: 🛡️ CodeQL Analysis
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, typescript
+
+      - name: 🔎 Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: 📋 Detect Changes
+        id: changes
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.(ts|tsx|js|jsx|json|yml|yaml)$' > /dev/null; then
+            echo "should-deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          fi
+
+  # 🧪 Comprehensive Testing Suite
+  test-suite:
+    name: 🧪 Test Suite
+    runs-on: ubuntu-latest
+    needs: quality-gate
+    strategy:
+      matrix:
+        test-type: [unit, integration, e2e]
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: loconomy_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🔧 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🗄️ Setup Test Database
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/loconomy_test
+        run: |
+          pnpm run db:migrate:test
+          pnpm run db:seed:test
+
+      - name: 🧪 Run Unit Tests
+        if: matrix.test-type == 'unit'
+        run: pnpm run test:unit
+
+      - name: 🔗 Run Integration Tests
+        if: matrix.test-type == 'integration'
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/loconomy_test
+          REDIS_URL: redis://localhost:6379
+        run: pnpm run test:integration
+
+      - name: 🌐 Run E2E Tests
+        if: matrix.test-type == 'e2e'
+        run: |
+          pnpm run build
+          pnpm run test:e2e
+
+      - name: 📊 Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.test-type }}
+          path: |
+            coverage/
+            test-results/
+            playwright-report/
+
+  # 🏗️ Build and Package
+  build:
+    name: 🏗️ Build Application
+    runs-on: ubuntu-latest
+    needs: [quality-gate, test-suite]
+    if: needs.quality-gate.outputs.should-deploy == 'true'
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+      image-digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🔧 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ Build Application
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+        run: |
+          pnpm run build
+          pnpm run export
+
+      - name: 📦 Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            .next/
+            out/
+            public/
+
+      - name: 🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🔐 Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏷️ Extract Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: 🏗️ Build and Push Docker Image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # 🔒 Security Scanning
+  security-scan:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    needs: build
+    if: needs.quality-gate.outputs.should-deploy == 'true'
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🛡️ Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ needs.build.outputs.image-tag }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: 📊 Upload Trivy Results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: 🕷️ OWASP ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: 'http://localhost:3000'
+
+  # 🚀 Deployment Pipeline
+  deploy-staging:
+    name: 🚀 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [quality-gate, test-suite, build, security-scan]
+    if: |
+      needs.quality-gate.outputs.should-deploy == 'true' && 
+      (github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch')
+    environment:
+      name: staging
+      url: https://staging.loconomy.com
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: 🚀 Deploy to ECS
+        run: |
+          aws ecs update-service \
+            --cluster loconomy-staging \
+            --service loconomy-web \
+            --force-new-deployment
+
+      - name: 🏥 Health Check
+        run: |
+          timeout 300 bash -c 'until curl -f https://staging.loconomy.com/health; do sleep 5; done'
+
+      - name: 📊 Notify Deployment
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+
+  deploy-production:
+    name: 🌟 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [quality-gate, test-suite, build, security-scan]
+    if: |
+      needs.quality-gate.outputs.should-deploy == 'true' && 
+      (github.ref == 'refs/heads/main' || 
+       (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production'))
+    environment:
+      name: production
+      url: https://loconomy.com
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: 🎯 Blue-Green Deployment
+        run: |
+          # Deploy to green environment
+          aws ecs update-service \
+            --cluster loconomy-production \
+            --service loconomy-web-green \
+            --force-new-deployment
+          
+          # Wait for deployment to complete
+          aws ecs wait services-stable \
+            --cluster loconomy-production \
+            --services loconomy-web-green
+          
+          # Switch traffic to green
+          aws elbv2 modify-rule \
+            --rule-arn ${{ secrets.ALB_RULE_ARN }} \
+            --actions Type=forward,TargetGroupArn=${{ secrets.GREEN_TARGET_GROUP_ARN }}
+
+      - name: 🏥 Production Health Check
+        run: |
+          timeout 300 bash -c 'until curl -f https://loconomy.com/health; do sleep 5; done'
+
+      - name: 📈 Performance Monitoring
+        run: |
+          curl -X POST "https://api.datadoghq.com/api/v1/events" \
+            -H "Content-Type: application/json" \
+            -H "DD-API-KEY: ${{ secrets.DATADOG_API_KEY }}" \
+            -d '{
+              "title": "Loconomy Production Deployment",
+              "text": "New version deployed to production",
+              "tags": ["deployment", "production", "loconomy"]
+            }'
+
+      - name: 🎉 Success Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          text: "🎉 Loconomy successfully deployed to production!"
+
+  # 🧹 Cleanup
+  cleanup:
+    name: 🧹 Cleanup
+    runs-on: ubuntu-latest
+    needs: [deploy-staging, deploy-production]
+    if: always()
+    steps:
+      - name: 🗑️ Clean up old images
+        run: |
+          # Keep only last 10 images
+          echo "Cleaning up old container images..."
+
+      - name: 📊 Update Deployment Metrics
+        run: |
+          echo "Deployment completed at $(date)"

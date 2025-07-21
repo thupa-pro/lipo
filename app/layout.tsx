@@ -10,16 +10,20 @@ import { CookieConsent } from '@/components/consent/CookieConsent';
 import { Logo } from '@/components/ui/logo';
 import { UIContext, LogoVariant } from '@/lib/types/logo';
 import { getLogoPath } from '@/lib/utils/logo';
+import { Suspense } from 'react';
+import { SovereignObservabilityProvider } from '@/lib/observability/providers';
+import { SovereignAnalyticsProvider } from '@/lib/analytics/providers';
+import { ErrorBoundary } from '@/components/error-boundary';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Loconomy - Premium Local Services Platform',
-  description: 'Revolutionizing local service discovery with premium design and AI-powered matching. Connect with verified service providers across 1,200+ cities globally.',
-  keywords: 'local services, marketplace, AI-powered, premium services, service providers, booking platform',
-  authors: [{ name: 'Loconomy Team' }],
+  title: 'Loconomy - Elite AI-Powered Local Services Platform',
+  description: 'Experience the world\'s most advanced AI marketplace where elite professionals meet intelligent matching in under 90 seconds. Revolutionary service excellence through cutting-edge technology.',
+  keywords: 'elite local services, AI marketplace, premium service providers, intelligent matching, revolutionary AI, sovereign platform, luxury services',
+  authors: [{ name: 'Loconomy Elite Team' }],
   creator: 'Loconomy',
-  publisher: 'Loconomy',
+  publisher: 'Loconomy Inc.',
   formatDetection: {
     email: false,
     address: false,
@@ -30,42 +34,28 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Loconomy - Premium Local Services Platform',
-    description: 'Revolutionizing local service discovery with premium design and AI-powered matching.',
+    title: 'Loconomy - Elite AI-Powered Local Services Platform',
+    description: 'Experience the world\'s most advanced AI marketplace where elite professionals meet intelligent matching in under 90 seconds.',
     url: '/',
     siteName: 'Loconomy',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-                 url: getLogoPath(LogoVariant.COLORED),
-        width: 220,
-        height: 40,
-        alt: 'Loconomy - Premium Local Services Platform',
+        url: getLogoPath(LogoVariant.COLORED),
+        width: 1200,
+        height: 630,
+        alt: 'Loconomy - Elite AI-Powered Local Services Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Loconomy - Premium Local Services Platform',
-    description: 'Revolutionizing local service discovery with premium design and AI-powered matching.',
-         images: [getLogoPath(LogoVariant.COLORED)],
-    creator: '@loconomy',
+    title: 'Loconomy - Elite AI-Powered Local Services Platform',
+    description: 'Experience the world\'s most advanced AI marketplace where elite professionals meet intelligent matching.',
+    images: [getLogoPath(LogoVariant.COLORED)],
+    creator: '@Loconomy',
   },
-  icons: {
-    icon: [
-             { url: getLogoPath(LogoVariant.ICON), type: 'image/svg+xml' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#3B82F6' },
-    ],
-  },
-  manifest: '/site.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -78,9 +68,11 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.GOOGLE_VERIFICATION_CODE,
-    yandex: process.env.YANDEX_VERIFICATION_CODE,
-    yahoo: process.env.YAHOO_VERIFICATION_CODE,
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.YANDEX_VERIFICATION,
+    other: {
+      'msvalidate.01': process.env.BING_SITE_VERIFICATION || '',
+    },
   },
 };
 
@@ -89,100 +81,180 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Get user session server-side for navigation
   const session = await getUnifiedSession();
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preload critical logo assets */}
-        <link
-          rel="preload"
-          href={getLogoPath(LogoVariant.DARK)}
-          as="image"
-          type="image/svg+xml"
-        />
-        <link
-          rel="preload"
-          href={getLogoPath(LogoVariant.LIGHT)}
-          as="image"
-          type="image/svg+xml"
-        />
-        <link
-          rel="preload"
-          href={getLogoPath(LogoVariant.ICON)}
-          as="image"
-          type="image/svg+xml"
-        />
+        {/* Preload critical assets */}
+        <link rel="preload" href={getLogoPath(LogoVariant.LIGHT)} as="image" />
+        <link rel="preload" href={getLogoPath(LogoVariant.DARK)} as="image" />
+        <link rel="preload" href={getLogoPath(LogoVariant.COLORED)} as="image" />
         
-        {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#3B82F6" />
-        <meta name="msapplication-TileColor" content="#3B82F6" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
+        {/* Critical CSS for logo system */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .logo-container { display: flex; align-items: center; }
+            .logo-responsive { max-width: 100%; height: auto; }
+            .logo-dark-mode { display: none; }
+            @media (prefers-color-scheme: dark) {
+              .logo-light-mode { display: none; }
+              .logo-dark-mode { display: block; }
+            }
+          `
+        }} />
+
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Loconomy",
+              "description": "Elite AI-Powered Local Services Platform",
+              "url": "https://loconomy.com",
+              "logo": getLogoPath(LogoVariant.COLORED),
+              "sameAs": [
+                "https://twitter.com/Loconomy",
+                "https://linkedin.com/company/loconomy",
+                "https://facebook.com/loconomy"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-855-ELITE-AI",
+                "contactType": "customer service",
+                "availableLanguage": ["English", "Spanish", "French"]
+              }
+            })
+          }}
+        />
+
+        {/* Security Headers */}
+        <meta httpEquiv="Content-Security-Policy" content={`
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+            https://www.google-analytics.com 
+            https://www.googletagmanager.com
+            https://js.stripe.com
+            https://checkout.stripe.com
+            https://app.posthog.com;
+          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+          font-src 'self' https://fonts.gstatic.com;
+          img-src 'self' data: blob: https: http:;
+          connect-src 'self' 
+            https://api.openai.com
+            https://supabase.co
+            https://app.posthog.com
+            https://o4507659827478528.ingest.us.sentry.io;
+          frame-src 'self' https://js.stripe.com https://checkout.stripe.com;
+          object-src 'none';
+          base-uri 'self';
+          form-action 'self';
+        `.replace(/\s+/g, ' ').trim()} />
       </head>
-      <body className={cn(inter.className, 'min-h-screen bg-background font-sans antialiased')}>
-        <ThemeProvider
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {/* Navigation with role-aware logo */}
-          <RoleAwareNavigation user={session.user} />
-          
-          {/* Main content */}
-          <main className="flex-1">
-            {children}
-          </main>
-          
-          {/* Footer with logo */}
-          <footer className="border-t bg-muted/50">
-            <div className="container mx-auto px-4 py-8">
-              <div className="grid gap-8 lg:grid-cols-4">
-                                 <div className="lg:col-span-2">
-                   <Logo context={UIContext.FOOTER} className="mb-4" />
-                   <p className="text-sm text-muted-foreground max-w-md">
-                    Revolutionizing local service discovery with premium design and AI-powered matching. 
-                    Connect with verified service providers across 1,200+ cities globally.
-                  </p>
+      <body className={cn(
+        inter.className,
+        "min-h-screen bg-background font-sans antialiased",
+        "selection:bg-violet-200 dark:selection:bg-violet-800"
+      )}>
+        <ErrorBoundary>
+          <SovereignObservabilityProvider>
+            <SovereignAnalyticsProvider userId={session?.user?.id}>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <div className="relative flex min-h-screen flex-col">
+                  {/* Background Effects */}
+                  <div className="fixed inset-0 -z-10 overflow-hidden">
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse" />
+                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse" />
+                  </div>
+
+                  {/* Skip to main content for accessibility */}
+                  <a
+                    href="#main-content"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-violet-600 text-white px-4 py-2 rounded-md z-50 transition-all"
+                  >
+                    Skip to main content
+                  </a>
+
+                  {/* Navigation */}
+                  <Suspense fallback={
+                    <div className="h-16 bg-background/80 backdrop-blur-sm border-b animate-pulse" />
+                  }>
+                    <RoleAwareNavigation />
+                  </Suspense>
+
+                  {/* Main Content */}
+                  <main id="main-content" className="flex-1">
+                    {children}
+                  </main>
+
+                  {/* Footer with Logo */}
+                  <footer className="border-t bg-background/80 backdrop-blur-sm">
+                    <div className="container py-8">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <Logo 
+                            variant={LogoVariant.LIGHT}
+                            size="sm"
+                            context={UIContext.FOOTER}
+                            alt="Loconomy - Elite AI Platform"
+                            className="logo-responsive"
+                          />
+                          <div className="text-sm text-muted-foreground">
+                            © 2024 Loconomy Inc. Elite AI-Powered Marketplace.
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                            All Systems Operational
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </footer>
+
+                  {/* Cookie Consent */}
+                  <Suspense fallback={null}>
+                    <CookieConsent user={session?.user} />
+                  </Suspense>
+
+                  {/* Toast Notifications */}
+                  <Toaster />
                 </div>
-                <div>
-                  <h3 className="font-semibold mb-4">Platform</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li><a href="/services" className="hover:text-foreground transition-colors">Browse Services</a></li>
-                    <li><a href="/providers" className="hover:text-foreground transition-colors">Find Providers</a></li>
-                    <li><a href="/how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
-                    <li><a href="/pricing" className="hover:text-foreground transition-colors">Pricing</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-4">Company</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li><a href="/about" className="hover:text-foreground transition-colors">About Us</a></li>
-                    <li><a href="/careers" className="hover:text-foreground transition-colors">Careers</a></li>
-                    <li><a href="/press" className="hover:text-foreground transition-colors">Press</a></li>
-                    <li><a href="/contact" className="hover:text-foreground transition-colors">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="border-t mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
-                <p className="text-sm text-muted-foreground">
-                  © 2024 Loconomy. All rights reserved.
-                </p>
-                <div className="flex space-x-4 mt-4 sm:mt-0 text-sm text-muted-foreground">
-                  <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>
-                  <a href="/terms" className="hover:text-foreground transition-colors">Terms</a>
-                  <a href="/cookies" className="hover:text-foreground transition-colors">Cookies</a>
-                </div>
-              </div>
-            </div>
-          </footer>
-          
-          {/* Cookie consent with user awareness */}
-          <CookieConsent user={session.user} />
-          
-          {/* Toast notifications */}
-          <Toaster />
-        </ThemeProvider>
+              </ThemeProvider>
+            </SovereignAnalyticsProvider>
+          </SovereignObservabilityProvider>
+        </ErrorBoundary>
+
+        {/* Performance Monitoring Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Performance monitoring
+              if (typeof window !== 'undefined') {
+                window.addEventListener('load', function() {
+                  setTimeout(function() {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    if (perfData && window.posthog) {
+                      window.posthog.capture('page_performance', {
+                        load_time: perfData.loadEventEnd - perfData.loadEventStart,
+                        dom_ready: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+                        url: window.location.pathname
+                      });
+                    }
+                  }, 0);
+                });
+              }
+            `
+          }}
+        />
       </body>
     </html>
   );

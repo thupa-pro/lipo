@@ -88,6 +88,7 @@
     "path": "^0.12.7",
     "pg": "^8.16.3",
     "pino": "^9.0.0",
+    "posthog-js": "^1.157.2",
     "posthog-node": "5.1.1",
     "prisma": "^6.12.0",
     "react": "^18.3.1",
@@ -123,13 +124,20 @@
     "@types/node": "^20.14.13",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "@vitejs/plugin-react": "^4.2.0",
     "@vitest/browser": "^1.0.0",
     "@vitest/ui": "^1.0.0",
     "cssnano": "^7.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "happy-dom": "18.0.1",
     "jsdom": "^24.0.0",
     "postcss": "^8.5",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "vite": "7.0.0",
@@ -140,9 +148,80 @@
     "dev": "NODE_OPTIONS='--max-old-space-size=4096' next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "analyze": "ANALYZE=true npm run build",
     "analyze:server": "ANALYZE=true BUNDLE_ANALYZE=server npm run build",
-    "analyze:browser": "ANALYZE=true BUNDLE_ANALYZE=browser npm run build"
+    "analyze:browser": "ANALYZE=true BUNDLE_ANALYZE=browser npm run build",
+    
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    
+    "test": "vitest",
+    "test:unit": "vitest run --config vitest.config.unit.js",
+    "test:integration": "vitest run --config vitest.config.integration.js",
+    "test:e2e": "playwright test",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch",
+    "test:ui": "vitest --ui",
+    
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:test": "prisma migrate dev --schema=./prisma/schema.test.prisma",
+    "db:migrate:prod": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
+    "db:seed:test": "NODE_ENV=test prisma db seed",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset",
+    
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "supabase:reset": "supabase db reset",
+    "supabase:migrate": "supabase db push",
+    "supabase:types": "supabase gen types typescript --local",
+    
+    "docker:build": "docker build -t loconomy:latest .",
+    "docker:run": "docker run -p 3000:3000 loconomy:latest",
+    "docker:dev": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "postbuild": "next-sitemap",
+    
+    "health-check": "node scripts/health-check.js",
+    "performance-test": "node scripts/performance-test.js",
+    "security-scan": "npm audit --audit-level=moderate",
+    "bundle-analyze": "npm run analyze && open .next/analyze/client.html",
+    
+    "ai:embed": "node scripts/ai-embed.js",
+    "ai:train": "node scripts/ai-train.js",
+    "ai:migrate": "node scripts/ai-migrate-vectors.js"
   },
-  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run type-check && npm run test:unit"
+    }
+  },
+  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
 }

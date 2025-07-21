@@ -1,459 +1,392 @@
-import { openai } from '@ai-sdk/openai';
-import { embed } from 'ai';
-import { prisma } from '@/lib/prisma';
+import { createClient } from '@supabase/supabase-js';
+import { OpenAIEmbeddings } from '@langchain/openai';
+import { z } from 'zod';
 
-export interface VectorSearchResult {
-  id: string;
-  content: string;
-  metadata: Record<string, any>;
-  similarity: number;
-}
+// Vector Search Schema for Sovereign Marketplace
+export const SearchQuerySchema = z.object({
+  query: z.string().min(1),
+  filters: z.object({
+    location: z.string().optional(),
+    serviceCategory: z.string().optional(),
+    priceRange: z.object({
+      min: z.number().optional(),
+      max: z.number().optional(),
+    }).optional(),
+    rating: z.number().min(0).max(5).optional(),
+    availability: z.boolean().optional(),
+    premiumOnly: z.boolean().optional(),
+  }).optional(),
+  limit: z.number().min(1).max(100).default(20),
+  threshold: z.number().min(0).max(1).default(0.7),
+});
 
-export interface EmbeddingDocument {
-  id: string;
-  content: string;
-  metadata: Record<string, any>;
-  embedding?: number[];
-}
+export type SearchQuery = z.infer<typeof SearchQuerySchema>;
 
-export class VectorSearchService {
-  private static instance: VectorSearchService;
+export const SearchResultSchema = z.object({
+  id: z.string(),
+  type: z.enum(['provider', 'listing', 'service']),
+  title: z.string(),
+  description: z.string(),
+  score: z.number().min(0).max(1),
+  metadata: z.record(z.any()),
+  embedding: z.array(z.number()).optional(),
+});
 
-  public static getInstance(): VectorSearchService {
-    if (!VectorSearchService.instance) {
-      VectorSearchService.instance = new VectorSearchService();
-    }
-    return VectorSearchService.instance;
+export type SearchResult = z.infer<typeof SearchResultSchema>;
+
+// Sovereign Vector Search Engine
+export class SovereignVectorSearch {
+  private supabase;
+  private embeddings: OpenAIEmbeddings;
+
+  constructor() {
+    this.supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    this.embeddings = new OpenAIEmbeddings({
+      openAIApiKey: process.env.OPENAI_API_KEY,
+      modelName: 'text-embedding-3-large',
+      dimensions: 1536,
+    });
   }
 
-  /**
-   * Generate embeddings for text content
-   */
-  async generateEmbedding(text: string): Promise<number[]> {
+  // Search providers using semantic similarity
+  async searchProviders(searchQuery: SearchQuery): Promise<SearchResult[]> {
+    const validatedQuery = SearchQuerySchema.parse(searchQuery);
+    
+    // Generate embedding for search query
+    const queryEmbedding = await this.embeddings.embedQuery(validatedQuery.query);
+
+    // Build SQL query with filters
+    let sqlQuery = `
+      SELECT 
+        p.id,
+        'provider' as type,
+        p.name as title,
+        p.description,
+        p.metadata,
+        (p.embedding <=> $1) as distance,
+        (1 - (p.embedding <=> $1)) as score
+      FROM sovereign_providers p
+      WHERE (p.embedding <=> $1) < $2
+    `;
+
+    const params: any[] = [JSON.stringify(queryEmbedding), 1 - validatedQuery.threshold];
+    let paramIndex = 3;
+
+    // Add filters
+    if (validatedQuery.filters?.location) {
+      sqlQuery += ` AND p.location ILIKE $${paramIndex}`;
+      params.push(`%${validatedQuery.filters.location}%`);
+      paramIndex++;
+    }
+
+    if (validatedQuery.filters?.serviceCategory) {
+      sqlQuery += ` AND p.service_categories @> $${paramIndex}`;
+      params.push(JSON.stringify([validatedQuery.filters.serviceCategory]));
+      paramIndex++;
+    }
+
+    if (validatedQuery.filters?.rating) {
+      sqlQuery += ` AND p.average_rating >= $${paramIndex}`;
+      params.push(validatedQuery.filters.rating);
+      paramIndex++;
+    }
+
+    if (validatedQuery.filters?.premiumOnly) {
+      sqlQuery += ` AND p.is_premium = true`;
+    }
+
+    if (validatedQuery.filters?.availability) {
+      sqlQuery += ` AND p.is_available = true`;
+    }
+
+    sqlQuery += ` ORDER BY score DESC LIMIT $${paramIndex}`;
+    params.push(validatedQuery.limit);
+
     try {
-      const { embedding } = await embed({
-        model: openai.embedding('text-embedding-3-small'),
-        value: text,
+      const { data, error } = await this.supabase.rpc('vector_search_providers', {
+        query_embedding: queryEmbedding,
+        similarity_threshold: validatedQuery.threshold,
+        match_count: validatedQuery.limit,
+        filters: validatedQuery.filters || {},
       });
+
+      if (error) {
+        console.error('Vector search error:', error);
+        throw new Error(`Vector search failed: ${error.message}`);
+      }
+
+      return data?.map((row: any) => ({
+        id: row.id,
+        type: 'provider' as const,
+        title: row.title,
+        description: row.description,
+        score: row.score,
+        metadata: row.metadata,
+      })) || [];
+
+    } catch (error) {
+      console.error('Provider search failed:', error);
+      return [];
+    }
+  }
+
+  // Search listings using semantic similarity
+  async searchListings(searchQuery: SearchQuery): Promise<SearchResult[]> {
+    const validatedQuery = SearchQuerySchema.parse(searchQuery);
+    
+    // Generate embedding for search query
+    const queryEmbedding = await this.embeddings.embedQuery(validatedQuery.query);
+
+    try {
+      const { data, error } = await this.supabase.rpc('vector_search_listings', {
+        query_embedding: queryEmbedding,
+        similarity_threshold: validatedQuery.threshold,
+        match_count: validatedQuery.limit,
+        filters: validatedQuery.filters || {},
+      });
+
+      if (error) {
+        console.error('Listing search error:', error);
+        throw new Error(`Listing search failed: ${error.message}`);
+      }
+
+      return data?.map((row: any) => ({
+        id: row.id,
+        type: 'listing' as const,
+        title: row.title,
+        description: row.description,
+        score: row.score,
+        metadata: row.metadata,
+      })) || [];
+
+    } catch (error) {
+      console.error('Listing search failed:', error);
+      return [];
+    }
+  }
+
+  // Hybrid search combining providers and listings
+  async hybridSearch(searchQuery: SearchQuery): Promise<{
+    providers: SearchResult[];
+    listings: SearchResult[];
+    combined: SearchResult[];
+  }> {
+    const [providers, listings] = await Promise.all([
+      this.searchProviders(searchQuery),
+      this.searchListings(searchQuery),
+    ]);
+
+    // Combine and re-rank results
+    const combined = [...providers, ...listings]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, searchQuery.limit);
+
+    return {
+      providers,
+      listings,
+      combined,
+    };
+  }
+
+  // Generate embeddings for new content
+  async embedContent(content: {
+    id: string;
+    type: 'provider' | 'listing';
+    text: string;
+    metadata?: any;
+  }): Promise<number[]> {
+    try {
+      const embedding = await this.embeddings.embedQuery(content.text);
+      
+      // Store embedding in appropriate table
+      if (content.type === 'provider') {
+        await this.supabase
+          .from('sovereign_providers')
+          .upsert({
+            id: content.id,
+            embedding: JSON.stringify(embedding),
+            content: content.text,
+            metadata: content.metadata,
+            updated_at: new Date().toISOString(),
+          });
+      } else {
+        await this.supabase
+          .from('sovereign_listings')
+          .upsert({
+            id: content.id,
+            embedding: JSON.stringify(embedding),
+            content: content.text,
+            metadata: content.metadata,
+            updated_at: new Date().toISOString(),
+          });
+      }
+
       return embedding;
     } catch (error) {
-      console.error('Error generating embedding:', error);
-      // Return a dummy embedding for development
-      return new Array(1536).fill(0).map(() => Math.random() - 0.5);
+      console.error('Embedding generation failed:', error);
+      throw new Error(`Embedding failed: ${error.message}`);
     }
   }
 
-  /**
-   * Index a service listing for vector search
-   */
-  async indexServiceListing(serviceId: string): Promise<void> {
-    try {
-      const service = await prisma.service.findUnique({
-        where: { id: serviceId },
-        include: {
-          provider: {
-            select: {
-              name: true,
-              profile: {
-                select: {
-                  bio: true,
-                  verified: true,
-                },
-              },
-            },
-          },
-          reviews: {
-            select: {
-              comment: true,
-              rating: true,
-            },
-            take: 5,
-            orderBy: {
-              createdAt: 'desc',
-            },
-          },
-        },
-      });
-
-      if (!service) {
-        throw new Error(`Service ${serviceId} not found`);
+  // Bulk embed multiple items
+  async bulkEmbed(items: Array<{
+    id: string;
+    type: 'provider' | 'listing';
+    text: string;
+    metadata?: any;
+  }>): Promise<void> {
+    const batchSize = 10;
+    
+    for (let i = 0; i < items.length; i += batchSize) {
+      const batch = items.slice(i, i + batchSize);
+      
+      await Promise.all(
+        batch.map(item => this.embedContent(item))
+      );
+      
+      // Rate limiting
+      if (i + batchSize < items.length) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
       }
-
-      // Combine all relevant text for embedding
-      const textContent = [
-        service.title,
-        service.description,
-        service.category,
-        service.location,
-        service.provider.name,
-        service.provider.profile?.bio || '',
-        ...service.reviews.map(r => r.comment || ''),
-        ...(service.tags ? JSON.parse(service.tags) : []),
-      ].filter(Boolean).join(' ');
-
-      // Generate embedding
-      const embedding = await this.generateEmbedding(textContent);
-
-      // Update service with search vector (stored as JSON string for SQLite)
-      await prisma.service.update({
-        where: { id: serviceId },
-        data: {
-          searchVector: JSON.stringify(embedding),
-        },
-      });
-
-      console.log(`📊 Indexed service: ${service.title}`);
-    } catch (error) {
-      console.error('Error indexing service:', error);
     }
   }
 
-  /**
-   * Perform semantic search across services
-   */
-  async semanticSearch(
-    query: string,
-    limit: number = 10,
-    filters?: {
-      category?: string;
-      location?: string;
-      priceMin?: number;
-      priceMax?: number;
-    }
-  ): Promise<VectorSearchResult[]> {
+  // Find similar providers
+  async findSimilarProviders(providerId: string, limit: number = 10): Promise<SearchResult[]> {
     try {
-      // Generate embedding for search query
-      const queryEmbedding = await this.generateEmbedding(query);
-
-      // Get all services with embeddings
-      const whereClause: any = {
-        status: 'ACTIVE',
-        searchVector: {
-          not: null,
-        },
-      };
-
-      if (filters) {
-        if (filters.category) whereClause.category = filters.category;
-        if (filters.location) whereClause.location = { contains: filters.location };
-        if (filters.priceMin) whereClause.price = { gte: filters.priceMin };
-        if (filters.priceMax) whereClause.price = { ...whereClause.price, lte: filters.priceMax };
-      }
-
-      const services = await prisma.service.findMany({
-        where: whereClause,
-        include: {
-          provider: {
-            select: {
-              name: true,
-              image: true,
-              profile: {
-                select: {
-                  verified: true,
-                  rating: true,
-                },
-              },
-            },
-          },
-          reviews: {
-            select: {
-              rating: true,
-            },
-          },
-          _count: {
-            select: {
-              reviews: true,
-            },
-          },
-        },
+      const { data, error } = await this.supabase.rpc('find_similar_providers', {
+        provider_id: providerId,
+        match_count: limit,
       });
 
-      // Calculate similarity scores
-      const results: VectorSearchResult[] = services
-        .map(service => {
-          if (!service.searchVector) return null;
+      if (error) {
+        console.error('Similar providers search error:', error);
+        return [];
+      }
 
-          try {
-            const serviceEmbedding = JSON.parse(service.searchVector);
-            const similarity = this.cosineSimilarity(queryEmbedding, serviceEmbedding);
+      return data?.map((row: any) => ({
+        id: row.id,
+        type: 'provider' as const,
+        title: row.title,
+        description: row.description,
+        score: row.similarity,
+        metadata: row.metadata,
+      })) || [];
 
-            return {
-              id: service.id,
-              content: service.title,
-              similarity,
-              metadata: {
-                title: service.title,
-                description: service.description,
-                category: service.category,
-                price: service.price,
-                location: service.location,
-                rating: service.reviews.length > 0
-                  ? service.reviews.reduce((sum, r) => sum + r.rating, 0) / service.reviews.length
-                  : 0,
-                reviewCount: service._count.reviews,
-                provider: {
-                  name: service.provider.name,
-                  image: service.provider.image,
-                  verified: service.provider.profile?.verified || false,
-                  rating: service.provider.profile?.rating,
-                },
-                images: service.images ? JSON.parse(service.images) : [],
-                tags: service.tags ? JSON.parse(service.tags) : [],
-              },
-            };
-          } catch (error) {
-            console.error('Error parsing service embedding:', error);
-            return null;
-          }
-        })
-        .filter((result): result is VectorSearchResult => result !== null)
-        .sort((a, b) => b.similarity - a.similarity)
-        .slice(0, limit);
-
-      return results;
     } catch (error) {
-      console.error('Error performing semantic search:', error);
+      console.error('Similar providers search failed:', error);
       return [];
     }
   }
 
-  /**
-   * Get personalized recommendations for a user
-   */
-  async getPersonalizedRecommendations(
-    userId: string,
-    limit: number = 5
-  ): Promise<VectorSearchResult[]> {
+  // Get recommendations for customer
+  async getRecommendations(customerId: string, limit: number = 10): Promise<SearchResult[]> {
     try {
-      // Get user's booking history and preferences
-      const userBookings = await prisma.booking.findMany({
-        where: { customerId: userId },
-        include: {
-          service: {
-            select: {
-              title: true,
-              description: true,
-              category: true,
-              location: true,
-            },
-          },
-        },
-        orderBy: { createdAt: 'desc' },
-        take: 10,
-      });
+      // Get customer preferences and history
+      const { data: customer } = await this.supabase
+        .from('sovereign_customers')
+        .select('preferences, search_history, booking_history')
+        .eq('id', customerId)
+        .single();
 
-      if (userBookings.length === 0) {
-        // No history, return popular services
-        return this.getPopularServices(limit);
+      if (!customer) {
+        return [];
       }
 
-      // Create user preference profile
-      const preferenceText = userBookings
-        .map(booking => [
-          booking.service.title,
-          booking.service.description,
-          booking.service.category,
-          booking.service.location,
-        ].join(' '))
-        .join(' ');
+      // Create recommendation query based on customer profile
+      const recommendationQuery = this.buildRecommendationQuery(customer);
+      
+      return await this.hybridSearch({
+        query: recommendationQuery,
+        limit,
+        threshold: 0.6,
+      }).then(results => results.combined);
 
-      // Search based on user preferences
-      return this.semanticSearch(preferenceText, limit);
     } catch (error) {
-      console.error('Error getting personalized recommendations:', error);
-      return this.getPopularServices(limit);
-    }
-  }
-
-  /**
-   * Get popular services as fallback
-   */
-  async getPopularServices(limit: number = 5): Promise<VectorSearchResult[]> {
-    try {
-      const services = await prisma.service.findMany({
-        where: { status: 'ACTIVE' },
-        include: {
-          provider: {
-            select: {
-              name: true,
-              image: true,
-              profile: {
-                select: {
-                  verified: true,
-                  rating: true,
-                },
-              },
-            },
-          },
-          reviews: {
-            select: {
-              rating: true,
-            },
-          },
-          _count: {
-            select: {
-              reviews: true,
-              bookings: true,
-            },
-          },
-        },
-        orderBy: [
-          { bookings: { _count: 'desc' } },
-          { reviews: { _count: 'desc' } },
-        ],
-        take: limit,
-      });
-
-      return services.map(service => ({
-        id: service.id,
-        content: service.title,
-        similarity: 1.0, // Highest similarity for popular items
-        metadata: {
-          title: service.title,
-          description: service.description,
-          category: service.category,
-          price: service.price,
-          location: service.location,
-          rating: service.reviews.length > 0
-            ? service.reviews.reduce((sum, r) => sum + r.rating, 0) / service.reviews.length
-            : 0,
-          reviewCount: service._count.reviews,
-          bookingCount: service._count.bookings,
-          provider: {
-            name: service.provider.name,
-            image: service.provider.image,
-            verified: service.provider.profile?.verified || false,
-            rating: service.provider.profile?.rating,
-          },
-          images: service.images ? JSON.parse(service.images) : [],
-          tags: service.tags ? JSON.parse(service.tags) : [],
-        },
-      }));
-    } catch (error) {
-      console.error('Error getting popular services:', error);
+      console.error('Recommendations failed:', error);
       return [];
     }
   }
 
-  /**
-   * Index all existing services
-   */
-  async indexAllServices(): Promise<void> {
-    try {
-      const services = await prisma.service.findMany({
-        where: { status: 'ACTIVE' },
-        select: { id: true },
-      });
+  private buildRecommendationQuery(customer: any): string {
+    const preferences = customer.preferences || {};
+    const searchHistory = customer.search_history || [];
+    const bookingHistory = customer.booking_history || [];
 
-      console.log(`🔄 Indexing ${services.length} services...`);
+    // Build intelligent query from customer data
+    const terms = [
+      ...Object.values(preferences).filter(Boolean),
+      ...searchHistory.slice(-5), // Recent searches
+      ...bookingHistory.slice(-3).map((b: any) => b.service_type), // Recent bookings
+    ].filter(Boolean);
 
-      for (const service of services) {
-        await this.indexServiceListing(service.id);
-        // Add small delay to avoid rate limiting
-        await new Promise(resolve => setTimeout(resolve, 100));
-      }
-
-      console.log(`✅ Indexed ${services.length} services successfully`);
-    } catch (error) {
-      console.error('Error indexing all services:', error);
-    }
-  }
-
-  /**
-   * Calculate cosine similarity between two vectors
-   */
-  private cosineSimilarity(a: number[], b: number[]): number {
-    if (a.length !== b.length) {
-      throw new Error('Vectors must have the same length');
-    }
-
-    let dotProduct = 0;
-    let normA = 0;
-    let normB = 0;
-
-    for (let i = 0; i < a.length; i++) {
-      dotProduct += a[i] * b[i];
-      normA += a[i] * a[i];
-      normB += b[i] * b[i];
-    }
-
-    normA = Math.sqrt(normA);
-    normB = Math.sqrt(normB);
-
-    if (normA === 0 || normB === 0) {
-      return 0;
-    }
-
-    return dotProduct / (normA * normB);
-  }
-
-  /**
-   * Auto-tag services using AI
-   */
-  async autoTagService(serviceId: string): Promise<string[]> {
-    try {
-      const service = await prisma.service.findUnique({
-        where: { id: serviceId },
-        include: {
-          provider: {
-            select: {
-              profile: {
-                select: {
-                  bio: true,
-                },
-              },
-            },
-          },
-        },
-      });
-
-      if (!service) return [];
-
-      // Use AI to generate relevant tags
-      const prompt = `
-Generate relevant tags for this service listing:
-
-Title: ${service.title}
-Description: ${service.description}
-Category: ${service.category}
-Location: ${service.location}
-Provider Bio: ${service.provider.profile?.bio || 'N/A'}
-
-Generate 5-8 relevant tags that would help users find this service. 
-Return only the tags as a comma-separated list.
-`;
-
-      try {
-        const { text } = await import('ai').then(ai => ai.generateText({
-          model: openai('gpt-3.5-turbo'),
-          prompt,
-          maxTokens: 100,
-        }));
-
-        const tags = text.split(',').map(tag => tag.trim()).filter(Boolean);
-        
-        // Update service with generated tags
-        await prisma.service.update({
-          where: { id: serviceId },
-          data: {
-            tags: JSON.stringify(tags),
-          },
-        });
-
-        return tags;
-      } catch (error) {
-        // Fallback: generate basic tags from category and title
-        const basicTags = [
-          service.category.toLowerCase(),
-          ...service.title.toLowerCase().split(' ').filter(word => word.length > 3),
-        ];
-        return basicTags.slice(0, 5);
-      }
-    } catch (error) {
-      console.error('Error auto-tagging service:', error);
-      return [];
-    }
+    return terms.join(' ');
   }
 }
 
-export const vectorSearchService = VectorSearchService.getInstance();
+// Recommendation Engine using Vector Similarity
+export class SovereignRecommendationEngine {
+  private vectorSearch: SovereignVectorSearch;
+
+  constructor() {
+    this.vectorSearch = new SovereignVectorSearch();
+  }
+
+  // Generate AI-powered provider suggestions
+  async suggestProviders(criteria: {
+    serviceType: string;
+    location: string;
+    budget?: number;
+    quality?: 'basic' | 'standard' | 'premium' | 'luxury';
+    urgency?: 'low' | 'medium' | 'high' | 'emergency';
+  }): Promise<SearchResult[]> {
+    
+    // Build semantic query
+    const query = `${criteria.serviceType} ${criteria.location} ${criteria.quality || 'quality'} service`;
+    
+    // Set filters based on criteria
+    const filters: any = {
+      location: criteria.location,
+      serviceCategory: criteria.serviceType,
+    };
+
+    if (criteria.budget) {
+      filters.priceRange = { max: criteria.budget };
+    }
+
+    if (criteria.quality === 'premium' || criteria.quality === 'luxury') {
+      filters.premiumOnly = true;
+      filters.rating = 4.5;
+    }
+
+    return await this.vectorSearch.searchProviders({
+      query,
+      filters,
+      limit: criteria.urgency === 'emergency' ? 5 : 15,
+      threshold: criteria.urgency === 'emergency' ? 0.6 : 0.7,
+    });
+  }
+
+  // Generate listing suggestions based on user behavior
+  async suggestListings(userId: string, context?: string): Promise<SearchResult[]> {
+    if (context) {
+      return await this.vectorSearch.searchListings({
+        query: context,
+        limit: 10,
+        threshold: 0.7,
+      });
+    }
+
+    return await this.vectorSearch.getRecommendations(userId);
+  }
+}
+
+// Singleton instances
+export const sovereignVectorSearch = new SovereignVectorSearch();
+export const sovereignRecommendations = new SovereignRecommendationEngine();
+
+export default sovereignVectorSearch;
