@@ -1,300 +1,524 @@
-# Loconomy Dynamic Logo System
+# 🎨 Loconomy Logo System
 
-A comprehensive, theme-aware logo component system that automatically selects the appropriate logo variant based on context, theme, and use case.
-
-## 🎯 Overview
+## Intelligent Logo Variant Selection with Automatic Theme Adaptation
 
 The Loconomy logo system provides intelligent logo variant selection with automatic theme adaptation, optimized performance, and accessibility features.
 
-## 📁 File Structure
+---
 
-```
-public/assets/branding/
-├── logo-dark.svg      # For light backgrounds
-├── logo-light.svg     # For dark backgrounds  
-├── logo-colored.svg   # For marketing/splash screens
-├── logo-icon.svg      # For constrained spaces
-└── logo-outline.svg   # For watermarking/minimal UI
+## 🎯 **Logo Variants**
 
-lib/types/logo.ts      # TypeScript types and enums
-lib/utils/logo.ts      # Utility functions for variant selection
-components/ui/logo.tsx # Main logo component with variants
-```
+### **Available Variants**
 
-## 🎨 Logo Variants
+| Variant | Use Case | Background | Features |
+|---------|----------|------------|----------|
+| **Light** | Dark backgrounds, dark mode | Dark surfaces | White text, high contrast |
+| **Dark** | Light backgrounds, light mode | Light surfaces | Dark text, professional |
+| **Icon** | Space constrained areas | Any | Compact, scalable symbol only |
+| **Colored** | Marketing, splash screens | Any | Vibrant gradients, premium feel |
+| **Outline** | Watermarks, print, minimal UI | Any | Subtle, adaptable to context |
+| **Auto** | Automatic selection | Any | Theme-aware switching |
 
-### 1. Dark Logo (`logo-dark.svg`)
-- **Use Case**: Light backgrounds, navigation, auth pages
-- **Context**: Navigation, Auth, Light mode
-- **Automatic Selection**: Used when `theme === 'light'`
+---
 
-### 2. Light Logo (`logo-light.svg`)  
-- **Use Case**: Dark backgrounds, sidebar, footer
-- **Context**: Sidebar, Footer, Dark mode
-- **Automatic Selection**: Used when `theme === 'dark'`
+## 🏗️ **Component Architecture**
 
-### 3. Colored Logo (`logo-colored.svg`)
-- **Use Case**: Marketing, splash screens, hero sections
-- **Context**: Marketing, Onboarding success
-- **Automatic Selection**: Used when `context === 'marketing'`
+### **Core Component**
 
-### 4. Icon Logo (`logo-icon.svg`)
-- **Use Case**: Constrained spaces, mobile nav, buttons
-- **Context**: Mobile, Button, Favicon
-- **Automatic Selection**: Used when space is limited
-
-### 5. Outline Logo (`logo-outline.svg`)
-- **Use Case**: Watermarking, print exports, subtle branding
-- **Context**: Watermark, Minimal UI
-- **Automatic Selection**: Used for background branding
-
-## 🔧 Usage
-
-### Basic Usage
 ```tsx
-import { Logo } from '@/components/ui/logo';
+import { Logo, LogoVariant, LogoSize, LogoContext } from '@/components/ui/Logo';
 
-// Automatic variant selection based on theme and context
-<Logo />
+// Basic usage with automatic theme detection
+<Logo variant={LogoVariant.AUTO} />
 
-// Explicit variant
-<Logo variant={LogoVariant.COLORED} />
+// Specific variant
+<Logo variant={LogoVariant.COLORED} size={LogoSize.LG} />
 
-// Context-specific usage
-<Logo context={UIContext.MARKETING} />
+// Context-aware intelligent selection
+<Logo context={LogoContext.HEADER} />
+
+// Interactive logo with click handler
+<Logo 
+  context={LogoContext.HEADER}
+  interactive
+  onClick={() => router.push('/')}
+/>
 ```
 
-### Specialized Components
+### **Convenience Components**
+
 ```tsx
 import { 
-  NavigationLogo,
-  FooterLogo, 
-  MobileLogo,
-  MarketingLogo,
-  AuthLogo,
-  SidebarLogo,
+  HeaderLogo,
+  SidebarLogo, 
+  FooterLogo,
+  HeroLogo,
+  MobileNavLogo,
   ButtonLogo,
-  WatermarkLogo 
-} from '@/components/ui/logo';
+  WatermarkLogo,
+  OnboardingLogo,
+  SplashLogo
+} from '@/components/ui/Logo';
 
 // Pre-configured for specific contexts
-<NavigationLogo />
+<HeaderLogo />
+<SidebarLogo />
 <FooterLogo />
-<MobileLogo />
-<MarketingLogo />
+<HeroLogo />
+<MobileNavLogo />
 ```
 
-## 🎛️ Props Interface
+---
+
+## 🎛️ **Props Reference**
+
+### **LogoProps Interface**
 
 ```tsx
 interface LogoProps {
-  variant?: LogoVariant;     // Explicit variant override
-  theme?: ThemeMode;         // Theme override
-  context?: UIContext;       // Usage context
-  className?: string;        // Additional CSS classes
-  alt?: string;             // Custom alt text
-  width?: number;           // Custom width
-  height?: number;          // Custom height  
-  priority?: boolean;       // Next.js priority loading
-  loading?: 'lazy' | 'eager'; // Loading strategy
+  /** Logo variant to display */
+  variant?: LogoVariant;
+  
+  /** Logo size preset */
+  size?: LogoSize;
+  
+  /** Usage context for intelligent selection */
+  context?: LogoContext;
+  
+  /** Force specific theme (light/dark) */
+  theme?: 'light' | 'dark';
+  
+  /** Custom alt text */
+  alt?: string;
+  
+  /** Additional CSS classes */
+  className?: string;
+  
+  /** Whether this logo should be prioritized for loading */
+  priority?: boolean;
+  
+  /** Click handler */
+  onClick?: () => void;
+  
+  /** Whether logo should be interactive */
+  interactive?: boolean;
+  
+  /** Custom width override */
+  width?: number;
+  
+  /** Custom height override */
+  height?: number;
+  
+  /** Whether to use raster fallback */
+  useRasterFallback?: boolean;
 }
 ```
 
-## 🤖 Automatic Selection Logic
+---
 
-The logo system automatically selects the appropriate variant using this decision tree:
+## 📏 **Size System**
 
-1. **Explicit Variant**: If `variant` prop is provided, use it
-2. **Context-Based**: 
-   - `MARKETING` → `COLORED`
-   - `MOBILE/BUTTON/FAVICON` → `ICON`
-   - `WATERMARK` → `OUTLINE`
-3. **Theme-Based**:
-   - `dark` theme → `LIGHT` logo
-   - `light` theme → `DARK` logo
+### **Predefined Sizes**
 
-## 🎨 Integration Examples
+| Size | Height | Use Case | Example |
+|------|--------|----------|---------|
+| **XS** | 16px | Favicons, buttons | `<ButtonLogo />` |
+| **SM** | 24px | Mobile nav, compact areas | `<MobileNavLogo />` |
+| **MD** | 32px | Standard header | `<HeaderLogo />` |
+| **LG** | 48px | Hero sections | `<HeroLogo />` |
+| **XL** | 64px | Splash screens | `<SplashLogo />` |
+| **XXL** | 96px | Marketing pages | `<OnboardingLogo />` |
 
-### Navigation Component
+### **Custom Sizing**
+
 ```tsx
-// Before
-<img src="static-logo.png" alt="Logo" />
+// Custom dimensions
+<Logo width={200} height={50} />
 
-// After  
-<NavigationLogo className="hover:scale-105" />
+// Responsive sizing with Tailwind
+<Logo className="h-8 md:h-12 lg:h-16 w-auto" />
 ```
 
-### Footer Component
-```tsx
-// Before
-<img src="static-logo.png" alt="Logo" className="w-8 h-8" />
+---
 
-// After
-<FooterLogo className="rounded-lg" />
+## 🎯 **Context-Based Selection**
+
+### **Intelligent Context Rules**
+
+The logo system automatically selects the optimal variant based on context:
+
+```tsx
+// Context mappings
+const CONTEXT_VARIANT_MAP = {
+  header: (theme) => theme === 'dark' ? LogoVariant.LIGHT : LogoVariant.DARK,
+  sidebar: () => LogoVariant.LIGHT,        // Sidebars typically dark
+  footer: (theme) => theme === 'dark' ? LogoVariant.LIGHT : LogoVariant.DARK,
+  hero: () => LogoVariant.COLORED,         // Marketing emphasis
+  mobile_nav: () => LogoVariant.ICON,      // Space constrained
+  button: () => LogoVariant.ICON,          // Compact representation
+  watermark: () => LogoVariant.OUTLINE,    // Subtle presence
+  onboarding: () => LogoVariant.COLORED,   // Welcoming experience
+  splash: () => LogoVariant.COLORED,       // Brand showcase
+  print: () => LogoVariant.OUTLINE,        // Print-friendly
+  email: () => LogoVariant.DARK            // Email compatibility
+};
 ```
 
-### Auth Pages
-```tsx
-// Before
-<img src="static-logo.png" alt="Logo" className="w-12 h-12" />
+---
 
-// After
-<AuthLogo className="rounded-2xl shadow-lg" />
-```
+## 🌙 **Theme Integration**
 
-## 🚀 Performance Features
-
-- **Next.js Image Optimization**: Uses `next/image` for optimal performance
-- **Priority Loading**: Automatic priority for above-the-fold logos
-- **Lazy Loading**: Default lazy loading for non-critical logos
-- **SVG Format**: Scalable vector graphics for crisp rendering
-- **Error Fallback**: Graceful fallback to text-based logo
-
-## ♿ Accessibility Features
-
-- **Dynamic Alt Text**: Context-aware alt text generation
-- **Proper ARIA**: Role and label attributes
-- **Focus Management**: Keyboard navigation support
-- **Screen Reader**: Descriptive text for assistive technology
-
-## 🎯 Theme Integration
-
-The logo system is fully integrated with `next-themes`:
+### **Automatic Theme Detection**
 
 ```tsx
+// Automatically adapts to theme
+<Logo variant={LogoVariant.AUTO} />
+
+// Force specific theme
+<Logo theme="dark" />
+<Logo theme="light" />
+
+// With next-themes integration
 import { useTheme } from 'next-themes';
-
-// Automatic theme detection
 const { theme } = useTheme();
-// Logo component automatically adapts
 ```
 
-## 🛠️ Utility Functions
-
-### Available Utilities
-```tsx
-import { 
-  getLogoVariant,     // Determine optimal variant
-  getLogoPath,        // Get asset path
-  getLogoDimensions,  // Calculate dimensions
-  getLogoAltText,     // Generate alt text
-  shouldUsePriority   // Determine priority loading
-} from '@/lib/utils/logo';
-```
-
-## 📊 Demo Page
-
-Visit `/demo/logo-system` to see the interactive logo showcase with:
-- All variant examples
-- Theme switching
-- Context demonstrations  
-- Usage playground
-
-## 🔄 Migration Guide
-
-### From Static Images
-Replace static `<img>` tags:
+### **Theme-Aware Examples**
 
 ```tsx
-// Old
-<img src="/logo.png" alt="Loconomy" className="w-8 h-8" />
+// Header that adapts to light/dark mode
+<HeaderLogo />  // Uses theme detection
 
-// New
-<Logo className="w-8 h-8" />
+// Sidebar (always uses light variant for dark sidebar)
+<SidebarLogo />
+
+// Footer (adapts to theme)
+<FooterLogo />
 ```
 
-### From External URLs
-Replace external logo URLs:
+---
+
+## 🚀 **Performance Optimization**
+
+### **Asset Preloading**
 
 ```tsx
-// Old
-<img src="https://cdn.example.com/logo.png" alt="Logo" />
-
-// New
-<Logo alt="Logo" />
+// In app/layout.tsx
+<head>
+  <link
+    rel="preload"
+    href="/assets/branding/logo-dark.svg"
+    as="image"
+    type="image/svg+xml"
+  />
+  <link
+    rel="preload"
+    href="/assets/branding/logo-light.svg"
+    as="image"
+    type="image/svg+xml"
+  />
+</head>
 ```
 
-## 📱 Responsive Behavior
+### **Priority Loading**
 
-- **Desktop**: Full logo with text
-- **Mobile**: Automatic icon variant in constrained spaces
-- **Tablet**: Contextual sizing based on available space
-
-## 🌙 Dark Mode Support
-
-- Automatic variant switching based on theme
-- Proper contrast ratios maintained
-- Seamless transitions between themes
-
-## 🎨 Customization
-
-### Custom Styling
 ```tsx
-<Logo className="hover:opacity-80 transition-opacity" />
+// Critical logos get priority
+<HeaderLogo priority />
+
+// Non-critical logos use lazy loading
+<FooterLogo />  // Loads when needed
 ```
 
-### Custom Dimensions
+### **Next.js Image Optimization**
+
 ```tsx
-<Logo width={150} height={40} />
+// Automatically uses Next.js Image for performance
+<Logo />  // Uses Next.js Image component
+
+// Fallback for SSR or special cases
+<Logo useRasterFallback />  // Uses regular img tag
 ```
 
-### Custom Context
+---
+
+## ♿ **Accessibility Features**
+
+### **Screen Reader Support**
+
 ```tsx
-<Logo context={UIContext.SIDEBAR} theme="dark" />
+// Semantic alt text
+<Logo alt="Loconomy - Premium Local Services Platform" />
+
+// Interactive logos
+<Logo 
+  interactive
+  onClick={handleClick}
+  role="button"
+  tabIndex={0}
+/>
 ```
 
-## 🧪 Testing
+### **Keyboard Navigation**
 
-The logo system includes:
-- Unit tests for utility functions
-- Visual regression tests for all variants
-- Theme switching tests
-- Accessibility tests
+```tsx
+// Supports Enter and Space key activation
+<Logo 
+  interactive
+  onClick={navigateHome}
+  onKeyDown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      navigateHome();
+    }
+  }}
+/>
+```
 
-## 📈 Performance Metrics
+---
 
-- **First Contentful Paint**: Optimized with priority loading
-- **Cumulative Layout Shift**: Prevented with proper dimensions
-- **Bundle Size**: Minimal impact (~2KB gzipped)
+## 📱 **Responsive Design**
 
-## 🔮 Future Enhancements
+### **Mobile-First Approach**
 
-- [ ] Animated logo variants
-- [ ] Brand color customization
-- [ ] Multi-brand support
-- [ ] Dynamic sizing based on viewport
-- [ ] Logo composition API
+```tsx
+// Desktop header
+<div className="hidden lg:block">
+  <HeaderLogo />
+</div>
 
-## 📝 Examples in Production
+// Mobile navigation
+<div className="lg:hidden">
+  <MobileNavLogo />
+</div>
+```
 
-The logo system is currently integrated in:
-- ✅ Navigation header
-- ✅ Mobile navigation
-- ✅ Footer
-- ✅ Auth pages (signin/signup)
-- ✅ Mobile header component
+### **Responsive Sizing**
 
-## 🐛 Troubleshooting
+```tsx
+// Scales with screen size
+<Logo 
+  className="h-6 sm:h-8 md:h-10 lg:h-12 w-auto"
+  context={LogoContext.HEADER}
+/>
+```
 
-### Logo Not Displaying
-1. Check if SVG files exist in `/public/assets/branding/`
-2. Verify import paths are correct
-3. Check browser console for 404 errors
+---
 
-### Wrong Variant Selected
-1. Verify theme is properly set
-2. Check context prop is correct
-3. Use explicit `variant` prop for override
+## 🎨 **Implementation Examples**
 
-### TypeScript Errors
-1. Ensure all types are imported from `@/lib/types/logo`
-2. Check enum values match exactly
-3. Verify utility function imports
+### **1. Navigation Header**
 
-## 📞 Support
+```tsx
+// components/navigation/Header.tsx
+import { HeaderLogo } from '@/components/ui/Logo';
+import { useRouter } from 'next/navigation';
 
-For issues or questions about the logo system:
-1. Check this documentation
-2. Visit the demo page at `/demo/logo-system`
-3. Review the component source code
-4. Test in different themes and contexts
+export function Header() {
+  const router = useRouter();
+  
+  return (
+    <header className="border-b bg-background">
+      <div className="container mx-auto px-4 h-16 flex items-center">
+        <HeaderLogo 
+          interactive
+          onClick={() => router.push('/')}
+          className="hover:opacity-80 transition-opacity"
+        />
+        {/* Navigation items */}
+      </div>
+    </header>
+  );
+}
+```
+
+### **2. Hero Section**
+
+```tsx
+// components/marketing/Hero.tsx
+import { HeroLogo } from '@/components/ui/Logo';
+
+export function Hero() {
+  return (
+    <section className="py-20 text-center">
+      <HeroLogo className="mx-auto mb-8" />
+      <h1 className="text-4xl font-bold">
+        Welcome to Loconomy
+      </h1>
+    </section>
+  );
+}
+```
+
+### **3. Mobile Navigation**
+
+```tsx
+// components/navigation/MobileNav.tsx
+import { MobileNavLogo } from '@/components/ui/Logo';
+
+export function MobileNav() {
+  return (
+    <nav className="lg:hidden">
+      <div className="flex items-center justify-between p-4">
+        <MobileNavLogo interactive onClick={() => router.push('/')} />
+        <MenuButton />
+      </div>
+    </nav>
+  );
+}
+```
+
+### **4. Footer**
+
+```tsx
+// components/layout/Footer.tsx
+import { FooterLogo } from '@/components/ui/Logo';
+
+export function Footer() {
+  return (
+    <footer className="bg-muted border-t">
+      <div className="container mx-auto px-4 py-8">
+        <FooterLogo className="mb-4" />
+        <p className="text-sm text-muted-foreground">
+          © 2024 Loconomy. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+```
+
+### **5. Loading/Splash Screen**
+
+```tsx
+// components/ui/LoadingScreen.tsx
+import { SplashLogo } from '@/components/ui/Logo';
+
+export function LoadingScreen() {
+  return (
+    <div className="fixed inset-0 bg-background flex items-center justify-center">
+      <div className="text-center">
+        <SplashLogo className="animate-pulse" />
+        <p className="mt-4 text-muted-foreground">Loading...</p>
+      </div>
+    </div>
+  );
+}
+```
+
+### **6. Print Styles**
+
+```tsx
+// components/print/PrintHeader.tsx
+import { WatermarkLogo } from '@/components/ui/Logo';
+
+export function PrintHeader() {
+  return (
+    <div className="print:block hidden">
+      <WatermarkLogo className="opacity-20" />
+    </div>
+  );
+}
+```
+
+---
+
+## 🔧 **Utility Functions**
+
+### **Programmatic Logo Access**
+
+```tsx
+import { useLogoVariant, getLogoUrl } from '@/components/ui/Logo';
+
+// Hook for getting logo variant
+function MyComponent() {
+  const variant = useLogoVariant(LogoContext.HEADER);
+  return <img src={getLogoUrl(variant)} alt="Loconomy" />;
+}
+
+// Direct URL access
+const logoUrl = getLogoUrl(LogoVariant.COLORED);
+const darkModeUrl = getLogoUrl(LogoVariant.AUTO, 'dark');
+```
+
+---
+
+## 📁 **Asset Organization**
+
+### **File Structure**
+
+```
+public/assets/branding/
+├── logo-light.svg      # For dark backgrounds
+├── logo-dark.svg       # For light backgrounds  
+├── logo-icon.svg       # Space constrained
+├── logo-colored.svg    # Marketing/splash
+└── logo-outline.svg    # Watermarks/print
+```
+
+### **Asset Requirements**
+
+- **Format**: SVG for scalability and performance
+- **Optimization**: Compressed and optimized SVGs
+- **Fallbacks**: PNG versions for older browsers
+- **Dimensions**: Consistent aspect ratios across variants
+
+---
+
+## 🎯 **Best Practices**
+
+### **DO ✅**
+
+- Use context-aware components (`<HeaderLogo />` vs manual setup)
+- Preload critical logo assets in layout
+- Provide meaningful alt text for accessibility
+- Use `interactive` prop for clickable logos
+- Leverage automatic theme detection with `LogoVariant.AUTO`
+
+### **DON'T ❌**
+
+- Don't hardcode logo variants in theme-aware contexts
+- Don't skip alt text for screen readers  
+- Don't use raster formats when SVG is available
+- Don't forget to handle keyboard interactions for interactive logos
+- Don't use oversized logos in constrained spaces
+
+---
+
+## 🔄 **Migration Guide**
+
+### **From Hardcoded Logos**
+
+```tsx
+// Before ❌
+<img src="/logo.png" alt="Logo" className="h-8" />
+
+// After ✅
+<HeaderLogo />
+```
+
+### **From Manual Theme Handling**
+
+```tsx
+// Before ❌
+<img 
+  src={theme === 'dark' ? '/logo-light.png' : '/logo-dark.png'} 
+  alt="Logo" 
+/>
+
+// After ✅
+<Logo variant={LogoVariant.AUTO} />
+```
+
+---
+
+## 🚀 **Performance Metrics**
+
+- **Bundle Size**: Minimal impact with tree-shaking
+- **Runtime**: O(1) variant selection with memoization
+- **Loading**: Optimized with Next.js Image and preloading
+- **Accessibility**: WCAG 2.1 AA compliant
+- **SEO**: Proper semantic markup and meta tags
+
+---
+
+The Loconomy logo system provides a complete, production-ready solution for intelligent logo management with theme awareness, performance optimization, and accessibility built-in. 🎨✨

@@ -1,217 +1,299 @@
-/**
- * RBAC Utility Functions
- * Client-safe utilities for role-based access control
- */
+// RBAC Utility Functions for Loconomy Platform
 
-import {
-  UserRole,
-  ROLE_PERMISSIONS,
-  RolePermissions,
-} from "./types";
-
-export interface UserSession {
-  id: string;
-  email: string;
-  role: string;
-  permissions: string[];
-  isAuthenticated: boolean;
-}
-
-export interface Permission {
-  id: string;
-  name: string;
-  description: string;
-  resource: string;
-  action: string;
-}
-
-export interface Role {
-  id: string;
-  name: string;
-  description: string;
-  permissions: string[];
-  isSystem: boolean;
-}
-
-export function getCurrentSession(): UserSession | null {
-  // In a real app, this would get the session from your auth provider
-  // For now, return a mock session
-  if (typeof window === 'undefined') return null;
-  
-  const mockSession: UserSession = {
-    id: 'user-123',
-    email: 'user@example.com',
-    role: 'provider',
-    permissions: ['read:listings', 'write:listings', 'read:bookings'],
-    isAuthenticated: true,
-  };
-  
-  return mockSession;
-}
-
-export function hasPermission(userSession: UserSession | null, permission: string): boolean {
-  if (!userSession || !userSession.isAuthenticated) return false;
-  return userSession.permissions.includes(permission);
-}
-
-export function hasRole(userSession: UserSession | null, role: string): boolean {
-  if (!userSession || !userSession.isAuthenticated) return false;
-  return userSession.role === role;
-}
-
-export function hasAnyRoleFromSession(userSession: UserSession | null, roles: string[]): boolean {
-  if (!userSession || !userSession.isAuthenticated) return false;
-  return roles.includes(userSession.role);
-}
-
-export function checkAccess(userSession: UserSession | null, requiredPermissions: string[]): boolean {
-  if (!userSession || !userSession.isAuthenticated) return false;
-  
-  return requiredPermissions.every(permission => 
-    userSession.permissions.includes(permission)
-  );
-}
-
-export const SYSTEM_ROLES = {
-  ADMIN: 'admin',
-  PROVIDER: 'provider',
-  CUSTOMER: 'customer',
-  MODERATOR: 'moderator',
-} as const;
-
-export const PERMISSIONS = {
-  // Listings
-  'read:listings': 'Read listings',
-  'write:listings': 'Create and update listings',
-  'delete:listings': 'Delete listings',
-  'moderate:listings': 'Moderate listings',
-  
-  // Bookings
-  'read:bookings': 'Read bookings',
-  'write:bookings': 'Create and update bookings',
-  'delete:bookings': 'Delete bookings',
-  
-  // Users
-  'read:users': 'Read user profiles',
-  'write:users': 'Update user profiles',
-  'delete:users': 'Delete users',
-  
-  // Admin
-  'admin:all': 'Full administrative access',
-  'admin:users': 'Manage users',
-  'admin:system': 'System administration',
-} as const;
+import { 
+  UserRole, 
+  Permission, 
+  ConsentSettings, 
+  User,
+  PERMISSIONS,
+  ROLE_HIERARCHY,
+  DEFAULT_CONSENT,
+  SubscriptionTier,
+  SubscriptionAccess
+} from '@/types/rbac';
 
 /**
- * Check if user has any of the allowed roles
+ * Check if a user has a specific permission
  */
-export function hasAnyRole(
-  userRole: UserRole,
-  allowedRoles: UserRole[],
-): boolean {
+export function hasPermission(userRole: UserRole, permission: Permission): boolean {
+  const rolePermissions = PERMISSIONS[userRole];
+  return rolePermissions.includes(permission as any);
+}
+
+/**
+ * Check if a user has any of the specified permissions
+ */
+export function hasAnyPermission(userRole: UserRole, permissions: Permission[]): boolean {
+  return permissions.some(permission => hasPermission(userRole, permission));
+}
+
+/**
+ * Check if a user role is allowed access
+ */
+export function isRoleAllowed(userRole: UserRole, allowedRoles: UserRole[]): boolean {
   return allowedRoles.includes(userRole);
 }
 
 /**
- * Get role-specific redirect URL after authentication
+ * Check if a user role has higher or equal hierarchy than required
  */
-export function getRoleRedirectUrl(role: UserRole): string {
-  switch (role) {
-    case "admin":
-      return "/admin";
-    case "provider":
-      return "/provider/dashboard";
-    case "consumer":
-      return "/dashboard";
-    case "guest":
-    default:
-      return "/";
+export function hasRoleHierarchy(userRole: UserRole, minimumRole: UserRole): boolean {
+  return ROLE_HIERARCHY[userRole] >= ROLE_HIERARCHY[minimumRole];
+}
+
+/**
+ * Get all permissions for a user role
+ */
+export function getRolePermissions(userRole: UserRole): readonly Permission[] {
+  return PERMISSIONS[userRole];
+}
+
+/**
+ * Validate user role
+ */
+export function isValidRole(role: string): role is UserRole {
+  return ['guest', 'consumer', 'provider', 'admin'].includes(role);
+}
+
+/**
+ * Get user role from string with fallback
+ */
+export function parseUserRole(role: string | undefined | null): UserRole {
+  if (!role || !isValidRole(role)) {
+    return 'guest';
+  }
+  return role;
+}
+
+/**
+ * Check if subscription tier has access to feature
+ */
+export function hasSubscriptionAccess(
+  tier: SubscriptionTier, 
+  feature: keyof SubscriptionAccess[SubscriptionTier]
+): boolean {
+  const tierAccess = SUBSCRIPTION_ACCESS[tier];
+  return tierAccess.includes(feature as any);
+}
+
+/**
+ * Get subscription tier from string with fallback
+ */
+export function parseSubscriptionTier(tier: string | undefined | null): SubscriptionTier {
+  if (!tier || !['free', 'starter', 'professional', 'enterprise'].includes(tier)) {
+    return 'free';
+  }
+  return tier as SubscriptionTier;
+}
+
+/**
+ * Consent Management Utilities
+ */
+
+/**
+ * Get stored consent from localStorage for guests
+ */
+export function getGuestConsent(): ConsentSettings | null {
+  if (typeof window === 'undefined') return null;
+  
+  try {
+    const stored = localStorage.getItem('loconomy_consent');
+    if (!stored) return null;
+    
+    const parsed = JSON.parse(stored);
+    return validateConsentSettings(parsed) ? parsed : null;
+  } catch {
+    return null;
   }
 }
 
 /**
- * Get navigation items based on user role
+ * Store consent in localStorage for guests
  */
-export function getRoleNavigation(role: UserRole) {
-  const baseItems = [
-    {
-      href: "/",
-      label: "Home",
-      roles: ["guest", "consumer", "provider", "admin"],
-    },
-    {
-      href: "/browse",
-      label: "Services",
-      roles: ["guest", "consumer", "provider", "admin"],
-    },
-  ];
+export function setGuestConsent(settings: ConsentSettings): void {
+  if (typeof window === 'undefined') return;
+  
+  try {
+    localStorage.setItem('loconomy_consent', JSON.stringify(settings));
+    // Dispatch custom event for consent changes
+    window.dispatchEvent(new CustomEvent('consentChange', { 
+      detail: { settings } 
+    }));
+  } catch (error) {
+    console.warn('Failed to store consent settings:', error);
+  }
+}
 
-  const roleSpecificItems = [
-    // Consumer items
-    { href: "/dashboard", label: "Dashboard", roles: ["consumer"] },
-    { href: "/bookings", label: "My Bookings", roles: ["consumer"] },
+/**
+ * Clear stored consent
+ */
+export function clearGuestConsent(): void {
+  if (typeof window === 'undefined') return;
+  
+  try {
+    localStorage.removeItem('loconomy_consent');
+  } catch (error) {
+    console.warn('Failed to clear consent settings:', error);
+  }
+}
 
-    // Provider items
-    {
-      href: "/provider/dashboard",
-      label: "Provider Dashboard",
-      roles: ["provider"],
-    },
-    { href: "/provider/listings", label: "My Listings", roles: ["provider"] },
-    { href: "/provider/analytics", label: "Analytics", roles: ["provider"] },
-
-    // Admin items
-    { href: "/admin", label: "Admin", roles: ["admin"] },
-    { href: "/admin/users", label: "User Management", roles: ["admin"] },
-    {
-      href: "/admin/moderation",
-      label: "Content Moderation",
-      roles: ["admin"],
-    },
-  ];
-
-  return [...baseItems, ...roleSpecificItems].filter((item) =>
-    item.roles.includes(role),
+/**
+ * Validate consent settings structure
+ */
+export function validateConsentSettings(settings: any): settings is ConsentSettings {
+  return (
+    settings &&
+    typeof settings === 'object' &&
+    typeof settings.essential === 'boolean' &&
+    typeof settings.analytics === 'boolean' &&
+    typeof settings.marketing === 'boolean' &&
+    typeof settings.personalization === 'boolean' &&
+    typeof settings.timestamp === 'string' &&
+    typeof settings.version === 'string'
   );
 }
 
 /**
- * Validate role transition (for role upgrades/downgrades)
+ * Create default consent settings
  */
-export function canTransitionToRole(
-  currentRole: UserRole,
-  targetRole: UserRole,
-): boolean {
-  // Only admins can change roles, and specific transitions are allowed
-  const allowedTransitions: Record<UserRole, UserRole[]> = {
-    guest: ["consumer"],
-    consumer: ["provider"],
-    provider: ["consumer"], // Can downgrade
-    admin: ["consumer", "provider"], // Admin can become other roles
+export function createDefaultConsent(): ConsentSettings {
+  return {
+    ...DEFAULT_CONSENT,
+    timestamp: new Date().toISOString(),
   };
-
-  return allowedTransitions[currentRole]?.includes(targetRole) ?? false;
 }
 
 /**
- * Check if user can access a specific route
+ * Update consent settings with new values
  */
-export function canAccessRoute(userRole: UserRole, route: string): boolean {
-  const routePermissions: Record<string, UserRole[]> = {
-    "/dashboard": ["consumer", "provider", "admin"],
-    "/provider": ["provider", "admin"],
-    "/admin": ["admin"],
-    "/bookings": ["consumer", "provider", "admin"],
-    "/analytics": ["provider", "admin"],
+export function updateConsentSettings(
+  current: ConsentSettings,
+  updates: Partial<Omit<ConsentSettings, 'essential' | 'timestamp' | 'version'>>
+): ConsentSettings {
+  return {
+    ...current,
+    ...updates,
+    essential: true, // Always true
+    timestamp: new Date().toISOString(),
+    version: '1.0', // Update version as needed
   };
+}
 
-  // Check if route starts with any protected path
-  for (const [path, allowedRoles] of Object.entries(routePermissions)) {
-    if (route.startsWith(path)) {
-      return allowedRoles.includes(userRole);
+/**
+ * Check if consent allows analytics
+ */
+export function canLoadAnalytics(consent: ConsentSettings | null): boolean {
+  return consent?.analytics === true;
+}
+
+/**
+ * Check if consent allows marketing scripts
+ */
+export function canLoadMarketing(consent: ConsentSettings | null): boolean {
+  return consent?.marketing === true;
+}
+
+/**
+ * Check if consent allows personalization
+ */
+export function canLoadPersonalization(consent: ConsentSettings | null): boolean {
+  return consent?.personalization === true;
+}
+
+/**
+ * User Session Utilities
+ */
+
+/**
+ * Extract user role from user object with fallback
+ */
+export function getUserRole(user: User | null | undefined): UserRole {
+  if (!user?.role) return 'guest';
+  return parseUserRole(user.role);
+}
+
+/**
+ * Get user consent settings with fallback
+ */
+export function getUserConsent(user: User | null | undefined): ConsentSettings {
+  if (!user?.metadata?.consentSettings) {
+    return getGuestConsent() || createDefaultConsent();
+  }
+  return user.metadata.consentSettings;
+}
+
+/**
+ * Check if user needs to complete onboarding
+ */
+export function needsOnboarding(user: User | null | undefined): boolean {
+  if (!user) return false;
+  return user.metadata?.onboardingCompleted !== true;
+}
+
+/**
+ * Get user subscription tier with fallback
+ */
+export function getUserSubscriptionTier(user: User | null | undefined): SubscriptionTier {
+  if (!user?.metadata?.subscriptionTier) return 'free';
+  return parseSubscriptionTier(user.metadata.subscriptionTier);
+}
+
+/**
+ * Check if user can access feature based on role and subscription
+ */
+export function canAccessFeature(
+  user: User | null | undefined,
+  requiredRoles: UserRole[],
+  requiredPermission?: Permission,
+  requiredSubscription?: SubscriptionTier[]
+): boolean {
+  const userRole = getUserRole(user);
+  
+  // Check role access
+  if (!isRoleAllowed(userRole, requiredRoles)) {
+    return false;
+  }
+  
+  // Check permission if specified
+  if (requiredPermission && !hasPermission(userRole, requiredPermission)) {
+    return false;
+  }
+  
+  // Check subscription if specified
+  if (requiredSubscription && user) {
+    const userTier = getUserSubscriptionTier(user);
+    if (!requiredSubscription.includes(userTier)) {
+      return false;
     }
   }
-
-  // Default: allow access to public routes
+  
   return true;
+}
+
+/**
+ * Create consent accept all settings
+ */
+export function createAcceptAllConsent(): ConsentSettings {
+  return {
+    essential: true,
+    analytics: true,
+    marketing: true,
+    personalization: true,
+    timestamp: new Date().toISOString(),
+    version: '1.0',
+  };
+}
+
+/**
+ * Create consent reject non-essential settings
+ */
+export function createRejectNonEssentialConsent(): ConsentSettings {
+  return {
+    essential: true,
+    analytics: false,
+    marketing: false,
+    personalization: false,
+    timestamp: new Date().toISOString(),
+    version: '1.0',
+  };
 }
