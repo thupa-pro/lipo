@@ -32,6 +32,8 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { getUserRole, getUserSubscriptionTier, getInitials } from '@/lib/rbac/utils';
+import { HeaderLogo, MobileNavLogo } from '@/components/ui/Logo';
+import { useRouter } from 'next/navigation';
 
 interface RoleAwareNavigationProps {
   user: User | null;
@@ -101,6 +103,7 @@ const NAVIGATION_ITEMS: NavItem[] = [
 
 export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
   const userRole = getUserRole(user);
   const subscriptionTier = getUserSubscriptionTier(user);
 
@@ -145,19 +148,11 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
         <div className="flex h-16 items-center justify-between">
           {/* Logo and brand */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
-              </div>
-              <div className="hidden sm:block">
-                <span className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Loconomy
-                </span>
-                <div className="text-xs text-muted-foreground -mt-1">
-                  AI-Powered Platform
-                </div>
-              </div>
-            </Link>
+            <HeaderLogo 
+              interactive 
+              onClick={() => router.push('/')} 
+              className="hover:opacity-80 transition-opacity"
+            />
 
             {/* Desktop navigation */}
             <div className="hidden lg:flex items-center gap-6 ml-6">
