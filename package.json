@@ -1,4 +1,24 @@
 {
+  "name": "loconomy",
+  "version": "1.0.0",
+  "description": "Loconomy - Elite AI-Powered Local Services Platform",
+  "author": "Loconomy Inc.",
+  "license": "MIT",
+  "homepage": "https://loconomy.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loconomy/platform.git"
+  },
+  "keywords": [
+    "loconomy",
+    "local services",
+    "AI marketplace",
+    "service providers",
+    "hyperlocal",
+    "nextjs",
+    "react",
+    "typescript"
+  ],
   "dependencies": {
     "@ai-sdk/openai": "^1.3.23",
     "@auth/prisma-adapter": "^2.10.0",

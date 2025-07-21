@@ -230,7 +230,7 @@ export default function HomePage() {
               </span>
               <br />
               <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                Local Services
+                Loconomy
               </span>
               <br />
               <span className="bg-gradient-to-r from-slate-900 via-violet-700 to-slate-900 dark:from-white dark:via-violet-400 dark:to-white bg-clip-text text-transparent">

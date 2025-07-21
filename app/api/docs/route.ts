@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
 <body>
   <div class="custom-header">
     <h1>🤖 Loconomy API</h1>
-    <p>AI-First Local Economy Platform - Comprehensive API Documentation</p>
+                    <p>Loconomy - Elite AI-Powered Local Services Platform - Comprehensive API Documentation</p>
   </div>
   
   <div id="swagger-ui"></div>

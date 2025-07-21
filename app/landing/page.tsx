@@ -85,7 +85,7 @@ export default function LandingPage() {
             </span>
             <br />
             <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-              Local Economy
+              Loconomy Local Economy
             </span>
           </h1>
 

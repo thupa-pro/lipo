@@ -29,7 +29,7 @@ export default function HomePage() {
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-8 leading-none">
             <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
-              Local Services
+              Loconomy Local Services
             </span>
             <br />
             <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
