@@ -111,7 +111,7 @@ const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 export default function PaymentsDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
-  const { data: transactions, error, isLoading } = useSWR<Transaction[]>(
+  const { data: transactions, error, isLoading: transactionsLoading } = useSWR<Transaction[]>(
     '/api/payments/transactions',
     fetcher
   );
@@ -121,6 +121,8 @@ export default function PaymentsDashboard() {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  
+  const isDataLoading = transactionsLoading || isLoading;
 
   // Remove mockTransactions, use SWR data
 
@@ -248,7 +250,7 @@ export default function PaymentsDashboard() {
     return matchesFilter && matchesSearch;
   });
 
-  if (isLoading) {
+  if (isDataLoading) {
     return (
       <div className="space-y-6">
         <div className="animate-pulse space-y-4">
