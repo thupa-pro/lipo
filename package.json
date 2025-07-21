@@ -44,7 +44,8 @@
     "@sentry/profiling-node": "^9.40.0",
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.4.0",
-    "@supabase/ssr": "^0.5.0",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.39.0",
     "@tanstack/react-query": "^5.0.0",
     "@temporalio/activity": "^1.12.1",
@@ -57,6 +58,8 @@
     "@types/nodemailer": "^6.4.17",
     "@types/pg": "^8.15.4",
     "@types/sharp": "^0.32.0",
+    "@upstash/ratelimit": "^2.0.5",
+    "@upstash/redis": "^1.35.1",
     "ai": "^4.3.19",
     "autoprefixer": "^10.4.20",
     "bcryptjs": "^3.0.2",
@@ -152,13 +155,11 @@
     "analyze": "ANALYZE=true npm run build",
     "analyze:server": "ANALYZE=true BUNDLE_ANALYZE=server npm run build",
     "analyze:browser": "ANALYZE=true BUNDLE_ANALYZE=browser npm run build",
-    
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    
     "test": "vitest",
     "test:unit": "vitest run --config vitest.config.unit.js",
     "test:integration": "vitest run --config vitest.config.integration.js",
@@ -166,7 +167,6 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
     "test:ui": "vitest --ui",
-    
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:migrate:test": "prisma migrate dev --schema=./prisma/schema.test.prisma",
@@ -175,28 +175,23 @@
     "db:seed:test": "NODE_ENV=test prisma db seed",
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset",
-    
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
     "supabase:status": "supabase status",
     "supabase:reset": "supabase db reset",
     "supabase:migrate": "supabase db push",
     "supabase:types": "supabase gen types typescript --local",
-    
     "docker:build": "docker build -t loconomy:latest .",
     "docker:run": "docker run -p 3000:3000 loconomy:latest",
     "docker:dev": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    
     "prepare": "husky install",
     "pre-commit": "lint-staged",
     "postbuild": "next-sitemap",
-    
     "health-check": "node scripts/health-check.js",
     "performance-test": "node scripts/performance-test.js",
     "security-scan": "npm audit --audit-level=moderate",
     "bundle-analyze": "npm run analyze && open .next/analyze/client.html",
-    
     "ai:embed": "node scripts/ai-embed.js",
     "ai:train": "node scripts/ai-train.js",
     "ai:migrate": "node scripts/ai-migrate-vectors.js"
