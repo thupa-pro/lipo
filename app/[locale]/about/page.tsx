@@ -165,7 +165,7 @@ export default function AboutPage() {
                     and booking services as easy as ordering food online.
                   </p>
                   <p className="text-lg leading-relaxed">
-                    Today, we've grown into the leading service marketplace,
+                    Today, Loconomy has grown into the leading service marketplace,
                     connecting millions of customers with thousands of verified
                     professionals across hundreds of service categories.
                   </p>

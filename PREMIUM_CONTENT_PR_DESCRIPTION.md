@@ -31,7 +31,7 @@ This PR transforms Loconomy from a standard marketplace into the **world's most 
 elite professionals meet intelligent matching in under 90 seconds."
 
 // OLD: Basic marketplace messaging
-"AI-First Local Economy Platform"
+"Loconomy - AI-First Local Economy Platform"
 ```
 
 ### **💎 Revolutionary Features**
