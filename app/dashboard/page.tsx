@@ -25,6 +25,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
+import { useTheme } from "next-themes";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const stats = [
@@ -130,6 +131,7 @@ const notifications = [
 
 export default function DashboardPage() {
   const { user, isLoading } = useAuth();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState("7d");
 

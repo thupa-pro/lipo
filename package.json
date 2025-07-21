@@ -205,7 +205,6 @@
     "docker:run": "docker run -p 3000:3000 loconomy:latest",
     "docker:dev": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "prepare": "husky install",
     "pre-commit": "lint-staged",
     "postbuild": "next-sitemap",
     "health-check": "node scripts/health-check.js",
