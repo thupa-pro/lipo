@@ -62,14 +62,27 @@ export enum AIMarketplaceEvents {
 }
 
 class SovereignEventBus extends EventEmitter {
-  private supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  private supabase: any = null;
 
   constructor() {
     super();
     this.setMaxListeners(100); // Handle high-throughput AI events
+  }
+
+  // Lazy initialization of Supabase client
+  private getSupabaseClient() {
+    if (this.supabase) return this.supabase;
+    
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) {
+      console.log('🔧 Supabase disabled in development (no credentials configured)');
+      return null;
+    }
+    
+    this.supabase = createClient(supabaseUrl, supabaseKey);
+    return this.supabase;
   }
 
   // Emit AI-native events with validation
@@ -126,7 +139,13 @@ class SovereignEventBus extends EventEmitter {
   // Persist events for audit and AI training
   private async persistEvent(payload: EventPayload) {
     try {
-      await this.supabase
+      const supabase = this.getSupabaseClient();
+      if (!supabase) {
+        // Skip persistence if Supabase is not configured
+        return;
+      }
+      
+      await supabase
         .from('sovereign_events')
         .insert({
           id: payload.id,
