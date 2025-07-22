@@ -10,7 +10,7 @@ import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@/components/ui/popover";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -18,26 +18,21 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
-  Calendar as CalendarIcon,
-  Clock,
-  MapPin,
-  Star,
-  Shield,
-  CheckCircle,
-  CreditCard,
-  User,
+  Calendar, as CalendarIcon,
+  MapPin
+  Shield
+  CreditCard
   Phone,
   Mail,
   MessageCircle,
   AlertCircle,
   ArrowRight,
   Heart,
-  Sparkles,
-  Zap,
-  Award,
+  Sparkles
+  Award
 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";

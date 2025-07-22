@@ -17,13 +17,10 @@ import {
   Mouse,
   Smartphone,
   Monitor,
-  CheckCircle,
   AlertTriangle,
   X,
-  Zap,
-  Clock,
-  Activity,
-  BarChart3,
+  Zap, Activity,
+  BarChart3
 } from "lucide-react";
 
 interface AccessibilityAuditProps {

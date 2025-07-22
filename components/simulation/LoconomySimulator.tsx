@@ -14,32 +14,26 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
+  CommandList
 } from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@/components/ui/popover";
 import { 
-  User, 
   Users, 
-  Briefcase, 
-  Shield, 
-  Crown, 
-  Zap, 
-  Star, 
+  Briefcase,
+  Crown, Star, 
   Settings,
   CreditCard,
-  BarChart3,
-  MessageSquare,
+  BarChart3
   Plus,
   Search,
   Sparkles,
   Bot,
   Terminal,
-  ArrowRight,
-  CheckCircle,
+  ArrowRight
   XCircle,
   AlertCircle,
   Info,
@@ -52,11 +46,9 @@ import {
   Command as CommandIcon,
   Sparkles as SparklesIcon,
   Brain,
-  Rocket,
-  Target,
+  Rocket
   TrendingUp,
-  DollarSign,
-  Clock,
+  DollarSign
   MapPin,
   Phone,
   Mail,
@@ -75,12 +67,10 @@ import {
   Send,
   Smile,
   Image,
-  FileText,
-  Link,
+  FileText
   Share,
   Download,
-  Upload,
-  Trash2,
+  Upload
   Edit,
   Copy,
   ExternalLink,
@@ -178,7 +168,7 @@ import {
   FileGit as GitIcon,
   FileGithub as GithubIcon,
   FileGitlab as GitlabIcon,
-  FileBitbucket as BitbucketIcon,
+  FileBitbucket as BitbucketIcon
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

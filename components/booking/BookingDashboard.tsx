@@ -11,25 +11,22 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Calendar,
-  Clock,
   DollarSign,
   Search,
-  Filter,
-  CheckCircle,
-  AlertCircle,
+  Filter, AlertCircle,
   TrendingUp,
-  Users,
+  Users
 } from "lucide-react";
 import {
   Booking,
   BookingStatus,
   BookingStatsResponse,
-  BookingFilters,
+  BookingFilters
 } from "@/lib/booking/types";
 import {
   useBookingClient,
@@ -37,7 +34,7 @@ import {
   formatDate,
   formatDuration,
   getBookingStatusColor,
-  getBookingStatusIcon,
+  getBookingStatusIcon
 } from "@/lib/booking/utils";
 import { useToast } from "@/hooks/use-toast";
 import { BookingDetailsModal } from "./BookingDetailsModal";

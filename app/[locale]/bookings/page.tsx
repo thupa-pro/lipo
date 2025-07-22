@@ -6,24 +6,21 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Calendar as CalendarIcon,
-  Clock,
+  Calendar, as CalendarIcon,
   MapPin,
   Phone,
-  MessageSquare,
-  Star,
+  MessageSquare
   RotateCcw,
-  AlertCircle,
-  CheckCircle,
+  AlertCircle
   XCircle,
-  Plus,
+  Plus
 } from "lucide-react";
 import Link from "next/link";
 

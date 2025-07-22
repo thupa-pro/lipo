@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import {
   USER_AI_AGENTS,
   userAIClient,
-  type UserAIAgent,
+  type, UserAIAgent
 } from "@/lib/ai/user-ai-agents";
 import {
   MessageCircle,
@@ -17,7 +17,6 @@ import {
   X,
   Sparkles,
   Bot,
-  User,
   Lightbulb,
   Volume2,
   VolumeX,
@@ -26,8 +25,7 @@ import {
   ThumbsDown,
   RotateCcw,
   Mic,
-  Settings,
-  Zap,
+  Settings
 } from "lucide-react";
 
 interface Message {

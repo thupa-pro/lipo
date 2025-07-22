@@ -5,21 +5,16 @@ import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@/components/ui/popover";
 import {
-  Shield,
   CheckCircle,
-  Clock,
   AlertTriangle,
   X,
   FileText,
   Building,
   Award,
-  MapPin,
-  User,
-  Star,
-} from "lucide-react";
+  MapPin} from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 

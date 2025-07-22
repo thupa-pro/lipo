@@ -11,16 +11,11 @@ import {
   Check,
   AlertCircle,
   CreditCard,
-  MessageSquare,
-  Calendar,
-  Star,
-  Shield,
-  Zap,
+  Calendar, Shield
   TrendingUp,
-  MapPin,
-  Clock,
+  MapPin
   CheckCircle,
-  Info,
+  Info
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

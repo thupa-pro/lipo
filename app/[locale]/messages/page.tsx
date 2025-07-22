@@ -9,7 +9,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { ChatBubble, TypingIndicator } from "@/components/messages/chat-bubble";
 import {
-  MessageSquare,
   Send,
   Search,
   MoreVertical,
@@ -19,16 +18,11 @@ import {
   Smile,
   Circle,
   Star,
-  Clock,
   Users,
   Filter,
-  ArrowDown,
-  CheckCircle,
-  AlertCircle,
-  Zap,
-  Brain,
-  Shield,
-  X,
+  ArrowDown, AlertCircle
+  Brain
+  X
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 

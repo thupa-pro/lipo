@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Settings,
-  Shield,
   Bell,
   Database,
   Palette,
   Globe,
   Lock,
   ArrowUpRight,
-  Save,
+  Save
 } from "lucide-react";
 import Link from "next/link";
 

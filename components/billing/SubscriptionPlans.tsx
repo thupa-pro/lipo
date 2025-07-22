@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,15 +15,12 @@ import { Switch } from "@/components/ui/switch";
 import {
   Check,
   Star,
-  Zap,
-  Crown,
-  Shield,
-  Users,
+  Crown, Users,
   Database,
   Headphones,
   ArrowRight,
   Sparkles,
-  TrendingUp,
+  TrendingUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

@@ -6,16 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Activity,
-  Zap,
   Wifi,
   Signal,
-  Battery,
-  Clock,
-  Gauge,
+  Battery, Gauge,
   TrendingUp,
-  AlertTriangle,
-  CheckCircle,
-  X,
+  AlertTriangle
+  X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

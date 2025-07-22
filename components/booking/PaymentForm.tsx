@@ -4,16 +4,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   CreditCard,
-  Shield,
-  Lock,
-  CheckCircle,
-  AlertCircle,
+  Lock, AlertCircle,
   ArrowLeft,
   Info,
   Calendar,
-  MapPin,
-  Clock,
-  User,
+  MapPin
+  User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

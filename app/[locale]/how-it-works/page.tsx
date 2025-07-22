@@ -5,30 +5,25 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Search,
   Users,
-  CheckCircle,
   ArrowRight,
-  Lightbulb,
-  Shield,
-  DollarSign,
+  Lightbulb, DollarSign,
   Sparkles,
   Brain,
-  Target,
-  Zap,
+  Target
   Heart,
   Award,
   TrendingUp,
-  Globe,
-  Clock,
+  Globe
   Star,
   ChevronRight,
   Play,
-  Eye,
+  Eye
 } from "lucide-react";
 
 export default function HowItWorksPage() {

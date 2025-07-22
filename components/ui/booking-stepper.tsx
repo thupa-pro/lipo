@@ -11,17 +11,14 @@ import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { 
-  Calendar as CalendarIcon, 
-  Clock, 
-  MapPin, 
-  User, 
+  Calendar, as CalendarIcon,
+  MapPin 
   CreditCard, 
   Check, 
   ChevronRight,
   ChevronLeft,
   Loader2,
-  AlertCircle,
-  Shield,
+  AlertCircle
   Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";

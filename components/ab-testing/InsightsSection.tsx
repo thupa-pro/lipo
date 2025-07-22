@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, TrendingUp, Users, BarChart3 } from "lucide-react"
+import {  TrendingUp, Users, BarChart3 } from "lucide-react"
 
 export default function InsightsSection() {
   return (

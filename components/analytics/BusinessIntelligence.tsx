@@ -6,8 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { 
-  TrendingUp, TrendingDown, DollarSign, Users, 
-  Target, BarChart3, PieChart, Activity,
+  TrendingUp, TrendingDown, DollarSign, Users, BarChart3, PieChart, Activity,
   MapPin, Calendar, Filter, Download
 } from 'lucide-react';
 

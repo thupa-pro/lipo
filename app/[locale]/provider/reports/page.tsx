@@ -9,17 +9,15 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   FileText,
   Download,
   Calendar,
   DollarSign,
-  Star,
   Users,
-  TrendingUp,
-  Clock,
+  TrendingUp
 } from "lucide-react";
 
 export default function ProviderReportsPage() {

@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Phone, Mail, MessageSquare, HelpCircle, BookOpen, Users, ArrowRight, Sparkles } from "lucide-react"
+import { Phone, Mail, HelpCircle, BookOpen, Users, ArrowRight, Sparkles } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import AIChat from "@/components/ai/AIChat"

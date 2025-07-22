@@ -10,11 +10,8 @@ import { useToast } from "@/components/ui/use-toast";
 import {
   Brain,
   Search,
-  Star,
-  MapPin,
-  Shield,
-  Heart,
-  ArrowRight,
+  MapPin, Heart,
+  ArrowRight
 } from "lucide-react";
 
 // Clean interface - NO function props at all

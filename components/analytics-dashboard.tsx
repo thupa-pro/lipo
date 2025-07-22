@@ -6,7 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
+  CardDescription
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -14,18 +14,12 @@ import { Progress } from "@/components/ui/progress";
 import {
   Users,
   DollarSign,
-  Star,
-  Eye,
-  MessageSquare,
-  Calendar,
-  Target,
+  Eye, Calendar
   BarChart3,
   PieChart,
-  Activity,
-  Zap,
+  Activity
   Lightbulb,
-  TrendingUp,
-  CheckCircle,
+  TrendingUp
 } from "lucide-react";
 import {
   LineChart,
@@ -38,13 +32,13 @@ import {
   ResponsiveContainer,
   Bar,
   ComposedChart,
-  AreaChart, // Added AreaChart import
-  Area,
+  AreaChart, // Added, AreaChart import,
+  Area
 } from "recharts";
 import {
   ChartContainer,
   ChartTooltipContent,
-  ChartLegendContent,
+  ChartLegendContent
 } from "@/components/ui/chart";
 
 interface AnalyticsData {

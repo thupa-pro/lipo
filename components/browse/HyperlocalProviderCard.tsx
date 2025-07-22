@@ -5,23 +5,19 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import {
-  Star,
   MapPin,
-  Clock,
   CheckCircle,
   ArrowRight,
   Heart,
   Share2,
-  Navigation2,
-  Zap,
-  Award,
+  Navigation2, Award
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";

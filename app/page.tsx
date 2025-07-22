@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { 
-  Sparkles, Star, Globe, Users, Shield, Zap, 
-  ArrowRight, Play, CheckCircle, TrendingUp,
-  Heart, Award, MapPin, Clock, Brain, Crown,
+  Sparkles, Globe, Users, Shield,
+  ArrowRight, Play TrendingUp,
+  Heart, Award, MapPin Brain, Crown,
   Rocket, Building2, CircuitBoard, Gem
 } from "lucide-react";
 import Link from "next/link";

@@ -11,20 +11,20 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "@/components/ui/table";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import {
   Search,
@@ -32,9 +32,8 @@ import {
   Eye,
   Download,
   Calendar,
-  User,
   Activity,
-  Database,
+  Database
 } from "lucide-react";
 import { format } from "date-fns";
 import { AuditLogEntry, useAdminClient } from "@/lib/admin/utils";

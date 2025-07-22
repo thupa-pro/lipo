@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -14,13 +14,9 @@ import { Progress } from "@/components/ui/progress";
 import {
   Sparkles,
   TrendingUp,
-  MessageSquare,
-  Shield,
-  Zap,
-  Eye,
-  Target,
+  Shield, Eye
   Brain,
-  Rocket,
+  Rocket
 } from "lucide-react";
 import SmartJobInput from "@/components/ui/smart-job-input";
 import MatchTimeline from "@/components/ui/match-timeline";

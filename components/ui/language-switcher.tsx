@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/components/ui/use-toast";
 import { Globe, Check, Loader2 } from "lucide-react";
@@ -18,7 +18,7 @@ import {
   locales,
   localeNames,
   localeFlags,
-  type Locale,
+  type, Locale
 } from "@/lib/i18n/config";
 
 interface LanguageSwitcherProps {

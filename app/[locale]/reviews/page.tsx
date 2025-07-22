@@ -5,14 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ReviewsList } from "@/components/reviews/ReviewsList";
 import {
-  Star,
   TrendingUp,
   Users,
-  MessageSquare,
   Award,
   BarChart3,
   Calendar,
-  Filter,
+  Filter
 } from "lucide-react";
 
 export const metadata: Metadata = {

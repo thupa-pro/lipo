@@ -10,11 +10,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import {
   Zap,
-  Clock,
   Activity,
-  TrendingUp,
-  CheckCircle,
-  AlertTriangle,
+  TrendingUp, AlertTriangle,
   X,
   Monitor,
   Smartphone,
@@ -23,7 +20,7 @@ import {
   Code,
   Database,
   BarChart3,
-  Gauge,
+  Gauge
 } from "lucide-react";
 
 interface PerformanceOptimizerProps {

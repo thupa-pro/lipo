@@ -9,30 +9,25 @@ import { Progress } from "@/components/ui/progress";
 import { 
   Globe, 
   Users, 
-  TrendingUp, 
-  Zap, 
+  TrendingUp,
   DollarSign, 
   MapPin, 
   Building, 
   Smartphone,
-  Heart,
-  Star,
-  ArrowRight,
-  CheckCircle
-} from "lucide-react";
+  Heart, ArrowRight} from "lucide-react";
 import CitySelector from "@/components/i18n/city-selector";
 import {
   metropolitanCities,
   cityTiers,
   economyTypes,
   localeNames,
-  localeFlags,
+  localeFlags
 } from "@/lib/i18n/config";
 import {
   cityConfigurations,
   citiesByMarketPotential,
   citiesByDigitalAdoption,
-  type CityLocalizationData,
+  type, CityLocalizationData
 } from "@/lib/i18n/city-localization";
 
 export default function GlobalCitiesPage() {

@@ -9,13 +9,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Search,
   MapPin,
-  Star,
   Grid,
   List,
   Sparkles,
   Heart,
   Brain,
-  MessageCircle,
+  MessageCircle
 } from "lucide-react";
 
 // Sample provider data

@@ -13,18 +13,15 @@ import {
   QrCode,
   NfcIcon,
   Apple,
-  CheckCircle,
   AlertCircle,
   ArrowLeft,
   ArrowRight,
   Fingerprint,
   FaceIcon,
-  Lock,
-  Zap,
-  Send,
+  Lock, Send,
   Plus,
   Minus,
-  RotateCcw,
+  RotateCcw
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

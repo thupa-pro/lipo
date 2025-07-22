@@ -9,9 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Plus,
-  Clock,
-  MapPin,
-  User,
+  MapPin
 } from "lucide-react";
 
 export default function ProviderCalendarPage() {

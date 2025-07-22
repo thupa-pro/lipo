@@ -11,10 +11,7 @@ import {
   Mail,
   Phone,
   MapPin,
-  Heart,
-  Shield,
-  Zap,
-} from "lucide-react";
+  Heart} from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

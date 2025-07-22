@@ -8,24 +8,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Bell,
   X,
-  CheckCircle,
   AlertCircle,
-  Info,
-  Star,
-  Calendar,
-  DollarSign,
-  Zap,
+  Info, Calendar,
+  DollarSign
   Brain,
-  Sparkles,
-  Clock,
+  Sparkles
   MapPin,
   Users,
   TrendingUp,
-  Heart,
-  Shield,
+  Heart
   ArrowRight,
   MessageCircle,
-  Settings,
+  Settings
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 

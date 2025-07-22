@@ -10,16 +10,13 @@ import {
   Plus,
   Search,
   MessageCircle,
-  Clock,
   Star,
   Archive,
   MoreHorizontal,
   X,
-  Bot,
-  User,
-  HelpCircle,
+  Bot, HelpCircle,
   Settings,
-  BookOpen,
+  BookOpen
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatConversation } from "@/lib/ai-chat/types";

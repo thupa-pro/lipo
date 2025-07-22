@@ -6,12 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
-  Star, 
-  MapPin, 
-  Clock, 
-  Shield, 
-  Zap, 
-  Heart,
+  MapPin,
+  Shield, Heart,
   MessageCircle,
   Eye,
   TrendingUp,

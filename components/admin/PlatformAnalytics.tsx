@@ -10,7 +10,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   LineChart,
@@ -26,7 +26,7 @@ import {
   Pie,
   Cell,
   AreaChart,
-  Area,
+  Area
 } from "recharts";
 import {
   TrendingUp,
@@ -37,7 +37,7 @@ import {
   Activity,
   Download,
   BarChart3,
-  PieChart as PieChartIcon,
+  PieChart, as PieChartIcon
 } from "lucide-react";
 import { PlatformMetrics, useAdminClient } from "@/lib/admin/utils";
 import { useToast } from "@/hooks/use-toast";

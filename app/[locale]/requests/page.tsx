@@ -7,7 +7,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -19,16 +19,10 @@ import {
   Search,
   Filter,
   MapPin,
-  Clock,
   Star,
   Eye,
-  Edit3,
-  Trash2,
-  DollarSign,
-  Users,
-  MessageSquare,
-  CheckCircle,
-} from "lucide-react";
+  Edit3, DollarSign,
+  Users} from "lucide-react";
 import Link from "next/link";
 
 export default function RequestsPage() {

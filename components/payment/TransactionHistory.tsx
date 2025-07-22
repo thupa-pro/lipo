@@ -11,14 +11,14 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import {
   ArrowUpRight,
@@ -35,13 +35,11 @@ import {
   TrendingUp,
   TrendingDown,
   Calendar,
-  Clock,
   CheckCircle,
   AlertTriangle,
   X,
   ExternalLink,
-  FileText,
-  Shield,
+  FileText
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

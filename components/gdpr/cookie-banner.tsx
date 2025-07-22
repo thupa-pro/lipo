@@ -7,7 +7,7 @@ import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { X, Settings, Info, Shield, Eye, Heart, Palette } from 'lucide-react';
+import { X, Settings, Info, Eye, Heart, Palette } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { gdprCompliance, COOKIE_CATEGORIES } from '@/lib/compliance/gdpr';
 

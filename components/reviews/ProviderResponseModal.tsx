@@ -5,7 +5,7 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,14 +13,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
-  Star,
-  MessageSquare,
   Send,
   CheckCircle,
-  Clock,
   User,
   Calendar,
-  ThumbsUp,
+  ThumbsUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

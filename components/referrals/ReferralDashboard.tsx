@@ -12,14 +12,14 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "@/components/ui/table";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
@@ -30,23 +30,16 @@ import {
   Users,
   TrendingUp,
   Gift,
-  Star,
   Calendar,
   ExternalLink,
-  Mail,
-  MessageSquare,
-  Facebook,
-  Twitter,
-  Link,
+  Mail, Facebook,
+  Twitter
   QrCode,
   Download,
-  Trophy,
-  Target,
-  CheckCircle,
-  Clock,
-  Award,
-  Zap,
-  Sparkles,
+  Trophy
+  CheckCircle
+  Award
+  Sparkles
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";

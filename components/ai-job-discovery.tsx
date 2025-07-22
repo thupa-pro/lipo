@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, Sparkles, MessageSquare, CheckCircle, Lightbulb, Clock } from "lucide-react"
+import { Loader2, Sparkles, MessageSquare, Lightbulb} from "lucide-react"
 
 interface JobSuggestion {
   category: string

@@ -5,18 +5,13 @@ import {
   Loader2,
   Sparkles,
   Brain,
-  Zap,
   CheckCircle,
   AlertCircle,
   Info,
-  XCircle,
-  Clock,
-  Search,
+  XCircle, Search,
   Calendar,
-  Users,
-  Star,
-  Heart,
-  Shield,
+  Users
+  Heart
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

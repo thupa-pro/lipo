@@ -10,39 +10,32 @@ import {
   Webhook,
   Key,
   Shield,
-  Zap,
   Settings,
   Play,
-  Pause,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  Clock,
+  Pause, XCircle,
+  AlertCircle
   Download,
   Upload,
   Copy,
   Eye,
   EyeOff,
-  Edit,
-  Trash2,
+  Edit
   Plus,
   ExternalLink,
   RefreshCw,
   Activity,
   BarChart3,
   Terminal,
-  FileText,
-  Link,
+  FileText
   Server,
   Cloud,
   Smartphone,
   CreditCard,
-  Mail,
-  MessageSquare,
+  Mail
   Calendar,
   MapPin,
   Package,
-  Building,
+  Building
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

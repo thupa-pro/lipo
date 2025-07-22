@@ -1,7 +1,7 @@
 import { PremiumCard, PremiumCardContent } from "@/components/ui/premium-card";
 import { PremiumSection } from "@/components/ui/premium-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star, MessageCircle } from "lucide-react";
+import {  MessageCircle } from "lucide-react";
 
 const testimonials = [
   {

@@ -7,16 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import { CookieSettingsLink } from './CookieSettingsLink';
 import { useCookieSettings, useConsentAwareAnalytics } from '@/hooks/useCookieSettings';
 import { 
-  Cookie, 
-  Shield, 
+  Cookie,
   BarChart3, 
   Target, 
-  Zap, 
   CheckCircle, 
-  XCircle, 
-  Clock,
-  RefreshCw,
-  Trash2
+  XCircle,
+  RefreshCw
 } from 'lucide-react';
 
 export function CookieConsentDemo() {

@@ -11,16 +11,12 @@ import { Input } from "@/components/ui/input";
 import { 
   Search, 
   Calendar,
-  Star,
-  MapPin,
-  Clock,
-  Filter,
+  MapPin, Filter,
   SortAsc,
   Heart,
   Eye,
   Users,
-  DollarSign,
-  CheckCircle,
+  DollarSign
   ArrowRight
 } from "lucide-react";
 

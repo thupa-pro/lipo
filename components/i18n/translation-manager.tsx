@@ -12,25 +12,22 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   AlertTriangle,
-  CheckCircle,
   XCircle,
   Download,
   Upload,
-  Search,
-  Zap,
-  BarChart3,
+  Search, BarChart3,
   Globe,
   Code,
   Eye,
@@ -39,13 +36,12 @@ import {
   RefreshCw,
   AlertCircle,
   TrendingUp,
-  Users,
-  Clock,
+  Users
 } from "lucide-react";
-import { locales, localeNames, type Locale } from "@/lib/i18n/config";
+import { locales, localeNames, type, Locale } from "@/lib/i18n/config";
 import {
   TranslationAnalytics,
-  SmartTranslator,
+  SmartTranslator
 } from "@/lib/i18n/advanced-features";
 
 interface TranslationKey {

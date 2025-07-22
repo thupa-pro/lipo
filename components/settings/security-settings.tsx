@@ -11,15 +11,11 @@ import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Key,
-  Shield,
   Smartphone,
   Eye,
-  EyeOff,
-  CheckCircle,
-  AlertTriangle,
+  EyeOff, AlertTriangle,
   Lock,
-  Unlock,
-  Clock,
+  Unlock
 } from "lucide-react";
 
 interface SecuritySettingsProps {

@@ -12,19 +12,17 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
-  Shield,
   DollarSign,
-  Clock,
   CheckCircle,
   AlertTriangle,
   X,
@@ -45,7 +43,7 @@ import {
   ArrowRight,
   ArrowLeft,
   Lock,
-  Unlock,
+  Unlock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

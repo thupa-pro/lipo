@@ -10,9 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { 
-  Sparkles, Mail, Lock, User, ArrowLeft, Loader2, Eye, EyeOff,
-  Users, Briefcase, CheckCircle, Chrome, Github, Star
-} from "lucide-react";
+  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff,
+  Users, Briefcase Chrome, Github} from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 

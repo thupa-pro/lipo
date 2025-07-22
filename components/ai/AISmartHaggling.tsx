@@ -4,14 +4,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   MessageCircle, 
-  DollarSign, 
-  Zap, 
+  DollarSign,
   TrendingDown, 
   TrendingUp, 
   Brain,
-  Target,
-  Clock,
-  CheckCircle,
+  Target, CheckCircle,
   XCircle,
   Sparkles,
   Handshake,

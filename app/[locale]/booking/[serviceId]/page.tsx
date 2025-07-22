@@ -6,24 +6,19 @@ import { useSession } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
-  Clock,
-  MapPin,
-  Star,
-  Heart,
+  MapPin, Heart,
   Share,
   MessageCircle,
-  Shield,
-  CheckCircle,
+  Shield
   CreditCard,
   ArrowLeft,
   Info,
-  AlertCircle,
-  User,
+  AlertCircle
   Badge as BadgeIcon,
   Phone,
   Mail,
   Camera,
-  Award,
+  Award
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

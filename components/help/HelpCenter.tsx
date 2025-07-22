@@ -7,15 +7,11 @@ import {
   Search,
   BookOpen,
   Video,
-  MessageSquare,
   Mail,
   Phone,
   FileText,
-  ExternalLink,
-  Star,
-  ThumbsUp,
-  ThumbsDown,
-  Clock,
+  ExternalLink, ThumbsUp,
+  ThumbsDown
   User,
   Tag,
   Filter,
@@ -24,16 +20,14 @@ import {
   Download,
   Share2,
   Bookmark,
-  Copy,
-  CheckCircle,
+  Copy
   AlertCircle,
   Info,
   Lightbulb,
   Code,
   Terminal,
   Globe,
-  Shield,
-  Zap,
+  Shield
   Settings,
   Users,
   CreditCard,
@@ -45,7 +39,7 @@ import {
   Eye,
   TrendingUp,
   Plus,
-  Edit,
+  Edit
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

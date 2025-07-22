@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import {
-  CheckCircle,
   AlertTriangle,
   Sparkles,
   Database,
@@ -14,12 +13,9 @@ import {
   Monitor,
   Tablet,
   Globe,
-  Zap,
-  Shield,
-  Star,
-  TrendingUp,
+  Shield, TrendingUp,
   Users,
-  Award,
+  Award
 } from "lucide-react";
 import DataInjection from "@/components/polish/data-injection";
 import DeviceTesting from "@/components/polish/device-testing";

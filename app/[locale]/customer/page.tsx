@@ -11,20 +11,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Search, 
   Calendar,
-  Star,
   Heart,
-  Bookmark,
-  Clock,
-  MapPin,
-  CreditCard,
-  User,
-  Settings,
-  MessageSquare,
+  Bookmark, MapPin,
+  CreditCard
+  Settings
   Phone,
   Mail,
   Plus,
-  Eye,
-  CheckCircle,
+  Eye
   History
 } from "lucide-react";
 

@@ -22,13 +22,9 @@ import {
   Banknote,
   ArrowUpRight,
   ArrowDownLeft,
-  Clock,
   CheckCircle,
-  AlertCircle,
-  Zap,
-  Shield,
-  Star,
-  MoreHorizontal,
+  AlertCircle, Shield
+  MoreHorizontal
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

@@ -12,21 +12,18 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Bell,
   Mail,
   Smartphone,
-  Clock,
   MessageSquare,
-  CreditCard,
-  Shield,
-  Star,
+  CreditCard, Star,
   Calendar,
   Volume2,
   VolumeX,
-  Settings,
+  Settings
 } from "lucide-react";
 
 interface NotificationSettingsProps {

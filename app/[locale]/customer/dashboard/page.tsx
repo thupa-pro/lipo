@@ -12,13 +12,9 @@ import SmartListingCard from "@/components/ai/SmartListingCard";
 import {
   Search,
   MapPin,
-  Star,
   Calendar,
-  Bell,
-  User,
-  LogOut,
-  Heart,
-  Clock,
+  Bell, LogOut,
+  Heart
   CheckCircle,
   ArrowRight,
   Home,
@@ -28,8 +24,7 @@ import {
   Laptop,
   Phone,
   Sparkles,
-  Bot,
-  Zap,
+  Bot
 } from "lucide-react";
 
 export default function CustomerDashboard() {

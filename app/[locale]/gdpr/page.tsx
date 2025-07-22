@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, CheckCircle, Users, Mail, Lock, FileText, Info, ArrowRight, Database, Clock } from "lucide-react" // Ensure Clock is imported
+import { Shield, Users, Mail, Lock, FileText, Info, ArrowRight, Database} from "lucide-react" // Ensure Clock is imported
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 

@@ -11,10 +11,7 @@ import {
   BarChart,
   Smartphone,
   TrendingUp,
-  DollarSign,
-  Shield,
-  Zap,
-} from "lucide-react";
+  DollarSign} from "lucide-react";
 
 export default function PaymentsPage() {
   return (

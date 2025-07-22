@@ -11,24 +11,19 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import {
   Bell,
   X,
   Check,
-  CheckCircle,
   AlertCircle,
-  CreditCard,
-  MessageSquare,
-  Calendar,
-  Star,
+  CreditCard, Calendar
   Settings,
   MoreHorizontal,
-  Eye,
-  Trash2,
+  Eye
   Volume2,
-  VolumeX,
+  VolumeX
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

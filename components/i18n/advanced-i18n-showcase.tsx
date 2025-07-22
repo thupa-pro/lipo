@@ -9,7 +9,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -27,11 +27,9 @@ import {
   Wifi,
   WifiOff,
   MapPin,
-  Clock,
   DollarSign,
   Calendar,
-  Phone,
-  Shield,
+  Phone
 } from "lucide-react";
 
 interface MetropolitanCityShowcaseProps {

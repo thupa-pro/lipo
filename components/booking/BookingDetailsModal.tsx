@@ -5,7 +5,7 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +17,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   AlertDialog,
@@ -28,23 +28,18 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 import {
   Calendar,
-  Clock,
   MapPin,
-  DollarSign,
-  User,
-  Phone,
+  DollarSign, Phone,
   Mail,
-  MessageSquare,
-  CheckCircle,
+  MessageSquare
   XCircle,
   PlayCircle,
   PauseCircle,
-  AlertTriangle,
-  Star,
+  AlertTriangle
 } from "lucide-react";
 import { format } from "date-fns";
 import { Booking, BookingStatus } from "@/lib/booking/types";
@@ -53,7 +48,7 @@ import {
   formatTime,
   formatDuration,
   getBookingStatusColor,
-  getBookingStatusIcon,
+  getBookingStatusIcon
 } from "@/lib/booking/utils";
 import { useToast } from "@/hooks/use-toast";
 

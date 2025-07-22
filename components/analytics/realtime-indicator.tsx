@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Clock, Wifi, WifiOff } from "lucide-react";
+import {  Wifi, WifiOff } from "lucide-react";
 
 interface RealtimeIndicatorProps {
   isActive: boolean;

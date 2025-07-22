@@ -8,18 +8,14 @@ import {
   TrendingUp,
   Heart,
   MapPin,
-  Clock,
-  Star,
-  Zap,
-  Brain,
-  Target,
+  Star, Brain
   ChevronRight,
   ArrowRight,
   Lightbulb,
   Filter,
   Calendar,
   DollarSign,
-  Users,
+  Users
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

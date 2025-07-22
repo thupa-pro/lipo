@@ -7,19 +7,19 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Check, Crown, Zap, Star, ArrowRight, Loader2 } from "lucide-react";
+import { Check, Crown, Star, ArrowRight, Loader2 } from "lucide-react";
 import {
   SubscriptionPlanData,
   BillingCycle,
   UserSubscriptionWithPlan,
-  SubscriptionPlan,
+  SubscriptionPlan
 } from "@/lib/subscription/types";
 import {
   useSubscriptionClient,
   formatPlanPrice,
   getPlanSavings,
   getPlanColor,
-  getPlanDisplayName,
+  getPlanDisplayName
 } from "@/lib/subscription/utils";
 import { useToast } from "@/hooks/use-toast";
 import { loadStripe } from "@stripe/stripe-js";

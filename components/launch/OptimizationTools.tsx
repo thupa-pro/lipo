@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Zap,
   FileText,
   Image,
   Package,
@@ -14,17 +13,13 @@ import {
   TrendingDown,
   AlertTriangle,
   CheckCircle2,
-  Clock,
   Settings,
   Play,
   Pause,
   Download,
-  Upload,
-  Trash2,
-  Minimize2,
+  Upload, Minimize2,
   Maximize2,
-  RotateCcw,
-  Target,
+  RotateCcw
   BarChart3,
   PieChart,
   Activity,

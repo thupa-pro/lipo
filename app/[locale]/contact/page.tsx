@@ -7,7 +7,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,17 +16,13 @@ import {
   Phone,
   Mail,
   MapPin,
-  MessageSquare,
   ArrowRight,
-  Sparkles,
-  Clock,
-  Users,
-  CheckCircle,
+  Sparkles, Users
   Send,
   MessageCircle,
   Heart,
   Globe,
-  Headphones,
+  Headphones
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";

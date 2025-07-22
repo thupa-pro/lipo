@@ -3,12 +3,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { 
-  Sparkles, 
-  Zap, 
+  Sparkles,
   Target, 
-  Award, 
-  Shield, 
-  Brain,
+  Award, Brain,
   Heart,
   Eye,
   Mic,
@@ -18,12 +15,9 @@ import {
   Accessibility,
   Search,
   Filter,
-  ArrowRight,
-  Star,
-  CheckCircle,
-  Clock,
-  MapPin,
-  MessageSquare,
+  ArrowRight
+  CheckCircle
+  MapPin
   Phone,
   Video
 } from 'lucide-react';

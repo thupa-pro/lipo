@@ -13,23 +13,20 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@/components/ui/popover";
 import {
   CalendarIcon,
-  Clock,
   MapPin,
   DollarSign,
-  User,
-  CheckCircle,
-  AlertCircle,
-  Loader2,
+  User, AlertCircle,
+  Loader2
 } from "lucide-react";
 import { format } from "date-fns";
 import { BookingFormData, AvailableSlot } from "@/lib/booking/types";
@@ -37,7 +34,7 @@ import { Listing } from "@/lib/listings/types";
 import {
   useBookingClient,
   formatTime,
-  formatDuration,
+  formatDuration
 } from "@/lib/booking/utils";
 import { useToast } from "@/hooks/use-toast";
 

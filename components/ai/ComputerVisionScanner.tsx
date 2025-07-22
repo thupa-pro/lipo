@@ -6,20 +6,15 @@ import {
   Camera, 
   Upload, 
   Scan, 
-  Eye, 
-  Zap, 
-  Brain,
-  CheckCircle,
-  AlertTriangle,
+  Eye,
+  Brain, AlertTriangle,
   Sparkles,
   Tag,
   DollarSign,
-  MapPin,
-  Clock,
+  MapPin
   Star,
   Edit,
-  Save,
-  Trash2,
+  Save
   Download,
   Share2
 } from 'lucide-react'

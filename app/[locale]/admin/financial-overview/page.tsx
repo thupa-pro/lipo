@@ -15,11 +15,10 @@ import {
   Receipt,
   Users,
   CheckCircle,
-  Clock,
   Calendar,
   Eye,
   Search,
-  RefreshCcw,
+  RefreshCcw
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
@@ -32,7 +31,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   AreaChart,
-  Area,
+  Area
 } from "recharts"
 import { ChartContainer, ChartTooltipContent } from "@/components/ui/chart"
 

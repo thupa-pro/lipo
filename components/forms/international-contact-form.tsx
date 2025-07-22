@@ -8,7 +8,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,7 +17,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
@@ -26,12 +26,9 @@ import {
   MapPin,
   Phone,
   DollarSign,
-  User,
   Mail,
-  MessageSquare,
-  CheckCircle,
-  XCircle,
-  Loader2,
+  MessageSquare, XCircle,
+  Loader2
 } from "lucide-react";
 
 interface ContactFormData {

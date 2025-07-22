@@ -13,7 +13,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import {
   AlertDialog,
@@ -24,19 +24,16 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 import {
   Settings,
   Users,
   Plus,
-  Trash2,
-  Mail,
-  Shield,
-  Save,
+  Mail, Save,
   Activity,
   Copy,
-  ExternalLink,
+  ExternalLink
 } from "lucide-react";
 import {
   Workspace,
@@ -44,7 +41,7 @@ import {
   WorkspaceInvitation,
   WorkspaceActivity,
   UpdateWorkspaceRequest,
-  InviteMemberRequest,
+  InviteMemberRequest
 } from "@/lib/workspace/types";
 import {
   useWorkspaceClient,
@@ -53,7 +50,7 @@ import {
   formatMemberCount,
   getInvitationExpirationStatus,
   createInvitationUrl,
-  formatActivityDescription,
+  formatActivityDescription
 } from "@/lib/workspace/utils";
 import { useToast } from "@/hooks/use-toast";
 import { InviteMemberForm } from "./InviteMemberForm";

@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,16 +16,12 @@ import {
   Activity,
   Users,
   AlertTriangle,
-  CheckCircle,
-  XCircle,
-  Clock,
-  MapPin,
-  Zap,
+  XCircle, MapPin
   Server,
   Database,
   Globe,
   Pause,
-  Play,
+  Play
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { analyticsClient } from "@/lib/analytics/utils";

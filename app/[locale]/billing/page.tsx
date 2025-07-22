@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,18 +19,15 @@ import {
   Download,
   AlertCircle,
   CheckCircle,
-  Clock,
   DollarSign,
   TrendingUp,
   Receipt,
   Settings,
-  Star,
-  Zap,
-  Shield,
+  Star, Shield,
   Calendar,
   ArrowUpRight,
   ExternalLink,
-  RefreshCw,
+  RefreshCw
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

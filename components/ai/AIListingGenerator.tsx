@@ -17,22 +17,18 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Progress } from '@/components/ui/progress';
 import { 
   Wand2, 
   Sparkles, 
-  Brain, 
-  Target, 
-  DollarSign,
-  Clock,
-  MapPin,
+  Brain,
+  DollarSign, MapPin,
   ImageIcon,
   Tag,
-  TrendingUp,
-  Zap,
+  TrendingUp
   CheckCircle,
   AlertCircle,
   RefreshCw

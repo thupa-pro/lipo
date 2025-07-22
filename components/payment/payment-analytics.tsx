@@ -15,7 +15,6 @@ import {
   Wallet,
   Users,
   Calendar,
-  Clock,
   Target,
   Award,
   AlertTriangle,
@@ -23,9 +22,7 @@ import {
   Download,
   Filter,
   ArrowUpRight,
-  ArrowDownRight,
-  Zap,
-  Shield,
+  ArrowDownRight, Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

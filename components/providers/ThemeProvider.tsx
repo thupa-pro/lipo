@@ -128,9 +128,21 @@ export function ThemeProvider({
     setMounted(true);
   }, []);
 
-  // Prevent hydration mismatch
+  // Prevent hydration mismatch with a proper loading state
   if (!mounted) {
-    return <div style={{ visibility: "hidden" }}>{children}</div>;
+    return (
+      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-violet-600 via-purple-600 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg animate-pulse">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Loading Loconomy...</h2>
+          <p className="text-gray-600 dark:text-gray-400">Initializing your elite service experience</p>
+        </div>
+      </div>
+    );
   }
 
   const value: ThemeContextType = {

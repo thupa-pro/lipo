@@ -10,13 +10,10 @@ import { AccessibilityAudit } from "@/components/accessibility/accessibility-aud
 import { PerformanceOptimizer } from "@/components/performance/performance-optimizer";
 import {
   Eye,
-  Zap,
   CheckCircle,
   TrendingUp,
   Activity,
-  BarChart3,
-  Shield,
-  Gauge,
+  BarChart3, Gauge
 } from "lucide-react";
 
 export default function AccessibilityPerformancePage() {
