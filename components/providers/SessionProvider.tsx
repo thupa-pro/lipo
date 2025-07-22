@@ -1,6 +1,6 @@
-"use client";
+// This provider is no longer needed since we're using backend-only authentication
+// Keeping file for compatibility but it's just a pass-through now
 
-import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 interface SessionProviderProps {
@@ -8,5 +8,6 @@ interface SessionProviderProps {
 }
 
 export function SessionProvider({ children }: SessionProviderProps) {
-  return <NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
+  // No NextAuth session provider needed - we use backend-only authentication
+  return <>{children}</>;
 }

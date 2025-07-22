@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Send, 
@@ -46,7 +46,7 @@ export default function AgentCommandInput({
   onResponse,
   currentPage = "unknown"
 }: AgentCommandInputProps) {
-  const { data: session } = useSession();
+  const { user, isSignedIn } = useAuth();
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState<AgentResponse | null>(null);
@@ -60,7 +60,7 @@ export default function AgentCommandInput({
   useEffect(() => {
     loadSuggestions();
     loadCommands();
-  }, [session]);
+  }, [user]);
 
   // Show agent popup when user types slash
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function AgentCommandInput({
   }, [input]);
 
   const loadSuggestions = async () => {
-    if (!session) return;
+    if (!isSignedIn) return;
     
     try {
       const response = await fetch(`/api/ai/agent?action=suggestions&page=${currentPage}`);

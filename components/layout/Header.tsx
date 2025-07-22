@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSession, signOut } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,7 +45,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) {
-  const { data: session } = useSession();
+  const { user, isSignedIn, signOut } = useAuth();
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
@@ -59,7 +59,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
   const navigation = [
     { name: "Home", href: "/", icon: Home },
     { name: "Search", href: "/search", icon: Search },
-    { name: "Dashboard", href: `/${session?.user?.role?.toLowerCase()}/dashboard`, icon: Briefcase },
+    { name: "Dashboard", href: `/${user?.role?.toLowerCase()}/dashboard`, icon: Briefcase },
     { name: "Messages", href: "/messages", icon: MessageCircle },
     { name: "Bookings", href: "/bookings", icon: Calendar },
   ];
@@ -191,7 +191,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
           </div>
 
           {/* Notifications */}
-          {session && (
+          {isSignedIn && (
             <div className="relative">
               <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
                 <Bell className="h-4 w-4" />
@@ -211,14 +211,14 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
           <ThemeToggle />
 
           {/* User Menu */}
-          {session ? (
+          {isSignedIn ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-9 w-9 rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src={session.user.image || ""} alt={session.user.name || ""} />
+                    <AvatarImage src="" alt={user?.name || ""} />
                     <AvatarFallback>
-                      {session.user.name?.charAt(0).toUpperCase() || "U"}
+                      {user?.name?.charAt(0).toUpperCase() || "U"}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
@@ -226,9 +226,9 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">{session.user.name}</p>
+                    <p className="text-sm font-medium leading-none">{user?.name}</p>
                     <p className="text-xs leading-none text-muted-foreground">
-                      {session.user.email}
+                      {user?.email}
                     </p>
                   </div>
                 </DropdownMenuLabel>
@@ -260,7 +260,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="text-red-600 dark:text-red-400"
-                  onClick={() => signOut({ callbackUrl: "/landing" })}
+                  onClick={() => signOut()}
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   Sign out

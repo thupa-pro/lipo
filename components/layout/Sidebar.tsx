@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,7 +44,7 @@ interface NavItem {
 }
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const { data: session } = useSession();
+  const { user, isSignedIn } = useAuth();
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
@@ -63,7 +63,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       { name: "Search", href: "/search", icon: Search },
     ];
 
-    if (!session) {
+    if (!isSignedIn) {
       return [
         ...baseNavigation,
         { name: "Sign In", href: "/auth/signin", icon: Users },
@@ -71,7 +71,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       ];
     }
 
-    const userRole = session.user?.role?.toLowerCase();
+    const userRole = user?.role?.toLowerCase();
     
     if (userRole === "customer") {
       return [
@@ -274,16 +274,16 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         <div className="flex h-full flex-col">
           {/* User Info Section */}
-          {session && (
+          {isSignedIn && (
             <div className="p-4 border-b border-border">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
-                  {session.user.name?.charAt(0).toUpperCase() || "U"}
+                  {user?.name?.charAt(0).toUpperCase() || "U"}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">{session.user.name}</p>
+                  <p className="text-sm font-medium truncate">{user?.name}</p>
                   <p className="text-xs text-muted-foreground truncate">
-                    {session.user.role?.toLowerCase()}
+                    {user?.role?.toLowerCase()}
                   </p>
                 </div>
               </div>
@@ -298,7 +298,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                   <NavItemComponent item={item} />
                   {/* Add separator after main sections */}
                   {(index === 1 || 
-                    (session && (index === navigation.length - 2))) && (
+                    (isSignedIn && (index === navigation.length - 2))) && (
                     <Separator className="my-3" />
                   )}
                 </div>

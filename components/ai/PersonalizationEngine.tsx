@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
@@ -81,7 +81,7 @@ export default function PersonalizationEngine({
   showNudges = true,
   limit = 6,
 }: PersonalizationEngineProps) {
-  const { data: session } = useSession();
+  const { user, isSignedIn } = useAuth();
   const [recommendations, setRecommendations] = useState<PersonalizedRecommendation[]>([]);
   const [nudges, setNudges] = useState<SmartNudge[]>([]);
   const [userPreferences, setUserPreferences] = useState<UserPreferences | null>(null);
