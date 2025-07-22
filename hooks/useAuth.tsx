@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams  } from "next/navigation";
 
 export interface User {
   id: string;
@@ -53,7 +53,7 @@ export function useAuth() {
 
       if (response.ok) {
         setUser(null);
-        router.push('/auth/signin');
+        router.push(`/${locale}/auth/signin`);
       }
     } catch (error) {
       console.error('Failed to sign out:', error);

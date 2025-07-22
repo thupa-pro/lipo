@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { Loader2 } from "lucide-react";
 
 export default function HomePage() {
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const { user, isLoading, isSignedIn } = useAuth();
 
   useEffect(() => {
@@ -14,12 +16,12 @@ export default function HomePage() {
 
     if (isSignedIn && user) {
       // User is authenticated, redirect to loading page which will route to appropriate dashboard
-      router.push("/auth/loading");
+      router.push(`/${locale}/auth/loading`);
     } else {
       // User is not authenticated, redirect to landing page
-      router.push("/landing");
+      router.push(`/${locale}/landing`);
     }
-  }, [user, isLoading, isSignedIn, router]);
+  }, [user, isLoading, isSignedIn, router, locale]);
 
   // Show loading spinner while checking authentication
   return (

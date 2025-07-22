@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams  } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,6 +29,8 @@ export default function SignUpPage() {
   const [step, setStep] = useState(1); // 1: role selection, 2: info form, 3: success
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const { toast } = useToast();
 
   useEffect(() => {
@@ -123,11 +125,11 @@ export default function SignUpPage() {
         
         if (data.needsVerification) {
           setTimeout(() => {
-            router.push("/auth/verify-email");
+            router.push(`/${locale}/auth/verify-email`);
           }, 3000);
         } else {
           setTimeout(() => {
-            router.push("/dashboard");
+            router.push(`/${locale}/dashboard`);
           }, 2000);
         }
       } else {

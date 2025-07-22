@@ -666,7 +666,7 @@ export default function BookingDetailPage() {
                           title: "Booking confirmed!",
                           description: "You'll receive a confirmation email shortly.",
                         });
-                        router.push("/customer/bookings");
+                        router.push(`/${locale}/customer/bookings`);
                       }}
                       onCancel={() => setShowPayment(false)}
                     />

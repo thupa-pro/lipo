@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,6 +24,8 @@ export default function SignInPage() {
   const [step, setStep] = useState(1); // 1: email, 2: password, 3: success
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const { toast } = useToast();
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function SignInPage() {
         
         // Redirect after successful sign-in
         setTimeout(() => {
-          router.push("/dashboard");
+          router.push(`/${locale}/dashboard`);
         }, 1500);
       } else {
         setError(data.error || "Invalid credentials. Please check your email and password.");

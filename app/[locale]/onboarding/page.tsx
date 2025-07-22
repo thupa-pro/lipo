@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams  } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +17,8 @@ import { useToast } from "@/hooks/use-toast";
 export default function OnboardingPage() {
   const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const searchParams = useSearchParams();
   const { toast } = useToast();
   const onboardingClient = useOnboardingClient();
@@ -36,7 +38,7 @@ export default function OnboardingPage() {
       loadProgress();
     } else if (isLoaded && !user) {
       // Redirect to sign in if not authenticated
-      router.push("/auth/signin?redirectTo=/onboarding");
+      router.push(`/${locale}/auth/signin?redirectTo=/onboarding`);
     }
   }, [isLoaded, user, router]);
 
@@ -114,9 +116,9 @@ export default function OnboardingPage() {
     // Redirect based on role
     setTimeout(() => {
       if (selectedRole === "provider") {
-        router.push("/provider/dashboard");
+        router.push(`/${locale}/provider/dashboard`);
       } else {
-        router.push("/dashboard");
+        router.push(`/${locale}/dashboard`);
       }
     }, 1000);
   };
