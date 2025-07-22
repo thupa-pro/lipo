@@ -1,53 +1,35 @@
 // Unified Session Management for Loconomy Platform
-// Supports both NextAuth.js and Clerk.js with fallback handling
+// Backend-only Clerk authentication
 
-import { auth } from '@clerk/nextjs/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { ClerkBackendAuth } from '@/lib/auth/clerk-backend';
 import { User, UserRole, ConsentSettings } from '@/types/rbac';
 import { parseUserRole, createDefaultConsent } from '@/lib/rbac/utils';
 
 export interface ServerSession {
   user: User | null;
   isAuthenticated: boolean;
-  source: 'clerk' | 'nextauth' | 'none';
+  source: 'clerk' | 'none';
 }
 
 /**
- * Get unified server session from either Clerk or NextAuth
+ * Get unified server session from Clerk backend
  * This function works in Server Components and API routes
  */
 export async function getUnifiedSession(): Promise<ServerSession> {
   try {
-    // Try Clerk first
-    const clerkAuth = auth();
-    if (clerkAuth?.userId) {
-      const user = await getUserFromClerk(clerkAuth);
-      if (user) {
-        return {
-          user,
-          isAuthenticated: true,
-          source: 'clerk'
-        };
-      }
-    }
-  } catch (error) {
-    console.warn('Clerk auth failed, trying NextAuth:', error);
-  }
-
-  try {
-    // Fallback to NextAuth
-    const nextAuthSession = await getServerSession(authOptions);
-    if (nextAuthSession?.user) {
-      const user = await getUserFromNextAuth(nextAuthSession);
+    // Use our backend-only Clerk authentication
+    const user = await ClerkBackendAuth.getCurrentUser();
+    
+    if (user) {
+      const transformedUser = await transformClerkUser(user);
       return {
-        user,
+        user: transformedUser,
         isAuthenticated: true,
-        source: 'nextauth'
+        source: 'clerk'
       };
     }
   } catch (error) {
-    console.warn('NextAuth session failed:', error);
+    console.warn('Clerk backend auth failed:', error);
   }
 
   // No authentication found
@@ -61,18 +43,15 @@ export async function getUnifiedSession(): Promise<ServerSession> {
 /**
  * Transform Clerk user data to our User interface
  */
-async function getUserFromClerk(clerkAuth: any): Promise<User | null> {
+async function transformClerkUser(clerkUser: any): Promise<User> {
   try {
-    // In a real implementation, you would fetch additional data from your database
-    // using clerkAuth.userId to get role, consent settings, etc.
-    
-    const role = parseUserRole(clerkAuth.sessionClaims?.role as string);
+    const role = parseUserRole(clerkUser.role as string);
     
     return {
-      id: clerkAuth.userId,
-      email: clerkAuth.sessionClaims?.email as string || '',
+      id: clerkUser.id,
+      email: clerkUser.email || '',
       role,
-      tenantId: clerkAuth.sessionClaims?.tenantId as string,
+      tenantId: clerkUser.tenantId || clerkUser.id, // Use user ID as tenant ID if not set
       metadata: {
         consentSettings: createDefaultConsent(),
         subscriptionTier: 'free',
@@ -81,31 +60,7 @@ async function getUserFromClerk(clerkAuth: any): Promise<User | null> {
     };
   } catch (error) {
     console.error('Error transforming Clerk user:', error);
-    return null;
-  }
-}
-
-/**
- * Transform NextAuth user data to our User interface
- */
-async function getUserFromNextAuth(session: any): Promise<User | null> {
-  try {
-    const role = parseUserRole(session.user?.role as string);
-    
-    return {
-      id: session.user?.id || session.user?.sub || '',
-      email: session.user?.email || '',
-      role,
-      tenantId: session.user?.tenantId,
-      metadata: {
-        consentSettings: session.user?.consentSettings || createDefaultConsent(),
-        subscriptionTier: session.user?.subscriptionTier || 'free',
-        onboardingCompleted: session.user?.onboardingCompleted || false,
-      }
-    };
-  } catch (error) {
-    console.error('Error transforming NextAuth user:', error);
-    return null;
+    throw error;
   }
 }
 
@@ -159,23 +114,22 @@ export async function requireRole(allowedRoles: UserRole[]): Promise<User> {
 }
 
 /**
- * Update user consent settings in the appropriate auth system
+ * Update user consent settings in Clerk
  */
 export async function updateUserConsent(
   userId: string,
-  consentSettings: ConsentSettings,
-  source: 'clerk' | 'nextauth'
+  consentSettings: ConsentSettings
 ): Promise<void> {
   try {
-    if (source === 'clerk') {
-      // Update Clerk user metadata
-      // In a real implementation, you would use Clerk's backend API
-      console.log('Updating Clerk user consent:', userId, consentSettings);
-    } else {
-      // Update in your database for NextAuth users
-      // In a real implementation, you would update your user table
-      console.log('Updating NextAuth user consent:', userId, consentSettings);
-    }
+    // Update user metadata in your database
+    // You would typically store this in your Prisma database
+    console.log('Updating user consent:', userId, consentSettings);
+    
+    // In a real implementation, you would:
+    // await prisma.user.update({
+    //   where: { id: userId },
+    //   data: { consentSettings }
+    // });
   } catch (error) {
     console.error('Failed to update user consent:', error);
     throw new Error('Failed to update consent settings');
