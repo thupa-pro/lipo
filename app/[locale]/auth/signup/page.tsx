@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { 
   Sparkles, Mail, Lock, User, ArrowLeft, Loader2, Eye, EyeOff,
-  Users, Briefcase, CheckCircle, Shield, Star, Zap, Chrome, Github
+  Users, Briefcase, CheckCircle, Chrome, Github, Star
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";

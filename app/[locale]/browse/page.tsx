@@ -12,16 +12,11 @@ import {
   Star,
   Grid,
   List,
-  Shield,
-  Clock,
   Sparkles,
   Heart,
-  Zap,
   Brain,
-  CheckCircle,
   MessageCircle,
 } from "lucide-react";
-import Link from "next/link";
 
 // Sample provider data
 const providers = [

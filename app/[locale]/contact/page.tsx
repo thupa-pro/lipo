@@ -35,7 +35,7 @@ export default function ContactUsPage() {
   const { toast } = useToast();
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
@@ -43,8 +43,8 @@ export default function ContactUsPage() {
         "Thank you for contacting us. We'll get back to you shortly.",
       variant: "default",
     });
-    // Simulate form reset
-    e.currentTarget.reset();
+    // ✅ Fixed: Properly cast form element for reset
+    (e.currentTarget as HTMLFormElement).reset();
   };
 
   const contactMethods = [

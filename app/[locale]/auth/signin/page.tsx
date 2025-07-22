@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { 
   Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff,
-  Shield, Fingerprint, Zap, Globe, Chrome, Github, Star, Users
+  Shield, Fingerprint, Zap, Globe, Chrome, Github, Users
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";

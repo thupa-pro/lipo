@@ -64,9 +64,9 @@ export function initializeSovereignSentry(config: SovereignObservabilityConfig) 
     },
 
     integrations: [
-      // Browser Integrations
-      new Sentry.BrowserTracing({
-        routingInstrumentation: Sentry.nextRouterInstrumentation(useRouter),
+      // ✅ Fixed: Using correct Sentry integration for Next.js 14+
+      Sentry.browserTracingIntegration({
+        // ✅ Removed deprecated nextRouterInstrumentation
         tracePropagationTargets: [
           "localhost",
           /^https:\/\/.*\.loconomy\.com/,
@@ -75,7 +75,7 @@ export function initializeSovereignSentry(config: SovereignObservabilityConfig) 
       }),
       
       // Session Replay
-      new Sentry.Replay({
+      Sentry.replayIntegration({
         maskAllText: false,
         blockAllMedia: true,
         maskAllInputs: true,
