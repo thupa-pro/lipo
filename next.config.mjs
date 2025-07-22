@@ -61,6 +61,14 @@ const nextConfig = {
     ignoreBuildErrors: true,
     tsconfigPath: "./tsconfig.json",
   },
+  // Fix cross-origin request warning
+  allowedDevOrigins: [
+    '5y98jf-3000.csb.app',
+    'localhost',
+    '127.0.0.1',
+    '*.csb.app',
+    '*.codesandbox.io'
+  ],
   swcMinify: false,
   // headers: async () => [
   //   {
