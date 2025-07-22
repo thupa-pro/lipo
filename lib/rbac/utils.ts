@@ -49,6 +49,26 @@ export function getRolePermissions(userRole: UserRole): readonly Permission[] {
 }
 
 /**
+ * Get user initials from name or email
+ */
+export function getInitials(name?: string, email?: string): string {
+  if (name) {
+    return name
+      .split(' ')
+      .map(part => part.charAt(0))
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  }
+  
+  if (email) {
+    return email.charAt(0).toUpperCase();
+  }
+  
+  return 'U';
+}
+
+/**
  * Validate user role
  */
 export function isValidRole(role: string): role is UserRole {
