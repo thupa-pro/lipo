@@ -170,8 +170,11 @@
     "webpack-bundle-analyzer": "^4.10.1"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS='--max-old-space-size=4096' next dev",
+    "dev": "NODE_OPTIONS='--max-old-space-size=4096' NEXT_TELEMETRY_DISABLED=1 next dev",
+    "dev:optimized": "node scripts/dev-start.js",
+    "dev:clean": "rm -rf .next && pnpm dev",
     "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "export": "next export",
     "analyze": "ANALYZE=true npm run build",
@@ -179,7 +182,8 @@
     "analyze:browser": "ANALYZE=true BUNDLE_ANALYZE=browser npm run build",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit --skipLibCheck",
+    "type-check:strict": "tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "test": "vitest",
