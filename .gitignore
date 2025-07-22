@@ -25,5 +25,70 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Development and temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Backup and old files
+*.backup
+*.old
+*-old.*
+*-backup.*
+*-temp.*
+*-tmp.*
+
+# IDE and editor files
+.vscode/settings.json
+.idea/
+*.sublime-*
+
+# Testing and demo files (prevent accidental commits)
+**/demo/
+**/test-*
+**/*-demo.*
+**/*-test.*
+**/*-example.*
+
+# Documentation drafts and duplicates
+**/DRAFT_*.md
+**/OLD_*.md
+**/BACKUP_*.md
+**/*-draft.md
+**/*-old.md
+**/*-backup.md
+
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
