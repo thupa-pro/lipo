@@ -7,21 +7,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AIServiceDiscovery from "@/components/ai/ai-service-discovery";
 import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
 import {
-  Star,
   MapPin,
-  Zap,
   Shield,
   Users,
   Sparkles,
   Search,
-  TrendingUp,
-  Clock,
-  Award,
-  CheckCircle,
+  TrendingUp, Award
   ArrowRight,
   Brain,
   Heart,
-  Home,
+  Home
 } from "lucide-react";
 import Link from "next/link";
 

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Globe, MapPin, DollarSign, Shield, Clock, Loader2 } from "lucide-react"
-import { REGIONS, getRegionConfig, detectUserRegion, type RegionConfig } from "@/lib/region-config"
+import { Globe, MapPin, DollarSign, Shield, Loader2 } from "lucide-react"
+import { REGIONS, getRegionConfig, detectUserRegion, type, RegionConfig } from "@/lib/region-config"
 
 interface RegionSelectorProps {
   onRegionChange?: (region: RegionConfig) => void
@@ -46,7 +46,6 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
     setRegionConfig(config)
     onRegionChange?.(config)
   }, [selectedRegionCode, onRegionChange])
-
 
   const handleRegionChange = (newRegionCode: string) => {
     setSelectedRegionCode(newRegionCode)

@@ -10,14 +10,10 @@ import {
   Search,
   MapPin,
   TrendingUp,
-  Clock,
   Users,
-  Play,
-  Star,
-  Sparkles,
-  Shield,
-  Zap,
-  ArrowRight,
+  Play, Sparkles,
+  Shield
+  ArrowRight
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";

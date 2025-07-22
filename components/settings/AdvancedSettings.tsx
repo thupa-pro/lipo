@@ -4,15 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Settings,
-  Shield,
   Lock,
   Eye,
   EyeOff,
   Download,
-  Upload,
-  Trash2,
-  AlertTriangle,
-  Clock,
+  Upload, AlertTriangle
   Bell,
   Mail,
   Smartphone,
@@ -34,23 +30,20 @@ import {
   Calendar,
   CreditCard,
   Users,
-  MessageSquare,
-  Star,
+  MessageSquare
   Bookmark,
   Filter,
   Sliders,
   Palette,
-  Volume2,
-  Zap,
+  Volume2
   RefreshCw,
-  Power,
-  CheckCircle,
+  Power
   XCircle,
   Info,
   Plus,
   Minus,
   Edit,
-  Copy,
+  Copy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

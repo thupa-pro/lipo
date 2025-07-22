@@ -8,8 +8,7 @@ import RevolutionaryInput from '@/components/ui/revolutionary-input'
 import RevolutionaryNav, { sampleNavItems } from '@/components/ui/revolutionary-nav'
 import RevolutionaryBentoGrid from '@/components/ui/revolutionary-bento-grid'
 import { 
-  Sparkles, 
-  Zap, 
+  Sparkles,
   Layers, 
   Palette, 
   MousePointer2, 
@@ -17,17 +16,11 @@ import {
   Search,
   Mail,
   Lock,
-  Phone,
-  User,
-  Heart,
-  Star,
+  Phone, Heart
   TrendingUp,
   BarChart3,
-  Calendar,
-  MessageSquare,
-  Settings,
-  Shield
-} from 'lucide-react'
+  Calendar
+  Settings} from 'lucide-react'
 
 const RevolutionaryDesignPage = () => {
   const [selectedVariant, setSelectedVariant] = useState<string>('glassmorphic')

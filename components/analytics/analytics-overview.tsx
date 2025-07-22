@@ -20,7 +20,7 @@ import {
   ComposedChart,
   PieChart,
   Pie,
-  Cell,
+  Cell
 } from "recharts";
 import {
   TrendingUp,
@@ -28,13 +28,10 @@ import {
   Users,
   DollarSign,
   Briefcase,
-  Star,
   ArrowUp,
   ArrowDown,
   Activity,
-  Eye,
-  Clock,
-  Target,
+  Eye, Target
 } from "lucide-react";
 
 interface AnalyticsOverviewProps {

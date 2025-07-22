@@ -8,7 +8,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
@@ -21,10 +21,9 @@ import {
   Grid3X3,
   List,
   Loader2,
-  Target,
   Filter,
   X,
-  Navigation,
+  Navigation
 } from "lucide-react";
 import { geolocationService } from "@/lib/geolocation/geolocation-service";
 import { hyperlocalService } from "@/lib/geolocation/hyperlocal-service";

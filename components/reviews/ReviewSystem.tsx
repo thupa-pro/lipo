@@ -3,13 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Star,
   ThumbsUp,
   ThumbsDown,
-  Shield,
-  Award,
-  CheckCircle,
-  Flag,
+  Award, Flag,
   Heart,
   MoreHorizontal,
   Calendar,
@@ -17,8 +13,7 @@ import {
   TrendingUp,
   Users,
   Medal,
-  Trophy,
-  Target,
+  Trophy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

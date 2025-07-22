@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,19 +15,15 @@ import { useToast } from "@/components/ui/use-toast";
 import {
   Brain,
   Star,
-  Clock,
   MapPin,
-  DollarSign,
-  Zap,
-  TrendingUp,
+  DollarSign, TrendingUp,
   Users,
-  Award,
-  Shield,
+  Award
   Heart,
   Sparkles,
   ArrowRight,
   RefreshCw,
-  ChevronRight,
+  ChevronRight
 } from "lucide-react";
 
 interface ServiceRecommendation {

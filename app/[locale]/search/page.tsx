@@ -10,13 +10,10 @@ import {
   List,
   SlidersHorizontal,
   Star,
-  Clock,
   DollarSign,
-  Shield,
-  Zap,
-  Heart,
+  Shield, Heart,
   X,
-  ChevronDown,
+  ChevronDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

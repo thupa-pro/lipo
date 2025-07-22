@@ -7,7 +7,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,11 +15,10 @@ import { Label } from "@/components/ui/label";
 import {
   Phone,
   Mail,
-  MessageSquare,
   HelpCircle,
   BookOpen,
   Briefcase,
-  ArrowRight,
+  ArrowRight
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";

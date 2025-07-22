@@ -9,27 +9,24 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import {
-  Shield,
-  Star,
   MapPin,
-  Clock,
   CheckCircle,
   AlertTriangle,
   Info,
   Award,
   Users,
   FileText,
-  Building,
+  Building
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

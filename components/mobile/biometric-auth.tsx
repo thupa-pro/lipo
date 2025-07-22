@@ -7,13 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import {
   Fingerprint,
   Scan,
-  Shield,
   Lock,
-  Unlock,
-  CheckCircle,
-  AlertCircle,
+  Unlock, AlertCircle,
   Eye,
-  Smartphone,
+  Smartphone
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

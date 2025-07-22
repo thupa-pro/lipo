@@ -8,16 +8,13 @@ import {
   Activity,
   Server,
   Database,
-  Zap,
   AlertTriangle,
-  CheckCircle,
-  Clock,
-  TrendingUp,
+  CheckCircle, TrendingUp,
   TrendingDown,
   Wifi,
   HardDrive,
   Cpu,
-  MemoryStick,
+  MemoryStick
 } from "lucide-react";
 import { useAdminClient, formatSystemHealth } from "@/lib/admin/utils";
 import { useToast } from "@/hooks/use-toast";

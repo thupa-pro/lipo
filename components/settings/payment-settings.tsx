@@ -14,7 +14,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Dialog,
@@ -22,23 +22,20 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import {
   CreditCard,
   Plus,
   Trash2,
-  Shield,
   DollarSign,
   Calendar,
-  AlertTriangle,
-  CheckCircle,
-  Eye,
+  AlertTriangle, Eye,
   EyeOff,
   Lock,
   Wallet,
   Building2,
-  Smartphone,
+  Smartphone
 } from "lucide-react";
 
 interface PaymentMethod {

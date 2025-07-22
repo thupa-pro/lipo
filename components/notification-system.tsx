@@ -10,16 +10,13 @@ import { Separator } from "@/components/ui/separator"
 import {
   Bell,
   MessageSquare,
-  Star,
   DollarSign,
   Calendar,
-  MapPin,
-  CheckCircle,
-  X,
+  MapPin, X,
   Settings,
   Smartphone,
   Mail,
-  Volume2,
+  Volume2
 } from "lucide-react"
 
 interface Notification {

@@ -6,16 +6,13 @@ import {
   Users,
   UserCheck,
   TrendingUp,
-  Shield,
   ArrowUpRight,
   Filter,
   Eye,
   Edit,
   MoreHorizontal,
-  MapPin,
-  Clock,
-  Mail,
-  Search,
+  MapPin, Mail,
+  Search
 } from "lucide-react";
 import Link from "next/link";
 

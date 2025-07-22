@@ -15,27 +15,21 @@ import {
   Phone,
   MapPin,
   Globe,
-  Shield,
   Award,
-  Users,
-  Star,
-  BookOpen,
+  Users, BookOpen,
   GraduationCap,
   Newspaper,
   Lightbulb,
-  Handshake,
-  MessageSquare,
+  Handshake
   Accessibility,
   DollarSign,
   Crown,
   Brain,
   Rocket,
-  Gem,
-  Zap,
+  Gem
   Building2,
   Sparkles,
-  ArrowRight,
-  CheckCircle,
+  ArrowRight
   TrendingUp
 } from "lucide-react";
 import {
@@ -43,7 +37,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";

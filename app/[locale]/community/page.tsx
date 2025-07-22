@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, MessageSquare, Lightbulb, Award, ArrowRight } from "lucide-react"
+import { Users, Lightbulb, Award, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import AIChat from "@/components/ai/AIChat"

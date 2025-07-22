@@ -18,7 +18,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Dialog,
@@ -26,7 +26,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import { ProfileEditor } from "@/components/settings/profile-editor";
 import { NotificationSettings } from "@/components/settings/notification-settings";
@@ -36,20 +36,16 @@ import { PrivacySettings } from "@/components/settings/privacy-settings";
 import { SecuritySettings } from "@/components/settings/security-settings";
 import {
   Settings,
-  User,
-  Bell,
-  Shield,
-  CreditCard,
+  Bell, CreditCard,
   Eye,
   Key,
-  Trash2,
-  CheckCircle,
+  Trash2
   AlertTriangle,
   Save,
   RefreshCw,
   Camera,
   Upload,
-  Download,
+  Download
 } from "lucide-react";
 
 interface UserProfile {

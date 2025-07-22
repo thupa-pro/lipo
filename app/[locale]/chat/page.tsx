@@ -13,7 +13,6 @@ import {
   MessageCircle,
   Send,
   Bot,
-  User,
   Sparkles,
   ThumbsUp,
   ThumbsDown,
@@ -22,9 +21,7 @@ import {
   Settings,
   HelpCircle,
   Lightbulb,
-  Star,
-  Clock,
-  ArrowUp,
+  Star, ArrowUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

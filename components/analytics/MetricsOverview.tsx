@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -26,7 +26,7 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend,
+  Legend
 } from "recharts";
 import {
   TrendingUp,
@@ -35,8 +35,7 @@ import {
   Activity,
   DollarSign,
   ShoppingCart,
-  Clock,
-  Target,
+  Target
 } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";

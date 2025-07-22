@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,12 +15,9 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import {
   MapPin,
-  Shield,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
+  AlertTriangle, XCircle,
   Settings,
-  Loader2,
+  Loader2
 } from "lucide-react";
 import { geolocationService } from "@/lib/geolocation/geolocation-service";
 import type { LocationPermission, Location } from "@/lib/geolocation/types";

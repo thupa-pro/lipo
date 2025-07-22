@@ -12,18 +12,17 @@ import {
   Calendar,
   TrendingUp,
   AlertCircle,
-  CheckCircle,
   ExternalLink,
   Download,
   Settings,
   Crown,
-  BarChart3,
+  BarChart3
 } from "lucide-react";
 import { format } from "date-fns";
 import {
-  SubscriptionDashboard as DashboardData,
+  SubscriptionDashboard, as DashboardData,
   TrialInfo,
-  UsageLimitCheck,
+  UsageLimitCheck
 } from "@/lib/subscription/types";
 import {
   useSubscriptionClient,
@@ -34,7 +33,7 @@ import {
   getNextBillingDate,
   isSubscriptionActive,
   getPlanColor,
-  getPlanDisplayName,
+  getPlanDisplayName
 } from "@/lib/subscription/utils";
 import { useToast } from "@/hooks/use-toast";
 

@@ -15,22 +15,18 @@ import {
   X,
   Sparkles,
   Bot,
-  User,
-  Lightbulb,
-  CheckCircle,
-  ArrowRight,
+  Lightbulb, ArrowRight,
   Mic,
   MicOff,
   Volume2,
   VolumeX,
-  RotateCcw,
-  Star,
+  RotateCcw
   MapPin,
   Briefcase,
   Users,
   Settings,
   HelpCircle,
-  Calendar,
+  Calendar
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";

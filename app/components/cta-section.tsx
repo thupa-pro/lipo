@@ -2,12 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  Clock,
   Award,
   Shield,
-  CheckCircle,
   DollarSign,
-  Infinity,
+  Infinity
 } from "lucide-react";
 
 export default function CTASection() {

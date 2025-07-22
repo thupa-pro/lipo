@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Cookie, Settings } from 'lucide-react';
 import { CookieSettingsModal } from './CookieSettingsModal';
-import { setConsentStatus, type ConsentPreferences } from '@/lib/cookies/consent';
+import { setConsentStatus, type, ConsentPreferences } from '@/lib/cookies/consent';
 
 interface CookieSettingsLinkProps {
   /**

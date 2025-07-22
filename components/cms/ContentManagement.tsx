@@ -6,32 +6,25 @@ import {
   FileText,
   Plus,
   Edit,
-  Trash2,
   Eye,
   EyeOff,
   Search,
   Filter,
-  Calendar,
-  User,
-  Globe,
+  Calendar, Globe,
   BarChart3,
   Settings,
   Upload,
   Download,
-  Copy,
-  Link,
+  Copy
   Image,
   Video,
   Mic,
-  Tag,
-  Clock,
+  Tag
   CheckCircle,
   XCircle,
-  AlertCircle,
-  Star,
+  AlertCircle
   TrendingUp,
-  Target,
-  Zap,
+  Target
   BookOpen,
   Bookmark,
   Share2,
@@ -53,7 +46,7 @@ import {
   ImageIcon,
   Monitor,
   Smartphone,
-  Tablet,
+  Tablet
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

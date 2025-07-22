@@ -17,21 +17,17 @@ import {
   ShoppingBag,
   Users,
   Star,
-  Clock,
   ArrowRight,
-  Plus,
-  Zap,
-  Shield,
+  Plus, Shield,
   MapPin,
   Calendar,
   Wallet,
-  Activity,
-  MessageSquare,
+  Activity
   Bell,
   Settings,
   Eye,
   Lock,
-  Fingerprint,
+  Fingerprint
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

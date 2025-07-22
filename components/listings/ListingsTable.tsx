@@ -7,7 +7,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,7 +16,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
@@ -26,28 +26,27 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
+  AlertDialogTitle
 } from "@/components/ui/alert-dialog";
 import {
   Eye,
   Edit,
   MoreHorizontal,
-  Trash2,
   Play,
   Pause,
   Archive,
-  TrendingUp,
+  TrendingUp
 } from "lucide-react";
 import {
   Listing,
   ListingStatus,
-  ListingsTableProps,
+  ListingsTableProps
 } from "@/lib/listings/types";
 import {
   formatPricingDisplay,
   getStatusColor,
   getStatusText,
-  formatPrice,
+  formatPrice
 } from "@/lib/listings/utils";
 
 export function ListingsTable({

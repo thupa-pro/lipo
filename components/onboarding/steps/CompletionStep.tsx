@@ -3,16 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  CheckCircle,
-  Star,
+  
+  
   Calendar,
   DollarSign,
   Users,
   Briefcase,
   ArrowRight,
   Sparkles,
-  Gift,
-  Target,
+  Gift
 } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 import { useRouter } from "next/navigation";

@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { TrendingUp, Eye, Zap, Crown, Target, Star } from "lucide-react"
+import { TrendingUp, Eye, Crown} from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 interface VisibilityBoosterProps {

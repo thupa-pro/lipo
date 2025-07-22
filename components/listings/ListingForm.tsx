@@ -10,19 +10,18 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   X,
   Upload,
-  Image as ImageIcon,
+  Image, as ImageIcon,
   DollarSign,
-  Clock,
   MapPin,
   Tag,
-  AlertCircle,
+  AlertCircle
 } from "lucide-react";
 import {
   ListingFormProps,
@@ -31,7 +30,7 @@ import {
   SUBCATEGORIES,
   PricingType,
   LocationType,
-  ListingStatus,
+  ListingStatus
 } from "@/lib/listings/types";
 import { validateListingForm, uploadListingImage } from "@/lib/listings/utils";
 

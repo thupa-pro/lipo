@@ -9,9 +9,9 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
-import { ArrowRight, Award, Shield, CreditCard } from "lucide-react";
+import { ArrowRight, Award, CreditCard } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 import { useOnboardingClient } from "@/lib/onboarding/utils";
 

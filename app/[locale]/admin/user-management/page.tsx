@@ -14,7 +14,6 @@ import {
   Phone,
   MapPin,
   Briefcase,
-  CheckCircle,
   XCircle,
   Edit,
   Eye,
@@ -23,7 +22,7 @@ import {
   UserCheck,
   ArrowLeft,
   ArrowRight,
-  Calendar,
+  Calendar
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"

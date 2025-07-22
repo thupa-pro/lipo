@@ -14,15 +14,13 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import {
-  Trash2,
   AlertTriangle,
   Download,
-  Clock,
   Shield,
-  RefreshCw,
+  RefreshCw
 } from "lucide-react";
 
 interface UserProfile {

@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +15,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -25,13 +25,11 @@ import {
   DollarSign,
   Calendar,
   MapPin,
-  CheckCircle,
   XCircle,
   Eye,
   ArrowLeft,
   ArrowRight,
-  RefreshCcw,
-  MessageSquare,
+  RefreshCcw
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";

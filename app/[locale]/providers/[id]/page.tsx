@@ -7,17 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
-  Star,
   MapPin,
-  Clock,
   Phone,
   Mail,
   Calendar,
-  DollarSign,
-  Shield,
-  Award,
-  ArrowLeft,
-  MessageSquare,
+  DollarSign, Award,
+  ArrowLeft
 } from "lucide-react";
 
 export default function ProviderDetailPage() {

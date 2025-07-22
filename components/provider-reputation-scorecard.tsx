@@ -5,16 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
-  Star,
   Shield,
-  Clock,
   CheckCircle,
   Award,
   TrendingUp,
-  Users,
-  MessageSquare,
-  MapPin,
-  Calendar,
+  Users, MapPin,
+  Calendar
 } from "lucide-react";
 
 interface ProviderReputationProps {

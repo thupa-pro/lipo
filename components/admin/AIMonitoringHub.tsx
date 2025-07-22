@@ -10,10 +10,7 @@ import {
   Database,
   Network,
   AlertTriangle,
-  CheckCircle,
-  Activity,
-  Zap,
-  Shield,
+  Activity, Shield,
   TrendingUp,
   Bell,
   Settings,
@@ -24,9 +21,7 @@ import {
   Gauge,
   Server,
   Cloud,
-  Eye,
-  Target
-} from 'lucide-react';
+  Eye} from 'lucide-react';
 
 interface SystemAlert {
   id: string;

@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -24,20 +24,17 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
+  Legend
 } from "recharts";
 import {
   Activity,
   Server,
   Database,
   AlertTriangle,
-  CheckCircle,
-  XCircle,
-  Clock,
-  Zap,
+  XCircle, Zap,
   HardDrive,
   Cpu,
-  MemoryStick,
+  MemoryStick
 } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";

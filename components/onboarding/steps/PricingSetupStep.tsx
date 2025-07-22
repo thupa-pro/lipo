@@ -11,9 +11,9 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
-import { DollarSign, Clock, Info, TrendingUp } from "lucide-react";
+import { DollarSign, Info, TrendingUp } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 
 interface PricingSetupData {

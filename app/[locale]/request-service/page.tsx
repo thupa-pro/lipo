@@ -12,23 +12,17 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Calendar,
   MapPin,
   DollarSign,
-  Clock,
-  CheckCircle,
-  Star,
-  Briefcase,
-  User,
+  CheckCircle, Briefcase
   Sparkles,
   Brain,
-  Shield,
-  Zap,
-  Heart,
-  Target,
+  Shield
+  Heart
   Award,
   TrendingUp,
   Search,
@@ -48,7 +42,7 @@ import {
   Palette,
   PartyPopper,
   Users,
-  Activity,
+  Activity
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";

@@ -4,7 +4,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -12,19 +12,14 @@ import {
   Users,
   Briefcase,
   TrendingUp,
-  Shield,
   Settings,
   Bell,
   Eye,
   UserCheck,
   DollarSign,
-  MapPin,
-  Clock,
-  AlertTriangle,
-  CheckCircle,
-  ArrowUpRight,
-  Zap,
-  Rocket,
+  MapPin, AlertTriangle
+  ArrowUpRight
+  Rocket
 } from "lucide-react";
 import Link from "next/link";
 

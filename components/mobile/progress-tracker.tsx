@@ -6,18 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   CheckCircle,
-  Clock,
   ArrowRight,
   MapPin,
-  Calendar,
-  User,
-  CreditCard,
-  Star,
+  Calendar, CreditCard
   MessageSquare,
   AlertCircle,
   Truck,
   Home,
-  FileText,
+  FileText
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

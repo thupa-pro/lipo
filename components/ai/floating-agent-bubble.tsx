@@ -10,11 +10,8 @@ import {
   X, 
   Minimize2, 
   Maximize2,
-  Zap,
   Sparkles,
-  Brain,
-  User,
-  Bot
+  Brain, Bot
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";

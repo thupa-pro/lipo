@@ -14,7 +14,6 @@ import {
   Sun,
   Moon,
   Monitor,
-  User,
   Settings,
   LogOut,
   Sparkles,
@@ -23,7 +22,7 @@ import {
   MessageCircle,
   Calendar,
   Heart,
-  HelpCircle,
+  HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,7 +34,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import AgentCommandInput from "@/components/ai/AgentCommandInput";
 

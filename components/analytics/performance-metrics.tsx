@@ -18,25 +18,21 @@ import {
   Legend,
   ResponsiveContainer,
   RadialBarChart,
-  RadialBar,
+  RadialBar
 } from "recharts";
 import {
   Activity,
   Zap,
-  Clock,
   Shield,
   Server,
   Database,
   Wifi,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
+  AlertTriangle, XCircle,
   TrendingUp,
   ArrowUp,
   ArrowDown,
   Eye,
-  Users,
-  MessageSquare,
+  Users
 } from "lucide-react";
 
 interface PerformanceMetricsProps {

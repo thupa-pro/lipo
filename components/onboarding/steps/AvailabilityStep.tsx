@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Clock, Calendar, Info, CheckCircle } from "lucide-react";
+import {  Calendar, Info} from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 
 interface DaySchedule {

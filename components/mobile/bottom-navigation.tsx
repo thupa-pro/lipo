@@ -8,13 +8,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Home,
   Search,
-  MessageSquare,
   User,
   Settings,
   Bell,
   Compass,
   LifeBuoy,
-  Plus,
+  Plus
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

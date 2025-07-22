@@ -8,10 +8,7 @@ import {
   Download,
   Upload,
   Shield,
-  CheckCircle,
-  AlertCircle,
-  Clock,
-  TrendingUp,
+  AlertCircle, TrendingUp,
   TrendingDown,
   Calendar,
   Filter,
@@ -20,8 +17,7 @@ import {
   Eye,
   RefreshCw,
   FileText,
-  Camera,
-  User,
+  Camera
   MapPin,
   Phone,
   Mail,
@@ -31,7 +27,7 @@ import {
   Wallet,
   Receipt,
   Settings,
-  Lock,
+  Lock
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

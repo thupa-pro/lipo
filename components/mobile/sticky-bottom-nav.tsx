@@ -7,8 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Home, 
   Search, 
-  MessageCircle, 
-  User,
+  MessageCircle,
   Calendar,
   Settings
 } from "lucide-react";

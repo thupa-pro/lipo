@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  User,
+  
   Camera,
   Upload,
   MapPin,

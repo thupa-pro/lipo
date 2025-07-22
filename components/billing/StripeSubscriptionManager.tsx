@@ -13,7 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Alert,
   AlertDescription,
-  AlertTitle,
+  AlertTitle
 } from '@/components/ui/alert';
 import {
   Dialog,
@@ -22,23 +22,18 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from '@/components/ui/dialog';
 import { 
   CreditCard, 
-  Crown, 
-  Zap, 
+  Crown,
   TrendingUp, 
   DollarSign,
   Calendar,
   Settings,
   AlertTriangle,
-  CheckCircle,
-  Clock,
-  Sparkles,
-  Target,
-  ArrowUpRight,
-  Shield,
+  CheckCircle, Sparkles
+  ArrowUpRight
   Infinity,
   Users
 } from 'lucide-react';

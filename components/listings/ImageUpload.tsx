@@ -7,10 +7,10 @@ import { Progress } from "@/components/ui/progress";
 import {
   X,
   Upload,
-  Image as ImageIcon,
+  Image, as ImageIcon,
   AlertCircle,
   Check,
-  Loader2,
+  Loader2
 } from "lucide-react";
 import {
   uploadListingImages,
@@ -18,7 +18,7 @@ import {
   validateImageFile,
   optimizeImageForUpload,
   extractImagePathFromUrl,
-  ImageUploadResult,
+  ImageUploadResult
 } from "@/lib/listings/image-upload";
 
 interface ImageUploadProps {

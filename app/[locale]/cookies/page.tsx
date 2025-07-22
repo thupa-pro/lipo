@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Cookie, Info, Settings, Shield, Mail, ArrowRight, CheckCircle } from "lucide-react"
+import { Cookie, Info, Settings, Mail, ArrowRight} from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 

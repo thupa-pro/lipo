@@ -8,15 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { 
-  Crown, 
-  Shield, 
+  Crown,
   Users, 
-  BarChart3, 
-  Star, 
-  Lock,
-  CheckCircle,
-  Zap
-} from 'lucide-react';
+  BarChart3, Lock} from 'lucide-react';
 import Link from 'next/link';
 import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
 

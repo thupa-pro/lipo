@@ -3,12 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Star, 
-  MapPin, 
-  Clock, 
-  Zap, 
-  Shield, 
-  Heart,
+  MapPin,
+  Zap, Heart,
   Sparkles,
   TrendingUp,
   Award,

@@ -128,9 +128,13 @@ export function ThemeProvider({
     setMounted(true);
   }, []);
 
-  // Prevent hydration mismatch
+  // Prevent hydration mismatch - return children with default theme
   if (!mounted) {
-    return <div style={{ visibility: "hidden" }}>{children}</div>;
+    return (
+      <div suppressHydrationWarning>
+        {children}
+      </div>
+    );
   }
 
   const value: ThemeContextType = {

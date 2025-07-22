@@ -8,23 +8,20 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  Shield, 
   BarChart3, 
-  Target, 
-  Zap, 
+  Target,
   Lock,
   Info,
-  CheckCircle,
   AlertCircle 
 } from 'lucide-react';
-import { getConsentPreferences, type ConsentPreferences } from '@/lib/cookies/consent';
+import { getConsentPreferences, type, ConsentPreferences } from '@/lib/cookies/consent';
 
 interface CookieSettingsModalProps {
   isOpen: boolean;

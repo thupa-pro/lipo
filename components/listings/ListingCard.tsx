@@ -7,30 +7,27 @@ import {
   Card,
   CardContent,
   CardFooter,
-  CardHeader,
+  CardHeader
 } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {
   Eye,
   Edit,
   MoreHorizontal,
-  Trash2,
-  MapPin,
-  Clock,
-  Star,
-  Calendar,
+  MapPin, Star,
+  Calendar
 } from "lucide-react";
 import { ListingCardProps } from "@/lib/listings/types";
 import {
   formatPricingDisplay,
   getStatusColor,
-  getStatusText,
+  getStatusText
 } from "@/lib/listings/utils";
 
 export function ListingCard({

@@ -30,7 +30,7 @@ import {
   Cell,
 } from "recharts";
 import {
-  Zap,
+  
   AlertTriangle,
   TrendingUp,
   Database,

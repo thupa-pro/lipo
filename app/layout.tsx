@@ -92,18 +92,7 @@ export default async function RootLayout({
         <link rel="preload" href={getLogoPath(LogoVariant.DARK)} as="image" />
         <link rel="preload" href={getLogoPath(LogoVariant.COLORED)} as="image" />
         
-        {/* Critical CSS for logo system */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            .logo-container { display: flex; align-items: center; }
-            .logo-responsive { max-width: 100%; height: auto; }
-            .logo-dark-mode { display: none; }
-            @media (prefers-color-scheme: dark) {
-              .logo-light-mode { display: none; }
-              .logo-dark-mode { display: block; }
-            }
-          `
-        }} />
+        {/* Critical CSS for logo system - moved to globals.css to prevent hydration issues */}
 
         {/* Structured Data for SEO */}
         <script

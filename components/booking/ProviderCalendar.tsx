@@ -10,32 +10,31 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import {
   ChevronLeft,
   ChevronRight,
-  Calendar as CalendarIcon,
-  Clock,
+  Calendar, as CalendarIcon,
   User,
   MapPin,
   Settings,
   Plus,
-  X,
+  X
 } from "lucide-react";
 import {
   CalendarDay,
   Booking,
   ProviderAvailability,
   AvailabilityOverride,
-  DayOfWeek,
+  DayOfWeek
 } from "@/lib/booking/types";
 import {
   useBookingClient,
   formatTime,
   formatDuration,
   getBookingStatusColor,
-  getBookingStatusIcon,
+  getBookingStatusIcon
 } from "@/lib/booking/utils";
 import { useToast } from "@/hooks/use-toast";
 import { AvailabilitySettings } from "./AvailabilitySettings";

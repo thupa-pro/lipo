@@ -10,15 +10,11 @@ import { Separator } from "@/components/ui/separator";
 import {
   CreditCard,
   Wallet,
-  Shield,
-  CheckCircle,
-  Clock,
-  AlertCircle,
+  CheckCircle, AlertCircle,
   Smartphone,
   QrCode,
   Banknote,
-  TrendingUp,
-  Zap,
+  TrendingUp
   Lock,
   Eye,
   EyeOff,
@@ -27,7 +23,7 @@ import {
   RotateCcw,
   Fingerprint,
   Apple,
-  Smartphone as PhoneIcon,
+  Smartphone as PhoneIcon
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {loadStripe} from '@stripe/stripe-js';

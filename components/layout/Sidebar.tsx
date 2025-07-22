@@ -16,15 +16,11 @@ import {
   HelpCircle,
   Users,
   TrendingUp,
-  Star,
   MapPin,
-  CreditCard,
-  Shield,
-  FileText,
-  BarChart3,
-  Zap,
+  CreditCard, FileText,
+  BarChart3
   ChevronDown,
-  ChevronRight,
+  ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

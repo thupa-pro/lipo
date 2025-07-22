@@ -13,34 +13,28 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import {
-  Shield,
   CheckCircle,
-  Clock,
   AlertTriangle,
   X,
   Upload,
-  FileText,
-  User,
-  Building,
+  FileText, Building,
   CreditCard,
   Globe,
   Phone,
   Mail,
   MapPin,
   Calendar,
-  Award,
-  Zap,
+  Award
   RefreshCw,
   Download,
   Eye,
   ExternalLink,
-  Info,
-  Star,
+  Info
   TrendingUp,
-  Users,
+  Users
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

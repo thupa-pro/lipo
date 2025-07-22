@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { Shield, CreditCard, CheckCircle, Clock, DollarSign, Lock, Users, HelpCircle, ArrowRight } from "lucide-react"
+import {  CreditCard, CheckCircle, DollarSign, Lock, Users, HelpCircle, ArrowRight } from "lucide-react"
 
 interface EscrowStep {
   id: number

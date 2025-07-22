@@ -10,15 +10,11 @@ import {
   BarChart3,
   TrendingUp,
   Users,
-  Target,
   FlaskConical,
   ArrowRight,
   ArrowLeft,
-  Lightbulb,
-  CheckCircle,
-  DollarSign,
-  MessageSquare,
-  Eye,
+  Lightbulb, DollarSign
+  Eye
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
@@ -31,7 +27,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   AreaChart,
-  Area,
+  Area
 } from "recharts"
 import { ChartContainer, ChartTooltipContent } from "@/components/ui/chart"
 

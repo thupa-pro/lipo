@@ -8,17 +8,12 @@ import {
   MapPin, 
   BarChart3, 
   Calendar, 
-  MessageSquare, 
-  Shield,
+  MessageSquare,
   Menu,
   X,
-  ChevronDown,
-  User,
-  Settings,
+  ChevronDown, Settings,
   LogOut,
-  Crown,
-  Zap
-} from 'lucide-react';
+  Crown} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 

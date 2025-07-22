@@ -19,20 +19,19 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell,
+  Cell
 } from "recharts";
 import {
   Users,
   UserPlus,
   UserCheck,
-  Clock,
   MapPin,
   Smartphone,
   Monitor,
   Globe,
   TrendingUp,
   ArrowUp,
-  ArrowDown,
+  ArrowDown
 } from "lucide-react";
 
 interface UserInsightsProps {

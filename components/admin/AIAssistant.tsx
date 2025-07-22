@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { AI_AGENTS, aiClient, type AIAgent } from '@/lib/ai/gemini-client';
-import { Send, Zap, Eye, MessageCircle, Lightbulb, AlertTriangle, TrendingUp, Shield, Sparkles } from 'lucide-react';
+import { AI_AGENTS, aiClient, type, AIAgent } from '@/lib/ai/gemini-client';
+import { Send, Eye, MessageCircle, Lightbulb, AlertTriangle, TrendingUp Sparkles } from 'lucide-react';
 
 interface Message {
   id: string;

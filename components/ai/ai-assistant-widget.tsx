@@ -10,10 +10,9 @@ import {
   MessageCircle,
   Send,
   Bot,
-  User,
   Minimize2,
   Maximize2,
-  X,
+  X
 } from "lucide-react";
 
 // Clean interface - NO function props at all

@@ -10,20 +10,14 @@ import {
   TrendingUp,
   TrendingDown,
   AlertTriangle,
-  CheckCircle,
-  Brain,
-  Zap,
-  Target,
+  Brain, Target,
   Users,
   DollarSign,
   Activity,
   Eye,
   RefreshCw,
   Lightbulb,
-  BarChart3,
-  Shield,
-  Clock
-} from 'lucide-react';
+  BarChart3} from 'lucide-react';
 
 interface Insight {
   id: string;

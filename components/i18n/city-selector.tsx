@@ -6,20 +6,20 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, MapPin, Globe, TrendingUp, Zap, DollarSign, Users, Star } from "lucide-react";
+import { Search, MapPin, Globe, TrendingUp, DollarSign, Users} from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   metropolitanCities,
   cityTiers,
   economyTypes,
   localeFlags,
-  type Locale,
+  type, Locale
 } from "@/lib/i18n/config";
 import {
   cityConfigurations,
   citiesByMarketPotential,
   citiesByDigitalAdoption,
-  type CityLocalizationData,
+  type, CityLocalizationData
 } from "@/lib/i18n/city-localization";
 
 interface CitySelectorProps {

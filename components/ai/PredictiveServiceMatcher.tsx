@@ -3,30 +3,24 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  Brain, 
-  Zap, 
+  Brain,
   Target, 
-  TrendingUp,
-  Clock,
-  MapPin,
+  TrendingUp, MapPin,
   Sparkles,
   Eye,
-  Calendar,
-  User,
+  Calendar
   Home,
   Car,
   Utensils,
   Wrench,
   Paintbrush,
   Scissors,
-  Heart,
-  Star,
+  Heart
   DollarSign,
   ArrowRight,
   RefreshCw,
   Settings,
-  Bell,
-  CheckCircle,
+  Bell
   XCircle,
   Info
 } from 'lucide-react'

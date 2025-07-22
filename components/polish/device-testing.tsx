@@ -8,8 +8,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { 
   Smartphone, 
   Monitor, 
-  Tablet, 
-  CheckCircle, 
+  Tablet,
   AlertCircle, 
   Wifi,
   Battery,

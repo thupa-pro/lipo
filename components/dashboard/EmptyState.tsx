@@ -10,13 +10,10 @@ import {
   ArrowRight,
   Users,
   Star,
-  Zap,
   Brain,
-  Heart,
-  Shield,
-  Award,
+  Heart, Award,
   Gift,
-  MapPin,
+  MapPin
 } from "lucide-react";
 import Link from "next/link";
 

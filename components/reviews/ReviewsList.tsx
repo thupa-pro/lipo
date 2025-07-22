@@ -11,21 +11,19 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
-  Star,
   Search,
   Filter,
   ThumbsUp,
   ThumbsDown,
   Calendar,
-  CheckCircle,
   Flag,
   MoreHorizontal,
   TrendingUp,
   Award,
-  Heart,
+  Heart
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

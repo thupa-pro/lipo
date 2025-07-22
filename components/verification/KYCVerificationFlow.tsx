@@ -15,27 +15,23 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 import {
-  Shield,
   Upload,
   Camera,
   FileText,
-  CheckCircle,
   X,
   AlertTriangle,
   Eye,
-  Download,
-  Trash2,
-  User,
+  Download, User,
   CreditCard,
   Building,
   Globe,
@@ -43,14 +39,12 @@ import {
   Mail,
   MapPin,
   Calendar,
-  Lock,
-  Zap,
-  Award,
-  Clock,
+  Lock
+  Award
   Info,
   ArrowRight,
   ArrowLeft,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

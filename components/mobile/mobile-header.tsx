@@ -12,10 +12,9 @@ import {
   Search,
   Menu,
   Shield,
-  Zap,
   Wifi,
   Battery,
-  Signal,
+  Signal
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileLogo } from "@/components/ui/logo";

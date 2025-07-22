@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -16,13 +16,9 @@ import {
   TrendingDown,
   TrendingUp,
   Users,
-  Target,
-  AlertTriangle,
-  CheckCircle,
-  BarChart3,
-  Zap,
-  Clock,
-  DollarSign,
+  AlertTriangle, BarChart3,
+  Zap
+  DollarSign
 } from "lucide-react";
 
 interface FunnelStage {

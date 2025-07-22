@@ -7,20 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import {
-  Shield,
   Search,
   MessageSquare,
-  Star,
-  User,
-  CheckCircle,
-  XCircle,
+  User, XCircle,
   Eye,
   ArrowLeft,
   ArrowRight,
-  Flag,
-  Trash2,
-  Ban,
-  Clock,
+  Flag
+  Ban
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"

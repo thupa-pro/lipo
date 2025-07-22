@@ -15,11 +15,7 @@ import {
   Smartphone,
   CreditCard,
   BarChart,
-  Shield,
-  Bell,
-  MessageSquare,
-  TrendingUp,
-  Zap,
+  Bell, TrendingUp
 } from "lucide-react";
 
 export default function DashboardPage() {

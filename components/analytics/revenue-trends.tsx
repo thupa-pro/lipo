@@ -20,7 +20,7 @@ import {
   ComposedChart,
   PieChart,
   Pie,
-  Cell,
+  Cell
 } from "recharts";
 import {
   DollarSign,
@@ -29,10 +29,9 @@ import {
   ArrowDown,
   CreditCard,
   Wallet,
-  PieChart as PieChartIcon,
+  PieChart, as PieChartIcon,
   BarChart3,
-  Target,
-  Calendar,
+  Calendar
 } from "lucide-react";
 
 interface RevenueTrendsProps {

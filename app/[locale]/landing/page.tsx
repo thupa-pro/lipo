@@ -4,16 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Search, 
-  Shield, 
+  Search,
   Star, 
   Users, 
   Sparkles, 
   ArrowRight, 
-  Brain,
-  CheckCircle,
-  Zap
-} from "lucide-react";
+  Brain} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 

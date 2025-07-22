@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { ChevronDown, Search, Bell, User, Menu, X, Home, Star, Settings, HelpCircle, Mic } from 'lucide-react'
+import { ChevronDown, Search, Bell, Menu, X, Home Settings, HelpCircle, Mic } from 'lucide-react'
 import Link from 'next/link'
 
 interface NavItem {

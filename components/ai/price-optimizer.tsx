@@ -6,7 +6,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -20,16 +20,12 @@ import {
   TrendingUp,
   DollarSign,
   Calendar,
-  Clock,
   MapPin,
-  Users,
-  Zap,
-  AlertCircle,
-  CheckCircle,
+  Users, AlertCircle
   Target,
   Sparkles,
   BarChart3,
-  PiggyBank,
+  PiggyBank
 } from "lucide-react";
 
 interface PriceInsight {
