@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { Loader2 } from "lucide-react";
 
 export default function AuthLoadingPage() {
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const { user, isLoading, isSignedIn } = useAuth();
 
   useEffect(() => {
@@ -16,23 +18,23 @@ export default function AuthLoadingPage() {
       // Route based on user role
       switch (user.role) {
         case "ADMIN":
-          router.push("/admin/dashboard");
+          router.push(`/${locale}/admin/dashboard`);
           break;
         case "PROVIDER":
-          router.push("/provider/dashboard");
+          router.push(`/${locale}/provider/dashboard`);
           break;
         case "CUSTOMER":
-          router.push("/customer/dashboard");
+          router.push(`/${locale}/customer/dashboard`);
           break;
         default:
-          router.push("/dashboard");
+          router.push(`/${locale}/dashboard`);
           break;
       }
     } else {
       // Not authenticated, redirect to landing
-      router.push("/landing");
+      router.push(`/${locale}/landing`);
     }
-  }, [user, isLoading, isSignedIn, router]);
+  }, [user, isLoading, isSignedIn, router, locale]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center">

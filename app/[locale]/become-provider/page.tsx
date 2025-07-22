@@ -54,7 +54,7 @@ import {
   Camera,
   Play,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams  } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 
 interface ProviderApplication {
@@ -255,6 +255,8 @@ export default function BecomeProviderPage() {
   });
 
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const { toast } = useToast();
 
   const totalSteps = 4;
@@ -272,7 +274,7 @@ export default function BecomeProviderPage() {
     });
 
     setTimeout(() => {
-      router.push("/provider-resources");
+      router.push(`/${locale}/provider-resources`);
     }, 2000);
   };
 
@@ -697,7 +699,7 @@ export default function BecomeProviderPage() {
                   size="lg"
                   variant="outline"
                   className="rounded-2xl px-12 py-4 font-bold text-lg border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 hover:border-blue-400 dark:hover:border-white/40 transition-all duration-500"
-                  onClick={() => router.push("/provider-resources")}
+                  onClick={() => router.push(`/${locale}/provider-resources`)}
                 >
                   <Eye className="w-5 h-5 mr-3" />
                   Learn More

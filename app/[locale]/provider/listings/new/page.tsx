@@ -22,10 +22,12 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { ArrowLeft, Upload, MapPin } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams  } from "next/navigation";
 
 export default function NewListingPage() {
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -54,7 +56,7 @@ export default function NewListingPage() {
     e.preventDefault();
     // In a real app, this would submit to API
     console.log("Creating listing:", formData);
-    router.push("/provider/listings");
+    router.push(`/${locale}/provider/listings`);
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {

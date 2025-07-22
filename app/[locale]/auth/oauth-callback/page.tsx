@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, useParams } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
 export default function OAuthCallbackPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
 
   useEffect(() => {
     const handleCallback = async () => {
@@ -15,7 +17,7 @@ export default function OAuthCallbackPage() {
         const state = searchParams.get('state');
 
         if (!code) {
-          router.push('/auth/signin?error=oauth_failed');
+          router.push(`/${locale}/auth/signin?error=oauth_failed`);
           return;
         }
 
@@ -31,13 +33,13 @@ export default function OAuthCallbackPage() {
         const data = await response.json();
 
         if (data.success) {
-          router.push('/dashboard');
+          router.push(`/${locale}/dashboard`);
         } else {
-          router.push('/auth/signin?error=oauth_failed');
+          router.push(`/${locale}/auth/signin?error=oauth_failed`);
         }
       } catch (error) {
         console.error('OAuth callback error:', error);
-        router.push('/auth/signin?error=oauth_failed');
+        router.push(`/${locale}/auth/signin?error=oauth_failed`);
       }
     };
 
