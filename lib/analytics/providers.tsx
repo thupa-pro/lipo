@@ -24,10 +24,19 @@ const AnalyticsContext = createContext<{
 function initializePostHog(config: SovereignAnalyticsConfig) {
   if (typeof window === 'undefined') return null;
 
+  // Check if PostHog is properly configured
+  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+  const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com';
+
+  if (!posthogKey) {
+    console.log('🔧 PostHog disabled in development (no key configured)');
+    return null;
+  }
+
   // Dynamic import to avoid SSR issues
   import('posthog-js').then(({ default: posthog }) => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+    posthog.init(posthogKey, {
+      api_host: posthogHost,
       
       // Elite Platform Configuration
       person_profiles: 'identified_only',
