@@ -54,119 +54,118 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-    tsconfigPath: "./tsconfig.json",
-  },
-  // Fix cross-origin request warning
-  allowedDevOrigins: [
-    '5y98jf-3000.csb.app',
-    'localhost',
-    '127.0.0.1',
-    '*.csb.app',
-    '*.codesandbox.io'
-  ],
-  swcMinify: false,
-  // headers: async () => [
-  //   {
-  //     source: "/(.*)",
-  //     headers: securityHeaders,
-  //   },
-  // ],
-  images: {
-    unoptimized: false,
-    formats: ["image/webp", "image/avif"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
+  // Prevent hydration mismatches
   experimental: {
-    // optimizeCss: true, // Disabled to fix PostCSS issues
+    // Ensure stable hydration
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
-  compress: true,
-  swcMinify: true,
-  webpack: (config, { isServer, dev }) => {
-    // ✅ Enhanced OpenTelemetry warning suppression
-    if (dev) {
-      // Minimize infrastructure logging
-      config.infrastructureLogging = {
-        level: 'error',
-        colors: false,
-      };
-      
-      // Comprehensive warning suppression for development
-      config.ignoreWarnings = [
-        // OpenTelemetry related warnings
-        /Critical dependency: the request of a dependency is an expression/,
-        /require function is used in a way in which dependencies cannot be statically extracted/,
-        /@opentelemetry/,
-        /require-in-the-middle/,
-        /import-in-the-middle/,
-        /module-wrap/,
-        
-        // Sentry related warnings
-        /@sentry/,
-        /webpack.*Sentry/,
-        
-        // General webpack warnings in development
-        /Critical dependency/,
-        /the request of a dependency is an expression/,
-        /Can't resolve.*in.*node_modules/,
-        
-        // Prisma related warnings
-        /prisma.*client/,
-        /\.prisma/,
-      ];
-      
-      // Additional stats configuration to reduce noise
-      config.stats = {
-        ...config.stats,
-        warnings: false,
-        warningsFilter: [
-          /@opentelemetry/,
-          /require-in-the-middle/,
-          /@sentry/,
-          /Critical dependency/,
-        ],
+
+  // Image optimization
+  images: {
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
+
+  // Webpack configuration for better performance
+  webpack: (config, { dev, isServer }) => {
+    // Prevent hydration issues with client-side only code
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        module: false,
       };
     }
 
-    // ✅ Enhanced resolve fallbacks for better compatibility
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      net: false,
-      tls: false,
-      crypto: false,
-      stream: false,
-      http: false,
-      https: false,
-      zlib: false,
-      path: false,
-      os: false,
+    // Optimize bundle splitting for better hydration
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: -10,
+            chunks: 'all',
+          },
+          // Separate chunk for styling libraries to prevent hydration mismatches
+          styles: {
+            test: /[\\/]node_modules[\\/](framer-motion|@radix-ui)[\\/]/,
+            name: 'ui-libs',
+            priority: 10,
+            chunks: 'all',
+          },
+        },
+      },
     };
 
-    // ✅ Bundle analyzer for production builds
-    if (process.env.ANALYZE === "true") {
-      const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: "static",
-          openAnalyzer: false,
-          reportFilename: isServer
-            ? "../analyze/server.html"
-            : "./analyze/client.html",
-        }),
-      );
-    }
-    
     return config;
   },
+
+  // Environment variables
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  },
+
+  // Headers for better caching and security
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          // Prevent hydration issues with caching
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
+    ];
+  },
+
+  // Compiler options for better hydration
+  compiler: {
+    // Remove console.log in production
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Ensure consistent rendering between server and client
+  reactStrictMode: true,
+  
+  // Enable SWC for better performance and hydration
+  swcMinify: true,
+
+  // Prevent hydration mismatches with proper page extensions
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+
+  // Trailing slash consistency
+  trailingSlash: false,
+
+  // Disable x-powered-by header
+  poweredByHeader: false,
 };
 
 export default withNextIntl(nextConfig);
