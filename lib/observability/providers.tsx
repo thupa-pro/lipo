@@ -17,18 +17,24 @@ interface SovereignObservabilityConfig {
 export function initializeSovereignSentry(config: SovereignObservabilityConfig) {
   if (typeof window === 'undefined') return;
 
+  // ✅ Skip Sentry in development to reduce noise
+  if (config.environment === 'development' && !process.env.NEXT_PUBLIC_SENTRY_DSN) {
+    console.log('🔧 Sentry disabled in development (no DSN configured)');
+    return;
+  }
+
   Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
     environment: config.environment,
     release: config.release,
     
-    // Performance Monitoring
-    tracesSampleRate: 1.0,
-    profilesSampleRate: 1.0,
+    // ✅ Reduced sampling in development
+    tracesSampleRate: config.environment === 'development' ? 0.1 : 1.0,
+    profilesSampleRate: config.environment === 'development' ? 0.1 : 1.0,
     
-    // Session Replay for Premium Support
-    replaysOnErrorSampleRate: 1.0,
-    replaysSessionSampleRate: 0.1,
+    // ✅ Session Replay - disabled in development for performance
+    replaysOnErrorSampleRate: config.environment === 'development' ? 0.0 : 1.0,
+    replaysSessionSampleRate: config.environment === 'development' ? 0.0 : 0.1,
     
     // Advanced Configuration
     beforeSend(event, hint) {
@@ -38,10 +44,12 @@ export function initializeSovereignSentry(config: SovereignObservabilityConfig) 
         if (error && typeof error === 'object' && 'message' in error) {
           const message = String(error.message).toLowerCase();
           
-          // Skip common browser errors
+          // Skip common browser errors and development warnings
           if (message.includes('non-error promise rejection') ||
               message.includes('script error') ||
-              message.includes('network error')) {
+              message.includes('network error') ||
+              message.includes('opentelemetry') ||
+              message.includes('require-in-the-middle')) {
             return null;
           }
         }

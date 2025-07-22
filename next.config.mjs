@@ -82,7 +82,31 @@ const nextConfig = {
   },
   compress: true,
   swcMinify: true,
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
+    // ✅ Suppress OpenTelemetry warnings in development
+    if (dev) {
+      config.infrastructureLogging = {
+        level: 'error',
+      };
+      
+      // Suppress specific OpenTelemetry warnings
+      config.ignoreWarnings = [
+        /Critical dependency: the request of a dependency is an expression/,
+        /require function is used in a way in which dependencies cannot be statically extracted/,
+        /@opentelemetry/,
+        /require-in-the-middle/,
+      ];
+    }
+
+    // ✅ Optimize for Sentry and OpenTelemetry
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+
+    // ✅ Bundle analyzer for production builds
     if (process.env.ANALYZE === "true") {
       const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
       config.plugins.push(
@@ -95,6 +119,7 @@ const nextConfig = {
         }),
       );
     }
+    
     return config;
   },
 };
