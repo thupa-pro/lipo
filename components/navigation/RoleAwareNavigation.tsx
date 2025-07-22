@@ -1,46 +1,40 @@
 "use client";
 
-// Role-Aware Navigation for Loconomy Platform  
-// Adapts navigation based on user role and subscription tier
-// Fixed: Added "use client" directive to resolve React hooks usage in server components
-
+import React, { useState } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { User } from '@/types/rbac';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { 
   Sparkles, 
-  User as UserIcon, 
-  Settings, 
-  LogOut, 
-  Crown,
+  MapPin, 
+  BarChart3, 
+  Calendar, 
+  MessageSquare, 
   Shield,
-  BarChart3,
-  Calendar,
-  MapPin,
-  MessageSquare,
-  Bell,
   Menu,
-  X
+  X,
+  ChevronDown,
+  User,
+  Settings,
+  LogOut,
+  Crown,
+  Zap
 } from 'lucide-react';
-import { useState } from 'react';
-import { getUserRole, getUserSubscriptionTier, getInitials } from '@/lib/rbac/utils';
-import { Logo } from '@/components/ui/logo';
-import { UIContext } from '@/lib/types/logo';
-import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuLabel, 
+  DropdownMenuSeparator, 
+  DropdownMenuTrigger 
+} from '@/components/ui/dropdown-menu';
+import { useAuth } from '@/hooks/useAuth';
+import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
+import { User as UserType } from '@/hooks/useAuth';
 
 interface RoleAwareNavigationProps {
-  user: User | null;
+  user?: UserType | null;
 }
 
 interface NavItem {
@@ -52,6 +46,7 @@ interface NavItem {
   requiresSubscription?: Array<'starter' | 'professional' | 'enterprise'>;
 }
 
+// Base navigation items (will be prefixed with locale)
 const NAVIGATION_ITEMS: NavItem[] = [
   {
     href: '/',
@@ -108,11 +103,20 @@ const NAVIGATION_ITEMS: NavItem[] = [
 export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
+  
   const userRole = getUserRole(user);
   const subscriptionTier = getUserSubscriptionTier(user);
 
+  // Create locale-aware navigation items
+  const localeAwareNavItems = NAVIGATION_ITEMS.map(item => ({
+    ...item,
+    href: `/${locale}${item.href === '/' ? '' : item.href}`
+  }));
+
   // Filter navigation items based on user role and subscription
-  const visibleNavItems = NAVIGATION_ITEMS.filter(item => {
+  const visibleNavItems = localeAwareNavItems.filter(item => {
     // Check role access
     if (!item.roles.includes(userRole)) {
       return false;
@@ -138,65 +142,62 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
 
   const getSubscriptionColor = (tier: typeof subscriptionTier) => {
     const colors = {
-      free: 'bg-gray-100 text-gray-700',
-      starter: 'bg-blue-100 text-blue-700',
-      professional: 'bg-purple-100 text-purple-700',
-      enterprise: 'bg-gold-100 text-gold-700'
+      starter: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+      professional: 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
+      enterprise: 'bg-gold-100 text-gold-700 dark:bg-gold-900 dark:text-gold-300'
     };
-    return colors[tier] || colors.free;
+    return colors[tier] || 'bg-gray-100 text-gray-700';
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo and brand */}
-          <div className="flex items-center gap-4">
-            <div 
-              onClick={() => router.push('/')} 
-              className="hover:opacity-80 transition-opacity cursor-pointer"
-            >
-              <Logo context={UIContext.NAVIGATION} />
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href={`/${locale}`} className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
+            <span className="font-bold text-xl">Loconomy</span>
+          </Link>
 
-            {/* Desktop navigation */}
-            <div className="hidden lg:flex items-center gap-6 ml-6">
-              {visibleNavItems.slice(0, 4).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <item.icon className="w-4 h-4" />
-                  {item.label}
-                  {item.badge && (
-                    <Badge variant="secondary" className="text-xs">
-                      {item.badge}
-                    </Badge>
-                  )}
-                </Link>
-              ))}
-            </div>
+          {/* Desktop navigation */}
+          <div className="hidden lg:flex items-center gap-6">
+            {visibleNavItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+              >
+                <item.icon className="w-4 h-4" />
+                {item.label}
+                {item.badge && (
+                  <Badge variant="secondary" className="text-xs">
+                    {item.badge}
+                  </Badge>
+                )}
+              </Link>
+            ))}
           </div>
 
-          {/* Right side actions */}
+          {/* Right side: User menu or auth buttons */}
           <div className="flex items-center gap-3">
-            {/* Theme toggle */}
-            <ThemeToggle />
-
-            {/* Notifications (for authenticated users) */}
-            {user && (
-              <Button variant="ghost" size="sm" className="relative">
-                <Bell className="w-4 h-4" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </Button>
-            )}
-
-            {/* User menu or auth buttons */}
             {user ? (
-              <UserMenu user={user} userRole={userRole} subscriptionTier={subscriptionTier} />
+              <UserMenu 
+                user={user} 
+                userRole={userRole} 
+                subscriptionTier={subscriptionTier}
+                locale={locale}
+              />
             ) : (
-              <GuestActions />
+              <div className="hidden sm:flex items-center gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href={`/${locale}/auth/signin`}>Sign In</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href={`/${locale}/auth/signup`}>Sign Up</Link>
+                </Button>
+              </div>
             )}
 
             {/* Mobile menu button */}
@@ -243,108 +244,95 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
 function UserMenu({ 
   user, 
   userRole, 
-  subscriptionTier 
+  subscriptionTier,
+  locale 
 }: { 
-  user: User; 
+  user: UserType; 
   userRole: ReturnType<typeof getUserRole>;
   subscriptionTier: ReturnType<typeof getUserSubscriptionTier>;
+  locale: string;
 }) {
-  const getRoleIcon = (role: typeof userRole) => {
-    const icons = {
-      guest: UserIcon,
-      consumer: UserIcon,
-      provider: Crown,
-      admin: Shield
-    };
-    return icons[role];
-  };
+  const { signOut } = useAuth();
+  const router = useRouter();
 
-  const RoleIcon = getRoleIcon(userRole);
+  const handleSignOut = async () => {
+    await signOut();
+    router.push(`/${locale}/auth/signin`);
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <Avatar className="h-10 w-10">
-            <AvatarImage src={user.email} alt={user.email} />
-            <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-              {getInitials(user.email)}
-            </AvatarFallback>
-          </Avatar>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-64" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-2">
-            <div className="flex items-center gap-2">
-              <RoleIcon className="w-4 h-4" />
-              <p className="text-sm font-medium leading-none">{user.email}</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="text-xs">
-                {userRole.charAt(0).toUpperCase() + userRole.slice(1)}
-              </Badge>
-              {subscriptionTier !== 'free' && (
-                <Badge className={`text-xs ${subscriptionTier === 'enterprise' ? 'bg-yellow-100 text-yellow-800' : 'bg-purple-100 text-purple-800'}`}>
+        <Button variant="ghost" className="flex items-center gap-2 h-9">
+          <div className="w-7 h-7 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center">
+            <User className="w-4 h-4 text-white" />
+          </div>
+          <div className="hidden sm:flex flex-col items-start">
+            <span className="text-sm font-medium">{user.firstName || 'User'}</span>
+            <div className="flex items-center gap-1">
+              <span className="text-xs text-muted-foreground">
+                {getRoleDisplayName(userRole)}
+              </span>
+              {subscriptionTier !== 'starter' && (
+                <Badge variant="secondary" className={`text-xs ${getSubscriptionColor(subscriptionTier)}`}>
+                  {subscriptionTier === 'professional' && <Crown className="w-3 h-3 mr-1" />}
+                  {subscriptionTier === 'enterprise' && <Zap className="w-3 h-3 mr-1" />}
                   {subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1)}
                 </Badge>
               )}
             </div>
           </div>
-        </DropdownMenuLabel>
+          <ChevronDown className="w-4 h-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        
         <DropdownMenuItem asChild>
-          <Link href="/profile" className="flex items-center gap-2">
-            <UserIcon className="w-4 h-4" />
-            Profile Settings
+          <Link href={`/${locale}/profile`} className="flex items-center gap-2">
+            <User className="w-4 h-4" />
+            Profile
           </Link>
         </DropdownMenuItem>
-        
-        {userRole === 'provider' && (
+        <DropdownMenuItem asChild>
+          <Link href={`/${locale}/settings`} className="flex items-center gap-2">
+            <Settings className="w-4 h-4" />
+            Settings
+          </Link>
+        </DropdownMenuItem>
+        {userRole === 'admin' && (
           <DropdownMenuItem asChild>
-            <Link href="/subscription" className="flex items-center gap-2">
-              <Crown className="w-4 h-4" />
-              Subscription
-              {subscriptionTier === 'free' && (
-                <Badge variant="outline" className="text-xs ml-auto">
-                  Upgrade
-                </Badge>
-              )}
+            <Link href={`/${locale}/admin`} className="flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              Admin Panel
             </Link>
           </DropdownMenuItem>
         )}
-        
-        <DropdownMenuItem asChild>
-          <Link href="/settings" className="flex items-center gap-2">
-            <Settings className="w-4 h-4" />
-            Account Settings
-          </Link>
-        </DropdownMenuItem>
-        
         <DropdownMenuSeparator />
-        
-        <DropdownMenuItem className="text-red-600 focus:text-red-600" asChild>
-          <Link href="/auth/signout" className="flex items-center gap-2">
-            <LogOut className="w-4 h-4" />
-            Sign Out
-          </Link>
+        <DropdownMenuItem onClick={handleSignOut} className="flex items-center gap-2 text-red-600">
+          <LogOut className="w-4 h-4" />
+          Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
 
-// Guest actions component for unauthenticated users
-function GuestActions() {
-  return (
-    <div className="flex items-center gap-2">
-      <Button variant="ghost" size="sm" asChild>
-        <Link href="/auth/signin">Sign In</Link>
-      </Button>
-      <Button size="sm" asChild className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-        <Link href="/auth/signup">Get Started</Link>
-      </Button>
-    </div>
-  );
+  function getRoleDisplayName(role: typeof userRole) {
+    const names = {
+      guest: 'Guest',
+      consumer: 'Customer',
+      provider: 'Service Provider',
+      admin: 'Administrator'
+    };
+    return names[role];
+  }
+
+  function getSubscriptionColor(tier: typeof subscriptionTier) {
+    const colors = {
+      starter: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+      professional: 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
+      enterprise: 'bg-gold-100 text-gold-700 dark:bg-gold-900 dark:text-gold-300'
+    };
+    return colors[tier] || 'bg-gray-100 text-gray-700';
+  }
 }

@@ -29,30 +29,53 @@ export function initializeSovereignSentry(config: SovereignObservabilityConfig) 
     release: config.release,
     
     // ✅ Reduced sampling in development
-    tracesSampleRate: config.environment === 'development' ? 0.1 : 1.0,
-    profilesSampleRate: config.environment === 'development' ? 0.1 : 1.0,
+    tracesSampleRate: config.environment === 'development' ? 0.05 : 1.0,
+    profilesSampleRate: config.environment === 'development' ? 0.05 : 1.0,
     
     // ✅ Session Replay - disabled in development for performance
     replaysOnErrorSampleRate: config.environment === 'development' ? 0.0 : 1.0,
     replaysSessionSampleRate: config.environment === 'development' ? 0.0 : 0.1,
     
+    integrations: [
+      Sentry.browserTracingIntegration({
+        routingInstrumentation: undefined, // Disable routing instrumentation in dev
+      }),
+      Sentry.replayIntegration({
+        maskAllText: config.environment === 'production',
+        blockAllMedia: config.environment === 'production',
+      }),
+    ],
+    
     // Advanced Configuration
     beforeSend(event, hint) {
-      // Filter out non-critical errors
+      // Filter out non-critical errors and development noise
       if (event.exception) {
         const error = hint.originalException;
         if (error && typeof error === 'object' && 'message' in error) {
           const message = String(error.message).toLowerCase();
           
-          // Skip common browser errors and development warnings
-          if (message.includes('non-error promise rejection') ||
+          // Skip OpenTelemetry and development warnings
+          if (message.includes('opentelemetry') ||
+              message.includes('require-in-the-middle') ||
+              message.includes('critical dependency') ||
+              message.includes('non-error promise rejection') ||
               message.includes('script error') ||
               message.includes('network error') ||
-              message.includes('opentelemetry') ||
-              message.includes('require-in-the-middle')) {
+              message.includes('the request of a dependency is an expression')) {
             return null;
           }
         }
+      }
+      
+      // Filter out breadcrumbs with OpenTelemetry content
+      if (event.breadcrumbs) {
+        event.breadcrumbs = event.breadcrumbs.filter(breadcrumb => {
+          const message = breadcrumb.message?.toLowerCase() || '';
+          const category = breadcrumb.category?.toLowerCase() || '';
+          return !message.includes('opentelemetry') && 
+                 !category.includes('opentelemetry') &&
+                 !message.includes('require-in-the-middle');
+        });
       }
       
       return event;
@@ -70,25 +93,6 @@ export function initializeSovereignSentry(config: SovereignObservabilityConfig) 
       
       return event;
     },
-
-    integrations: [
-      // ✅ Fixed: Using correct Sentry integration for Next.js 14+
-      Sentry.browserTracingIntegration({
-        // ✅ Removed deprecated nextRouterInstrumentation
-        tracePropagationTargets: [
-          "localhost",
-          /^https:\/\/.*\.loconomy\.com/,
-          /^https:\/\/api\.loconomy\.com/,
-        ],
-      }),
-      
-      // Session Replay
-      Sentry.replayIntegration({
-        maskAllText: false,
-        blockAllMedia: true,
-        maskAllInputs: true,
-      }),
-    ],
   });
 
   // Set user context
