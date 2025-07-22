@@ -6,7 +6,6 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { getUnifiedSession } from '@/lib/auth/session';
 import { RoleAwareNavigation } from '@/components/navigation/RoleAwareNavigation';
-import { CookieConsent } from '@/components/consent/CookieConsent';
 import { Logo } from '@/components/ui/logo';
 import { UIContext, LogoVariant } from '@/lib/types/logo';
 import { getLogoPath } from '@/lib/utils/logo';
@@ -15,6 +14,7 @@ import { SovereignObservabilityProvider } from '@/lib/observability/providers';
 import { SovereignAnalyticsProvider } from '@/lib/analytics/providers';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { ClerkProvider } from '@/components/providers/ClerkProvider';
+import { CookieConsentProvider, CookieConsentBanner, CookieSettingsLink } from '@/components/cookies';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -161,13 +161,14 @@ export default async function RootLayout({
       )}>
         <ErrorBoundary>
           <ClerkProvider>
-            <SovereignObservabilityProvider>
-              <SovereignAnalyticsProvider userId={session?.user?.id}>
-                <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
+            <CookieConsentProvider>
+              <SovereignObservabilityProvider>
+                <SovereignAnalyticsProvider userId={session?.user?.id}>
+                  <ThemeProvider
+                  attribute="class"
+                  defaultTheme="system"
+                  enableSystem
+                  disableTransitionOnChange
               >
                 <div className="relative flex min-h-screen flex-col">
                   {/* Background Effects */}
@@ -199,17 +200,38 @@ export default async function RootLayout({
                   {/* Footer with Logo */}
                   <footer className="border-t bg-background/80 backdrop-blur-sm">
                     <div className="container py-8">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <Logo 
-                            variant={LogoVariant.LIGHT}
-                            size="sm"
-                            context={UIContext.FOOTER}
-                            alt="Loconomy - Elite AI Platform"
-                            className="logo-responsive"
-                          />
-                          <div className="text-sm text-muted-foreground">
-                            © 2024 Loconomy Inc. Elite AI-Powered Marketplace.
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                          <div className="flex items-center gap-4">
+                            <Logo 
+                              variant={LogoVariant.LIGHT}
+                              size="sm"
+                              context={UIContext.FOOTER}
+                              alt="Loconomy - Elite AI Platform"
+                              className="logo-responsive"
+                            />
+                            <div className="text-sm text-muted-foreground">
+                              © 2024 Loconomy Inc. Elite AI-Powered Marketplace.
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-4 text-sm">
+                            <CookieSettingsLink 
+                              variant="link" 
+                              text="Cookie Settings"
+                              showIcon={true}
+                            />
+                            <a 
+                              href="/privacy-policy" 
+                              className="text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+                            >
+                              Privacy Policy
+                            </a>
+                            <a 
+                              href="/terms" 
+                              className="text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+                            >
+                              Terms
+                            </a>
                           </div>
                         </div>
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -222,17 +244,18 @@ export default async function RootLayout({
                     </div>
                   </footer>
 
-                  {/* Cookie Consent */}
-                  <Suspense fallback={null}>
-                    <CookieConsent user={session?.user} />
-                  </Suspense>
+                                      {/* Cookie Consent */}
+                    <Suspense fallback={null}>
+                      <CookieConsentBanner />
+                    </Suspense>
 
                   {/* Toast Notifications */}
                   <Toaster />
                 </div>
-                </ThemeProvider>
-              </SovereignAnalyticsProvider>
-            </SovereignObservabilityProvider>
+                  </ThemeProvider>
+                </SovereignAnalyticsProvider>
+              </SovereignObservabilityProvider>
+            </CookieConsentProvider>
           </ClerkProvider>
         </ErrorBoundary>
 
