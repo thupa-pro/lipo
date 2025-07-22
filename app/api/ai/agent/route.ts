@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { ClerkBackendAuth } from "@/lib/auth/clerk-backend";
 import { loconomyAgent, AgentContext } from "@/lib/ai/loconomy-agent";
 
 export async function POST(request: NextRequest) {
@@ -15,12 +14,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Get user session for context
-    const session = await getServerSession(authOptions);
+    const user = await ClerkBackendAuth.getCurrentUser();
     
     // Build agent context
     const context: AgentContext = {
-      userId: session?.user?.id,
-      userRole: session?.user?.role,
+      userId: user?.id,
+      userRole: user?.role,
       location: clientContext?.location || 'Unknown',
       currentPage: clientContext?.currentPage || 'unknown',
       sessionMemory: clientContext?.sessionMemory || {},
@@ -30,8 +29,8 @@ export async function POST(request: NextRequest) {
     const response = await loconomyAgent.processInput(input, context);
 
     // Store interaction in memory if user is logged in
-    if (session?.user?.id) {
-      loconomyAgent.setMemory(session.user.id, 'lastInteraction', {
+    if (user?.id) {
+      loconomyAgent.setMemory(user.id, 'lastInteraction', {
         input,
         response: response.content,
         timestamp: new Date(),
@@ -58,12 +57,12 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const user = await ClerkBackendAuth.getCurrentUser();
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
     const currentPage = searchParams.get('page') || 'unknown';
 
-    if (!session?.user?.id) {
+    if (!user?.id) {
       return NextResponse.json(
         { message: "Authentication required" },
         { status: 401 }
@@ -72,11 +71,11 @@ export async function GET(request: NextRequest) {
 
     switch (action) {
       case 'suggestions':
-        const suggestions = loconomyAgent.predictIntent(session.user.id, currentPage);
+        const suggestions = loconomyAgent.predictIntent(user.id, currentPage);
         return NextResponse.json({ suggestions }, { status: 200 });
 
       case 'memory':
-        const memory = loconomyAgent.getMemory(session.user.id);
+        const memory = loconomyAgent.getMemory(user.id);
         return NextResponse.json({ memory }, { status: 200 });
 
       case 'commands':
