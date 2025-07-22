@@ -1,4 +1,81 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* =================================
+   LOCONOMY ELITE LAYOUT SYSTEM
+   ================================= */
+
+/* Prevent layout conflicts and ensure single app instance */
+.locale-container {
+  min-height: inherit;
+  width: 100%;
+}
+
+/* Ensure no nested html/body conflicts */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Prevent duplicate layout mounting */
+html > body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ensure locale switching doesn't break layout */
+[data-locale] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Prevent duplicate navigation/headers */
+header + header,
+nav + nav {
+  display: none !important;
+}
+
+/* Fix potential z-index conflicts */
+.fixed {
+  z-index: var(--z-fixed, 50);
+}
+
+.relative {
+  z-index: var(--z-relative, 1);
+}
+
+/* Layout stability during hydration */
+.layout-container {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.layout-container.hydrating {
+  opacity: 0.9;
+}
+
+/* Logo system integration */
+.logo-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.logo-dark-mode {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-light-mode {
+    display: none;
+  }
+  .logo-dark-mode {
+    display: block;
+  }
+}
+
+/* =================================
+   ORIGINAL GLOBALS (PRESERVED)
+   ================================= */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

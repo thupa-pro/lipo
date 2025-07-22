@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import React, { Suspense } from 'react';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
@@ -9,7 +10,6 @@ import { RoleAwareNavigation } from '@/components/navigation/RoleAwareNavigation
 import { Logo } from '@/components/ui/logo';
 import { UIContext, LogoVariant } from '@/lib/types/logo';
 import { getLogoPath } from '@/lib/utils/logo';
-import { Suspense } from 'react';
 import { SovereignObservabilityProvider } from '@/lib/observability/providers';
 import { SovereignAnalyticsProvider } from '@/lib/analytics/providers';
 import { ErrorBoundary } from '@/components/error-boundary';

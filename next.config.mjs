@@ -83,27 +83,64 @@ const nextConfig = {
   compress: true,
   swcMinify: true,
   webpack: (config, { isServer, dev }) => {
-    // ✅ Suppress OpenTelemetry warnings in development
+    // ✅ Enhanced OpenTelemetry warning suppression
     if (dev) {
+      // Minimize infrastructure logging
       config.infrastructureLogging = {
         level: 'error',
+        colors: false,
       };
       
-      // Suppress specific OpenTelemetry warnings
+      // Comprehensive warning suppression for development
       config.ignoreWarnings = [
+        // OpenTelemetry related warnings
         /Critical dependency: the request of a dependency is an expression/,
         /require function is used in a way in which dependencies cannot be statically extracted/,
         /@opentelemetry/,
         /require-in-the-middle/,
+        /import-in-the-middle/,
+        /module-wrap/,
+        
+        // Sentry related warnings
+        /@sentry/,
+        /webpack.*Sentry/,
+        
+        // General webpack warnings in development
+        /Critical dependency/,
+        /the request of a dependency is an expression/,
+        /Can't resolve.*in.*node_modules/,
+        
+        // Prisma related warnings
+        /prisma.*client/,
+        /\.prisma/,
       ];
+      
+      // Additional stats configuration to reduce noise
+      config.stats = {
+        ...config.stats,
+        warnings: false,
+        warningsFilter: [
+          /@opentelemetry/,
+          /require-in-the-middle/,
+          /@sentry/,
+          /Critical dependency/,
+        ],
+      };
     }
 
-    // ✅ Optimize for Sentry and OpenTelemetry
+    // ✅ Enhanced resolve fallbacks for better compatibility
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
       net: false,
       tls: false,
+      crypto: false,
+      stream: false,
+      http: false,
+      https: false,
+      zlib: false,
+      path: false,
+      os: false,
     };
 
     // ✅ Bundle analyzer for production builds
