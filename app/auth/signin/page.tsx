@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useUser, useSignIn } from '@clerk/nextjs';
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -26,10 +26,19 @@ export default function SignInPage() {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const { isSignedIn, user } = useUser();
+  const { signIn, isLoaded, setActive } = useSignIn();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Redirect if user is already signed in
+  useEffect(() => {
+    if (isSignedIn && user) {
+      router.push('/dashboard');
+    }
+  }, [isSignedIn, user, router]);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,42 +62,39 @@ export default function SignInPage() {
     setIsLoading(true);
     setError("");
 
+    if (!isLoaded) return;
+
     try {
-      const result = await signIn("credentials", {
-        email,
+      const result = await signIn.create({
+        identifier: email,
         password,
-        redirect: false,
       });
 
-      if (result?.error) {
-        setError("Invalid credentials. Please check your email and password.");
-        toast({
-          title: "Authentication Failed",
-          description: "Invalid credentials. Please try again.",
-          variant: "destructive",
-        });
-      } else {
+      if (result.status === "complete") {
+        await setActive({ session: result.createdSessionId });
         setStep(3);
         toast({
           title: "Welcome back!",
           description: "Successfully signed in to your account.",
         });
         
-        // Get session to determine role-based redirect
-        setTimeout(async () => {
-          const session = await getSession();
-          if (session?.user.role) {
-            router.push("/auth/loading");
-          } else {
-            router.push("/dashboard");
-          }
+        // Redirect after successful sign-in
+        setTimeout(() => {
+          router.push("/dashboard");
         }, 1500);
+      } else {
+        setError("Invalid credentials. Please check your email and password.");
+        toast({
+          title: "Authentication Failed",
+          description: "Invalid credentials. Please try again.",
+          variant: "destructive",
+        });
       }
-    } catch (error) {
-      setError("An unexpected error occurred. Please try again.");
+    } catch (err: any) {
+      setError(err.errors?.[0]?.message || "An unexpected error occurred. Please try again.");
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: err.errors?.[0]?.message || "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -97,12 +103,15 @@ export default function SignInPage() {
   };
 
   const handleSocialSignIn = async (provider: string) => {
+    if (!isLoaded) return;
+
     try {
-      await signIn(provider, { 
-        callbackUrl: "/auth/loading",
-        redirect: true 
+      await signIn.authenticateWithRedirect({
+        strategy: `oauth_${provider}` as any,
+        redirectUrl: '/auth/sso-callback',
+        redirectUrlComplete: '/dashboard',
       });
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error",
         description: `Failed to sign in with ${provider}`,

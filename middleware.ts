@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import { authMiddleware } from '@clerk/nextjs';
 
 // Rate limiting configuration
 const redis = new Redis({
@@ -271,15 +272,87 @@ async function validateApiKey(apiKey: string): Promise<boolean> {
   }
 }
 
-export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - robots.txt, sitemap.xml (SEO files)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+// Export Clerk's authMiddleware as the main middleware
+export default authMiddleware({
+  // Public routes that don't require authentication
+  publicRoutes: [
+    '/',
+    '/about',
+    '/contact',
+    '/pricing',
+    '/features',
+    '/auth/signin',
+    '/auth/signup',
+    '/auth/sso-callback',
+    '/api/webhooks/clerk',
+    // Internationalization routes
+    '/:locale',
+    '/:locale/about',
+    '/:locale/contact',
+    '/:locale/pricing',
+    '/:locale/features',
+    '/:locale/auth/signin',
+    '/:locale/auth/signup',
+    '/:locale/auth/sso-callback',
   ],
+  // Routes that should be ignored by Clerk auth
+  ignoredRoutes: [
+    '/api/health',
+    '/api/status',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/favicon.ico',
+    '/_next/static/(.*)',
+    '/_next/image/(.*)',
+  ],
+  // Custom middleware logic
+  beforeAuth: (req) => {
+    // Apply rate limiting and other custom logic here if needed
+    return originalMiddleware(req);
+  },
+  afterAuth: (auth, req) => {
+    // Handle post-auth logic if needed
+    const { pathname } = req.nextUrl;
+    
+    // Redirect authenticated users away from auth pages
+    if (auth.userId && ['/auth/signin', '/auth/signup'].includes(pathname)) {
+      return NextResponse.redirect(new URL('/dashboard', req.url));
+    }
+    
+    // Allow access to protected routes for authenticated users
+    if (auth.userId || isPublicRoute(pathname)) {
+      return NextResponse.next();
+    }
+    
+    // Redirect unauthenticated users to sign in
+    return NextResponse.redirect(new URL('/auth/signin', req.url));
+  },
+});
+
+// Keep the original middleware logic as a separate function
+const originalMiddleware = middleware;
+
+// Helper function to check if a route is public
+function isPublicRoute(pathname: string): boolean {
+  const publicRoutes = [
+    '/',
+    '/about',
+    '/contact',
+    '/pricing',
+    '/features',
+    '/auth/signin',
+    '/auth/signup',
+    '/auth/sso-callback',
+  ];
+  
+  // Remove locale prefix for checking
+  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '');
+  
+  return publicRoutes.some(route => 
+    pathWithoutLocale === route || pathWithoutLocale.startsWith(route + '/')
+  );
+}
+
+export const config = {
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };

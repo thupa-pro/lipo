@@ -3,6 +3,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useUser, useSignUp } from '@clerk/nextjs';
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,10 +32,19 @@ export default function SignUpPage() {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const { isSignedIn, user } = useUser();
+  const { signUp, isLoaded, setActive } = useSignUp();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Redirect if user is already signed in
+  useEffect(() => {
+    if (isSignedIn && user) {
+      router.push('/dashboard');
+    }
+  }, [isSignedIn, user, router]);
 
   const roleOptions = [
     {
@@ -74,6 +84,8 @@ export default function SignUpPage() {
     setIsLoading(true);
     setError("");
 
+    if (!isLoaded) return;
+
     // Validation
     if (!name.trim()) {
       setError("Name is required");
@@ -100,20 +112,24 @@ export default function SignUpPage() {
     }
 
     try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.toLowerCase().trim(),
-          password,
-          role,
-        }),
+      const nameParts = name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      const result = await signUp.create({
+        emailAddress: email.toLowerCase().trim(),
+        password,
+        firstName,
+        lastName,
+        // Store role in public metadata
+        unsafeMetadata: {
+          role: role
+        }
       });
 
-      if (response.ok) {
+      if (result.status === "missing_requirements") {
+        // Email verification required
+        await result.prepareEmailAddressVerification({ strategy: "email_code" });
         setStep(3);
         toast({
           title: "Account Created!",
@@ -121,22 +137,26 @@ export default function SignUpPage() {
         });
         
         setTimeout(() => {
-          router.push("/auth/signin");
+          router.push("/auth/verify-email");
         }, 3000);
-      } else {
-        const data = await response.json();
-        setError(data.message || "Failed to create account");
+      } else if (result.status === "complete") {
+        // Account created and verified
+        await setActive({ session: result.createdSessionId });
+        setStep(3);
         toast({
-          title: "Registration Failed",
-          description: data.message || "An error occurred during registration",
-          variant: "destructive",
+          title: "Account Created!",
+          description: "Welcome to Loconomy!",
         });
+        
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 2000);
       }
-    } catch (error) {
-      setError("An unexpected error occurred. Please try again.");
+    } catch (err: any) {
+      setError(err.errors?.[0]?.message || "An unexpected error occurred. Please try again.");
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Registration Failed",
+        description: err.errors?.[0]?.message || "An error occurred during registration",
         variant: "destructive",
       });
     } finally {
@@ -145,13 +165,15 @@ export default function SignUpPage() {
   };
 
   const handleSocialSignUp = async (provider: string) => {
+    if (!isLoaded) return;
+
     try {
-      // In a real app, this would integrate with the provider's OAuth
-      toast({
-        title: "Coming Soon",
-        description: `${provider} sign-up will be available soon!`,
+      await signUp.authenticateWithRedirect({
+        strategy: `oauth_${provider}` as any,
+        redirectUrl: '/auth/sso-callback',
+        redirectUrlComplete: '/dashboard',
       });
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error",
         description: `Failed to sign up with ${provider}`,
