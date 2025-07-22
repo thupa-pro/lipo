@@ -6,12 +6,20 @@ export interface ImageUploadResult {
   error?: string;
 }
 
+function sanitizeForFilename(input: string): string {
+  // Only allow alphanumeric, dash, underscore, and dot
+  return input.replace(/[^a-zA-Z0-9._-]/g, "");
+}
+
 export async function uploadListingImages(
   files: File[],
   userId: string,
 ): Promise<ImageUploadResult[]> {
   const supabase = createClient();
   const results: ImageUploadResult[] = [];
+
+  // Sanitize userId for use in file path
+  const safeUserId = sanitizeForFilename(userId);
 
   for (const file of files) {
     try {
@@ -26,9 +34,9 @@ export async function uploadListingImages(
         continue;
       }
 
-      // Generate unique filename
-      const fileExt = file.name.split(".").pop()?.toLowerCase();
-      const fileName = `${userId}/${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${fileExt}`;
+      // Generate unique, safe filename
+      const fileExt = sanitizeForFilename(file.name.split(".").pop()?.toLowerCase() || "jpg");
+      const fileName = `${safeUserId}/${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${fileExt}`;
 
       // Upload to Supabase Storage
       const { data, error } = await supabase.storage
