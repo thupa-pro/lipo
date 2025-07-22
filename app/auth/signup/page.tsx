@@ -100,42 +100,49 @@ export default function SignUpPage() {
     }
 
     try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: name.trim(),
           email: email.toLowerCase().trim(),
           password,
+          name: name.trim(),
           role,
         }),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         setStep(3);
         toast({
           title: "Account Created!",
-          description: "Welcome to Loconomy! Please check your email to verify your account.",
+          description: data.message || "Welcome to Loconomy!",
         });
         
-        setTimeout(() => {
-          router.push("/auth/signin");
-        }, 3000);
+        if (data.needsVerification) {
+          setTimeout(() => {
+            router.push("/auth/verify-email");
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            router.push("/dashboard");
+          }, 2000);
+        }
       } else {
-        const data = await response.json();
-        setError(data.message || "Failed to create account");
+        setError(data.error || "Registration failed");
         toast({
           title: "Registration Failed",
-          description: data.message || "An error occurred during registration",
+          description: data.error || "An error occurred during registration",
           variant: "destructive",
         });
       }
     } catch (error) {
       setError("An unexpected error occurred. Please try again.");
       toast({
-        title: "Error",
+        title: "Registration Failed",
         description: "Something went wrong. Please try again.",
         variant: "destructive",
       });
@@ -146,12 +153,24 @@ export default function SignUpPage() {
 
   const handleSocialSignUp = async (provider: string) => {
     try {
-      // In a real app, this would integrate with the provider's OAuth
-      toast({
-        title: "Coming Soon",
-        description: `${provider} sign-up will be available soon!`,
-      });
-    } catch (error) {
+      if (provider.toLowerCase() === 'google') {
+        // Get Google OAuth URL from our backend
+        const response = await fetch('/api/auth/google-oauth');
+        const data = await response.json();
+        
+        if (data.success && data.url) {
+          // Redirect to Google OAuth
+          window.location.href = data.url;
+        } else {
+          throw new Error('Failed to get OAuth URL');
+        }
+      } else {
+        toast({
+          title: "Coming Soon",
+          description: `${provider} sign-up will be available soon!`,
+        });
+      }
+    } catch (error: any) {
       toast({
         title: "Error",
         description: `Failed to sign up with ${provider}`,

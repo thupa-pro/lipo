@@ -14,6 +14,7 @@ import { Suspense } from 'react';
 import { SovereignObservabilityProvider } from '@/lib/observability/providers';
 import { SovereignAnalyticsProvider } from '@/lib/analytics/providers';
 import { ErrorBoundary } from '@/components/error-boundary';
+import { ClerkProvider } from '@/components/providers/ClerkProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -159,9 +160,10 @@ export default async function RootLayout({
         "selection:bg-violet-200 dark:selection:bg-violet-800"
       )}>
         <ErrorBoundary>
-          <SovereignObservabilityProvider>
-            <SovereignAnalyticsProvider userId={session?.user?.id}>
-              <ThemeProvider
+          <ClerkProvider>
+            <SovereignObservabilityProvider>
+              <SovereignAnalyticsProvider userId={session?.user?.id}>
+                <ThemeProvider
                 attribute="class"
                 defaultTheme="system"
                 enableSystem
@@ -228,9 +230,10 @@ export default async function RootLayout({
                   {/* Toast Notifications */}
                   <Toaster />
                 </div>
-              </ThemeProvider>
-            </SovereignAnalyticsProvider>
-          </SovereignObservabilityProvider>
+                </ThemeProvider>
+              </SovereignAnalyticsProvider>
+            </SovereignObservabilityProvider>
+          </ClerkProvider>
         </ErrorBoundary>
 
         {/* Performance Monitoring Script */}

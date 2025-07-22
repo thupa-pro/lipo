@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -54,35 +53,37 @@ export default function SignInPage() {
     setError("");
 
     try {
-      const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
 
-      if (result?.error) {
-        setError("Invalid credentials. Please check your email and password.");
-        toast({
-          title: "Authentication Failed",
-          description: "Invalid credentials. Please try again.",
-          variant: "destructive",
-        });
-      } else {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         setStep(3);
         toast({
           title: "Welcome back!",
           description: "Successfully signed in to your account.",
         });
         
-        // Get session to determine role-based redirect
-        setTimeout(async () => {
-          const session = await getSession();
-          if (session?.user.role) {
-            router.push("/auth/loading");
-          } else {
-            router.push("/dashboard");
-          }
+        // Redirect after successful sign-in
+        setTimeout(() => {
+          router.push("/dashboard");
         }, 1500);
+      } else {
+        setError(data.error || "Invalid credentials. Please check your email and password.");
+        toast({
+          title: "Authentication Failed",
+          description: data.error || "Invalid credentials. Please try again.",
+          variant: "destructive",
+        });
       }
     } catch (error) {
       setError("An unexpected error occurred. Please try again.");
@@ -98,11 +99,24 @@ export default function SignInPage() {
 
   const handleSocialSignIn = async (provider: string) => {
     try {
-      await signIn(provider, { 
-        callbackUrl: "/auth/loading",
-        redirect: true 
-      });
-    } catch (error) {
+      if (provider.toLowerCase() === 'google') {
+        // Get Google OAuth URL from our backend
+        const response = await fetch('/api/auth/google-oauth');
+        const data = await response.json();
+        
+        if (data.success && data.url) {
+          // Redirect to Google OAuth
+          window.location.href = data.url;
+        } else {
+          throw new Error('Failed to get OAuth URL');
+        }
+      } else {
+        toast({
+          title: "Coming Soon",
+          description: `${provider} sign-in will be available soon!`,
+        });
+      }
+    } catch (error: any) {
       toast({
         title: "Error",
         description: `Failed to sign in with ${provider}`,

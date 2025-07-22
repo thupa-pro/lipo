@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import { ClerkBackendAuth } from '@/lib/auth/clerk-backend';
 
 // Rate limiting configuration
 const redis = new Redis({
@@ -271,15 +272,60 @@ async function validateApiKey(apiKey: string): Promise<boolean> {
   }
 }
 
+// Custom middleware with backend-only Clerk authentication
+export default async function customMiddleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // First apply the original middleware logic (rate limiting, etc.)
+  const originalResponse = await middleware(request);
+  if (originalResponse.status !== 200) {
+    return originalResponse;
+  }
+
+  // Skip authentication checks for public routes and API routes
+  if (isPublicRoute(pathname) || pathname.startsWith('/api/')) {
+    return NextResponse.next();
+  }
+
+  // Check authentication for protected routes
+  try {
+    const isAuthenticated = await ClerkBackendAuth.isAuthenticated();
+    
+    if (!isAuthenticated) {
+      // Redirect unauthenticated users to sign in
+      return NextResponse.redirect(new URL('/auth/signin', request.url));
+    }
+
+    // User is authenticated, allow access
+    return NextResponse.next();
+  } catch (error) {
+    console.error('Authentication check failed:', error);
+    // On error, redirect to sign in to be safe
+    return NextResponse.redirect(new URL('/auth/signin', request.url));
+  }
+}
+
+// Helper function to check if a route is public
+function isPublicRoute(pathname: string): boolean {
+  const publicRoutes = [
+    '/',
+    '/about',
+    '/contact',
+    '/pricing',
+    '/features',
+    '/auth/signin',
+    '/auth/signup',
+    '/auth/oauth-callback',
+  ];
+  
+  // Remove locale prefix for checking
+  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '');
+  
+  return publicRoutes.some(route => 
+    pathWithoutLocale === route || pathWithoutLocale.startsWith(route + '/')
+  );
+}
+
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - robots.txt, sitemap.xml (SEO files)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
-  ],
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
