@@ -3,7 +3,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useUser, useSignUp } from '@clerk/nextjs';
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,19 +31,10 @@ export default function SignUpPage() {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
-  const { isSignedIn, user } = useUser();
-  const { signUp, isLoaded, setActive } = useSignUp();
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Redirect if user is already signed in
-  useEffect(() => {
-    if (isSignedIn && user) {
-      router.push('/dashboard');
-    }
-  }, [isSignedIn, user, router]);
 
   const roleOptions = [
     {
@@ -84,8 +74,6 @@ export default function SignUpPage() {
     setIsLoading(true);
     setError("");
 
-    if (!isLoaded) return;
-
     // Validation
     if (!name.trim()) {
       setError("Name is required");
@@ -112,51 +100,50 @@ export default function SignUpPage() {
     }
 
     try {
-      const nameParts = name.trim().split(' ');
-      const firstName = nameParts[0] || '';
-      const lastName = nameParts.slice(1).join(' ') || '';
-
-      const result = await signUp.create({
-        emailAddress: email.toLowerCase().trim(),
-        password,
-        firstName,
-        lastName,
-        // Store role in public metadata
-        unsafeMetadata: {
-          role: role
-        }
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.toLowerCase().trim(),
+          password,
+          name: name.trim(),
+          role,
+        }),
       });
 
-      if (result.status === "missing_requirements") {
-        // Email verification required
-        await result.prepareEmailAddressVerification({ strategy: "email_code" });
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         setStep(3);
         toast({
           title: "Account Created!",
-          description: "Welcome to Loconomy! Please check your email to verify your account.",
+          description: data.message || "Welcome to Loconomy!",
         });
         
-        setTimeout(() => {
-          router.push("/auth/verify-email");
-        }, 3000);
-      } else if (result.status === "complete") {
-        // Account created and verified
-        await setActive({ session: result.createdSessionId });
-        setStep(3);
+        if (data.needsVerification) {
+          setTimeout(() => {
+            router.push("/auth/verify-email");
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            router.push("/dashboard");
+          }, 2000);
+        }
+      } else {
+        setError(data.error || "Registration failed");
         toast({
-          title: "Account Created!",
-          description: "Welcome to Loconomy!",
+          title: "Registration Failed",
+          description: data.error || "An error occurred during registration",
+          variant: "destructive",
         });
-        
-        setTimeout(() => {
-          router.push("/dashboard");
-        }, 2000);
       }
-    } catch (err: any) {
-      setError(err.errors?.[0]?.message || "An unexpected error occurred. Please try again.");
+    } catch (error) {
+      setError("An unexpected error occurred. Please try again.");
       toast({
         title: "Registration Failed",
-        description: err.errors?.[0]?.message || "An error occurred during registration",
+        description: "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -165,14 +152,24 @@ export default function SignUpPage() {
   };
 
   const handleSocialSignUp = async (provider: string) => {
-    if (!isLoaded) return;
-
     try {
-      await signUp.authenticateWithRedirect({
-        strategy: `oauth_${provider}` as any,
-        redirectUrl: '/auth/sso-callback',
-        redirectUrlComplete: '/dashboard',
-      });
+      if (provider.toLowerCase() === 'google') {
+        // Get Google OAuth URL from our backend
+        const response = await fetch('/api/auth/google-oauth');
+        const data = await response.json();
+        
+        if (data.success && data.url) {
+          // Redirect to Google OAuth
+          window.location.href = data.url;
+        } else {
+          throw new Error('Failed to get OAuth URL');
+        }
+      } else {
+        toast({
+          title: "Coming Soon",
+          description: `${provider} sign-up will be available soon!`,
+        });
+      }
     } catch (error: any) {
       toast({
         title: "Error",

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { authMiddleware } from '@clerk/nextjs';
+import { ClerkBackendAuth } from '@/lib/auth/clerk-backend';
 
 // Rate limiting configuration
 const redis = new Redis({
@@ -272,65 +272,38 @@ async function validateApiKey(apiKey: string): Promise<boolean> {
   }
 }
 
-// Export Clerk's authMiddleware as the main middleware
-export default authMiddleware({
-  // Public routes that don't require authentication
-  publicRoutes: [
-    '/',
-    '/about',
-    '/contact',
-    '/pricing',
-    '/features',
-    '/auth/signin',
-    '/auth/signup',
-    '/auth/sso-callback',
-    '/api/webhooks/clerk',
-    // Internationalization routes
-    '/:locale',
-    '/:locale/about',
-    '/:locale/contact',
-    '/:locale/pricing',
-    '/:locale/features',
-    '/:locale/auth/signin',
-    '/:locale/auth/signup',
-    '/:locale/auth/sso-callback',
-  ],
-  // Routes that should be ignored by Clerk auth
-  ignoredRoutes: [
-    '/api/health',
-    '/api/status',
-    '/robots.txt',
-    '/sitemap.xml',
-    '/favicon.ico',
-    '/_next/static/(.*)',
-    '/_next/image/(.*)',
-  ],
-  // Custom middleware logic
-  beforeAuth: (req) => {
-    // Apply rate limiting and other custom logic here if needed
-    return originalMiddleware(req);
-  },
-  afterAuth: (auth, req) => {
-    // Handle post-auth logic if needed
-    const { pathname } = req.nextUrl;
-    
-    // Redirect authenticated users away from auth pages
-    if (auth.userId && ['/auth/signin', '/auth/signup'].includes(pathname)) {
-      return NextResponse.redirect(new URL('/dashboard', req.url));
-    }
-    
-    // Allow access to protected routes for authenticated users
-    if (auth.userId || isPublicRoute(pathname)) {
-      return NextResponse.next();
-    }
-    
-    // Redirect unauthenticated users to sign in
-    return NextResponse.redirect(new URL('/auth/signin', req.url));
-  },
-});
+// Custom middleware with backend-only Clerk authentication
+export default async function customMiddleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
-// Keep the original middleware logic as a separate function
-const originalMiddleware = middleware;
+  // First apply the original middleware logic (rate limiting, etc.)
+  const originalResponse = await middleware(request);
+  if (originalResponse.status !== 200) {
+    return originalResponse;
+  }
+
+  // Skip authentication checks for public routes and API routes
+  if (isPublicRoute(pathname) || pathname.startsWith('/api/')) {
+    return NextResponse.next();
+  }
+
+  // Check authentication for protected routes
+  try {
+    const isAuthenticated = await ClerkBackendAuth.isAuthenticated();
+    
+    if (!isAuthenticated) {
+      // Redirect unauthenticated users to sign in
+      return NextResponse.redirect(new URL('/auth/signin', request.url));
+    }
+
+    // User is authenticated, allow access
+    return NextResponse.next();
+  } catch (error) {
+    console.error('Authentication check failed:', error);
+    // On error, redirect to sign in to be safe
+    return NextResponse.redirect(new URL('/auth/signin', request.url));
+  }
+}
 
 // Helper function to check if a route is public
 function isPublicRoute(pathname: string): boolean {
@@ -342,7 +315,7 @@ function isPublicRoute(pathname: string): boolean {
     '/features',
     '/auth/signin',
     '/auth/signup',
-    '/auth/sso-callback',
+    '/auth/oauth-callback',
   ];
   
   // Remove locale prefix for checking

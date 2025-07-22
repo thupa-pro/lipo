@@ -1,37 +1,77 @@
 "use client";
 
-import { useUser, useClerk } from '@clerk/nextjs';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  firstName?: string;
+  lastName?: string;
+  role: string;
+}
+
 export function useAuth() {
-  const { user, isSignedIn, isLoaded } = useUser();
-  const { signOut } = useClerk();
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  const handleSignOut = async () => {
+  // Get current user from server
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      try {
+        const response = await fetch('/api/auth/me');
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getCurrentUser();
+  }, []);
+
+  const signOut = async () => {
     try {
-      await signOut();
-      router.push('/');
+      const response = await fetch('/api/auth/signout', {
+        method: 'POST',
+      });
+      
+      if (response.ok) {
+        setUser(null);
+        router.push('/');
+      }
     } catch (error) {
       console.error('Sign out error:', error);
+      // Still clear user state even if server call fails
+      setUser(null);
+      router.push('/');
     }
   };
 
   return {
     // User data
     user,
-    isSignedIn: !!isSignedIn,
-    isLoading: !isLoaded,
+    isSignedIn: !!user,
+    isLoading,
     
     // User properties
     userId: user?.id,
-    email: user?.emailAddresses?.[0]?.emailAddress,
-    name: user?.fullName || `${user?.firstName || ''} ${user?.lastName || ''}`.trim(),
+    email: user?.email,
+    name: user?.name,
     firstName: user?.firstName,
     lastName: user?.lastName,
-    role: user?.unsafeMetadata?.role as string | undefined,
+    role: user?.role,
     
     // Auth functions
-    signOut: handleSignOut,
+    signOut,
   };
 }
