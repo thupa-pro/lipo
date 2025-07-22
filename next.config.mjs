@@ -1,6 +1,6 @@
-// import createNextIntlPlugin from "next-intl/plugin";
+import createNextIntlPlugin from "next-intl/plugin";
 
-// const withNextIntl = createNextIntlPlugin("./lib/i18n/config.ts");
+const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
 // Security headers
 const securityHeaders = [
@@ -99,4 +99,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig; // withNextIntl(nextConfig);
+export default withNextIntl(nextConfig);
