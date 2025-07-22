@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import Stripe from "stripe";
 import { createClient } from "@/lib/supabase/server";
+import { z } from "zod";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-11-20.acacia",
@@ -14,8 +15,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { plan_id, billing_cycle, success_url, cancel_url } =
-      await request.json();
+    // Zod schema for input validation
+    const bodySchema = z.object({
+      plan_id: z.string().min(1),
+      billing_cycle: z.enum(["monthly", "yearly"]),
+      success_url: z.string().url().optional(),
+      cancel_url: z.string().url().optional(),
+    });
+
+    let json;
+    try {
+      json = await request.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    }
+
+    const parseResult = bodySchema.safeParse(json);
+    if (!parseResult.success) {
+      return NextResponse.json({ error: "Invalid input", details: parseResult.error.errors }, { status: 400 });
+    }
+
+    const { plan_id, billing_cycle, success_url, cancel_url } = parseResult.data;
 
     if (!plan_id || !billing_cycle) {
       return NextResponse.json(
