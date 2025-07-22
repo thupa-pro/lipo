@@ -1,89 +1,57 @@
 {
-  "Home": {
-    "hero": {
-      "badge": "10,000명 이상의 사용자가 신뢰",
-      "title_part1": "신뢰할 수 있는",
-      "title_part2": "지역 서비스 찾기",
-      "description": "모든 가정 및 개인 서비스 요구사항에 대해 검증된 지역 전문가와 연결하세요. 청소부터 수리까지, 과외부터 펫케어까지 - 모든 것을 제공합니다.",
-      "search_placeholder_service": "어떤 서비스가 필요하신가요?",
-      "search_placeholder_location": "위치를 입력하세요",
-      "search_button": "검색",
-      "request_service_button": "서비스 요청",
-      "become_provider_button": "서비스 제공자 되기",
-      "watch_demo_button": "데모 보기"
-    },
-    "stats": {
-      "active_users": "활성 사용자",
-      "jobs_completed": "완료된 작업",
-      "average_rating": "평균 평점",
-      "cities_served": "서비스 제공 도시"
-    },
-    "categories": {
-      "title": "인기 서비스 카테고리",
-      "description": "귀하의 지역에서 가장 수요가 많은 서비스를 발견하세요. 일상적인 업무부터 전문 기술까지.",
-      "view_all_button": "모든 카테고리 보기"
-    },
-    "how_it_works": {
-      "title": "Loconomy 작동 방식",
-      "description": "필요한 도움을 받는 것은 간단합니다. 이 세 가지 간단한 단계를 따르세요.",
-      "step1_title": "1. 검색 및 탐색",
-      "step1_description": "필요한 서비스를 검색하거나 카테고리를 탐색하여 지역에서 완벽한 서비스 제공자를 찾으세요.",
-      "step2_title": "2. 연결 및 예약",
-      "step2_description": "프로필을 확인하고, 리뷰를 읽고, 서비스 제공자와 연결하세요. 몇 번의 클릭으로 서비스를 예약하세요.",
-      "step3_title": "3. 완료하기",
-      "step3_description": "서비스 제공자가 작업을 완료합니다. 플랫폼을 통해 안전하게 결제하고 리뷰를 남기세요."
-    },
-    "testimonials": {
-      "title": "사용자들의 평가",
-      "description": "저희의 말만 믿지 마세요. ���제 고객과 서비스 제공자들이 하는 말을 들어보세요."
-    },
-    "cta": {
-      "title": "시작할 준비가 되셨나요?",
-      "description": "오늘 Loconomy에서 수천 명의 만족한 고객과 서비스 제공자에 합류하세요.",
-      "request_service_button": "서비스 요청",
-      "become_provider_button": "서비스 제공자 되기",
-      "secure_payments": "안전한 결제",
-      "verified_providers": "검증된 서비스 제공자",
-      "fair_pricing": "공정한 가격"
-    }
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No"
   },
-  "Navigation": {
-    "home": "홈",
-    "browse_services": "서비스 찾아보기",
-    "request_service": "서비스 요청",
-    "dashboard": "대시보드",
-    "profile": "프로필",
-    "my_bookings": "내 예약",
-    "payments": "결제",
-    "settings": "설정",
-    "help_center": "고객센터",
-    "log_out": "로그아웃",
-    "location_placeholder": "서울",
-    "select_language": "언어 선택",
-    "language_changed_title": "언어 변경됨",
-    "language_changed_description": "표시 언어가 {languageName}(으)로 설정되었습니다."
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
   },
-  "Common": {
-    "loading": "로딩 중...",
-    "error": "오류",
-    "success": "성공",
-    "warning": "경고",
-    "info": "정보",
-    "close": "닫기",
-    "save": "저장",
-    "cancel": "취소",
-    "confirm": "확인",
-    "delete": "삭제",
-    "edit": "편집",
-    "view": "보기",
-    "search": "검색",
-    "filter": "필터",
-    "sort": "정렬",
-    "refresh": "새로고침",
-    "back": "뒤로",
-    "next": "다음",
-    "previous": "이전",
-    "try_again": "다시 시도",
-    "learn_more": "더 알아보기"
+  "auth": {
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember me",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "signInWithGoogle": "Sign in with Google",
+    "signUpWithGoogle": "Sign up with Google"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "unauthorized": "Unauthorized access",
+    "serverError": "Internal server error",
+    "networkError": "Network error occurred",
+    "validationError": "Please check your input"
+  },
+  "meta": {
+    "title": "Loconomy - Elite AI-Powered Local Services Platform",
+    "description": "Experience the world's most advanced AI marketplace where elite professionals meet intelligent matching in under 90 seconds.",
+    "keywords": "elite local services, AI marketplace, premium service providers, intelligent matching"
   }
 }
