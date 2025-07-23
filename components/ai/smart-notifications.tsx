@@ -9,14 +9,15 @@ import {
   Bell,
   X,
   AlertCircle,
-  Info, Calendar,
-  DollarSign
+  Info,
+  Calendar,
+  DollarSign,
   Brain,
-  Sparkles
+  Sparkles,
   MapPin,
   Users,
   TrendingUp,
-  Heart
+  Heart,
   ArrowRight,
   MessageCircle,
   Settings
