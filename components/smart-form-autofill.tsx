@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, Sparkles, Wand2} from "lucide-react"
+import { Loader2, Sparkles, Wand2, CheckCircle} from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 interface FormData {
