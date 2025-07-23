@@ -12,7 +12,7 @@ import { Loader2, Users, Briefcase, ArrowRight } from "lucide-react";
 import { OnboardingFlow } from "@/components/onboarding/OnboardingFlow";
 import { useOnboardingClient } from "@/lib/onboarding/utils";
 import { OnboardingProgress } from "@/lib/onboarding/types";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function OnboardingPage() {
   const { user, isLoading: authLoading } = useAuth();
@@ -34,13 +34,13 @@ export default function OnboardingPage() {
   const roleParam = searchParams.get("role") as "consumer" | "provider" | null;
 
   useEffect(() => {
-    if (isLoaded && user) {
+    if (!authLoading && user) {
       loadProgress();
-    } else if (isLoaded && !user) {
+    } else if (!authLoading && !user) {
       // Redirect to sign in if not authenticated
       router.push(`/${locale}/auth/signin?redirectTo=/onboarding`);
     }
-  }, [isLoaded, user, router]);
+  }, [authLoading, user, router, locale]);
 
   useEffect(() => {
     if (roleParam && ["consumer", "provider"].includes(roleParam)) {
@@ -124,7 +124,7 @@ export default function OnboardingPage() {
   };
 
   // Loading state
-  if (!isLoaded || isLoading) {
+  if (authLoading || isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center">
         <div className="text-center">
@@ -135,7 +135,7 @@ export default function OnboardingPage() {
     );
   }
 
-  // If we have progress and a, role, show the onboarding flow
+  // If we have progress and a role, show the onboarding flow
   if (progress && selectedRole) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8 px-4">
@@ -324,7 +324,7 @@ export default function OnboardingPage() {
                 </div>
                 <h4 className="font-medium mb-2">Secure Platform</h4>
                 <p className="text-sm text-gray-600">
-                  Verified, providers, secure, payments, and reliable service
+                  Verified providers, secure payments, and reliable service
                 </p>
               </div>
               <div>
@@ -333,8 +333,7 @@ export default function OnboardingPage() {
                 </div>
                 <h4 className="font-medium mb-2">Easy to Use</h4>
                 <p className="text-sm text-gray-600">
-                  Simple, booking, clear, communication, and hassle-free
-                  experience
+                  Simple booking, clear communication, and hassle-free experience
                 </p>
               </div>
             </div>
