@@ -14,7 +14,9 @@ import {
   Play,
   Sparkles,
   Shield,
-  ArrowRight
+  ArrowRight,
+  Star,
+  Clock
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
