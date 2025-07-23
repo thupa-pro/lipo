@@ -54,6 +54,13 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Fix cross-origin warnings in development
+  allowedDevOrigins: [
+    'localhost',
+    '*.fly.dev',
+    '*.builder.io'
+  ],
+
   // Prevent hydration mismatches
   experimental: {
     // Ensure stable hydration
