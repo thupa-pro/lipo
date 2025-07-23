@@ -98,6 +98,13 @@ const NAVIGATION_ITEMS: NavItem[] = [
     label: 'Admin Panel',
     icon: Shield,
     roles: ['admin']
+  },
+  {
+    href: '/theme-showcase',
+    label: 'Theme Showcase',
+    icon: Zap,
+    badge: 'New',
+    roles: ['guest', 'consumer', 'provider', 'admin']
   }
 ];
 
