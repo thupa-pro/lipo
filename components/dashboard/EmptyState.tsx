@@ -13,7 +13,9 @@ import {
   Brain,
   Heart, Award,
   Gift,
-  MapPin
+  MapPin,
+  Shield,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 
