@@ -507,7 +507,9 @@ const config: Config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    function({ addUtilities, addComponents, theme }: any) {
+    require("@tailwindcss/container-queries"),
+
+    function({ addUtilities, addComponents, addVariant, theme, e }: any) {
       // Glassmorphism Utilities
       addUtilities({
         // Enhanced Theme Transitions
