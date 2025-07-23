@@ -126,6 +126,80 @@ export default function Footer() {
     response: "125ms"
   });
 
+  // Helper function to check if a link should be shown based on authentication/role
+  const shouldShowLink = (href: string): boolean => {
+    // Links that require authentication
+    const authRequiredLinks = [
+      '/customer/dashboard',
+      '/booking',
+      '/bookings',
+      '/my-bookings',
+      '/provider/listings/new',
+      '/provider/reports',
+      '/provider/availability',
+      '/provider/calendar',
+      '/dashboard',
+      '/notifications',
+      '/settings',
+      '/profile',
+      '/billing',
+      '/payments',
+      '/analytics',
+      '/messages',
+      '/referrals-dashboard',
+      '/requests'
+    ];
+
+    // Links that require specific roles
+    const providerOnlyLinks = [
+      '/provider/listings/new',
+      '/provider/reports',
+      '/provider/availability',
+      '/provider/calendar',
+      '/training-certification',
+      '/provider-resources'
+    ];
+
+    const adminOnlyLinks = [
+      '/admin',
+      '/system-status'
+    ];
+
+    const customerOnlyLinks = [
+      '/customer/dashboard',
+      '/my-bookings'
+    ];
+
+    // Check if link requires authentication
+    if (authRequiredLinks.includes(href)) {
+      if (!isSignedIn) return false;
+    }
+
+    // Check role-specific links
+    if (providerOnlyLinks.includes(href)) {
+      return isSignedIn && (role === 'provider' || role === 'admin');
+    }
+
+    if (adminOnlyLinks.includes(href)) {
+      return isSignedIn && role === 'admin';
+    }
+
+    if (customerOnlyLinks.includes(href)) {
+      return isSignedIn && (role === 'consumer' || role === 'admin');
+    }
+
+    // Show all other links to everyone
+    return true;
+  };
+
+  // Filter footer sections based on authentication and role
+  const getFilteredFooterSections = () => {
+    return footerSections.map(section => ({
+      ...section,
+      links: section.links.filter(link => shouldShowLink(link.href))
+    })).filter(section => section.links.length > 0); // Remove sections with no visible links
+  };
+
   // Premium footer sections organized by category
   const footerSections = [
     {
