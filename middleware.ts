@@ -23,14 +23,6 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
+  // Match only internationalized pathnames
+  matcher: ['/', '/(de|en|es|fr|it|pt|zh|hi|ar|bn|ru|ja|pa|ur|ko|tr|th|fa|pl|nl|uk|vi|he|sw|ro|el|cs|hu|fi|da|no|sv|id|ms|tl|am|mg)/:path*']
 };
