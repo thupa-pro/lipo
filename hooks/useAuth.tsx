@@ -53,7 +53,8 @@ export function useAuth() {
 
       if (response.ok) {
         setUser(null);
-        router.push(`/${locale}/auth/signin`);
+        // Default to 'en' if no locale available
+        router.push('/en/auth/signin');
       }
     } catch (error) {
       console.error('Failed to sign out:', error);
