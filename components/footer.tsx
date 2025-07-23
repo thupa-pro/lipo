@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
