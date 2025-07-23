@@ -5,13 +5,14 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { 
+import {
   MapPin,
   Shield, Heart,
   MessageCircle,
   Eye,
   TrendingUp,
-  Award
+  Award,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
