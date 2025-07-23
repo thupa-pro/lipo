@@ -520,19 +520,19 @@ const config: Config = {
 
         // Glass Morphism System (OKLCH-based)
         ".glass-subtle": {
-          background: "oklch(var(--surface-glass) / 0.8)",
-          backdropFilter: "blur(12px) saturate(1.2)",
-          border: "1px solid oklch(var(--border) / 0.3)",
+          'background': "oklch(var(--surface-glass) / 0.8)",
+          'backdrop-filter': "blur(12px) saturate(1.2)",
+          'border': "1px solid oklch(var(--border) / 0.3)",
         },
         ".glass-medium": {
-          background: "oklch(var(--surface-glass) / 0.9)",
-          backdropFilter: "blur(16px) saturate(1.4)",
-          border: "1px solid oklch(var(--border) / 0.4)",
+          'background': "oklch(var(--surface-glass) / 0.9)",
+          'backdrop-filter': "blur(16px) saturate(1.4)",
+          'border': "1px solid oklch(var(--border) / 0.4)",
         },
         ".glass-strong": {
-          background: "oklch(var(--surface-glass) / 0.95)",
-          backdropFilter: "blur(24px) saturate(1.6)",
-          border: "1px solid oklch(var(--border) / 0.5)",
+          'background': "oklch(var(--surface-glass) / 0.95)",
+          'backdrop-filter': "blur(24px) saturate(1.6)",
+          'border': "1px solid oklch(var(--border) / 0.5)",
         },
 
         // Neural/Soft UI System
