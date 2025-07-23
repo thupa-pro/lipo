@@ -507,7 +507,6 @@ const config: Config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    require("@tailwindcss/container-queries"),
 
     function({ addUtilities, addComponents, addVariant, theme, e }: any) {
       // 2025 Modern Utility Classes
