@@ -10,13 +10,13 @@ export default function HomePage() {
   const { user, isLoading, isSignedIn } = useAuth();
 
   useEffect(() => {
-    if (isLoading) return; // Still loading session
+    if (isLoading) return; // Still, loading session
 
     if (isSignedIn && user) {
-      // User is authenticated, redirect to loading page which will route to appropriate dashboard
+      // User, is, authenticated, redirect, to loading, page which, will route, to appropriate, dashboard
       router.push("/auth/loading");
     } else {
-      // User is not authenticated, redirect to landing page
+      // User is not, authenticated, redirect to landing page
       router.push("/landing");
     }
   }, [user, isLoading, isSignedIn, router]);

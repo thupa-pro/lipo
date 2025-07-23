@@ -55,7 +55,7 @@ import Link from "next/link";
 
 const serviceCategories = [
   {
-    name: "House Cleaning",
+    name: "House, Cleaning",
     icon: Home,
     popular: true,
     gradient: "from-blue-500 to-cyan-600",
@@ -482,7 +482,7 @@ export default function RequestServicePage() {
                         </Label>
                         <Textarea
                           id="description"
-                          placeholder="Describe your project in detail. Include any specific requirements, preferences, or concerns..."
+                          placeholder="Describe your project in detail. Include any specific, requirements, preferences, or concerns..."
                           value={formData.description}
                           onChange={(e) =>
                             setFormData({

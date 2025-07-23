@@ -17,10 +17,10 @@ import {
 
 export const metadata: Metadata = {
   title: "Reviews & Ratings - Loconomy",
-  description: "Manage reviews, ratings and feedback from customers",
+  description: "Manage, reviews, ratings, and feedback, from customers",
 };
 
-// Mock data for reviews
+// Mock, data for, reviews
 const mockReviews = [
   {
     id: "1",
@@ -64,7 +64,7 @@ const mockReviews = [
     isVerified: true,
     providerResponse: {
       content:
-        "Thank you so much for the wonderful review, Sarah! It was a pleasure working with you and I'm thrilled that you're happy with the results. Looking forward to helping you again!",
+        "Thank you so much for the wonderful, review, Sarah! It was a pleasure working with you and I'm thrilled that you're happy with the results. Looking forward to helping you again!",
       createdAt: new Date("2024-12-11"),
     },
   },
@@ -128,7 +128,7 @@ const mockReviews = [
     rating: 3,
     title: "Job completed but with issues",
     content:
-      "Lisa fixed the main issue with my kitchen sink, but there were some minor leaks that needed additional attention. Communication could have been better about the timeline.",
+      "Lisa fixed the main issue with my kitchen, sink, but there were some minor leaks that needed additional attention. Communication could have been better about the timeline.",
     wouldRecommend: false,
     categories: {
       punctuality: 3,
@@ -145,7 +145,7 @@ const mockReviews = [
     isVerified: true,
     providerResponse: {
       content:
-        "Thank you for your feedback, David. I apologize for the communication issues and the additional work needed. I've taken note of your concerns and will ensure better service in the future.",
+        "Thank you for your, feedback, David. I apologize for the communication issues and the additional work needed. I've taken note of your concerns and will ensure better service in the future.",
       createdAt: new Date("2024-12-06"),
     },
   },

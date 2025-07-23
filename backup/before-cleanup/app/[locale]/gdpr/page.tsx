@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, CheckCircle, Users, Mail, Lock, FileText, Info, ArrowRight, Database, Clock } from "lucide-react" // Ensure Clock is imported
+import { Shield, CheckCircle, Users, Mail, Lock, FileText, Info, ArrowRight, Database, Clock } from "lucide-react" // Ensure, Clock is, imported
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -15,22 +15,22 @@ export default function GDPRPage() {
     {
       icon: CheckCircle,
       title: "Lawfulness, Fairness & Transparency",
-      description: "We process personal data lawfully, fairly, and in a transparent manner.",
+      description: "We process personal data, lawfully, fairly, and in a transparent manner.",
     },
     {
       icon: Database,
       title: "Purpose Limitation",
-      description: "Data is collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes.",
+      description: "Data is collected for, specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes.",
     },
     {
       icon: FileText,
       title: "Data Minimization",
-      description: "We ensure personal data is adequate, relevant, and limited to what is necessary in relation to the purposes for which they are processed.",
+      description: "We ensure personal data is, adequate, relevant, and limited to what is necessary in relation to the purposes for which they are processed.",
     },
     {
       icon: Info,
       title: "Accuracy",
-      description: "Personal data is accurate and, where necessary, kept up to date; every reasonable step is taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay.",
+      description: "Personal data is accurate, and, where, necessary, kept up to date; every reasonable step is taken to ensure that personal data that are, inaccurate, having regard to the purposes for which they are, processed, are erased or rectified without delay.",
     },
     {
       icon: Clock, // Reusing Clock icon for Storage Limitation
@@ -40,12 +40,12 @@ export default function GDPRPage() {
     {
       icon: Lock,
       title: "Integrity & Confidentiality",
-      description: "Personal data is processed in a manner that ensures appropriate security of the personal data, including protection against unauthorized or unlawful processing and against accidental loss, destruction or damage, using appropriate technical or organisational measures.",
+      description: "Personal data is processed in a manner that ensures appropriate security of the personal, data, including protection against unauthorized or unlawful processing and against accidental, loss, destruction or, damage, using appropriate technical or organisational measures.",
     },
     {
       icon: Users,
       title: "Accountability",
-      description: "We are responsible for, and able to demonstrate compliance with, the GDPR principles.",
+      description: "We are responsible, for, and able to demonstrate compliance, with, the GDPR principles.",
     },
   ]
 
@@ -60,19 +60,19 @@ export default function GDPRPage() {
     },
     {
       title: "Right to Erasure ('Right to be Forgotten')",
-      description: "You have the right to request that we erase your personal data, under certain conditions.",
+      description: "You have the right to request that we erase your personal, data, under certain conditions.",
     },
     {
       title: "Right to Restrict Processing",
-      description: "You have the right to request that we restrict the processing of your personal data, under certain conditions.",
+      description: "You have the right to request that we restrict the processing of your personal, data, under certain conditions.",
     },
     {
       title: "Right to Object to Processing",
-      description: "You have the right to object to our processing of your personal data, under certain conditions.",
+      description: "You have the right to object to our processing of your personal, data, under certain conditions.",
     },
     {
       title: "Right to Data Portability",
-      description: "You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.",
+      description: "You have the right to request that we transfer the data that we have collected to another, organization, or directly to, you, under certain conditions.",
     },
   ]
 
@@ -123,7 +123,7 @@ export default function GDPRPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Your Data Rights Under GDPR</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              As a data subject, you have specific rights concerning your personal data.
+              As a data, subject, you have specific rights concerning your personal data.
             </p>
           </div>
 
@@ -149,7 +149,7 @@ export default function GDPRPage() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold mb-4">Questions About Your Data?</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            If you have any questions or wish to exercise your GDPR rights, please contact our Data Protection Officer.
+            If you have any questions or wish to exercise your GDPR, rights, please contact our Data Protection Officer.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email DPO", description: "Opening your email client to dpo@loconomy.com...", variant: "default" })}>
             <Mail className="w-4 h-4 mr-2" />

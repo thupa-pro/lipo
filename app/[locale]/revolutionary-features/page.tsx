@@ -216,8 +216,8 @@ const RevolutionaryFeaturesPage = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto">
-              Experience the future of hyperlocal services with cutting-edge AI, AR, and voice technologies 
-              that transform how you discover, negotiate, and book services.
+              Experience the future of hyperlocal services with cutting-edge, AI, AR, and voice technologies 
+              that transform how you, discover, negotiate, and book services.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 mb-8">

@@ -67,7 +67,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-lg text-slate-600 dark:text-slate-400 mb-8"
           >
-            Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or you entered the wrong URL.
+            Sorry, we couldn't find the page you're looking for. It might have been, moved, deleted, or you entered the wrong URL.
           </motion.p>
         </motion.div>
 

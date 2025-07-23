@@ -312,7 +312,7 @@ export default function SignInPage() {
                         Enter Password
                       </h1>
                       <p className="text-slate-600 dark:text-gray-400">
-                        Welcome back, {email}
+                        Welcome, back, {email}
                       </p>
                     </div>
 

@@ -18,7 +18,7 @@ import {
 const categories = [
   {
     icon: Home,
-    name: "Home Services",
+    name: "Home, Services",
     count: "2,400+ providers",
     gradient: "from-blue-500 to-cyan-500",
     description: "Cleaning, maintenance, repairs",
@@ -35,7 +35,7 @@ const categories = [
     name: "Auto & Transport",
     count: "1,200+ providers",
     gradient: "from-red-500 to-rose-500",
-    description: "Car wash, repairs, delivery",
+    description: "Car, wash, repairs, delivery",
   },
   {
     icon: GraduationCap,
@@ -70,7 +70,7 @@ const categories = [
     name: "Art & Design",
     count: "450+ providers",
     gradient: "from-teal-500 to-cyan-500",
-    description: "Interior design, art, crafts",
+    description: "Interior, design, art, crafts",
   },
 ];
 
@@ -81,7 +81,7 @@ export function CategoriesSection() {
       pattern="dots"
       badge={{ icon: Sparkles, text: "Premium Services" }}
       title="Elite Service Categories"
-      description="Discover world-class service providers across diverse categories, all verified and vetted for excellence."
+      description="Discover world-class service providers across diverse, categories, all verified and vetted for excellence."
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {categories.map((category, index) => (

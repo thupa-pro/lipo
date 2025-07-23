@@ -20,7 +20,7 @@ import {
   MicOff,
   Volume2,
   VolumeX,
-  RotateCcw
+  RotateCcw,
   MapPin,
   Briefcase,
   Users,
@@ -131,10 +131,10 @@ const INITIAL_MESSAGES: Message[] = [
 ];
 
 const QUICK_RESPONSES = {
-  "How does Loconomy work?": "Loconomy connects you with trusted local service providers in your area. Whether you need house cleaning, handyman services, or tutoring, we make it easy to find, book, and pay for services you need.",
-  "What information do I need to provide?": "Just the basics! We'll need your name, location, and what type of services interest you. If you're a service provider, we'll also ask about your skills and experience.",
-  "How long does setup take?": "Most users complete setup in under 5 minutes! I'll guide you through each step, and you can always take breaks and come back later.",
-  "What can I do after setup?": "Once set up, you can browse services, read reviews, book appointments, message providers, and much more. Providers can create listings and start accepting bookings right away!",
+  "How does Loconomy work?": "Loconomy connects you with trusted local service providers in your area. Whether you need house, cleaning, handyman, services, or, tutoring, we make it easy to, find, book, and pay for services you need.",
+  "What information do I need to provide?": "Just the basics! We'll need your, name, location, and what type of services interest you. If you're a service, provider, we'll also ask about your skills and experience.",
+  "How long does setup take?": "Most users complete setup in under 5 minutes! I'll guide you through each, step, and you can always take breaks and come back later.",
+  "What can I do after setup?": "Once set, up, you can browse, services, read, reviews, book, appointments, message, providers, and much more. Providers can create listings and start accepting bookings right away!",
 };
 
 interface OnboardingChatAssistantProps {
@@ -200,15 +200,15 @@ export default function OnboardingChatAssistant({
     }
 
     if (currentStepId === "basic_info") {
-      return "Great! For the basic information step, I'll need your full name, location (city and state), and a brief description of what services you're interested in. This helps us personalize your experience. Ready to start?";
+      return "Great! For the basic information, step, I'll need your full, name, location (city and state), and a brief description of what services you're interested in. This helps us personalize your experience. Ready to start?";
     }
 
     if (currentStepId === "preferences") {
-      return "Perfect! Now let's set up your preferences. This includes things like your preferred service radius, price range, and any specific requirements you have. These settings help us show you the most relevant options.";
+      return "Perfect! Now let's set up your preferences. This includes things like your preferred service, radius, price, range, and any specific requirements you have. These settings help us show you the most relevant options.";
     }
 
     // Generic helpful response
-    return "I understand! Let me help you with that. Based on where you are in the onboarding process, I'd recommend focusing on completing your basic information first. This will unlock more features and better recommendations. Would you like me to guide you through the next step?";
+    return "I understand! Let me help you with that. Based on where you are in the onboarding, process, I'd recommend focusing on completing your basic information first. This will unlock more features and better recommendations. Would you like me to guide you through the next step?";
   };
 
   const handleSendMessage = async () => {

@@ -52,7 +52,7 @@ export default function NewListingPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would submit to API
+    // In a real, app, this would submit to API
     console.log("Creating listing:", formData);
     router.push("/provider/listings");
   };

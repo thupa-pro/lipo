@@ -116,7 +116,7 @@ const ComputerVisionScanner: React.FC<ComputerVisionScannerProps> = ({
         id: '1',
         category: 'Home Cleaning',
         title: 'Deep House Cleaning Service',
-        description: 'Professional deep cleaning service for residential homes. Includes kitchen, bathrooms, living areas, and bedrooms. All eco-friendly products used. Perfect for move-in/move-out cleaning or seasonal deep cleans.',
+        description: 'Professional deep cleaning service for residential homes. Includes, kitchen, bathrooms, living, areas and bedrooms. All eco-friendly products used. Perfect for move-in/move-out cleaning or seasonal deep cleans.',
         suggestedPrice: 120,
         priceRange: [90, 180],
         confidence: 92,
@@ -131,7 +131,7 @@ const ComputerVisionScanner: React.FC<ComputerVisionScannerProps> = ({
         id: '2',
         category: 'Handyman Services',
         title: 'Furniture Assembly & Installation',
-        description: 'Expert furniture assembly and installation service. Specializing in IKEA furniture, shelving units, TV mounting, and home organization systems. Tools and hardware included.',
+        description: 'Expert furniture assembly and installation service. Specializing in IKEA, furniture, shelving, units, TV, mounting, and home organization systems. Tools and hardware included.',
         suggestedPrice: 85,
         priceRange: [60, 120],
         confidence: 88,
@@ -146,7 +146,7 @@ const ComputerVisionScanner: React.FC<ComputerVisionScannerProps> = ({
         id: '3',
         category: 'Landscaping',
         title: 'Garden Maintenance & Lawn Care',
-        description: 'Complete lawn and garden maintenance service including mowing, trimming, weeding, and seasonal cleanup. Equipment and disposal included. Regular maintenance schedules available.',
+        description: 'Complete lawn and garden maintenance service including, mowing, trimming, weeding, and seasonal cleanup. Equipment and disposal included. Regular maintenance schedules available.',
         suggestedPrice: 75,
         priceRange: [50, 110],
         confidence: 85,
@@ -590,7 +590,7 @@ const ComputerVisionScanner: React.FC<ComputerVisionScannerProps> = ({
                     How it works
                   </p>
                   <ul className="text-purple-700 dark:text-purple-200 mt-1 text-xs space-y-1">
-                    <li>1. Upload clear, well-lit photos</li>
+                    <li>1. Upload, clear, well-lit photos</li>
                     <li>2. AI analyzes objects and context</li>
                     <li>3. Generates listing with market data</li>
                     <li>4. Edit and customize as needed</li>

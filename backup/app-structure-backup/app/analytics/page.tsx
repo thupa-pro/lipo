@@ -39,7 +39,7 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-// Import analytics components
+// Import, analytics components
 import { MetricsOverview } from "@/components/analytics/MetricsOverview";
 import { UserAnalytics } from "@/components/analytics/UserAnalytics";
 import { RevenueAnalytics } from "@/components/analytics/RevenueAnalytics";
@@ -166,7 +166,7 @@ export default function AnalyticsPage() {
             Analytics & Observability
           </h1>
           <p className="text-muted-foreground">
-            Monitor platform performance, user behavior, and business metrics
+            Monitor platform, performance, user, behavior, and business metrics
           </p>
         </div>
 
@@ -201,11 +201,11 @@ export default function AnalyticsPage() {
                   {dateRange?.from ? (
                     dateRange.to ? (
                       <>
-                        {format(dateRange.from, "LLL dd, y")} -{" "}
-                        {format(dateRange.to, "LLL dd, y")}
+                        {format(dateRange.from, "LLL, dd, y")} -{" "}
+                        {format(dateRange.to, "LLL, dd, y")}
                       </>
                     ) : (
-                      format(dateRange.from, "LLL dd, y")
+                      format(dateRange.from, "LLL, dd, y")
                     )
                   ) : (
                     <span>Pick a date range</span>

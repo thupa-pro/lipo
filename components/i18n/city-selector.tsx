@@ -13,13 +13,13 @@ import {
   cityTiers,
   economyTypes,
   localeFlags,
-  type, Locale
+  type Locale
 } from "@/lib/i18n/config";
 import {
   cityConfigurations,
   citiesByMarketPotential,
   citiesByDigitalAdoption,
-  type, CityLocalizationData
+  type CityLocalizationData
 } from "@/lib/i18n/city-localization";
 
 interface CitySelectorProps {
@@ -191,7 +191,7 @@ export default function CitySelector({ selectedCity, onCitySelect, className }: 
             Global Market Presence
           </h2>
           <p className="text-muted-foreground text-lg">
-            Loconomy serves 100+ metropolitan cities worldwide, connecting hyperlocal services across continents
+            Loconomy serves 100+ metropolitan cities, worldwide, connecting hyperlocal services across continents
           </p>
         </div>
 
@@ -235,7 +235,7 @@ export default function CitySelector({ selectedCity, onCitySelect, className }: 
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
-            placeholder="Search cities, countries, or service types..."
+            placeholder="Search, cities, countries, or service types..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"

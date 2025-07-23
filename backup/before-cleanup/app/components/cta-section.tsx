@@ -12,12 +12,12 @@ import {
 
 export default function CTASection() {
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float" />
+    <section className="py-24 bg-gradient-to-br, from-blue-600 via-purple-600 to-indigo-700 text-white, relative overflow-hidden">
+      {/* Animated, Background */}
+      <div className="absolute, inset-0">
+        <div className="absolute, top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full, blur-3xl, animate-float" />
         <div
-          className="absolute bottom-0 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-float"
+          className="absolute, bottom-0 right-1/4 w-64 h-64 bg-white/5 rounded-full, blur-3xl, animate-float"
           style={{ animationDelay: "1s" }}
         />
       </div>

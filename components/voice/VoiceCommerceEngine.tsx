@@ -259,7 +259,7 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
         updatedContext.progress = 20
         responseText = `Great! I found ${detectedService} services for you. When would you like to schedule this? You can say something like "tomorrow morning" or "next Friday at 2 PM".`
       } else {
-        responseText = "I can help you with cleaning, plumbing, electrical work, handyman services, painting, landscaping, or moving. Which service interests you?"
+        responseText = "I can help you with, cleaning, plumbing, electrical, work, handyman, services, painting, landscaping, or moving. Which service interests you?"
       }
     }
     
@@ -289,7 +289,7 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
       if (updatedContext.time) {
         responseText = `Perfect! I have you scheduled for ${updatedContext.service} on ${updatedContext.date} at ${updatedContext.time}. What's your location or address?`
       } else {
-        responseText = `Got it, ${updatedContext.date}. What time works best for you? You can say something like "2 PM" or "morning".`
+        responseText = `Got, it, ${updatedContext.date}. What time works best for you? You can say something like "2 PM" or "morning".`
       }
     }
     
@@ -299,7 +299,7 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
       entities.location = input
       updatedContext.location = input
       updatedContext.progress = 60
-      responseText = `Great! I have your location as ${input}. Based on your needs, I found a provider for $${Math.floor(Math.random() * 100) + 50}. Should I proceed with the booking?`
+      responseText = `Great! I have your location as ${input}. Based on your, needs, I found a provider for $${Math.floor(Math.random() * 100) + 50}. Should I proceed with the booking?`
       updatedContext.price = Math.floor(Math.random() * 100) + 50
     }
     
@@ -308,7 +308,7 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
       intent = 'confirmation'
       updatedContext.status = 'confirming'
       updatedContext.progress = 80
-      responseText = `Excellent! To complete your booking, I'll need your contact information. Can you provide your name and phone number?`
+      responseText = `Excellent! To complete your, booking, I'll need your contact information. Can you provide your name and phone number?`
     }
     
     // Contact information

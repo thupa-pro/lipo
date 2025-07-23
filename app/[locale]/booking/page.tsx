@@ -16,7 +16,7 @@ import {
   Heart,
   Eye,
   Users,
-  DollarSign
+  DollarSign,
   ArrowRight
 } from "lucide-react";
 
@@ -180,7 +180,7 @@ export default function BookingPage() {
               Book Elite Services 🌟
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Connect with verified professionals for all your service needs. Quality guaranteed, satisfaction promised.
+              Connect with verified professionals for all your service needs. Quality, guaranteed, satisfaction promised.
             </p>
           </div>
 
@@ -189,7 +189,7 @@ export default function BookingPage() {
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <Input
-                placeholder="Search for services, providers, or keywords..."
+                placeholder="Search for, services, providers, or keywords..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-4 py-3 text-lg"

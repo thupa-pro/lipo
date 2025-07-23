@@ -8,10 +8,10 @@ export default function InsightsSection() {
     <div className="space-y-6">
       <div className="grid md:grid-cols-3 gap-6">
         <Card>
-          <CardContent className="p-6 text-center">
-            <TrendingUp className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold">+23.5%</div>
-            <div className="text-sm text-gray-600">Avg Conversion Lift</div>
+                      <CardContent className="p-6 text-center">
+              <TrendingUp className="w-8 h-8 text-green-600 mx-auto mb-2" />
+              <div className="text-2xl font-bold">+23.5%</div>
+            <div className="text-sm, text-gray-600">Avg, Conversion Lift</div>
           </CardContent>
         </Card>
         <Card>

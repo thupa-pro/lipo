@@ -15,8 +15,8 @@ import {
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "System Settings - Admin Dashboard",
-  description: "Configure system settings and preferences",
+  title: "System, Settings - Admin, Dashboard",
+  description: "Configure, system settings, and preferences",
 };
 
 export default function AdminSettingsPage() {
@@ -24,7 +24,7 @@ export default function AdminSettingsPage() {
     {
       title: "Security Settings",
       description:
-        "Manage authentication, access control, and security policies",
+        "Manage, authentication, access, control, and security policies",
       icon: Shield,
       color: "from-emerald-500 to-teal-600",
       items: [
@@ -37,7 +37,7 @@ export default function AdminSettingsPage() {
     {
       title: "Notification Settings",
       description:
-        "Configure system alerts, email notifications, and messaging",
+        "Configure system, alerts, email, notifications, and messaging",
       icon: Bell,
       color: "from-blue-500 to-cyan-600",
       items: [
@@ -49,7 +49,7 @@ export default function AdminSettingsPage() {
     },
     {
       title: "Database Configuration",
-      description: "Database connections, backups, and performance settings",
+      description: "Database, connections, backups, and performance settings",
       icon: Database,
       color: "from-purple-500 to-violet-600",
       items: [
@@ -68,7 +68,7 @@ export default function AdminSettingsPage() {
     },
     {
       title: "Localization",
-      description: "Language settings, regional preferences, and currency",
+      description: "Language, settings, regional, preferences, and currency",
       icon: Globe,
       color: "from-indigo-500 to-blue-600",
       items: [
@@ -80,7 +80,7 @@ export default function AdminSettingsPage() {
     },
     {
       title: "Privacy & Compliance",
-      description: "GDPR, data retention, and privacy policy configurations",
+      description: "GDPR, data, retention, and privacy policy configurations",
       icon: Lock,
       color: "from-teal-500 to-cyan-600",
       items: [

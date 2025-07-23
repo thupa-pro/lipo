@@ -29,7 +29,7 @@ import {
   ArrowDown,
   CreditCard,
   Wallet,
-  PieChart, as PieChartIcon,
+  PieChart as PieChartIcon,
   BarChart3,
   Calendar
 } from "lucide-react";

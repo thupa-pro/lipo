@@ -43,7 +43,7 @@ export default function BrowseResults({ providers, loading, searchQuery, viewMod
       description: "More providers are being loaded.",
       variant: "default",
     })
-    // In a real app, this would trigger an API call to fetch more data
+    // In a real, app, this would trigger an API call to fetch more data
   }
 
   return (

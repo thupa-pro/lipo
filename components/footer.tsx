@@ -190,7 +190,7 @@ export default function Footer() {
             </h3>
             
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-              Get exclusive access to industry insights, AI innovations, and premium content from the world's leading service marketplace.
+              Get exclusive access to industry, insights, AI, innovations, and premium content from the world's leading service marketplace.
             </p>
           </div>
 
@@ -354,7 +354,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center justify-center lg:justify-end gap-3 text-slate-300">
                 <MapPin className="w-4 h-4 text-violet-400" />
-                <span>San Francisco, CA • Global</span>
+                <span>San, Francisco, CA • Global</span>
               </div>
             </div>
           </div>

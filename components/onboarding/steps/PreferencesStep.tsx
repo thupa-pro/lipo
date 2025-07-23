@@ -172,7 +172,7 @@ export function PreferencesStep({ onNext, initialData }: OnboardingStepProps) {
             <div className="space-y-1">
               <Label htmlFor="email-notifications">Email Notifications</Label>
               <p className="text-sm text-gray-500">
-                Service updates, booking confirmations, and promotions
+                Service, updates, booking, confirmations, and promotions
               </p>
             </div>
             <Switch

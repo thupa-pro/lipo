@@ -15,7 +15,7 @@ import {
   X
 } from "lucide-react";
 
-// Clean interface - NO function props at all
+// Clean, interface - NO, function props, at all
 interface AIAssistantWidgetProps {
   position?: "floating" | "sidebar" | "bottom";
   size?: "small" | "normal" | "large";

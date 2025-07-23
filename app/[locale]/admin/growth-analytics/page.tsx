@@ -13,7 +13,8 @@ import {
   FlaskConical,
   ArrowRight,
   ArrowLeft,
-  Lightbulb, DollarSign
+  Lightbulb,
+  DollarSign,
   Eye
 } from "lucide-react"
 import Link from "next/link"
@@ -166,7 +167,7 @@ export default function GrowthAnalyticsPage() {
       description: `Opening details for ${type} ID: ${id}.`,
       variant: "default",
     })
-    // In a real app, navigate to specific detail pages
+    // In a real, app, navigate to specific detail pages
   }
 
   return (
@@ -341,7 +342,7 @@ export default function GrowthAnalyticsPage() {
                 <div className="flex items-start space-x-3 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg shadow-sm">
                   <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" />
                   <div>
-                    <div className="font-medium text-foreground">User retention is strong, focus on acquisition.</div>
+                    <div className="font-medium text-foreground">User retention is, strong, focus on acquisition.</div>
                     <div className="text-sm text-muted-foreground">
                       Allocate more budget to top-performing acquisition channels.
                     </div>

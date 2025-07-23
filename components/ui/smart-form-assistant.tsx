@@ -116,7 +116,7 @@ export default function SmartFormAssistant() {
     if (formData.title && !formData.description) {
       newSuggestions.push({
         type: "description",
-        text: "Include specific details about what needs to be done, when you need it completed, and any special requirements or preferences.",
+        text: "Include specific details about what needs to be, done, when you need it, completed, and any special requirements or preferences.",
         confidence: 85,
         reasoning: "Detailed descriptions improve match quality by 28%",
       })

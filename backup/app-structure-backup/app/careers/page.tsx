@@ -14,19 +14,19 @@ export default function CareersPage() {
 
   const jobOpenings = [
     {
-      title: "Senior Software Engineer (Frontend)",
-      location: "Remote / New York, NY",
+      title: "Senior, Software Engineer (Frontend)",
+      location: "Remote / New, York, NY",
       department: "Engineering",
       type: "Full-time",
-      description: "Develop and maintain user-facing features using React, Next.js, and TypeScript.",
+      description: "Develop and maintain user-facing features using, React, Next.js, and TypeScript.",
       link: "#",
     },
     {
       title: "Product Manager (Growth)",
-      location: "Remote / San Francisco, CA",
+      location: "Remote / San, Francisco, CA",
       department: "Product",
       type: "Full-time",
-      description: "Drive product strategy and execution for growth initiatives, focusing on user acquisition and retention.",
+      description: "Drive product strategy and execution for growth, initiatives, focusing on user acquisition and retention.",
       link: "#",
     },
     {
@@ -39,7 +39,7 @@ export default function CareersPage() {
     },
     {
       title: "Marketing Manager (Digital)",
-      location: "Remote / Los Angeles, CA",
+      location: "Remote / Los, Angeles, CA",
       department: "Marketing",
       type: "Full-time",
       description: "Lead digital marketing campaigns to increase brand awareness and user engagement.",
@@ -51,7 +51,7 @@ export default function CareersPage() {
     {
       icon: Users,
       title: "Collaborative Environment",
-      description: "We foster a culture of open communication and teamwork, where every voice is heard.",
+      description: "We foster a culture of open communication and, teamwork, where every voice is heard.",
     },
     {
       icon: Heart,
@@ -61,7 +61,7 @@ export default function CareersPage() {
     {
       icon: Rocket,
       title: "Growth Opportunities",
-      description: "We invest in our team's professional development, offering continuous learning and career advancement.",
+      description: "We invest in our team's professional, development, offering continuous learning and career advancement.",
     },
   ]
 

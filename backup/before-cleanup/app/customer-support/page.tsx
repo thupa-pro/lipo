@@ -135,7 +135,7 @@ export default function CustomerSupportPage() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            For urgent matters, you can reach us directly.
+            For urgent, matters, you can reach us directly.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" variant="outline" onClick={() => toast({ title: "Calling Support", description: "Dialing 1-800-LOCONOMY...", variant: "default" })}>

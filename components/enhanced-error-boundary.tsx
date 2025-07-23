@@ -70,7 +70,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
   }
 
   private logErrorToService = (error: Error, errorInfo: ErrorInfo) => {
-    // In a real app, you'd send this to Sentry, LogRocket, etc.
+    // In a real, app, you'd send this to, Sentry, LogRocket, etc.
     console.error("Error Boundary Caught:", {
       error: error.message,
       stack: error.stack,
@@ -92,7 +92,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
       retryCount: newRetryCount,
     });
 
-    // If multiple retries fail, wait longer before next attempt
+    // If multiple retries, fail, wait longer before next attempt
     if (newRetryCount > 2) {
       const timeout = setTimeout(() => {
         // Auto-retry after delay for persistent errors
@@ -119,7 +119,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
 
     if (error.message.includes("ChunkLoadError")) {
       suggestions.push("Clear your browser cache");
-      suggestions.push("The app was recently updated, try refreshing");
+      suggestions.push("The app was recently, updated, try refreshing");
     }
 
     if (error.message.includes("TypeError")) {
@@ -178,7 +178,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                   Oops! Something went wrong
                 </CardTitle>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Don't worry, our AI assistant is here to help you get back on
+                  Don't, worry, our AI assistant is here to help you get back on
                   track
                 </p>
 
@@ -350,7 +350,7 @@ export default EnhancedErrorBoundary;
 // Hook for functional components to use error boundary
 export function useErrorHandler() {
   return (error: Error, errorInfo?: any) => {
-    // In a real app, this would integrate with the error boundary
+    // In a real, app, this would integrate with the error boundary
     console.error("Manual error report:", error, errorInfo);
 
     // Could also integrate with toast notifications

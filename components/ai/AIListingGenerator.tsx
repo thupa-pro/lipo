@@ -1,7 +1,7 @@
 "use client";
 
 // AI-Powered Listing Generator for Loconomy
-// Creates complete service listings with AI-generated content, pricing, and optimization
+// Creates complete service listings with AI-generated, content, pricing, and optimization
 
 import { useState, useCallback, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -291,7 +291,7 @@ export function AIListingGenerator({
             AI Listing Generator
           </CardTitle>
           <CardDescription>
-            Create a complete, optimized service listing in minutes with AI-powered content generation and market analysis.
+            Create a, complete, optimized service listing in minutes with AI-powered content generation and market analysis.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -326,7 +326,7 @@ export function AIListingGenerator({
                   <Label htmlFor="serviceType">Service Type *</Label>
                   <Input
                     id="serviceType"
-                    placeholder="e.g., House Cleaning, Dog Walking, Tutoring"
+                    placeholder="e.g., House, Cleaning, Dog, Walking, Tutoring"
                     value={request.serviceType}
                     onChange={(e) => updateRequest({ serviceType: e.target.value })}
                   />
@@ -335,7 +335,7 @@ export function AIListingGenerator({
                   <Label htmlFor="location">Service Location *</Label>
                   <Input
                     id="location"
-                    placeholder="e.g., San Francisco, CA"
+                    placeholder="e.g., San, Francisco, CA"
                     value={request.location}
                     onChange={(e) => updateRequest({ location: e.target.value })}
                   />
@@ -357,7 +357,7 @@ export function AIListingGenerator({
                 <Label htmlFor="targetAudience">Target Audience</Label>
                 <Input
                   id="targetAudience"
-                  placeholder="e.g., Busy professionals, Families with pets, Students"
+                  placeholder="e.g., Busy, professionals, Families with, pets, Students"
                   value={request.targetAudience}
                   onChange={(e) => updateRequest({ targetAudience: e.target.value })}
                 />
@@ -510,7 +510,7 @@ export function AIListingGenerator({
 function getAIOptionDescription(key: string): string {
   const descriptions = {
     generateTitle: 'Create an SEO-optimized, compelling title',
-    generateDescription: 'Write a detailed, professional description',
+    generateDescription: 'Write a, detailed, professional description',
     generateTags: 'Generate relevant tags and keywords',
     generatePricing: 'Suggest competitive pricing based on market data',
     optimizeForSEO: 'Optimize content for search engine visibility',
@@ -658,7 +658,7 @@ function GeneratedListingResult({
   );
 }
 
-// Mock AI generation functions (in production, these would call actual AI APIs)
+// Mock AI generation functions (in, production, these would call actual AI APIs)
 function generateAITitle(request: AIGenerationRequest): string {
   const serviceType = request.serviceType;
   const location = request.location;
@@ -666,7 +666,7 @@ function generateAITitle(request: AIGenerationRequest): string {
 }
 
 function generateAIDescription(request: AIGenerationRequest): string {
-  return `Looking for top-quality ${request.serviceType.toLowerCase()} services in ${request.location}? ${request.briefDescription} Our experienced team specializes in ${request.targetAudience ? `serving ${request.targetAudience.toLowerCase()}` : 'providing exceptional service'} with attention to detail and customer satisfaction. ${request.specialFeatures?.length ? `Special features include: ${request.specialFeatures.join(', ')}.` : ''} Book now for reliable, professional service you can trust.`;
+  return `Looking for top-quality ${request.serviceType.toLowerCase()} services in ${request.location}? ${request.briefDescription} Our experienced team specializes in ${request.targetAudience ? `serving ${request.targetAudience.toLowerCase()}` : 'providing exceptional service'} with attention to detail and customer satisfaction. ${request.specialFeatures?.length ? `Special features include: ${request.specialFeatures.join(', ')}.` : ''} Book now for, reliable, professional service you can trust.`;
 }
 
 function generateAITags(request: AIGenerationRequest): string[] {

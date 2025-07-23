@@ -97,7 +97,7 @@ export function ExportModal({ open, onOpenChange, filters }: ExportModalProps) {
     {
       id: "users",
       name: "User Analytics",
-      description: "User acquisition, retention, and behavior",
+      description: "User, acquisition, retention, and behavior",
     },
     {
       id: "revenue",

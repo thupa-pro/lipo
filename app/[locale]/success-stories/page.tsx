@@ -20,11 +20,11 @@ export default function SuccessStoriesPage() {
 
   const stories = [
     {
-      name: "Maria S.",
+      name: "Maria, S.",
       role: "Professional Cleaner",
       avatar: "/placeholder.svg?height=60&width=60",
       quote:
-        "Loconomy transformed my cleaning business. I went from struggling to find clients to having a full schedule, all thanks to the platform's easy job matching and reliable payments.",
+        "Loconomy transformed my cleaning business. I went from struggling to find clients to having a full, schedule, all thanks to the platform's easy job matching and reliable payments.",
       impact: "Increased earnings by 200%",
       rating: 5,
     },
@@ -33,7 +33,7 @@ export default function SuccessStoriesPage() {
       role: "Handyman Extraordinaire",
       avatar: "/placeholder.svg?height=60&width=60",
       quote:
-        "The flexibility Loconomy offers is unmatched. I can pick jobs that fit my schedule, and the customer support is always there when I need it. It's truly helped me balance work and life.",
+        "The flexibility Loconomy offers is unmatched. I can pick jobs that fit my, schedule, and the customer support is always there when I need it. It's truly helped me balance work and life.",
       impact: "Gained 50+ repeat customers",
       rating: 5,
     },
@@ -42,7 +42,7 @@ export default function SuccessStoriesPage() {
       role: "Certified Pet Sitter",
       avatar: "/placeholder.svg?height=60&width=60",
       quote:
-        "I love connecting with pet owners through Loconomy. The app makes managing bookings and payments a breeze, allowing me to focus on what I love most – caring for animals.",
+        "I love connecting with pet owners through Loconomy. The app makes managing bookings and payments a, breeze, allowing me to focus on what I love most – caring for animals.",
       impact: "Expanded service area by 30%",
       rating: 5,
     },
@@ -51,7 +51,7 @@ export default function SuccessStoriesPage() {
       role: "Math Tutor",
       avatar: "/placeholder.svg?height=60&width=60",
       quote:
-        "Finding students used to be a challenge, but Loconomy changed that. I now have a steady stream of tutoring requests, and the platform's tools help me track my sessions and progress.",
+        "Finding students used to be a, challenge, but Loconomy changed that. I now have a steady stream of tutoring, requests, and the platform's tools help me track my sessions and progress.",
       impact: "Doubled monthly income",
       rating: 4.5,
     },
@@ -80,7 +80,7 @@ export default function SuccessStoriesPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              Real Impact, Real Growth
+              Real, Impact, Real Growth
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our providers are achieving their business goals and building

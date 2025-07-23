@@ -18,7 +18,7 @@ import {
   locales,
   localeNames,
   localeFlags,
-  type, Locale
+  type Locale
 } from "@/lib/i18n/config";
 
 interface LanguageSwitcherProps {

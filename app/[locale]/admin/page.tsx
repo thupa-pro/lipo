@@ -17,8 +17,9 @@ import {
   Eye,
   UserCheck,
   DollarSign,
-  MapPin, AlertTriangle
-  ArrowUpRight
+  MapPin,
+  AlertTriangle,
+  ArrowUpRight,
   Rocket
 } from "lucide-react";
 import Link from "next/link";
@@ -26,7 +27,7 @@ import Link from "next/link";
 export default function AdminDashboard() {
   const stats = [
     {
-      title: "Total Users",
+      title: "Total, Users",
       value: "2.1M",
       change: "+12.5%",
       trend: "up",
@@ -65,7 +66,7 @@ export default function AdminDashboard() {
       type: "new_provider",
       user: "Sarah Chen",
       action: "joined as Home Cleaning provider",
-      location: "San Francisco, CA",
+      location: "San, Francisco, CA",
       time: "2 minutes ago",
       status: "pending",
     },
@@ -83,7 +84,7 @@ export default function AdminDashboard() {
       type: "new_user",
       user: "Emma Thompson",
       action: "created account",
-      location: "New York, NY",
+      location: "New, York, NY",
       time: "8 minutes ago",
       status: "active",
     },

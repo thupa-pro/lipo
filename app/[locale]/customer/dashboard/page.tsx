@@ -34,8 +34,8 @@ export default function CustomerDashboard() {
   const recentBookings = [
     {
       id: 1,
-      service: "House Cleaning",
-      provider: "Sarah Johnson",
+      service: "House, Cleaning",
+      provider: "Sarah, Johnson",
       date: "2024-01-15",
       status: "completed",
       rating: 5,
@@ -146,7 +146,7 @@ export default function CustomerDashboard() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Welcome back, {session?.user.name?.split(" ")[0]}!
+            Welcome, back, {session?.user.name?.split(" ")[0]}!
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
             Find the perfect service provider for your needs
@@ -179,7 +179,7 @@ export default function CustomerDashboard() {
                 currentPage="customer-dashboard"
                 onResponse={(response) => {
                   console.log('Agent response:', response);
-                  // Handle agent responses here - could trigger searches, bookings, etc.
+                  // Handle agent responses here - could trigger, searches, bookings, etc.
                 }}
               />
             </CardContent>

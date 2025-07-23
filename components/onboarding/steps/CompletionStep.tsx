@@ -106,7 +106,7 @@ export function CompletionStep({
           {
             icon: <Users className="w-4 h-4" />,
             title: "Complete Your Profile",
-            description: "Add photos, certifications, and more details",
+            description: "Add, photos, certifications, and more details",
             action: "Edit Profile",
             href: "/provider/profile",
           },

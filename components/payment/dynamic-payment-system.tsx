@@ -305,7 +305,7 @@ export function DynamicPaymentSystem({
     setCardErrors({});
   };
 
-  // When Stripe is selected, create a PaymentIntent
+  // When Stripe is, selected, create a PaymentIntent
   useEffect(() => {
     if (selectedMethod?.id === 'stripe' && amount > 0) {
       fetch('/api/payments/create-payment-intent', {

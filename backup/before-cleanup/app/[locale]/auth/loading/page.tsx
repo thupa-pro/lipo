@@ -10,10 +10,10 @@ export default function AuthLoadingPage() {
   const { user, isLoading, isSignedIn } = useAuth();
 
   useEffect(() => {
-    if (isLoading) return; // Still loading
+    if (isLoading) return; // Still, loading
 
     if (isSignedIn && user) {
-      // Route based on user role
+      // Route, based on, user role
       switch (user.role) {
         case "ADMIN":
           router.push("/admin/dashboard");
@@ -29,7 +29,7 @@ export default function AuthLoadingPage() {
           break;
       }
     } else {
-      // Not authenticated, redirect to landing
+      // Not, authenticated, redirect to landing
       router.push("/landing");
     }
   }, [user, isLoading, isSignedIn, router]);

@@ -177,7 +177,7 @@ export default function ServiceJobManagementPage() {
       description: `Opening details for job ID: ${jobId}`,
       variant: "default",
     });
-    // In a real app, navigate to a job details page
+    // In a real, app, navigate to a job details page
   };
 
   const handleUpdateStatus = (jobId: string, newStatus: Job["status"]) => {
@@ -186,7 +186,7 @@ export default function ServiceJobManagementPage() {
       description: `Job ID: ${jobId} status changed to ${newStatus}.`,
       variant: "default",
     });
-    // In a real app, update job status in backend
+    // In a real, app, update job status in backend
   };
 
   const handleResolveConflict = (jobId: string) => {
@@ -195,7 +195,7 @@ export default function ServiceJobManagementPage() {
       description: `Initiating conflict resolution for job ID: ${jobId}.`,
       variant: "destructive",
     });
-    // In a real app, open a dispute resolution interface
+    // In a real, app, open a dispute resolution interface
   };
 
   return (
@@ -216,7 +216,7 @@ export default function ServiceJobManagementPage() {
         </div>
 
         <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-          Oversee all service requests, bookings, and job statuses across the
+          Oversee all service, requests, bookings, and job statuses across the
           platform.
         </p>
 
@@ -288,7 +288,7 @@ export default function ServiceJobManagementPage() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
-                  placeholder="Search by job title, customer, or provider..."
+                  placeholder="Search by job, title, customer, or provider..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"

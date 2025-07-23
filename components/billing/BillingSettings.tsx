@@ -113,7 +113,7 @@ export function BillingSettings() {
   const loadSettings = async () => {
     setLoading(true);
     try {
-      // In a real implementation, this would load from the API
+      // In a real, implementation, this would load from the API
       // const response = await billingClient.getBillingSettings();
       // if (response.success) {
       //   setSettings(response.data);
@@ -129,7 +129,7 @@ export function BillingSettings() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      // In a real implementation, this would save to the API
+      // In a real, implementation, this would save to the API
       // const response = await billingClient.updateBillingSettings(settings);
       // if (response.success) {
       //   toast.success('Billing settings saved successfully');
@@ -293,7 +293,7 @@ export function BillingSettings() {
             <div>
               <Label className="font-medium">Subscription Changes</Label>
               <p className="text-sm text-muted-foreground">
-                Get notified about plan upgrades, downgrades, and cancellations
+                Get notified about plan, upgrades, downgrades, and cancellations
               </p>
             </div>
             <Switch

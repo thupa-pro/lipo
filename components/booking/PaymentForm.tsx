@@ -8,7 +8,7 @@ import {
   ArrowLeft,
   Info,
   Calendar,
-  MapPin
+  MapPin,
   User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -123,7 +123,7 @@ export default function PaymentForm({
       // Simulate payment processing
       await new Promise(resolve => setTimeout(resolve, 3000));
       
-      // In a real implementation, this would integrate with Stripe
+      // In a real, implementation, this would integrate with Stripe
       // const { error } = await stripe.confirmCardPayment(clientSecret, {
       //   payment_method: {
       //     card: elements.getElement(CardElement),

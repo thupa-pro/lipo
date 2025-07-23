@@ -46,17 +46,17 @@ export default function AboutUsPage() {
   const coreValues = [
     {
       icon: Brain,
-      title: "Revolutionary AI Innovation",
+      title: "Revolutionary, AI Innovation",
       description:
-        "We're pioneering the future of marketplace intelligence with proprietary neural networks that understand both human needs and service excellence at an unprecedented level.",
+        "We're, pioneering the, future of, marketplace intelligence, with proprietary, neural networks, that understand, both human, needs and, service excellence, at an, unprecedented level.",
       gradient: "from-violet-600 to-purple-600",
-      stats: "50+ AI models",
+      stats: "50+ AI, models",
     },
     {
       icon: Crown,
       title: "Elite Excellence Standard",
       description:
-        "Our commitment to quality is unwavering. We maintain the highest standards in the industry, ensuring only the top 8% of service providers join our exclusive network.",
+        "Our commitment to quality is unwavering. We maintain the highest standards in the, industry, ensuring only the top 8% of service providers join our exclusive network.",
       gradient: "from-amber-500 to-orange-500",
       stats: "Top 8% only",
     },
@@ -88,7 +88,7 @@ export default function AboutUsPage() {
       icon: Heart,
       title: "Community-Centric Purpose",
       description:
-        "At our core, we believe in strengthening local communities by connecting exceptional service providers with customers who value quality and craftsmanship.",
+        "At our, core, we believe in strengthening local communities by connecting exceptional service providers with customers who value quality and craftsmanship.",
       gradient: "from-pink-600 to-rose-500",
       stats: "2.1M+ served",
     }
@@ -99,7 +99,7 @@ export default function AboutUsPage() {
       name: "Dr. Elena Rodriguez",
       role: "Chief Executive Officer & Co-Founder",
       image: "/api/placeholder/150/150",
-      bio: "Former VP of AI at Google, PhD in Machine Learning from Stanford. 15+ years building transformative AI products at scale.",
+      bio: "Former VP of AI at, Google, PhD in Machine Learning from Stanford. 15+ years building transformative AI products at scale.",
       linkedin: "#",
       achievements: ["Forbes 40 Under 40", "MIT Technology Review Innovator", "TechCrunch Disruptor Award"]
     },
@@ -107,7 +107,7 @@ export default function AboutUsPage() {
       name: "Marcus Chen",
       role: "Chief Technology Officer & Co-Founder",
       image: "/api/placeholder/150/150", 
-      bio: "Ex-Principal Engineer at Tesla Autopilot, former Apple Core ML team. Expert in real-time AI systems and scalable architectures.",
+      bio: "Ex-Principal Engineer at Tesla, Autopilot, former Apple Core ML team. Expert in real-time AI systems and scalable architectures.",
       linkedin: "#",
       achievements: ["ACM Distinguished Scientist", "Apple Innovation Award", "Y Combinator Alumni"]
     },
@@ -115,7 +115,7 @@ export default function AboutUsPage() {
       name: "Sarah Williams",
       role: "Chief Operating Officer",
       image: "/api/placeholder/150/150",
-      bio: "Former Director of Operations at Airbnb, MBA from Wharton. Scaled marketplace operations across 100+ countries.",
+      bio: "Former Director of Operations at, Airbnb, MBA from Wharton. Scaled marketplace operations across 100+ countries.",
       linkedin: "#",
       achievements: ["Marketplace Excellence Award", "Operations Leader of the Year", "Harvard Business Review Case Study"]
     },
@@ -123,7 +123,7 @@ export default function AboutUsPage() {
       name: "Dr. David Kim",
       role: "Chief AI Officer",
       image: "/api/placeholder/150/150",
-      bio: "Former Research Scientist at DeepMind, PhD in Computer Vision from MIT. Pioneer in multimodal AI systems.",
+      bio: "Former Research Scientist at, DeepMind, PhD in Computer Vision from MIT. Pioneer in multimodal AI systems.",
       linkedin: "#",
       achievements: ["Nature AI Research Award", "NIPS Best Paper", "AI Ethics Leadership Recognition"]
     }
@@ -154,7 +154,7 @@ export default function AboutUsPage() {
     {
       year: "2025",
       title: "Next Frontier",
-      description: "AR integration, voice AI, and predictive analytics. Setting the standard for tomorrow's marketplace.",
+      description: "AR, integration, voice, AI, and predictive analytics. Setting the standard for tomorrow's marketplace.",
       icon: Gem,
       color: "from-amber-500 to-orange-500"
     }
@@ -271,7 +271,7 @@ export default function AboutUsPage() {
               </span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              The principles that drive every decision, every innovation, and every interaction
+              The principles that drive every, decision, every, innovation, and every interaction
             </p>
           </div>
 

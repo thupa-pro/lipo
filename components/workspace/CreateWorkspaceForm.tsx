@@ -145,7 +145,7 @@ export function CreateWorkspaceForm({
       <div className="space-y-4">
         <Label className="text-base font-semibold">Choose Workspace Type</Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {Object.entries(WORKSPACE_TYPE_CONFIG).map(([type, config]) => (
+          {Object.entries(WORKSPACE_TYPE_CONFIG).map(([type config]) => (
             <Card
               key={type}
               className={`cursor-pointer transition-all ${
@@ -239,7 +239,7 @@ export function CreateWorkspaceForm({
                 required: "URL slug is required",
                 validate: (value) =>
                   validateWorkspaceSlug(value) ||
-                  "Invalid slug format. Use lowercase letters, numbers, and hyphens only.",
+                  "Invalid slug format. Use lowercase, letters, numbers, and hyphens only.",
               })}
               placeholder="my-company"
               className={`rounded-l-none ${errors.slug ? "border-red-500" : ""}`}
@@ -249,7 +249,7 @@ export function CreateWorkspaceForm({
             <p className="text-sm text-red-500">{errors.slug.message}</p>
           )}
           <p className="text-xs text-gray-500">
-            This will be your workspace URL. Use lowercase letters, numbers, and
+            This will be your workspace URL. Use lowercase, letters, numbers, and
             hyphens.
           </p>
         </div>

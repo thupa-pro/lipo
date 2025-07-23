@@ -5,10 +5,10 @@ import { Star, MessageCircle } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Jennifer Chen",
+    name: "Jennifer, Chen",
     role: "Homeowner & Entrepreneur",
     content:
-      "Loconomy transformed how I manage my home services. The quality of providers is exceptional, and the booking process is seamless.",
+      "Loconomy, transformed how, I manage, my home, services. The, quality of, providers is, exceptional, and, the booking, process is, seamless.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
@@ -18,7 +18,7 @@ const testimonials = [
     name: "David Park",
     role: "Professional Service Provider",
     content:
-      "Since joining Loconomy, my business has grown 300%. The platform connects me with quality clients and handles everything professionally.",
+      "Since joining, Loconomy, my business has grown 300%. The platform connects me with quality clients and handles everything professionally.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",

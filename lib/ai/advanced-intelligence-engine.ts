@@ -304,7 +304,7 @@ class AdvancedAIEngine {
     Behavior: ${JSON.stringify(profile.behaviorMetrics)}
     Context: ${JSON.stringify(context)}
     
-    Return JSON with recommendations array containing id, type, title, description, confidenceScore, reasoning, action.`;
+    Return JSON with recommendations array containing id, type title, description, confidenceScore, reasoning, action.`;
   }
 
   private async analyzeUserIntent(

@@ -133,7 +133,7 @@ const documentTypes: Array<{
   {
     type: "government_id",
     title: "Government-Issued ID",
-    description: "Clear photo of your driver's license, passport, or state ID",
+    description: "Clear photo of your driver's, license, passport, or state ID",
     required: true,
     examples: ["Driver's License", "Passport", "State ID Card"],
     maxSize: "10MB",
@@ -151,7 +151,7 @@ const documentTypes: Array<{
   {
     type: "proof_of_address",
     title: "Proof of Address",
-    description: "Recent utility bill, bank statement, or lease agreement",
+    description: "Recent utility, bill, bank, statement, or lease agreement",
     required: true,
     examples: ["Utility Bill", "Bank Statement", "Lease Agreement"],
     maxSize: "10MB",
@@ -285,7 +285,7 @@ export function KYCVerificationFlow({
       if (!allowedTypes.includes(file.type)) {
         toast({
           title: "Invalid file type",
-          description: "Please upload a JPEG, PNG, or PDF file",
+          description: "Please upload a, JPEG, PNG, or PDF file",
           variant: "destructive",
         });
         return;
@@ -651,14 +651,14 @@ export function KYCVerificationFlow({
         <FileText className="w-12 h-12 mx-auto mb-3 text-blue-600" />
         <h3 className="text-xl font-semibold mb-2">Document Verification</h3>
         <p className="text-muted-foreground">
-          Upload clear, high-quality images of your verification documents
+          Upload, clear, high-quality images of your verification documents
         </p>
       </div>
 
       <Alert>
         <Info className="w-4 h-4" />
         <AlertDescription>
-          All documents must be clear, readable, and in color. Ensure all
+          All documents must be, clear, readable, and in color. Ensure all
           corners are visible and text is legible.
         </AlertDescription>
       </Alert>
@@ -895,7 +895,7 @@ export function KYCVerificationFlow({
               description: e.target.value,
             }))
           }
-          placeholder="Describe your business, services, and experience..."
+          placeholder="Describe your, business, services, and experience..."
           rows={4}
         />
       </div>

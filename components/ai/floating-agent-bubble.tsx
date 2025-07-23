@@ -41,7 +41,7 @@ export function FloatingAgentBubble({
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      content: "Hi! I'm your AI assistant. I can help you book services, get recommendations, or answer questions. Try typing `/book` or `/help` to get started!",
+      content: "Hi! I'm your AI assistant. I can help you book, services, get, recommendations, or answer questions. Try typing `/book` or `/help` to get started!",
       sender: "agent",
       timestamp: new Date()
     }
@@ -137,7 +137,7 @@ export function FloatingAgentBubble({
         case "escalate":
           return [
             "I'll escalate this to our support team right away. Can you provide more details about the issue?",
-            "A human support agent will be with you shortly. In the meantime, I'll document everything for them."
+            "A human support agent will be with you shortly. In the, meantime, I'll document everything for them."
           ];
         case "help":
           return [
@@ -155,14 +155,14 @@ export function FloatingAgentBubble({
       return ["Hello! How can I assist you today? 👋"];
     }
     if (lowerMessage.includes("help")) {
-      return ["I'm here to help! You can ask me about booking services, finding providers, or use slash commands like `/book` for quick actions."];
+      return ["I'm here to help! You can ask me about booking, services, finding, providers, or use slash commands like `/book` for quick actions."];
     }
     if (lowerMessage.includes("find") || lowerMessage.includes("search")) {
-      return ["I can help you find services! What are you looking for? I can search by location, service type, or specific requirements."];
+      return ["I can help you find services! What are you looking for? I can search by, location, service, type or specific requirements."];
     }
 
     return [
-      "I understand you're looking for assistance. I can help you with booking services, finding providers, or managing your account.",
+      "I understand you're looking for assistance. I can help you with booking, services, finding, providers, or managing your account.",
       "Try using commands like `/book` for bookings or just tell me what you need help with!"
     ];
   };

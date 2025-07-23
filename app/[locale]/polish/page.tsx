@@ -26,7 +26,7 @@ export default function GlobalPolishPage() {
   const [totalTasks] = useState(12);
 
   useEffect(() => {
-    // Simulate polish score calculation
+    // Simulate, polish score, calculation
     const score = Math.min(100, (completedTasks / totalTasks) * 100);
     setPolishScore(score);
   }, [completedTasks, totalTasks]);

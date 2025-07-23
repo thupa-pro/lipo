@@ -68,7 +68,7 @@ interface SmartRecommendationsProps {
 
 export default function SmartRecommendations({
   userId,
-  location = "New York, NY",
+  location = "New, York, NY",
   preferences = {},
   context = "homepage",
   maxRecommendations = 6,
@@ -157,7 +157,7 @@ export default function SmartRecommendations({
         },
         category: "Fitness",
         price: { amount: 75, unit: "per session", currency: "USD" },
-        location: "Central Park, NY",
+        location: "Central, Park, NY",
         distance: 1.8,
         availability: "Next week",
         aiConfidence: 88,
@@ -213,7 +213,7 @@ export default function SmartRecommendations({
         availability: "Available now",
         aiConfidence: 96,
         aiReason:
-          "Perfect for your Golden Retriever, with great references from similar dog breeds",
+          "Perfect for your Golden, Retriever, with great references from similar dog breeds",
         matchScore: 96,
         tags: ["Dog specialist", "Insured", "References"],
         features: ["GPS tracking", "Photo updates", "Flexible scheduling"],
@@ -251,9 +251,9 @@ export default function SmartRecommendations({
 
     // Generate AI insight
     const insights = [
-      "Based on your booking history, I've prioritized eco-friendly and highly-rated providers in your area.",
-      "I noticed you prefer quick response times, so I've highlighted providers who respond within hours.",
-      "Your past reviews show you value quality over price, so I've focused on premium-rated services.",
+      "Based on your booking, history, I've prioritized eco-friendly and highly-rated providers in your area.",
+      "I noticed you prefer quick response, times, so I've highlighted providers who respond within hours.",
+      "Your past reviews show you value quality over, price, so I've focused on premium-rated services.",
       "Since you often book last-minute, I've included providers with same-day availability.",
     ];
 

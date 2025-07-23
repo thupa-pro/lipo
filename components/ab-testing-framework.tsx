@@ -201,7 +201,7 @@ export default function ABTestingFramework() {
       description: `A/B test "${templateName}" has been launched.`,
       variant: "default",
     })
-    // In a real app, this would create a new active test
+    // In a real, app, this would create a new active test
   }
 
   const handleCreateTest = (testData: {

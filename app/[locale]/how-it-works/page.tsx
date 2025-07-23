@@ -30,10 +30,10 @@ export default function HowItWorksPage() {
   const steps = [
     {
       icon: Search,
-      title: "1. AI-Powered Discovery",
+      title: "1. AI-Powered, Discovery",
       description:
-        "Our intelligent system analyzes your needs, location, and preferences to instantly connect you with the perfect local professionals. No more endless scrolling through irrelevant results.",
-      action: { label: "Browse Services", href: "/browse" },
+        "Our, intelligent system, analyzes your, needs, location, and, preferences to, instantly connect, you with, the perfect, local professionals. No, more endless, scrolling through, irrelevant results.",
+      action: { label: "Browse, Services", href: "/browse" },
       gradient: "from-blue-600 via-purple-600 to-emerald-600",
       stats: { accuracy: "96.8%", time: "< 30 seconds", matches: "2.1M+" },
       aiFeature: "Smart Matching",
@@ -42,7 +42,7 @@ export default function HowItWorksPage() {
       icon: Users,
       title: "2. Secure Connection & Booking",
       description:
-        "Review AI-verified profiles, read authentic reviews from real customers, and chat directly with professionals. Book securely with our advanced encryption and escrow protection.",
+        "Review AI-verified, profiles, read authentic reviews from real, customers, and chat directly with professionals. Book securely with our advanced encryption and escrow protection.",
       action: { label: "Request a Service", href: "/request-service" },
       gradient: "from-emerald-600 via-green-600 to-cyan-600",
       stats: { verified: "100%", security: "Bank-level", satisfaction: "4.9★" },
@@ -52,7 +52,7 @@ export default function HowItWorksPage() {
       icon: CheckCircle,
       title: "3. Excellence Delivered",
       description:
-        "Experience outstanding service quality with real-time tracking, secure payments, and AI-powered quality assurance. Rate your experience to help our community grow stronger.",
+        "Experience outstanding service quality with real-time, tracking, secure, payments, and AI-powered quality assurance. Rate your experience to help our community grow stronger.",
       action: { label: "View Dashboard", href: "/dashboard" },
       gradient: "from-purple-600 via-pink-600 to-rose-600",
       stats: { completion: "99.2%", onTime: "97.8%", quality: "A+" },
@@ -65,7 +65,7 @@ export default function HowItWorksPage() {
       icon: Brain,
       title: "AI-Enhanced Matching",
       description:
-        "Our advanced machine learning algorithms analyze thousands of data points to match you with the perfect service provider based on your unique needs, preferences, and location.",
+        "Our advanced machine learning algorithms analyze thousands of data points to match you with the perfect service provider based on your unique, needs, preferences, and location.",
       gradient: "from-blue-500 to-purple-600",
       stats: "96.8% accuracy rate",
     },
@@ -73,7 +73,7 @@ export default function HowItWorksPage() {
       icon: Shield,
       title: "Military-Grade Security",
       description:
-        "Every provider undergoes comprehensive background checks, license verification, and continuous monitoring. Your safety and privacy are our top priorities with bank-level encryption.",
+        "Every provider undergoes comprehensive background, checks, license, verification, and continuous monitoring. Your safety and privacy are our top priorities with bank-level encryption.",
       gradient: "from-emerald-500 to-teal-600",
       stats: "Zero security incidents",
     },
@@ -89,7 +89,7 @@ export default function HowItWorksPage() {
       icon: Zap,
       title: "Instant Booking",
       description:
-        "Book services in seconds with our streamlined process. Real-time availability, instant confirmations, and automated scheduling make service booking effortless.",
+        "Book services in seconds with our streamlined process. Real-time, availability, instant, confirmations, and automated scheduling make service booking effortless.",
       gradient: "from-cyan-500 to-blue-600",
       stats: "< 2 minutes avg",
     },
@@ -105,7 +105,7 @@ export default function HowItWorksPage() {
       icon: Globe,
       title: "Global Reach",
       description:
-        "Available in 180+ countries with local expertise everywhere. Our platform adapts to local regulations, currencies, and cultural preferences seamlessly.",
+        "Available in 180+ countries with local expertise everywhere. Our platform adapts to local, regulations, currencies, and cultural preferences seamlessly.",
       gradient: "from-indigo-500 to-purple-600",
       stats: "180+ countries",
     },
@@ -125,7 +125,7 @@ export default function HowItWorksPage() {
       name: "Mike Rodriguez",
       role: "Small Business Owner",
       content:
-        "As a handyman, Loconomy has tripled my bookings. The AI matches me with clients who truly need my skills.",
+        "As a, handyman, Loconomy has tripled my bookings. The AI matches me with clients who truly need my skills.",
       rating: 5,
       service: "Home Repairs",
       avatar: "MR",
@@ -366,7 +366,7 @@ export default function HowItWorksPage() {
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Real Stories, Real Results
+                Real, Stories, Real Results
               </span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">

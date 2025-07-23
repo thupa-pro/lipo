@@ -26,7 +26,7 @@ import {
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-// Import AI chat components
+// Import, AI chat, components
 import { ChatMessage } from "@/components/chat/ChatMessage";
 import { ChatInput } from "@/components/chat/ChatInput";
 import { ChatSuggestions } from "@/components/chat/ChatSuggestions";
@@ -83,7 +83,7 @@ export default function ChatPage() {
       if (conversationsResponse.success) {
         setConversations(conversationsResponse.data || []);
 
-        // If no conversations exist, create a welcome conversation
+        // If no conversations, exist, create a welcome conversation
         if (
           !conversationsResponse.data ||
           conversationsResponse.data.length === 0

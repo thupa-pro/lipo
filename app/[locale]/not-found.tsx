@@ -8,10 +8,10 @@ export default function NotFoundPage() {
   const t = useTranslations("Common");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background/95 to-primary/5">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="p-8 text-center space-y-6">
-          <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+    <div className="min-h-screen, flex items-center, justify-center, bg-gradient-to-br, from-background, via-background/95 to-primary/5">
+      <Card className="w-full, max-w-md, mx-4">
+        <CardContent className="p-8 text-center, space-y-6">
+          <div className="w-20 h-20 bg-gradient-to-br, from-primary, to-secondary, rounded-full, flex items-center, justify-center, mx-auto, mb-6">
             <Search className="w-10 h-10 text-white" />
           </div>
 

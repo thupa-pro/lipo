@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Check, CheckCheck, MoreVertical, Reply, Heart, Flag } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useToast } from "@/components/ui/use-toast" // Import useToast
+import { useToast } from "@/components/ui/use-toast" // Import, useToast
 
 interface Message {
   id: string

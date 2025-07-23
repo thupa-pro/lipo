@@ -65,7 +65,7 @@ export default function AccessibilityPerformancePage() {
         priority: "high",
         title: "Improve WCAG Compliance",
         description:
-          "Focus on ARIA labels, keyboard navigation, and color contrast",
+          "Focus on ARIA, labels, keyboard, navigation, and color contrast",
         impact: "Critical for inclusive user experience",
       });
     }
@@ -76,7 +76,7 @@ export default function AccessibilityPerformancePage() {
         priority: "high",
         title: "Optimize Core Web Vitals",
         description:
-          "Improve LCP, FID, and CLS metrics for better user experience",
+          "Improve, LCP, FID, and CLS metrics for better user experience",
         impact: "Directly affects user engagement and SEO",
       });
     }

@@ -233,7 +233,7 @@ export function SubscriptionDashboard() {
                       Trial ends on{" "}
                       {format(
                         new Date(trialInfo.trial_end_date),
-                        "MMM d, yyyy",
+                        "MMM, d, yyyy",
                       )}
                     </>
                   )}
@@ -289,7 +289,7 @@ export function SubscriptionDashboard() {
                 </Label>
                 <p className="text-lg font-semibold mt-1">
                   {nextBillingDate
-                    ? format(nextBillingDate, "MMM d, yyyy")
+                    ? format(nextBillingDate, "MMM, d, yyyy")
                     : "N/A"}
                 </p>
               </div>
@@ -453,7 +453,7 @@ export function SubscriptionDashboard() {
                           {invoice.invoice_date &&
                             format(
                               new Date(invoice.invoice_date),
-                              "MMM d, yyyy",
+                              "MMM, d, yyyy",
                             )}
                         </p>
                       </div>

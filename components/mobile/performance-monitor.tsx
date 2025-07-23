@@ -21,8 +21,8 @@ interface PerformanceMetrics {
   memoryUsage: number;
   networkSpeed: number;
   coreWebVitals: {
-    lcp: number; // Largest Contentful Paint
-    fid: number; // First Input Delay
+    lcp: number; // Largest, Contentful Paint
+    fid: number; // First, Input Delay
     cls: number; // Cumulative Layout Shift
   };
   score: number;

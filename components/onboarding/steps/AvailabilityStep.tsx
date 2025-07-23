@@ -203,7 +203,7 @@ export function AvailabilityStep({
             </Button>
           </div>
           <p className="text-sm text-blue-700">
-            Use these presets to quickly set your schedule, then customize as
+            Use these presets to quickly set your, schedule, then customize as
             needed
           </p>
         </CardContent>

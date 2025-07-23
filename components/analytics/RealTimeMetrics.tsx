@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { analyticsClient } from "@/lib/analytics/utils";
-import type { RealTimeMetrics as RealTimeMetricsType } from "@/lib/analytics/types";
+import type { RealTimeMetrics, as RealTimeMetricsType } from "@/lib/analytics/types";
 import { toast } from "sonner";
 
 export function RealTimeMetrics() {

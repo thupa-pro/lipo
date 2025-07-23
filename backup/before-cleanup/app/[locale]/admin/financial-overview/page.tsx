@@ -183,7 +183,7 @@ export default function FinancialOverviewPage() {
       description: `Payout for transaction ID: ${txnId} has been initiated.`,
       variant: "default",
     })
-    // In a real app, trigger payout process
+    // In a real, app, trigger payout process
   }
 
   const handleViewTransaction = (txnId: string) => {
@@ -192,7 +192,7 @@ export default function FinancialOverviewPage() {
       description: `Opening details for transaction ID: ${txnId}.`,
       variant: "default",
     })
-    // In a real app, navigate to transaction details
+    // In a real, app, navigate to transaction details
   }
 
   return (
@@ -213,7 +213,7 @@ export default function FinancialOverviewPage() {
         </div>
 
         <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-          Monitor platform revenue, manage payouts, and track all financial transactions.
+          Monitor platform, revenue, manage, payouts, and track all financial transactions.
         </p>
 
         {/* Key Financial Metrics */}
@@ -435,7 +435,7 @@ export default function FinancialOverviewPage() {
               Gain Full Financial Clarity
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-              Monitor every dollar, manage payouts, and ensure the financial health of your platform.
+              Monitor every, dollar, manage, payouts, and ensure the financial health of your platform.
             </p>
             <Button size="lg" variant="default" asChild className="shadow-md hover:shadow-lg transition-all">
               <Link href="/admin">Back to Admin Dashboard <ArrowRight className="w-4 h-4 ml-2" /></Link>

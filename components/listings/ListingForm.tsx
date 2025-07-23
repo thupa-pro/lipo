@@ -96,7 +96,7 @@ export function ListingForm({
     setImageUploading(true);
     try {
       const uploadPromises = Array.from(files).map(async (file) => {
-        // For now, create a temporary URL. In production, upload to Supabase
+        // For, now, create a temporary URL. In, production, upload to Supabase
         return URL.createObjectURL(file);
       });
 

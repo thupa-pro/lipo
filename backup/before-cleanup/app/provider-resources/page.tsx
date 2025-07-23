@@ -15,7 +15,7 @@ export default function ProviderResourcesPage() {
     {
       icon: BookOpen,
       title: "Knowledge Base",
-      description: "Access articles, FAQs, and guides on managing your profile, jobs, and payments.",
+      description: "Access, articles, FAQs, and guides on managing your, profile, jobs, and payments.",
       action: { label: "Visit Knowledge Base", href: "/help" },
     },
     {
@@ -27,13 +27,13 @@ export default function ProviderResourcesPage() {
     {
       icon: Users,
       title: "Provider Community",
-      description: "Connect with other professionals, share tips, and get advice in our exclusive provider forum.",
+      description: "Connect with other, professionals, share, tips, and get advice in our exclusive provider forum.",
       action: { label: "Join Community", href: "/community" },
     },
     {
       icon: TrendingUp,
       title: "Growth & Marketing Tips",
-      description: "Learn strategies to attract more customers, improve your ratings, and grow your business.",
+      description: "Learn strategies to attract more, customers, improve your, ratings, and grow your business.",
       action: { label: "Explore Tips", onClick: () => toast({ title: "Growth Tips", description: "Loading marketing resources...", variant: "default" }) },
     },
     {
@@ -45,7 +45,7 @@ export default function ProviderResourcesPage() {
     {
       icon: Briefcase,
       title: "Business Tools & Templates",
-      description: "Download useful templates for invoicing, contracts, and business management.",
+      description: "Download useful templates for, invoicing, contracts, and business management.",
       action: { label: "Get Tools", onClick: () => toast({ title: "Business Tools", description: "Accessing business tools and templates...", variant: "default" }) },
     },
   ]

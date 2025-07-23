@@ -25,12 +25,12 @@ export default function ProviderAppPage() {
     {
       icon: DollarSign,
       title: "Manage Earnings",
-      description: "Track your income, view payment history, and manage payouts on the go.",
+      description: "Track your, income, view payment, history, and manage payouts on the go.",
     },
     {
       icon: Calendar,
       title: "Schedule Management",
-      description: "Easily view, accept, and manage your bookings and availability.",
+      description: "Easily, view, accept, and manage your bookings and availability.",
     },
   ]
 
@@ -43,7 +43,7 @@ export default function ProviderAppPage() {
             The Loconomy Provider App
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Manage your business, find jobs, and connect with customers, all from your smartphone.
+            Manage your, business, find, jobs, and connect with, customers, all from your smartphone.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" onClick={() => toast({ title: "Download App", description: "Redirecting to App Store...", variant: "default" })}>

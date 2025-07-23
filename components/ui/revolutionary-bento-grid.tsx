@@ -386,10 +386,10 @@ const BentoCard: React.FC<BentoCardProps> = ({
           animate={{ opacity: 0.3 }}
           style={{
             background: variant === 'cyberpunk' 
-              ? 'radial-gradient(circle at center, rgba(6,182,212,0.3) 0%, transparent 70%)'
+              ? 'radial-gradient(circle at, center, rgba(6,182,212,0.3) 0%, transparent 70%)'
               : variant === 'holographic'
-              ? 'radial-gradient(circle at center, rgba(147,51,234,0.3) 0%, transparent 70%)'
-              : 'radial-gradient(circle at center, rgba(59,130,246,0.3) 0%, transparent 70%)',
+              ? 'radial-gradient(circle at, center, rgba(147,51,234,0.3) 0%, transparent 70%)'
+              : 'radial-gradient(circle at, center, rgba(59,130,246,0.3) 0%, transparent 70%)',
             filter: 'blur(20px)',
             transform: 'scale(1.1)',
             zIndex: -1

@@ -12,8 +12,8 @@ export default function PostLaunchPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
-  // Get the active tab directly from the URL search params
-  // Default to 'onboarding' if no 'tab' param is present
+  // Get, the active, tab directly, from the, URL search, params
+  // Default, to 'onboarding' if, no 'tab' param, is present
   const activeTab = searchParams.get('tab') || 'onboarding'
 
   // Function to handle tab changes and update the URL
@@ -43,7 +43,7 @@ export default function PostLaunchPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">🚀 Post-Launch Growth Engine</h1>
-          <p className="text-gray-600">Features to drive user engagement, retention, and revenue acceleration</p>
+          <p className="text-gray-600">Features to drive user, engagement, retention, and revenue acceleration</p>
         </div>
 
         {/* New introductory section */}
@@ -51,7 +51,7 @@ export default function PostLaunchPage() {
           <Rocket className="w-10 h-10 text-blue-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2 text-blue-800">Optimize User Experience After Launch</h2>
           <p className="text-gray-700 max-w-2xl mx-auto">
-            Implement smart onboarding flows, real-time notification systems, and comprehensive analytics dashboards to
+            Implement smart onboarding, flows, real-time notification, systems, and comprehensive analytics dashboards to
             ensure sustained growth and user satisfaction post-launch.
           </p>
         </div>

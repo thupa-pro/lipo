@@ -18,12 +18,12 @@ import {
 
 export default function PaymentsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen, bg-gradient-to-br, from-background, via-background/95 to-primary/5">
+      <div className="container, mx-auto, px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
+          <div className="flex, items-center, gap-3 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br, from-primary, to-secondary, rounded-xl, flex items-center, justify-center, shadow-lg">
               <CreditCard className="w-6 h-6 text-white" />
             </div>
             <div>

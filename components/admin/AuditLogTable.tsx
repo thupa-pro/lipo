@@ -261,7 +261,7 @@ export function AuditLogTable() {
                       </TableCell>
                       <TableCell>
                         <div className="text-sm">
-                          {format(new Date(log.created_at), "MMM d, yyyy")}
+                          {format(new Date(log.created_at), "MMM, d, yyyy")}
                         </div>
                         <div className="text-xs text-gray-600">
                           {format(new Date(log.created_at), "h:mm a")}

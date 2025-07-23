@@ -157,11 +157,11 @@ export default function ContentManagement() {
       shares: 34,
       category: "Home Services",
       tags: ["cleaning", "home", "tips", "guide"],
-      excerpt: "Everything you need to know about professional home cleaning services, from what to expect to how to prepare your home.",
+      excerpt: "Everything you need to know about professional home cleaning, services, from what to expect to how to prepare your home.",
       content: "# Complete Guide to Home Cleaning Services\n\nFinding the right cleaning service...",
       seo: {
         title: "Complete Guide to Home Cleaning Services | Loconomy",
-        description: "Discover everything about professional home cleaning services. Get tips, pricing guides, and find the best cleaners in your area.",
+        description: "Discover everything about professional home cleaning services. Get, tips, pricing, guides, and find the best cleaners in your area.",
         keywords: ["home cleaning", "cleaning services", "professional cleaners", "house cleaning"],
         ogImage: "/blog/cleaning-guide-og.jpg",
       },
@@ -893,7 +893,7 @@ export default function ContentManagement() {
             <div>
               <h3 className="text-lg font-medium">Media Library</h3>
               <p className="text-sm text-muted-foreground">
-                Manage images, videos, and other media files
+                Manage, images, videos, and other media files
               </p>
             </div>
             <Button>

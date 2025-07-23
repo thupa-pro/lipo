@@ -13,7 +13,7 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
-    // Log the error to an error reporting service
+    // Log, the error, to an, error reporting, service
     console.error("Application Error:", error);
   }, [error]);
 
@@ -47,7 +47,7 @@ export default function Error({ error, reset }: ErrorProps) {
           <CardContent className="space-y-6">
             <div className="text-slate-600 dark:text-slate-400">
               <p className="mb-4">
-                We're sorry, but something unexpected happened. Our team has been notified and is working to fix this issue.
+                We're, sorry, but something unexpected happened. Our team has been notified and is working to fix this issue.
               </p>
               
               {process.env.NODE_ENV === "development" && (
@@ -100,7 +100,7 @@ export default function Error({ error, reset }: ErrorProps) {
 
             <div className="text-sm text-slate-500 dark:text-slate-400 pt-4 border-t border-slate-200 dark:border-slate-700">
               <p>
-                If this problem persists, please{" "}
+                If this problem, persists, please{" "}
                 <Link href="/contact" className="text-blue-600 dark:text-blue-400 hover:underline">
                   contact our support team
                 </Link>{" "}

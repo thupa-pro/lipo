@@ -372,7 +372,7 @@ export function PricingSetupStep({
                 <li>• Research local competitors to set competitive rates</li>
                 <li>• Consider your experience and expertise level</li>
                 <li>
-                  • Factor in materials, travel time, and business expenses
+                  • Factor in, materials, travel, time, and business expenses
                 </li>
                 <li>• You can always adjust your rates later</li>
               </ul>

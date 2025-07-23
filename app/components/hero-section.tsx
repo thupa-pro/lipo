@@ -91,8 +91,8 @@ export function HeroSection() {
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-            Connect with verified, elite service providers in your area. From
-            home maintenance to personal services, experience the future of
+            Connect with, verified, elite service providers in your area. From
+            home maintenance to personal, services, experience the future of
             local commerce.
           </p>
 

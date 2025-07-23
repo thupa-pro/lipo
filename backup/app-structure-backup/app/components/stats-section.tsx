@@ -4,7 +4,7 @@ const stats = [
   {
     icon: Users,
     value: "50K+",
-    label: "Active Users",
+    label: "Active, Users",
     color: "from-blue-500 to-cyan-500",
     bgColor: "bg-blue-50 dark:bg-blue-950/20",
   },

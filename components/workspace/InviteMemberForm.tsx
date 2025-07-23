@@ -70,7 +70,7 @@ export function InviteMemberForm({
   const roleOptions: { value: MemberRole; description: string }[] = [
     {
       value: "member",
-      description: "Can view and edit content, create listings and bookings",
+      description: "Can view and edit, content, create listings and bookings",
     },
     {
       value: "manager",

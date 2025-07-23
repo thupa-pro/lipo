@@ -118,23 +118,23 @@ const AISmartHaggling: React.FC<AIHagglingEngineProps> = ({
     } else if (userPrice >= currentAIPrice * 0.85) {
       // Reasonable counteroffer
       const counterOffer = Math.round(currentAIPrice - (priceGap * 0.6))
-      response = `I appreciate your offer of $${userPrice}. Looking at market data and the provider's track record, I can come down to $${counterOffer}. This service typically ranges from $${service.marketPrice - 20} to $${service.marketPrice + 30} in your area.`
+      response = `I appreciate your offer of $${userPrice}. Looking at market data and the provider's track, record, I can come down to $${counterOffer}. This service typically ranges from $${service.marketPrice - 20} to $${service.marketPrice + 30} in your area.`
       newAIPrice = counterOffer
       confidence = 90
     } else if (userPrice >= currentAIPrice * 0.7) {
       // Low but workable offer
       const counterOffer = Math.round(currentAIPrice - (priceGap * 0.4))
-      response = `Your offer of $${userPrice} is below market rate, but I understand budget constraints. I can offer $${counterOffer} as a compromise. This provider has a ${service.responseTime} response time and excellent reviews.`
+      response = `Your offer of $${userPrice} is below market, rate, but I understand budget constraints. I can offer $${counterOffer} as a compromise. This provider has a ${service.responseTime} response time and excellent reviews.`
       newAIPrice = counterOffer
       confidence = 75
     } else {
       // Very low offer
       if (negotiationRound >= 3) {
-        response = `I've tried to work with you, but $${userPrice} is too far below the service value. My final offer is $${Math.round(currentAIPrice * 0.8)}. This is the lowest I can go while ensuring quality service.`
+        response = `I've tried to work with, you, but $${userPrice} is too far below the service value. My final offer is $${Math.round(currentAIPrice * 0.8)}. This is the lowest I can go while ensuring quality service.`
         newAIPrice = Math.round(currentAIPrice * 0.8)
         confidence = 60
       } else {
-        response = `I understand you're looking for a good deal, but $${userPrice} is significantly below market value. The average price for similar services is $${service.marketPrice}. I can offer $${Math.round(currentAIPrice * 0.9)} considering your budget needs.`
+        response = `I understand you're looking for a good, deal, but $${userPrice} is significantly below market value. The average price for similar services is $${service.marketPrice}. I can offer $${Math.round(currentAIPrice * 0.9)} considering your budget needs.`
         newAIPrice = Math.round(currentAIPrice * 0.9)
         confidence = 70
       }

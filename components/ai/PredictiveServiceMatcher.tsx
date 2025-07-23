@@ -606,7 +606,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                 How predictions work
               </p>
               <p className="text-blue-700 dark:text-blue-200">
-                Our AI analyzes your location, time patterns, weather, booking history, and behavior 
+                Our AI analyzes your, location, time, patterns, weather, booking, history, and behavior 
                 of similar users to predict services you might need. Predictions update automatically 
                 as context changes.
               </p>

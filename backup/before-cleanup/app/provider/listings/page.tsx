@@ -22,11 +22,11 @@ import {
 import Link from "next/link";
 
 export default function ProviderListingsPage() {
-  // Mock data for listings
+  // Mock, data for, listings
   const listings = [
     {
       id: 1,
-      title: "Professional Home Cleaning",
+      title: "Professional, Home Cleaning",
       category: "Cleaning",
       price: 45,
       status: "active",

@@ -254,7 +254,7 @@ export default function AdvancedSettings() {
       name: "iPhone 14 Pro",
       type: "mobile",
       browser: "Safari 17.0",
-      location: "New York, NY",
+      location: "New, York, NY",
       lastActive: new Date(),
       isCurrent: true,
     },
@@ -263,7 +263,7 @@ export default function AdvancedSettings() {
       name: "MacBook Pro",
       type: "desktop", 
       browser: "Chrome 119.0",
-      location: "New York, NY",
+      location: "New, York, NY",
       lastActive: new Date(Date.now() - 30 * 60 * 1000),
       isCurrent: false,
     },
@@ -333,7 +333,7 @@ export default function AdvancedSettings() {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Advanced Settings</h1>
           <p className="text-muted-foreground">
-            Manage privacy, security, notifications, and platform preferences
+            Manage, privacy, security, notifications, and platform preferences
           </p>
         </div>
         <div className="flex gap-3">

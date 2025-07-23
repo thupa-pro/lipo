@@ -44,7 +44,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
         category: "cleaning",
         title: "Deep House Cleaning Service",
         description:
-          "Professional deep cleaning including kitchen, bathrooms, bedrooms, and living areas with eco-friendly products.",
+          "Professional deep cleaning including, kitchen, bathrooms, bedrooms, and living areas with eco-friendly products.",
         urgency: "medium",
         estimatedPrice: "$75-120",
         confidence: 95,
@@ -56,7 +56,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
       mockSuggestions.push({
         category: "handyman",
         title: "Home Repair & Maintenance",
-        description: "General handyman services for minor repairs, fixture installation, and basic troubleshooting.",
+        description: "General handyman services for minor, repairs, fixture, installation, and basic troubleshooting.",
         urgency: "urgent",
         estimatedPrice: "$50-80/hr",
         confidence: 88,
@@ -68,7 +68,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
       mockSuggestions.push({
         category: "moving",
         title: "Moving & Packing Assistance",
-        description: "Professional moving help including packing, loading, and transportation coordination.",
+        description: "Professional moving help including, packing, loading, and transportation coordination.",
         urgency: "urgent",
         estimatedPrice: "$100-200",
         confidence: 85,
@@ -142,7 +142,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
             </div>
             <h3 className="text-xl font-semibold mb-2">AI Job Discovery Assistant</h3>
             <p className="text-muted-foreground">
-              Describe what you need help with, and I'll suggest the perfect service for you
+              Describe what you need help, with, and I'll suggest the perfect service for you
             </p>
           </div>
 
@@ -165,7 +165,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
                 <div>
                   <h4 className="font-medium text-blue-900">AI-Powered Suggestions</h4>
                   <p className="text-sm text-blue-700 mt-1">
-                    Our AI will analyze your description and suggest the best service category, estimated pricing, and
+                    Our AI will analyze your description and suggest the best service, category, estimated, pricing, and
                     urgency level to help you get matched faster.
                   </p>
                 </div>
@@ -193,7 +193,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
         <div className="space-y-6">
           <div className="text-center">
             <h3 className="text-xl font-semibold mb-2">AI Suggestions for Your Request</h3>
-            <p className="text-muted-foreground">Based on your description, here are the best matches:</p>
+            <p className="text-muted-foreground">Based on your, description, here are the best matches:</p>
           </div>
 
           <div className="grid gap-4">

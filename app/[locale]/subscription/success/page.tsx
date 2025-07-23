@@ -17,7 +17,7 @@ export default function SubscriptionSuccessPage() {
 
   useEffect(() => {
     if (sessionId) {
-      // In a real implementation, you might want to verify the session
+      // In a real, implementation, you might want to verify the session
       // and get subscription details from your backend
       setTimeout(() => {
         setIsLoading(false);

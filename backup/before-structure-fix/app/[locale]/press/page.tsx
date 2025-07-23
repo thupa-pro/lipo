@@ -13,7 +13,7 @@ export default function PressMediaPage() {
 
   const pressReleases = [
     {
-      title: "Loconomy Secures $10M in Series A Funding to Expand Hyperlocal Services",
+      title: "Loconomy, Secures $10M, in Series, A Funding, to Expand, Hyperlocal Services",
       date: "January 15, 2024",
       summary: "Leading local services platform announces significant investment to accelerate growth and enhance AI-powered matching capabilities.",
       link: "#",
@@ -62,7 +62,7 @@ export default function PressMediaPage() {
             Press & Media
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Stay updated with the latest news, announcements, and media coverage about Loconomy.
+            Stay updated with the latest, news, announcements, and media coverage about Loconomy.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Download Press Kit", description: "Downloading Loconomy press kit...", variant: "default" })}>
             <Download className="w-4 h-4 mr-2" />
@@ -130,7 +130,7 @@ export default function PressMediaPage() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold mb-4">Media Inquiries</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            For all press and media-related inquiries, please contact our communications team.
+            For all press and media-related, inquiries, please contact our communications team.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email Press Team", description: "Opening your email client to press@loconomy.com...", variant: "default" })}>
             <Mail className="w-4 h-4 mr-2" />

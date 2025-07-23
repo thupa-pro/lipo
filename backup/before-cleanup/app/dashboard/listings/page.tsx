@@ -456,7 +456,7 @@ export default function ListingsPage() {
                 Clear Descriptions
               </h4>
               <p className="text-blue-800">
-                Write detailed descriptions explaining what's included, your
+                Write detailed descriptions explaining what's, included, your
                 process, and what makes you special.
               </p>
             </div>

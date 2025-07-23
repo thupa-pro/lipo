@@ -206,7 +206,7 @@ export function BookingDetailsModal({
                         <div className="font-medium">
                           {format(
                             new Date(booking.booking_date),
-                            "EEEE, MMMM d, yyyy",
+                            "EEEE, MMMM, d, yyyy",
                           )}
                         </div>
                         <div className="text-sm text-gray-600">Date</div>
@@ -487,7 +487,7 @@ export function BookingDetailsModal({
                   <div className="flex justify-between">
                     <span>Created:</span>
                     <span>
-                      {format(new Date(booking.created_at), "MMM d, h:mm a")}
+                      {format(new Date(booking.created_at), "MMM, d, h:mm a")}
                     </span>
                   </div>
 
@@ -497,7 +497,7 @@ export function BookingDetailsModal({
                       <span>
                         {format(
                           new Date(booking.confirmed_at),
-                          "MMM d, h:mm a",
+                          "MMM, d, h:mm a",
                         )}
                       </span>
                     </div>
@@ -507,7 +507,7 @@ export function BookingDetailsModal({
                     <div className="flex justify-between">
                       <span>Started:</span>
                       <span>
-                        {format(new Date(booking.started_at), "MMM d, h:mm a")}
+                        {format(new Date(booking.started_at), "MMM, d, h:mm a")}
                       </span>
                     </div>
                   )}
@@ -518,7 +518,7 @@ export function BookingDetailsModal({
                       <span>
                         {format(
                           new Date(booking.completed_at),
-                          "MMM d, h:mm a",
+                          "MMM, d, h:mm a",
                         )}
                       </span>
                     </div>
@@ -530,7 +530,7 @@ export function BookingDetailsModal({
                       <span>
                         {format(
                           new Date(booking.cancelled_at),
-                          "MMM d, h:mm a",
+                          "MMM, d, h:mm a",
                         )}
                       </span>
                     </div>

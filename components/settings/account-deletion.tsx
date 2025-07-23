@@ -76,8 +76,8 @@ export function AccountDeletion({
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Before deleting your account, you can download a copy of your data.
-            This includes your profile information, booking history, messages,
+            Before deleting your, account, you can download a copy of your data.
+            This includes your profile, information, booking, history, messages,
             and more.
           </p>
 

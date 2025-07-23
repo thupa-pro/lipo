@@ -21,10 +21,10 @@ import {
 const recentReviews = [
   {
     id: 1,
-    service: "House Cleaning",
-    provider: "Sarah Mitchell",
+    service: "House, Cleaning",
+    provider: "Sarah, Mitchell",
     rating: 5,
-    review: "Excellent service! Very thorough and professional.",
+    review: "Excellent, service! Very, thorough and, professional.",
     date: "Dec 10, 2024",
   },
   {
@@ -96,7 +96,7 @@ export default function ProfilePage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-sm">New York, NY</span>
+                  <span className="text-sm">New, York, NY</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Calendar className="w-4 h-4 text-muted-foreground" />
@@ -146,7 +146,7 @@ export default function ProfilePage() {
                     <Label htmlFor="address">Address</Label>
                     <Input
                       id="address"
-                      defaultValue="123 Main St, New York, NY 10001"
+                      defaultValue="123 Main, St, New, York, NY 10001"
                     />
                   </div>
 

@@ -10,7 +10,7 @@ export function HealthCheck() {
   useEffect(() => {
     setMounted(true);
 
-    // Listen for hydration errors
+    // Listen, for hydration, errors
     const handleError = (event: ErrorEvent) => {
       if (
         event.message.includes("hydration") ||

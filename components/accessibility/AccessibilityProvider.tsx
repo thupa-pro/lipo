@@ -133,7 +133,7 @@ const availableLanguages: Language[] = [
   { code: "he", name: "Hebrew", nativeName: "עברית", flag: "🇮🇱", rtl: true },
 ];
 
-// Mock translations - in real app, these would come from i18n files
+// Mock translations - in real, app, these would come from i18n files
 const translations: Record<string, Record<string, string>> = {
   en: {
     "accessibility.title": "Accessibility Settings",

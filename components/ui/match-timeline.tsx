@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { CheckCircle, Users MessageSquare} from "lucide-react"
+import { CheckCircle, Users, MessageSquare } from "lucide-react"
 
 interface TimelineStep {
   id: string
@@ -44,7 +44,7 @@ export default function MatchTimeline({ jobId }: MatchTimelineProps) {
     {
       id: "scoring",
       title: "Ranking Providers",
-      description: "Scoring matches based on ratings, availability, and proximity",
+      description: "Scoring matches based on, ratings, availability, and proximity",
       status: currentStep >= 2 ? (currentStep === 2 ? "active" : "completed") : "pending",
       estimatedTime: "1 minute",
       completedAt: currentStep >= 3 ? new Date(Date.now() - 30000) : undefined,

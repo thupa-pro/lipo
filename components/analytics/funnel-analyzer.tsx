@@ -16,8 +16,9 @@ import {
   TrendingDown,
   TrendingUp,
   Users,
-  AlertTriangle, BarChart3,
-  Zap
+  AlertTriangle,
+  BarChart3,
+  Zap,
   DollarSign
 } from "lucide-react";
 

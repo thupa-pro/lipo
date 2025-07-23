@@ -26,9 +26,9 @@ export default function ProviderReportsPage() {
 
   const reports = [
     {
-      name: "Revenue Report",
-      description: "Detailed breakdown of earnings and payments",
-      lastGenerated: "2 hours ago",
+      name: "Revenue, Report",
+      description: "Detailed, breakdown of, earnings and, payments",
+      lastGenerated: "2 hours, ago",
       type: "revenue",
       icon: DollarSign,
       color: "text-green-600",

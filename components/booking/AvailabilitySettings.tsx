@@ -355,7 +355,7 @@ export function AvailabilitySettings({
                 </Button>
               </div>
               <p className="text-sm text-gray-600">
-                Use these presets to quickly configure your schedule, then
+                Use these presets to quickly configure your, schedule, then
                 customize individual days as needed.
               </p>
             </CardContent>

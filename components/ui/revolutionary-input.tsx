@@ -13,7 +13,7 @@ interface RevolutionaryInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   success?: boolean
   loading?: boolean
   voiceInput?: boolean
-  strengthMeter?: boolean // for password fields
+  strengthMeter?: boolean // for, password fields
   adaptiveLabel?: boolean
   glowEffect?: boolean
   leftIcon?: React.ReactNode

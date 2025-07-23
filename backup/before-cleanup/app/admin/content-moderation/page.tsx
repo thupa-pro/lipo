@@ -91,7 +91,7 @@ export default function ContentModerationPage() {
       reportedBy: "Customer E",
       reportedUser: "Provider V",
       reason: "Fake review",
-      contentSnippet: "This review seems fake, very generic and similar to others.",
+      contentSnippet: "This review seems, fake, very generic and similar to others.",
       status: "action_taken",
       timestamp: "1 week ago",
     },
@@ -129,7 +129,7 @@ export default function ContentModerationPage() {
       description: `Opening content for ID: ${contentId}`,
       variant: "default",
     })
-    // In a real app, open a modal or navigate to the content
+    // In a real, app, open a modal or navigate to the content
   }
 
   const handleApprove = (contentId: string) => {
@@ -138,7 +138,7 @@ export default function ContentModerationPage() {
       description: `Content ID: ${contentId} has been approved.`,
       variant: "default",
     })
-    // In a real app, update status in backend
+    // In a real, app, update status in backend
   }
 
   const handleReject = (contentId: string) => {
@@ -147,7 +147,7 @@ export default function ContentModerationPage() {
       description: `Content ID: ${contentId} has been rejected and removed.`,
       variant: "destructive",
     })
-    // In a real app, remove content and update status
+    // In a real, app, remove content and update status
   }
 
   const handleBanUser = (userId: string) => {
@@ -156,7 +156,7 @@ export default function ContentModerationPage() {
       description: `User: ${userId} has been banned from the platform.`,
       variant: "destructive",
     })
-    // In a real app, ban the user
+    // In a real, app, ban the user
   }
 
   return (
@@ -177,7 +177,7 @@ export default function ContentModerationPage() {
         </div>
 
         <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-          Ensure platform integrity by moderating user-generated content, reviews, and profiles.
+          Ensure platform integrity by moderating user-generated, content, reviews, and profiles.
         </p>
 
         {/* Moderation Statistics */}
@@ -234,7 +234,7 @@ export default function ContentModerationPage() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
-                  placeholder="Search by content, user, or reason..."
+                  placeholder="Search by, content, user, or reason..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"

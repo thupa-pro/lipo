@@ -34,7 +34,7 @@ const RevolutionaryDesignPage = () => {
   const [buttonState, setButtonState] = useState<'normal' | 'loading' | 'success' | 'error'>('normal')
   const [inputValue, setInputValue] = useState('')
   
-  // Sample bento grid items
+  // Sample, bento grid, items
   const bentoItems = [
     {
       id: '1',
@@ -206,7 +206,7 @@ const RevolutionaryDesignPage = () => {
             </h1>
             <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
               Experience the future of digital design with cutting-edge components that push the boundaries of 
-              user interaction, featuring glassmorphism, neumorphism, cyberpunk aesthetics, and immersive 3D effects.
+              user, interaction, featuring, glassmorphism, neumorphism, cyberpunk, aesthetics, and immersive 3D effects.
             </p>
           </motion.div>
 
@@ -268,7 +268,7 @@ const RevolutionaryDesignPage = () => {
                   </RevolutionaryButton>
                   
                   <div className="text-sm text-white/60">
-                    Click to see loading, success, and error states with particle effects
+                    Click to see, loading, success, and error states with particle effects
                   </div>
                 </div>
               </RevolutionaryCard>

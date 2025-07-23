@@ -199,7 +199,7 @@ export function ServiceDetailsStep({
           </Label>
         </div>
         <p className="text-sm text-gray-600">
-          Add any relevant certifications, licenses, or qualifications.
+          Add any relevant, certifications, licenses, or qualifications.
         </p>
 
         <div className="flex gap-2">
