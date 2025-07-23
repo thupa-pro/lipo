@@ -26,7 +26,7 @@ export default function SignUpPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [step, setStep] = useState(1); // 1: role, selection, 2: info, form, 3: success
+  const [step, setStep] = useState(1); // 1: role selection, 2: info form, 3: success
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const params = useParams();
