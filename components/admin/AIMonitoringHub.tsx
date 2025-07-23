@@ -21,7 +21,8 @@ import {
   Gauge,
   Server,
   Cloud,
-  Eye} from 'lucide-react';
+  Eye,
+  Zap} from 'lucide-react';
 
 interface SystemAlert {
   id: string;
