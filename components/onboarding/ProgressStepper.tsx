@@ -1,7 +1,7 @@
 import React from "react";
 import { OnboardingStep } from "@/lib/onboarding/types";
 import { getStepProgress, isStepCompleted } from "@/lib/onboarding/utils";
-import {  Circle, ArrowRight } from "lucide-react";
+import {  Circle, ArrowRight, CheckCircle } from "lucide-react";
 
 interface ProgressStepperProps {
   currentStep: OnboardingStep;
