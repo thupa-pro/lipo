@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Briefcase } from "lucide-react";
+import { ArrowRight, Users, Briefcase, CheckCircle } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 
 export function WelcomeStep({ onNext }: OnboardingStepProps) {
