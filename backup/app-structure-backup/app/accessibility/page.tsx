@@ -13,7 +13,7 @@ export default function AccessibilityPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="py-16 px-4 text-center, bg-gradient-to-br, from-blue-50 to-green-50">
+      <header className="py-16 px-4 text-center bg-gradient-to-br from-blue-50 to-green-50">
         <div className="container mx-auto max-w-4xl">
           <AccessibilityIcon className="w-16 h-16 text-blue-600 mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
