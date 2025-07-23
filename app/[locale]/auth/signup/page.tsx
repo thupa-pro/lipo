@@ -9,9 +9,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { 
+import {
   Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff,
-  Users, Briefcase, Chrome, Github} from "lucide-react";
+  Users, Briefcase, Chrome, Github, CheckCircle, User, Star, Zap
+} from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 
