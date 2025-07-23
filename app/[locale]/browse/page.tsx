@@ -14,7 +14,8 @@ import {
   Sparkles,
   Heart,
   Brain,
-  MessageCircle
+  MessageCircle,
+  Star
 } from "lucide-react";
 
 // Sample, provider data
