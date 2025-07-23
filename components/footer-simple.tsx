@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Logo } from "@/components/ui/logo";
+import { LogoVariant, UIContext } from "@/lib/types/logo";
 
 export default function SimpleFooter() {
   const params = useParams();
@@ -13,7 +15,14 @@ export default function SimpleFooter() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Brand */}
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold mb-2">Loconomy</h3>
+          <div className="flex justify-center mb-4">
+            <Logo
+              variant={LogoVariant.LIGHT}
+              context={UIContext.FOOTER}
+              className="h-8 w-auto"
+              alt="Loconomy - Elite AI Platform"
+            />
+          </div>
           <p className="text-slate-400">Elite AI-Powered Local Services Platform</p>
         </div>
 
