@@ -89,6 +89,10 @@ const nextConfig = {
       };
     }
 
+    // Suppress critical dependency warnings from OpenTelemetry
+    config.module.exprContextCritical = false;
+    config.module.unknownContextCritical = false;
+
     return config;
   },
 
