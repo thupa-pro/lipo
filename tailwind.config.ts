@@ -591,16 +591,16 @@ const config: Config = {
 
         // Text Effects
         ".text-gradient-primary": {
-          background: "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--primary-emphasis)))",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
+          'background': "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--primary-emphasis)))",
+          'background-clip': "text",
+          '-webkit-background-clip': "text",
+          'color': "transparent",
         },
         ".text-gradient-rainbow": {
-          background: "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--accent)), oklch(var(--success)), oklch(var(--warning)))",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
+          'background': "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--accent)), oklch(var(--success)), oklch(var(--warning)))",
+          'background-clip': "text",
+          '-webkit-background-clip': "text",
+          'color': "transparent",
         },
 
         // Layout Utilities
