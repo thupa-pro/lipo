@@ -4,8 +4,13 @@ import { getRequestConfig } from 'next-intl/server';
 export const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
 
 export default getRequestConfig(async ({ locale }) => {
+  // Handle undefined locale
+  if (!locale) {
+    locale = 'en';
+  }
+
   // Validate that the incoming `locale` parameter is valid
-  if (!locale || !locales.includes(locale as any)) {
+  if (!locales.includes(locale as any)) {
     console.warn(`Invalid locale "${locale}", using default "en"`);
     locale = 'en';
   }
