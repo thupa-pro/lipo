@@ -10,88 +10,152 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
+        xl: "3rem",
+        "2xl": "4rem",
+      },
       screens: {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
         "2xl": "1400px",
       },
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        // Core System Colors (OKLCH)
+        border: "oklch(var(--border))",
+        input: "oklch(var(--input))",
+        ring: "oklch(var(--ring))",
+        background: "oklch(var(--background))",
+        foreground: "oklch(var(--foreground))",
+
+        // Semantic Colors
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "oklch(var(--primary))",
+          foreground: "oklch(var(--primary-foreground))",
+          subtle: "oklch(var(--primary-subtle))",
+          emphasis: "oklch(var(--primary-emphasis))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "oklch(var(--secondary))",
+          foreground: "oklch(var(--secondary-foreground))",
+          subtle: "oklch(var(--secondary-subtle))",
+          emphasis: "oklch(var(--secondary-emphasis))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "oklch(var(--accent))",
+          foreground: "oklch(var(--accent-foreground))",
+          subtle: "oklch(var(--accent-subtle))",
+          emphasis: "oklch(var(--accent-emphasis))",
         },
+        muted: {
+          DEFAULT: "oklch(var(--muted))",
+          foreground: "oklch(var(--muted-foreground))",
+          subtle: "oklch(var(--muted-subtle))",
+        },
+        destructive: {
+          DEFAULT: "oklch(var(--destructive))",
+          foreground: "oklch(var(--destructive-foreground))",
+          subtle: "oklch(var(--destructive-subtle))",
+        },
+        success: {
+          DEFAULT: "oklch(var(--success))",
+          foreground: "oklch(var(--success-foreground))",
+          subtle: "oklch(var(--success-subtle))",
+        },
+        warning: {
+          DEFAULT: "oklch(var(--warning))",
+          foreground: "oklch(var(--warning-foreground))",
+          subtle: "oklch(var(--warning-subtle))",
+        },
+
+        // Surface Colors
+        surface: {
+          DEFAULT: "oklch(var(--surface))",
+          elevated: "oklch(var(--surface-elevated))",
+          overlay: "oklch(var(--surface-overlay))",
+          glass: "oklch(var(--surface-glass))",
+        },
+
+        // Legacy support (will be deprecated)
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "oklch(var(--surface-elevated))",
+          foreground: "oklch(var(--foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "oklch(var(--surface))",
+          foreground: "oklch(var(--foreground))",
         },
-        // Custom brand colors
-        blue: {
-          50: "#EFF6FF",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6", // Primary Blue: #2563EB (Tailwind's default blue-600)
-          600: "#2563EB", // Primary Blue: #2563EB
-          700: "#1D4ED8",
-          800: "#1E40AF",
-          900: "#1E3A8A",
-          950: "#172554",
+        // AI-Native Context Colors
+        ai: {
+          DEFAULT: "oklch(var(--ai))",
+          foreground: "oklch(var(--ai-foreground))",
+          thinking: "oklch(var(--ai-thinking))",
+          success: "oklch(var(--ai-success))",
         },
-        teal: {
-          50: "#F0FDFA",
-          100: "#CCFBF1",
-          200: "#99F6E4",
-          300: "#5EEAD4",
-          400: "#2DD4BF",
-          500: "#14B8A6",
-          600: "#0D9488",
-          700: "#0F766E",
-          800: "#115E59",
-          900: "#134E4A",
-          950: "#042F2E",
+
+        // Brand Context Colors
+        local: {
+          DEFAULT: "oklch(var(--local))",
+          foreground: "oklch(var(--local-foreground))",
+          trust: "oklch(var(--local-trust))",
+        },
+        premium: {
+          DEFAULT: "oklch(var(--premium))",
+          foreground: "oklch(var(--premium-foreground))",
+          luxury: "oklch(var(--premium-luxury))",
+        },
+
+        // Adaptive Neutral Scale
+        neutral: {
+          50: "oklch(98% 0 0)",
+          100: "oklch(96% 0 0)",
+          200: "oklch(90% 0 0)",
+          300: "oklch(83% 0 0)",
+          400: "oklch(64% 0 0)",
+          500: "oklch(53% 0 0)",
+          600: "oklch(45% 0 0)",
+          700: "oklch(39% 0 0)",
+          800: "oklch(28% 0 0)",
+          900: "oklch(20% 0 0)",
+          950: "oklch(15% 0 0)",
         },
         chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
+          "1": "oklch(var(--chart-1))",
+          "2": "oklch(var(--chart-2))",
+          "3": "oklch(var(--chart-3))",
+          "4": "oklch(var(--chart-4))",
+          "5": "oklch(var(--chart-5))",
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        none: "0",
+        xs: "0.125rem",
+        sm: "0.25rem",
+        md: "0.375rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "4xl": "2rem",
+        full: "9999px",
+
+        // Component-specific
+        button: "var(--radius-button)",
+        input: "var(--radius-input)",
+        card: "var(--radius-card)",
+        modal: "var(--radius-modal)",
       },
       keyframes: {
         "accordion-down": {
@@ -196,14 +260,102 @@ const config: Config = {
         shimmer: "shimmer 2s linear infinite",
       },
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "Consolas", "monospace"],
-        display: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+        sans: [
+          "var(--font-geist-sans)",
+          "Inter Variable",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI Variable",
+          "sans-serif"
+        ],
+        mono: [
+          "var(--font-geist-mono)",
+          "JetBrains Mono Variable",
+          "SF Mono",
+          "Consolas",
+          "Liberation Mono",
+          "monospace"
+        ],
+        display: [
+          "var(--font-cal-sans)",
+          "Cal Sans",
+          "Inter Variable",
+          "system-ui",
+          "sans-serif"
+        ],
       },
       fontSize: {
-        "2xs": ["0.625rem", { lineHeight: "0.75rem" }],
+        "2xs": ["clamp(0.625rem, 0.6rem + 0.125vw, 0.75rem)", {
+          lineHeight: "1.2",
+          letterSpacing: "0.025em",
+        }],
+        xs: ["clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)", {
+          lineHeight: "1.3",
+          letterSpacing: "0.02em",
+        }],
+        sm: ["clamp(0.875rem, 0.8rem + 0.375vw, 1rem)", {
+          lineHeight: "1.4",
+          letterSpacing: "0.015em",
+        }],
+        base: ["clamp(1rem, 0.9rem + 0.5vw, 1.125rem)", {
+          lineHeight: "1.5",
+          letterSpacing: "0.01em",
+        }],
+        lg: ["clamp(1.125rem, 1rem + 0.625vw, 1.25rem)", {
+          lineHeight: "1.4",
+          letterSpacing: "0.005em",
+        }],
+        xl: ["clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem)", {
+          lineHeight: "1.3",
+          letterSpacing: "0",
+        }],
+        "2xl": ["clamp(1.5rem, 1.3rem + 1vw, 1.875rem)", {
+          lineHeight: "1.2",
+          letterSpacing: "-0.005em",
+        }],
+        "3xl": ["clamp(1.875rem, 1.6rem + 1.375vw, 2.25rem)", {
+          lineHeight: "1.1",
+          letterSpacing: "-0.01em",
+        }],
+        "4xl": ["clamp(2.25rem, 1.9rem + 1.75vw, 3rem)", {
+          lineHeight: "1.05",
+          letterSpacing: "-0.015em",
+        }],
+        "5xl": ["clamp(3rem, 2.5rem + 2.5vw, 3.75rem)", {
+          lineHeight: "1",
+          letterSpacing: "-0.02em",
+        }],
+        "6xl": ["clamp(3.75rem, 3rem + 3.75vw, 4.5rem)", {
+          lineHeight: "0.95",
+          letterSpacing: "-0.025em",
+        }],
       },
       spacing: {
+        xs: "0.25rem",
+        sm: "0.5rem",
+        md: "0.75rem",
+        lg: "1rem",
+        xl: "1.5rem",
+        "2xl": "2rem",
+        "3xl": "3rem",
+        "4xl": "4rem",
+        "5xl": "5rem",
+        "6xl": "6rem",
+
+        // Contextual Spacing
+        gutter: "clamp(1rem, 4vw, 2rem)",
+        section: "clamp(2rem, 8vw, 6rem)",
+        prose: "clamp(1rem, 2vw, 1.5rem)",
+
+        // Component Spacing
+        "input-y": "0.625rem",
+        "input-x": "0.875rem",
+        "button-y": "0.5rem",
+        "button-x": "1rem",
+        "card-padding": "1.5rem",
+
+        // Legacy (will be deprecated)
         "18": "4.5rem",
         "88": "22rem",
         "128": "32rem",
