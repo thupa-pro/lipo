@@ -359,7 +359,7 @@ export default function SignInPage() {
                           ← Change email
                         </button>
                         <Link
-                          href="/auth/forgot-password"
+                          href={`/${locale}/auth/forgot-password`}
                           className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
                         >
                           Forgot password?
