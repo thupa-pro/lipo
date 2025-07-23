@@ -618,25 +618,25 @@ const config: Config = {
 
         // Scroll Enhancements
         ".scroll-smooth": {
-          scrollBehavior: "smooth",
+          'scroll-behavior': "smooth",
         },
         ".scroll-area": {
-          scrollbarWidth: "thin",
-          scrollbarColor: "oklch(var(--muted)) transparent",
-          "&::-webkit-scrollbar": {
-            width: "6px",
-            height: "6px",
-          },
-          "&::-webkit-scrollbar-track": {
-            background: "transparent",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            background: "oklch(var(--muted-foreground) / 0.3)",
-            borderRadius: "3px",
-            "&:hover": {
-              background: "oklch(var(--muted-foreground) / 0.5)",
-            },
-          },
+          'scrollbar-width': "thin",
+          'scrollbar-color': "oklch(var(--muted-foreground) / 0.3) transparent",
+        },
+        ".scroll-area::-webkit-scrollbar": {
+          'width': "6px",
+          'height': "6px",
+        },
+        ".scroll-area::-webkit-scrollbar-track": {
+          'background': "transparent",
+        },
+        ".scroll-area::-webkit-scrollbar-thumb": {
+          'background': "oklch(var(--muted-foreground) / 0.3)",
+          'border-radius': "3px",
+        },
+        ".scroll-area::-webkit-scrollbar-thumb:hover": {
+          'background': "oklch(var(--muted-foreground) / 0.5)",
         },
 
         // Loading States
