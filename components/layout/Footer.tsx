@@ -13,7 +13,7 @@ import {
   MapPin,
   Heart} from "lucide-react";
 
-export default function Footer() {
+export default function OldFooter() {
   const currentYear = new Date().getFullYear();
 
   const footerSections = [
