@@ -15,7 +15,7 @@ import { SovereignAnalyticsProvider } from '@/lib/analytics/providers';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { ClerkProvider } from '@/components/providers/ClerkProvider';
 import { CookieConsentProvider, CookieConsentBanner, CookieSettingsLink } from '@/components/cookies';
-import Footer from '@/components/footer';
+import Footer from '@/components/footer-simple';
 
 const inter = Inter({ subsets: ['latin'] });
 
