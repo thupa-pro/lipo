@@ -17,6 +17,28 @@
     "yes": "Yes",
     "no": "No"
   },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No",
+    "home": "Home",
+    "pageNotFound": "Page Not Found",
+    "goHome": "Go Home",
+    "browseServices": "Browse Services"
+  },
   "navigation": {
     "home": "Home",
     "services": "Services",
