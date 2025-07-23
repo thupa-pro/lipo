@@ -20,7 +20,11 @@ import {
   MapPin,
   AlertTriangle,
   ArrowUpRight,
-  Rocket
+  Rocket,
+  Shield,
+  Clock,
+  CheckCircle,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 

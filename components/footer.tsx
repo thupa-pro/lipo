@@ -16,21 +16,25 @@ import {
   MapPin,
   Globe,
   Award,
-  Users, BookOpen,
+  Users,
+  BookOpen,
   GraduationCap,
   Newspaper,
   Lightbulb,
-  Handshake
+  Handshake,
   Accessibility,
   DollarSign,
   Crown,
   Brain,
   Rocket,
-  Gem
+  Gem,
   Building2,
   Sparkles,
-  ArrowRight
-  TrendingUp
+  ArrowRight,
+  TrendingUp,
+  Shield,
+  Zap,
+  Heart
 } from "lucide-react";
 import {
   Select,

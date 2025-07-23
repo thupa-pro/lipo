@@ -15,9 +15,9 @@ import {
   Accessibility,
   Search,
   Filter,
-  ArrowRight
-  CheckCircle
-  MapPin
+  ArrowRight,
+  CheckCircle,
+  MapPin,
   Phone,
   Video
 } from 'lucide-react';

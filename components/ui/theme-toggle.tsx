@@ -1,225 +1,422 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, Monitor, Palette} from "lucide-react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { 
+  Sun, 
+  Moon, 
+  Monitor, 
+  Palette, 
+  Sparkles,
+  Zap,
+  Stars,
+  Sunrise,
+  Sunset
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  variant?: "icon" | "button" | "floating" | "minimal";
+  size?: "sm" | "md" | "lg";
+  showLabel?: boolean;
+  className?: string;
+}
+
+export function ThemeToggle({ 
+  variant = "icon", 
+  size = "md", 
+  showLabel = false,
+  className 
+}: ThemeToggleProps) {
+  const { theme, setTheme, resolvedTheme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  const handleThemeChange = (newTheme: "light" | "dark" | "system") => {
+    setIsAnimating(true);
+    setTheme(newTheme);
+    setTimeout(() => setIsAnimating(false), 500);
+  };
+
+  const handleToggle = () => {
+    setIsAnimating(true);
+    toggleTheme();
+    setTimeout(() => setIsAnimating(false), 500);
+  };
+
   if (!mounted) {
     return (
-      <Button variant="ghost" size="sm" className="w-9 h-9">
-        <Sun className="h-4 w-4" />
-      </Button>
+      <div className={cn(
+        "rounded-lg animate-pulse bg-muted",
+        size === "sm" && "w-8 h-8",
+        size === "md" && "w-10 h-10", 
+        size === "lg" && "w-12 h-12"
+      )} />
     );
   }
 
-  return <ThemeToggleContent />;
-}
+  const sizeClasses = {
+    sm: "w-8 h-8",
+    md: "w-10 h-10",
+    lg: "w-12 h-12"
+  };
 
-function ThemeToggleContent() {
-  const { theme, setTheme, resolvedTheme, toggleTheme } = useTheme();
+  const iconSizes = {
+    sm: "w-4 h-4",
+    md: "w-5 h-5", 
+    lg: "w-6 h-6"
+  };
 
-  const themes = [
-    {
-      key: "light",
-      label: "Light",
-      icon: Sun,
-      description: "Clean and bright interface",
-      gradient: "from-yellow-400 to-orange-500",
-    },
-    {
-      key: "dark",
-      label: "Dark",
-      icon: Moon,
-      description: "Easy on the eyes",
-      gradient: "from-blue-600 to-purple-600",
-    },
-    {
-      key: "system",
-      label: "System",
-      icon: Monitor,
-      description: "Follows your device setting",
-      gradient: "from-slate-500 to-slate-700",
-    },
-  ];
-
-  const currentTheme = themes.find(t => t.key === theme) || themes[0];
-  const CurrentIcon = currentTheme.icon;
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className="relative w-9 h-9 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 group"
-        >
-          <motion.div
-            key={theme}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="relative"
-          >
-            <CurrentIcon className="h-4 w-4 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
-            
-            {/* Subtle glow effect */}
-            <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${currentTheme.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm`} />
-          </motion.div>
-          
-          {/* Active theme indicator */}
-          <motion.div
-            className="absolute -bottom-0.5 left-1/2 w-1 h-1 bg-blue-500 rounded-full"
-            initial={{ scale: 0, x: "-50%" }}
-            animate={{ scale: 1, x: "-50%" }}
-            transition={{ delay: 0.1 }}
-          />
-        </Button>
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent 
-        align="end" 
-        className="w-56 p-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl rounded-2xl"
-      >
-        <div className="px-2 py-2 mb-2">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
-              <Palette className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900 dark:text-white">
-                Theme
-              </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Choose your interface style
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <DropdownMenuSeparator className="my-2 bg-slate-200/50 dark:bg-slate-700/50" />
-
-        {themes.map((themeOption) => {
-          const IconComponent = themeOption.icon;
-          const isActive = theme === themeOption.key;
-          
-          return (
-            <DropdownMenuItem
-              key={themeOption.key}
-              onClick={() => setTheme(themeOption.key as any)}
-              className={`
-                relative p-3 rounded-xl cursor-pointer transition-all duration-200 mb-1
-                ${isActive 
-                  ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300' 
-                  : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
-                }
-              `}
+  // Futuristic Icon Toggle Variant
+  if (variant === "icon") {
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleToggle}
+              className={cn(
+                "relative group transition-all duration-500 hover:scale-105 active:scale-95",
+                "border border-transparent hover:border-primary/20",
+                "bg-gradient-to-br from-background via-background to-muted/30",
+                "hover:bg-gradient-to-br hover:from-primary/10 hover:via-background hover:to-secondary/10",
+                "dark:hover:from-primary/5 dark:hover:via-background dark:hover:to-secondary/5",
+                "hover:shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary/10",
+                "backdrop-blur-sm rounded-xl",
+                sizeClasses[size],
+                className
+              )}
             >
-              <div className="flex items-center gap-3 w-full">
-                <div className={`
-                  w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200
-                  ${isActive 
-                    ? `bg-gradient-to-r ${themeOption.gradient} shadow-lg` 
-                    : 'bg-slate-100 dark:bg-slate-800'
-                  }
-                `}>
-                  <IconComponent className={`
-                    w-5 h-5 transition-colors duration-200
-                    ${isActive 
-                      ? 'text-white' 
-                      : 'text-slate-600 dark:text-slate-400'
-                    }
-                  `} />
-                </div>
+              {/* Background Glow Effect */}
+              <div className={cn(
+                "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                "bg-gradient-to-br from-primary/20 via-transparent to-secondary/20",
+                "blur-sm scale-110"
+              )} />
+              
+              {/* Main Icon Container */}
+              <div className={cn(
+                "relative z-10 flex items-center justify-center transition-all duration-500",
+                isAnimating && "animate-spin"
+              )}>
+                {/* Light Mode Icon */}
+                <Sun className={cn(
+                  iconSizes[size],
+                  "absolute transition-all duration-500 text-amber-500",
+                  "drop-shadow-sm",
+                  resolvedTheme === "dark" 
+                    ? "opacity-0 scale-0 rotate-90" 
+                    : "opacity-100 scale-100 rotate-0",
+                  isAnimating && "animate-pulse"
+                )} />
                 
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <p className={`
-                      text-sm font-medium transition-colors duration-200
-                      ${isActive 
-                        ? 'text-blue-700 dark:text-blue-300' 
-                        : 'text-slate-700 dark:text-slate-300'
-                      }
-                    `}>
-                      {themeOption.label}
-                    </p>
-                    
-                    {isActive && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="w-2 h-2 bg-blue-500 rounded-full"
-                      />
-                    )}
-                  </div>
-                  
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    {themeOption.description}
-                  </p>
-                </div>
+                {/* Dark Mode Icon */}
+                <Moon className={cn(
+                  iconSizes[size],
+                  "absolute transition-all duration-500 text-indigo-400",
+                  "drop-shadow-sm",
+                  resolvedTheme === "light" 
+                    ? "opacity-0 scale-0 -rotate-90" 
+                    : "opacity-100 scale-100 rotate-0",
+                  isAnimating && "animate-pulse"
+                )} />
+              </div>
 
-                {/* Active theme indicator */}
-                {isActive && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"
-                  />
+              {/* Sparkle Effects */}
+              <div className="absolute inset-0 pointer-events-none">
+                <Sparkles className={cn(
+                  "w-2 h-2 absolute top-1 right-1 text-primary/60 transition-all duration-700",
+                  "opacity-0 group-hover:opacity-100 animate-pulse",
+                  resolvedTheme === "light" ? "delay-100" : "delay-300"
+                )} />
+                <Stars className={cn(
+                  "w-2 h-2 absolute bottom-1 left-1 text-secondary/60 transition-all duration-700",
+                  "opacity-0 group-hover:opacity-100 animate-pulse",
+                  resolvedTheme === "dark" ? "delay-200" : "delay-400"
+                )} />
+              </div>
+
+              {/* Ripple Effect */}
+              <div className={cn(
+                "absolute inset-0 rounded-xl opacity-0 group-active:opacity-20 transition-opacity duration-200",
+                "bg-gradient-to-br from-primary to-secondary animate-ping"
+              )} />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent 
+            side="bottom" 
+            className="bg-popover/95 backdrop-blur-sm border border-border/50"
+          >
+            <span className="flex items-center gap-2 font-medium">
+              <Palette className="w-3 h-3" />
+              Switch to {resolvedTheme === "light" ? "dark" : "light"} mode
+            </span>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  }
+
+  // Advanced Dropdown Variant
+  if (variant === "button") {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            className={cn(
+              "relative group transition-all duration-500 hover:scale-105",
+              "border-2 border-dashed border-primary/20 hover:border-primary/40",
+              "bg-gradient-to-br from-background via-background to-muted/20",
+              "hover:bg-gradient-to-br hover:from-primary/5 hover:via-background hover:to-secondary/5",
+              "hover:shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary/10",
+              "backdrop-blur-sm rounded-2xl px-4 py-2",
+              showLabel ? "gap-3" : "gap-2",
+              className
+            )}
+          >
+            {/* Icon with Advanced Animation */}
+            <div className={cn(
+              "relative flex items-center justify-center transition-all duration-500",
+              isAnimating && "animate-spin"
+            )}>
+              {theme === "system" ? (
+                <Monitor className={cn(iconSizes[size], "text-violet-500")} />
+              ) : resolvedTheme === "light" ? (
+                <Sun className={cn(iconSizes[size], "text-amber-500")} />
+              ) : (
+                <Moon className={cn(iconSizes[size], "text-indigo-400")} />
+              )}
+            </div>
+
+            {showLabel && (
+              <span className="font-medium capitalize transition-colors">
+                {theme === "system" ? "Auto" : theme}
+              </span>
+            )}
+
+            {/* Animated Border */}
+            <div className={cn(
+              "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+              "bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20",
+              "animate-pulse"
+            )} style={{ animationDuration: "3s" }} />
+          </Button>
+        </DropdownMenuTrigger>
+        
+        <DropdownMenuContent 
+          align="end" 
+          className={cn(
+            "w-48 bg-popover/95 backdrop-blur-xl border border-border/50",
+            "shadow-2xl shadow-primary/10 rounded-xl p-2"
+          )}
+        >
+          <DropdownMenuItem
+            onClick={() => handleThemeChange("light")}
+            className={cn(
+              "cursor-pointer rounded-lg transition-all duration-300 p-3",
+              "hover:bg-gradient-to-r hover:from-amber-500/10 hover:to-orange-500/10",
+              theme === "light" && "bg-amber-500/10 border border-amber-500/20"
+            )}
+          >
+            <div className="flex items-center gap-3 w-full">
+              <div className="relative">
+                <Sunrise className="w-5 h-5 text-amber-500" />
+                {theme === "light" && (
+                  <Sparkles className="w-2 h-2 absolute -top-1 -right-1 text-amber-400 animate-pulse" />
                 )}
               </div>
-            </DropdownMenuItem>
-          );
-        })}
-
-        <DropdownMenuSeparator className="my-2 bg-slate-200/50 dark:bg-slate-700/50" />
-
-        {/* Quick toggle button */}
-        <DropdownMenuItem
-          onClick={toggleTheme}
-          className="p-3 rounded-xl cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200"
-        >
-          <div className="flex items-center gap-3 w-full">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg">
-              <Zap className="w-5 h-5 text-white" />
+              <div className="flex flex-col">
+                <span className="font-medium">Light Mode</span>
+                <span className="text-xs text-muted-foreground">Bright and clean</span>
+              </div>
+              {theme === "light" && (
+                <Zap className="w-3 h-3 text-amber-500 ml-auto animate-pulse" />
+              )}
             </div>
-            
-            <div className="flex-1">
-              <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                Quick Toggle
-              </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Switch between light and dark
-              </p>
-            </div>
-          </div>
-        </DropdownMenuItem>
+          </DropdownMenuItem>
 
-        {/* Current resolved theme info */}
-        <div className="px-3 py-2 mt-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <p className="text-xs text-slate-600 dark:text-slate-400">
-              Currently using <span className="font-medium text-slate-700 dark:text-slate-300">{resolvedTheme}</span> theme
-            </p>
-          </div>
-        </div>
-      </DropdownMenuContent>
-    </DropdownMenu>
+          <DropdownMenuItem
+            onClick={() => handleThemeChange("dark")}
+            className={cn(
+              "cursor-pointer rounded-lg transition-all duration-300 p-3",
+              "hover:bg-gradient-to-r hover:from-indigo-500/10 hover:to-purple-500/10",
+              theme === "dark" && "bg-indigo-500/10 border border-indigo-500/20"
+            )}
+          >
+            <div className="flex items-center gap-3 w-full">
+              <div className="relative">
+                <Sunset className="w-5 h-5 text-indigo-400" />
+                {theme === "dark" && (
+                  <Stars className="w-2 h-2 absolute -top-1 -right-1 text-indigo-300 animate-pulse" />
+                )}
+              </div>
+              <div className="flex flex-col">
+                <span className="font-medium">Dark Mode</span>
+                <span className="text-xs text-muted-foreground">Easy on the eyes</span>
+              </div>
+              {theme === "dark" && (
+                <Zap className="w-3 h-3 text-indigo-400 ml-auto animate-pulse" />
+              )}
+            </div>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            onClick={() => handleThemeChange("system")}
+            className={cn(
+              "cursor-pointer rounded-lg transition-all duration-300 p-3",
+              "hover:bg-gradient-to-r hover:from-violet-500/10 hover:to-purple-500/10",
+              theme === "system" && "bg-violet-500/10 border border-violet-500/20"
+            )}
+          >
+            <div className="flex items-center gap-3 w-full">
+              <div className="relative">
+                <Monitor className="w-5 h-5 text-violet-500" />
+                {theme === "system" && (
+                  <Sparkles className="w-2 h-2 absolute -top-1 -right-1 text-violet-400 animate-pulse" />
+                )}
+              </div>
+              <div className="flex flex-col">
+                <span className="font-medium">System</span>
+                <span className="text-xs text-muted-foreground">Follows device setting</span>
+              </div>
+              {theme === "system" && (
+                <Zap className="w-3 h-3 text-violet-500 ml-auto animate-pulse" />
+              )}
+            </div>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  // Floating Action Button Variant
+  if (variant === "floating") {
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              onClick={handleToggle}
+              className={cn(
+                "fixed bottom-6 right-6 z-50 transition-all duration-500 hover:scale-110 active:scale-95",
+                "w-14 h-14 rounded-full shadow-2xl shadow-primary/25",
+                "bg-gradient-to-br from-primary via-primary/90 to-secondary",
+                "hover:shadow-3xl hover:shadow-primary/40",
+                "border-2 border-white/20 dark:border-white/10",
+                "group overflow-hidden",
+                className
+              )}
+            >
+              {/* Animated Background */}
+              <div className={cn(
+                "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                "from-secondary via-primary to-primary animate-pulse"
+              )} />
+              
+              {/* Icon Container */}
+              <div className={cn(
+                "relative z-10 transition-all duration-500",
+                isAnimating && "animate-spin"
+              )}>
+                <Sun className={cn(
+                  "w-6 h-6 absolute transition-all duration-500 text-white drop-shadow-lg",
+                  resolvedTheme === "dark" 
+                    ? "opacity-0 scale-0 rotate-90" 
+                    : "opacity-100 scale-100 rotate-0"
+                )} />
+                
+                <Moon className={cn(
+                  "w-6 h-6 absolute transition-all duration-500 text-white drop-shadow-lg",
+                  resolvedTheme === "light" 
+                    ? "opacity-0 scale-0 -rotate-90" 
+                    : "opacity-100 scale-100 rotate-0"
+                )} />
+              </div>
+
+              {/* Orbit Effect */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className={cn(
+                  "absolute inset-2 border border-white/30 rounded-full",
+                  "animate-spin opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                )} style={{ animationDuration: "8s" }}>
+                  <div className="absolute -top-0.5 -right-0.5 w-1 h-1 bg-white rounded-full" />
+                </div>
+              </div>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent 
+            side="left" 
+            className="bg-popover/95 backdrop-blur-sm border border-border/50"
+          >
+            <span className="flex items-center gap-2 font-medium">
+              <Palette className="w-3 h-3" />
+              Toggle theme
+            </span>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  }
+
+  // Minimal Variant
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={handleToggle}
+      className={cn(
+        "relative transition-all duration-300 hover:bg-primary/10 rounded-full",
+        sizeClasses[size],
+        className
+      )}
+    >
+      <Sun className={cn(
+        iconSizes[size],
+        "transition-all duration-300",
+        resolvedTheme === "dark" ? "opacity-0 scale-0" : "opacity-100 scale-100"
+      )} />
+      <Moon className={cn(
+        iconSizes[size],
+        "absolute transition-all duration-300",
+        resolvedTheme === "light" ? "opacity-0 scale-0" : "opacity-100 scale-100"
+      )} />
+    </Button>
   );
 }
+
+// Export convenient preset components
+export const ThemeToggleIcon = (props: Omit<ThemeToggleProps, "variant">) => (
+  <ThemeToggle variant="icon" {...props} />
+);
+
+export const ThemeToggleButton = (props: Omit<ThemeToggleProps, "variant">) => (
+  <ThemeToggle variant="button" showLabel {...props} />
+);
+
+export const ThemeToggleFloating = (props: Omit<ThemeToggleProps, "variant">) => (
+  <ThemeToggle variant="floating" {...props} />
+);
+
+export const ThemeToggleMinimal = (props: Omit<ThemeToggleProps, "variant">) => (
+  <ThemeToggle variant="minimal" {...props} />
+);

@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { ArrowRight, Award, CreditCard } from "lucide-react";
+import { ArrowRight, Award, CreditCard, Shield } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 import { useOnboardingClient } from "@/lib/onboarding/utils";
 

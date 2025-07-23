@@ -32,6 +32,7 @@ import {
 import { useAuth } from '@/hooks/useAuth';
 import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
 import { User as UserType } from '@/hooks/useAuth';
+import { ThemeToggleIcon } from '@/components/ui/theme-toggle';
 
 interface RoleAwareNavigationProps {
   user?: UserType | null;
@@ -97,6 +98,13 @@ const NAVIGATION_ITEMS: NavItem[] = [
     label: 'Admin Panel',
     icon: Shield,
     roles: ['admin']
+  },
+  {
+    href: '/theme-showcase',
+    label: 'Theme Showcase',
+    icon: Zap,
+    badge: 'New',
+    roles: ['guest', 'consumer', 'provider', 'admin']
   }
 ];
 
@@ -181,12 +189,15 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
             ))}
           </div>
 
-          {/* Right side: User menu or auth buttons */}
+          {/* Right side: Theme toggle, User menu or auth buttons */}
           <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <ThemeToggleIcon size="md" />
+
             {user ? (
-              <UserMenu 
-                user={user} 
-                userRole={userRole} 
+              <UserMenu
+                user={user}
+                userRole={userRole}
                 subscriptionTier={subscriptionTier}
                 locale={locale}
               />
@@ -233,6 +244,12 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
                   )}
                 </Link>
               ))}
+
+              {/* Mobile Theme Toggle */}
+              <div className="flex items-center justify-between px-4 py-2">
+                <span className="text-sm font-medium text-muted-foreground">Theme</span>
+                <ThemeToggleIcon size="md" />
+              </div>
             </div>
           </div>
         )}

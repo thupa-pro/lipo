@@ -18,10 +18,13 @@ import {
   ArrowRight,
   Fingerprint,
   FaceIcon,
-  Lock, Send,
+  Lock,
+  Send,
   Plus,
   Minus,
-  RotateCcw
+  RotateCcw,
+  Zap,
+  CheckCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

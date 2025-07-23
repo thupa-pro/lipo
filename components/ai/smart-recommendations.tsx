@@ -16,14 +16,17 @@ import {
   Brain,
   Star,
   MapPin,
-  DollarSign, TrendingUp,
+  DollarSign,
+  TrendingUp,
   Users,
-  Award
+  Award,
   Heart,
   Sparkles,
   ArrowRight,
   RefreshCw,
-  ChevronRight
+  ChevronRight,
+  Shield,
+  Clock
 } from "lucide-react";
 
 interface ServiceRecommendation {

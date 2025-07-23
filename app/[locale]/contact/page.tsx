@@ -23,7 +23,9 @@ import {
   MessageCircle,
   Heart,
   Globe,
-  Headphones
+  Headphones,
+  Clock,
+  MessageSquare
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";

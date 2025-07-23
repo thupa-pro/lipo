@@ -12,7 +12,9 @@ import {
   Gauge,
   TrendingUp,
   AlertTriangle,
-  X
+  X,
+  Clock,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

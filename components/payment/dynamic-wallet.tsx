@@ -25,7 +25,9 @@ import {
   CheckCircle,
   AlertCircle,
   Shield,
-  MoreHorizontal
+  MoreHorizontal,
+  Clock,
+  Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
