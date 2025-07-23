@@ -19,7 +19,8 @@ import {
   Target,
   Lock,
   Info,
-  AlertCircle 
+  AlertCircle,
+  Shield
 } from 'lucide-react';
 import { getConsentPreferences, type ConsentPreferences } from '@/lib/cookies/consent';
 

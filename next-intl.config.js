@@ -10,10 +10,23 @@ export const defaultLocale = "en";
 
 export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale)) notFound();
+  if (!locales.includes(locale)) {
+    // Use fallback locale instead of notFound() to prevent error
+    locale = 'en';
+  }
 
-  return {
-    messages: (await import(`./messages/${locale}.json`)).default,
-    timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
-  };
+  try {
+    return {
+      messages: (await import(`./messages/${locale}.json`)).default,
+      timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
+      now: new Date()
+    };
+  } catch (error) {
+    // Fallback to English if locale file doesn't exist
+    return {
+      messages: (await import(`./messages/en.json`)).default,
+      timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
+      now: new Date()
+    };
+  }
 });

@@ -82,34 +82,6 @@ const nextConfig = {
       };
     }
 
-    // Optimize bundle splitting for better hydration
-    config.optimization = {
-      ...config.optimization,
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: -10,
-            chunks: 'all',
-          },
-          // Separate chunk for styling libraries to prevent hydration mismatches
-          styles: {
-            test: /[\\/]node_modules[\\/](framer-motion|@radix-ui)[\\/]/,
-            name: 'ui-libs',
-            priority: 10,
-            chunks: 'all',
-          },
-        },
-      },
-    };
-
     return config;
   },
 

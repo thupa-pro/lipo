@@ -11,9 +11,11 @@ import {
   MessageSquare,
   Menu,
   X,
-  ChevronDown, Settings,
+  ChevronDown, 
+  Settings,
   LogOut,
-  Crown} from 'lucide-react';
+  Crown,
+  Shield} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
