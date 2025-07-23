@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Supported locales
-const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
+// Supported locales - matches the next-intl.config.js file
+const locales = [
+  "en", "zh", "hi", "es", "ar", "pt", "bn", "ru", "ja", "pa", "de", "ur", "ko", "fr", "tr", "it", "th", "fa", "pl", "nl", "uk", "vi", "he", "sw", "ro", "el", "cs", "hu", "fi", "da", "no", "sv", "id", "ms", "tl", "zh-TW", "am", "mg"
+];
 const defaultLocale = 'en';
 
 // Public routes that don't require authentication
