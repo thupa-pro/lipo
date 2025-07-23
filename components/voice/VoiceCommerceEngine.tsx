@@ -19,7 +19,7 @@ import {
   DollarSign, Phone,
   Mail,
   CreditCard,
-  Shield
+  Shield,
   Target,
   Settings,
   Headphones,

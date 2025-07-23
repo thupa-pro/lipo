@@ -13,7 +13,7 @@ import {
   ArrowRight,
   Calendar,
   DollarSign,
-  MapPin
+  MapPin,
   Camera,
   Volume2,
   Scan,

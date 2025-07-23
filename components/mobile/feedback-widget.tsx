@@ -12,8 +12,9 @@ import {
   Heart,
   ThumbsUp,
   ThumbsDown,
-  Send, TrendingUp,
-  BarChart3
+  Send,
+  TrendingUp,
+  BarChart3,
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";

@@ -27,7 +27,7 @@ import { useRouter, useParams  } from "next/navigation";
 export default function NewListingPage() {
   const router = useRouter();
   const params = useParams();
-  const locale = params?.locale, as string || 'en';
+  const locale = params?.locale as string || 'en';
   const [formData, setFormData] = useState({
     title: "",
     category: "",

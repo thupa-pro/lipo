@@ -22,7 +22,7 @@ import {
   MapPin,
   Calendar,
   Wallet,
-  Activity
+  Activity,
   Bell,
   Settings,
   Eye,
@@ -132,7 +132,7 @@ const quickActions = [
     icon: CreditCard,
     href: "/payments?tab=pay",
   },
-  { id: "wallet", label: "Wallet", icon: Wallet href: "/payments" },
+  { id: "wallet", label: "Wallet", icon: Wallet, href: "/payments" },
   { id: "scan", label: "QR Pay", icon: Eye, href: "/payments?tab=qr" },
 ];
 

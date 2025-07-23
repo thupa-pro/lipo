@@ -11,10 +11,10 @@ import {
   Sparkles,
   Tag,
   DollarSign,
-  MapPin
+  MapPin,
   Star,
   Edit,
-  Save
+  Save,
   Download,
   Share2
 } from 'lucide-react'

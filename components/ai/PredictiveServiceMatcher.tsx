@@ -8,19 +8,19 @@ import {
   TrendingUp, MapPin,
   Sparkles,
   Eye,
-  Calendar
+  Calendar,
   Home,
   Car,
   Utensils,
   Wrench,
   Paintbrush,
   Scissors,
-  Heart
+  Heart,
   DollarSign,
   ArrowRight,
   RefreshCw,
   Settings,
-  Bell
+  Bell,
   XCircle,
   Info
 } from 'lucide-react'

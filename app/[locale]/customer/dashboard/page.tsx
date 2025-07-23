@@ -13,8 +13,9 @@ import {
   Search,
   MapPin,
   Calendar,
-  Bell, LogOut,
-  Heart
+  Bell,
+  LogOut,
+  Heart,
   CheckCircle,
   ArrowRight,
   Home,

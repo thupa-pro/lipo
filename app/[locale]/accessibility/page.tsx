@@ -1,19 +1,15 @@
 "use client"
-
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accessibility as AccessibilityIcon, ArrowRight, Mail, Lightbulb, Users } from "lucide-react"
+import { Accessibility as AccessibilityIcon, ArrowRight, Mail, Lightbulb, Users, Shield } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from "next/navigation"
 
 export default function AccessibilityPage() {
   const { toast } = useToast()
-  const router = useRouter()
 
   return (
-    <div className="min-h-screen, bg-background">
-      <header className="py-16 px-4 text-center, bg-gradient-to-br, from-blue-50 to-green-50">
+    <div className="min-h-screen bg-background">
+      <header className="py-16 px-4 text-center bg-gradient-to-br from-blue-50 to-green-50">
         <div className="container mx-auto max-w-4xl">
           <AccessibilityIcon className="w-16 h-16 text-blue-600 mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">

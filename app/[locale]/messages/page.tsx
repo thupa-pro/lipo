@@ -20,8 +20,9 @@ import {
   Star,
   Users,
   Filter,
-  ArrowDown, AlertCircle
-  Brain
+  ArrowDown,
+  AlertCircle,
+  Brain,
   X
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";

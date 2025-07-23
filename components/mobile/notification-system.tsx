@@ -11,9 +11,10 @@ import {
   Check,
   AlertCircle,
   CreditCard,
-  Calendar, Shield
+  Calendar,
+  Shield,
   TrendingUp,
-  MapPin
+  MapPin,
   CheckCircle,
   Info
 } from "lucide-react";

@@ -8,9 +8,10 @@ import {
   Activity,
   Wifi,
   Signal,
-  Battery, Gauge,
+  Battery,
+  Gauge,
   TrendingUp,
-  AlertTriangle
+  AlertTriangle,
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";

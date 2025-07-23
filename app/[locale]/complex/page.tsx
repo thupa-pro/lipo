@@ -12,7 +12,8 @@ import {
   Users,
   Sparkles,
   Search,
-  TrendingUp, Award
+  TrendingUp,
+  Award,
   ArrowRight,
   Brain,
   Heart,

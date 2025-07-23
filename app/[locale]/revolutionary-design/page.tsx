@@ -16,11 +16,12 @@ import {
   Search,
   Mail,
   Lock,
-  Phone, Heart
+  Phone,
+  Heart,
   TrendingUp,
   BarChart3,
-  Calendar
-  Settings} from 'lucide-react'
+  Calendar,
+  Settings } from 'lucide-react'
 
 const RevolutionaryDesignPage = () => {
   const [selectedVariant, setSelectedVariant] = useState<string>('glassmorphic')

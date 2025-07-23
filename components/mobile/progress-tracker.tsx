@@ -8,7 +8,8 @@ import {
   CheckCircle,
   ArrowRight,
   MapPin,
-  Calendar, CreditCard
+  Calendar,
+  CreditCard,
   MessageSquare,
   AlertCircle,
   Truck,

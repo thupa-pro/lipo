@@ -8,7 +8,8 @@ import {
   Sparkles, Globe, Users, Shield,
   ArrowRight, Play, TrendingUp,
   Heart, Award, MapPin, Brain, Crown,
-  Rocket, Building2, CircuitBoard, Gem
+  Rocket, Building2, CircuitBoard, Gem,
+  Zap, CheckCircle, Clock, Star
 } from "lucide-react";
 import Link from "next/link";
 
