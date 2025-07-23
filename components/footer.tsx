@@ -105,7 +105,7 @@ const languages = [
   { code: "tr", name: "Turkish", native: "Türkçe", flag: "🇹🇷", region: "Turkey" },
   { code: "it", name: "Italian", native: "Italiano", flag: "🇮🇹", region: "Italy" },
   { code: "th", name: "Thai", native: "ไทย", flag: "🇹🇭", region: "Thailand" },
-  { code: "fa", name: "Persian", native: "فارسی", flag: "🇮🇷", region: "Iran" },
+  { code: "fa", name: "Persian", native: "فارس��", flag: "🇮🇷", region: "Iran" },
   { code: "pl", name: "Polish", native: "Polski", flag: "🇵🇱", region: "Poland" },
   { code: "nl", name: "Dutch", native: "Nederlands", flag: "🇳🇱", region: "Netherlands" },
 ];
@@ -201,6 +201,80 @@ export default function Footer() {
       ],
     },
   ];
+
+  // Helper function to check if a link should be shown based on authentication/role
+  const shouldShowLink = (href: string): boolean => {
+    // Links that require authentication
+    const authRequiredLinks = [
+      '/customer/dashboard',
+      '/booking',
+      '/bookings',
+      '/my-bookings',
+      '/provider/listings/new',
+      '/provider/reports',
+      '/provider/availability',
+      '/provider/calendar',
+      '/dashboard',
+      '/notifications',
+      '/settings',
+      '/profile',
+      '/billing',
+      '/payments',
+      '/analytics',
+      '/messages',
+      '/referrals-dashboard',
+      '/requests'
+    ];
+
+    // Links that require specific roles
+    const providerOnlyLinks = [
+      '/provider/listings/new',
+      '/provider/reports',
+      '/provider/availability',
+      '/provider/calendar',
+      '/training-certification',
+      '/provider-resources'
+    ];
+
+    const adminOnlyLinks = [
+      '/admin',
+      '/system-status'
+    ];
+
+    const customerOnlyLinks = [
+      '/customer/dashboard',
+      '/my-bookings'
+    ];
+
+    // Check if link requires authentication
+    if (authRequiredLinks.includes(href)) {
+      if (!isSignedIn) return false;
+    }
+
+    // Check role-specific links
+    if (providerOnlyLinks.includes(href)) {
+      return isSignedIn && (role === 'provider' || role === 'admin');
+    }
+
+    if (adminOnlyLinks.includes(href)) {
+      return isSignedIn && role === 'admin';
+    }
+
+    if (customerOnlyLinks.includes(href)) {
+      return isSignedIn && (role === 'consumer' || role === 'admin');
+    }
+
+    // Show all other links to everyone
+    return true;
+  };
+
+  // Filter footer sections based on authentication and role
+  const getFilteredFooterSections = () => {
+    return footerSections.map(section => ({
+      ...section,
+      links: section.links.filter(link => shouldShowLink(link.href))
+    })).filter(section => section.links.length > 0); // Remove sections with no visible links
+  };
 
   // Trust signals and certifications
   const trustSignals = [
