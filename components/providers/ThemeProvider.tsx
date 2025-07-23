@@ -155,7 +155,15 @@ export function ThemeProvider({
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    // Return default values instead of throwing error to prevent app crash
+    console.warn("useTheme must be used within a ThemeProvider. Returning default values.");
+    return {
+      theme: "system" as Theme,
+      setTheme: () => {},
+      resolvedTheme: "light" as "light" | "dark",
+      toggleTheme: () => {},
+      systemTheme: "light" as "light" | "dark"
+    };
   }
   return context;
 }
