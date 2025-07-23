@@ -1,10 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-
-// Supported locales - matches the next-intl.config.js file
-const locales = [
-  "en", "zh", "hi", "es", "ar", "pt", "bn", "ru", "ja", "pa", "de", "ur", "ko", "fr", "tr", "it", "th", "fa", "pl", "nl", "uk", "vi", "he", "sw", "ro", "el", "cs", "hu", "fi", "da", "no", "sv", "id", "ms", "tl", "zh-TW", "am", "mg"
-];
-const defaultLocale = 'en';
+import { NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n';
 
 // Public routes that don't require authentication
 const publicRoutes = [
