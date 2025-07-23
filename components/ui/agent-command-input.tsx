@@ -4,16 +4,17 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Send, 
-  Mic, 
-  MicOff, 
+import {
+  Send,
+  Mic,
+  MicOff,
   Loader2,
   Calendar,
   DollarSign,
   AlertTriangle,
   X,
-  ArrowUp
+  ArrowUp,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
