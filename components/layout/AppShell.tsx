@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Footer from "../footer-simple";
+import Footer from "../footer";
 
 interface AppShellProps {
   children: React.ReactNode;
