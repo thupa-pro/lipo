@@ -32,6 +32,7 @@ import {
 import { useAuth } from '@/hooks/useAuth';
 import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
 import { User as UserType } from '@/hooks/useAuth';
+import { ThemeToggleIcon } from '@/components/ui/theme-toggle';
 
 interface RoleAwareNavigationProps {
   user?: UserType | null;
