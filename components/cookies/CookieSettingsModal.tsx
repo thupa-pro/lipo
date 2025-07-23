@@ -21,7 +21,8 @@ import {
   Info,
   AlertCircle,
   Shield,
-  Zap
+  Zap,
+  CheckCircle
 } from 'lucide-react';
 import { getConsentPreferences, type ConsentPreferences } from '@/lib/cookies/consent';
 
