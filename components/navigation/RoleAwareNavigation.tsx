@@ -316,23 +316,4 @@ function UserMenu({
       </DropdownMenuContent>
     </DropdownMenu>
   );
-
-  function getRoleDisplayName(role: typeof userRole) {
-    const names = {
-      guest: 'Guest',
-      consumer: 'Customer',
-      provider: 'Service Provider',
-      admin: 'Administrator'
-    };
-    return names[role];
-  }
-
-  function getSubscriptionColor(tier: typeof subscriptionTier) {
-    const colors = {
-      starter: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
-      professional: 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
-      enterprise: 'bg-gold-100 text-gold-700 dark:bg-gold-900 dark:text-gold-300'
-    };
-    return colors[tier] || 'bg-gray-100 text-gray-700';
-  }
 }
