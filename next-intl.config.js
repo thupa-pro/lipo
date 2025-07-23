@@ -1,22 +1,23 @@
-import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 
-// Supported locales - matches the config.ts file
+// Supported locales - matches the middleware.ts file
 export const locales = [
   "en", "zh", "hi", "es", "ar", "pt", "bn", "ru", "ja", "pa", "de", "ur", "ko", "fr", "tr", "it", "th", "fa", "pl", "nl", "uk", "vi", "he", "sw", "ro", "el", "cs", "hu", "fi", "da", "no", "sv", "id", "ms", "tl", "zh-TW", "am", "mg"
 ];
 
 export const defaultLocale = "en";
 
-export default getRequestConfig(async ({ locale }) => {
-  // Ensure locale is always defined and valid
+export default getRequestConfig(async ({ requestLocale }) => {
+  // `requestLocale` is the locale from the middleware
+  let locale = await requestLocale;
+
+  // Validate the locale parameter
   if (!locale || !locales.includes(locale)) {
     locale = defaultLocale;
   }
 
   try {
     return {
-      locale,
       messages: (await import(`./messages/${locale}.json`)).default,
       timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
       now: new Date()
@@ -25,7 +26,6 @@ export default getRequestConfig(async ({ locale }) => {
     console.warn(`Failed to load messages for locale '${locale}', falling back to '${defaultLocale}'`);
     // Fallback to English if locale file doesn't exist
     return {
-      locale: defaultLocale,
       messages: (await import(`./messages/en.json`)).default,
       timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
       now: new Date()
