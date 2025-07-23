@@ -537,25 +537,16 @@ const config: Config = {
 
         // Neural/Soft UI System
         ".neural-subtle": {
-          background: "oklch(var(--surface))",
-          boxShadow: `
-            inset 2px 2px 4px oklch(var(--neutral-300) / 0.3),
-            inset -2px -2px 4px oklch(var(--neutral-50) / 0.8)
-          `,
+          'background': "oklch(var(--surface))",
+          'box-shadow': "inset 2px 2px 4px oklch(var(--neutral-300) / 0.3), inset -2px -2px 4px oklch(var(--neutral-50) / 0.8)",
         },
         ".neural-raised": {
-          background: "oklch(var(--surface))",
-          boxShadow: `
-            4px 4px 8px oklch(var(--neutral-300) / 0.3),
-            -4px -4px 8px oklch(var(--neutral-50) / 0.8)
-          `,
+          'background': "oklch(var(--surface))",
+          'box-shadow': "4px 4px 8px oklch(var(--neutral-300) / 0.3), -4px -4px 8px oklch(var(--neutral-50) / 0.8)",
         },
         ".neural-inset": {
-          background: "oklch(var(--surface))",
-          boxShadow: `
-            inset 4px 4px 8px oklch(var(--neutral-300) / 0.3),
-            inset -4px -4px 8px oklch(var(--neutral-50) / 0.8)
-          `,
+          'background': "oklch(var(--surface))",
+          'box-shadow': "inset 4px 4px 8px oklch(var(--neutral-300) / 0.3), inset -4px -4px 8px oklch(var(--neutral-50) / 0.8)",
         },
 
         // AI-Native States
