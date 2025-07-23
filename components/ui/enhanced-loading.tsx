@@ -8,9 +8,10 @@ import {
   CheckCircle,
   AlertCircle,
   Info,
-  XCircle, Search,
+  XCircle,
+  Search,
   Calendar,
-  Users
+  Users,
   Heart
 } from "lucide-react";
 import { cn } from "@/lib/utils";
