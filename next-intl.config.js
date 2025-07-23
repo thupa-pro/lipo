@@ -10,7 +10,7 @@ export const defaultLocale = "en";
 
 export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale)) {
+  if (!locale || !locales.includes(locale)) {
     // Use fallback locale instead of notFound() to prevent error
     locale = 'en';
   }
