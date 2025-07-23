@@ -690,30 +690,29 @@ const config: Config = {
       // Modern Component Styles
       addComponents({
         ".btn": {
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: theme("spacing.sm"),
-          padding: `${theme("spacing.button-y")} ${theme("spacing.button-x")}`,
-          borderRadius: theme("borderRadius.button"),
-          fontSize: theme("fontSize.sm"),
-          fontWeight: "500",
-          lineHeight: "1",
-          textDecoration: "none",
-          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-          cursor: "pointer",
-          border: "1px solid transparent",
-          outline: "2px solid transparent",
-          outlineOffset: "2px",
-
-          "&:focus-visible": {
-            outline: "2px solid oklch(var(--ring))",
-            outlineOffset: "2px",
-          },
-          "&:disabled": {
-            opacity: "0.5",
-            pointerEvents: "none",
-          },
+          'display': "inline-flex",
+          'align-items': "center",
+          'justify-content': "center",
+          'gap': "0.5rem",
+          'padding': "0.5rem 1rem",
+          'border-radius': "var(--radius-button)",
+          'font-size': "0.875rem",
+          'font-weight': "500",
+          'line-height': "1",
+          'text-decoration': "none",
+          'transition': "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          'cursor': "pointer",
+          'border': "1px solid transparent",
+          'outline': "2px solid transparent",
+          'outline-offset': "2px",
+        },
+        ".btn:focus-visible": {
+          'outline': "2px solid oklch(var(--ring))",
+          'outline-offset': "2px",
+        },
+        ".btn:disabled": {
+          'opacity': "0.5",
+          'pointer-events': "none",
         },
 
         ".btn-primary": {
