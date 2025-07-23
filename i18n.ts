@@ -38,6 +38,7 @@ export default getRequestConfig(async ({ locale }) => {
       console.error('Error loading fallback messages:', fallbackError);
       // Return minimal config if all fails
       return {
+        locale: 'en',
         messages: {},
         timeZone: 'UTC',
         now: new Date()
