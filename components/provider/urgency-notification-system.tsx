@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
-import { Bell, Zap, DollarSign, MapPin, Star Settings, TrendingUp } from "lucide-react"
+import { Bell, Zap, DollarSign, MapPin, Star, Settings, TrendingUp } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 interface UrgentJob {

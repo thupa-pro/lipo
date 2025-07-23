@@ -118,7 +118,7 @@ export default function BookingDetailPage() {
   const mockService: ServiceDetails = {
     id: params.serviceId as string,
     title: "Professional House Cleaning",
-    description: "Comprehensive house cleaning service with eco-friendly products. Our team provides thorough cleaning including all rooms, bathrooms, kitchen deep clean, and optional add-ons like inside oven, inside fridge, and window cleaning.",
+    description: "Comprehensive house cleaning service with eco-friendly products. Our team provides thorough cleaning including all, rooms, bathrooms, kitchen deep, clean, and optional add-ons like inside, oven, inside, fridge, and window cleaning.",
     price: 75,
     priceType: "fixed",
     duration: 3,

@@ -188,7 +188,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
 
     // Enable/disable marketing cookies
     if (consent.marketing) {
-      // Initialize marketing tools (Facebook Pixel, Google Ads, etc.)
+      // Initialize marketing tools (Facebook, Pixel, Google, Ads, etc.)
       enableMarketingTools();
     } else {
       disableMarketingTools();
@@ -237,7 +237,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
                     <h3 className="font-semibold">We value your privacy</h3>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    We use cookies to enhance your experience, analyze site traffic, and provide
+                    We use cookies to enhance your, experience, analyze site, traffic, and provide
                     personalized content. You can customize your preferences or accept all cookies.
                   </p>
                   <button
@@ -376,7 +376,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
 
           <div className="text-xs text-muted-foreground space-y-1">
             <p>
-              For more information about how we use cookies and your privacy rights,
+              For more information about how we use cookies and your privacy, rights,
               please see our{' '}
               <a href="/privacy" className="text-primary hover:underline">
                 Privacy Policy

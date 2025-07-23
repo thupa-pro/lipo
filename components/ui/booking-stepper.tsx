@@ -128,7 +128,7 @@ export function BookingStepper({
       // Simulate API call for available slots
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock data - in real app, this would come from API
+      // Mock data - in real, app, this would come from API
       const mockSlots: TimeSlot[] = [
         { id: "1", time: "09:00", available: true, duration: 60, price: basePrice },
         { id: "2", time: "10:30", available: true, duration: 60, price: basePrice },
@@ -284,7 +284,7 @@ export function BookingStepper({
                   Available Times
                   {selectedDate && (
                     <span className="text-sm text-muted-foreground ml-2">
-                      for {format(selectedDate, "MMM dd, yyyy")}
+                      for {format(selectedDate, "MMM, dd, yyyy")}
                     </span>
                   )}
                 </Label>
@@ -397,7 +397,7 @@ export function BookingStepper({
                   <div className="flex justify-between">
                     <span>Date & Time:</span>
                     <span className="font-medium">
-                      {selectedDate && format(selectedDate, "MMM dd, yyyy")} at {selectedSlot?.time}
+                      {selectedDate && format(selectedDate, "MMM, dd, yyyy")} at {selectedSlot?.time}
                     </span>
                   </div>
                   <div className="flex justify-between">

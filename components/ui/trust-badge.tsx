@@ -92,12 +92,12 @@ export default function TrustBadge({
         weight: 25,
         description: verifications
           ? `${Object.values(verifications).filter(Boolean).length}/${Object.keys(verifications).length} verifications completed`
-          : "Identity verified, background checked, insured",
+          : "Identity, verified, background, checked, insured",
       },
       experience: {
         score: 85,
         weight: 20,
-        description: "3+ years on platform, 200+ completed jobs",
+        description: "3+ years on, platform, 200+ completed jobs",
       },
       location: {
         score: 90,
@@ -255,7 +255,7 @@ export default function TrustBadge({
                 <div className="text-xs text-blue-700">
                   <div className="font-medium mb-1">How Trust Scores Work</div>
                   <div>
-                    We analyze multiple factors including ratings, verification
+                    We analyze multiple factors including, ratings, verification
                     status, experience, and reliability to calculate a
                     comprehensive trust score.
                   </div>

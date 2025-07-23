@@ -32,7 +32,7 @@ import {
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-// Import billing components
+// Import, billing components
 import { SubscriptionPlans } from "@/components/billing/SubscriptionPlans";
 import { PaymentMethods } from "@/components/billing/PaymentMethods";
 import { BillingHistory } from "@/components/billing/BillingHistory";
@@ -192,7 +192,7 @@ export default function BillingPage() {
             Billing & Subscriptions
           </h1>
           <p className="text-muted-foreground">
-            Manage your subscription, payment methods, and billing history
+            Manage your, subscription, payment, methods, and billing history
           </p>
         </div>
 

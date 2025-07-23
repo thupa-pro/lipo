@@ -29,7 +29,7 @@ import { Progress } from '@/components/ui/progress';
 import { advancedAIEngine } from '@/lib/ai/advanced-intelligence-engine';
 import { ultraOptimizationEngine } from '@/lib/performance/ultra-optimization-engine';
 
-// Enhanced types for revolutionary UX
+// Enhanced, types for, revolutionary UX
 interface SmartServiceCard {
   id: string;
   title: string;
@@ -125,7 +125,7 @@ export const SmartSearchExperience: React.FC = () => {
       if (query.length > 2) {
         setIsLoading(true);
         try {
-          // In a real implementation, this would call the AI engine
+          // In a real, implementation, this would call the AI engine
           const mockSuggestions = [
             'Premium home cleaning services near me',
             'Elite personal trainers with 5-star ratings',

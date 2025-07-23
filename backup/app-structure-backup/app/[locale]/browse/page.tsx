@@ -18,12 +18,12 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-// Sample provider data
+// Sample, provider data
 const providers = [
   {
     id: 1,
-    name: "Sarah Mitchell",
-    service: "House Cleaning",
+    name: "Sarah, Mitchell",
+    service: "House, Cleaning",
     category: "cleaning",
     rating: 4.9,
     reviews: 127,
@@ -127,7 +127,7 @@ export default function BrowsePage() {
               </div>
               <Input
                 type="text"
-                placeholder="Search for services, providers, or specialties..."
+                placeholder="Search for, services, providers, or specialties..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-11 pr-4 py-6 text-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-white/20 dark:border-gray-700/50 shadow-lg focus:shadow-xl transition-all duration-300"

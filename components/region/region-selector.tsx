@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Globe, MapPin, DollarSign, Shield, Loader2 } from "lucide-react"
-import { REGIONS, getRegionConfig, detectUserRegion, type, RegionConfig } from "@/lib/region-config"
+import { REGIONS, getRegionConfig, detectUserRegion, type RegionConfig } from "@/lib/region-config"
 
 interface RegionSelectorProps {
   onRegionChange?: (region: RegionConfig) => void
@@ -13,7 +13,7 @@ interface RegionSelectorProps {
 }
 
 export default function RegionSelector({ onRegionChange, currentRegion }: RegionSelectorProps) {
-  const [selectedRegionCode, setSelectedRegionCode] = useState<string>(currentRegion || "US") // Default to 'US' initially
+  const [selectedRegionCode, setSelectedRegionCode] = useState<string>(currentRegion || "US") // Default, to 'US' initially
   const [regionConfig, setRegionConfig] = useState<RegionConfig>(getRegionConfig(selectedRegionCode))
   const [isLoadingLocation, setIsLoadingLocation] = useState(true)
 
@@ -31,7 +31,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
     if (!currentRegion) { // Only auto-detect if no currentRegion is provided
       loadRegion()
     } else {
-      // If currentRegion is provided, just set it and its config
+      // If currentRegion is, provided, just set it and its config
       const config = getRegionConfig(currentRegion)
       setSelectedRegionCode(currentRegion)
       setRegionConfig(config)

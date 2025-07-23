@@ -76,7 +76,7 @@ export default function NotificationSystem() {
       id: "4",
       type: "review",
       title: "New 5-Star Review!",
-      message: "John D. left you a great review: 'Excellent work, very professional!'",
+      message: "John D. left you a great review: 'Excellent, work, very professional!'",
       timestamp: "3 hours ago",
       read: true,
       priority: "low",

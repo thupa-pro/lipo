@@ -84,7 +84,7 @@ export function AccessibilityAudit({ onComplete }: AccessibilityAuditProps) {
             description:
               "Some elements don't meet AAA contrast standards (7:1)",
             impact: "moderate",
-            element: "Secondary buttons, muted text",
+            element: "Secondary, buttons, muted text",
             suggestion: "Increase contrast for better readability",
           },
           {
@@ -129,7 +129,7 @@ export function AccessibilityAudit({ onComplete }: AccessibilityAuditProps) {
             status: "fail",
             description: "Some interactive elements lack proper ARIA labels",
             impact: "serious",
-            element: "Icon buttons, complex widgets",
+            element: "Icon, buttons, complex widgets",
             suggestion: "Add aria-label or aria-labelledby attributes",
           },
           {
@@ -154,7 +154,7 @@ export function AccessibilityAudit({ onComplete }: AccessibilityAuditProps) {
             status: "warning",
             description: "Some images lack descriptive alt text",
             impact: "serious",
-            element: "Decorative images, charts",
+            element: "Decorative, images, charts",
             suggestion: "Add meaningful alt text or mark decorative images",
           },
           {
@@ -539,7 +539,7 @@ export function AccessibilityAudit({ onComplete }: AccessibilityAuditProps) {
               <div className="space-y-2">
                 <h4 className="font-medium">Standards Compliance</h4>
                 <p className="text-sm text-muted-foreground">
-                  Use valid, semantic HTML and ARIA attributes
+                  Use, valid, semantic HTML and ARIA attributes
                 </p>
               </div>
             </TabsContent>

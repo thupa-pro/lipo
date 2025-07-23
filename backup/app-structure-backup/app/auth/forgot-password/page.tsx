@@ -89,7 +89,7 @@ export default function ForgotPasswordPage() {
 
               <div className="space-y-4 text-center">
                 <p className="text-slate-600 dark:text-gray-400 text-sm">
-                  If you don't see the email in your inbox, please check your spam folder. The reset link will expire in 1 hour.
+                  If you don't see the email in your, inbox, please check your spam folder. The reset link will expire in 1 hour.
                 </p>
                 
                 <div className="flex flex-col gap-3">

@@ -54,7 +54,7 @@ export default function UserManagementPage() {
       name: "Alice Johnson",
       email: "alice.j@example.com",
       phone: "+1 (555) 101-2000",
-      location: "New York, NY",
+      location: "New, York, NY",
       role: "customer",
       status: "active",
       lastActive: "2 hours ago",
@@ -65,7 +65,7 @@ export default function UserManagementPage() {
       name: "Bob Smith",
       email: "bob.s@example.com",
       phone: "+1 (555) 102-2001",
-      location: "Los Angeles, CA",
+      location: "Los, Angeles, CA",
       role: "provider",
       status: "active",
       lastActive: "15 minutes ago",
@@ -148,7 +148,7 @@ export default function UserManagementPage() {
       description: `Opening profile for user ID: ${userId}`,
       variant: "default",
     })
-    // In a real app, navigate to a user edit page
+    // In a real, app, navigate to a user edit page
   }
 
   const handleSuspendActivate = (userId: string, currentStatus: User["status"]) => {
@@ -158,7 +158,7 @@ export default function UserManagementPage() {
       description: `User ID: ${userId} status changed to ${newStatus}.`,
       variant: newStatus === "suspended" ? "destructive" : "default",
     })
-    // In a real app, update user status in backend
+    // In a real, app, update user status in backend
   }
 
   const handleChangeRole = (userId: string, newRole: User["role"]) => {
@@ -167,7 +167,7 @@ export default function UserManagementPage() {
       description: `User ID: ${userId} role changed to ${newRole}.`,
       variant: "default",
     })
-    // In a real app, update user role in backend
+    // In a real, app, update user role in backend
   }
 
   return (
@@ -243,7 +243,7 @@ export default function UserManagementPage() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
-                  placeholder="Search by name, email, or phone..."
+                  placeholder="Search by, name, email, or phone..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"

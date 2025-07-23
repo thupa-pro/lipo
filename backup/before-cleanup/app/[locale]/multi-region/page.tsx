@@ -13,9 +13,9 @@ export default function MultiRegionPage() {
   const [currentRegion, setCurrentRegion] = useState<RegionConfig | null>(null)
 
   const globalStats = [
-    { label: "Active Regions", value: "4", icon: Globe },
-    { label: "Total Users", value: "12.5K", icon: Users },
-    { label: "Cross-Region Jobs", value: "2.3K", icon: TrendingUp },
+    { label: "Active, Regions", value: "4", icon: Globe },
+    { label: "Total, Users", value: "12.5K", icon: Users },
+    { label: "Cross-Region, Jobs", value: "2.3K", icon: TrendingUp },
     { label: "Compliance Score", value: "98%", icon: Shield },
   ]
 

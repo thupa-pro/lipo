@@ -41,7 +41,7 @@ export default function PartnershipsPage() {
             Partnerships
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Collaborate with Loconomy to expand your reach, enhance your offerings, and make a greater impact.
+            Collaborate with Loconomy to expand your, reach, enhance your, offerings, and make a greater impact.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Start Partnership", description: "Sending partnership inquiry...", variant: "default" })}>
             Propose a Partnership
@@ -60,7 +60,7 @@ export default function PartnershipsPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {partnershipTypes.map((type, index) => (
+            {partnershipTypes.map((type index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader className="text-center">
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto mb-4">

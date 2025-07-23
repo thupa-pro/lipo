@@ -9,7 +9,7 @@ import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
-import { Crown, TrendingUp, Eye Target, Rocket Users } from "lucide-react"
+import { Crown, TrendingUp, Eye, Target, Rocket, Users } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 interface VisibilityBoost {

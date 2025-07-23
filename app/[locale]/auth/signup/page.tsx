@@ -11,7 +11,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { 
   Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff,
-  Users, Briefcase Chrome, Github} from "lucide-react";
+  Users, Briefcase, Chrome, Github} from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -25,7 +25,7 @@ export default function SignUpPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [step, setStep] = useState(1); // 1: role selection, 2: info form, 3: success
+  const [step, setStep] = useState(1); // 1: role, selection, 2: info, form, 3: success
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const params = useParams();

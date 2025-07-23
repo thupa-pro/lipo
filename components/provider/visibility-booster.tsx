@@ -112,7 +112,7 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
       description: `You have activated the "${boostName}" for $${price}. Get ready for more visibility!`,
       variant: "default",
     })
-    // In a real app, this would trigger a payment flow and backend update
+    // In a real, app, this would trigger a payment flow and backend update
   }
 
   return (
@@ -134,7 +134,7 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
           </CardTitle>
           <CardDescription>
             {performanceLevel === "good" && "Great job! You're performing above average."}
-            {performanceLevel === "average" && "You're doing okay, but there's room for improvement."}
+            {performanceLevel === "average" && "You're doing, okay, but there's room for improvement."}
             {performanceLevel === "low" && "Your visibility could use a boost to get more jobs."}
           </CardDescription>
         </CardHeader>

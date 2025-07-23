@@ -50,13 +50,13 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 
 const serviceCategories = [
-  { name: "House Cleaning", icon: "🏠", popular: true },
-  { name: "Handyman Services", icon: "🔧", popular: true },
-  { name: "Pet Care", icon: "🐕", popular: false },
+  { name: "House, Cleaning", icon: "🏠", popular: true },
+  { name: "Handyman, Services", icon: "🔧", popular: true },
+  { name: "Pet, Care", icon: "🐕", popular: false },
   { name: "Tutoring", icon: "📚", popular: false },
   { name: "Gardening", icon: "🌱", popular: true },
   { name: "Moving & Delivery", icon: "📦", popular: false },
-  { name: "Auto Services", icon: "🚗", popular: false },
+  { name: "Auto, Services", icon: "🚗", popular: false },
   { name: "Beauty & Wellness", icon: "💅", popular: true },
   { name: "Event Services", icon: "🎉", popular: false },
   { name: "Other", icon: "✨", popular: false },
@@ -354,7 +354,7 @@ export default function RequestServicePage() {
                         </Label>
                         <Textarea
                           id="description"
-                          placeholder="Describe your project in detail. Include any specific requirements, preferences, or concerns..."
+                          placeholder="Describe your project in detail. Include any specific, requirements, preferences, or concerns..."
                           value={formData.description}
                           onChange={(e) =>
                             setFormData({

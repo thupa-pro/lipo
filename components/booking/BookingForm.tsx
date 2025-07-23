@@ -340,7 +340,7 @@ export function BookingForm({
                 <div className="space-y-1 text-sm">
                   <p>
                     <strong>Date:</strong>{" "}
-                    {format(selectedDate, "EEEE, MMMM d, yyyy")}
+                    {format(selectedDate, "EEEE, MMMM, d, yyyy")}
                   </p>
                   <p>
                     <strong>Time:</strong> {formatTime(selectedSlot.start_time)}{" "}

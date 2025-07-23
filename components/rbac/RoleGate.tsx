@@ -24,8 +24,8 @@ interface RoleGateServerProps extends RoleGateProps {
 }
 
 /**
- * Server Component version of RoleGate
- * Use this in Server Components for optimal performance
+ * Server, Component version, of RoleGate
+ * Use, this in, Server Components, for optimal, performance
  */
 export async function RoleGate({
   allowedRoles,

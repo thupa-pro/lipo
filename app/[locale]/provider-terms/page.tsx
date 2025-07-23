@@ -3,17 +3,17 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { FileText, AlertTriangle, Scale ArrowRight } from "lucide-react"
+import { FileText, AlertTriangle, Scale, ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 export default function ProviderTermsPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="py-16 px-4 text-center bg-gradient-to-br from-blue-50 to-green-50">
-        <div className="container mx-auto max-w-4xl">
-          <Scale className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+    <div className="min-h-screen, bg-background">
+      <header className="py-16 px-4 text-center, bg-gradient-to-br, from-blue-50 to-green-50">
+        <div className="container, mx-auto, max-w-4xl">
+          <Scale className="w-16 h-16 text-blue-600 mx-auto, mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
             Provider Terms of Service
           </h1>
@@ -37,7 +37,7 @@ export default function ProviderTermsPage() {
                 <div>
                   <h3 className="font-bold text-blue-900 mb-2">Important Notice</h3>
                   <p className="text-blue-800 text-sm">
-                    By providing services through Loconomy, you agree to these terms. Please read them carefully.
+                    By providing services through, Loconomy, you agree to these terms. Please read them carefully.
                     These terms supplement our general Terms of Service and apply specifically to service providers.
                   </p>
                 </div>
@@ -66,7 +66,7 @@ export default function ProviderTermsPage() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
-                    <span className="text-sm">Provide accurate, complete, and current information</span>
+                    <span className="text-sm">Provide, accurate, complete, and current information</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
@@ -90,7 +90,7 @@ export default function ProviderTermsPage() {
               <CardContent className="space-y-4">
                 <h4 className="font-semibold">Service Delivery</h4>
                 <p className="text-sm text-muted-foreground">
-                  As a provider, you agree to deliver services with professionalism and in accordance with industry standards.
+                  As a, provider, you agree to deliver services with professionalism and in accordance with industry standards.
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -140,7 +140,7 @@ export default function ProviderTermsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  You are an independent contractor, not an employee of Loconomy. This means:
+                  You are an independent, contractor, not an employee of Loconomy. This means:
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -169,7 +169,7 @@ export default function ProviderTermsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  To maintain platform safety, we may require background checks for certain service categories.
+                  To maintain platform, safety, we may require background checks for certain service categories.
                 </p>
                 <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
                   <h4 className="font-semibold text-amber-800">Safety Requirements</h4>

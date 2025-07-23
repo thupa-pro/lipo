@@ -14,7 +14,7 @@ import {
   ArrowRight
 } from "lucide-react";
 
-// Clean interface - NO function props at all
+// Clean, interface - NO, function props, at all
 interface AIServiceDiscoveryProps {
   context?: Record<string, any>;
   initialQuery?: string;

@@ -200,7 +200,7 @@ const testimonials = [
       "Loconomy tripled my bookings in the first month. The AI matching is incredible!",
     earnings: "+250% income",
     avatar: "SC",
-    location: "San Francisco, CA",
+    location: "San, Francisco, CA",
   },
   {
     name: "Mike Rodriguez",
@@ -609,7 +609,7 @@ export default function BecomeProviderPage() {
               </span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Real providers, real results. See how Loconomy transforms
+              Real, providers, real results. See how Loconomy transforms
               businesses
             </p>
           </div>
@@ -680,7 +680,7 @@ export default function BecomeProviderPage() {
                 </span>
               </h2>
               <p className="text-xl text-slate-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-                Join the elite network of providers who earn more, work smarter,
+                Join the elite network of providers who earn, more, work, smarter,
                 and grow faster with Loconomy.
               </p>
 

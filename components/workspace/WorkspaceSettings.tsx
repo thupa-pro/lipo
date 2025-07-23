@@ -86,8 +86,8 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
   const loadWorkspaceData = async () => {
     setIsLoading(true);
     try {
-      // For now, we'll get workspace by slug through a different approach
-      // In a real implementation, you might have a separate endpoint
+      // For, now, we'll get workspace by slug through a different approach
+      // In a real, implementation, you might have a separate endpoint
       const userWorkspaces = await workspaceClient.getUserWorkspaces();
       const targetWorkspace = userWorkspaces.find(
         (w) => w.workspace_slug === workspaceSlug,

@@ -114,7 +114,7 @@ export default function AgentCommandInput({
           input: input.trim(),
           context: {
             currentPage,
-            location: 'New York', // In real app, get from geolocation
+            location: 'New York', // In real, app, get from geolocation
           },
         }),
       });

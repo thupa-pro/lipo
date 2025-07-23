@@ -5,16 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Cookie, Settings, ExternalLink } from 'lucide-react';
-import { getConsentStatus, setConsentStatus, type, ConsentStatus } from '@/lib/cookies/consent';
+import { getConsentStatus, setConsentStatus, type ConsentStatus } from '@/lib/cookies/consent';
 import { CookieSettingsModal } from './CookieSettingsModal';
 
 interface CookieConsentBannerProps {
   /**
-   * Privacy policy URL
+   * Privacy, policy URL
    */
   privacyPolicyUrl?: string;
   /**
-   * Custom banner text
+   * Custom, banner text
    */
   customText?: string;
   /**
@@ -78,7 +78,7 @@ export function CookieConsentBanner({
   };
 
   const bannerText = customText || 
-    "This site uses cookies and similar tools to improve performance, personalize content, and analyze traffic. Learn more in our Privacy Policy.";
+    "This site uses cookies and similar tools to improve, performance, personalize, content, and analyze traffic. Learn more in our Privacy Policy.";
 
   // Animation variants
   const slideVariants = {

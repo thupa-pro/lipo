@@ -119,7 +119,7 @@ export default function ProviderSupportPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Submit a Ticket</h3>
                 <p className="text-muted-foreground mb-4">
-                  For detailed issues, submit a support ticket.
+                  For detailed, issues, submit a support ticket.
                 </p>
                 <Button
                   variant="outline"
@@ -197,7 +197,7 @@ export default function ProviderSupportPage() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold mb-4">Urgent Assistance?</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            For time-sensitive issues, reach out to us directly.
+            For time-sensitive, issues, reach out to us directly.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button

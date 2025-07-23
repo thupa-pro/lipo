@@ -185,7 +185,7 @@ export default function AdminDashboard() {
             Admin Dashboard
           </h1>
           <p className="text-gray-600 mt-1">
-            Platform management, moderation, and analytics
+            Platform, management, moderation, and analytics
           </p>
         </div>
 

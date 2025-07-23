@@ -233,7 +233,7 @@ export default function ReferralDashboard() {
         </div>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Earn rewards by referring friends and family to Loconomy. 
-          The more people you refer, the more you earn!
+          The more people you, refer, the more you earn!
         </p>
       </div>
 
@@ -461,7 +461,7 @@ export default function ReferralDashboard() {
                       </TableCell>
                       <TableCell>
                         <div>
-                          <p>{format(referral.signupDate, "MMM dd, yyyy")}</p>
+                          <p>{format(referral.signupDate, "MMM, dd, yyyy")}</p>
                           {referral.conversionDate && (
                             <p className="text-sm text-gray-600">
                               Converted: {format(referral.conversionDate, "MMM dd")}
@@ -538,7 +538,7 @@ export default function ReferralDashboard() {
                         </Badge>
                       </TableCell>
                       <TableCell>{reward.description}</TableCell>
-                      <TableCell>{format(reward.earnedDate, "MMM dd, yyyy")}</TableCell>
+                      <TableCell>{format(reward.earnedDate, "MMM, dd, yyyy")}</TableCell>
                       <TableCell>
                         <span className="font-semibold text-green-600">
                           ${reward.amount.toFixed(2)}

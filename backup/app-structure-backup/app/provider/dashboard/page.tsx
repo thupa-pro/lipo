@@ -161,7 +161,7 @@ export default function ProviderDashboard() {
       time: "10:00",
       status: "confirmed",
       price: 75,
-      address: "123 Oak Street, Downtown",
+      address: "123 Oak, Street, Downtown",
     },
     {
       id: "2",
@@ -174,7 +174,7 @@ export default function ProviderDashboard() {
       time: "14:00",
       status: "confirmed",
       price: 150,
-      address: "456 Business Ave, Midtown",
+      address: "456 Business, Ave, Midtown",
     },
     {
       id: "3",
@@ -187,7 +187,7 @@ export default function ProviderDashboard() {
       time: "09:00",
       status: "pending",
       price: 75,
-      address: "789 Pine Road, Uptown",
+      address: "789 Pine, Road, Uptown",
     },
   ];
 
@@ -300,7 +300,7 @@ export default function ProviderDashboard() {
         >
           <div>
             <h1 className="text-3xl font-bold text-foreground">
-              Welcome back, {session?.user?.name?.split(' ')[0]}! 👋
+              Welcome, back, {session?.user?.name?.split(' ')[0]}! 👋
             </h1>
             <p className="text-muted-foreground">
               Here's what's happening with your business today

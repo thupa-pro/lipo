@@ -336,11 +336,11 @@ export function PlatformAnalytics() {
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-sm">New York, NY</span>
+                    <span className="text-sm">New, York, NY</span>
                     <Badge variant="secondary">1,247</Badge>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm">Los Angeles, CA</span>
+                    <span className="text-sm">Los, Angeles, CA</span>
                     <Badge variant="secondary">982</Badge>
                   </div>
                   <div className="flex justify-between">

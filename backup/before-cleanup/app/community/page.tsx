@@ -16,7 +16,7 @@ export default function CommunityPage() {
     {
       icon: MessageSquare,
       title: "Discussion Forums",
-      description: "Engage with other users, ask questions, and share your experiences.",
+      description: "Engage with other, users, ask, questions, and share your experiences.",
       action: { label: "Visit Forums", onClick: () => toast({ title: "Forums", description: "Opening community forums...", variant: "default" }) },
     },
     {
@@ -56,7 +56,7 @@ export default function CommunityPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What You'll Find Here</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A vibrant space for interaction, learning, and support.
+              A vibrant space for, interaction, learning, and support.
             </p>
           </div>
 

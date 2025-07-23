@@ -14,7 +14,8 @@ import { Progress } from "@/components/ui/progress";
 import {
   Sparkles,
   TrendingUp,
-  Shield, Eye
+  Shield,
+  Eye,
   Brain,
   Rocket
 } from "lucide-react";
@@ -73,7 +74,7 @@ export default function UIEvolutionPage() {
       id: "enhanced-messaging",
       name: "Enhanced Messaging Experience",
       description:
-        "Typing indicators, read receipts, and improved chat bubbles",
+        "Typing, indicators, read, receipts, and improved chat bubbles",
       icon: MessageSquare,
       impact: "22% improvement in response rates",
       color: "bg-orange-500",
@@ -293,7 +294,7 @@ export default function UIEvolutionPage() {
                   Enhanced Messaging Experience Demo
                 </CardTitle>
                 <CardDescription>
-                  Typing indicators, read receipts, and improved chat bubbles
+                  Typing, indicators, read, receipts, and improved chat bubbles
                 </CardDescription>
               </CardHeader>
               <CardContent>

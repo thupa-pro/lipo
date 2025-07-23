@@ -142,7 +142,7 @@ export default function ContactUsPage() {
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              We'd love to hear from you! Reach out with any questions,
+              We'd love to hear from you! Reach out with any, questions,
               feedback, or inquiries. Our team is ready to provide
               <span className="text-transparent bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text font-semibold">
                 {" "}

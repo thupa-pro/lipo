@@ -199,7 +199,7 @@ export default function HelpCenter() {
     {
       id: "1",
       question: "How do I reset my password?",
-      answer: "You can reset your password by clicking the 'Forgot Password' link on the login page. Enter your email address, and we'll send you a reset link.",
+      answer: "You can reset your password by clicking the 'Forgot Password' link on the login page. Enter your email, address, and we'll send you a reset link.",
       category: "Account",
       helpful: 245,
       notHelpful: 8,
@@ -255,7 +255,7 @@ export default function HelpCenter() {
         },
         {
           id: "2",
-          message: "Hi John, thanks for reaching out. I can see the issue in our system. It looks like there might be a temporary issue with your card provider. Can you try using a different card or payment method?",
+          message: "Hi, John, thanks for reaching out. I can see the issue in our system. It looks like there might be a temporary issue with your card provider. Can you try using a different card or payment method?",
           author: "Sarah (Support)",
           timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
           isStaff: true,
@@ -275,14 +275,14 @@ export default function HelpCenter() {
       responses: [
         {
           id: "1",
-          message: "When I try to access my provider dashboard, I get a 500 error. This started happening yesterday.",
+          message: "When I try to access my provider, dashboard, I get a 500 error. This started happening yesterday.",
           author: "Maria Garcia",
           timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
           isStaff: false,
         },
         {
           id: "2",
-          message: "Hi Maria, we've identified and fixed the issue. The dashboard should be working normally now. Please try logging in again and let us know if you have any further issues.",
+          message: "Hi, Maria, we've identified and fixed the issue. The dashboard should be working normally now. Please try logging in again and let us know if you have any further issues.",
           author: "Mike (Tech Support)",
           timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
           isStaff: true,
@@ -407,7 +407,7 @@ export default function HelpCenter() {
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-foreground">Help Center</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Find answers to your questions, browse our documentation, and get support when you need it
+          Find answers to your, questions, browse our, documentation, and get support when you need it
         </p>
         
         {/* Search */}
@@ -415,7 +415,7 @@ export default function HelpCenter() {
           <div className="relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
             <Input
-              placeholder="Search for help articles, tutorials, and FAQs..."
+              placeholder="Search for help, articles, tutorials, and FAQs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-12 h-12 text-lg"

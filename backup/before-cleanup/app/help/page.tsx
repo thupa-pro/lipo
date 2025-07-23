@@ -21,17 +21,17 @@ import Link from "next/link";
 
 const faqData = [
   {
-    category: "Getting Started",
+    category: "Getting, Started",
     questions: [
       {
-        question: "How do I book a service?",
+        question: "How, do I, book a, service?",
         answer:
-          "You can book a service by browsing our categories, selecting a provider, and choosing your preferred time slot. Payment is processed securely after the service is completed.",
+          "You, can book, a service, by browsing, our, categories, selecting, a, provider, and, choosing your, preferred time, slot. Payment, is processed, securely after, the service, is completed.",
       },
       {
         question: "How do I become a service provider?",
         answer:
-          "Click on 'Become a Provider' in the navigation menu, complete the application process, and submit your verification documents. We'll review your application within 24-48 hours.",
+          "Click on 'Become a Provider' in the navigation, menu, complete the application, process, and submit your verification documents. We'll review your application within 24-48 hours.",
       },
       {
         question: "Is my payment information secure?",
@@ -56,7 +56,7 @@ const faqData = [
       {
         question: "How do I track my service provider?",
         answer:
-          "Once your booking is confirmed, you'll receive real-time updates and can track your provider's location through the app.",
+          "Once your booking is, confirmed, you'll receive real-time updates and can track your provider's location through the app.",
       },
     ],
   },
@@ -71,7 +71,7 @@ const faqData = [
       {
         question: "What payment methods do you accept?",
         answer:
-          "We accept all major credit cards, debit cards, digital wallets (Apple Pay, Google Pay), and bank transfers.",
+          "We accept all major credit, cards, debit, cards, digital wallets (Apple, Pay, Google Pay), and bank transfers.",
       },
       {
         question: "How do refunds work?",
@@ -153,7 +153,7 @@ export default function HelpPage() {
             <div className="relative max-w-2xl mx-auto">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input
-                placeholder="Search for help articles, guides, and FAQs..."
+                placeholder="Search for help, articles, guides, and FAQs..."
                 className="pl-12 py-3 text-lg"
               />
               <Button className="absolute right-2 top-1/2 transform -translate-y-1/2">

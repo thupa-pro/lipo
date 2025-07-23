@@ -332,7 +332,7 @@ export default function BookingConfirmation({
                     </Popover>
                     {selectedDate && (
                       <p className="text-sm text-emerald-600 dark:text-emerald-400 mt-2">
-                        ✓ {format(selectedDate, "EEEE, MMMM do, yyyy")}
+                        ✓ {format(selectedDate, "EEEE, MMMM, do, yyyy")}
                       </p>
                     )}
                   </div>
@@ -452,7 +452,7 @@ export default function BookingConfirmation({
                     <Alert className="border-amber-200 bg-amber-50/50 dark:bg-amber-950/20">
                       <AlertCircle className="h-4 w-4 text-amber-600" />
                       <AlertDescription className="text-amber-700 dark:text-amber-300">
-                        Please select a date, time, and duration to continue
+                        Please select a, date, time, and duration to continue
                         with your booking.
                       </AlertDescription>
                     </Alert>

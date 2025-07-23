@@ -18,12 +18,12 @@ import {
 const featuredProviders = [
   {
     id: 1,
-    name: "Sarah Mitchell",
-    service: "Premium House Cleaning",
+    name: "Sarah, Mitchell",
+    service: "Premium, House Cleaning",
     rating: 4.98,
     reviews: 347,
     price: "$28/hr",
-    location: "Downtown District",
+    location: "Downtown, District",
     avatar:
       "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face",
     badges: ["Top Rated", "Background Verified", "Insured"],

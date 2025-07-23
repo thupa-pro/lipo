@@ -31,7 +31,7 @@ export default function AuthLoadingPage() {
           break;
       }
     } else {
-      // Not authenticated, redirect to landing
+      // Not, authenticated, redirect to landing
       router.push(`/${locale}/landing`);
     }
   }, [user, isLoading, isSignedIn, router, locale]);

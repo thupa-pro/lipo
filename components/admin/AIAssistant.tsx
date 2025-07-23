@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { AI_AGENTS, aiClient, type, AIAgent } from '@/lib/ai/gemini-client';
-import { Send, Eye, MessageCircle, Lightbulb, AlertTriangle, TrendingUp Sparkles } from 'lucide-react';
+import { AI_AGENTS, aiClient, type AIAgent } from '@/lib/ai/gemini-client';
+import { Send, Eye, MessageCircle, Lightbulb, AlertTriangle, TrendingUp, Sparkles } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -72,7 +72,7 @@ export default function AIAssistant({ platformData, onInsightGenerated }: AIAssi
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `I apologize, but I encountered an issue processing your request. As ${selectedAgent.name}, I'm still here to help you with platform insights and analysis. Please try rephrasing your question.`,
+        content: `I, apologize, but I encountered an issue processing your request. As ${selectedAgent.name}, I'm still here to help you with platform insights and analysis. Please try rephrasing your question.`,
         timestamp: new Date(),
         agentId: selectedAgent.id,
       };

@@ -133,7 +133,7 @@ export default function OnboardingPage() {
     );
   }
 
-  // If we have progress and a role, show the onboarding flow
+  // If we have progress and a, role, show the onboarding flow
   if (progress && selectedRole) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8 px-4">
@@ -322,7 +322,7 @@ export default function OnboardingPage() {
                 </div>
                 <h4 className="font-medium mb-2">Secure Platform</h4>
                 <p className="text-sm text-gray-600">
-                  Verified providers, secure payments, and reliable service
+                  Verified, providers, secure, payments, and reliable service
                 </p>
               </div>
               <div>
@@ -331,7 +331,7 @@ export default function OnboardingPage() {
                 </div>
                 <h4 className="font-medium mb-2">Easy to Use</h4>
                 <p className="text-sm text-gray-600">
-                  Simple booking, clear communication, and hassle-free
+                  Simple, booking, clear, communication, and hassle-free
                   experience
                 </p>
               </div>

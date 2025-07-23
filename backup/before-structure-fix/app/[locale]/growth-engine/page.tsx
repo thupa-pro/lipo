@@ -6,12 +6,12 @@ import Link from "next/link"
 
 export default function GrowthEnginePage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen, bg-gray-50">
       {/* Header */}
-      <header className="border-b bg-white">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
+      <header className="border-b, bg-white">
+        <div className="container, mx-auto, px-4 py-4 flex, items-center, justify-between">
+          <Link, href="/" className="flex, items-center, space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-r, from-blue-600 to-green-600 rounded-lg, flex items-center, justify-center">
               <MapPin className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">

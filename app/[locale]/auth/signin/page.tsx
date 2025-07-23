@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { 
-  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Fingerprint Globe, Chrome, Github, Users
+  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Fingerprint, Globe, Chrome, Github, Users
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
@@ -313,7 +313,7 @@ export default function SignInPage() {
                         Enter Password
                       </h1>
                       <p className="text-slate-600 dark:text-gray-400">
-                        Welcome back, {email}
+                        Welcome, back, {email}
                       </p>
                     </div>
 

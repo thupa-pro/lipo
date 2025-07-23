@@ -174,7 +174,7 @@ export default function SearchPage() {
     {
       id: "3",
       title: "Certified Electrician",
-      description: "Electrical installations, repairs, and maintenance. Safety-first approach with competitive pricing.",
+      description: "Electrical, installations, repairs, and maintenance. Safety-first approach with competitive pricing.",
       price: 95,
       rating: 4.7,
       reviewCount: 56,

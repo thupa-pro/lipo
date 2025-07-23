@@ -42,7 +42,7 @@ export default function ProviderBookingsPage() {
     {
       id: 1,
       customer: {
-        name: "Sarah Johnson",
+        name: "Sarah, Johnson",
         phone: "(555) 123-4567",
         avatar: "SJ",
       },
@@ -52,7 +52,7 @@ export default function ProviderBookingsPage() {
       duration: "2 hours",
       price: "$120",
       status: "confirmed",
-      address: "123 Main St, Seattle, WA",
+      address: "123 Main, St, Seattle, WA",
       notes:
         "Please focus on kitchen and bathrooms. Pet-friendly products preferred.",
     },
@@ -69,7 +69,7 @@ export default function ProviderBookingsPage() {
       duration: "1.5 hours",
       price: "$160",
       status: "pending",
-      address: "456 Oak Ave, Seattle, WA",
+      address: "456 Oak, Ave, Seattle, WA",
       notes: "Kitchen sink leak. Customer will be working from home.",
     },
     {
@@ -85,7 +85,7 @@ export default function ProviderBookingsPage() {
       duration: "3 hours",
       price: "$210",
       status: "confirmed",
-      address: "789 Pine St, Seattle, WA",
+      address: "789 Pine, St, Seattle, WA",
       notes: "Large backyard needs general maintenance and weeding.",
     },
     {
@@ -101,7 +101,7 @@ export default function ProviderBookingsPage() {
       duration: "2 hours",
       price: "$120",
       status: "completed",
-      address: "321 Elm Dr, Seattle, WA",
+      address: "321 Elm, Dr, Seattle, WA",
       notes: "Regular monthly cleaning. Very satisfied customer.",
     },
   ];

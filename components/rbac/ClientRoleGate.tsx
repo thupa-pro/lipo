@@ -102,7 +102,7 @@ export function ClientRoleGate({
         )
       );
     }
-    // For guest access, treat as guest role
+    // For guest, access, treat as guest role
     if (allowedRoles.includes("guest")) {
       return <>{children}</>;
     }
@@ -140,6 +140,6 @@ export function ClientRoleGate({
     );
   }
 
-  // User has required role, render children
+  // User has required, role, render children
   return <>{children}</>;
 }

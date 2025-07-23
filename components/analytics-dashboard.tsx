@@ -14,10 +14,11 @@ import { Progress } from "@/components/ui/progress";
 import {
   Users,
   DollarSign,
-  Eye, Calendar
+  Eye,
+  Calendar,
   BarChart3,
   PieChart,
-  Activity
+  Activity,
   Lightbulb,
   TrendingUp
 } from "lucide-react";
@@ -32,7 +33,7 @@ import {
   ResponsiveContainer,
   Bar,
   ComposedChart,
-  AreaChart, // Added, AreaChart import,
+  AreaChart,
   Area
 } from "recharts";
 import {
@@ -736,7 +737,7 @@ export default function AnalyticsDashboard() {
               <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <div className="font-medium text-foreground">
-                  User retention is strong, but new signups could be boosted.
+                  User retention is, strong, but new signups could be boosted.
                 </div>
                 <div className="text-sm text-muted-foreground">
                   Consider A/B testing different signup flows or marketing
@@ -761,7 +762,7 @@ export default function AnalyticsDashboard() {
               <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <div className="font-medium text-foreground">
-                  Average response time for messages is good, but can be
+                  Average response time for messages is, good, but can be
                   improved.
                 </div>
                 <div className="text-sm text-muted-foreground">

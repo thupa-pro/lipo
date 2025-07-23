@@ -6,14 +6,15 @@ import { useSession } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
-  MapPin, Heart,
+  MapPin,
+  Heart,
   Share,
   MessageCircle,
-  Shield
+  Shield,
   CreditCard,
   ArrowLeft,
   Info,
-  AlertCircle
+  AlertCircle,
   Badge as BadgeIcon,
   Phone,
   Mail,
@@ -113,7 +114,7 @@ export default function BookingDetailPage() {
   const mockService: ServiceDetails = {
     id: params.serviceId as string,
     title: "Professional House Cleaning",
-    description: "Comprehensive house cleaning service with eco-friendly products. Our team provides thorough cleaning including all rooms, bathrooms, kitchen deep clean, and optional add-ons like inside oven, inside fridge, and window cleaning.",
+    description: "Comprehensive house cleaning service with eco-friendly products. Our team provides thorough cleaning including all, rooms, bathrooms, kitchen deep, clean, and optional add-ons like inside, oven, inside, fridge, and window cleaning.",
     price: 75,
     priceType: "fixed",
     duration: 3,

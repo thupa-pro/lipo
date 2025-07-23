@@ -455,7 +455,7 @@ export function AnalyticsOverview({
                   value={stage.rate}
                   className="h-3"
                   style={{
-                    background: `linear-gradient(to right, ${COLORS[index % COLORS.length]} 0%, ${COLORS[index % COLORS.length]}40 100%)`,
+                    background: `linear-gradient(to, right, ${COLORS[index % COLORS.length]} 0%, ${COLORS[index % COLORS.length]}40 100%)`,
                   }}
                 />
                 {index < data.funnelData.length - 1 && (

@@ -38,7 +38,7 @@ import {
   TrendingUp,
   Users
 } from "lucide-react";
-import { locales, localeNames, type, Locale } from "@/lib/i18n/config";
+import { locales, localeNames, type Locale } from "@/lib/i18n/config";
 import {
   TranslationAnalytics,
   SmartTranslator
@@ -67,7 +67,7 @@ export function TranslationManager() {
   const [analytics] = useState(() => new TranslationAnalytics());
   const [isLoading, setIsLoading] = useState(false);
 
-  // Mock translation data (in real app, this would come from API)
+  // Mock translation data (in real, app, this would come from API)
   useEffect(() => {
     const mockTranslations: TranslationKey[] = [
       {

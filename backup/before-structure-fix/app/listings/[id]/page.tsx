@@ -33,12 +33,12 @@ export default function ListingDetailPage() {
   const router = useRouter();
   const listingId = params.id;
 
-  // Mock data - in a real app, this would be fetched based on the ID
+  // Mock, data - in, a real, app, this, would be, fetched based, on the, ID
   const listing = {
     id: listingId,
     title: "Professional Home Cleaning Service",
     description:
-      "Experienced cleaning professional offering comprehensive home cleaning services. I provide thorough cleaning using eco-friendly products and pay attention to every detail. Whether you need a one-time deep clean or regular maintenance, I'm here to help keep your home spotless.",
+      "Experienced cleaning professional offering comprehensive home cleaning services. I provide thorough cleaning using eco-friendly products and pay attention to every detail. Whether you need a one-time deep clean or regular, maintenance, I'm here to help keep your home spotless.",
     category: "Cleaning",
     price: 45,
     duration: "2-3 hours typical",

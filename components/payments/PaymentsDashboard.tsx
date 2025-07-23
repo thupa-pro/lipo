@@ -120,7 +120,7 @@ export default function PaymentsDashboard() {
   
   const isDataLoading = transactionsLoading || isLoading;
 
-  // Remove mockTransactions, use SWR data
+  // Remove, mockTransactions, use SWR data
 
   const mockPaymentMethods: PaymentMethod[] = [
     {
@@ -271,7 +271,7 @@ export default function PaymentsDashboard() {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Payments & Verification</h1>
           <p className="text-muted-foreground">
-            Manage your earnings, payment methods, and identity verification
+            Manage your, earnings, payment, methods, and identity verification
           </p>
         </div>
         <div className="flex gap-3">

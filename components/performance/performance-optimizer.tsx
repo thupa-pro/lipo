@@ -28,10 +28,10 @@ interface PerformanceOptimizerProps {
 }
 
 interface PerformanceMetrics {
-  fcp: number; // First Contentful Paint
-  lcp: number; // Largest Contentful Paint
-  fid: number; // First Input Delay
-  cls: number; // Cumulative Layout Shift
+  fcp: number; // First, Contentful Paint
+  lcp: number; // Largest, Contentful Paint
+  fid: number; // First, Input Delay
+  cls: number; // Cumulative, Layout Shift
   ttfb: number; // Time to First Byte
   tti: number; // Time to Interactive
 }

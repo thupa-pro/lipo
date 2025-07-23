@@ -151,7 +151,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
       id: 'fallback-1',
       type: 'opportunity',
       title: 'User Engagement Optimization',
-      description: 'Based on recent activity patterns, implementing personalized dashboards could increase user engagement by 15-20%.',
+      description: 'Based on recent activity, patterns, implementing personalized dashboards could increase user engagement by 15-20%.',
       confidence: 82,
       impact: 'high',
       agentId: 'sophia',

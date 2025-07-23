@@ -282,7 +282,7 @@ export default function SystemHealthLogsPage() {
         </div>
 
         <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-          Monitor platform stability, performance, and review real-time error
+          Monitor platform, stability, performance, and review real-time error
           logs for quick issue resolution.
         </p>
 

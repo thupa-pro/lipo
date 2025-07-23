@@ -201,7 +201,7 @@ export default function EnhancedSettingsPage() {
             <div>
               <h1 className="text-2xl font-bold">Account Settings</h1>
               <p className="text-muted-foreground">
-                Manage your profile, preferences, and account settings
+                Manage your, profile, preferences, and account settings
               </p>
             </div>
 
@@ -315,7 +315,7 @@ export default function EnhancedSettingsPage() {
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
               You have unsaved changes. They will be saved automatically in a
-              few seconds, or you can save manually.
+              few, seconds, or you can save manually.
             </AlertDescription>
           </Alert>
         )}

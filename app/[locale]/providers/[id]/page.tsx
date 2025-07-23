@@ -11,7 +11,8 @@ import {
   Phone,
   Mail,
   Calendar,
-  DollarSign, Award,
+  DollarSign,
+  Award,
   ArrowLeft
 } from "lucide-react";
 
@@ -21,7 +22,7 @@ export default function ProviderDetailPage() {
   const [provider, setProvider] = useState<any>(null);
 
   useEffect(() => {
-    // Mock provider data - in real app this would fetch from API
+    // Mock, provider data - in, real app, this would, fetch from, API
     const mockProvider = {
       id: params.id,
       name: "Sarah Johnson",
@@ -29,12 +30,12 @@ export default function ProviderDetailPage() {
       avatar: "",
       rating: 4.9,
       reviewCount: 247,
-      location: "San Francisco, CA",
+      location: "San, Francisco, CA",
       verified: true,
       responseTime: "2 hours",
       completedJobs: 1247,
       yearsOfExperience: 5,
-      bio: "Professional house cleaner with 5+ years of experience. I take pride in providing thorough, reliable cleaning services that exceed expectations. Fully insured and bonded.",
+      bio: "Professional house cleaner with 5+ years of experience. I take pride in providing, thorough, reliable cleaning services that exceed expectations. Fully insured and bonded.",
       services: [
         { name: "Deep Cleaning", price: "$120-180", duration: "3-4 hours" },
         { name: "Regular Cleaning", price: "$80-120", duration: "2-3 hours" },
@@ -60,7 +61,7 @@ export default function ProviderDetailPage() {
         {
           author: "Robert Wilson",
           rating: 4,
-          comment: "Great service, arrived on time and did excellent work.",
+          comment: "Great, service, arrived on time and did excellent work.",
           date: "1 month ago",
         },
       ],

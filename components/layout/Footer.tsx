@@ -14,14 +14,14 @@ import {
   Heart} from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new, Date().getFullYear();
 
   const footerSections = [
     {
       title: "Platform",
       links: [
-        { name: "How it Works", href: "/how-it-works" },
-        { name: "For Customers", href: "/customers" },
+        { name: "How, it Works", href: "/how-it-works" },
+        { name: "For, Customers", href: "/customers" },
         { name: "For Providers", href: "/providers" },
         { name: "Trust & Safety", href: "/trust-safety" },
         { name: "Community Guidelines", href: "/guidelines" },
@@ -69,7 +69,7 @@ export default function Footer() {
   const contactInfo = [
     { icon: Mail, text: "support@loconomy.com", href: "mailto:support@loconomy.com" },
     { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: MapPin, text: "San Francisco, CA", href: "#" },
+    { icon: MapPin, text: "San, Francisco, CA", href: "#" },
   ];
 
   const features = [

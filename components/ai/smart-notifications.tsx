@@ -197,7 +197,7 @@ export default function SmartNotifications({
       {
         title: "⭐ Quality Recommendation",
         message:
-          "Based on your preferences, I recommend booking with providers who have 4.8+ ratings in your area.",
+          "Based on your, preferences, I recommend booking with providers who have 4.8+ ratings in your area.",
         type: "ai_insight" as const,
         agentId: "maya",
       },

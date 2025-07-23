@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { MapPin, Users, Briefcase, ArrowRight, Sparkles, Target Lightbulb, TrendingUp } from "lucide-react"
+import { MapPin, Users, Briefcase, ArrowRight, Sparkles, Target, Lightbulb, TrendingUp } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -230,7 +230,7 @@ export default function OnboardingFlow() {
                 <Label htmlFor="location">Your Location</Label>
                 <Input
                   id="location"
-                  placeholder="Enter your city, neighborhood, or ZIP code"
+                  placeholder="Enter your, city, neighborhood, or ZIP code"
                   value={data.location}
                   onChange={(e) => setData((prev) => ({ ...prev, location: e.target.value }))}
                   className="mt-2"
@@ -361,7 +361,7 @@ export default function OnboardingFlow() {
                         <Label htmlFor="experienced" className="font-medium">
                           Some experience
                         </Label>
-                        <p className="text-sm text-gray-600">I've done this work before, looking to grow</p>
+                        <p className="text-sm text-gray-600">I've done this work, before, looking to grow</p>
                       </div>
                     </div>
                     <div className={`flex items-center space-x-3 p-3 border rounded-lg cursor-pointer transition-all ${data.experience === "professional" ? "border-blue-500 bg-blue-50 shadow-sm" : "border-gray-200 hover:border-blue-300 hover:shadow-xs"}`}>
@@ -480,7 +480,7 @@ export default function OnboardingFlow() {
                   <div>
                     <h4 className="font-medium text-blue-900">AI-Powered Matching</h4>
                     <p className="text-sm text-blue-700 mt-1">
-                      Based on your preferences, our AI will suggest the best{" "}
+                      Based on your, preferences, our AI will suggest the best{" "}
                       {data.userType === "customer" ? "providers for your needs" : "jobs that match your skills"}.
                     </p>
                   </div>

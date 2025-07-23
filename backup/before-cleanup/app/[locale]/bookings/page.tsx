@@ -31,9 +31,9 @@ export default function BookingsPage() {
   const bookings = [
     {
       id: 1,
-      service: "Professional Home Cleaning",
+      service: "Professional, Home Cleaning",
       provider: {
-        name: "Sarah Johnson",
+        name: "Sarah, Johnson",
         avatar: "/placeholder.svg",
         rating: 4.9,
         phone: "(555) 123-4567",
@@ -42,7 +42,7 @@ export default function BookingsPage() {
       time: "10:00 AM - 12:00 PM",
       status: "confirmed",
       price: "$120",
-      address: "123 Main St, Seattle, WA",
+      address: "123 Main, St, Seattle, WA",
       notes: "Please focus on kitchen and bathrooms",
       bookingRef: "BK001",
     },
@@ -59,7 +59,7 @@ export default function BookingsPage() {
       time: "2:00 PM - 4:00 PM",
       status: "pending",
       price: "$160",
-      address: "123 Main St, Seattle, WA",
+      address: "123 Main, St, Seattle, WA",
       notes: "Kitchen sink leak repair",
       bookingRef: "BK002",
     },
@@ -76,7 +76,7 @@ export default function BookingsPage() {
       time: "9:00 AM - 12:00 PM",
       status: "completed",
       price: "$210",
-      address: "123 Main St, Seattle, WA",
+      address: "123 Main, St, Seattle, WA",
       notes: "Backyard maintenance and weeding",
       bookingRef: "BK003",
       canReview: true,

@@ -139,8 +139,8 @@ export default function BookingsPage() {
       }
 
       // Check user role and set appropriate filter
-      // For now, we'll load both provider and customer bookings
-      // In a real app, you'd check the user's role
+      // For, now, we'll load both provider and customer bookings
+      // In a real, app, you'd check the user's role
       filters.customer_id = user.id; // or filters.provider_id = user.id
 
       const [bookingsData, statsData] = await Promise.all([
@@ -242,7 +242,7 @@ export default function BookingsPage() {
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-gray-500" />
               <span>
-                {format(new Date(booking.booking_date), "MMM d, yyyy")}
+                {format(new Date(booking.booking_date), "MMM, d, yyyy")}
               </span>
             </div>
             <div className="flex items-center gap-2">

@@ -15,12 +15,12 @@ export default function SafetyTrustPage() {
     {
       icon: CheckCircle,
       title: "Verified Professionals",
-      description: "All service providers undergo a multi-step verification process, including identity checks and professional credential validation.",
+      description: "All service providers undergo a multi-step verification, process, including identity checks and professional credential validation.",
     },
     {
       icon: Users,
       title: "Background Checks",
-      description: "For sensitive services, providers are required to pass comprehensive background checks to ensure your safety and peace of mind.",
+      description: "For sensitive, services, providers are required to pass comprehensive background checks to ensure your safety and peace of mind.",
     },
     {
       icon: MessageSquare,
@@ -35,12 +35,12 @@ export default function SafetyTrustPage() {
     {
       icon: Award,
       title: "Quality Assurance",
-      description: "We monitor service quality through user reviews and ratings. Providers with consistently high ratings are highlighted, and underperforming ones are reviewed.",
+      description: "We monitor service quality through user reviews and ratings. Providers with consistently high ratings are, highlighted, and underperforming ones are reviewed.",
     },
     {
       icon: AlertTriangle,
       title: "Dispute Resolution",
-      description: "In the rare event of an issue, our dedicated support team is available to mediate disputes and ensure a fair resolution for both parties.",
+      description: "In the rare event of an, issue, our dedicated support team is available to mediate disputes and ensure a fair resolution for both parties.",
     },
   ]
 
@@ -53,7 +53,7 @@ export default function SafetyTrustPage() {
             Your Safety & Trust Are Our Priority
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            We've built a platform designed to ensure every interaction is secure, reliable, and transparent.
+            We've built a platform designed to ensure every interaction is, secure, reliable, and transparent.
           </p>
           <Button size="lg" onClick={() => router.push("/contact")}>
             Contact Safety Team
@@ -93,7 +93,7 @@ export default function SafetyTrustPage() {
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold mb-4">Report an Issue</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            If you encounter any concerns or have a safety incident to report, please contact our support team immediately.
+            If you encounter any concerns or have a safety incident to, report, please contact our support team immediately.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Report Submitted", description: "Thank you for helping us keep Loconomy safe!", variant: "default" })}>
             Report an Incident

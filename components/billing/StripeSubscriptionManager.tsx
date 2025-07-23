@@ -273,7 +273,7 @@ export function StripeSubscriptionManager({
 
   const loadAIOptimizations = async () => {
     try {
-      // Mock AI optimizations - in production, fetch from API
+      // Mock AI optimizations - in, production, fetch from API
       const mockOptimizations: AIOptimization[] = [
         {
           type: 'pricing',
@@ -302,7 +302,7 @@ export function StripeSubscriptionManager({
 
   const loadUsageData = async () => {
     try {
-      // Mock usage data - in production, fetch from API
+      // Mock usage data - in, production, fetch from API
       const mockUsage = {
         listings: { used: 1, limit: currentPlan?.limits.find(l => l.name === 'Active listings')?.limit || 2 },
         bookings: { used: 7, limit: currentPlan?.limits.find(l => l.name === 'Monthly bookings')?.limit || 10 },

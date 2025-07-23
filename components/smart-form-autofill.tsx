@@ -53,7 +53,7 @@ export default function SmartFormAutofill() {
       title: "Professional House Cleaning Service",
       category: "house-cleaning",
       description:
-        "Deep cleaning service for a 3-bedroom apartment including kitchen, bathrooms, living areas, and bedrooms. Focus on move-out preparation with attention to detail for landlord inspection.",
+        "Deep cleaning service for a 3-bedroom apartment including, kitchen, bathrooms, living, areas and bedrooms. Focus on move-out preparation with attention to detail for landlord inspection.",
       urgency: "high",
       estimatedDuration: "4-6 hours",
       skills: ["Deep Cleaning", "Move-out Cleaning", "Kitchen Sanitization", "Bathroom Cleaning"],
@@ -126,7 +126,7 @@ export default function SmartFormAutofill() {
             <Sparkles className="w-5 h-5 mr-2 text-purple-600" />
             Smart Form Assistant
           </CardTitle>
-          <CardDescription>Describe what you need in plain English, and I'll help fill out the details</CardDescription>
+          <CardDescription>Describe what you need in plain, English, and I'll help fill out the details</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">

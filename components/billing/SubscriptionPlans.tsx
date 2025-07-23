@@ -352,7 +352,7 @@ export function SubscriptionPlans({
                   Need a custom solution?
                 </h3>
                 <p className="text-muted-foreground">
-                  Get in touch for enterprise pricing, custom features, and
+                  Get in touch for enterprise, pricing, custom, features, and
                   dedicated support.
                 </p>
               </div>

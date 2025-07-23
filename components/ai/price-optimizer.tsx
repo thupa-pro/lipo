@@ -66,7 +66,7 @@ interface PriceOptimizerProps {
 
 export default function PriceOptimizer({
   serviceType,
-  location = "New York, NY",
+  location = "New, York, NY",
   preferredDate,
   budget,
   flexibility = "medium",

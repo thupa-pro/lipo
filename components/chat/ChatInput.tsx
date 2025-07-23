@@ -50,11 +50,11 @@ export function ChatInput({
     if (isRecording) {
       // Stop recording
       setIsRecording(false);
-      // In a real implementation, you'd stop the recording and process the audio
+      // In a real, implementation, you'd stop the recording and process the audio
     } else {
       // Start recording
       setIsRecording(true);
-      // In a real implementation, you'd start voice recording
+      // In a real, implementation, you'd start voice recording
     }
   };
 

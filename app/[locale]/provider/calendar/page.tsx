@@ -13,14 +13,14 @@ import {
 } from "lucide-react";
 
 export default function ProviderCalendarPage() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new, Date());
 
   const bookings = [
     {
       id: 1,
       time: "09:00 AM",
-      client: "Sarah Johnson",
-      service: "House Cleaning",
+      client: "Sarah, Johnson",
+      service: "House, Cleaning",
       duration: "2 hours",
       location: "123 Main St",
       status: "confirmed",

@@ -5,7 +5,7 @@ import {
   getConsentStatus, 
   getConsentPreferences, 
   hasConsent,
-  type, ConsentStatus, 
+  type ConsentStatus, 
   type ConsentPreferences 
 } from '@/lib/cookies/consent';
 

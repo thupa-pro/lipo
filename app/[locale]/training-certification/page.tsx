@@ -15,7 +15,7 @@ export default function TrainingCertificationPage() {
     {
       icon: BookOpen,
       title: "Loconomy Service Excellence Course",
-      description: "Learn best practices for customer communication, service delivery, and reputation management.",
+      description: "Learn best practices for customer, communication, service, delivery, and reputation management.",
       modules: ["Customer Service Fundamentals", "Effective Communication", "Handling Difficult Situations", "Building Repeat Business"],
       action: { label: "Start Course", onClick: () => toast({ title: "Course Enrollment", description: "Enrolling in Service Excellence Course...", variant: "default" }) },
     },
@@ -44,7 +44,7 @@ export default function TrainingCertificationPage() {
             Training & Certification
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Enhance your skills, boost your reputation, and unlock new opportunities with our professional programs.
+            Enhance your, skills, boost your, reputation, and unlock new opportunities with our professional programs.
           </p>
           <Button size="lg" onClick={() => router.push("/provider-resources")}>
             Explore All Resources

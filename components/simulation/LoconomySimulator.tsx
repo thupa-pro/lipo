@@ -314,7 +314,7 @@ const mockServices: Service[] = [
       avatar: "/avatars/mike.jpg",
       rating: 4.9
     },
-    location: "San Francisco, CA",
+    location: "San, Francisco, CA",
     availability: ["Mon", "Wed", "Fri"],
     images: ["/services/cleaning1.jpg", "/services/cleaning2.jpg"],
     tags: ["cleaning", "house", "professional"],
@@ -333,7 +333,7 @@ const mockServices: Service[] = [
       avatar: "/avatars/mike.jpg",
       rating: 4.9
     },
-    location: "San Francisco, CA",
+    location: "San, Francisco, CA",
     availability: ["Tue", "Thu", "Sat"],
     images: ["/services/handyman1.jpg"],
     tags: ["repairs", "installation", "maintenance"],
@@ -457,7 +457,7 @@ export function LoconomySimulator() {
   const sendAiMessage = async (message: string) => {
     if (!message.trim()) return;
 
-    const userMessage = { type: 'user' as const, message };
+    const userMessage = { type: 'user' as const message };
     setAiChat(prev => [...prev, userMessage]);
     setAiChatInput("");
     setIsAiTyping(true);
@@ -465,8 +465,8 @@ export function LoconomySimulator() {
     // Simulate AI response
     setTimeout(() => {
       const aiResponse = { 
-        type: 'ai' as const, 
-        message: `I understand you're asking about "${message}". As a ${currentUser.role} on Loconomy, here's how I can help you...` 
+        type: 'ai' as const 
+        message: `I understand you're asking about "${message}". As a ${currentUser.role} on, Loconomy, here's how I can help you...` 
       };
       setAiChat(prev => [...prev, aiResponse]);
       setIsAiTyping(false);
@@ -727,7 +727,7 @@ export function LoconomySimulator() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 border rounded-lg">
               <h3 className="font-semibold mb-2">User Management</h3>
-              <p className="text-sm text-muted-foreground mb-3">Manage users, roles, and permissions</p>
+              <p className="text-sm text-muted-foreground mb-3">Manage, users, roles, and permissions</p>
               <Button size="sm">Manage Users</Button>
             </div>
             <div className="p-4 border rounded-lg">
@@ -938,7 +938,7 @@ export function LoconomySimulator() {
                       <div className="text-center text-muted-foreground py-8">
                         <Bot className="w-12 h-12 mx-auto mb-4 opacity-50" />
                         <p>Ask me anything about Loconomy!</p>
-                        <p className="text-sm">I can help with bookings, services, and platform features.</p>
+                        <p className="text-sm">I can help with, bookings, services, and platform features.</p>
                       </div>
                     ) : (
                       <div className="space-y-4">

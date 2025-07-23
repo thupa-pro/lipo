@@ -21,7 +21,7 @@ import {
   Info,
   AlertCircle 
 } from 'lucide-react';
-import { getConsentPreferences, type, ConsentPreferences } from '@/lib/cookies/consent';
+import { getConsentPreferences, type ConsentPreferences } from '@/lib/cookies/consent';
 
 interface CookieSettingsModalProps {
   isOpen: boolean;

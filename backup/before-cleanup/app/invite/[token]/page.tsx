@@ -46,7 +46,7 @@ export default function InviteAcceptPage({ params }: PageProps) {
   const validateInvitation = async () => {
     setIsLoading(true);
     try {
-      // Since we don't have a direct endpoint to validate invitations,
+      // Since we don't have a direct endpoint to validate, invitations,
       // we'll simulate the validation process
 
       if (!user) {
@@ -54,8 +54,8 @@ export default function InviteAcceptPage({ params }: PageProps) {
         return;
       }
 
-      // In a real implementation, you would validate the token here
-      // For now, we'll simulate invitation data
+      // In a real, implementation, you would validate the token here
+      // For, now, we'll simulate invitation data
       setInvitationData({
         workspace_name: "Example Workspace",
         role: "member",
@@ -306,7 +306,7 @@ export default function InviteAcceptPage({ params }: PageProps) {
             </div>
 
             <p className="text-xs text-gray-500 text-center mt-4">
-              By accepting, you agree to join this workspace and follow its
+              By, accepting, you agree to join this workspace and follow its
               guidelines.
             </p>
           </CardContent>

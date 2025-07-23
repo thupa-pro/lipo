@@ -9,8 +9,8 @@ import {
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Provider Management - Admin Dashboard",
-  description: "Manage service providers and their verification status",
+  title: "Provider, Management - Admin, Dashboard",
+  description: "Manage, service providers, and their, verification status",
 };
 
 export default function AdminProvidersPage() {
@@ -87,7 +87,7 @@ export default function AdminProvidersPage() {
               </h2>
               <p className="text-xl text-slate-600 dark:text-gray-300 mb-8">
                 Advanced provider management features are under development.
-                You'll soon be able to review applications, manage
+                You'll soon be able to review, applications, manage
                 verifications, and monitor service quality.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-600 dark:text-gray-300">

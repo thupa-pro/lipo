@@ -84,8 +84,8 @@ export function CookieConsentDemo() {
           <h1 className="text-3xl font-bold">Cookie Consent System Demo</h1>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Production-ready GDPR/CCPA compliant cookie management system with granular controls,
-          automatic script loading, and persistent localStorage storage.
+          Production-ready GDPR/CCPA compliant cookie management system with granular, controls,
+          automatic script, loading, and persistent localStorage storage.
         </p>
       </div>
 

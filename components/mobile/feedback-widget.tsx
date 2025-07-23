@@ -322,7 +322,7 @@ export function FeedbackWidget({
             Tell us more (optional)
           </h4>
           <Textarea
-            placeholder="Share your thoughts about the service quality, provider professionalism, or any suggestions..."
+            placeholder="Share your thoughts about the service, quality, provider, professionalism, or any suggestions..."
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
             className="min-h-24 resize-none border-2 focus:border-blue-300 transition-colors"

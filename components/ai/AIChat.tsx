@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import {
   USER_AI_AGENTS,
   userAIClient,
-  type, UserAIAgent
+  type UserAIAgent
 } from "@/lib/ai/user-ai-agents";
 import {
   MessageCircle,
@@ -195,7 +195,7 @@ export default function AIChat({
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: `I apologize, but I'm having trouble connecting right now. Please try again, or feel free to browse our services while I get back online!`,
+        content: `I, apologize, but I'm having trouble connecting right now. Please try, again, or feel free to browse our services while I get back online!`,
         timestamp: new Date(),
         agentId: currentAgent.id,
         isError: true,

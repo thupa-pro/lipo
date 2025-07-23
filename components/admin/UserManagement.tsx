@@ -276,7 +276,7 @@ export function UserManagement() {
         <div>
           <h2 className="text-2xl font-bold">User Management</h2>
           <p className="text-gray-600">
-            Manage user accounts, roles, and status
+            Manage user, accounts, roles, and status
           </p>
         </div>
         <Button onClick={exportUsers}>
@@ -400,7 +400,7 @@ export function UserManagement() {
                         </TableCell>
                         <TableCell>
                           <div className="text-sm">
-                            {format(new Date(user.created_at), "MMM d, yyyy")}
+                            {format(new Date(user.created_at), "MMM, d, yyyy")}
                           </div>
                         </TableCell>
                         <TableCell>{renderUserActions(user)}</TableCell>

@@ -247,7 +247,7 @@ export default function PricingPage() {
               style={{ animationDelay: "0.2s" }}
             >
               Choose the perfect plan for your needs. Whether you're seeking
-              premium services or offering elite expertise, we have transparent
+              premium services or offering elite, expertise, we have transparent
               pricing that scales with your success.
             </p>
 
@@ -387,7 +387,7 @@ export default function PricingPage() {
                     30-Day Money-Back Guarantee
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Not satisfied? Get a full refund, no questions asked.
+                    Not satisfied? Get a full, refund, no questions asked.
                   </div>
                 </div>
               </div>

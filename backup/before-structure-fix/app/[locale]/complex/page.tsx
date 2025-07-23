@@ -28,7 +28,7 @@ import Link from "next/link";
 export default function ComplexPage() {
   const stats = [
     {
-      label: "Active Users",
+      label: "Active, Users",
       value: "2.1M",
       icon: Users,
       trend: "+12%",

@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { 
   Sparkles, Globe, Users, Shield,
-  ArrowRight, Play TrendingUp,
-  Heart, Award, MapPin Brain, Crown,
+  ArrowRight, Play, TrendingUp,
+  Heart, Award, MapPin, Brain, Crown,
   Rocket, Building2, CircuitBoard, Gem
 } from "lucide-react";
 import Link from "next/link";
 
-// NoSSR wrapper component
+// NoSSR, wrapper component
 function NoSSR({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
@@ -60,28 +60,28 @@ export default function HomePage() {
     {
       icon: Zap,
       title: "Instant Precision Matching",
-      description: "Advanced ML algorithms connect you with verified experts in under 90 seconds. Zero waiting, maximum results.",
+      description: "Advanced ML algorithms connect you with verified experts in under 90 seconds. Zero, waiting, maximum results.",
       gradient: "from-blue-600 to-cyan-500",
       metric: "<90 seconds"
     },
     {
       icon: Shield,
       title: "Fortress-Level Security",
-      description: "Military-grade encryption, comprehensive insurance, and $1M+ liability coverage protect every interaction.",
+      description: "Military-grade, encryption, comprehensive, insurance, and $1M+ liability coverage protect every interaction.",
       gradient: "from-emerald-600 to-green-500",
       metric: "$1M+ protected"
     },
     {
       icon: Globe,
       title: "Global Excellence Standard",
-      description: "Operating across 127 cities worldwide, we maintain the highest quality standards in every market we serve.",
+      description: "Operating across 127 cities, worldwide, we maintain the highest quality standards in every market we serve.",
       gradient: "from-pink-600 to-rose-500",
       metric: "127 cities"
     },
     {
       icon: Rocket,
       title: "Future-Forward Platform",
-      description: "Built on cutting-edge technology with AR integration, voice AI, and predictive analytics for tomorrow's needs today.",
+      description: "Built on cutting-edge technology with AR, integration, voice, AI, and predictive analytics for tomorrow's needs today.",
       gradient: "from-indigo-600 to-blue-600",
       metric: "Next-gen tech"
     }
@@ -104,7 +104,7 @@ export default function HomePage() {
     },
     {
       company: "Forbes",
-      quote: "The future of hyperlocal commerce is here, and it's absolutely brilliant.",
+      quote: "The future of hyperlocal commerce is, here, and it's absolutely brilliant.",
       logo: "💎"
     },
     {

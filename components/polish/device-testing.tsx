@@ -164,7 +164,7 @@ export default function DeviceTesting({ className }: DeviceTestingProps) {
         test: 'Responsive Design',
         status: 'fail',
         message: 'Screen size too small for optimal experience',
-        details: `Minimum 320x568 required, current: ${width}x${height}`
+        details: `Minimum 320x568, required, current: ${width}x${height}`
       };
     }
   };
@@ -219,7 +219,7 @@ export default function DeviceTesting({ className }: DeviceTestingProps) {
         test: 'Accessibility',
         status: 'pass',
         message: 'All accessibility checks passed',
-        details: 'Alt text, headings, and landmarks present'
+        details: 'Alt, text, headings, and landmarks present'
       };
     } else if (score >= 2) {
       return {

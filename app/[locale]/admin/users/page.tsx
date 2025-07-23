@@ -17,8 +17,8 @@ import {
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "User Management - Admin Dashboard",
-  description: "Manage users and their accounts",
+  title: "User, Management - Admin, Dashboard",
+  description: "Manage, users and, their accounts",
 };
 
 export default function AdminUsersPage() {
@@ -58,7 +58,7 @@ export default function AdminUsersPage() {
       id: 1,
       name: "Sarah Chen",
       email: "sarah.chen@email.com",
-      location: "San Francisco, CA",
+      location: "San, Francisco, CA",
       joinDate: "2 hours ago",
       status: "active",
       verified: true,
@@ -78,7 +78,7 @@ export default function AdminUsersPage() {
       id: 3,
       name: "Emma Thompson",
       email: "emma.thompson@email.com",
-      location: "New York, NY",
+      location: "New, York, NY",
       joinDate: "1 day ago",
       status: "pending",
       verified: false,

@@ -61,7 +61,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
       mockSuggestions.push({
         title: "Deep House Cleaning Service",
         description:
-          "Professional deep cleaning including kitchen, bathrooms, bedrooms, and living areas with eco-friendly products.",
+          "Professional deep cleaning including, kitchen, bathrooms, bedrooms, and living areas with eco-friendly products.",
         category: "House Cleaning",
         urgency: "medium",
         estimatedPrice: "$75-120",
@@ -72,7 +72,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
     if (text.toLowerCase().includes("fix") || text.toLowerCase().includes("repair")) {
       mockSuggestions.push({
         title: "Home Repair & Maintenance",
-        description: "General handyman services for minor repairs, fixture installation, and basic troubleshooting.",
+        description: "General handyman services for minor, repairs, fixture, installation, and basic troubleshooting.",
         category: "Handyman Services",
         urgency: "high",
         estimatedPrice: "$50-80/hr",
@@ -83,7 +83,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
     if (text.toLowerCase().includes("move") || text.toLowerCase().includes("moving")) {
       mockSuggestions.push({
         title: "Moving & Packing Assistance",
-        description: "Professional moving help including packing, loading, and transportation coordination.",
+        description: "Professional moving help including, packing, loading, and transportation coordination.",
         category: "Moving Services",
         urgency: "high",
         estimatedPrice: "$100-200",
@@ -174,7 +174,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
               <Lightbulb className="w-5 h-5 mr-2 text-purple-600" />
               AI Suggestions
             </CardTitle>
-            <CardDescription>Based on your description, here are optimized job postings</CardDescription>
+            <CardDescription>Based on your, description, here are optimized job postings</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {suggestions.map((suggestion, index) => (

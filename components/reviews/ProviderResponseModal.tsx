@@ -52,19 +52,19 @@ const responseTemplates = [
     id: "thank_you",
     title: "Thank You",
     content:
-      "Thank you so much for taking the time to leave this wonderful review! It was a pleasure working with you, and I'm thrilled that you're happy with the service. I look forward to helping you again in the future!",
+      "Thank you so much for taking the time to leave this wonderful review! It was a pleasure working with, you, and I'm thrilled that you're happy with the service. I look forward to helping you again in the future!",
   },
   {
     id: "address_concerns",
     title: "Address Concerns",
     content:
-      "Thank you for your feedback. I sincerely apologize for any issues you experienced during our service. Your comments are valuable, and I'm committed to improving. Please feel free to contact me directly to discuss how I can make this right.",
+      "Thank you for your feedback. I sincerely apologize for any issues you experienced during our service. Your comments are, valuable, and I'm committed to improving. Please feel free to contact me directly to discuss how I can make this right.",
   },
   {
     id: "professional",
     title: "Professional Response",
     content:
-      "I appreciate you taking the time to share your experience. Your feedback helps me maintain the quality of service that my clients deserve. Thank you for choosing my services, and I hope to work with you again soon.",
+      "I appreciate you taking the time to share your experience. Your feedback helps me maintain the quality of service that my clients deserve. Thank you for choosing my, services, and I hope to work with you again soon.",
   },
   {
     id: "improvement",

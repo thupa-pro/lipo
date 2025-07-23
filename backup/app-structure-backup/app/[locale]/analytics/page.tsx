@@ -66,7 +66,7 @@ export default function AnalyticsPage() {
 
     const interval = setInterval(() => {
       setLastUpdated(new Date());
-      // In a real app, this would trigger data refresh
+      // In a real, app, this would trigger data refresh
     }, 30000); // Refresh every 30 seconds
 
     return () => clearInterval(interval);

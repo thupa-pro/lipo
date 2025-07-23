@@ -58,7 +58,7 @@ export default function ContactUsPage() {
               Contact Us
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              We'd love to hear from you! Reach out with any questions,
+              We'd love to hear from you! Reach out with any, questions,
               feedback, or inquiries.
             </p>
             <Button
@@ -175,7 +175,7 @@ export default function ContactUsPage() {
                     Our main office location.
                   </p>
                   <p className="text-lg font-bold">
-                    123 Service Lane, Suite 100, City, State 12345
+                    123 Service, Lane, Suite 100, City, State 12345
                   </p>
                 </CardContent>
               </Card>

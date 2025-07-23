@@ -132,7 +132,7 @@ export default function InvestorsPage() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold mb-4">Investor Inquiries</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            For investor-related questions, please contact our investor relations team.
+            For investor-related, questions, please contact our investor relations team.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email Investor Relations", description: "Opening your email client to investors@loconomy.com...", variant: "default" })}>
             <Mail className="w-4 h-4 mr-2" />

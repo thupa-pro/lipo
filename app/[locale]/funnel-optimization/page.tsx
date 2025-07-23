@@ -14,7 +14,8 @@ import { Progress } from "@/components/ui/progress";
 import {
   TrendingUp,
   Target,
-  Brain, BarChart3,
+  Brain,
+  BarChart3,
   Settings
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";

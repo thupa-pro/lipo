@@ -30,7 +30,7 @@ export default function AdminDashboard() {
 
   const systemStats = [
     {
-      title: "Total Users",
+      title: "Total, Users",
       value: "12,847",
       change: "+14%",
       changeType: "positive",

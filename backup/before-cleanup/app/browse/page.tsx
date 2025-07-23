@@ -34,8 +34,8 @@ import Link from "next/link";
 const providers = [
   {
     id: 1,
-    name: "Sarah Mitchell",
-    service: "House Cleaning",
+    name: "Sarah, Mitchell",
+    service: "House, Cleaning",
     rating: 4.9,
     reviews: 247,
     price: "$35/hr",

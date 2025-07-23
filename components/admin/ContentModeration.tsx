@@ -394,7 +394,7 @@ export function ContentModeration() {
                         </TableCell>
                         <TableCell>
                           <div className="text-sm">
-                            {format(new Date(flag.created_at), "MMM d, yyyy")}
+                            {format(new Date(flag.created_at), "MMM, d, yyyy")}
                           </div>
                         </TableCell>
                         <TableCell>{renderFlagActions(flag)}</TableCell>

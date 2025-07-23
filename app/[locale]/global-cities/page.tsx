@@ -27,7 +27,7 @@ import {
   cityConfigurations,
   citiesByMarketPotential,
   citiesByDigitalAdoption,
-  type, CityLocalizationData
+  type CityLocalizationData
 } from "@/lib/i18n/city-localization";
 
 export default function GlobalCitiesPage() {

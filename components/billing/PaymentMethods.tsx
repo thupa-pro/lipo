@@ -32,7 +32,8 @@ import {
   CreditCard,
   Plus,
   MoreHorizontal,
-  Star, Calendar
+  Star,
+  Calendar,
   AlertTriangle
 } from "lucide-react";
 import { cn } from "@/lib/utils";

@@ -20,13 +20,13 @@ import {
 import Link from 'next/link';
 import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
 
-export default async function ExampleRBACPage() {
-  const user = await getCurrentUser();
+export default async, function ExampleRBACPage() {
+  const user = await, getCurrentUser();
   const userRole = getUserRole(user);
   const subscriptionTier = getUserSubscriptionTier(user);
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-8">
+    <div className="container, mx-auto, px-4 py-8 space-y-8">
       {/* Page Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -133,7 +133,7 @@ export default async function ExampleRBACPage() {
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                You're signed in and can access personalized features, booking management, and more.
+                You're signed in and can access personalized, features, booking, management, and more.
               </p>
               <Button asChild>
                 <Link href="/dashboard">Go to Dashboard</Link>
@@ -379,7 +379,7 @@ export default async function ExampleRBACPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>White-label solutions, custom integrations, and dedicated support.</p>
+              <p>White-label, solutions, custom, integrations, and dedicated support.</p>
             </CardContent>
           </Card>
         </RoleGate>

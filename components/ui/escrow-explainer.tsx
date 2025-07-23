@@ -83,7 +83,7 @@ export default function EscrowExplainer() {
     {
       icon: CreditCard,
       title: "Multiple Payment Methods",
-      description: "Credit cards, debit cards, and digital wallets accepted",
+      description: "Credit, cards, debit, cards, and digital wallets accepted",
     },
     {
       icon: CheckCircle,
@@ -96,7 +96,7 @@ export default function EscrowExplainer() {
     {
       question: "What happens if I'm not satisfied with the work?",
       answer:
-        "You can request revisions or dispute the payment. Our support team will mediate and ensure a fair resolution. If the work is unsatisfactory, you may receive a full refund.",
+        "You can request revisions or dispute the payment. Our support team will mediate and ensure a fair resolution. If the work is, unsatisfactory, you may receive a full refund.",
     },
     {
       question: "When does the provider get paid?",
@@ -106,12 +106,12 @@ export default function EscrowExplainer() {
     {
       question: "Is my payment information secure?",
       answer:
-        "Yes, we use bank-level 256-bit SSL encryption and never store your full payment details. All transactions are processed through secure, PCI-compliant payment processors.",
+        "Yes, we use bank-level 256-bit SSL encryption and never store your full payment details. All transactions are processed through, secure, PCI-compliant payment processors.",
     },
     {
       question: "Can I get a refund if the provider doesn't show up?",
       answer:
-        "Absolutely. If a provider fails to show up or complete the agreed work, you'll receive a full refund. We also have backup providers to help complete your job.",
+        "Absolutely. If a provider fails to show up or complete the agreed, work, you'll receive a full refund. We also have backup providers to help complete your job.",
     },
   ]
 
