@@ -9,7 +9,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   MapPin,
   ArrowRight,
-  Award
+  Award,
+  CheckCircle,
+  Star
 } from "lucide-react";
 
 const featuredProviders = [
