@@ -3,19 +3,22 @@
 import React, { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  Sparkles, 
-  MapPin, 
-  BarChart3, 
-  Calendar, 
+import {
+  Sparkles,
+  MapPin,
+  BarChart3,
+  Calendar,
   MessageSquare,
   Menu,
   X,
-  ChevronDown, 
+  ChevronDown,
   Settings,
   LogOut,
   Crown,
-  Shield} from 'lucide-react';
+  Shield,
+  User,
+  Zap
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
