@@ -8,7 +8,8 @@ import {
   TrendingUp,
   Heart,
   MapPin,
-  Star, Brain
+  Star,
+  Brain,
   ChevronRight,
   ArrowRight,
   Lightbulb,

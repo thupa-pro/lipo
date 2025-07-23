@@ -17,6 +17,8 @@ export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const params = useParams();
+  const locale = params?.locale as string || 'en'; // ✅ Get locale from params
 
   useEffect(() => {
     fetchUser();

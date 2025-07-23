@@ -11,8 +11,9 @@ import {
   MapPin,
   TrendingUp,
   Users,
-  Play, Sparkles,
-  Shield
+  Play,
+  Sparkles,
+  Shield,
   ArrowRight
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";

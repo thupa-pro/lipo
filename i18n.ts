@@ -4,8 +4,13 @@ import { getRequestConfig } from 'next-intl/server';
 export const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
 
 export default getRequestConfig(async ({ locale }) => {
+  // Handle undefined locale
+  if (!locale) {
+    locale = 'en';
+  }
+
   // Validate that the incoming `locale` parameter is valid
-  if (!locale || !locales.includes(locale as any)) {
+  if (!locales.includes(locale as any)) {
     console.warn(`Invalid locale "${locale}", using default "en"`);
     locale = 'en';
   }
@@ -13,6 +18,7 @@ export default getRequestConfig(async ({ locale }) => {
   try {
     const messages = (await import(`./messages/${locale}.json`)).default;
     return {
+      locale,
       messages,
       timeZone: 'UTC',
       now: new Date()
@@ -23,6 +29,7 @@ export default getRequestConfig(async ({ locale }) => {
     try {
       const fallbackMessages = (await import(`./messages/en.json`)).default;
       return {
+        locale: 'en',
         messages: fallbackMessages,
         timeZone: 'UTC',
         now: new Date()
@@ -31,6 +38,7 @@ export default getRequestConfig(async ({ locale }) => {
       console.error('Error loading fallback messages:', fallbackError);
       // Return minimal config if all fails
       return {
+        locale: 'en',
         messages: {},
         timeZone: 'UTC',
         now: new Date()

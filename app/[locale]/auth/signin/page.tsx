@@ -168,7 +168,7 @@ export default function SignInPage() {
 
       {/* Back to Landing */}
       <Link
-        href="/"
+        href={`/${locale}`}
         className="absolute top-6 left-6 z-20 flex items-center gap-2 text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -278,7 +278,7 @@ export default function SignInPage() {
                       <p className="text-sm text-slate-600 dark:text-gray-400">
                         Don't have an account?{" "}
                         <Link
-                          href="/auth/signup"
+                          href={`/${locale}/auth/signup`}
                           className="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
                         >
                           Sign up for free
@@ -359,7 +359,7 @@ export default function SignInPage() {
                           ← Change email
                         </button>
                         <Link
-                          href="/auth/forgot-password"
+                          href={`/${locale}/auth/forgot-password`}
                           className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
                         >
                           Forgot password?

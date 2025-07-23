@@ -27,8 +27,11 @@ import {
   Phone,
   DollarSign,
   Mail,
-  MessageSquare, XCircle,
-  Loader2
+  MessageSquare,
+  XCircle,
+  Loader2,
+  CheckCircle,
+  User
 } from "lucide-react";
 
 interface ContactFormData {

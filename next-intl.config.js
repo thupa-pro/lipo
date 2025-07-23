@@ -9,6 +9,11 @@ export const locales = [
 export const defaultLocale = "en";
 
 export default getRequestConfig(async ({ locale }) => {
+  // Handle undefined locale
+  if (!locale) {
+    locale = 'en';
+  }
+
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) {
     // Use fallback locale instead of notFound() to prevent error
@@ -17,6 +22,7 @@ export default getRequestConfig(async ({ locale }) => {
 
   try {
     return {
+      locale,
       messages: (await import(`./messages/${locale}.json`)).default,
       timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
       now: new Date()
@@ -24,6 +30,7 @@ export default getRequestConfig(async ({ locale }) => {
   } catch (error) {
     // Fallback to English if locale file doesn't exist
     return {
+      locale: 'en',
       messages: (await import(`./messages/en.json`)).default,
       timeZone: process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE || "America/New_York",
       now: new Date()

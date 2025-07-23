@@ -14,13 +14,15 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  BarChart3, 
+import {
+  BarChart3,
   Target,
   Lock,
   Info,
   AlertCircle,
-  Shield
+  Shield,
+  Zap,
+  CheckCircle
 } from 'lucide-react';
 import { getConsentPreferences, type ConsentPreferences } from '@/lib/cookies/consent';
 

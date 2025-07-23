@@ -171,13 +171,13 @@ function GuestAccessDenied({ allowedRoles }: { allowedRoles: UserRole[] }) {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <Button asChild variant="outline">
-            <Link href="/auth/signin">
+            <Link href="/en/auth/signin">
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
             </Link>
           </Button>
           <Button asChild>
-            <Link href="/auth/signup">
+            <Link href="/en/auth/signup">
               <UserPlus className="w-4 h-4 mr-2" />
               Sign Up
             </Link>
@@ -236,15 +236,15 @@ function RoleAccessDenied({
         
         {canUpgrade && (
           <Button asChild className="w-full">
-            <Link href="/become-provider">
+            <Link href="/en/become-provider">
               <Crown className="w-4 h-4 mr-2" />
               Become a Provider
             </Link>
           </Button>
         )}
-        
+
         <Button asChild variant="outline" className="w-full">
-          <Link href="/contact">
+          <Link href="/en/contact">
             Contact Support
           </Link>
         </Button>
@@ -297,14 +297,14 @@ function SubscriptionUpgradeRequired({
         </div>
         
         <Button asChild className="w-full">
-          <Link href={`/subscription/upgrade?plan=${recommendedTier}`}>
+          <Link href={`/en/subscription/upgrade?plan=${recommendedTier}`}>
             <Crown className="w-4 h-4 mr-2" />
             Upgrade to {getTierDisplayName(recommendedTier)}
           </Link>
         </Button>
-        
+
         <Button asChild variant="outline" className="w-full">
-          <Link href="/subscription">
+          <Link href="/en/subscription">
             View All Plans
           </Link>
         </Button>

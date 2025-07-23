@@ -37,7 +37,7 @@ import {
   Activity,
   Download,
   BarChart3,
-  PieChart, as PieChartIcon
+  PieChart as PieChartIcon
 } from "lucide-react";
 import { PlatformMetrics, useAdminClient } from "@/lib/admin/utils";
 import { useToast } from "@/hooks/use-toast";
