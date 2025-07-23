@@ -1,3 +1,6 @@
+// DEPRECATED: This footer has been replaced by the enhanced footer at /components/footer.tsx
+// Keeping this file for reference but renamed export to avoid conflicts
+
 "use client";
 
 import Link from "next/link";
@@ -13,8 +16,8 @@ import {
   MapPin,
   Heart} from "lucide-react";
 
-export default function Footer() {
-  const currentYear = new, Date().getFullYear();
+export default function OldFooter() {
+  const currentYear = new Date().getFullYear();
 
   const footerSections = [
     {

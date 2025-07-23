@@ -18,7 +18,7 @@ import {
   BarChart3,
   Settings
 } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggleIcon } from "@/components/ui/theme-toggle";
 import FunnelAnalyzer from "@/components/analytics/funnel-analyzer";
 import SmartFormAssistant from "@/components/ui/smart-form-assistant";
 import UrgencyNotificationSystem from "@/components/provider/urgency-notification-system";
@@ -92,7 +92,7 @@ export default function FunnelOptimizationPage() {
             <Badge className="bg-green-500 text-white">
               Optimization Active
             </Badge>
-            <ThemeToggle />
+            <ThemeToggleIcon />
           </div>
         </div>
       </header>
