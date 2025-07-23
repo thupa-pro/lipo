@@ -468,4 +468,67 @@ nav + nav {
   .status-offline {
     @apply bg-slate-400 shadow-lg shadow-slate-400/30;
   }
+
+  /* System Preference Respect */
+  @media (prefers-color-scheme: dark) {
+    .auto img {
+      opacity: 0.9;
+      filter: brightness(0.9) contrast(1.1);
+    }
+  }
+
+  /* Focus Ring Enhancements */
+  .focus-ring {
+    transition: all var(--animation-duration-normal) var(--animation-timing-premium);
+  }
+
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 4px hsl(var(--primary)),
+      var(--shadow-glow);
+  }
+
+  /* Accessibility Enhancements */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    z-index: var(--z-tooltip);
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* Print Styles */
+  @media print {
+    .glass,
+    .glass-card,
+    .glass-modal {
+      background: white !important;
+      backdrop-filter: none !important;
+      border: 1px solid #e5e7eb !important;
+      box-shadow: none !important;
+    }
+  }
 }

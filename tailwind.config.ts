@@ -242,35 +242,226 @@ const config: Config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    function({ addUtilities }: any) {
+    function({ addUtilities, addComponents, theme }: any) {
+      // Glassmorphism Utilities
       addUtilities({
+        // Enhanced Theme Transitions
         '.theme-transition': {
-          'transition-property': 'background-color, border-color, color, fill, stroke, box-shadow',
+          'transition-property': 'background-color, border-color, color, fill, stroke, box-shadow, backdrop-filter, transform',
           'transition-timing-function': 'cubic-bezier(0.4, 0, 0.2, 1)',
           'transition-duration': '300ms',
         },
-        '.glass-bg': {
-          'background': 'var(--glass-bg)',
-          'backdrop-filter': 'var(--glass-blur)',
-          'border': '1px solid var(--glass-border)',
+
+        // Glassmorphism Effects
+        '.glass': {
+          'background': 'rgba(255, 255, 255, 0.1)',
+          'backdrop-filter': 'blur(20px)',
+          'border': '1px solid rgba(255, 255, 255, 0.18)',
+          'box-shadow': '0 8px 32px 0 rgba(31, 38, 135, 0.3)',
         },
-        '.shadow-glow': {
-          'box-shadow': 'var(--shadow-glow)',
+        '.glass-subtle': {
+          'background': 'rgba(255, 255, 255, 0.05)',
+          'backdrop-filter': 'blur(12px)',
+          'border': '1px solid rgba(255, 255, 255, 0.1)',
+          'box-shadow': '0 4px 16px 0 rgba(31, 38, 135, 0.2)',
         },
-        '.shadow-glow-strong': {
-          'box-shadow': 'var(--shadow-glow-strong)',
+        '.glass-strong': {
+          'background': 'rgba(255, 255, 255, 0.15)',
+          'backdrop-filter': 'blur(32px)',
+          'border': '1px solid rgba(255, 255, 255, 0.25)',
+          'box-shadow': '0 16px 40px 0 rgba(31, 38, 135, 0.4)',
         },
-        '.shadow-neural': {
-          'box-shadow': 'var(--shadow-neural)',
+        '.glass-dark': {
+          'background': 'rgba(0, 0, 0, 0.1)',
+          'backdrop-filter': 'blur(20px)',
+          'border': '1px solid rgba(255, 255, 255, 0.08)',
+          'box-shadow': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
         },
-        '.gradient-primary': {
-          'background': 'var(--gradient-primary)',
+
+        // Neumorphism Effects
+        '.neural': {
+          'background': '#e6e6e6',
+          'box-shadow': 'inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff',
         },
-        '.gradient-secondary': {
-          'background': 'var(--gradient-secondary)',
+        '.neural-inset': {
+          'background': '#e6e6e6',
+          'box-shadow': 'inset 8px 8px 16px #d1d9e6, inset -8px -8px 16px #ffffff',
         },
-        '.gradient-accent': {
-          'background': 'var(--gradient-accent)',
+        '.neural-raised': {
+          'background': '#e6e6e6',
+          'box-shadow': '5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff',
+        },
+
+        // Premium Glow Effects
+        '.glow-primary': {
+          'box-shadow': '0 0 20px rgba(59, 130, 246, 0.4)',
+        },
+        '.glow-secondary': {
+          'box-shadow': '0 0 20px rgba(147, 51, 234, 0.4)',
+        },
+        '.glow-success': {
+          'box-shadow': '0 0 20px rgba(16, 185, 129, 0.4)',
+        },
+        '.glow-warning': {
+          'box-shadow': '0 0 20px rgba(245, 158, 11, 0.4)',
+        },
+        '.glow-danger': {
+          'box-shadow': '0 0 20px rgba(244, 63, 94, 0.4)',
+        },
+
+        // AI-Native Interaction States
+        '.ai-thinking': {
+          'position': 'relative',
+          'overflow': 'hidden',
+        },
+        '.ai-thinking::before': {
+          'content': '""',
+          'position': 'absolute',
+          'inset': '0',
+          'background': 'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent)',
+          'animation': 'shimmer 2s linear infinite',
+        },
+
+        // Premium Gradients
+        '.gradient-mesh': {
+          'background': 'radial-gradient(at 40% 20%, rgba(120, 119, 198, 0.3) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(255, 119, 198, 0.3) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(255, 0, 255, 0.3) 0px, transparent 50%)',
+        },
+        '.gradient-ai': {
+          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        },
+        '.gradient-premium': {
+          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+        },
+
+        // Text Gradients
+        '.text-gradient': {
+          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent',
+        },
+        '.text-gradient-primary': {
+          'background': 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent',
+        },
+        '.text-gradient-rainbow': {
+          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent',
+        },
+
+        // Interactive States
+        '.interactive': {
+          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        },
+        '.interactive:hover': {
+          'transform': 'translateY(-2px)',
+          'box-shadow': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        },
+        '.interactive:active': {
+          'transform': 'translateY(0)',
+        },
+
+        // Bento Box Layout Utilities
+        '.bento-grid': {
+          'display': 'grid',
+          'grid-template-columns': 'repeat(auto-fit, minmax(300px, 1fr))',
+          'gap': '1.5rem',
+          'auto-rows': 'minmax(200px, auto)',
+        },
+        '.bento-item': {
+          'background': 'rgba(255, 255, 255, 0.1)',
+          'backdrop-filter': 'blur(20px)',
+          'border': '1px solid rgba(255, 255, 255, 0.18)',
+          'border-radius': '1.5rem',
+          'padding': '1.5rem',
+          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        },
+        '.bento-item:hover': {
+          'transform': 'translateY(-4px)',
+          'box-shadow': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        },
+
+        // Loading Shimmer Effects
+        '.shimmer': {
+          'background': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+          'background-size': '200% 100%',
+          'animation': 'shimmer 2s linear infinite',
+        },
+
+        // Scroll Area Enhancements
+        '.scroll-area': {
+          'scrollbar-width': 'thin',
+          'scrollbar-color': 'rgba(155, 155, 155, 0.5) transparent',
+        },
+        '.scroll-area::-webkit-scrollbar': {
+          'width': '6px',
+        },
+        '.scroll-area::-webkit-scrollbar-track': {
+          'background': 'transparent',
+        },
+        '.scroll-area::-webkit-scrollbar-thumb': {
+          'background-color': 'rgba(155, 155, 155, 0.5)',
+          'border-radius': '3px',
+          'border': 'transparent',
+        },
+        '.scroll-area::-webkit-scrollbar-thumb:hover': {
+          'background-color': 'rgba(155, 155, 155, 0.7)',
+        },
+      });
+
+      // Premium Component Styles
+      addComponents({
+        '.btn-premium': {
+          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          'color': 'white',
+          'padding': '0.75rem 1.5rem',
+          'border-radius': '0.75rem',
+          'font-weight': '600',
+          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          'border': 'none',
+          'cursor': 'pointer',
+          'position': 'relative',
+          'overflow': 'hidden',
+        },
+        '.btn-premium:hover': {
+          'transform': 'translateY(-2px)',
+          'box-shadow': '0 20px 25px -5px rgba(102, 126, 234, 0.4)',
+        },
+        '.btn-premium:active': {
+          'transform': 'translateY(0)',
+        },
+
+        '.card-premium': {
+          'background': 'rgba(255, 255, 255, 0.1)',
+          'backdrop-filter': 'blur(20px)',
+          'border': '1px solid rgba(255, 255, 255, 0.18)',
+          'border-radius': '1.5rem',
+          'padding': '1.5rem',
+          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        },
+        '.card-premium:hover': {
+          'transform': 'translateY(-4px)',
+          'box-shadow': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          'background': 'rgba(255, 255, 255, 0.15)',
+        },
+
+        '.input-premium': {
+          'background': 'rgba(255, 255, 255, 0.1)',
+          'backdrop-filter': 'blur(12px)',
+          'border': '1px solid rgba(255, 255, 255, 0.18)',
+          'border-radius': '0.75rem',
+          'padding': '0.75rem 1rem',
+          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          'color': 'inherit',
+        },
+        '.input-premium:focus': {
+          'outline': 'none',
+          'border-color': 'rgba(59, 130, 246, 0.5)',
+          'box-shadow': '0 0 0 3px rgba(59, 130, 246, 0.1), 0 0 20px rgba(59, 130, 246, 0.2)',
         },
       });
     },
