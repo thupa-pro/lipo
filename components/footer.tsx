@@ -105,7 +105,7 @@ const languages = [
   { code: "tr", name: "Turkish", native: "Türkçe", flag: "🇹🇷", region: "Turkey" },
   { code: "it", name: "Italian", native: "Italiano", flag: "🇮🇹", region: "Italy" },
   { code: "th", name: "Thai", native: "ไทย", flag: "🇹🇭", region: "Thailand" },
-  { code: "fa", name: "Persian", native: "فارس��", flag: "🇮🇷", region: "Iran" },
+  { code: "fa", name: "Persian", native: "فارسی", flag: "🇮🇷", region: "Iran" },
   { code: "pl", name: "Polish", native: "Polski", flag: "🇵🇱", region: "Poland" },
   { code: "nl", name: "Dutch", native: "Nederlands", flag: "🇳🇱", region: "Netherlands" },
 ];
@@ -204,26 +204,16 @@ export default function Footer() {
 
   // Helper function to check if a link should be shown based on authentication/role
   const shouldShowLink = (href: string): boolean => {
-    // Links that require authentication
+    // Links that require authentication (any authenticated user)
     const authRequiredLinks = [
-      '/customer/dashboard',
-      '/booking',
-      '/bookings',
-      '/my-bookings',
-      '/provider/listings/new',
-      '/provider/reports',
-      '/provider/availability',
-      '/provider/calendar',
       '/dashboard',
       '/notifications',
       '/settings',
       '/profile',
       '/billing',
       '/payments',
-      '/analytics',
       '/messages',
-      '/referrals-dashboard',
-      '/requests'
+      '/referrals-dashboard'
     ];
 
     // Links that require specific roles
@@ -233,7 +223,16 @@ export default function Footer() {
       '/provider/availability',
       '/provider/calendar',
       '/training-certification',
-      '/provider-resources'
+      '/provider-resources',
+      '/provider-support'
+    ];
+
+    const customerOnlyLinks = [
+      '/customer/dashboard',
+      '/my-bookings',
+      '/bookings',
+      '/booking',
+      '/requests'
     ];
 
     const adminOnlyLinks = [
@@ -241,14 +240,9 @@ export default function Footer() {
       '/system-status'
     ];
 
-    const customerOnlyLinks = [
-      '/customer/dashboard',
-      '/my-bookings'
-    ];
-
     // Check if link requires authentication
     if (authRequiredLinks.includes(href)) {
-      if (!isSignedIn) return false;
+      return isSignedIn;
     }
 
     // Check role-specific links
@@ -256,15 +250,15 @@ export default function Footer() {
       return isSignedIn && (role === 'provider' || role === 'admin');
     }
 
-    if (adminOnlyLinks.includes(href)) {
-      return isSignedIn && role === 'admin';
-    }
-
     if (customerOnlyLinks.includes(href)) {
       return isSignedIn && (role === 'consumer' || role === 'admin');
     }
 
-    // Show all other links to everyone
+    if (adminOnlyLinks.includes(href)) {
+      return isSignedIn && role === 'admin';
+    }
+
+    // Show all other links to everyone (public pages)
     return true;
   };
 
