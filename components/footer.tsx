@@ -21,6 +21,8 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Logo } from "@/components/ui/logo";
+import { LogoVariant, UIContext } from "@/lib/types/logo";
 import {
   Sparkles,
   Twitter,
