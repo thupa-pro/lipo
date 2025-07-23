@@ -1,6 +1,6 @@
 import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin("./next-intl.config.js");
+const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
 // Security headers
 const securityHeaders = [
