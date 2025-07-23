@@ -716,36 +716,36 @@ const config: Config = {
         },
 
         ".btn-primary": {
-          background: "oklch(var(--primary))",
-          color: "oklch(var(--primary-foreground))",
-          "&:hover": {
-            background: "oklch(var(--primary-emphasis))",
-            transform: "translateY(-1px)",
-            boxShadow: theme("boxShadow.lg"),
-          },
-          "&:active": {
-            transform: "translateY(0)",
-            boxShadow: theme("boxShadow.md"),
-          },
+          'background': "oklch(var(--primary))",
+          'color': "oklch(var(--primary-foreground))",
+        },
+        ".btn-primary:hover": {
+          'background': "oklch(var(--primary-emphasis))",
+          'transform': "translateY(-1px)",
+          'box-shadow': "0 10px 15px -3px oklch(0% 0 0 / 0.1), 0 4px 6px -4px oklch(0% 0 0 / 0.1)",
+        },
+        ".btn-primary:active": {
+          'transform': "translateY(0)",
+          'box-shadow': "0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1)",
         },
 
         ".btn-secondary": {
-          background: "oklch(var(--secondary))",
-          color: "oklch(var(--secondary-foreground))",
-          border: "1px solid oklch(var(--border))",
-          "&:hover": {
-            background: "oklch(var(--secondary-emphasis))",
-            borderColor: "oklch(var(--border) / 0.8)",
-          },
+          'background': "oklch(var(--secondary))",
+          'color': "oklch(var(--secondary-foreground))",
+          'border': "1px solid oklch(var(--border))",
+        },
+        ".btn-secondary:hover": {
+          'background': "oklch(var(--secondary-emphasis))",
+          'border-color': "oklch(var(--border) / 0.8)",
         },
 
         ".btn-ghost": {
-          background: "transparent",
-          color: "oklch(var(--foreground))",
-          "&:hover": {
-            background: "oklch(var(--accent))",
-            color: "oklch(var(--accent-foreground))",
-          },
+          'background': "transparent",
+          'color': "oklch(var(--foreground))",
+        },
+        ".btn-ghost:hover": {
+          'background': "oklch(var(--accent))",
+          'color': "oklch(var(--accent-foreground))",
         },
 
         ".card": {
