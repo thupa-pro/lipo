@@ -1,4 +1,4 @@
-import { Users, Star, MapPin, Award } from "lucide-react";
+import { Users, Star, MapPin, Award, CheckCircle } from "lucide-react";
 
 const stats = [
   {
