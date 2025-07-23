@@ -7,10 +7,7 @@ export const locales = [
 
 export const defaultLocale = "en";
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  // `requestLocale` is the locale from the middleware
-  let locale = await requestLocale;
-
+export default getRequestConfig(async ({ locale }) => {
   // Validate the locale parameter
   if (!locale || !locales.includes(locale)) {
     locale = defaultLocale;
