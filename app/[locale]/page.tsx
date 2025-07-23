@@ -6,8 +6,9 @@ import { useAuth } from "@/hooks/useAuth";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Sparkles, 
+import { ThemeToggleButton } from "@/components/ui/theme-toggle";
+import {
+  Sparkles,
   ArrowRight,
   Star,
   Users,
