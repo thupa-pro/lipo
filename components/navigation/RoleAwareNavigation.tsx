@@ -237,6 +237,12 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
                   )}
                 </Link>
               ))}
+
+              {/* Mobile Theme Toggle */}
+              <div className="flex items-center justify-between px-4 py-2">
+                <span className="text-sm font-medium text-muted-foreground">Theme</span>
+                <ThemeToggleIcon size="md" />
+              </div>
             </div>
           </div>
         )}
