@@ -155,11 +155,10 @@ export default async function RootLayout({
               <SovereignObservabilityProvider>
                 <SovereignAnalyticsProvider userId={session?.user?.id}>
                   <ThemeProvider
-                  attribute="class"
-                  defaultTheme="system"
-                  enableSystem
-                  disableTransitionOnChange
-              >
+                    defaultTheme="system"
+                    enableSystem={true}
+                    disableTransitionOnChange={true}
+                  >
                 <div className="relative flex min-h-screen flex-col">
                   {/* Background Effects */}
                   <div className="fixed inset-0 -z-10 overflow-hidden">
