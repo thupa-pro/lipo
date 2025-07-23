@@ -702,57 +702,166 @@ const config: Config = {
         },
       });
 
-      // Premium Component Styles
+      // Modern Component Styles
       addComponents({
+        ".btn": {
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: theme("spacing.sm"),
+          padding: `${theme("spacing.button-y")} ${theme("spacing.button-x")}`,
+          borderRadius: theme("borderRadius.button"),
+          fontSize: theme("fontSize.sm"),
+          fontWeight: "500",
+          lineHeight: "1",
+          textDecoration: "none",
+          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          cursor: "pointer",
+          border: "1px solid transparent",
+          outline: "2px solid transparent",
+          outlineOffset: "2px",
+
+          "&:focus-visible": {
+            outline: "2px solid oklch(var(--ring))",
+            outlineOffset: "2px",
+          },
+          "&:disabled": {
+            opacity: "0.5",
+            pointerEvents: "none",
+          },
+        },
+
+        ".btn-primary": {
+          background: "oklch(var(--primary))",
+          color: "oklch(var(--primary-foreground))",
+          "&:hover": {
+            background: "oklch(var(--primary-emphasis))",
+            transform: "translateY(-1px)",
+            boxShadow: theme("boxShadow.lg"),
+          },
+          "&:active": {
+            transform: "translateY(0)",
+            boxShadow: theme("boxShadow.md"),
+          },
+        },
+
+        ".btn-secondary": {
+          background: "oklch(var(--secondary))",
+          color: "oklch(var(--secondary-foreground))",
+          border: "1px solid oklch(var(--border))",
+          "&:hover": {
+            background: "oklch(var(--secondary-emphasis))",
+            borderColor: "oklch(var(--border) / 0.8)",
+          },
+        },
+
+        ".btn-ghost": {
+          background: "transparent",
+          color: "oklch(var(--foreground))",
+          "&:hover": {
+            background: "oklch(var(--accent))",
+            color: "oklch(var(--accent-foreground))",
+          },
+        },
+
+        ".card": {
+          background: "oklch(var(--surface))",
+          border: "1px solid oklch(var(--border))",
+          borderRadius: theme("borderRadius.card"),
+          padding: theme("spacing.card-padding"),
+          boxShadow: theme("boxShadow.sm"),
+          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+
+          "&:hover": {
+            boxShadow: theme("boxShadow.md"),
+            transform: "translateY(-1px)",
+          },
+        },
+
+        ".input": {
+          display: "flex",
+          width: "100%",
+          padding: `${theme("spacing.input-y")} ${theme("spacing.input-x")}`,
+          borderRadius: theme("borderRadius.input"),
+          border: "1px solid oklch(var(--border))",
+          background: "oklch(var(--surface))",
+          color: "oklch(var(--foreground))",
+          fontSize: theme("fontSize.sm"),
+          lineHeight: "1.5",
+          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+
+          "&::placeholder": {
+            color: "oklch(var(--muted-foreground))",
+          },
+          "&:focus": {
+            outline: "none",
+            borderColor: "oklch(var(--ring))",
+            boxShadow: "0 0 0 3px oklch(var(--ring) / 0.1)",
+          },
+          "&:disabled": {
+            opacity: "0.5",
+            cursor: "not-allowed",
+          },
+        },
+
+        // Legacy premium styles (will be deprecated)
         '.btn-premium': {
-          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          'color': 'white',
-          'padding': '0.75rem 1.5rem',
-          'border-radius': '0.75rem',
-          'font-weight': '600',
-          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          'border': 'none',
-          'cursor': 'pointer',
-          'position': 'relative',
-          'overflow': 'hidden',
-        },
-        '.btn-premium:hover': {
-          'transform': 'translateY(-2px)',
-          'box-shadow': '0 20px 25px -5px rgba(102, 126, 234, 0.4)',
-        },
-        '.btn-premium:active': {
-          'transform': 'translateY(0)',
+          background: "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--primary-emphasis)))",
+          color: "oklch(var(--primary-foreground))",
+          padding: "0.75rem 1.5rem",
+          borderRadius: "0.75rem",
+          fontWeight: "600",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          border: "none",
+          cursor: "pointer",
+          position: "relative",
+          overflow: "hidden",
+          "&:hover": {
+            transform: "translateY(-2px)",
+            boxShadow: theme("boxShadow.hover-lift"),
+          },
+          "&:active": {
+            transform: "translateY(0)",
+          },
         },
 
         '.card-premium': {
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'backdrop-filter': 'blur(20px)',
-          'border': '1px solid rgba(255, 255, 255, 0.18)',
-          'border-radius': '1.5rem',
-          'padding': '1.5rem',
-          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        },
-        '.card-premium:hover': {
-          'transform': 'translateY(-4px)',
-          'box-shadow': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          'background': 'rgba(255, 255, 255, 0.15)',
+          background: "oklch(var(--surface-glass) / 0.8)",
+          backdropFilter: "blur(20px)",
+          border: "1px solid oklch(var(--border) / 0.3)",
+          borderRadius: "1.5rem",
+          padding: "1.5rem",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          "&:hover": {
+            transform: "translateY(-4px)",
+            boxShadow: theme("boxShadow.2xl"),
+            background: "oklch(var(--surface-glass) / 0.9)",
+          },
         },
 
         '.input-premium': {
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'backdrop-filter': 'blur(12px)',
-          'border': '1px solid rgba(255, 255, 255, 0.18)',
-          'border-radius': '0.75rem',
-          'padding': '0.75rem 1rem',
-          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          'color': 'inherit',
-        },
-        '.input-premium:focus': {
-          'outline': 'none',
-          'border-color': 'rgba(59, 130, 246, 0.5)',
-          'box-shadow': '0 0 0 3px rgba(59, 130, 246, 0.1), 0 0 20px rgba(59, 130, 246, 0.2)',
+          background: "oklch(var(--surface-glass) / 0.8)",
+          backdropFilter: "blur(12px)",
+          border: "1px solid oklch(var(--border) / 0.3)",
+          borderRadius: "0.75rem",
+          padding: "0.75rem 1rem",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          color: "inherit",
+          "&:focus": {
+            outline: "none",
+            borderColor: "oklch(var(--ring))",
+            boxShadow: "0 0 0 3px oklch(var(--ring) / 0.1), 0 0 20px oklch(var(--ring) / 0.2)",
+          },
         },
       });
+
+      // Modern Variants
+      addVariant("hocus", ["&:hover", "&:focus"]);
+      addVariant("group-hocus", [".group:hover &", ".group:focus &"]);
+      addVariant("peer-hocus", [".peer:hover ~ &", ".peer:focus ~ &"]);
+      addVariant("reduced-motion", "@media (prefers-reduced-motion: reduce)");
+      addVariant("high-contrast", "@media (prefers-contrast: high)");
+      addVariant("dark-high-contrast", "@media (prefers-color-scheme: dark) and (prefers-contrast: high)");
     },
   ],
 } satisfies Config;
