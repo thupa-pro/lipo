@@ -8,8 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
-  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Fingerprint, Globe, Chrome, Github, Users
+import {
+  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Fingerprint, Globe, Chrome, Github, Users, Shield, Zap
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
