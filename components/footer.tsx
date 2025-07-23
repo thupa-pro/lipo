@@ -403,16 +403,16 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 flex items-center justify-center shadow-xl">
-                  <Sparkles className="w-6 h-6 text-white" />
-                </div>
+                <Logo
+                  variant={LogoVariant.LIGHT}
+                  context={UIContext.FOOTER}
+                  className="h-12 w-auto"
+                  alt="Loconomy - Elite AI Platform"
+                />
                 <div>
-                  <span className="text-3xl font-black bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-                    Loconomy
-                  </span>
-                  <div className="flex items-center gap-2 -mt-1">
-                    <Crown className="w-3 h-3 text-amber-400" />
-                    <span className="text-xs text-violet-400 font-semibold tracking-wider uppercase">
+                  <div className="flex items-center gap-2">
+                    <Crown className="w-4 h-4 text-amber-400" />
+                    <span className="text-sm text-violet-400 font-semibold tracking-wider uppercase">
                       Elite AI Platform
                     </span>
                   </div>
