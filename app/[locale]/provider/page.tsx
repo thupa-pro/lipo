@@ -8,20 +8,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  DollarSign, 
-  Users, 
+import {
+  DollarSign,
+  Users,
   Calendar,
   TrendingUp,
   BookOpen,
   Settings,
   BarChart3,
-  MessageSquare, MapPin,
+  MessageSquare,
+  MapPin,
   Phone,
   Mail,
   Plus,
   Eye,
-  Edit
+  Edit,
+  Star,
+  Clock
 } from "lucide-react";
 
 export default function ProviderDashboardPage() {
@@ -96,10 +99,10 @@ export default function ProviderDashboardPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                Welcome, back, {user?.firstName || 'Provider'}! 👋
+                Welcome back, {user?.firstName || 'Provider'}! 👋
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
-                Manage your, services, bookings, and grow your business with our elite platform
+                Manage your services, bookings, and grow your business with our elite platform
               </p>
             </div>
             <div className="mt-4 md:mt-0 flex gap-3">
@@ -321,7 +324,7 @@ export default function ProviderDashboardPage() {
                     <BarChart3 className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-4" />
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Business Analytics</h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
-                      Get detailed insights into your, earnings, customer, satisfaction, and growth trends
+                      Get detailed insights into your earnings, customer satisfaction, and growth trends
                     </p>
                     <Button onClick={() => router.push(`/${locale}/provider/reports`)}>
                       <BarChart3 className="w-4 h-4 mr-2" />
