@@ -786,54 +786,48 @@ const config: Config = {
           'cursor': "not-allowed",
         },
 
-        // Legacy premium styles (will be deprecated)
+        // Legacy premium styles (simplified)
         '.btn-premium': {
-          background: "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--primary-emphasis)))",
-          color: "oklch(var(--primary-foreground))",
-          padding: "0.75rem 1.5rem",
-          borderRadius: "0.75rem",
-          fontWeight: "600",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          border: "none",
-          cursor: "pointer",
-          position: "relative",
-          overflow: "hidden",
-          "&:hover": {
-            transform: "translateY(-2px)",
-            boxShadow: theme("boxShadow.hover-lift"),
-          },
-          "&:active": {
-            transform: "translateY(0)",
-          },
+          'background': "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--primary-emphasis)))",
+          'color': "oklch(var(--primary-foreground))",
+          'padding': "0.75rem 1.5rem",
+          'border-radius': "0.75rem",
+          'font-weight': "600",
+          'transition': "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          'border': "none",
+          'cursor': "pointer",
+        },
+        '.btn-premium:hover': {
+          'transform': "translateY(-2px)",
+          'box-shadow': "0 20px 25px -5px oklch(0% 0 0 / 0.15), 0 8px 10px -6px oklch(0% 0 0 / 0.1)",
         },
 
         '.card-premium': {
-          background: "oklch(var(--surface-glass) / 0.8)",
-          backdropFilter: "blur(20px)",
-          border: "1px solid oklch(var(--border) / 0.3)",
-          borderRadius: "1.5rem",
-          padding: "1.5rem",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          "&:hover": {
-            transform: "translateY(-4px)",
-            boxShadow: theme("boxShadow.2xl"),
-            background: "oklch(var(--surface-glass) / 0.9)",
-          },
+          'background': "oklch(var(--surface-glass) / 0.8)",
+          'backdrop-filter': "blur(20px)",
+          'border': "1px solid oklch(var(--border) / 0.3)",
+          'border-radius': "1.5rem",
+          'padding': "1.5rem",
+          'transition': "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        },
+        '.card-premium:hover': {
+          'transform': "translateY(-4px)",
+          'box-shadow': "0 25px 50px -12px oklch(0% 0 0 / 0.25)",
         },
 
         '.input-premium': {
-          background: "oklch(var(--surface-glass) / 0.8)",
-          backdropFilter: "blur(12px)",
-          border: "1px solid oklch(var(--border) / 0.3)",
-          borderRadius: "0.75rem",
-          padding: "0.75rem 1rem",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          color: "inherit",
-          "&:focus": {
-            outline: "none",
-            borderColor: "oklch(var(--ring))",
-            boxShadow: "0 0 0 3px oklch(var(--ring) / 0.1), 0 0 20px oklch(var(--ring) / 0.2)",
-          },
+          'background': "oklch(var(--surface-glass) / 0.8)",
+          'backdrop-filter': "blur(12px)",
+          'border': "1px solid oklch(var(--border) / 0.3)",
+          'border-radius': "0.75rem",
+          'padding': "0.75rem 1rem",
+          'transition': "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          'color': "inherit",
+        },
+        '.input-premium:focus': {
+          'outline': "none",
+          'border-color': "oklch(var(--ring))",
+          'box-shadow': "0 0 0 3px oklch(var(--ring) / 0.1), 0 0 20px oklch(var(--ring) / 0.2)",
         },
       });
 
