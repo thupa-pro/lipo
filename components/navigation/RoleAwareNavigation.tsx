@@ -182,12 +182,15 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
             ))}
           </div>
 
-          {/* Right side: User menu or auth buttons */}
+          {/* Right side: Theme toggle, User menu or auth buttons */}
           <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <ThemeToggleIcon size="md" />
+
             {user ? (
-              <UserMenu 
-                user={user} 
-                userRole={userRole} 
+              <UserMenu
+                user={user}
+                userRole={userRole}
                 subscriptionTier={subscriptionTier}
                 locale={locale}
               />
