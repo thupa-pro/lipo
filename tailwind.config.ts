@@ -641,42 +641,37 @@ const config: Config = {
 
         // Loading States
         ".skeleton": {
-          background: "linear-gradient(90deg, oklch(var(--muted) / 0.1), oklch(var(--muted) / 0.4), oklch(var(--muted) / 0.1))",
-          backgroundSize: "200px 100%",
-          animation: "skeleton 2s ease-in-out infinite",
+          'background': "linear-gradient(90deg, oklch(var(--muted) / 0.1), oklch(var(--muted) / 0.4), oklch(var(--muted) / 0.1))",
+          'background-size': "200px 100%",
+          'animation': "skeleton 2s ease-in-out infinite",
         },
 
         // Text utilities
         ".text-balance": {
-          textWrap: "balance",
+          'text-wrap': "balance",
         },
         ".text-pretty": {
-          textWrap: "pretty",
+          'text-wrap': "pretty",
         },
 
         // GPU acceleration
         ".gpu": {
-          transform: "translateZ(0)",
-          backfaceVisibility: "hidden",
-          perspective: "1000",
+          'transform': "translateZ(0)",
+          'backface-visibility': "hidden",
+          'perspective': "1000",
         },
 
         // Screen reader only
         ".sr-only": {
-          position: "absolute",
-          width: "1px",
-          height: "1px",
-          padding: "0",
-          margin: "-1px",
-          overflow: "hidden",
-          clip: "rect(0, 0, 0, 0)",
-          whiteSpace: "nowrap",
-          border: "0",
-        },
-
-        // Focus improvements
-        ".focus-ring": {
-          "@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2": {},
+          'position': "absolute",
+          'width': "1px",
+          'height': "1px",
+          'padding': "0",
+          'margin': "-1px",
+          'overflow': "hidden",
+          'clip': "rect(0, 0, 0, 0)",
+          'white-space': "nowrap",
+          'border': "0",
         },
 
         // Legacy support (will be deprecated)
