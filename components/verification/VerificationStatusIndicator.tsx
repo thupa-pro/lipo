@@ -14,7 +14,10 @@ import {
   FileText,
   Building,
   Award,
-  MapPin} from "lucide-react";
+  MapPin,
+  Shield,
+  Clock
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
