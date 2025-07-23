@@ -297,14 +297,14 @@ function SubscriptionUpgradeRequired({
         </div>
         
         <Button asChild className="w-full">
-          <Link href={`/subscription/upgrade?plan=${recommendedTier}`}>
+          <Link href={`/en/subscription/upgrade?plan=${recommendedTier}`}>
             <Crown className="w-4 h-4 mr-2" />
             Upgrade to {getTierDisplayName(recommendedTier)}
           </Link>
         </Button>
-        
+
         <Button asChild variant="outline" className="w-full">
-          <Link href="/subscription">
+          <Link href="/en/subscription">
             View All Plans
           </Link>
         </Button>
