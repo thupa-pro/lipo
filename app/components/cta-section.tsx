@@ -5,7 +5,9 @@ import {
   Award,
   Shield,
   DollarSign,
-  Infinity
+  Infinity,
+  Clock,
+  CheckCircle
 } from "lucide-react";
 
 export default function CTASection() {

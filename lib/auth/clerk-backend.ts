@@ -177,8 +177,13 @@ export class ClerkBackendAuth {
         return null;
       }
 
-      // Verify session with Clerk
-      const session = await clerkClient.sessions.getSession(sessionToken);
+      // Verify session with Clerk with timeout
+      const session = await Promise.race([
+        clerkClient.sessions.getSession(sessionToken),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Session verification timeout')), 5000)
+        )
+      ]) as any;
       
       if (session && session.userId) {
         const user = await clerkClient.users.getUser(session.userId);

@@ -54,6 +54,13 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Development configuration
+  allowedDevOrigins: [
+    '4bf2c88cdb5c4868b2ecea7415d11498-394f8a2ff5b447859cfa1b94e.fly.dev',
+    'localhost:3000',
+    '127.0.0.1:3000'
+  ],
+
   // Prevent hydration mismatches
   experimental: {
     // Ensure stable hydration
