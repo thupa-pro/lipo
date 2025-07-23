@@ -59,7 +59,7 @@ export function getLogoVariant(
  */
 export function getLogoPath(variant: LogoVariant): string {
   const config = LOGO_VARIANT_CONFIG[variant];
-  return `/assets/branding/${config.filename}`;
+  return `/branded/${config.filename}`;
 }
 
 /**
