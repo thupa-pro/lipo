@@ -21,17 +21,19 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Progress } from '@/components/ui/progress';
-import { 
-  Wand2, 
-  Sparkles, 
+import {
+  Wand2,
+  Sparkles,
   Brain,
-  DollarSign, MapPin,
+  DollarSign,
+  MapPin,
   ImageIcon,
   Tag,
   TrendingUp,
   CheckCircle,
   AlertCircle,
-  RefreshCw
+  RefreshCw,
+  Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceListing, ServiceCategory, ServicePricing } from '@/types/loconomy';
