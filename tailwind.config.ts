@@ -510,7 +510,7 @@ const config: Config = {
     require("@tailwindcss/container-queries"),
 
     function({ addUtilities, addComponents, addVariant, theme, e }: any) {
-      // Glassmorphism Utilities
+      // 2025 Modern Utility Classes
       addUtilities({
         // Enhanced Theme Transitions
         '.theme-transition': {
@@ -519,164 +519,186 @@ const config: Config = {
           'transition-duration': '300ms',
         },
 
-        // Glassmorphism Effects
+        // Glass Morphism System (OKLCH-based)
+        ".glass-subtle": {
+          background: "oklch(var(--surface-glass) / 0.8)",
+          backdropFilter: "blur(12px) saturate(1.2)",
+          border: "1px solid oklch(var(--border) / 0.3)",
+        },
+        ".glass-medium": {
+          background: "oklch(var(--surface-glass) / 0.9)",
+          backdropFilter: "blur(16px) saturate(1.4)",
+          border: "1px solid oklch(var(--border) / 0.4)",
+        },
+        ".glass-strong": {
+          background: "oklch(var(--surface-glass) / 0.95)",
+          backdropFilter: "blur(24px) saturate(1.6)",
+          border: "1px solid oklch(var(--border) / 0.5)",
+        },
+
+        // Neural/Soft UI System
+        ".neural-subtle": {
+          background: "oklch(var(--surface))",
+          boxShadow: `
+            inset 2px 2px 4px oklch(var(--neutral-300) / 0.3),
+            inset -2px -2px 4px oklch(var(--neutral-50) / 0.8)
+          `,
+        },
+        ".neural-raised": {
+          background: "oklch(var(--surface))",
+          boxShadow: `
+            4px 4px 8px oklch(var(--neutral-300) / 0.3),
+            -4px -4px 8px oklch(var(--neutral-50) / 0.8)
+          `,
+        },
+        ".neural-inset": {
+          background: "oklch(var(--surface))",
+          boxShadow: `
+            inset 4px 4px 8px oklch(var(--neutral-300) / 0.3),
+            inset -4px -4px 8px oklch(var(--neutral-50) / 0.8)
+          `,
+        },
+
+        // AI-Native States
+        ".ai-thinking": {
+          position: "relative",
+          overflow: "hidden",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            inset: "0",
+            background: "linear-gradient(90deg, transparent, oklch(var(--ai-thinking) / 0.3), transparent)",
+            animation: "ai-thinking 1.5s ease-in-out infinite",
+          },
+        },
+        ".ai-active": {
+          background: "oklch(var(--ai) / 0.1)",
+          borderColor: "oklch(var(--ai) / 0.3)",
+          boxShadow: "0 0 20px oklch(var(--ai) / 0.2)",
+        },
+
+        // Interaction States
+        ".interactive": {
+          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          "&:hover": {
+            transform: "translateY(-1px)",
+            boxShadow: theme("boxShadow.hover-lift"),
+          },
+          "&:active": {
+            transform: "translateY(0) scale(0.98)",
+            transition: "all 0.1s ease-out",
+          },
+        },
+        ".interactive-lift": {
+          transition: "transform 0.2s ease-out",
+          "&:hover": {
+            transform: "translateY(-2px) scale(1.02)",
+          },
+          "&:active": {
+            transform: "translateY(0) scale(1)",
+          },
+        },
+
+        // Text Effects
+        ".text-gradient-primary": {
+          background: "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--primary-emphasis)))",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        },
+        ".text-gradient-rainbow": {
+          background: "linear-gradient(135deg, oklch(var(--primary)), oklch(var(--accent)), oklch(var(--success)), oklch(var(--warning)))",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        },
+
+        // Layout Utilities
+        ".bento-grid": {
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: theme("spacing.xl"),
+          alignItems: "start",
+        },
+        ".masonry": {
+          columns: "var(--columns, 3)",
+          columnGap: theme("spacing.lg"),
+          columnFill: "balance",
+        },
+
+        // Scroll Enhancements
+        ".scroll-smooth": {
+          scrollBehavior: "smooth",
+        },
+        ".scroll-area": {
+          scrollbarWidth: "thin",
+          scrollbarColor: "oklch(var(--muted)) transparent",
+          "&::-webkit-scrollbar": {
+            width: "6px",
+            height: "6px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "transparent",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "oklch(var(--muted-foreground) / 0.3)",
+            borderRadius: "3px",
+            "&:hover": {
+              background: "oklch(var(--muted-foreground) / 0.5)",
+            },
+          },
+        },
+
+        // Loading States
+        ".skeleton": {
+          background: "linear-gradient(90deg, oklch(var(--muted) / 0.1), oklch(var(--muted) / 0.4), oklch(var(--muted) / 0.1))",
+          backgroundSize: "200px 100%",
+          animation: "skeleton 2s ease-in-out infinite",
+        },
+
+        // Text utilities
+        ".text-balance": {
+          textWrap: "balance",
+        },
+        ".text-pretty": {
+          textWrap: "pretty",
+        },
+
+        // GPU acceleration
+        ".gpu": {
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+          perspective: "1000",
+        },
+
+        // Screen reader only
+        ".sr-only": {
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          padding: "0",
+          margin: "-1px",
+          overflow: "hidden",
+          clip: "rect(0, 0, 0, 0)",
+          whiteSpace: "nowrap",
+          border: "0",
+        },
+
+        // Focus improvements
+        ".focus-ring": {
+          "@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2": {},
+        },
+
+        // Legacy support (will be deprecated)
         '.glass': {
-          'background': 'rgba(255, 255, 255, 0.1)',
+          'background': 'oklch(var(--surface-glass) / 0.8)',
           'backdrop-filter': 'blur(20px)',
-          'border': '1px solid rgba(255, 255, 255, 0.18)',
-          'box-shadow': '0 8px 32px 0 rgba(31, 38, 135, 0.3)',
+          'border': '1px solid oklch(var(--border) / 0.3)',
         },
-        '.glass-subtle': {
-          'background': 'rgba(255, 255, 255, 0.05)',
-          'backdrop-filter': 'blur(12px)',
-          'border': '1px solid rgba(255, 255, 255, 0.1)',
-          'box-shadow': '0 4px 16px 0 rgba(31, 38, 135, 0.2)',
-        },
-        '.glass-strong': {
-          'background': 'rgba(255, 255, 255, 0.15)',
-          'backdrop-filter': 'blur(32px)',
-          'border': '1px solid rgba(255, 255, 255, 0.25)',
-          'box-shadow': '0 16px 40px 0 rgba(31, 38, 135, 0.4)',
-        },
-        '.glass-dark': {
-          'background': 'rgba(0, 0, 0, 0.1)',
-          'backdrop-filter': 'blur(20px)',
-          'border': '1px solid rgba(255, 255, 255, 0.08)',
-          'box-shadow': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
-        },
-
-        // Neumorphism Effects
-        '.neural': {
-          'background': '#e6e6e6',
-          'box-shadow': 'inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff',
-        },
-        '.neural-inset': {
-          'background': '#e6e6e6',
-          'box-shadow': 'inset 8px 8px 16px #d1d9e6, inset -8px -8px 16px #ffffff',
-        },
-        '.neural-raised': {
-          'background': '#e6e6e6',
-          'box-shadow': '5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff',
-        },
-
-        // Premium Glow Effects
-        '.glow-primary': {
-          'box-shadow': '0 0 20px rgba(59, 130, 246, 0.4)',
-        },
-        '.glow-secondary': {
-          'box-shadow': '0 0 20px rgba(147, 51, 234, 0.4)',
-        },
-        '.glow-success': {
-          'box-shadow': '0 0 20px rgba(16, 185, 129, 0.4)',
-        },
-        '.glow-warning': {
-          'box-shadow': '0 0 20px rgba(245, 158, 11, 0.4)',
-        },
-        '.glow-danger': {
-          'box-shadow': '0 0 20px rgba(244, 63, 94, 0.4)',
-        },
-
-        // AI-Native Interaction States
-        '.ai-thinking': {
-          'position': 'relative',
-          'overflow': 'hidden',
-        },
-        '.ai-thinking::before': {
-          'content': '""',
-          'position': 'absolute',
-          'inset': '0',
-          'background': 'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent)',
-          'animation': 'shimmer 2s linear infinite',
-        },
-
-        // Premium Gradients
-        '.gradient-mesh': {
-          'background': 'radial-gradient(at 40% 20%, rgba(120, 119, 198, 0.3) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(255, 119, 198, 0.3) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(255, 0, 255, 0.3) 0px, transparent 50%)',
-        },
-        '.gradient-ai': {
-          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        },
-        '.gradient-premium': {
-          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
-        },
-
-        // Text Gradients
-        '.text-gradient': {
-          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          'background-clip': 'text',
-          '-webkit-background-clip': 'text',
-          'color': 'transparent',
-        },
-        '.text-gradient-primary': {
-          'background': 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-          'background-clip': 'text',
-          '-webkit-background-clip': 'text',
-          'color': 'transparent',
-        },
-        '.text-gradient-rainbow': {
-          'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)',
-          'background-clip': 'text',
-          '-webkit-background-clip': 'text',
-          'color': 'transparent',
-        },
-
-        // Interactive States
-        '.interactive': {
-          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        },
-        '.interactive:hover': {
-          'transform': 'translateY(-2px)',
-          'box-shadow': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        },
-        '.interactive:active': {
-          'transform': 'translateY(0)',
-        },
-
-        // Bento Box Layout Utilities
-        '.bento-grid': {
-          'display': 'grid',
-          'grid-template-columns': 'repeat(auto-fit, minmax(300px, 1fr))',
-          'gap': '1.5rem',
-          'auto-rows': 'minmax(200px, auto)',
-        },
-        '.bento-item': {
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'backdrop-filter': 'blur(20px)',
-          'border': '1px solid rgba(255, 255, 255, 0.18)',
-          'border-radius': '1.5rem',
-          'padding': '1.5rem',
-          'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        },
-        '.bento-item:hover': {
-          'transform': 'translateY(-4px)',
-          'box-shadow': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-        },
-
-        // Loading Shimmer Effects
         '.shimmer': {
-          'background': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+          'background': 'linear-gradient(90deg, transparent, oklch(var(--muted) / 0.4), transparent)',
           'background-size': '200% 100%',
           'animation': 'shimmer 2s linear infinite',
-        },
-
-        // Scroll Area Enhancements
-        '.scroll-area': {
-          'scrollbar-width': 'thin',
-          'scrollbar-color': 'rgba(155, 155, 155, 0.5) transparent',
-        },
-        '.scroll-area::-webkit-scrollbar': {
-          'width': '6px',
-        },
-        '.scroll-area::-webkit-scrollbar-track': {
-          'background': 'transparent',
-        },
-        '.scroll-area::-webkit-scrollbar-thumb': {
-          'background-color': 'rgba(155, 155, 155, 0.5)',
-          'border-radius': '3px',
-          'border': 'transparent',
-        },
-        '.scroll-area::-webkit-scrollbar-thumb:hover': {
-          'background-color': 'rgba(155, 155, 155, 0.7)',
         },
       });
 
