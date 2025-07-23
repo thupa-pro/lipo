@@ -605,15 +605,15 @@ const config: Config = {
 
         // Layout Utilities
         ".bento-grid": {
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: theme("spacing.xl"),
-          alignItems: "start",
+          'display': "grid",
+          'grid-template-columns': "repeat(auto-fit, minmax(280px, 1fr))",
+          'gap': "1.5rem",
+          'align-items': "start",
         },
         ".masonry": {
-          columns: "var(--columns, 3)",
-          columnGap: theme("spacing.lg"),
-          columnFill: "balance",
+          'columns': "var(--columns, 3)",
+          'column-gap': "1rem",
+          'column-fill': "balance",
         },
 
         // Scroll Enhancements
