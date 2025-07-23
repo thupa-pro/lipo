@@ -95,7 +95,7 @@ const languages = [
   { code: "ar", name: "Arabic", native: "العربية", flag: "🇸🇦", region: "MENA" },
   { code: "pt", name: "Portuguese", native: "Português", flag: "🇧🇷", region: "Brazil" },
   { code: "bn", name: "Bengali", native: "বাংলা", flag: "🇧🇩", region: "Bangladesh" },
-  { code: "ru", name: "Russian", native: "Русски��", flag: "🇷🇺", region: "Russia" },
+  { code: "ru", name: "Russian", native: "Русский", flag: "🇷🇺", region: "Russia" },
   { code: "ja", name: "Japanese", native: "日本語", flag: "🇯🇵", region: "Japan" },
   { code: "pa", name: "Punjabi", native: "ਪੰਜਾਬੀ", flag: "🇮🇳", region: "Punjab" },
   { code: "de", name: "German", native: "Deutsch", flag: "🇩🇪", region: "Germany" },
@@ -103,7 +103,7 @@ const languages = [
   { code: "ko", name: "Korean", native: "한국어", flag: "🇰🇷", region: "Korea" },
   { code: "fr", name: "French", native: "Français", flag: "🇫🇷", region: "France" },
   { code: "tr", name: "Turkish", native: "Türkçe", flag: "🇹🇷", region: "Turkey" },
-  { code: "it", name: "Italian", native: "Italiano", flag: "🇮🇹", region: "Italy" },
+  { code: "it", name: "Italian", native: "Italiano", flag: "��🇹", region: "Italy" },
   { code: "th", name: "Thai", native: "ไทย", flag: "🇹🇭", region: "Thailand" },
   { code: "fa", name: "Persian", native: "فارسی", flag: "🇮🇷", region: "Iran" },
   { code: "pl", name: "Polish", native: "Polski", flag: "🇵🇱", region: "Poland" },
@@ -452,7 +452,7 @@ export default function Footer() {
                 className="h-14 px-8 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 font-semibold shadow-lg shadow-violet-500/25 transform hover:scale-105 transition-all duration-300"
               >
                 <Rocket className="w-5 h-5 mr-2" />
-                Join Elite
+                {isSignedIn ? 'Subscribe' : 'Join Elite'}
               </Button>
             </div>
             
