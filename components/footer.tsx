@@ -116,6 +116,7 @@ export default function Footer() {
   const params = useParams();
   const router = useRouter();
   const currentLocale = params?.locale as string || 'en';
+  const { user, isSignedIn, role } = useAuth();
   
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
