@@ -22,7 +22,8 @@ import {
   Download,
   Filter,
   ArrowUpRight,
-  ArrowDownRight, Shield
+  ArrowDownRight, Shield,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
