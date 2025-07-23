@@ -168,7 +168,7 @@ export default function SignInPage() {
 
       {/* Back to Landing */}
       <Link
-        href="/"
+        href={`/${locale}`}
         className="absolute top-6 left-6 z-20 flex items-center gap-2 text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
