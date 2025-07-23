@@ -1,15 +1,16 @@
 // RBAC Utility Functions for Loconomy Platform
 
-import { 
-  UserRole, 
-  Permission, 
-  ConsentSettings, 
+import {
+  UserRole,
+  Permission,
+  ConsentSettings,
   User,
   PERMISSIONS,
   ROLE_HIERARCHY,
   DEFAULT_CONSENT,
   SubscriptionTier,
-  SubscriptionAccess
+  SubscriptionAccess,
+  SUBSCRIPTION_ACCESS
 } from '@/types/rbac';
 
 /**
