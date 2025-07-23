@@ -145,6 +145,7 @@
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "@jest/globals": "^29.7.0",
     "@playwright/test": "^1.40.0",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@testing-library/dom": "^9.3.0",
     "@testing-library/react": "^14.0.0",
     "@types/debug": "^4.1.12",

@@ -1,0 +1,584 @@
+/* ==================================================================
+   LOCONOMY 2025 DESIGN SYSTEM
+   Modern, AI-Native, Premium Marketplace Styles
+   ================================================================== */
+
+/* Modern Font Imports (Variable Fonts) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+/* Tailwind Base Imports */
+@tailwind base;
+@tailwind components; 
+@tailwind utilities;
+
+/* ==================================================================
+   CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   OKLCH Color Space for Perceptual Uniformity
+   ================================================================== */
+
+@layer base {
+  :root {
+    /* ==========================================
+       CORE SYSTEM COLORS (Light Mode)
+       ========================================== */
+    
+    /* Surface & Layout */
+    --background: 100% 0 0;           /* Pure white */
+    --foreground: 15% 0 0;            /* Near black */
+    --surface: 98% 0 0;               /* Slightly off-white */
+    --surface-elevated: 100% 0 0;     /* Pure white for cards */
+    --surface-overlay: 96% 0 0;       /* Modal backgrounds */
+    --surface-glass: 100% 0 0;        /* Glass morphism base */
+    
+    /* Borders & Inputs */
+    --border: 90% 0 0;                /* Light gray */
+    --input: 95% 0 0;                 /* Input backgrounds */
+    --ring: 65% 0.2 270;              /* Focus ring (brand purple) */
+    
+    /* ==========================================
+       SEMANTIC COLORS
+       ========================================== */
+    
+    /* Primary Brand (Intelligent Purple) */
+    --primary: 65% 0.2 270;           /* oklch(65% 0.2 270deg) */
+    --primary-foreground: 98% 0 0;    /* White on primary */
+    --primary-subtle: 95% 0.05 270;   /* Very light purple */
+    --primary-emphasis: 60% 0.25 270; /* Darker purple for hover */
+    
+    /* Secondary (Trust Blue) */
+    --secondary: 70% 0.15 240;        /* oklch(70% 0.15 240deg) */
+    --secondary-foreground: 98% 0 0;
+    --secondary-subtle: 95% 0.03 240;
+    --secondary-emphasis: 65% 0.18 240;
+    
+    /* Accent (Local Teal) */
+    --accent: 70% 0.15 180;           /* oklch(70% 0.15 180deg) */
+    --accent-foreground: 98% 0 0;
+    --accent-subtle: 95% 0.03 180;
+    --accent-emphasis: 65% 0.18 180;
+    
+    /* Success (Natural Green) */
+    --success: 70% 0.17 142;          /* oklch(70% 0.17 142deg) */
+    --success-foreground: 98% 0 0;
+    --success-subtle: 95% 0.04 142;
+    
+    /* Warning (Attention Amber) */
+    --warning: 80% 0.15 70;           /* oklch(80% 0.15 70deg) */
+    --warning-foreground: 20% 0 0;
+    --warning-subtle: 95% 0.03 70;
+    
+    /* Destructive (Error Red) */
+    --destructive: 65% 0.2 25;        /* oklch(65% 0.2 25deg) */
+    --destructive-foreground: 98% 0 0;
+    --destructive-subtle: 95% 0.04 25;
+    
+    /* Muted (Content) */
+    --muted: 93% 0 0;                 /* Light gray background */
+    --muted-foreground: 45% 0 0;      /* Medium gray text */
+    --muted-subtle: 96% 0 0;
+    
+    /* ==========================================
+       AI-NATIVE CONTEXT COLORS
+       ========================================== */
+    
+    /* AI Intelligence */
+    --ai: 75% 0.18 300;               /* AI purple */
+    --ai-foreground: 98% 0 0;
+    --ai-thinking: 80% 0.12 300;      /* Lighter for thinking state */
+    --ai-success: 70% 0.15 142;       /* Green for AI success */
+    
+    /* Local Context */
+    --local: 70% 0.15 180;            /* Trust blue */
+    --local-foreground: 98% 0 0;
+    --local-trust: 75% 0.12 180;      /* Lighter trust indicator */
+    
+    /* Premium Context */
+    --premium: 85% 0.12 45;           /* Luxury gold */
+    --premium-foreground: 20% 0 0;
+    --premium-luxury: 80% 0.15 45;    /* Richer gold */
+    
+    /* ==========================================
+       CHART COLORS (Accessible & Distinctive)
+       ========================================== */
+    --chart-1: 65% 0.2 270;           /* Primary purple */
+    --chart-2: 70% 0.15 180;          /* Teal */
+    --chart-3: 70% 0.17 142;          /* Green */
+    --chart-4: 80% 0.15 70;           /* Amber */
+    --chart-5: 65% 0.2 25;            /* Red */
+    
+    /* ==========================================
+       COMPONENT-SPECIFIC TOKENS
+       ========================================== */
+    
+    /* Border Radius */
+    --radius-button: 0.5rem;          /* 8px */
+    --radius-input: 0.375rem;         /* 6px */
+    --radius-card: 0.75rem;           /* 12px */
+    --radius-modal: 1rem;             /* 16px */
+    
+    /* Component Sizes */
+    --nav-height: 4rem;               /* 64px */
+    --sidebar-width: 16rem;           /* 256px */
+    --content-max-width: 80rem;       /* 1280px */
+  }
+  
+  /* ==========================================
+     DARK MODE OVERRIDES
+     ========================================== */
+  
+  .dark {
+    /* Surface & Layout */
+    --background: 12% 0 0;            /* Very dark */
+    --foreground: 95% 0 0;            /* Near white */
+    --surface: 15% 0 0;               /* Dark surface */
+    --surface-elevated: 18% 0 0;      /* Elevated dark */
+    --surface-overlay: 10% 0 0;       /* Modal dark */
+    --surface-glass: 15% 0 0;         /* Glass base dark */
+    
+    /* Borders & Inputs */
+    --border: 25% 0 0;                /* Dark border */
+    --input: 20% 0 0;                 /* Dark input */
+    --ring: 70% 0.2 270;              /* Brighter focus ring */
+    
+    /* Semantic Colors (Adjusted for dark) */
+    --primary: 70% 0.2 270;           /* Brighter in dark */
+    --primary-foreground: 15% 0 0;    /* Dark text on primary */
+    --primary-subtle: 20% 0.08 270;   /* Dark subtle purple */
+    --primary-emphasis: 75% 0.25 270; /* Brighter emphasis */
+    
+    --secondary: 75% 0.15 240;        /* Brighter blue */
+    --secondary-subtle: 20% 0.06 240;
+    --secondary-emphasis: 80% 0.18 240;
+    
+    --accent: 75% 0.15 180;           /* Brighter teal */
+    --accent-subtle: 20% 0.06 180;
+    --accent-emphasis: 80% 0.18 180;
+    
+    --success: 75% 0.17 142;          /* Brighter green */
+    --success-subtle: 20% 0.08 142;
+    
+    --warning: 85% 0.15 70;           /* Brighter amber */
+    --warning-foreground: 15% 0 0;
+    --warning-subtle: 25% 0.06 70;
+    
+    --destructive: 70% 0.2 25;        /* Brighter red */
+    --destructive-subtle: 20% 0.08 25;
+    
+    --muted: 20% 0 0;                 /* Dark muted */
+    --muted-foreground: 65% 0 0;      /* Light gray text */
+    --muted-subtle: 18% 0 0;
+    
+    /* AI Colors in Dark */
+    --ai: 80% 0.18 300;               /* Brighter AI purple */
+    --ai-thinking: 85% 0.12 300;
+    --ai-success: 75% 0.15 142;
+    
+    --local: 75% 0.15 180;            /* Brighter trust blue */
+    --local-trust: 80% 0.12 180;
+    
+    --premium: 90% 0.12 45;           /* Brighter luxury gold */
+    --premium-foreground: 15% 0 0;
+    --premium-luxury: 85% 0.15 45;
+  }
+  
+  /* ==========================================
+     HIGH CONTRAST MODE
+     ========================================== */
+  
+  @media (prefers-contrast: high) {
+    :root {
+      --border: 70% 0 0;
+      --ring: 50% 0.3 270;
+    }
+    
+    .dark {
+      --border: 40% 0 0;
+      --ring: 80% 0.3 270;
+    }
+  }
+  
+  /* ==========================================
+     BASE ELEMENT STYLES
+     ========================================== */
+  
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    
+    /* Improved font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Better scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    font-optical-sizing: auto;
+    font-variation-settings: "wght" 400;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height */
+    overflow-x: hidden;
+  }
+  
+  /* ==========================================
+     TYPOGRAPHY IMPROVEMENTS
+     ========================================== */
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-optical-sizing: auto;
+    font-variation-settings: "wght" 600;
+    text-wrap: balance; /* Better line breaks */
+  }
+  
+  p {
+    text-wrap: pretty; /* Better paragraph wrapping */
+  }
+  
+  /* ==========================================
+     FOCUS & ACCESSIBILITY
+     ========================================== */
+  
+  /* Enhanced focus states */
+  *:focus-visible {
+    outline: 2px solid oklch(var(--ring));
+    outline-offset: 2px;
+    border-radius: 0.125rem;
+  }
+  
+  /* Remove focus for mouse users */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* High contrast improvements */
+  @media (prefers-contrast: high) {
+    button,
+    [role="button"] {
+      border: 2px solid currentColor;
+    }
+  }
+  
+  /* ==========================================
+     SELECTION & INTERACTION
+     ========================================== */
+  
+  ::selection {
+    background: oklch(var(--primary) / 0.2);
+    color: oklch(var(--primary-foreground));
+  }
+  
+  ::-moz-selection {
+    background: oklch(var(--primary) / 0.2);
+    color: oklch(var(--primary-foreground));
+  }
+  
+  /* ==========================================
+     SCROLL IMPROVEMENTS
+     ========================================== */
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--muted-foreground) / 0.5);
+  }
+  
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--muted-foreground) / 0.3) transparent;
+  }
+}
+
+/* ==================================================================
+   COMPONENT LAYER STYLES
+   ================================================================== */
+
+@layer components {
+  /* ==========================================
+     LAYOUT COMPONENTS
+     ========================================== */
+  
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: var(--content-max-width);
+  }
+  
+  .section {
+    @apply py-section;
+  }
+  
+  .prose {
+    @apply max-w-none;
+    
+    /* Better typography for content */
+    h1, h2, h3, h4, h5, h6 {
+      @apply font-display font-semibold tracking-tight;
+    }
+    
+    h1 { @apply text-4xl lg:text-5xl mb-6; }
+    h2 { @apply text-3xl lg:text-4xl mb-5; }
+    h3 { @apply text-2xl lg:text-3xl mb-4; }
+    h4 { @apply text-xl lg:text-2xl mb-3; }
+    
+    p {
+      @apply text-muted-foreground leading-relaxed mb-4;
+    }
+    
+    a {
+      @apply text-primary hover:text-primary-emphasis transition-colors;
+    }
+  }
+  
+  /* ==========================================
+     INTERACTIVE COMPONENTS
+     ========================================== */
+  
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-4 py-2 rounded-button;
+    @apply text-sm font-medium;
+    @apply transition-all duration-normal ease-smooth;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+    @apply disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .card-base {
+    @apply bg-surface border border-border rounded-card;
+    @apply shadow-sm transition-all duration-normal ease-smooth;
+  }
+  
+  .input-base {
+    @apply flex w-full px-3 py-2 rounded-input;
+    @apply border border-border bg-surface;
+    @apply text-sm placeholder:text-muted-foreground;
+    @apply transition-all duration-normal ease-smooth;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* ==========================================
+     AI-NATIVE COMPONENTS
+     ========================================== */
+  
+  .ai-container {
+    @apply relative overflow-hidden;
+    @apply bg-gradient-to-br from-ai/5 to-transparent;
+    @apply border border-ai/20 rounded-xl;
+  }
+  
+  .ai-thinking {
+    @apply relative overflow-hidden;
+    
+    &::before {
+      content: '';
+      @apply absolute inset-0;
+      @apply bg-gradient-to-r from-transparent via-ai/20 to-transparent;
+      @apply animate-ai-thinking;
+    }
+  }
+  
+  .ai-glow {
+    @apply shadow-[0_0_20px_oklch(var(--ai)/0.3)];
+  }
+  
+  /* ==========================================
+     GLASS MORPHISM SYSTEM
+     ========================================== */
+  
+  .glass {
+    @apply bg-surface-glass/80 backdrop-blur-lg;
+    @apply border border-border/30;
+    @apply shadow-glass;
+  }
+  
+  .glass-card {
+    @apply glass rounded-card p-6;
+    @apply transition-all duration-normal ease-smooth;
+    
+    &:hover {
+      @apply bg-surface-glass/90 shadow-lg;
+      @apply transform translate-y-[-2px];
+    }
+  }
+  
+  /* ==========================================
+     NEUMORPHISM SYSTEM
+     ========================================== */
+  
+  .neural {
+    @apply bg-surface shadow-neural;
+    @apply transition-all duration-normal ease-smooth;
+  }
+  
+  .neural-raised {
+    @apply neural;
+    @apply shadow-[4px_4px_8px_oklch(var(--muted)/0.3),-4px_-4px_8px_oklch(var(--background))];
+  }
+  
+  .neural-inset {
+    @apply neural;
+    @apply shadow-[inset_4px_4px_8px_oklch(var(--muted)/0.3),inset_-4px_-4px_8px_oklch(var(--background))];
+  }
+  
+  /* ==========================================
+     ANIMATION & INTERACTION STATES
+     ========================================== */
+  
+  .interactive {
+    @apply transition-all duration-fast ease-smooth;
+    @apply hover:transform hover:translate-y-[-1px];
+    @apply active:transform active:translate-y-0 active:scale-[0.98];
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-fast ease-smooth;
+    @apply hover:transform hover:translate-y-[-2px] hover:scale-[1.02];
+  }
+  
+  .click-feedback {
+    @apply transition-transform duration-[150ms] ease-out;
+    @apply active:transform active:scale-[0.98];
+  }
+  
+  /* ==========================================
+     LOADING & SKELETON STATES
+     ========================================== */
+  
+  .skeleton {
+    @apply relative overflow-hidden bg-muted rounded;
+    
+    &::before {
+      content: '';
+      @apply absolute inset-0;
+      @apply bg-gradient-to-r from-transparent via-muted-foreground/20 to-transparent;
+      @apply animate-skeleton;
+    }
+  }
+  
+  .pulse-slow {
+    @apply animate-[pulse_2s_ease-in-out_infinite];
+  }
+}
+
+/* ==================================================================
+   UTILITY LAYER ENHANCEMENTS
+   ================================================================== */
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Pretty text wrapping for paragraphs */
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  
+  /* GPU acceleration for animations */
+  .gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+  
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Focus improvements */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  /* Truncate with fade */
+  .truncate-fade {
+    @apply relative overflow-hidden;
+    
+    &::after {
+      content: '';
+      @apply absolute right-0 top-0 h-full w-8;
+      @apply bg-gradient-to-l from-background to-transparent;
+    }
+  }
+}
+
+/* ==================================================================
+   PRINT STYLES
+   ================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    font-weight: bold;
+  }
+  
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}

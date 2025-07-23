@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -102,7 +103,7 @@ const languages = [
   { code: "ko", name: "Korean", native: "한국어", flag: "🇰🇷", region: "Korea" },
   { code: "fr", name: "French", native: "Français", flag: "🇫🇷", region: "France" },
   { code: "tr", name: "Turkish", native: "Türkçe", flag: "🇹🇷", region: "Turkey" },
-  { code: "it", name: "Italian", native: "Italiano", flag: "🇮🇹", region: "Italy" },
+  { code: "it", name: "Italian", native: "Italiano", flag: "��🇹", region: "Italy" },
   { code: "th", name: "Thai", native: "ไทย", flag: "🇹🇭", region: "Thailand" },
   { code: "fa", name: "Persian", native: "فارسی", flag: "🇮🇷", region: "Iran" },
   { code: "pl", name: "Polish", native: "Polski", flag: "🇵🇱", region: "Poland" },
@@ -115,6 +116,7 @@ export default function Footer() {
   const params = useParams();
   const router = useRouter();
   const currentLocale = params?.locale as string || 'en';
+  const { user, isSignedIn, role } = useAuth();
   
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -199,6 +201,74 @@ export default function Footer() {
       ],
     },
   ];
+
+  // Helper function to check if a link should be shown based on authentication/role
+  const shouldShowLink = (href: string): boolean => {
+    // Links that require authentication (any authenticated user)
+    const authRequiredLinks = [
+      '/dashboard',
+      '/notifications',
+      '/settings',
+      '/profile',
+      '/billing',
+      '/payments',
+      '/messages',
+      '/referrals-dashboard'
+    ];
+
+    // Links that require specific roles
+    const providerOnlyLinks = [
+      '/provider/listings/new',
+      '/provider/reports',
+      '/provider/availability',
+      '/provider/calendar',
+      '/training-certification',
+      '/provider-resources',
+      '/provider-support'
+    ];
+
+    const customerOnlyLinks = [
+      '/customer/dashboard',
+      '/my-bookings',
+      '/bookings',
+      '/booking',
+      '/requests'
+    ];
+
+    const adminOnlyLinks = [
+      '/admin',
+      '/system-status'
+    ];
+
+    // Check if link requires authentication
+    if (authRequiredLinks.includes(href)) {
+      return isSignedIn;
+    }
+
+    // Check role-specific links
+    if (providerOnlyLinks.includes(href)) {
+      return isSignedIn && (role === 'provider' || role === 'admin');
+    }
+
+    if (customerOnlyLinks.includes(href)) {
+      return isSignedIn && (role === 'consumer' || role === 'admin');
+    }
+
+    if (adminOnlyLinks.includes(href)) {
+      return isSignedIn && role === 'admin';
+    }
+
+    // Show all other links to everyone (public pages)
+    return true;
+  };
+
+  // Filter footer sections based on authentication and role
+  const getFilteredFooterSections = () => {
+    return footerSections.map(section => ({
+      ...section,
+      links: section.links.filter(link => shouldShowLink(link.href))
+    })).filter(section => section.links.length > 0); // Remove sections with no visible links
+  };
 
   // Trust signals and certifications
   const trustSignals = [
@@ -354,15 +424,18 @@ export default function Footer() {
             
             <h3 className="text-3xl md:text-4xl font-black mb-4">
               <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-                Join the
+                {isSignedIn ? 'Stay Connected' : 'Join the'}
               </span>{" "}
               <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
-                Inner Circle
+                {isSignedIn ? 'Elite Updates' : 'Inner Circle'}
               </span>
             </h3>
-            
+
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-              Get exclusive access to industry insights, AI innovations, and premium content from the world's leading service marketplace.
+              {isSignedIn
+                ? `Welcome back${user?.name ? `, ${user.name}` : ''}! Stay updated with the latest features and exclusive insights tailored for ${role === 'provider' ? 'service professionals' : role === 'consumer' ? 'valued customers' : 'elite members'}.`
+                : 'Get exclusive access to industry insights, AI innovations, and premium content from the world\'s leading service marketplace.'
+              }
             </p>
           </div>
 
@@ -379,7 +452,7 @@ export default function Footer() {
                 className="h-14 px-8 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 font-semibold shadow-lg shadow-violet-500/25 transform hover:scale-105 transition-all duration-300"
               >
                 <Rocket className="w-5 h-5 mr-2" />
-                Join Elite
+                {isSignedIn ? 'Subscribe' : 'Join Elite'}
               </Button>
             </div>
             
@@ -510,7 +583,7 @@ export default function Footer() {
           {/* Navigation Links */}
           <div className="lg:col-span-3">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {footerSections.map((section, index) => (
+              {getFilteredFooterSections().map((section, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
