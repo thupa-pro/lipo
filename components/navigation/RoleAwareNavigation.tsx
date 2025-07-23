@@ -100,12 +100,15 @@ const NAVIGATION_ITEMS: NavItem[] = [
   }
 ];
 
-export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
+export function RoleAwareNavigation({ user: propUser }: RoleAwareNavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
   const params = useParams();
   const locale = params?.locale as string || 'en';
-  
+  const { user: authUser } = useAuth();
+
+  // Use prop user if provided, otherwise use auth hook user
+  const user = propUser || authUser;
   const userRole = getUserRole(user);
   const subscriptionTier = getUserSubscriptionTier(user);
 
