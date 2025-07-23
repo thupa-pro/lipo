@@ -569,24 +569,24 @@ const config: Config = {
 
         // Interaction States
         ".interactive": {
-          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-          "&:hover": {
-            transform: "translateY(-1px)",
-            boxShadow: theme("boxShadow.hover-lift"),
-          },
-          "&:active": {
-            transform: "translateY(0) scale(0.98)",
-            transition: "all 0.1s ease-out",
-          },
+          'transition': "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        },
+        ".interactive:hover": {
+          'transform': "translateY(-1px)",
+          'box-shadow': "0 20px 25px -5px oklch(0% 0 0 / 0.15), 0 8px 10px -6px oklch(0% 0 0 / 0.1)",
+        },
+        ".interactive:active": {
+          'transform': "translateY(0) scale(0.98)",
+          'transition': "all 0.1s ease-out",
         },
         ".interactive-lift": {
-          transition: "transform 0.2s ease-out",
-          "&:hover": {
-            transform: "translateY(-2px) scale(1.02)",
-          },
-          "&:active": {
-            transform: "translateY(0) scale(1)",
-          },
+          'transition': "transform 0.2s ease-out",
+        },
+        ".interactive-lift:hover": {
+          'transform': "translateY(-2px) scale(1.02)",
+        },
+        ".interactive-lift:active": {
+          'transform': "translateY(0) scale(1)",
         },
 
         // Text Effects
