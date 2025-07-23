@@ -749,43 +749,41 @@ const config: Config = {
         },
 
         ".card": {
-          background: "oklch(var(--surface))",
-          border: "1px solid oklch(var(--border))",
-          borderRadius: theme("borderRadius.card"),
-          padding: theme("spacing.card-padding"),
-          boxShadow: theme("boxShadow.sm"),
-          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-
-          "&:hover": {
-            boxShadow: theme("boxShadow.md"),
-            transform: "translateY(-1px)",
-          },
+          'background': "oklch(var(--surface))",
+          'border': "1px solid oklch(var(--border))",
+          'border-radius': "var(--radius-card)",
+          'padding': "1.5rem",
+          'box-shadow': "0 1px 3px 0 oklch(0% 0 0 / 0.1), 0 1px 2px -1px oklch(0% 0 0 / 0.1)",
+          'transition': "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        },
+        ".card:hover": {
+          'box-shadow': "0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1)",
+          'transform': "translateY(-1px)",
         },
 
         ".input": {
-          display: "flex",
-          width: "100%",
-          padding: `${theme("spacing.input-y")} ${theme("spacing.input-x")}`,
-          borderRadius: theme("borderRadius.input"),
-          border: "1px solid oklch(var(--border))",
-          background: "oklch(var(--surface))",
-          color: "oklch(var(--foreground))",
-          fontSize: theme("fontSize.sm"),
-          lineHeight: "1.5",
-          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-
-          "&::placeholder": {
-            color: "oklch(var(--muted-foreground))",
-          },
-          "&:focus": {
-            outline: "none",
-            borderColor: "oklch(var(--ring))",
-            boxShadow: "0 0 0 3px oklch(var(--ring) / 0.1)",
-          },
-          "&:disabled": {
-            opacity: "0.5",
-            cursor: "not-allowed",
-          },
+          'display': "flex",
+          'width': "100%",
+          'padding': "0.625rem 0.875rem",
+          'border-radius': "var(--radius-input)",
+          'border': "1px solid oklch(var(--border))",
+          'background': "oklch(var(--surface))",
+          'color': "oklch(var(--foreground))",
+          'font-size': "0.875rem",
+          'line-height': "1.5",
+          'transition': "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        },
+        ".input::placeholder": {
+          'color': "oklch(var(--muted-foreground))",
+        },
+        ".input:focus": {
+          'outline': "none",
+          'border-color': "oklch(var(--ring))",
+          'box-shadow': "0 0 0 3px oklch(var(--ring) / 0.1)",
+        },
+        ".input:disabled": {
+          'opacity': "0.5",
+          'cursor': "not-allowed",
         },
 
         // Legacy premium styles (will be deprecated)
