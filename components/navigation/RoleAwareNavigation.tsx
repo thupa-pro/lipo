@@ -105,9 +105,29 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
   const router = useRouter();
   const params = useParams();
   const locale = params?.locale as string || 'en';
-  
+
   const userRole = getUserRole(user);
   const subscriptionTier = getUserSubscriptionTier(user);
+
+  // ✅ Function definitions moved inside component
+  const getRoleDisplayName = (role: typeof userRole) => {
+    const names = {
+      guest: 'Guest',
+      consumer: 'Customer',
+      provider: 'Service Provider',
+      admin: 'Administrator'
+    };
+    return names[role];
+  };
+
+  const getSubscriptionColor = (tier: typeof subscriptionTier) => {
+    const colors = {
+      starter: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+      professional: 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
+      enterprise: 'bg-gold-100 text-gold-700 dark:bg-gold-900 dark:text-gold-300'
+    };
+    return colors[tier] || 'bg-gray-100 text-gray-700';
+  };
 
   // Create locale-aware navigation items
   const localeAwareNavItems = NAVIGATION_ITEMS.map(item => ({
