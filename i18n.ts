@@ -1,40 +1,20 @@
-import { getRequestConfig } from 'next-intl/server';
+import { defineRouting } from 'next-intl/routing';
+import { createNavigation } from 'next-intl/navigation';
 
-// Can be imported from a shared config
-export const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
+export const routing = defineRouting({
+  // A list of all locales that are supported
+  locales: [
+    "en", "zh", "hi", "es", "ar", "pt", "bn", "ru", "ja", "pa", "de", "ur", "ko", "fr", "tr", "it", "th", "fa", "pl", "nl", "uk", "vi", "he", "sw", "ro", "el", "cs", "hu", "fi", "da", "no", "sv", "id", "ms", "tl", "zh-TW", "am", "mg"
+  ],
 
-export default getRequestConfig(async ({ locale }) => {
-  // Validate that the incoming `locale` parameter is valid
-  if (!locale || !locales.includes(locale as any)) {
-    console.warn(`Invalid locale "${locale}", using default "en"`);
-    locale = 'en';
-  }
+  // Used when no locale matches
+  defaultLocale: 'en',
 
-  try {
-    const messages = (await import(`./messages/${locale}.json`)).default;
-    return {
-      messages,
-      timeZone: 'UTC',
-      now: new Date()
-    };
-  } catch (error) {
-    console.error(`Error loading messages for locale "${locale}":`, error);
-    // Fallback to English
-    try {
-      const fallbackMessages = (await import(`./messages/en.json`)).default;
-      return {
-        messages: fallbackMessages,
-        timeZone: 'UTC',
-        now: new Date()
-      };
-    } catch (fallbackError) {
-      console.error('Error loading fallback messages:', fallbackError);
-      // Return minimal config if all fails
-      return {
-        messages: {},
-        timeZone: 'UTC',
-        now: new Date()
-      };
-    }
-  }
+  // The locale prefix strategy
+  localePrefix: 'always'
 });
+
+// Lightweight wrappers around Next.js' navigation APIs
+// that will consider the routing configuration
+export const { Link, redirect, usePathname, useRouter } =
+  createNavigation(routing);
