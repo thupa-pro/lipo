@@ -551,20 +551,20 @@ const config: Config = {
 
         // AI-Native States
         ".ai-thinking": {
-          position: "relative",
-          overflow: "hidden",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            inset: "0",
-            background: "linear-gradient(90deg, transparent, oklch(var(--ai-thinking) / 0.3), transparent)",
-            animation: "ai-thinking 1.5s ease-in-out infinite",
-          },
+          'position': "relative",
+          'overflow': "hidden",
+        },
+        ".ai-thinking::before": {
+          'content': '""',
+          'position': "absolute",
+          'inset': "0",
+          'background': "linear-gradient(90deg, transparent, oklch(var(--ai-thinking) / 0.3), transparent)",
+          'animation': "ai-thinking 1.5s ease-in-out infinite",
         },
         ".ai-active": {
-          background: "oklch(var(--ai) / 0.1)",
-          borderColor: "oklch(var(--ai) / 0.3)",
-          boxShadow: "0 0 20px oklch(var(--ai) / 0.2)",
+          'background': "oklch(var(--ai) / 0.1)",
+          'border-color': "oklch(var(--ai) / 0.3)",
+          'box-shadow': "0 0 20px oklch(var(--ai) / 0.2)",
         },
 
         // Interaction States
