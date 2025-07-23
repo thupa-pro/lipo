@@ -27,7 +27,9 @@ import {
   Settings,
   Eye,
   Lock,
-  Fingerprint
+  Fingerprint,
+  MessageSquare,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
