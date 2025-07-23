@@ -586,7 +586,7 @@ export default function Footer() {
           {/* Navigation Links */}
           <div className="lg:col-span-3">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {footerSections.map((section, index) => (
+              {getFilteredFooterSections().map((section, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
