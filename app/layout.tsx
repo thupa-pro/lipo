@@ -187,52 +187,8 @@ export default async function RootLayout({
                     {children}
                   </main>
 
-                  {/* Footer with Logo */}
-                  <footer className="border-t bg-background/80 backdrop-blur-sm">
-                    <div className="container py-8">
-                      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-                          <div className="flex items-center gap-4">
-                            <Logo 
-                              variant={LogoVariant.LIGHT}
-                              size="sm"
-                              context={UIContext.FOOTER}
-                              alt="Loconomy - Elite AI Platform"
-                              className="logo-responsive"
-                            />
-                            <div className="text-sm text-muted-foreground">
-                              © 2024 Loconomy Inc. Elite AI-Powered Marketplace.
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-4 text-sm">
-                            <CookieSettingsLink 
-                              variant="link" 
-                              text="Cookie Settings"
-                              showIcon={true}
-                            />
-                            <a 
-                              href="/privacy-policy" 
-                              className="text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
-                            >
-                              Privacy Policy
-                            </a>
-                            <a 
-                              href="/terms" 
-                              className="text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
-                            >
-                              Terms
-                            </a>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                            All Systems Operational
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </footer>
+                  {/* Enhanced Premium Footer */}
+                  <Footer />
 
                                       {/* Cookie Consent */}
                     <Suspense fallback={null}>
