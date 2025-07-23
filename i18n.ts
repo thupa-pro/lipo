@@ -29,6 +29,7 @@ export default getRequestConfig(async ({ locale }) => {
     try {
       const fallbackMessages = (await import(`./messages/en.json`)).default;
       return {
+        locale: 'en',
         messages: fallbackMessages,
         timeZone: 'UTC',
         now: new Date()
