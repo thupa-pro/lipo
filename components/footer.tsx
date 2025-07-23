@@ -95,7 +95,7 @@ const languages = [
   { code: "ar", name: "Arabic", native: "العربية", flag: "🇸🇦", region: "MENA" },
   { code: "pt", name: "Portuguese", native: "Português", flag: "🇧🇷", region: "Brazil" },
   { code: "bn", name: "Bengali", native: "বাংলা", flag: "🇧🇩", region: "Bangladesh" },
-  { code: "ru", name: "Russian", native: "Русский", flag: "🇷🇺", region: "Russia" },
+  { code: "ru", name: "Russian", native: "Русски��", flag: "🇷🇺", region: "Russia" },
   { code: "ja", name: "Japanese", native: "日本語", flag: "🇯🇵", region: "Japan" },
   { code: "pa", name: "Punjabi", native: "ਪੰਜਾਬੀ", flag: "🇮🇳", region: "Punjab" },
   { code: "de", name: "German", native: "Deutsch", flag: "🇩🇪", region: "Germany" },
@@ -424,15 +424,18 @@ export default function Footer() {
             
             <h3 className="text-3xl md:text-4xl font-black mb-4">
               <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-                Join the
+                {isSignedIn ? 'Stay Connected' : 'Join the'}
               </span>{" "}
               <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
-                Inner Circle
+                {isSignedIn ? 'Elite Updates' : 'Inner Circle'}
               </span>
             </h3>
-            
+
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-              Get exclusive access to industry insights, AI innovations, and premium content from the world's leading service marketplace.
+              {isSignedIn
+                ? `Welcome back${user?.name ? `, ${user.name}` : ''}! Stay updated with the latest features and exclusive insights tailored for ${role === 'provider' ? 'service professionals' : role === 'consumer' ? 'valued customers' : 'elite members'}.`
+                : 'Get exclusive access to industry insights, AI innovations, and premium content from the world\'s leading service marketplace.'
+              }
             </p>
           </div>
 
