@@ -236,15 +236,15 @@ function RoleAccessDenied({
         
         {canUpgrade && (
           <Button asChild className="w-full">
-            <Link href="/become-provider">
+            <Link href="/en/become-provider">
               <Crown className="w-4 h-4 mr-2" />
               Become a Provider
             </Link>
           </Button>
         )}
-        
+
         <Button asChild variant="outline" className="w-full">
-          <Link href="/contact">
+          <Link href="/en/contact">
             Contact Support
           </Link>
         </Button>
