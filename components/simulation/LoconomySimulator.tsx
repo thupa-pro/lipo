@@ -27,13 +27,13 @@ import {
   Crown, Star, 
   Settings,
   CreditCard,
-  BarChart3
+  BarChart3,
   Plus,
   Search,
   Sparkles,
   Bot,
   Terminal,
-  ArrowRight
+  ArrowRight,
   XCircle,
   AlertCircle,
   Info,
@@ -46,9 +46,9 @@ import {
   Command as CommandIcon,
   Sparkles as SparklesIcon,
   Brain,
-  Rocket
+  Rocket,
   TrendingUp,
-  DollarSign
+  DollarSign,
   MapPin,
   Phone,
   Mail,
@@ -67,10 +67,10 @@ import {
   Send,
   Smile,
   Image,
-  FileText
+  FileText,
   Share,
   Download,
-  Upload
+  Upload,
   Edit,
   Copy,
   ExternalLink,
@@ -457,16 +457,16 @@ export function LoconomySimulator() {
   const sendAiMessage = async (message: string) => {
     if (!message.trim()) return;
 
-    const userMessage = { type: 'user' as const message };
+    const userMessage = { type: 'user' as const, message };
     setAiChat(prev => [...prev, userMessage]);
     setAiChatInput("");
     setIsAiTyping(true);
 
     // Simulate AI response
     setTimeout(() => {
-      const aiResponse = { 
-        type: 'ai' as const 
-        message: `I understand you're asking about "${message}". As a ${currentUser.role} on, Loconomy, here's how I can help you...` 
+            const aiResponse = { 
+        type: 'ai' as const,
+        message: `I understand you're asking about "${message}". As a ${currentUser.role} on Loconomy, here's how I can help you...`
       };
       setAiChat(prev => [...prev, aiResponse]);
       setIsAiTyping(false);

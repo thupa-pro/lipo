@@ -13,7 +13,10 @@ import {
   CheckCircle,
   TrendingUp,
   Activity,
-  BarChart3, Gauge
+  BarChart3,
+  Gauge,
+  Zap,
+  Shield
 } from "lucide-react";
 
 export default function AccessibilityPerformancePage() {

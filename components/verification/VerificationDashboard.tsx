@@ -27,12 +27,12 @@ import {
   Mail,
   MapPin,
   Calendar,
-  Award
+  Award,
   RefreshCw,
   Download,
   Eye,
   ExternalLink,
-  Info
+  Info,
   TrendingUp,
   Users
 } from "lucide-react";

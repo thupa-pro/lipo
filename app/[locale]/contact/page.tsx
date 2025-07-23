@@ -17,7 +17,8 @@ import {
   Mail,
   MapPin,
   ArrowRight,
-  Sparkles, Users
+  Sparkles,
+  Users,
   Send,
   MessageCircle,
   Heart,

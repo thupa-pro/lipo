@@ -32,13 +32,14 @@ import {
   Gift,
   Calendar,
   ExternalLink,
-  Mail, Facebook,
-  Twitter
+  Mail,
+  Facebook,
+  Twitter,
   QrCode,
   Download,
-  Trophy
-  CheckCircle
-  Award
+  Trophy,
+  CheckCircle,
+  Award,
   Sparkles
 } from "lucide-react";
 import { format } from "date-fns";

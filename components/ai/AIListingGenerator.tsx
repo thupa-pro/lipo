@@ -28,7 +28,7 @@ import {
   DollarSign, MapPin,
   ImageIcon,
   Tag,
-  TrendingUp
+  TrendingUp,
   CheckCircle,
   AlertCircle,
   RefreshCw
@@ -113,7 +113,7 @@ interface AIOptimization {
   implementation: string;
 }
 
-export function AIListingGenerator({
+function AIListingGenerator({
   tenantId,
   providerId,
   onListingGenerated,
@@ -752,3 +752,5 @@ function generateOptimizations(request: AIGenerationRequest): AIOptimization[] {
     }
   ];
 }
+
+export default AIListingGenerator;

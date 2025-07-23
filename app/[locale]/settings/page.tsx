@@ -39,7 +39,7 @@ import {
   Bell, CreditCard,
   Eye,
   Key,
-  Trash2
+  Trash2,
   AlertTriangle,
   Save,
   RefreshCw,

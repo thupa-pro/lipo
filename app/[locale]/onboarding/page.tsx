@@ -18,7 +18,7 @@ export default function OnboardingPage() {
   const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const params = useParams();
-  const locale = params?.locale, as string || 'en';
+  const locale = params?.locale as string || 'en';
   const searchParams = useSearchParams();
   const { toast } = useToast();
   const onboardingClient = useOnboardingClient();

@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 export default function ProviderCalendarPage() {
-  const [currentDate, setCurrentDate] = useState(new, Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const bookings = [
     {

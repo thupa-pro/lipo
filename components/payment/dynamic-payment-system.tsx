@@ -14,7 +14,7 @@ import {
   Smartphone,
   QrCode,
   Banknote,
-  TrendingUp
+  TrendingUp,
   Lock,
   Eye,
   EyeOff,

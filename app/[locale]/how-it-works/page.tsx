@@ -15,11 +15,11 @@ import {
   Lightbulb, DollarSign,
   Sparkles,
   Brain,
-  Target
+  Target,
   Heart,
   Award,
   TrendingUp,
-  Globe
+  Globe,
   Star,
   ChevronRight,
   Play,

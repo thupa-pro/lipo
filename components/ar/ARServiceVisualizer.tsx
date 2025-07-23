@@ -15,8 +15,9 @@ import {
   XCircle,
   Info,
   Sparkles,
-  Eye, Timer,
-  MapPin
+  Eye,
+  Timer,
+  MapPin,
   DollarSign,
   Calendar,
   ChevronLeft,

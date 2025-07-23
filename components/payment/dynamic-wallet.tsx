@@ -23,7 +23,8 @@ import {
   ArrowUpRight,
   ArrowDownLeft,
   CheckCircle,
-  AlertCircle, Shield
+  AlertCircle,
+  Shield,
   MoreHorizontal
 } from "lucide-react";
 import { cn } from "@/lib/utils";

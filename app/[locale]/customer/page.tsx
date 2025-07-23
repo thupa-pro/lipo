@@ -12,20 +12,21 @@ import {
   Search, 
   Calendar,
   Heart,
-  Bookmark, MapPin,
-  CreditCard
-  Settings
+  Bookmark,
+  MapPin,
+  CreditCard,
+  Settings,
   Phone,
   Mail,
   Plus,
-  Eye
+  Eye,
   History
 } from "lucide-react";
 
 export default function CustomerDashboardPage() {
   const router = useRouter();
   const params = useParams();
-  const locale = params?.locale, as string || 'en';
+  const locale = params?.locale as string || 'en';
   const { user, isLoading, isSignedIn } = useAuth();
   const [mounted, setMounted] = useState(false);
 

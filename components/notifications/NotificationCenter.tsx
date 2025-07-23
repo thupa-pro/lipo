@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
   Bell, Check, X, Settings, Filter, AlertCircle, Info, 
-  CheckCircle Trash2
+  CheckCircle, Trash2
 } from 'lucide-react';
 
 interface Notification {

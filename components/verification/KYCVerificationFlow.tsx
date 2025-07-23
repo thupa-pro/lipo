@@ -39,8 +39,8 @@ import {
   Mail,
   MapPin,
   Calendar,
-  Lock
-  Award
+  Lock,
+  Award,
   Info,
   ArrowRight,
   ArrowLeft,
