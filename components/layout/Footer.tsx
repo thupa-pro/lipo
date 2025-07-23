@@ -14,7 +14,7 @@ import {
   Heart} from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new, Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   const footerSections = [
     {
