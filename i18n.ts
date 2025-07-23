@@ -1,20 +1,16 @@
-import { defineRouting } from 'next-intl/routing';
-import { createNavigation } from 'next-intl/navigation';
+import { notFound } from 'next/navigation';
+import { getRequestConfig } from 'next-intl/server';
 
-export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: [
-    "en", "zh", "hi", "es", "ar", "pt", "bn", "ru", "ja", "pa", "de", "ur", "ko", "fr", "tr", "it", "th", "fa", "pl", "nl", "uk", "vi", "he", "sw", "ro", "el", "cs", "hu", "fi", "da", "no", "sv", "id", "ms", "tl", "zh-TW", "am", "mg"
-  ],
+// Can be imported from a shared config
+const locales = [
+  "en", "zh", "hi", "es", "ar", "pt", "bn", "ru", "ja", "pa", "de", "ur", "ko", "fr", "tr", "it", "th", "fa", "pl", "nl", "uk", "vi", "he", "sw", "ro", "el", "cs", "hu", "fi", "da", "no", "sv", "id", "ms", "tl", "zh-TW", "am", "mg"
+];
 
-  // Used when no locale matches
-  defaultLocale: 'en',
+export default getRequestConfig(async ({ locale }) => {
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale as any)) notFound();
 
-  // The locale prefix strategy
-  localePrefix: 'always'
+  return {
+    messages: (await import(`./messages/${locale}.json`)).default
+  };
 });
-
-// Lightweight wrappers around Next.js' navigation APIs
-// that will consider the routing configuration
-export const { Link, redirect, usePathname, useRouter } =
-  createNavigation(routing);
