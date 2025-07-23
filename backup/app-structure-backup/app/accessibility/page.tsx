@@ -12,7 +12,7 @@ export default function AccessibilityPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen, bg-background">
+    <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center, bg-gradient-to-br, from-blue-50 to-green-50">
         <div className="container mx-auto max-w-4xl">
           <AccessibilityIcon className="w-16 h-16 text-blue-600 mx-auto mb-4" />
