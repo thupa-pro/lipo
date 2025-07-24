@@ -63,6 +63,12 @@ const nextConfig = {
 
   // Prevent hydration mismatches
   experimental: {
+    // Enable Turbopack for faster development
+    turbo: {
+      loaders: {
+        '.svg': ['@svgr/webpack'],
+      },
+    },
     // Ensure stable hydration
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
