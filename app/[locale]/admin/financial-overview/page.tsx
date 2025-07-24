@@ -23,8 +23,6 @@ import {
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -34,6 +32,7 @@ import {
   Area
 } from "recharts"
 import { ChartContainer, ChartTooltipContent } from "@/components/ui/chart"
+
 
 interface Transaction {
   id: string
@@ -283,7 +282,8 @@ export default function FinancialOverviewPage() {
               <CardDescription>Platform revenue over the last {timeRange}.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Select value={timeRange} onValueChange={setTimeRange} className="mb-4">
+              <div className="mb-4">
+                <Select value={timeRange} onValueChange={setTimeRange}>
                 <SelectTrigger className="w-full md:w-[180px]">
                   <SelectValue placeholder="Select Time Range" />
                 </SelectTrigger>
@@ -293,7 +293,8 @@ export default function FinancialOverviewPage() {
                   <SelectItem value="90d">Last 90 Days</SelectItem>
                   <SelectItem value="ytd">Year to Date</SelectItem>
                 </SelectContent>
-              </Select>
+                </Select>
+              </div>
               <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
                 <ResponsiveContainer width="100%" height={250}>
                   <AreaChart data={revenueData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>

@@ -21,17 +21,17 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import {
-  Calendar, as CalendarIcon,
-  MapPin
-  Shield
-  CreditCard
+  Calendar as CalendarIcon,
+  MapPin,
+  Shield,
+  CreditCard,
   Phone,
   Mail,
   MessageCircle,
   AlertCircle,
   ArrowRight,
   Heart,
-  Sparkles
+  Sparkles,
   Award
 } from "lucide-react";
 import { format } from "date-fns";

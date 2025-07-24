@@ -15,7 +15,7 @@ import {
 import {
   ChevronLeft,
   ChevronRight,
-  Calendar, as CalendarIcon,
+  Calendar as CalendarIcon,
   User,
   MapPin,
   Settings,

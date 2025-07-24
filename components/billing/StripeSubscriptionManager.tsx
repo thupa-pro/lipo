@@ -32,8 +32,9 @@ import {
   Calendar,
   Settings,
   AlertTriangle,
-  CheckCircle, Sparkles
-  ArrowUpRight
+  CheckCircle,
+  Sparkles,
+  ArrowUpRight,
   Infinity,
   Users
 } from 'lucide-react';

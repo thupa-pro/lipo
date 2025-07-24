@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/nextjs';
 import { CaptureConsole } from '@sentry/integrations';
+import React from 'react';
 
 export interface ErrorContext {
   userId?: string;

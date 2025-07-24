@@ -22,7 +22,7 @@ import {
   PopoverTrigger
 } from "@/components/ui/popover";
 import {
-  Calendar, as CalendarIcon,
+  Calendar as CalendarIcon,
   Plus,
   X,
   Save,
