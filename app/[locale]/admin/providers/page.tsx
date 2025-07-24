@@ -4,7 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   UserCheck,
   ArrowUpRight,
-  Shield, Award
+  Shield,
+  Award,
+  CheckCircle
 } from "lucide-react";
 import Link from "next/link";
 

@@ -82,7 +82,7 @@ export class EventBus {
     console.log(`📡 Event emitted: ${fullEvent.type}`, fullEvent.data);
 
     // Emit to internal EventEmitter
-    this.emitter.emit(fullEvent.type fullEvent);
+    this.emitter.emit(fullEvent.type, fullEvent);
 
     // Process with registered handlers
     await this.processEvent(fullEvent);

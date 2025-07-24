@@ -17,7 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   X,
   Upload,
-  Image, as ImageIcon,
+  Image as ImageIcon,
   DollarSign,
   MapPin,
   Tag,

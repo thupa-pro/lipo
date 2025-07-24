@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import {
   X,
   Upload,
-  Image, as ImageIcon,
+  Image as ImageIcon,
   AlertCircle,
   Check,
   Loader2

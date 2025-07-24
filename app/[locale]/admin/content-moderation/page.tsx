@@ -8,13 +8,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import {
   Search,
-  MessageSquare,
-  User, XCircle,
+  XCircle,
   Eye,
   ArrowLeft,
   ArrowRight,
   Flag,
-  Ban
+  Ban,
+  Shield,
+  CheckCircle,
+  Clock
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"

@@ -145,7 +145,7 @@ export function CreateWorkspaceForm({
       <div className="space-y-4">
         <Label className="text-base font-semibold">Choose Workspace Type</Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {Object.entries(WORKSPACE_TYPE_CONFIG).map(([type config]) => (
+          {Object.entries(WORKSPACE_TYPE_CONFIG).map(([type, config]) => (
             <Card
               key={type}
               className={`cursor-pointer transition-all ${
