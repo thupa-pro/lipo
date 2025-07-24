@@ -173,7 +173,7 @@
     "webpack-bundle-analyzer": "^4.10.1"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS='--max-old-space-size=4096' NEXT_TELEMETRY_DISABLED=1 next dev",
+    "dev": "next dev",
     "dev:turbo": "NODE_OPTIONS='--max-old-space-size=4096' NEXT_TELEMETRY_DISABLED=1 next dev --turbo",
     "dev:optimized": "node scripts/dev-optimized.js",
     "dev:clean": "rm -rf .next && pnpm dev",
