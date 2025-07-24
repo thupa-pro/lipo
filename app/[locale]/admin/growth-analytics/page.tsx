@@ -15,7 +15,8 @@ import {
   ArrowLeft,
   Lightbulb,
   DollarSign,
-  Eye
+  Eye,
+  CheckCircle
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
