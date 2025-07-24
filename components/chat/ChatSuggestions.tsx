@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Lightbulb, HelpCircle, Settings } from "lucide-react";
+import { ArrowRight, Lightbulb, HelpCircle, Settings, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatSuggestion } from "@/lib/ai-chat/types";
 

@@ -27,7 +27,8 @@ import {
   Shield,
   MoreHorizontal,
   Clock,
-  Star
+  Star,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

@@ -14,7 +14,10 @@ import {
   Mail,
   Phone,
   MapPin,
-  Heart} from "lucide-react";
+  Heart,
+  Shield,
+  Zap
+} from "lucide-react";
 
 export default function OldFooter() {
   const currentYear = new Date().getFullYear();

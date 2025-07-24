@@ -36,7 +36,8 @@ import {
   RefreshCw,
   AlertCircle,
   TrendingUp,
-  Users
+  Users,
+  Zap
 } from "lucide-react";
 import { locales, localeNames, type Locale } from "@/lib/i18n/config";
 import {

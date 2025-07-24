@@ -18,9 +18,10 @@ import {
   TrendingUp,
   MapPin,
   CreditCard, FileText,
-  BarChart3
+  BarChart3,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  Zap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

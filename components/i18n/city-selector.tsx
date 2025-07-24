@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, MapPin, Globe, TrendingUp, DollarSign, Users} from "lucide-react";
+import { Search, MapPin, Globe, TrendingUp, DollarSign, Users, Zap} from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   metropolitanCities,

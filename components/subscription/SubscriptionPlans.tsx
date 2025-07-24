@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Check, Crown, Star, ArrowRight, Loader2 } from "lucide-react";
+import { Check, Crown, Star, ArrowRight, Loader2, Zap } from "lucide-react";
 import {
   SubscriptionPlanData,
   BillingCycle,

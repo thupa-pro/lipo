@@ -6,13 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CookieSettingsLink } from './CookieSettingsLink';
 import { useCookieSettings, useConsentAwareAnalytics } from '@/hooks/useCookieSettings';
-import { 
+import {
   Cookie,
-  BarChart3, 
-  Target, 
-  CheckCircle, 
+  BarChart3,
+  Target,
+  CheckCircle,
   XCircle,
-  RefreshCw
+  RefreshCw,
+  Zap
 } from 'lucide-react';
 
 export function CookieConsentDemo() {
