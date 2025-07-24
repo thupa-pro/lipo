@@ -63,6 +63,8 @@ const nextConfig = {
 
   // Prevent hydration mismatches
   experimental: {
+    // Enable Turbopack for faster development builds
+    turbo: {},
     // Ensure stable hydration
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
