@@ -91,7 +91,7 @@
     "date-fns": "^3.0.0",
     "dotenv": "^17.2.0",
     "embla-carousel-react": "8.5.1",
-    "framer-motion": "^12.23.6",
+    "framer-motion": "^12.23.7",
     "fuse.js": "^7.1.0",
     "glob": "^10.4.2",
     "happy-dom": "18.0.1",
