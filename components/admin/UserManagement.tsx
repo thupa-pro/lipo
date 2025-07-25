@@ -52,7 +52,8 @@ import {
   TrendingUp,
   UserX,
   UserCheck,
-  Download
+  Download,
+  Shield
 } from "lucide-react";
 import {
   DropdownMenu,

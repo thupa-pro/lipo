@@ -20,7 +20,8 @@ import {
   AlertTriangle,
   X,
   Upload,
-  FileText, Building,
+  FileText,
+  Building,
   CreditCard,
   Globe,
   Phone,
@@ -34,7 +35,11 @@ import {
   ExternalLink,
   Info,
   TrendingUp,
-  Users
+  Users,
+  Clock,
+  Shield,
+  Star,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

@@ -25,7 +25,8 @@ import {
   ThumbsDown,
   RotateCcw,
   Mic,
-  Settings
+  Settings,
+  Zap
 } from "lucide-react";
 
 interface Message {

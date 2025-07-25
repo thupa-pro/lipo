@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { 
+import {
   Sparkles,
-  Target, 
-  Award, Brain,
+  Target,
+  Award,
+  Brain,
   Heart,
   Eye,
   Mic,
@@ -19,8 +20,12 @@ import {
   CheckCircle,
   MapPin,
   Phone,
-  Video
-} from 'lucide-react';
+  Video,
+  Clock,
+  MessageSquare,
+  Star,
+  Zap
+} from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

@@ -16,7 +16,9 @@ import {
   TrendingUp,
   MapPin,
   CheckCircle,
-  Info
+  Info,
+  MessageSquare,
+  Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

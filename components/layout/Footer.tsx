@@ -65,11 +65,11 @@ export default function OldFooter() {
     },
   ];
 
-  const socialLinks = [
+  const socials = [
     { name: "Twitter", href: "https://twitter.com/loconomy", icon: Twitter },
     { name: "Facebook", href: "https://facebook.com/loconomy", icon: Facebook },
     { name: "Instagram", href: "https://instagram.com/loconomy", icon: Instagram },
-    { name: "LinkedIn", href: "https://linkedin.com/company/loconomy", icon: Linkedin },
+    { name: "edIn", href: "https://linkedin.com/company/loconomy", icon:edin },
   ];
 
   const contactInfo = [
@@ -98,14 +98,14 @@ export default function OldFooter() {
               viewport={{ once: true }}
             >
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2 mb-4">
+              <href="/" className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Loconomy
                 </span>
-              </Link>
+              </>
 
               {/* Description */}
               <p className="text-muted-foreground mb-6 max-w-xs">
@@ -131,20 +131,20 @@ export default function OldFooter() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Link
+                    <
                       href={contact.href}
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       <contact.icon className="w-4 h-4" />
                       {contact.text}
-                    </Link>
+                    </>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
 
-          {/* Links Sections */}
+          {/*s Sections */}
           {footerSections.map((section, sectionIndex) => (
             <div key={section.title}>
               <motion.div
@@ -161,12 +161,12 @@ export default function OldFooter() {
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Link
+                        <
                           href={link.href}
                           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
                           {link.name}
-                        </Link>
+                        </>
                       </motion.div>
                     </li>
                   ))}
@@ -192,7 +192,7 @@ export default function OldFooter() {
             © {currentYear} Loconomy, Inc. All rights reserved. Built with ❤️ for local communities.
           </motion.div>
 
-          {/* Social Links */}
+          {/* Socials */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -200,14 +200,14 @@ export default function OldFooter() {
             viewport={{ once: true }}
             className="flex items-center gap-4"
           >
-            {socialLinks.map((social, index) => (
+            {socials.map((social, index) => (
               <motion.div
                 key={social.name}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
               >
-                <Link
+                <
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -215,7 +215,7 @@ export default function OldFooter() {
                   aria-label={`Follow us on ${social.name}`}
                 >
                   <social.icon className="w-4 h-4" />
-                </Link>
+                </>
               </motion.div>
             ))}
           </motion.div>

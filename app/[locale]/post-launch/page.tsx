@@ -3,7 +3,13 @@
 import NotificationSystem from "@/components/notification-system"
 import AnalyticsDashboard from "@/components/analytics-dashboard"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { MapPin, TrendingUp, Bell, BarChart3, Rocket } from "lucide-react"
+import {
+  MapPin,
+  TrendingUp,
+  Bell,
+  BarChart3,
+  Rocket
+} from "lucide-react";
 import Link from "next/link"
 import { useSearchParams, useRouter } from "next/navigation"
 import OnboardingFlow from "@/components/onboarding-flow"

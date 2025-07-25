@@ -19,11 +19,13 @@ import {
   Mail,
   Smartphone,
   MessageSquare,
-  CreditCard, Star,
+  CreditCard,
+  Star,
   Calendar,
   Volume2,
   VolumeX,
-  Settings
+  Settings,
+  Clock
 } from "lucide-react";
 
 interface NotificationSettingsProps {

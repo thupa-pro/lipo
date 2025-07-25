@@ -7,12 +7,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   MapPin,
-  Shield, Heart,
+  Shield,
+  Heart,
   MessageCircle,
   Eye,
   TrendingUp,
   Award,
-  Zap
+  Zap,
+  Clock,
+  Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

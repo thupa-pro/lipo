@@ -47,7 +47,8 @@ import {
   Calendar,
   FileText,
   Camera,
-  Play
+  Play,
+  Clock
 } from "lucide-react";
 import { useRouter, useParams  } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";

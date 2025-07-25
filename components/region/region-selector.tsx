@@ -4,7 +4,14 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Globe, MapPin, DollarSign, Shield, Loader2 } from "lucide-react"
+import {
+  Globe,
+  MapPin,
+  DollarSign,
+  Shield,
+  Loader2,
+  Clock
+} from "lucide-react";
 import { REGIONS, getRegionConfig, detectUserRegion, type RegionConfig } from "@/lib/region-config"
 
 interface RegionSelectorProps {

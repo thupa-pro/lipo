@@ -22,6 +22,7 @@ import {
   Crown,
   Loader2,
   Check,
+  Enterprise
 } from "lucide-react";
 import {
   CreateWorkspaceRequest,

@@ -6,15 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Database, 
+import {
+  Database,
   Upload,
-  AlertCircle, 
+  AlertCircle,
   RefreshCw,
   FileText,
   Users,
-  Activity
-} from 'lucide-react';
+  Activity,
+  CheckCircle
+} from "lucide-react";
 
 interface DataInjectionProps {
   className?: string;

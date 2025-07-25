@@ -31,7 +31,8 @@ import {
   TrendingUp,
   TrendingDown,
   ShoppingCart,
-  Users
+  Users,
+  Target
 } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";

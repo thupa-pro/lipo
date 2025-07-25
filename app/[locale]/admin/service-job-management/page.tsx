@@ -29,7 +29,9 @@ import {
   Eye,
   ArrowLeft,
   ArrowRight,
-  RefreshCcw
+  RefreshCcw,
+  CheckCircle,
+  MessageSquare
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";

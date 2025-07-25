@@ -30,7 +30,6 @@ import {
   Cell,
 } from "recharts";
 import {
-  
   AlertTriangle,
   TrendingUp,
   Database,
@@ -41,6 +40,7 @@ import {
   ArrowUp,
   ArrowDown,
   ExternalLink,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

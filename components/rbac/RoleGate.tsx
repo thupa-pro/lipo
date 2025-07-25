@@ -16,7 +16,12 @@ import {
 } from '@/lib/rbac/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Lock, Crown, UserPlus, LogIn } from 'lucide-react';
+import {
+  Lock,
+  Crown,
+  UserPlus,
+  LogIn
+} from "lucide-react";
 import Link from 'next/link';
 
 interface RoleGateServerProps extends RoleGateProps {
@@ -171,16 +176,16 @@ function GuestAccessDenied({ allowedRoles }: { allowedRoles: UserRole[] }) {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <Button asChild variant="outline">
-            <Link href="/en/auth/signin">
+            <href="/en/auth/signin">
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
-            </Link>
+            </>
           </Button>
           <Button asChild>
-            <Link href="/en/auth/signup">
+            <href="/en/auth/signup">
               <UserPlus className="w-4 h-4 mr-2" />
               Sign Up
-            </Link>
+            </>
           </Button>
         </div>
         <p className="text-xs text-muted-foreground text-center">

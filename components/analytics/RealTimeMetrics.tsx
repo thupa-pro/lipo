@@ -22,7 +22,9 @@ import {
   Database,
   Globe,
   Pause,
-  Play
+  Play,
+  Clock,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { analyticsClient } from "@/lib/analytics/utils";

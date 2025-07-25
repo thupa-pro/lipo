@@ -6,7 +6,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, Sparkles, Lightbulb, DollarSign} from "lucide-react"
+import {
+  Loader2,
+  Sparkles,
+  Lightbulb,
+  DollarSign,
+  Clock
+} from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 
 interface JobSuggestion {

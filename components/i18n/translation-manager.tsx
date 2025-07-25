@@ -27,7 +27,8 @@ import {
   XCircle,
   Download,
   Upload,
-  Search, BarChart3,
+  Search,
+  BarChart3,
   Globe,
   Code,
   Eye,
@@ -37,7 +38,9 @@ import {
   AlertCircle,
   TrendingUp,
   Users,
-  Zap
+  Zap,
+  CheckCircle,
+  Clock
 } from "lucide-react";
 import { locales, localeNames, type Locale } from "@/lib/i18n/config";
 import {

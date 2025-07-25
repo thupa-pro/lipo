@@ -13,7 +13,11 @@ import {
   Calendar,
   DollarSign,
   Award,
-  ArrowLeft
+  ArrowLeft,
+  Clock,
+  MessageSquare,
+  Shield,
+  Star
 } from "lucide-react";
 
 export default function ProviderDetailPage() {

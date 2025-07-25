@@ -8,20 +8,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  DollarSign, 
-  Users, 
+import {
+  DollarSign,
+  Users,
   Calendar,
   TrendingUp,
   BookOpen,
   Settings,
   BarChart3,
-  MessageSquare, MapPin,
+  MessageSquare,
+  MapPin,
   Phone,
   Mail,
   Plus,
   Eye,
-  Edit
+  Edit,
+  Clock,
+  Star
 } from "lucide-react";
 
 export default function ProviderDashboardPage() {

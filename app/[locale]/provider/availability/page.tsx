@@ -13,7 +13,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {  Save, Calendar, Plus, X } from "lucide-react";
+import {
+  Save,
+  Calendar,
+  Plus,
+  X,
+  Clock
+} from "lucide-react";
 
 export default function ProviderAvailabilityPage() {
   const [availability, setAvailability] = useState({

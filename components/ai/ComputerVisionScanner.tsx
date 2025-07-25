@@ -2,12 +2,13 @@
 
 import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Camera, 
-  Upload, 
-  Scan, 
+import {
+  Camera,
+  Upload,
+  Scan,
   Eye,
-  Brain, AlertTriangle,
+  Brain,
+  AlertTriangle,
   Sparkles,
   Tag,
   DollarSign,
@@ -16,8 +17,10 @@ import {
   Edit,
   Save,
   Download,
-  Share2
-} from 'lucide-react'
+  Share2,
+  Clock,
+  Trash2
+} from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

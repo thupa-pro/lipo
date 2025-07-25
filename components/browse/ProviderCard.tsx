@@ -14,7 +14,9 @@ import {
   CheckCircle,
   ArrowRight,
   Heart,
-  Share2
+  Share2,
+  Clock,
+  Star
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";

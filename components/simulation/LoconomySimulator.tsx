@@ -21,10 +21,11 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover";
-import { 
-  Users, 
+import {
+  Users,
   Briefcase,
-  Crown, Star, 
+  Crown,
+  Star,
   Settings,
   CreditCard,
   BarChart3,
@@ -168,7 +169,10 @@ import {
   FileGit as GitIcon,
   FileGithub as GithubIcon,
   FileGitlab as GitlabIcon,
-  FileBitbucket as BitbucketIcon
+  FileBitbucket as BitbucketIcon,
+  CheckCircle,
+  MessageSquare,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

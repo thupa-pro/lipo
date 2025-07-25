@@ -35,7 +35,8 @@ import {
   Activity,
   DollarSign,
   ShoppingCart,
-  Target
+  Target,
+  Clock
 } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";

@@ -8,9 +8,12 @@ import {
   Fingerprint,
   Scan,
   Lock,
-  Unlock, AlertCircle,
+  Unlock,
+  AlertCircle,
   Eye,
-  Smartphone
+  Smartphone,
+  CheckCircle,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

@@ -4,7 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {  ArrowRight, Crown, Loader2 } from "lucide-react";
+import {
+  ArrowRight,
+  Crown,
+  Loader2,
+  CheckCircle
+} from "lucide-react";
 import { useSubscriptionClient } from "@/lib/subscription/utils";
 
 export default function SubscriptionSuccessPage() {

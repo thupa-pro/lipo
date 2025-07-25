@@ -2,7 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, MapPin, Star, Users, Sparkles } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  Star,
+  Users,
+  Sparkles
+} from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {

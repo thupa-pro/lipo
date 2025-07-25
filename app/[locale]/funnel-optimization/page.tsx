@@ -16,7 +16,8 @@ import {
   Target,
   Brain,
   BarChart3,
-  Settings
+  Settings,
+  CheckCircle
 } from "lucide-react";
 import { ThemeToggleIcon } from "@/components/ui/theme-toggle";
 import FunnelAnalyzer from "@/components/analytics/funnel-analyzer";

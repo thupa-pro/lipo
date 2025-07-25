@@ -8,7 +8,8 @@ import {
   Eye,
   EyeOff,
   Download,
-  Upload, AlertTriangle
+  Upload,
+  AlertTriangle
   Bell,
   Mail,
   Smartphone,
@@ -43,7 +44,11 @@ import {
   Plus,
   Minus,
   Edit,
-  Copy
+  Copy,
+  CheckCircle,
+  Shield,
+  Star,
+  Trash2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

@@ -12,12 +12,15 @@ import {
   MessageSquare,
   DollarSign,
   Calendar,
-  MapPin, X,
+  MapPin,
+  X,
   Settings,
   Smartphone,
   Mail,
-  Volume2
-} from "lucide-react"
+  Volume2,
+  CheckCircle,
+  Star
+} from "lucide-react";
 
 interface Notification {
   id: string

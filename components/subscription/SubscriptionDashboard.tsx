@@ -16,7 +16,8 @@ import {
   Download,
   Settings,
   Crown,
-  BarChart3
+  BarChart3,
+  CheckCircle
 } from "lucide-react";
 import { format } from "date-fns";
 import {

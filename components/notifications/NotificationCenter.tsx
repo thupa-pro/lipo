@@ -5,10 +5,18 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  Bell, Check, X, Settings, Filter, AlertCircle, Info, 
-  CheckCircle, Trash2
-} from 'lucide-react';
+import {
+  Bell,
+  Check,
+  X,
+  Settings,
+  Filter,
+  AlertCircle,
+  Info,
+  CheckCircle,
+  Trash2,
+  Clock
+} from "lucide-react";
 
 interface Notification {
   id: string;

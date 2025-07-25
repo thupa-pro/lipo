@@ -29,7 +29,9 @@ import {
   MapPin,
   DollarSign,
   Calendar,
-  Phone
+  Phone,
+  Clock,
+  Shield
 } from "lucide-react";
 
 interface MetropolitanCityShowcaseProps {

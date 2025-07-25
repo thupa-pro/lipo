@@ -21,12 +21,14 @@ import {
   DollarSign,
   Calendar,
   MapPin,
-  Users, AlertCircle,
+  Users,
+  AlertCircle,
   Target,
   Sparkles,
   BarChart3,
   PiggyBank,
-  Zap
+  Zap,
+  CheckCircle
 } from "lucide-react";
 
 interface PriceInsight {

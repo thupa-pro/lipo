@@ -28,7 +28,8 @@ import {
   Save,
   Copy,
   RotateCcw,
-  Info
+  Info,
+  Clock
 } from "lucide-react";
 import { format } from "date-fns";
 import {

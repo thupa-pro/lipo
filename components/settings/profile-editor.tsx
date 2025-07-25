@@ -18,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  
   Camera,
   Upload,
   MapPin,
@@ -30,6 +29,7 @@ import {
   AlertTriangle,
   Globe,
   Calendar,
+  User
 } from "lucide-react";
 
 interface UserProfile {

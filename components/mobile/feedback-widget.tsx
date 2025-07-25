@@ -15,7 +15,9 @@ import {
   Send,
   TrendingUp,
   BarChart3,
-  X
+  X,
+  CheckCircle,
+  MessageSquare
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

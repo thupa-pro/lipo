@@ -24,9 +24,11 @@ import {
   Target,
   Bot,
   Lightbulb,
-  Phone
+  Phone,
+  CheckCircle,
+  Link
 } from "lucide-react";
-import Link from "next/link";
+importfrom "next/link";
 import { motion } from "framer-motion";
 import { COPY } from "@/lib/content/copy";
 

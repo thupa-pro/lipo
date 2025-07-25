@@ -10,7 +10,9 @@ import {
   Award,
   BarChart3,
   Calendar,
-  Filter
+  Filter,
+  MessageSquare,
+  Star
 } from "lucide-react";
 
 export const metadata: Metadata = {

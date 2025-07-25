@@ -20,7 +20,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Upload, MapPin } from "lucide-react";
+import {
+  ArrowLeft,
+  Upload,
+  MapPin
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter, useParams  } from "next/navigation";
 

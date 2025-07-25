@@ -17,7 +17,9 @@ import {
   CheckCircle,
   User,
   Calendar,
-  ThumbsUp
+  ThumbsUp,
+  Clock,
+  MessageSquare
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

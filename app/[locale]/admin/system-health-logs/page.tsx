@@ -21,7 +21,10 @@ import {
   ArrowRight,
   RefreshCcw,
   ExternalLink,
-  FileText
+  FileText,
+  CheckCircle,
+  Clock,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";

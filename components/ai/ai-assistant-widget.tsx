@@ -12,7 +12,8 @@ import {
   Bot,
   Minimize2,
   Maximize2,
-  X
+  X,
+  User
 } from "lucide-react";
 
 // Clean, interface - NO, function props, at all

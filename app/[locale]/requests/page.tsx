@@ -21,8 +21,14 @@ import {
   MapPin,
   Star,
   Eye,
-  Edit3, DollarSign,
-  Users} from "lucide-react";
+  Edit3,
+  DollarSign,
+  Users,
+  CheckCircle,
+  Clock,
+  MessageSquare,
+  Trash2
+} from "lucide-react";
 import Link from "next/link";
 
 export default function RequestsPage() {

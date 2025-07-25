@@ -31,7 +31,8 @@ import {
   ExternalLink,
   Save,
   RefreshCw,
-  AlertCircle
+  AlertCircle,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

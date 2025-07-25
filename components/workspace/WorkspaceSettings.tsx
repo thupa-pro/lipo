@@ -30,10 +30,12 @@ import {
   Settings,
   Users,
   Plus,
-  Mail, Save,
+  Mail,
+  Save,
   Activity,
   Copy,
-  ExternalLink
+  ExternalLink,
+  Trash2
 } from "lucide-react";
 import {
   Workspace,

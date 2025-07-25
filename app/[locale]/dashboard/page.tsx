@@ -17,7 +17,9 @@ import {
   BarChart,
   Bell,
   TrendingUp,
-  Shield
+  Shield,
+  MessageSquare,
+  Zap
 } from "lucide-react";
 
 export default function DashboardPage() {

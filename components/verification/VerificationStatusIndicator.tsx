@@ -16,10 +16,11 @@ import {
   Award,
   MapPin,
   Shield,
-  Clock
+  Clock,
+  Link
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+importfrom "next/link";
 
 interface VerificationStatus {
   type:

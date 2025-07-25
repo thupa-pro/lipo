@@ -5,13 +5,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AgentCommandInput } from "@/components/ui/agent-command-input";
-import { 
-  MessageCircle, 
-  X, 
-  Minimize2, 
+import {
+  MessageCircle,
+  X,
+  Minimize2,
   Maximize2,
   Sparkles,
-  Brain, Bot
+  Brain,
+  Bot,
+  User,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";

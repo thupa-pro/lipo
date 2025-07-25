@@ -18,9 +18,12 @@ import {
   Calendar,
   DollarSign,
   Search,
-  Filter, AlertCircle,
+  Filter,
+  AlertCircle,
   TrendingUp,
-  Users
+  Users,
+  CheckCircle,
+  Clock
 } from "lucide-react";
 import {
   Booking,

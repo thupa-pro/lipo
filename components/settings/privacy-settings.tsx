@@ -19,7 +19,10 @@ import {
   MapPin,
   Users,
   Activity,
-  Download} from "lucide-react";
+  Download,
+  Shield,
+  Trash2
+} from "lucide-react";
 
 interface PrivacySettingsProps {
   onUpdate: () => void;

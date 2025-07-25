@@ -19,8 +19,11 @@ import {
   ThumbsUp,
   Upload,
   X,
-  Camera, Award,
-  TrendingUp
+  Camera,
+  Award,
+  TrendingUp,
+  CheckCircle,
+  MessageSquare
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

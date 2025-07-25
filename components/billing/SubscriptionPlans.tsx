@@ -15,12 +15,15 @@ import { Switch } from "@/components/ui/switch";
 import {
   Check,
   Star,
-  Crown, Users,
+  Crown,
+  Users,
   Database,
   Headphones,
   ArrowRight,
   Sparkles,
-  TrendingUp
+  TrendingUp,
+  Shield,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

@@ -31,7 +31,8 @@ import {
   Wallet,
   PieChart as PieChartIcon,
   BarChart3,
-  Calendar
+  Calendar,
+  Target
 } from "lucide-react";
 
 interface RevenueTrendsProps {

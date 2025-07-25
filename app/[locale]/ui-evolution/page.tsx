@@ -17,7 +17,10 @@ import {
   Shield,
   Eye,
   Brain,
-  Rocket
+  Rocket,
+  MessageSquare,
+  Target,
+  Zap
 } from "lucide-react";
 import SmartJobInput from "@/components/ui/smart-job-input";
 import MatchTimeline from "@/components/ui/match-timeline";

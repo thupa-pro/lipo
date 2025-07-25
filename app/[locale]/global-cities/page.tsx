@@ -6,15 +6,19 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { 
-  Globe, 
-  Users, 
+import {
+  Globe,
+  Users,
   TrendingUp,
-  DollarSign, 
-  MapPin, 
-  Building, 
+  DollarSign,
+  MapPin,
+  Building,
   Smartphone,
-  Heart, ArrowRight} from "lucide-react";
+  Heart,
+  ArrowRight,
+  CheckCircle,
+  Star
+} from "lucide-react";
 import CitySelector from "@/components/i18n/city-selector";
 import {
   metropolitanCities,

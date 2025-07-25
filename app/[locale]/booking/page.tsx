@@ -8,16 +8,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { 
-  Search, 
+import {
+  Search,
   Calendar,
-  MapPin, Filter,
+  MapPin,
+  Filter,
   SortAsc,
   Heart,
   Eye,
   Users,
   DollarSign,
-  ArrowRight
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Star
 } from "lucide-react";
 
 export default function BookingPage() {

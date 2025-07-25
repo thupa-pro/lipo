@@ -17,7 +17,8 @@ import {
   Calendar,
   DollarSign,
   Users,
-  TrendingUp
+  TrendingUp,
+  Clock
 } from "lucide-react";
 
 export default function ProviderReportsPage() {

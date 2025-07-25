@@ -10,7 +10,8 @@ import { Separator } from "@/components/ui/separator";
 import {
   CreditCard,
   Wallet,
-  CheckCircle, AlertCircle,
+  CheckCircle,
+  AlertCircle,
   Smartphone,
   QrCode,
   Banknote,
@@ -23,7 +24,8 @@ import {
   RotateCcw,
   Fingerprint,
   Apple,
-  Smartphone as PhoneIcon
+  Smartphone as PhoneIcon,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {loadStripe} from '@stripe/stripe-js';

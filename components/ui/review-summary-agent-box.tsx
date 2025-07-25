@@ -5,11 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { 
-  TrendingUp, 
+import {
+  TrendingUp,
   TrendingDown,
-  Brain, 
-  ThumbsUp, 
+  Brain,
+  ThumbsUp,
   ThumbsDown,
   Heart,
   AlertTriangle,
@@ -18,7 +18,8 @@ import {
   MessageCircle,
   ChevronDown,
   ChevronUp,
-  Sparkles
+  Sparkles,
+  Clock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

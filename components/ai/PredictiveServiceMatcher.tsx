@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
+import {
   Brain,
-  Target, 
-  TrendingUp, MapPin,
+  Target,
+  TrendingUp,
+  MapPin,
   Sparkles,
   Eye,
   Calendar,
@@ -22,8 +23,11 @@ import {
   Settings,
   Bell,
   XCircle,
-  Info
-} from 'lucide-react'
+  Info,
+  Clock,
+  Star,
+  User
+} from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

@@ -24,10 +24,10 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog';
-import { 
-  CreditCard, 
+import {
+  CreditCard,
   Crown,
-  TrendingUp, 
+  TrendingUp,
   DollarSign,
   Calendar,
   Settings,
@@ -36,8 +36,12 @@ import {
   Sparkles,
   ArrowUpRight,
   Infinity,
-  Users
-} from 'lucide-react';
+  Users,
+  Clock,
+  Shield,
+  Target,
+  Zap
+} from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { UserRole, SubscriptionTier } from '@/types/rbac';
 import { BillingAccount, Subscription, AIOptimization } from '@/types/loconomy';

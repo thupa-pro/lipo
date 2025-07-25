@@ -11,8 +11,12 @@ import {
   Eye,
   Edit,
   MoreHorizontal,
-  MapPin, Mail,
-  Search
+  MapPin,
+  Mail,
+  Search,
+  CheckCircle,
+  Shield,
+  Clock
 } from "lucide-react";
 import Link from "next/link";
 

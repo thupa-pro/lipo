@@ -9,8 +9,12 @@ import {
   CheckCircle,
   Award,
   TrendingUp,
-  Users, MapPin,
-  Calendar
+  Users,
+  MapPin,
+  Calendar,
+  Clock,
+  MessageSquare,
+  Star
 } from "lucide-react";
 
 interface ProviderReputationProps {

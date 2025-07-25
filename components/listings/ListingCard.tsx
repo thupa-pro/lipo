@@ -20,8 +20,11 @@ import {
   Eye,
   Edit,
   MoreHorizontal,
-  MapPin, Star,
-  Calendar
+  MapPin,
+  Star,
+  Calendar,
+  Clock,
+  Trash2
 } from "lucide-react";
 import { ListingCardProps } from "@/lib/listings/types";
 import {

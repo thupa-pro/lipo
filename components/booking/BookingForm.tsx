@@ -25,8 +25,10 @@ import {
   CalendarIcon,
   MapPin,
   DollarSign,
-  User, AlertCircle,
-  Loader2
+  User,
+  AlertCircle,
+  Loader2,
+  CheckCircle
 } from "lucide-react";
 import { format } from "date-fns";
 import { BookingFormData, AvailableSlot } from "@/lib/booking/types";

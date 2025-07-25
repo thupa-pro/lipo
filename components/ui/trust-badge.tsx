@@ -26,7 +26,10 @@ import {
   Award,
   Users,
   FileText,
-  Building
+  Building,
+  Clock,
+  Shield,
+  Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

@@ -39,7 +39,8 @@ import {
   AlertTriangle,
   X,
   ExternalLink,
-  FileText
+  FileText,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
