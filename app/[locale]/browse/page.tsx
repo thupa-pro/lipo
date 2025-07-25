@@ -99,19 +99,19 @@ export default function BrowsePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       {/* Search Header */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950 border-b border-slate-200/50 dark:border-white/10">
+      <section className="relative border-b border-slate-200/50 dark:border-white/10">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="max-w-4xl mx-auto text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6">
+            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-6 animate-fade-in-down">
               <Brain className="w-4 h-4 text-blue-500 dark:text-violet-400" />
-              <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
+              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 AI-Powered Matching Engine
               </span>
               <Sparkles className="w-4 h-4 text-blue-500 dark:text-violet-400" />
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+              <span className="text-hero-premium">
                 Find Your Perfect Service Provider
               </span>
             </h1>
