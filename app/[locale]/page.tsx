@@ -106,11 +106,21 @@ export default function HomePage() {
           <TestimonialsSection />
         </motion.div>
 
-        {/* Enhanced CTA Section */}
+        {/* Comprehensive Media Showcase */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
+          className="py-16"
+        >
+          <MediaShowcase />
+        </motion.div>
+
+        {/* Enhanced CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
         >
           <CTASection />
         </motion.div>
