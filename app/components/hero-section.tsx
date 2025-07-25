@@ -153,17 +153,17 @@ export function HeroSection() {
 
             {/* Quick Action Pills */}
             <div
-              className="flex flex-wrap gap-4 mb-16 animate-fade-in-up"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 lg:gap-4 mb-12 lg:mb-16 animate-fade-in-up"
               style={{ animationDelay: "0.6s" }}
             >
               <Button
                 variant="outline"
                 size="lg"
                 asChild
-                className="rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-all duration-300"
+                className="rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
               >
                 <Link href="/request-service">
-                  <Clock className="w-4 h-4 mr-2" />
+                  <Clock className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
                   Book Instantly
                 </Link>
               </Button>
@@ -171,17 +171,17 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="rounded-full hover:bg-purple-50 dark:hover:bg-purple-950/20 transition-all duration-300"
+                className="rounded-full hover:bg-purple-50 dark:hover:bg-purple-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
               >
                 <Link href="/become-provider">
-                  <Users className="w-4 h-4 mr-2" />
+                  <Users className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
                   Earn Premium Income
                 </Link>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full hover:bg-green-50 dark:hover:bg-green-950/20 transition-all duration-300"
+                className="rounded-full hover:bg-green-50 dark:hover:bg-green-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
                 onClick={() =>
                   toast({
                     title: "Premium Demo",
@@ -191,7 +191,7 @@ export function HeroSection() {
                   })
                 }
               >
-                <Play className="w-4 h-4 mr-2" />
+                <Play className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
                 Watch Demo
               </Button>
             </div>
