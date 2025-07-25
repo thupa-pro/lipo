@@ -243,8 +243,8 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
     
     // Intent recognition
     let intent = 'unknown'
-    let entities: Record<string, any> = {}
-    let updatedContext = { ...context }
+    const entities: Record<string, any> = {}
+    const updatedContext = { ...context }
     let responseText = ''
     
     // Service intent

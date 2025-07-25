@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Simulate device response based on device type and action
-    let response: any = {
+    const response: any = {
       deviceId,
       action,
       value,
