@@ -117,68 +117,68 @@ export function EnhancedFeatureGallery() {
       description="Experience the future of local services with our cutting-edge platform that combines AI intelligence, premium quality, and unmatched user experience."
     >
       {/* Main Feature Showcase */}
-      <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-12 lg:mb-20">
         {/* Feature Content */}
-        <div className={`space-y-8 transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
-          <div className="space-y-4">
-            <Badge className={`bg-gradient-to-r ${enhancedFeatures[activeFeature].color} text-white px-4 py-2`}>
-              <ActiveIcon className="w-4 h-4 mr-2" />
+        <div className={`space-y-6 lg:space-y-8 order-2 lg:order-1 transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+          <div className="space-y-3 lg:space-y-4">
+            <Badge className={`bg-gradient-to-r ${enhancedFeatures[activeFeature].color} text-white px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base`}>
+              <ActiveIcon className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
               {enhancedFeatures[activeFeature].category}
             </Badge>
-            <h3 className="text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
               {enhancedFeatures[activeFeature].title}
             </h3>
-            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
               {enhancedFeatures[activeFeature].description}
             </p>
           </div>
 
           {/* Feature Benefits */}
-          <div className="space-y-3">
+          <div className="space-y-2.5 lg:space-y-3">
             {enhancedFeatures[activeFeature].benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${enhancedFeatures[activeFeature].color} flex items-center justify-center`}>
-                  <CheckCircle className="w-4 h-4 text-white" />
+              <div key={index} className="flex items-center gap-2.5 lg:gap-3">
+                <div className={`w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-gradient-to-r ${enhancedFeatures[activeFeature].color} flex items-center justify-center flex-shrink-0`}>
+                  <CheckCircle className="w-3 h-3 lg:w-4 lg:h-4 text-white" />
                 </div>
-                <span className="text-lg font-medium text-gray-700 dark:text-gray-300">{benefit}</span>
+                <span className="text-base lg:text-lg font-medium text-gray-700 dark:text-gray-300">{benefit}</span>
               </div>
             ))}
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-4 pt-4">
-            <Button size="lg" className={`bg-gradient-to-r ${enhancedFeatures[activeFeature].color} hover:shadow-lg transition-all duration-300`}>
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 pt-3 lg:pt-4">
+            <Button size="lg" className={`bg-gradient-to-r ${enhancedFeatures[activeFeature].color} hover:shadow-lg transition-all duration-300 w-full sm:w-auto text-sm lg:text-base`}>
               Experience Now
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" />
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto text-sm lg:text-base">
               Learn More
             </Button>
           </div>
         </div>
 
         {/* Feature Image */}
-        <div className="relative">
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+        <div className="relative order-1 lg:order-2">
+          <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl lg:shadow-2xl">
             <Image
               src={enhancedFeatures[activeFeature].image}
               alt={enhancedFeatures[activeFeature].title}
               width={600}
               height={400}
-              className="object-cover w-full h-auto transition-transform duration-700 hover:scale-105"
+              className="object-cover w-full h-auto aspect-[3/2] transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
-          
-          {/* Floating Badge */}
-          <div className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4">
-            <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${enhancedFeatures[activeFeature].color} flex items-center justify-center`}>
-                <ActiveIcon className="w-6 h-6 text-white" />
+
+          {/* Floating Badge - Hide on mobile, show on tablet+ */}
+          <div className="hidden sm:block absolute -top-4 lg:-top-6 -right-4 lg:-right-6 bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl shadow-xl p-3 lg:p-4">
+            <div className="flex items-center gap-2 lg:gap-3">
+              <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-r ${enhancedFeatures[activeFeature].color} flex items-center justify-center`}>
+                <ActiveIcon className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
               </div>
-              <div>
-                <div className="font-bold text-sm text-gray-900 dark:text-white">Feature {activeFeature + 1}</div>
-                <div className="text-xs text-gray-500">{enhancedFeatures[activeFeature].category}</div>
+              <div className="min-w-0">
+                <div className="font-bold text-xs lg:text-sm text-gray-900 dark:text-white truncate">Feature {activeFeature + 1}</div>
+                <div className="text-xs text-gray-500 truncate">{enhancedFeatures[activeFeature].category}</div>
               </div>
             </div>
           </div>
