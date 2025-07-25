@@ -15,7 +15,7 @@ export default function SafetyTrustPage() {
     {
       icon: CheckCircle,
       title: "Verified Professionals",
-      description: "All service providers undergo a multi-step verification, process, including identity checks and professional credential validation.",
+      description: "All service providers undergo a multi-step verification process, including identity checks and professional credential validation.",
     },
     {
       icon: Users,
