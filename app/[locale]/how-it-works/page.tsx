@@ -69,7 +69,7 @@ export default function HowItWorksPage() {
       icon: Brain,
       title: "AI-Enhanced Matching",
       description:
-        "Our advanced machine learning algorithms analyze thousands of data points to match you with the perfect service provider based on your unique, needs, preferences, and location.",
+        "Our advanced machine learning algorithms analyze thousands of data points to match you with the perfect service provider based on your unique needs, preferences, and location.",
       gradient: "from-blue-500 to-purple-600",
       stats: "96.8% accuracy rate",
     },
