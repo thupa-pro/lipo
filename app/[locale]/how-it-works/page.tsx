@@ -170,12 +170,12 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-none">
-            <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+            <span className="text-hero-premium">
               How Loconomy
             </span>
             <br />
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="text-gray-900 dark:text-white">
               Works Magic
             </span>
           </h1>
