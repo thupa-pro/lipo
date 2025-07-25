@@ -47,7 +47,7 @@ export default function PricingPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Starter Plan */}
-              <div className="group p-8 rounded-2xl bg-white/90 dark:bg-white/5 backdrop-blur-lg border border-blue-200/50 dark:border-white/10 hover:border-blue-400 dark:hover:border-blue-500/30 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="group p-8 rounded-2xl glass-ultra hover:border-blue-400 dark:hover:border-blue-500/30 transition-all duration-300 hover:transform hover:scale-105">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
                     Starter
