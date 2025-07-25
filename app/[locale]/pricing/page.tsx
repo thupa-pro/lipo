@@ -14,27 +14,28 @@ export default function PricingPage() {
       <div className="absolute inset-0 grid-pattern opacity-30 z-10" />
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-20">
         {/* Hero Section */}
         <section className="pt-32 pb-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8">
-              <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">
-                💎 Transparent Pricing
+            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
+              <span className="text-2xl">💎</span>
+              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Transparent Pricing
               </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
+              <span className="text-hero-premium">
                 Simple, Fair
               </span>
               <br />
-              <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+              <span className="text-gray-900 dark:text-white">
                 Pricing
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Choose the perfect plan for your needs. No hidden fees, no
               surprises. Start free and scale as you grow.
             </p>
