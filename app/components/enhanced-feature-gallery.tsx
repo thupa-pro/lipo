@@ -106,6 +106,8 @@ export function EnhancedFeatureGallery() {
     return () => clearInterval(interval);
   }, []);
 
+  const ActiveIcon = enhancedFeatures[activeFeature].icon;
+
   return (
     <PremiumSection
       variant="default"
@@ -120,7 +122,7 @@ export function EnhancedFeatureGallery() {
         <div className={`space-y-8 transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
           <div className="space-y-4">
             <Badge className={`bg-gradient-to-r ${enhancedFeatures[activeFeature].color} text-white px-4 py-2`}>
-              <enhancedFeatures[activeFeature].icon className="w-4 h-4 mr-2" />
+              <ActiveIcon className="w-4 h-4 mr-2" />
               {enhancedFeatures[activeFeature].category}
             </Badge>
             <h3 className="text-4xl font-bold text-gray-900 dark:text-white leading-tight">
@@ -172,7 +174,7 @@ export function EnhancedFeatureGallery() {
           <div className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4">
             <div className="flex items-center gap-3">
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${enhancedFeatures[activeFeature].color} flex items-center justify-center`}>
-                <enhancedFeatures[activeFeature].icon className="w-6 h-6 text-white" />
+                <ActiveIcon className="w-6 h-6 text-white" />
               </div>
               <div>
                 <div className="font-bold text-sm text-gray-900 dark:text-white">Feature {activeFeature + 1}</div>
@@ -185,46 +187,52 @@ export function EnhancedFeatureGallery() {
 
       {/* Feature Navigation */}
       <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
-        {enhancedFeatures.map((feature, index) => (
-          <button
-            key={feature.id}
-            onClick={() => setActiveFeature(index)}
-            className={`p-4 rounded-2xl border-2 transition-all duration-300 text-left ${
-              index === activeFeature
-                ? `border-transparent bg-gradient-to-r ${feature.color} text-white shadow-lg scale-105`
-                : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800"
-            }`}
-          >
-            <feature.icon className={`w-6 h-6 mb-2 ${index === activeFeature ? "text-white" : "text-gray-600 dark:text-gray-400"}`} />
-            <h4 className={`font-semibold text-sm mb-1 ${index === activeFeature ? "text-white" : "text-gray-900 dark:text-white"}`}>
-              {feature.title}
-            </h4>
-            <p className={`text-xs ${index === activeFeature ? "text-white/90" : "text-gray-500 dark:text-gray-400"}`}>
-              {feature.category}
-            </p>
-          </button>
-        ))}
+        {enhancedFeatures.map((feature, index) => {
+          const FeatureIcon = feature.icon;
+          return (
+            <button
+              key={feature.id}
+              onClick={() => setActiveFeature(index)}
+              className={`p-4 rounded-2xl border-2 transition-all duration-300 text-left ${
+                index === activeFeature
+                  ? `border-transparent bg-gradient-to-r ${feature.color} text-white shadow-lg scale-105`
+                  : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800"
+              }`}
+            >
+              <FeatureIcon className={`w-6 h-6 mb-2 ${index === activeFeature ? "text-white" : "text-gray-600 dark:text-gray-400"}`} />
+              <h4 className={`font-semibold text-sm mb-1 ${index === activeFeature ? "text-white" : "text-gray-900 dark:text-white"}`}>
+                {feature.title}
+              </h4>
+              <p className={`text-xs ${index === activeFeature ? "text-white/90" : "text-gray-500 dark:text-gray-400"}`}>
+                {feature.category}
+              </p>
+            </button>
+          );
+        })}
       </div>
 
       {/* Statistics Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        {stats.map((stat, index) => (
-          <PremiumCard
-            key={index}
-            variant="glass"
-            className="text-center p-8 hover:scale-105 transition-all duration-300"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <stat.icon className="w-8 h-8 text-white" />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              {stat.value}
-            </div>
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {stat.label}
-            </div>
-          </PremiumCard>
-        ))}
+        {stats.map((stat, index) => {
+          const StatIcon = stat.icon;
+          return (
+            <PremiumCard
+              key={index}
+              variant="glass"
+              className="text-center p-8 hover:scale-105 transition-all duration-300"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <StatIcon className="w-8 h-8 text-white" />
+              </div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                {stat.value}
+              </div>
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                {stat.label}
+              </div>
+            </PremiumCard>
+          );
+        })}
       </div>
 
       {/* Additional Feature Highlights */}
