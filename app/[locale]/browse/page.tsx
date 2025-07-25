@@ -18,12 +18,12 @@ import {
   Star
 } from "lucide-react";
 
-// Sample, provider data
+// Sample provider data
 const providers = [
   {
     id: 1,
-    name: "Sarah, Mitchell",
-    service: "House, Cleaning",
+    name: "Sarah Mitchell",
+    service: "House Cleaning",
     category: "cleaning",
     rating: 4.9,
     reviews: 127,
