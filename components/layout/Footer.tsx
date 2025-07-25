@@ -1,6 +1,3 @@
-// DEPRECATED: This footer has been replaced by the enhanced footer at /components/footer.tsx
-// Keeping this file for reference but renamed export to avoid conflicts
-
 "use client";
 
 import Link from "next/link";
@@ -19,18 +16,18 @@ import {
   Zap
 } from "lucide-react";
 
-export default function OldFooter() {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const footerSections = [
     {
       title: "Platform",
       links: [
-        { name: "How, it Works", href: "/how-it-works" },
-        { name: "For, Customers", href: "/customers" },
-        { name: "For Providers", href: "/providers" },
-        { name: "Trust & Safety", href: "/trust-safety" },
-        { name: "Community Guidelines", href: "/guidelines" },
+        { name: "How it Works", href: "/how-it-works" },
+        { name: "For Customers", href: "/browse" },
+        { name: "For Providers", href: "/become-provider" },
+        { name: "Trust & Safety", href: "/safety" },
+        { name: "Community", href: "/community" },
       ],
     },
     {
@@ -38,8 +35,8 @@ export default function OldFooter() {
       links: [
         { name: "Help Center", href: "/help" },
         { name: "Contact Us", href: "/contact" },
-        { name: "Report an Issue", href: "/report" },
-        { name: "Status Page", href: "/status" },
+        { name: "Customer Support", href: "/customer-support" },
+        { name: "Provider Support", href: "/provider-support" },
         { name: "API Documentation", href: "/api/docs" },
       ],
     },
@@ -48,7 +45,7 @@ export default function OldFooter() {
       links: [
         { name: "About Us", href: "/about" },
         { name: "Careers", href: "/careers" },
-        { name: "Press Kit", href: "/press" },
+        { name: "Press", href: "/press" },
         { name: "Blog", href: "/blog" },
         { name: "Investors", href: "/investors" },
       ],
@@ -60,7 +57,7 @@ export default function OldFooter() {
         { name: "Terms of Service", href: "/terms" },
         { name: "Cookie Policy", href: "/cookies" },
         { name: "Accessibility", href: "/accessibility" },
-        { name: "Dispute Resolution", href: "/disputes" },
+        { name: "GDPR", href: "/gdpr" },
       ],
     },
   ];
@@ -69,13 +66,13 @@ export default function OldFooter() {
     { name: "Twitter", href: "https://twitter.com/loconomy", icon: Twitter },
     { name: "Facebook", href: "https://facebook.com/loconomy", icon: Facebook },
     { name: "Instagram", href: "https://instagram.com/loconomy", icon: Instagram },
-    { name: "edIn", href: "https://linkedin.com/company/loconomy", icon:edin },
+    { name: "LinkedIn", href: "https://linkedin.com/company/loconomy", icon: Linkedin },
   ];
 
   const contactInfo = [
     { icon: Mail, text: "support@loconomy.com", href: "mailto:support@loconomy.com" },
     { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: MapPin, text: "San, Francisco, CA", href: "#" },
+    { icon: MapPin, text: "San Francisco, CA", href: "#" },
   ];
 
   const features = [
@@ -98,14 +95,14 @@ export default function OldFooter() {
               viewport={{ once: true }}
             >
               {/* Logo */}
-              <href="/" className="flex items-center gap-2 mb-4">
+              <Link href="/" className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Loconomy
                 </span>
-              </>
+              </Link>
 
               {/* Description */}
               <p className="text-muted-foreground mb-6 max-w-xs">
@@ -131,20 +128,20 @@ export default function OldFooter() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <
+                    <Link
                       href={contact.href}
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       <contact.icon className="w-4 h-4" />
                       {contact.text}
-                    </>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
 
-          {/*s Sections */}
+          {/* Links Sections */}
           {footerSections.map((section, sectionIndex) => (
             <div key={section.title}>
               <motion.div
@@ -156,17 +153,17 @@ export default function OldFooter() {
                 <h3 className="font-semibold text-foreground mb-4">{section.title}</h3>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
-                    <li key={link.name}>
+                    <li key={linkIndex}>
                       <motion.div
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <
+                        <Link
                           href={link.href}
                           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
                           {link.name}
-                        </>
+                        </Link>
                       </motion.div>
                     </li>
                   ))}
@@ -176,73 +173,47 @@ export default function OldFooter() {
           ))}
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-border my-8" />
-
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          {/* Copyright */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-sm text-muted-foreground"
-          >
-            © {currentYear} Loconomy, Inc. All rights reserved. Built with ❤️ for local communities.
-          </motion.div>
+        <div className="mt-12 pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            {/* Copyright */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-sm text-muted-foreground"
+            >
+              © {currentYear} Loconomy Inc. All rights reserved.
+            </motion.p>
 
-          {/* Socials */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4"
-          >
-            {socials.map((social, index) => (
-              <motion.div
-                key={social.name}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-              >
-                <
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center"
-                  aria-label={`Follow us on ${social.name}`}
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4"
+            >
+              {socials.map((social, index) => (
+                <motion.div
+                  key={social.name}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <social.icon className="w-4 h-4" />
-                </>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-6 pt-6 border-t border-border"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs text-muted-foreground">
-            <div className="flex flex-wrap gap-4">
-              <span>🇺🇸 United States</span>
-              <span>🌍 Available in 50+ cities</span>
-              <span>🚀 Powered by AI</span>
-              <span>⚡ 99.9% uptime</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span>Made with</span>
-              <Heart className="w-3 h-3 text-red-500 fill-red-500" />
-              <span>in San Francisco</span>
-            </div>
+                  <Link
+                    href={social.href}
+                    className="w-8 h-8 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <social.icon className="w-4 h-4" />
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
