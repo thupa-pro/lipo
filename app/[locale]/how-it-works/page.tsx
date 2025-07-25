@@ -109,7 +109,7 @@ export default function HowItWorksPage() {
       icon: Globe,
       title: "Global Reach",
       description:
-        "Available in 180+ countries with local expertise everywhere. Our platform adapts to local, regulations, currencies, and cultural preferences seamlessly.",
+        "Available in 180+ countries with local expertise everywhere. Our platform adapts to local regulations, currencies, and cultural preferences seamlessly.",
       gradient: "from-indigo-500 to-purple-600",
       stats: "180+ countries",
     },
