@@ -25,7 +25,9 @@ import {
   ChevronRight,
   Play,
   Eye,
-  Zap
+  Zap,
+  CheckCircle,
+  Shield
 } from "lucide-react";
 
 export default function HowItWorksPage() {
