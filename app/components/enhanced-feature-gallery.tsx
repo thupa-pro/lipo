@@ -186,24 +186,24 @@ export function EnhancedFeatureGallery() {
       </div>
 
       {/* Feature Navigation */}
-      <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4 mb-12 lg:mb-16">
         {enhancedFeatures.map((feature, index) => {
           const FeatureIcon = feature.icon;
           return (
             <button
               key={feature.id}
               onClick={() => setActiveFeature(index)}
-              className={`p-4 rounded-2xl border-2 transition-all duration-300 text-left ${
+              className={`p-3 lg:p-4 rounded-xl lg:rounded-2xl border-2 transition-all duration-300 text-left min-h-[100px] lg:min-h-[120px] touch-manipulation ${
                 index === activeFeature
                   ? `border-transparent bg-gradient-to-r ${feature.color} text-white shadow-lg scale-105`
-                  : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800"
+                  : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800 hover:scale-102"
               }`}
             >
-              <FeatureIcon className={`w-6 h-6 mb-2 ${index === activeFeature ? "text-white" : "text-gray-600 dark:text-gray-400"}`} />
-              <h4 className={`font-semibold text-sm mb-1 ${index === activeFeature ? "text-white" : "text-gray-900 dark:text-white"}`}>
+              <FeatureIcon className={`w-5 h-5 lg:w-6 lg:h-6 mb-2 ${index === activeFeature ? "text-white" : "text-gray-600 dark:text-gray-400"}`} />
+              <h4 className={`font-semibold text-xs lg:text-sm mb-1 line-clamp-2 ${index === activeFeature ? "text-white" : "text-gray-900 dark:text-white"}`}>
                 {feature.title}
               </h4>
-              <p className={`text-xs ${index === activeFeature ? "text-white/90" : "text-gray-500 dark:text-gray-400"}`}>
+              <p className={`text-xs line-clamp-1 ${index === activeFeature ? "text-white/90" : "text-gray-500 dark:text-gray-400"}`}>
                 {feature.category}
               </p>
             </button>
