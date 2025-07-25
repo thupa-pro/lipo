@@ -238,7 +238,7 @@ export function HeroSection() {
                   className="rounded-full object-cover"
                 />
                 <div>
-                  <div className="font-bold text-sm">< 30 mins</div>
+                  <div className="font-bold text-sm">&lt; 30 mins</div>
                   <div className="text-xs text-gray-500">Response Time</div>
                 </div>
               </div>
