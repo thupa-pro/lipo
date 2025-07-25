@@ -40,7 +40,7 @@ export default function SafetyTrustPage() {
     {
       icon: AlertTriangle,
       title: "Dispute Resolution",
-      description: "In the rare event of an, issue, our dedicated support team is available to mediate disputes and ensure a fair resolution for both parties.",
+      description: "In the rare event of an issue, our dedicated support team is available to mediate disputes and ensure a fair resolution for both parties.",
     },
   ]
 
