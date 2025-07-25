@@ -116,35 +116,35 @@ export function HeroSection() {
 
             {/* Premium Search Bar */}
             <div
-              className="max-w-4xl mb-12 animate-scale-in"
+              className="max-w-4xl mb-8 lg:mb-12 animate-scale-in"
               style={{ animationDelay: "0.3s" }}
             >
-              <div className="glass-ultra rounded-2xl p-3 shadow-2xl">
-                <div className="flex flex-col lg:flex-row gap-3">
+              <div className="glass-ultra rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-2xl">
+                <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
                   <div className="relative flex-1">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 lg:w-5 lg:h-5" />
                     <Input
-                      placeholder="Search premium services (e.g., 'luxury house cleaning')"
+                      placeholder="Search premium services..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-12 h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-lg font-medium rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
                     />
                   </div>
                   <div className="relative flex-1">
-                    <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <MapPin className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 lg:w-5 lg:h-5" />
                     <Input
                       placeholder="Enter your location"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="pl-12 h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-lg font-medium rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
                     />
                   </div>
                   <Button
                     size="lg"
                     onClick={handleSearch}
-                    className="h-14 px-8 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full lg:w-auto text-sm lg:text-base"
                   >
-                    <Search className="w-5 h-5 mr-2" />
+                    <Search className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                     Find Services
                   </Button>
                 </div>
