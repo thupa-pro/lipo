@@ -23,7 +23,7 @@ import {
   Calendar,
   Heart,
   HelpCircle,
-  Link,
+  ExternalLink,
   User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
