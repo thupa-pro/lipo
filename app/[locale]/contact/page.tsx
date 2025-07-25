@@ -112,13 +112,13 @@ export default function ContactUsPage() {
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 grid-pattern opacity-30 z-10" />
 
-      <div className="relative z-10">
+      <div className="relative z-20">
         {/* Hero Section */}
         <section className="py-24 px-6 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8">
+            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 We're Here to Help • 24/7 Support
               </span>
               <MessageSquare className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
