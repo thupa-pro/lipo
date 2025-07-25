@@ -370,7 +370,7 @@ export default function HowItWorksPage() {
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Real, Stories, Real Results
+                Real Stories, Real Results
               </span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
