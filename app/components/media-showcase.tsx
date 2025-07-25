@@ -490,14 +490,14 @@ export function MediaShowcase() {
       {/* Enhanced Modal for Selected Asset */}
       {selectedAsset && (
         <div
-          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-2 lg:p-4"
           onClick={() => setSelectedAsset(null)}
         >
           <div
-            className="relative max-w-5xl w-full bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-2xl"
+            className="relative max-w-5xl w-full bg-white dark:bg-gray-900 rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl max-h-[95vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-[60vh]">
+            <div className="relative h-[50vh] lg:h-[60vh]">
               <Image
                 src={selectedAsset.url}
                 alt={selectedAsset.title}
@@ -508,37 +508,37 @@ export function MediaShowcase() {
                 variant="outline"
                 size="sm"
                 onClick={() => setSelectedAsset(null)}
-                className="absolute top-6 right-6 rounded-full w-12 h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm hover:bg-white dark:hover:bg-black text-gray-900 dark:text-white"
+                className="absolute top-3 lg:top-6 right-3 lg:right-6 rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm hover:bg-white dark:hover:bg-black text-gray-900 dark:text-white text-lg lg:text-xl"
               >
                 ×
               </Button>
-              <div className="absolute top-6 left-6 flex gap-3">
-                <Badge className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold">
+              <div className="absolute top-3 lg:top-6 left-3 lg:left-6 flex flex-col sm:flex-row gap-2 lg:gap-3">
+                <Badge className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-xs lg:text-sm">
                   Series {selectedAsset.series}
                 </Badge>
-                <Badge className="bg-white/90 dark:bg-black/90 text-gray-800 dark:text-white backdrop-blur-sm">
+                <Badge className="bg-white/90 dark:bg-black/90 text-gray-800 dark:text-white backdrop-blur-sm text-xs lg:text-sm">
                   {selectedAsset.category}
                 </Badge>
               </div>
             </div>
-            <div className="p-8">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+            <div className="p-4 lg:p-8">
+              <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 lg:mb-3">
                 {selectedAsset.title}
               </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+              <p className="text-sm lg:text-lg text-gray-600 dark:text-gray-400 mb-4 lg:mb-6 leading-relaxed">
                 {selectedAsset.description}
               </p>
-              <div className="flex gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                  <ExternalLink className="w-5 h-5 mr-2" />
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full sm:w-auto text-sm lg:text-base">
+                  <ExternalLink className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   View Service
                 </Button>
-                <Button variant="outline" size="lg">
-                  <Play className="w-5 h-5 mr-2" />
+                <Button variant="outline" size="lg" className="w-full sm:w-auto text-sm lg:text-base">
+                  <Play className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   Learn More
                 </Button>
-                <Button variant="outline" size="lg">
-                  <Heart className="w-5 h-5 mr-2" />
+                <Button variant="outline" size="lg" className="w-full sm:w-auto text-sm lg:text-base">
+                  <Heart className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   Save to Favorites
                 </Button>
               </div>
