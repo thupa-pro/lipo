@@ -93,7 +93,7 @@ export default function HowItWorksPage() {
       icon: Zap,
       title: "Instant Booking",
       description:
-        "Book services in seconds with our streamlined process. Real-time, availability, instant, confirmations, and automated scheduling make service booking effortless.",
+        "Book services in seconds with our streamlined process. Real-time availability, instant confirmations, and automated scheduling make service booking effortless.",
       gradient: "from-cyan-500 to-blue-600",
       stats: "< 2 minutes avg",
     },
