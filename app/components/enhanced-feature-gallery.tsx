@@ -279,18 +279,18 @@ export function EnhancedFeatureGallery() {
       </div>
 
       {/* Call to Action */}
-      <div className="text-center mt-16">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Experience the Future?</h3>
-          <p className="text-xl opacity-90 mb-6 max-w-2xl mx-auto">
+      <div className="text-center mt-12 lg:mt-16">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl lg:rounded-3xl p-6 lg:p-8 text-white">
+          <h3 className="text-2xl lg:text-3xl font-bold mb-3 lg:mb-4">Ready to Experience the Future?</h3>
+          <p className="text-base lg:text-xl opacity-90 mb-6 max-w-2xl mx-auto">
             Join thousands of satisfied customers who've discovered the perfect balance of technology, quality, and service.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
+            <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100 w-full sm:w-auto text-sm lg:text-base">
               Start Your Journey
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 w-full sm:w-auto text-sm lg:text-base">
               Watch Demo
             </Button>
           </div>
