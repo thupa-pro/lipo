@@ -146,7 +146,7 @@ export function EnhancedProviderShowcase() {
       </div>
 
       {/* Enhanced Provider Grid */}
-      <div className="grid md:grid-cols-2 gap-8 mb-16">
+      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-16">
         {eliteProviders.map((provider, index) => (
           <PremiumCard
             key={provider.id}
@@ -154,7 +154,7 @@ export function EnhancedProviderShowcase() {
             className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group"
           >
             {/* Portfolio Header */}
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-40 sm:h-48 overflow-hidden">
               <Image
                 src={provider.portfolio}
                 alt={`${provider.name} portfolio`}
@@ -162,23 +162,23 @@ export function EnhancedProviderShowcase() {
                 className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              
+
               {/* Premium Badge */}
               {provider.premium && (
-                <Badge className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold">
+                <Badge className="absolute top-3 lg:top-4 left-3 lg:left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold text-xs lg:text-sm">
                   <Award className="w-3 h-3 mr-1" />
                   Premium
                 </Badge>
               )}
 
               {/* Rating Badge */}
-              <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1">
+              <div className="absolute top-3 lg:top-4 right-3 lg:right-4 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full px-2.5 lg:px-3 py-1 flex items-center gap-1">
                 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                 <span className="text-xs font-bold text-gray-900 dark:text-white">{provider.rating}</span>
               </div>
 
               {/* Availability Indicator */}
-              <div className="absolute bottom-4 left-4 bg-green-500 text-white rounded-full px-3 py-1 text-xs font-semibold flex items-center gap-1">
+              <div className="absolute bottom-3 lg:bottom-4 left-3 lg:left-4 bg-green-500 text-white rounded-full px-2.5 lg:px-3 py-1 text-xs font-semibold flex items-center gap-1">
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
                 Available Now
               </div>
