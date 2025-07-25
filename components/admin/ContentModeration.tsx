@@ -43,8 +43,10 @@ import {
   Flag,
   Eye,
   XCircle,
-  AlertTriangle, MoreHorizontal,
-  Filter
+  AlertTriangle,
+  MoreHorizontal,
+  Filter,
+  CheckCircle
 } from "lucide-react";
 import {
   DropdownMenu,

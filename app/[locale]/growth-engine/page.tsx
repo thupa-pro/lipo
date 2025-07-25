@@ -1,7 +1,12 @@
 import MonetizationEngine from "@/components/monetization-engine"
 import ABTestingFramework from "@/components/ab-testing-framework"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { MapPin, Crown, FlaskConical, Sparkles } from "lucide-react"
+import {
+  MapPin,
+  Crown,
+  FlaskConical,
+  Sparkles
+} from "lucide-react";
 import Link from "next/link"
 
 export default function GrowthEnginePage() {

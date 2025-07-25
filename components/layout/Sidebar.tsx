@@ -17,11 +17,13 @@ import {
   Users,
   TrendingUp,
   MapPin,
-  CreditCard, FileText,
+  CreditCard,
+  FileText,
   BarChart3,
   ChevronDown,
   ChevronRight,
-  Zap
+  Zap,
+  Link
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

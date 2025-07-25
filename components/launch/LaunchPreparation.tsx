@@ -8,7 +8,8 @@ import {
   Rocket,
   TrendingUp,
   Server,
-  Shield, Users,
+  Shield,
+  Users,
   Globe,
   Database,
   Code,
@@ -48,8 +49,11 @@ import {
   Share2,
   GitBranch,
   GitCommit,
-  GitMerge
-} from 'lucide-react';
+  GitMerge,
+  Clock,
+  Target,
+  Zap
+} from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';

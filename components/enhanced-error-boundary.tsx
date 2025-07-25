@@ -13,7 +13,10 @@ import {
   Bug,
   Lightbulb,
   Sparkles,
-  Brain} from "lucide-react";
+  Brain,
+  Clock,
+  Shield
+} from "lucide-react";
 
 interface Props {
   children: ReactNode;

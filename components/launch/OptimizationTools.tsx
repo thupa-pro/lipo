@@ -17,7 +17,8 @@ import {
   Play,
   Pause,
   Download,
-  Upload, Minimize2,
+  Upload,
+  Minimize2,
   Maximize2,
   RotateCcw
   BarChart3,
@@ -44,8 +45,11 @@ import {
   MemoryStick,
   Network,
   Wifi,
-  Signal
-} from 'lucide-react';
+  Signal,
+  Clock,
+  Target,
+  Zap
+} from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';

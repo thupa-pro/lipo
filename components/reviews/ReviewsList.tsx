@@ -23,7 +23,9 @@ import {
   MoreHorizontal,
   TrendingUp,
   Award,
-  Heart
+  Heart,
+  CheckCircle,
+  Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

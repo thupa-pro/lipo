@@ -19,8 +19,10 @@ import {
   Monitor,
   AlertTriangle,
   X,
-  Zap, Activity,
-  BarChart3
+  Zap,
+  Activity,
+  BarChart3,
+  CheckCircle
 } from "lucide-react";
 
 interface AccessibilityAuditProps {

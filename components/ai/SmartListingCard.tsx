@@ -2,15 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
+import {
   MapPin,
-  Zap, Heart,
+  Zap,
+  Heart,
   Sparkles,
   TrendingUp,
   Award,
   Users,
-  MessageCircle
-} from 'lucide-react';
+  MessageCircle,
+  Clock,
+  Shield,
+  Star
+} from "lucide-react";
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';

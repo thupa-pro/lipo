@@ -22,7 +22,9 @@ import {
   MessageCircle,
   Calendar,
   Heart,
-  HelpCircle
+  HelpCircle,
+  Link,
+  User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

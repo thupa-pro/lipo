@@ -33,13 +33,18 @@ import {
 import {
   Calendar,
   MapPin,
-  DollarSign, Phone,
+  DollarSign,
+  Phone,
   Mail,
   MessageSquare
   XCircle,
   PlayCircle,
   PauseCircle,
-  AlertTriangle
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Star,
+  User
 } from "lucide-react";
 import { format } from "date-fns";
 import { Booking, BookingStatus } from "@/lib/booking/types";

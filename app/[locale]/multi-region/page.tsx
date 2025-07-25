@@ -5,7 +5,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
-import { Globe, MapPin, Users, TrendingUp, Shield, Database, Cloud, Settings } from "lucide-react"
+import {
+  Globe,
+  MapPin,
+  Users,
+  TrendingUp,
+  Shield,
+  Database,
+  Cloud,
+  Settings,
+  Zap
+} from "lucide-react";
 import RegionSelector from "@/components/region/region-selector"
 import type { RegionConfig } from "@/lib/region-config"
 

@@ -16,7 +16,12 @@ import {
 } from '@/lib/rbac/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Lock, Crown, UserPlus, LogIn } from 'lucide-react';
+import {
+  Lock,
+  Crown,
+  UserPlus,
+  LogIn
+} from "lucide-react";
 import Link from 'next/link';
 
 interface RoleGateServerProps extends RoleGateProps {

@@ -43,7 +43,8 @@ import {
   Palette,
   PartyPopper,
   Users,
-  Activity
+  Activity,
+  Star
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";

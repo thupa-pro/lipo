@@ -23,7 +23,8 @@ import {
   Loader2,
   Filter,
   X,
-  Navigation
+  Navigation,
+  Target
 } from "lucide-react";
 import { geolocationService } from "@/lib/geolocation/geolocation-service";
 import { hyperlocalService } from "@/lib/geolocation/hyperlocal-service";

@@ -35,7 +35,8 @@ import {
   Play,
   Pause,
   Archive,
-  TrendingUp
+  TrendingUp,
+  Trash2
 } from "lucide-react";
 import {
   Listing,

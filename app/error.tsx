@@ -3,7 +3,12 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, RefreshCw, Home, Mail } from "lucide-react";
+import {
+  AlertTriangle,
+  RefreshCw,
+  Home,
+  Mail
+} from "lucide-react";
 import Link from "next/link";
 
 interface ErrorProps {

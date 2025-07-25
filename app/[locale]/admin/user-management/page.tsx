@@ -22,8 +22,9 @@ import {
   UserCheck,
   ArrowLeft,
   ArrowRight,
-  Calendar
-} from "lucide-react"
+  Calendar,
+  CheckCircle
+} from "lucide-react";
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
 

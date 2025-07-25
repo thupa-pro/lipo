@@ -10,16 +10,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { 
+import {
   Calendar as CalendarIcon,
   MapPin,
-  CreditCard, 
-  Check, 
+  CreditCard,
+  Check,
   ChevronRight,
   ChevronLeft,
   Loader2,
   AlertCircle,
-  Star
+  Star,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format, addDays, isSameDay, isAfter, isBefore } from "date-fns";

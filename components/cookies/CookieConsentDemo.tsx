@@ -13,8 +13,11 @@ import {
   CheckCircle,
   XCircle,
   RefreshCw,
-  Zap
-} from 'lucide-react';
+  Zap,
+  Clock,
+  Shield,
+  Trash2
+} from "lucide-react";
 
 export function CookieConsentDemo() {
   const {

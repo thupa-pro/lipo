@@ -16,7 +16,8 @@ import {
   Shield,
   ArrowRight,
   Star,
-  Clock
+  Clock,
+  Link
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";

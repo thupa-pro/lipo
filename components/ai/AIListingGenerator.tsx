@@ -33,8 +33,9 @@ import {
   CheckCircle,
   AlertCircle,
   RefreshCw,
-  Zap
-} from 'lucide-react';
+  Zap,
+  Target
+} from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceListing, ServiceCategory, ServicePricing } from '@/types/loconomy';
 import { useToast } from '@/hooks/use-toast';

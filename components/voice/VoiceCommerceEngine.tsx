@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Mic, 
-  MicOff, 
-  Volume2, 
+import {
+  Mic,
+  MicOff,
+  Volume2,
   VolumeX,
   Play,
   Pause,
@@ -16,7 +16,8 @@ import {
   CheckCircle,
   MapPin,
   Calendar,
-  DollarSign, Phone,
+  DollarSign,
+  Phone,
   Mail,
   CreditCard,
   Shield,
@@ -24,8 +25,9 @@ import {
   Settings,
   Headphones,
   Waves,
-  Radio
-} from 'lucide-react'
+  Radio,
+  Zap
+} from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -243,8 +245,8 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
     
     // Intent recognition
     let intent = 'unknown'
-    let entities: Record<string, any> = {}
-    let updatedContext = { ...context }
+    const entities: Record<string, any> = {}
+    const updatedContext = { ...context }
     let responseText = ''
     
     // Service intent

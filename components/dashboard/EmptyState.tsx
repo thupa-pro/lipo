@@ -11,13 +11,15 @@ import {
   Users,
   Star,
   Brain,
-  Heart, Award,
+  Heart,
+  Award,
   Gift,
   MapPin,
   Shield,
-  Zap
+  Zap,
+  Link
 } from "lucide-react";
-import Link from "next/link";
+importfrom "next/link";
 
 interface EmptyStateProps {
   type: "bookings" | "providers" | "payments" | "messages";

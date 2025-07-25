@@ -25,7 +25,11 @@ import {
   Laptop,
   Phone,
   Sparkles,
-  Bot
+  Bot,
+  Clock,
+  Star,
+  User,
+  Zap
 } from "lucide-react";
 
 export default function CustomerDashboard() {

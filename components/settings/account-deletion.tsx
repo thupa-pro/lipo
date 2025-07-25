@@ -20,7 +20,9 @@ import {
   AlertTriangle,
   Download,
   Shield,
-  RefreshCw
+  RefreshCw,
+  Clock,
+  Trash2
 } from "lucide-react";
 
 interface UserProfile {

@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Brain, 
-  Eye, 
-  Mic, 
+import {
+  Brain,
+  Eye,
+  Mic,
   Target,
   Sparkles,
-  Rocket, Play,
+  Rocket,
+  Play,
   ChevronRight,
   ArrowRight,
   Calendar,
@@ -17,8 +18,9 @@ import {
   Camera,
   Volume2,
   Scan,
-  Heart
-} from 'lucide-react'
+  Heart,
+  Zap
+} from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

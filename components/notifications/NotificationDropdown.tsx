@@ -18,16 +18,20 @@ import {
   X,
   Check,
   AlertCircle,
-  CreditCard, Calendar
+  CreditCard,
+  Calendar
   Settings,
   MoreHorizontal,
   Eye
   Volume2,
-  VolumeX
+  VolumeX,
+  Link,
+  Star,
+  Trash2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
-import Link from "next/link";
+importfrom "next/link";
 
 interface Notification {
   id: string;

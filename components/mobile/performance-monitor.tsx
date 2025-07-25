@@ -14,7 +14,8 @@ import {
   AlertTriangle,
   X,
   Clock,
-  Zap
+  Zap,
+  CheckCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

@@ -20,7 +20,12 @@ import {
   PieChart,
   Activity,
   Lightbulb,
-  TrendingUp
+  TrendingUp,
+  CheckCircle,
+  MessageSquare,
+  Star,
+  Target,
+  Zap
 } from "lucide-react";
 import {
   LineChart,

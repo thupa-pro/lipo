@@ -5,17 +5,18 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Smartphone, 
-  Monitor, 
+import {
+  Smartphone,
+  Monitor,
   Tablet,
-  AlertCircle, 
+  AlertCircle,
   Wifi,
   Battery,
   Cpu,
   HardDrive,
-  MemoryStick
-} from 'lucide-react';
+  MemoryStick,
+  CheckCircle
+} from "lucide-react";
 
 interface DeviceTestingProps {
   className?: string;

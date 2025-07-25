@@ -10,7 +10,8 @@ import {
   EyeOff,
   Search,
   Filter,
-  Calendar, Globe,
+  Calendar,
+  Globe,
   BarChart3,
   Settings,
   Upload,
@@ -46,7 +47,10 @@ import {
   ImageIcon,
   Monitor,
   Smartphone,
-  Tablet
+  Tablet,
+  Clock,
+  Trash2,
+  User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

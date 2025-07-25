@@ -31,7 +31,8 @@ import {
   Globe,
   TrendingUp,
   ArrowUp,
-  ArrowDown
+  ArrowDown,
+  Clock
 } from "lucide-react";
 
 interface UserInsightsProps {

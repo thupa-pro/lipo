@@ -36,7 +36,8 @@ import { PrivacySettings } from "@/components/settings/privacy-settings";
 import { SecuritySettings } from "@/components/settings/security-settings";
 import {
   Settings,
-  Bell, CreditCard,
+  Bell,
+  CreditCard,
   Eye,
   Key,
   Trash2,
@@ -45,7 +46,8 @@ import {
   RefreshCw,
   Camera,
   Upload,
-  Download
+  Download,
+  User
 } from "lucide-react";
 
 interface UserProfile {

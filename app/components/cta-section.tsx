@@ -7,7 +7,8 @@ import {
   DollarSign,
   Infinity,
   Clock,
-  CheckCircle
+  CheckCircle,
+  Link
 } from "lucide-react";
 
 export default function CTASection() {

@@ -15,9 +15,12 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import {
   MapPin,
-  AlertTriangle, XCircle,
+  AlertTriangle,
+  XCircle,
   Settings,
-  Loader2
+  Loader2,
+  CheckCircle,
+  Shield
 } from "lucide-react";
 import { geolocationService } from "@/lib/geolocation/geolocation-service";
 import type { LocationPermission, Location } from "@/lib/geolocation/types";

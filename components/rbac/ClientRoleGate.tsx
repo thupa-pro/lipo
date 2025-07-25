@@ -9,8 +9,12 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {  Lock, Shield } from "lucide-react";
-import Link from "next/link";
+import {
+  Lock,
+  Shield,
+  Link
+} from "lucide-react";
+importfrom "next/link";
 import { UserRole } from "@/lib/rbac/types";
 import { createClient } from "@/lib/supabase/client";
 

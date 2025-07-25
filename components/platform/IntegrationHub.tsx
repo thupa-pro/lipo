@@ -12,7 +12,8 @@ import {
   Shield,
   Settings,
   Play,
-  Pause, XCircle,
+  Pause,
+  XCircle,
   AlertCircle
   Download,
   Upload,
@@ -35,7 +36,10 @@ import {
   Calendar,
   MapPin,
   Package,
-  Building
+  Building,
+  CheckCircle,
+  Clock,
+  Trash2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

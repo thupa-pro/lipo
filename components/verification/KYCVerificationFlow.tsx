@@ -31,7 +31,8 @@ import {
   X,
   AlertTriangle,
   Eye,
-  Download, User,
+  Download,
+  User,
   CreditCard,
   Building,
   Globe,
@@ -44,7 +45,10 @@ import {
   Info,
   ArrowRight,
   ArrowLeft,
-  Sparkles
+  Sparkles,
+  CheckCircle,
+  Shield,
+  Trash2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";

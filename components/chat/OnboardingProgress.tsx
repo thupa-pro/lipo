@@ -6,8 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Circle,
-  ArrowRight, Trophy,
-  Zap} from "lucide-react";
+  ArrowRight,
+  Trophy,
+  Zap,
+  CheckCircle,
+  Clock,
+  Star,
+  Target
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { OnboardingStep } from "@/lib/ai-chat/types";
 

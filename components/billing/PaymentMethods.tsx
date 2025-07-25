@@ -34,7 +34,10 @@ import {
   MoreHorizontal,
   Star,
   Calendar,
-  AlertTriangle
+  AlertTriangle,
+  CheckCircle,
+  Shield,
+  Trash2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

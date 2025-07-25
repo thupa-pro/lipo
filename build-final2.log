@@ -1,0 +1,121 @@
+
+> loconomy@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.30
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./components/ui/trust-badge.tsx
+Error: 
+  [31mx[0m the name `Link` is defined multiple times
+    ,-[[36;1;4m/workspace/components/ui/trust-badge.tsx[0m:28:1]
+ [2m28[0m |   FileText,
+ [2m29[0m |   Building,
+ [2m30[0m |   Clock,
+ [2m31[0m |   Link,
+    : [31;1m  ^^|^[0m
+    :     [31;1m`-- [31;1mprevious definition of `Link` here[0m[0m
+ [2m32[0m |   Shield,
+ [2m33[0m |   Star
+ [2m34[0m | } from "lucide-react";
+ [2m35[0m | import { cn } from "@/lib/utils";
+ [2m36[0m | import Link from "next/link";
+    : [33;1m       ^^|^[0m
+    :          [33;1m`-- [33;1m`Link` redefined here[0m[0m
+ [2m37[0m | 
+ [2m38[0m | interface TrustScore {
+ [2m39[0m |   overall: number;
+    `----
+
+Import trace for requested module:
+./components/ui/trust-badge.tsx
+./app/[locale]/ui-evolution/page.tsx
+
+./app/[locale]/example-rbac/page.tsx
+Error: 
+  [31mx[0m the name `Link` is defined multiple times
+    ,-[[36;1;4m/workspace/app/[locale]/example-rbac/page.tsx[0m:14:1]
+ [2m14[0m |   Lock,
+ [2m15[0m |   Shield,
+ [2m16[0m |   CheckCircle,
+ [2m17[0m |   Link,
+    : [31;1m  ^^|^[0m
+    :     [31;1m`-- [31;1mprevious definition of `Link` here[0m[0m
+ [2m18[0m |   Star,
+ [2m19[0m |   Zap
+ [2m20[0m | } from "lucide-react";
+ [2m21[0m | import Link from 'next/link';
+    : [33;1m       ^^|^[0m
+    :          [33;1m`-- [33;1m`Link` redefined here[0m[0m
+ [2m22[0m | import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
+ [2m23[0m | 
+ [2m24[0m | export default async function ExampleRBACPage() {
+    `----
+
+Import trace for requested module:
+./app/[locale]/example-rbac/page.tsx
+
+./app/error.tsx
+Error: 
+  [31mx[0m the name `Link` is defined multiple times
+    ,-[[36;1;4m/workspace/app/error.tsx[0m:8:1]
+ [2m 8[0m |   RefreshCw,
+ [2m 9[0m |   Home,
+ [2m10[0m |   Mail,
+ [2m11[0m |   Link
+    : [31;1m  ^^|^[0m
+    :     [31;1m`-- [31;1mprevious definition of `Link` here[0m[0m
+ [2m12[0m | } from "lucide-react";
+ [2m13[0m | import Link from "next/link";
+    : [33;1m       ^^|^[0m
+    :          [33;1m`-- [33;1m`Link` redefined here[0m[0m
+ [2m14[0m | 
+ [2m15[0m | interface ErrorProps {
+ [2m16[0m |   error: Error & { digest?: string };
+    `----
+
+Import trace for requested module:
+./app/error.tsx
+
+./components/navigation/RoleAwareNavigation.tsx
+Error: 
+  [31mx[0m the name `Link` is defined multiple times
+    ,-[[36;1;4m/workspace/components/navigation/RoleAwareNavigation.tsx[0m:2:1]
+ [2m 2[0m | 
+ [2m 3[0m | import React, { useState } from 'react';
+ [2m 4[0m | import { useRouter, useParams } from 'next/navigation';
+ [2m 5[0m | import Link from 'next/link';
+    : [31;1m       ^^|^[0m
+    :          [31;1m`-- [31;1mprevious definition of `Link` here[0m[0m
+ [2m 6[0m | import {
+ [2m 7[0m |   Sparkles,
+ [2m 8[0m |   MapPin,
+ [2m 9[0m |   BarChart3,
+ [2m10[0m |   Calendar,
+ [2m11[0m |   MessageSquare,
+ [2m12[0m |   Menu,
+ [2m13[0m |   X,
+ [2m14[0m |   ChevronDown,
+ [2m15[0m |   Settings,
+ [2m16[0m |   LogOut,
+ [2m17[0m |   Crown,
+ [2m18[0m |   Shield,
+ [2m19[0m |   User,
+ [2m20[0m |   Zap,
+ [2m21[0m |   Link
+    : [33;1m  ^^|^[0m
+    :     [33;1m`-- [33;1m`Link` redefined here[0m[0m
+ [2m22[0m | } from "lucide-react";
+ [2m23[0m | import { Button } from '@/components/ui/button';
+ [2m24[0m | import { Badge } from '@/components/ui/badge';
+    `----
+
+Import trace for requested module:
+./components/navigation/RoleAwareNavigation.tsx
+./app/layout.tsx
+
+
+> Build failed because of webpack errors

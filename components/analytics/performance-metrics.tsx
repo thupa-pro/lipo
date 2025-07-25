@@ -27,12 +27,15 @@ import {
   Server,
   Database,
   Wifi,
-  AlertTriangle, XCircle,
+  AlertTriangle,
+  XCircle,
   TrendingUp,
   ArrowUp,
   ArrowDown,
   Eye,
-  Users
+  Users,
+  CheckCircle,
+  Clock
 } from "lucide-react";
 
 interface PerformanceMetricsProps {

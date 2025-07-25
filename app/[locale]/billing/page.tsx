@@ -23,11 +23,13 @@ import {
   TrendingUp,
   Receipt,
   Settings,
-  Star, Shield,
+  Star,
+  Shield,
   Calendar,
   ArrowUpRight,
   ExternalLink,
-  RefreshCw
+  RefreshCw,
+  Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

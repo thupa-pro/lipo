@@ -5,11 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { 
+import {
   Wallet 
-  TrendingUp, 
+  TrendingUp,
   TrendingDown,
-  DollarSign, 
+  DollarSign,
   Gift,
   Crown,
   ArrowUpRight,
@@ -17,7 +17,8 @@ import {
   Eye,
   EyeOff,
   Plus,
-  Minus
+  Minus,
+  Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

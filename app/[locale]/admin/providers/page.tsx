@@ -6,7 +6,8 @@ import {
   ArrowUpRight,
   Shield,
   Award,
-  CheckCircle
+  CheckCircle,
+  Star
 } from "lucide-react";
 import Link from "next/link";
 

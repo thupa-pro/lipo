@@ -14,7 +14,8 @@ import {
   AlertCircle,
   Truck,
   Home,
-  FileText
+  FileText,
+  Clock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

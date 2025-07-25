@@ -13,6 +13,7 @@ import {
   Paintbrush,
   ArrowRight,
   Sparkles,
+  Link
 } from "lucide-react";
 
 const categories = [

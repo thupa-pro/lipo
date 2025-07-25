@@ -26,7 +26,8 @@ import {
   RefreshCw,
   ChevronRight,
   Shield,
-  Clock
+  Clock,
+  Zap
 } from "lucide-react";
 
 interface ServiceRecommendation {

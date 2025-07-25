@@ -20,7 +20,9 @@ import {
   RotateCcw,
   AlertCircle,
   XCircle,
-  Plus
+  Plus,
+  Clock,
+  Star
 } from "lucide-react";
 import Link from "next/link";
 

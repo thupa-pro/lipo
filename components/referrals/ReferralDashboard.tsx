@@ -40,7 +40,11 @@ import {
   Trophy,
   CheckCircle,
   Award,
-  Sparkles
+  Sparkles,
+  Clock,
+  MessageSquare,
+  Target,
+  Zap
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";

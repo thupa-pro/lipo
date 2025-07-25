@@ -13,9 +13,11 @@ import {
   Monitor,
   Tablet,
   Globe,
-  Shield, TrendingUp,
+  Shield,
+  TrendingUp,
   Users,
-  Award
+  Award,
+  CheckCircle
 } from "lucide-react";
 import DataInjection from "@/components/polish/data-injection";
 import DeviceTesting from "@/components/polish/device-testing";

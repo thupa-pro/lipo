@@ -7,12 +7,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { 
+import {
   Crown,
-  Users, 
+  Users,
   BarChart3,
-  Lock
-} from 'lucide-react';
+  Lock,
+  Shield,
+  CheckCircle,
+  Star,
+  Zap
+} from "lucide-react";
 import Link from 'next/link';
 import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
 

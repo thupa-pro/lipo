@@ -17,7 +17,7 @@ import {
   Shield,
   CheckCircle,
   Clock
-} from "lucide-react"
+} from "lucide-react";
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
 

@@ -17,7 +17,11 @@ import {
   ArrowRight,
   Heart,
   Share2,
-  Navigation2, Award
+  Navigation2,
+  Award,
+  Clock,
+  Star,
+  Zap
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";

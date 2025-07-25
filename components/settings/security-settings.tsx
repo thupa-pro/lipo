@@ -13,9 +13,13 @@ import {
   Key,
   Smartphone,
   Eye,
-  EyeOff, AlertTriangle,
+  EyeOff,
+  AlertTriangle,
   Lock,
-  Unlock
+  Unlock,
+  CheckCircle,
+  Clock,
+  Shield
 } from "lucide-react";
 
 interface SecuritySettingsProps {

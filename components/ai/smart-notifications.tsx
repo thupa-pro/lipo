@@ -20,7 +20,8 @@ import {
   Heart,
   ArrowRight,
   MessageCircle,
-  Settings
+  Settings,
+  Clock
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 

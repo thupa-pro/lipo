@@ -3,7 +3,14 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { GraduationCap, Award, BookOpen, Video, ArrowRight } from "lucide-react"
+import {
+  GraduationCap,
+  Award,
+  BookOpen,
+  Video,
+  ArrowRight,
+  CheckCircle
+} from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 

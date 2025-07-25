@@ -30,12 +30,16 @@ import {
   Trash2,
   DollarSign,
   Calendar,
-  AlertTriangle, Eye,
+  AlertTriangle,
+  Eye,
   EyeOff,
   Lock,
   Wallet,
   Building2,
-  Smartphone
+  Smartphone,
+  Bank,
+  CheckCircle,
+  Shield
 } from "lucide-react";
 
 interface PaymentMethod {

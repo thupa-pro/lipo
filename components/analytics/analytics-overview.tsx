@@ -31,7 +31,9 @@ import {
   ArrowUp,
   ArrowDown,
   Activity,
-  Eye, Target
+  Eye,
+  Target,
+  Star
 } from "lucide-react";
 
 interface AnalyticsOverviewProps {

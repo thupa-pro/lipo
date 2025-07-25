@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {  AlertCircle } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle
+} from "lucide-react";
 
 export function HealthCheck() {
   const [mounted, setMounted] = useState(false);

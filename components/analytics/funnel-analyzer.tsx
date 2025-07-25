@@ -19,7 +19,10 @@ import {
   AlertTriangle,
   BarChart3,
   Zap,
-  DollarSign
+  DollarSign,
+  CheckCircle,
+  Clock,
+  Target
 } from "lucide-react";
 
 interface FunnelStage {

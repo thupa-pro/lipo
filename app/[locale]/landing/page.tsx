@@ -3,13 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
+import {
   Search,
-  Star, 
-  Users, 
-  Sparkles, 
-  ArrowRight, 
-  Brain} from "lucide-react";
+  Star,
+  Users,
+  Sparkles,
+  ArrowRight,
+  Brain
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 

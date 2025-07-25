@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ThumbsUp,
   ThumbsDown,
-  Award, Flag,
+  Award,
+  Flag,
   Heart,
   MoreHorizontal,
   Calendar,
@@ -13,7 +14,10 @@ import {
   TrendingUp,
   Users,
   Medal,
-  Trophy
+  Trophy,
+  CheckCircle,
+  Shield,
+  Star
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

@@ -23,7 +23,11 @@ import {
   ArrowDown,
   AlertCircle,
   Brain,
-  X
+  X,
+  CheckCircle,
+  Clock,
+  MessageSquare,
+  Shield
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 

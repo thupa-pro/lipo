@@ -31,10 +31,13 @@ import {
   Server,
   Database,
   AlertTriangle,
-  XCircle, Zap,
+  XCircle,
+  Zap,
   HardDrive,
   Cpu,
-  MemoryStick
+  MemoryStick,
+  CheckCircle,
+  Clock
 } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";

@@ -4,7 +4,14 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { CheckCircle, Users, MessageSquare, Zap, Clock } from "lucide-react"
+import {
+  CheckCircle,
+  Users,
+  MessageSquare,
+  Zap,
+  Clock,
+  Star
+} from "lucide-react";
 
 interface TimelineStep {
   id: string

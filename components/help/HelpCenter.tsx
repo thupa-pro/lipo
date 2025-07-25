@@ -10,7 +10,8 @@ import {
   Mail,
   Phone,
   FileText,
-  ExternalLink, ThumbsUp,
+  ExternalLink,
+  ThumbsUp,
   ThumbsDown
   User,
   Tag,
@@ -39,7 +40,10 @@ import {
   Eye,
   TrendingUp,
   Plus,
-  Edit
+  Edit,
+  Clock,
+  MessageSquare,
+  Star
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

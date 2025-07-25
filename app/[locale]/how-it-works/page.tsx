@@ -12,7 +12,8 @@ import {
   Search,
   Users,
   ArrowRight,
-  Lightbulb, DollarSign,
+  Lightbulb,
+  DollarSign,
   Sparkles,
   Brain,
   Target,
@@ -23,7 +24,8 @@ import {
   Star,
   ChevronRight,
   Play,
-  Eye
+  Eye,
+  Zap
 } from "lucide-react";
 
 export default function HowItWorksPage() {

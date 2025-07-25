@@ -32,7 +32,11 @@ import {
   ArrowRight,
   Heart,
   Sparkles,
-  Award
+  Award,
+  CheckCircle,
+  Clock,
+  Star,
+  Zap
 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";

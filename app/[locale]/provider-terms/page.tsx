@@ -3,7 +3,14 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { FileText, AlertTriangle, Scale, ArrowRight } from "lucide-react"
+import {
+  FileText,
+  AlertTriangle,
+  Scale,
+  ArrowRight,
+  CheckCircle,
+  Shield
+} from "lucide-react";
 import { useRouter } from "next/navigation"
 
 export default function ProviderTermsPage() {

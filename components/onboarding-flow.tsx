@@ -9,7 +9,18 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { MapPin, Users, Briefcase, ArrowRight, Sparkles, Target, Lightbulb, TrendingUp } from "lucide-react"
+import {
+  MapPin,
+  Users,
+  Briefcase,
+  ArrowRight,
+  Sparkles,
+  Target,
+  Lightbulb,
+  TrendingUp,
+  CheckCircle,
+  Shield
+} from "lucide-react";
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
 
