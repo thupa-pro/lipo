@@ -212,22 +212,22 @@ export function EnhancedFeatureGallery() {
       </div>
 
       {/* Statistics Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12 lg:mb-16">
         {stats.map((stat, index) => {
           const StatIcon = stat.icon;
           return (
             <PremiumCard
               key={index}
               variant="glass"
-              className="text-center p-8 hover:scale-105 transition-all duration-300"
+              className="text-center p-4 lg:p-8 hover:scale-105 transition-all duration-300"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <StatIcon className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
+                <StatIcon className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
               </div>
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <div className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-1 lg:mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <div className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-400">
                 {stat.label}
               </div>
             </PremiumCard>
