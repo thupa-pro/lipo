@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, Users, Lock, Award, AlertTriangle, ArrowRight } from "lucide-react"
+import { Shield, Users, Lock, Award, AlertTriangle, ArrowRight, CheckCircle, MessageSquare } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -15,12 +15,12 @@ export default function SafetyTrustPage() {
     {
       icon: CheckCircle,
       title: "Verified Professionals",
-      description: "All service providers undergo a multi-step verification, process, including identity checks and professional credential validation.",
+      description: "All service providers undergo a multi-step verification process, including identity checks and professional credential validation.",
     },
     {
       icon: Users,
       title: "Background Checks",
-      description: "For sensitive, services, providers are required to pass comprehensive background checks to ensure your safety and peace of mind.",
+      description: "For sensitive services, providers are required to pass comprehensive background checks to ensure your safety and peace of mind.",
     },
     {
       icon: MessageSquare,
@@ -35,12 +35,12 @@ export default function SafetyTrustPage() {
     {
       icon: Award,
       title: "Quality Assurance",
-      description: "We monitor service quality through user reviews and ratings. Providers with consistently high ratings are, highlighted, and underperforming ones are reviewed.",
+      description: "We monitor service quality through user reviews and ratings. Providers with consistently high ratings are highlighted, and underperforming ones are reviewed.",
     },
     {
       icon: AlertTriangle,
       title: "Dispute Resolution",
-      description: "In the rare event of an, issue, our dedicated support team is available to mediate disputes and ensure a fair resolution for both parties.",
+      description: "In the rare event of an issue, our dedicated support team is available to mediate disputes and ensure a fair resolution for both parties.",
     },
   ]
 

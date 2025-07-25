@@ -1,43 +1,42 @@
 import React from "react";
+import { Sparkles } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-      <div
-        className={
-          'absolute inset-0 bg-[url(\'data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')] opacity-20'
-        }
-      ></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 relative overflow-hidden">
+      {/* Global Background Effects - Matching Homepage */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-blue-400/5 to-purple-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+      </div>
 
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-30 z-10" />
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-20">
         {/* Hero Section */}
         <section className="pt-32 pb-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-8">
-              <span className="text-blue-400 text-sm font-medium">
-                🚀 Our Story
+            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
+              <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Our Story
               </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+              <span className="text-hero-premium">
                 Revolutionizing
               </span>
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="text-gray-900 dark:text-white">
                 Service Industry
               </span>
             </h1>
 
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               We're on a mission to connect people with trusted service
               providers, making it easier than ever to get things done.
             </p>
@@ -60,40 +59,40 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/10">
+              <div className="text-center p-8 rounded-2xl glass-ultra hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-white text-2xl">🎯</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Quality First
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   We rigorously vet all service providers to ensure you receive
                   the highest quality of service every time.
                 </p>
               </div>
 
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/10">
+              <div className="text-center p-8 rounded-2xl glass-ultra hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-white text-2xl">🤝</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Trust & Safety
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   Your safety and peace of mind are our top priorities. All
                   providers are background-checked and insured.
                 </p>
               </div>
 
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/10">
+              <div className="text-center p-8 rounded-2xl glass-ultra hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-white text-2xl">⚡</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Fast & Efficient
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   Get matched with the right service provider quickly and
                   schedule appointments that fit your busy lifestyle.
                 </p>

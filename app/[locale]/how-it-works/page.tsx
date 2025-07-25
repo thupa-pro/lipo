@@ -25,17 +25,19 @@ import {
   ChevronRight,
   Play,
   Eye,
-  Zap
+  Zap,
+  CheckCircle,
+  Shield
 } from "lucide-react";
 
 export default function HowItWorksPage() {
   const steps = [
     {
       icon: Search,
-      title: "1. AI-Powered, Discovery",
+      title: "1. AI-Powered Discovery",
       description:
-        "Our, intelligent system, analyzes your, needs, location, and, preferences to, instantly connect, you with, the perfect, local professionals. No, more endless, scrolling through, irrelevant results.",
-      action: { label: "Browse, Services", href: "/browse" },
+        "Our intelligent system analyzes your needs, location, and preferences to instantly connect you with the perfect local professionals. No more endless scrolling through irrelevant results.",
+      action: { label: "Browse Services", href: "/browse" },
       gradient: "from-blue-600 via-purple-600 to-emerald-600",
       stats: { accuracy: "96.8%", time: "< 30 seconds", matches: "2.1M+" },
       aiFeature: "Smart Matching",
@@ -44,7 +46,7 @@ export default function HowItWorksPage() {
       icon: Users,
       title: "2. Secure Connection & Booking",
       description:
-        "Review AI-verified, profiles, read authentic reviews from real, customers, and chat directly with professionals. Book securely with our advanced encryption and escrow protection.",
+        "Review AI-verified profiles, read authentic reviews from real customers, and chat directly with professionals. Book securely with our advanced encryption and escrow protection.",
       action: { label: "Request a Service", href: "/request-service" },
       gradient: "from-emerald-600 via-green-600 to-cyan-600",
       stats: { verified: "100%", security: "Bank-level", satisfaction: "4.9★" },
@@ -54,7 +56,7 @@ export default function HowItWorksPage() {
       icon: CheckCircle,
       title: "3. Excellence Delivered",
       description:
-        "Experience outstanding service quality with real-time, tracking, secure, payments, and AI-powered quality assurance. Rate your experience to help our community grow stronger.",
+        "Experience outstanding service quality with real-time tracking, secure payments, and AI-powered quality assurance. Rate your experience to help our community grow stronger.",
       action: { label: "View Dashboard", href: "/dashboard" },
       gradient: "from-purple-600 via-pink-600 to-rose-600",
       stats: { completion: "99.2%", onTime: "97.8%", quality: "A+" },
@@ -67,7 +69,7 @@ export default function HowItWorksPage() {
       icon: Brain,
       title: "AI-Enhanced Matching",
       description:
-        "Our advanced machine learning algorithms analyze thousands of data points to match you with the perfect service provider based on your unique, needs, preferences, and location.",
+        "Our advanced machine learning algorithms analyze thousands of data points to match you with the perfect service provider based on your unique needs, preferences, and location.",
       gradient: "from-blue-500 to-purple-600",
       stats: "96.8% accuracy rate",
     },
@@ -75,7 +77,7 @@ export default function HowItWorksPage() {
       icon: Shield,
       title: "Military-Grade Security",
       description:
-        "Every provider undergoes comprehensive background, checks, license, verification, and continuous monitoring. Your safety and privacy are our top priorities with bank-level encryption.",
+        "Every provider undergoes comprehensive background checks, license verification, and continuous monitoring. Your safety and privacy are our top priorities with bank-level encryption.",
       gradient: "from-emerald-500 to-teal-600",
       stats: "Zero security incidents",
     },
@@ -91,7 +93,7 @@ export default function HowItWorksPage() {
       icon: Zap,
       title: "Instant Booking",
       description:
-        "Book services in seconds with our streamlined process. Real-time, availability, instant, confirmations, and automated scheduling make service booking effortless.",
+        "Book services in seconds with our streamlined process. Real-time availability, instant confirmations, and automated scheduling make service booking effortless.",
       gradient: "from-cyan-500 to-blue-600",
       stats: "< 2 minutes avg",
     },
@@ -107,7 +109,7 @@ export default function HowItWorksPage() {
       icon: Globe,
       title: "Global Reach",
       description:
-        "Available in 180+ countries with local expertise everywhere. Our platform adapts to local, regulations, currencies, and cultural preferences seamlessly.",
+        "Available in 180+ countries with local expertise everywhere. Our platform adapts to local regulations, currencies, and cultural preferences seamlessly.",
       gradient: "from-indigo-500 to-purple-600",
       stats: "180+ countries",
     },
@@ -127,7 +129,7 @@ export default function HowItWorksPage() {
       name: "Mike Rodriguez",
       role: "Small Business Owner",
       content:
-        "As a, handyman, Loconomy has tripled my bookings. The AI matches me with clients who truly need my skills.",
+        "As a handyman, Loconomy has tripled my bookings. The AI matches me with clients who truly need my skills.",
       rating: 5,
       service: "Home Repairs",
       avatar: "MR",
@@ -144,42 +146,36 @@ export default function HowItWorksPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white overflow-hidden relative">
-      {/* Animated Background - Same as Homepage */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50/30 to-emerald-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(139,92,246,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_40%_60%,rgba(16,185,129,0.08),transparent_50%)]" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 text-slate-900 dark:text-white overflow-hidden relative">
+      {/* Global Background Effects - Matching Homepage */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-blue-400/5 to-purple-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 dark:bg-violet-400 rounded-full animate-pulse opacity-30 dark:opacity-40" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-emerald-400 dark:bg-blue-400 rounded-full animate-ping opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-purple-400 dark:bg-emerald-400 rounded-full animate-bounce opacity-15 dark:opacity-20" />
-        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-cyan-400 dark:bg-pink-400 rounded-full animate-pulse opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
-      </div>
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-30 z-10" />
 
       {/* Hero Section */}
       <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
         <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
+          <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               How 2.1M+ Users Find Perfect Services
             </span>
             <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-none">
-            <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+            <span className="text-hero-premium">
               How Loconomy
             </span>
             <br />
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="text-gray-900 dark:text-white">
               Works Magic
             </span>
           </h1>
@@ -258,7 +254,7 @@ export default function HowItWorksPage() {
             {steps.map((step, index) => (
               <Card
                 key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative glass-ultra rounded-3xl hover:scale-105 transition-all duration-700 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-5 transition-opacity duration-700`}
@@ -332,7 +328,7 @@ export default function HowItWorksPage() {
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative glass-ultra rounded-3xl hover:scale-105 transition-all duration-700 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`}
@@ -368,7 +364,7 @@ export default function HowItWorksPage() {
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Real, Stories, Real Results
+                Real Stories, Real Results
               </span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -380,7 +376,7 @@ export default function HowItWorksPage() {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative glass-ultra rounded-3xl hover:scale-105 transition-all duration-700 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <CardContent className="p-8 relative z-10">
                   <div className="flex items-center gap-4 mb-6">
