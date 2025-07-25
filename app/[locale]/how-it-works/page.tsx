@@ -34,10 +34,10 @@ export default function HowItWorksPage() {
   const steps = [
     {
       icon: Search,
-      title: "1. AI-Powered, Discovery",
+      title: "1. AI-Powered Discovery",
       description:
-        "Our, intelligent system, analyzes your, needs, location, and, preferences to, instantly connect, you with, the perfect, local professionals. No, more endless, scrolling through, irrelevant results.",
-      action: { label: "Browse, Services", href: "/browse" },
+        "Our intelligent system analyzes your needs, location, and preferences to instantly connect you with the perfect local professionals. No more endless scrolling through irrelevant results.",
+      action: { label: "Browse Services", href: "/browse" },
       gradient: "from-blue-600 via-purple-600 to-emerald-600",
       stats: { accuracy: "96.8%", time: "< 30 seconds", matches: "2.1M+" },
       aiFeature: "Smart Matching",
@@ -46,7 +46,7 @@ export default function HowItWorksPage() {
       icon: Users,
       title: "2. Secure Connection & Booking",
       description:
-        "Review AI-verified, profiles, read authentic reviews from real, customers, and chat directly with professionals. Book securely with our advanced encryption and escrow protection.",
+        "Review AI-verified profiles, read authentic reviews from real customers, and chat directly with professionals. Book securely with our advanced encryption and escrow protection.",
       action: { label: "Request a Service", href: "/request-service" },
       gradient: "from-emerald-600 via-green-600 to-cyan-600",
       stats: { verified: "100%", security: "Bank-level", satisfaction: "4.9★" },
@@ -56,7 +56,7 @@ export default function HowItWorksPage() {
       icon: CheckCircle,
       title: "3. Excellence Delivered",
       description:
-        "Experience outstanding service quality with real-time, tracking, secure, payments, and AI-powered quality assurance. Rate your experience to help our community grow stronger.",
+        "Experience outstanding service quality with real-time tracking, secure payments, and AI-powered quality assurance. Rate your experience to help our community grow stronger.",
       action: { label: "View Dashboard", href: "/dashboard" },
       gradient: "from-purple-600 via-pink-600 to-rose-600",
       stats: { completion: "99.2%", onTime: "97.8%", quality: "A+" },
