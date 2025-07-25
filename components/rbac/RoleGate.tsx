@@ -176,16 +176,16 @@ function GuestAccessDenied({ allowedRoles }: { allowedRoles: UserRole[] }) {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <Button asChild variant="outline">
-            <href="/en/auth/signin">
+            <Link href="/en/auth/signin">
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
-            </>
+            </Link>
           </Button>
           <Button asChild>
-            <href="/en/auth/signup">
+            <Link href="/en/auth/signup">
               <UserPlus className="w-4 h-4 mr-2" />
               Sign Up
-            </>
+            </Link>
           </Button>
         </div>
         <p className="text-xs text-muted-foreground text-center">
