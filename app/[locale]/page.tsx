@@ -98,21 +98,41 @@ export default function HomePage() {
           <ProvidersSection />
         </motion.div>
 
-        {/* Enhanced Testimonials Section */}
+        {/* Revolutionary Feature Gallery */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="py-16"
         >
+          <EnhancedFeatureGallery />
+        </motion.div>
+
+        {/* Enhanced Testimonials Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="py-16"
+        >
           <TestimonialsSection />
+        </motion.div>
+
+        {/* Elite Provider Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="py-16"
+        >
+          <EnhancedProviderShowcase />
         </motion.div>
 
         {/* Comprehensive Media Showcase */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
+          transition={{ duration: 0.6, delay: 1.4 }}
           className="py-16"
         >
           <MediaShowcase />
@@ -122,7 +142,7 @@ export default function HomePage() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+          transition={{ duration: 0.6, delay: 1.6 }}
         >
           <CTASection />
         </motion.div>
