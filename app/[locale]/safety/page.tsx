@@ -35,7 +35,7 @@ export default function SafetyTrustPage() {
     {
       icon: Award,
       title: "Quality Assurance",
-      description: "We monitor service quality through user reviews and ratings. Providers with consistently high ratings are, highlighted, and underperforming ones are reviewed.",
+      description: "We monitor service quality through user reviews and ratings. Providers with consistently high ratings are highlighted, and underperforming ones are reviewed.",
     },
     {
       icon: AlertTriangle,
