@@ -429,14 +429,14 @@ export function MediaShowcase() {
                 </Badge>
 
                 {/* Expand Icon */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
-                  <Maximize2 className="w-6 h-6 text-white" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
+                  <Maximize2 className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
 
                 {/* Overlay Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="font-bold text-base mb-1 leading-tight">{asset.title}</h3>
-                  <p className="text-xs opacity-90 leading-relaxed">{asset.description}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 text-white">
+                  <h3 className="font-bold text-sm lg:text-base mb-1 leading-tight line-clamp-2">{asset.title}</h3>
+                  <p className="text-xs opacity-90 leading-relaxed line-clamp-2">{asset.description}</p>
                 </div>
               </div>
             </PremiumCard>
@@ -445,12 +445,12 @@ export function MediaShowcase() {
 
         {/* Slide Indicators */}
         {filteredAssets.length > 4 && (
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2 mt-6 lg:mt-8">
             {Array.from({ length: Math.ceil(filteredAssets.length / 4) }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full transition-all duration-300 touch-manipulation ${
                   index === currentSlide
                     ? "bg-blue-600 scale-125 shadow-lg"
                     : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
@@ -462,7 +462,7 @@ export function MediaShowcase() {
       </div>
 
       {/* Enhanced Statistics Display */}
-      <div className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-6">
+      <div className="mt-12 lg:mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
         {[
           { icon: Camera, value: `${allAssets.length}+`, label: "Premium Visuals", color: "from-blue-500 to-cyan-500" },
           { icon: Users, value: `${allMediaAssets.providers?.length || 0}+`, label: "Elite Providers", color: "from-purple-500 to-pink-500" },
@@ -472,15 +472,15 @@ export function MediaShowcase() {
         ].map((stat, index) => (
           <div
             key={index}
-            className="text-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 group"
+            className="text-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-xl lg:rounded-2xl p-4 lg:p-6 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 group"
           >
-            <div className={`w-14 h-14 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-              <stat.icon className="w-7 h-7 text-white" />
+            <div className={`w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br ${stat.color} rounded-lg lg:rounded-xl flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <stat.icon className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
             </div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <div className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-1 lg:mb-2">
               {stat.value}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+            <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400 font-medium">
               {stat.label}
             </div>
           </div>
