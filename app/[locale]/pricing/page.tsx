@@ -136,7 +136,7 @@ export default function PricingPage() {
               </div>
 
               {/* Enterprise Plan */}
-              <div className="group p-8 rounded-2xl bg-white/90 dark:bg-white/5 backdrop-blur-lg border border-blue-200/50 dark:border-white/10 hover:border-yellow-400 dark:hover:border-yellow-500/30 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="group p-8 rounded-2xl glass-ultra hover:border-yellow-400 dark:hover:border-yellow-500/30 transition-all duration-300 hover:transform hover:scale-105">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
                     Enterprise
