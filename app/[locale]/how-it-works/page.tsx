@@ -161,9 +161,9 @@ export default function HowItWorksPage() {
       <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
         <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
+          <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               How 2.1M+ Users Find Perfect Services
             </span>
             <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
