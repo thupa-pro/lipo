@@ -20,7 +20,7 @@ export default function SafetyTrustPage() {
     {
       icon: Users,
       title: "Background Checks",
-      description: "For sensitive, services, providers are required to pass comprehensive background checks to ensure your safety and peace of mind.",
+      description: "For sensitive services, providers are required to pass comprehensive background checks to ensure your safety and peace of mind.",
     },
     {
       icon: MessageSquare,
