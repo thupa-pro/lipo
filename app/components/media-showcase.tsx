@@ -324,11 +324,11 @@ export function MediaShowcase() {
       description="Explore our complete collection of premium services, elite providers, cutting-edge innovations, and exceptional results through this comprehensive visual showcase."
     >
       {/* Enhanced Filter Controls */}
-      <div className="space-y-6 mb-12">
+      <div className="space-y-4 lg:space-y-6 mb-8 lg:mb-12">
         {/* Series Filter */}
         <div className="text-center">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Collection Series</h3>
-          <div className="flex justify-center gap-3">
+          <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4 text-gray-900 dark:text-white">Collection Series</h3>
+          <div className="flex flex-wrap justify-center gap-2 lg:gap-3">
             {series.map((seriesOption) => (
               <Button
                 key={seriesOption}
@@ -338,7 +338,7 @@ export function MediaShowcase() {
                   setSelectedSeries(seriesOption);
                   setCurrentSlide(0);
                 }}
-                className={`rounded-full transition-all duration-300 ${
+                className={`rounded-full transition-all duration-300 text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 ${
                   selectedSeries === seriesOption
                     ? "bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
                     : "hover:bg-emerald-50 dark:hover:bg-emerald-950/20"
