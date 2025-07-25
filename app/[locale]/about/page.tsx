@@ -59,40 +59,40 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/10">
+              <div className="text-center p-8 rounded-2xl glass-ultra hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-white text-2xl">🎯</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Quality First
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   We rigorously vet all service providers to ensure you receive
                   the highest quality of service every time.
                 </p>
               </div>
 
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/10">
+              <div className="text-center p-8 rounded-2xl glass-ultra hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-white text-2xl">🤝</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Trust & Safety
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   Your safety and peace of mind are our top priorities. All
                   providers are background-checked and insured.
                 </p>
               </div>
 
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg border border-white/10">
+              <div className="text-center p-8 rounded-2xl glass-ultra hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-white text-2xl">⚡</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Fast & Efficient
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   Get matched with the right service provider quickly and
                   schedule appointments that fit your busy lifestyle.
                 </p>
