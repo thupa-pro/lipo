@@ -184,51 +184,51 @@ export function EnhancedProviderShowcase() {
               </div>
             </div>
 
-            <PremiumCardContent className="p-6">
+            <PremiumCardContent className="p-4 lg:p-6">
               {/* Provider Info */}
-              <div className="flex items-start gap-4 mb-6">
-                <Avatar className="h-16 w-16 border-4 border-white dark:border-gray-800 shadow-lg">
+              <div className="flex items-start gap-3 lg:gap-4 mb-4 lg:mb-6">
+                <Avatar className="h-12 w-12 lg:h-16 lg:w-16 border-3 lg:border-4 border-white dark:border-gray-800 shadow-lg flex-shrink-0">
                   <AvatarImage src={provider.avatar} alt={provider.name} />
-                  <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-lg font-bold">
+                  <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-sm lg:text-lg font-bold">
                     {provider.name.split(" ").map(n => n[0]).join("")}
                   </AvatarFallback>
                 </Avatar>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">{provider.name}</h3>
+                    <h3 className="font-bold text-base lg:text-lg text-gray-900 dark:text-white truncate">{provider.name}</h3>
                     {provider.verified && (
-                      <CheckCircle className="w-5 h-5 text-blue-500" />
+                      <CheckCircle className="w-4 h-4 lg:w-5 lg:h-5 text-blue-500 flex-shrink-0" />
                     )}
                   </div>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm mb-1">{provider.title}</p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{provider.specialty}</p>
+                  <p className="text-blue-600 dark:text-blue-400 font-semibold text-xs lg:text-sm mb-1 truncate">{provider.title}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs lg:text-sm truncate">{provider.specialty}</p>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-700 dark:text-gray-300 text-sm mb-4 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 text-xs lg:text-sm mb-3 lg:mb-4 leading-relaxed line-clamp-3">
                 {provider.description}
               </p>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-xl p-3">
-                  <div className="text-lg font-bold text-green-600">{provider.hourlyRate}</div>
+              <div className="grid grid-cols-3 gap-2 lg:gap-4 mb-3 lg:mb-4">
+                <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-lg lg:rounded-xl p-2 lg:p-3">
+                  <div className="text-sm lg:text-lg font-bold text-green-600">{provider.hourlyRate}</div>
                   <div className="text-xs text-gray-500">Starting Rate</div>
                 </div>
-                <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-xl p-3">
-                  <div className="text-lg font-bold text-blue-600">{provider.responseTime}</div>
+                <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-lg lg:rounded-xl p-2 lg:p-3">
+                  <div className="text-sm lg:text-lg font-bold text-blue-600">&lt; 30 mins</div>
                   <div className="text-xs text-gray-500">Response</div>
                 </div>
-                <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-xl p-3">
-                  <div className="text-lg font-bold text-purple-600">{provider.completedJobs.toLocaleString()}</div>
+                <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-lg lg:rounded-xl p-2 lg:p-3">
+                  <div className="text-sm lg:text-lg font-bold text-purple-600">{provider.completedJobs.toLocaleString()}</div>
                   <div className="text-xs text-gray-500">Jobs Done</div>
                 </div>
               </div>
 
               {/* Skills */}
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-2">
+              <div className="mb-3 lg:mb-4">
+                <div className="flex flex-wrap gap-1.5 lg:gap-2">
                   {provider.skills.slice(0, 3).map((skill, i) => (
                     <Badge
                       key={i}
@@ -247,29 +247,29 @@ export function EnhancedProviderShowcase() {
               </div>
 
               {/* Location & Reviews */}
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400 mb-4 lg:mb-6">
                 <div className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4" />
-                  {provider.location}
+                  <MapPin className="w-3 h-3 lg:w-4 lg:h-4" />
+                  <span className="truncate">{provider.location}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <ThumbsUp className="w-4 h-4 text-green-500" />
+                  <ThumbsUp className="w-3 h-3 lg:w-4 lg:h-4 text-green-500" />
                   {provider.reviews} reviews
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3">
+              <div className="flex gap-2 lg:gap-3">
                 <Button
                   size="sm"
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-xs lg:text-sm"
                   onClick={() => setSelectedProvider(provider)}
                 >
                   View Profile
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 ml-1.5 lg:ml-2" />
                 </Button>
-                <Button size="sm" variant="outline" className="px-4">
-                  <Heart className="w-4 h-4" />
+                <Button size="sm" variant="outline" className="px-3 lg:px-4">
+                  <Heart className="w-3 h-3 lg:w-4 lg:h-4" />
                 </Button>
               </div>
             </PremiumCardContent>
