@@ -254,7 +254,7 @@ export default function HowItWorksPage() {
             {steps.map((step, index) => (
               <Card
                 key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative glass-ultra rounded-3xl hover:scale-105 transition-all duration-700 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-5 transition-opacity duration-700`}
@@ -328,7 +328,7 @@ export default function HowItWorksPage() {
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative glass-ultra rounded-3xl hover:scale-105 transition-all duration-700 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`}
@@ -376,7 +376,7 @@ export default function HowItWorksPage() {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl hover:bg-blue-50/50 dark:hover:bg-white/10 transition-all duration-700 hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative glass-ultra rounded-3xl hover:scale-105 transition-all duration-700 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <CardContent className="p-8 relative z-10">
                   <div className="flex items-center gap-4 mb-6">
