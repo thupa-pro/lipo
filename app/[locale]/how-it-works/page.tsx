@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
       name: "Mike Rodriguez",
       role: "Small Business Owner",
       content:
-        "As a, handyman, Loconomy has tripled my bookings. The AI matches me with clients who truly need my skills.",
+        "As a handyman, Loconomy has tripled my bookings. The AI matches me with clients who truly need my skills.",
       rating: 5,
       service: "Home Repairs",
       avatar: "MR",
