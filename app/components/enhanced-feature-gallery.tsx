@@ -236,19 +236,19 @@ export function EnhancedFeatureGallery() {
       </div>
 
       {/* Additional Feature Highlights */}
-      <div className="grid md:grid-cols-2 gap-8">
-        <PremiumCard variant="glass" className="p-8">
-          <div className="flex items-start gap-6">
+      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+        <PremiumCard variant="glass" className="p-6 lg:p-8">
+          <div className="flex flex-col sm:flex-row items-start gap-4 lg:gap-6">
             <Image
               src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F58c68b3decc54e79ae8dbe240d3fa4e0?alt=media&token=38a445a1-6099-4aa3-8670-b11b59919ca0&apiKey=efd5169b47d04c9886e111b6074edfba"
               alt="Automated Excellence"
               width={120}
               height={120}
-              className="rounded-2xl object-cover"
+              className="rounded-xl lg:rounded-2xl object-cover w-full sm:w-20 lg:w-[120px] aspect-square flex-shrink-0"
             />
-            <div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Automated Excellence</h4>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">Streamlined processes ensure consistent, high-quality service delivery every time.</p>
+            <div className="min-w-0 flex-1">
+              <h4 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-2 lg:mb-3">Automated Excellence</h4>
+              <p className="text-sm lg:text-base text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">Streamlined processes ensure consistent, high-quality service delivery every time.</p>
               <div className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400 font-medium">
                 <Heart className="w-4 h-4" />
                 Customer Favorite
@@ -257,18 +257,18 @@ export function EnhancedFeatureGallery() {
           </div>
         </PremiumCard>
 
-        <PremiumCard variant="glass" className="p-8">
-          <div className="flex items-start gap-6">
+        <PremiumCard variant="glass" className="p-6 lg:p-8">
+          <div className="flex flex-col sm:flex-row items-start gap-4 lg:gap-6">
             <Image
               src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F4e0f1330c53946eaab774bc379232073?alt=media&token=bef5edcf-c80d-4d9b-9616-ea09f6fa3d57&apiKey=efd5169b47d04c9886e111b6074edfba"
               alt="Predictive Quality"
               width={120}
               height={120}
-              className="rounded-2xl object-cover"
+              className="rounded-xl lg:rounded-2xl object-cover w-full sm:w-20 lg:w-[120px] aspect-square flex-shrink-0"
             />
-            <div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Predictive Quality</h4>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">AI-powered insights predict and prevent issues before they occur, ensuring seamless experiences.</p>
+            <div className="min-w-0 flex-1">
+              <h4 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-2 lg:mb-3">Predictive Quality</h4>
+              <p className="text-sm lg:text-base text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">AI-powered insights predict and prevent issues before they occur, ensuring seamless experiences.</p>
               <div className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 font-medium">
                 <Star className="w-4 h-4" />
                 AI-Powered
