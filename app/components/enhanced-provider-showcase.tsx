@@ -374,25 +374,25 @@ export function EnhancedProviderShowcase() {
               )}
 
               {activeTab === "skills" && (
-                <div className="space-y-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Core Skills & Expertise</h3>
-                  <div className="flex flex-wrap gap-3">
+                <div className="space-y-4 lg:space-y-6">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">Core Skills & Expertise</h3>
+                  <div className="flex flex-wrap gap-2 lg:gap-3">
                     {selectedProvider.skills.map((skill, i) => (
                       <Badge
                         key={i}
-                        className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2"
+                        className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm"
                       >
                         {skill}
                       </Badge>
                     ))}
                   </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Certifications & Badges</h3>
-                  <div className="grid grid-cols-2 gap-4">
+
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">Certifications & Badges</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
                     {selectedProvider.badges.map((badge, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
-                        <Award className="w-6 h-6 text-yellow-500" />
-                        <span className="font-medium text-gray-900 dark:text-white">{badge}</span>
+                      <div key={i} className="flex items-center gap-2 lg:gap-3 bg-gray-50 dark:bg-gray-800 rounded-lg lg:rounded-xl p-3 lg:p-4">
+                        <Award className="w-5 h-5 lg:w-6 lg:h-6 text-yellow-500 flex-shrink-0" />
+                        <span className="font-medium text-gray-900 dark:text-white text-sm lg:text-base">{badge}</span>
                       </div>
                     ))}
                   </div>
@@ -400,19 +400,19 @@ export function EnhancedProviderShowcase() {
               )}
 
               {activeTab === "reviews" && (
-                <div className="space-y-6">
+                <div className="space-y-4 lg:space-y-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{selectedProvider.rating}/5</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">{selectedProvider.rating}/5</div>
                     <div className="flex justify-center gap-1 mb-2">
                       {[1,2,3,4,5].map(i => (
-                        <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="w-5 h-5 lg:w-6 lg:h-6 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400">Based on {selectedProvider.reviews} reviews</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm lg:text-base">Based on {selectedProvider.reviews} reviews</p>
                   </div>
-                  
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <p className="text-center text-gray-600 dark:text-gray-400">
+
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg lg:rounded-xl p-4 lg:p-6">
+                    <p className="text-center text-gray-600 dark:text-gray-400 text-sm lg:text-base">
                       Detailed reviews and testimonials would be displayed here in the full implementation.
                     </p>
                   </div>
@@ -420,17 +420,17 @@ export function EnhancedProviderShowcase() {
               )}
 
               {/* Action Buttons */}
-              <div className="flex gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <Button size="lg" className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                  <Calendar className="w-5 h-5 mr-2" />
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-gray-200 dark:border-gray-700">
+                <Button size="lg" className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm lg:text-base">
+                  <Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   Book Now
                 </Button>
-                <Button size="lg" variant="outline">
-                  <Phone className="w-5 h-5 mr-2" />
+                <Button size="lg" variant="outline" className="flex-1 sm:flex-none text-sm lg:text-base">
+                  <Phone className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   Contact
                 </Button>
-                <Button size="lg" variant="outline">
-                  <Mail className="w-5 h-5 mr-2" />
+                <Button size="lg" variant="outline" className="flex-1 sm:flex-none text-sm lg:text-base">
+                  <Mail className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   Message
                 </Button>
               </div>
