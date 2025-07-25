@@ -441,14 +441,14 @@ export function EnhancedProviderShowcase() {
 
       {/* Call to Action */}
       <div className="text-center">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-4">Join Our Elite Provider Network</h3>
-          <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl lg:rounded-3xl p-6 lg:p-8 text-white">
+          <h3 className="text-xl lg:text-2xl font-bold mb-3 lg:mb-4">Join Our Elite Provider Network</h3>
+          <p className="text-sm lg:text-lg opacity-90 mb-4 lg:mb-6 max-w-2xl mx-auto">
             Are you a top-tier service professional? Apply to join our exclusive network of elite providers.
           </p>
-          <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100">
+          <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100 w-full sm:w-auto text-sm lg:text-base">
             Become a Provider
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" />
           </Button>
         </div>
       </div>
