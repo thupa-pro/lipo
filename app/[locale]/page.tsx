@@ -12,6 +12,7 @@ import { CategoriesSection } from "../components/categories-section";
 import ProvidersSection from "../components/providers-section";
 import { StatsSection } from "../components/stats-section";
 import TestimonialsSection from "../components/testimonials-section";
+import { MediaShowcase } from "../components/media-showcase";
 import CTASection from "../components/cta-section";
 
 export default function HomePage() {
