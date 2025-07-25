@@ -88,7 +88,7 @@ export default function PricingPage() {
               </div>
 
               {/* Pro Plan */}
-              <div className="group p-8 rounded-2xl bg-white/90 dark:bg-white/10 backdrop-blur-lg border border-purple-400 dark:border-purple-500/30 hover:border-purple-500 dark:hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105 relative">
+              <div className="group p-8 rounded-2xl glass-ultra border border-purple-400 dark:border-purple-500/30 hover:border-purple-500 dark:hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105 relative">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium rounded-full">
                   Most Popular
                 </div>
