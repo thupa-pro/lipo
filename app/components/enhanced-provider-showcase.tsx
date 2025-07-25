@@ -123,21 +123,21 @@ export function EnhancedProviderShowcase() {
       description="Connect with the top 5% of service providers who have earned their place in our exclusive network through exceptional service, expertise, and customer satisfaction."
     >
       {/* Provider Statistics */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12 lg:mb-16">
         {providerStats.map((stat, index) => {
           const StatIcon = stat.icon;
           return (
             <div
               key={index}
-              className="text-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300"
+              className="text-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl lg:rounded-2xl p-4 lg:p-6 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <StatIcon className="w-7 h-7 text-white" />
+              <div className="w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg lg:rounded-xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
+                <StatIcon className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
               </div>
-              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+              <div className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <div className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-400">
                 {stat.label}
               </div>
             </div>
