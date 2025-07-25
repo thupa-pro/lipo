@@ -327,14 +327,14 @@ export function EnhancedProviderShowcase() {
             </div>
 
             {/* Content */}
-            <div className="p-8">
+            <div className="p-4 lg:p-8">
               {/* Tabs */}
-              <div className="flex gap-4 mb-6 border-b border-gray-200 dark:border-gray-700">
+              <div className="flex gap-3 lg:gap-4 mb-4 lg:mb-6 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
                 {["portfolio", "skills", "reviews"].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`pb-3 px-1 text-sm font-medium capitalize transition-colors ${
+                    className={`pb-2 lg:pb-3 px-1 text-sm font-medium capitalize transition-colors whitespace-nowrap ${
                       activeTab === tab
                         ? "border-b-2 border-blue-600 text-blue-600"
                         : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
@@ -347,27 +347,27 @@ export function EnhancedProviderShowcase() {
 
               {/* Tab Content */}
               {activeTab === "portfolio" && (
-                <div className="space-y-6">
-                  <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                <div className="space-y-4 lg:space-y-6">
+                  <p className="text-sm lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                     {selectedProvider.description}
                   </p>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.rating}</div>
-                      <div className="text-sm text-gray-500">Rating</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.rating}</div>
+                      <div className="text-xs lg:text-sm text-gray-500">Rating</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.reviews}</div>
-                      <div className="text-sm text-gray-500">Reviews</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.reviews}</div>
+                      <div className="text-xs lg:text-sm text-gray-500">Reviews</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.completedJobs.toLocaleString()}</div>
-                      <div className="text-sm text-gray-500">Jobs</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.completedJobs.toLocaleString()}</div>
+                      <div className="text-xs lg:text-sm text-gray-500">Jobs</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.hourlyRate}</div>
-                      <div className="text-sm text-gray-500">Rate</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{selectedProvider.hourlyRate}</div>
+                      <div className="text-xs lg:text-sm text-gray-500">Rate</div>
                     </div>
                   </div>
                 </div>
