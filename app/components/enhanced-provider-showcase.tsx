@@ -280,15 +280,15 @@ export function EnhancedProviderShowcase() {
       {/* Enhanced Provider Modal */}
       {selectedProvider && (
         <div
-          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-2 lg:p-4"
           onClick={() => setSelectedProvider(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
+            className="relative max-w-4xl w-full bg-white dark:bg-gray-900 rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl max-h-[95vh] lg:max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with Portfolio */}
-            <div className="relative h-64">
+            <div className="relative h-48 lg:h-64">
               <Image
                 src={selectedProvider.portfolio}
                 alt={`${selectedProvider.name} portfolio`}
@@ -300,27 +300,27 @@ export function EnhancedProviderShowcase() {
                 variant="outline"
                 size="sm"
                 onClick={() => setSelectedProvider(null)}
-                className="absolute top-6 right-6 rounded-full w-12 h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm"
+                className="absolute top-3 lg:top-6 right-3 lg:right-6 rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm text-lg lg:text-xl"
               >
                 ×
               </Button>
-              
+
               {/* Provider Info Overlay */}
-              <div className="absolute bottom-6 left-6 text-white">
-                <div className="flex items-center gap-4 mb-4">
-                  <Avatar className="h-20 w-20 border-4 border-white shadow-lg">
+              <div className="absolute bottom-3 lg:bottom-6 left-3 lg:left-6 text-white right-3 lg:right-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 lg:gap-4 mb-3 lg:mb-4">
+                  <Avatar className="h-16 w-16 lg:h-20 lg:w-20 border-3 lg:border-4 border-white shadow-lg">
                     <AvatarImage src={selectedProvider.avatar} alt={selectedProvider.name} />
-                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xl font-bold">
+                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-lg lg:text-xl font-bold">
                       {selectedProvider.name.split(" ").map(n => n[0]).join("")}
                     </AvatarFallback>
                   </Avatar>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h2 className="text-2xl font-bold">{selectedProvider.name}</h2>
-                      {selectedProvider.verified && <CheckCircle className="w-6 h-6 text-blue-400" />}
+                      <h2 className="text-xl lg:text-2xl font-bold truncate">{selectedProvider.name}</h2>
+                      {selectedProvider.verified && <CheckCircle className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0" />}
                     </div>
-                    <p className="text-blue-300 font-semibold mb-1">{selectedProvider.title}</p>
-                    <p className="text-white/90">{selectedProvider.specialty}</p>
+                    <p className="text-blue-300 font-semibold mb-1 text-sm lg:text-base truncate">{selectedProvider.title}</p>
+                    <p className="text-white/90 text-sm lg:text-base truncate">{selectedProvider.specialty}</p>
                   </div>
                 </div>
               </div>
