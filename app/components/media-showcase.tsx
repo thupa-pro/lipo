@@ -352,8 +352,8 @@ export function MediaShowcase() {
 
         {/* Category Filter */}
         <div className="text-center">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Content Categories</h3>
-          <div className="flex flex-wrap justify-center gap-3">
+          <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4 text-gray-900 dark:text-white">Content Categories</h3>
+          <div className="flex flex-wrap justify-center gap-2 lg:gap-3">
             {categories.map((category) => (
               <Button
                 key={category}
@@ -363,7 +363,7 @@ export function MediaShowcase() {
                   setSelectedCategory(category);
                   setCurrentSlide(0);
                 }}
-                className={`rounded-full transition-all duration-300 ${
+                className={`rounded-full transition-all duration-300 text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 ${
                   selectedCategory === category
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                     : "hover:bg-blue-50 dark:hover:bg-blue-950/20"
@@ -378,38 +378,38 @@ export function MediaShowcase() {
 
       {/* Enhanced Media Grid with Carousel */}
       <div className="relative">
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - Hide on mobile */}
         {filteredAssets.length > 4 && (
           <>
             <Button
               variant="outline"
               size="sm"
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 shadow-lg"
+              className="hidden lg:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 shadow-lg items-center justify-center"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4 lg:w-5 lg:h-5" />
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full w-12 h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 shadow-lg"
+              className="hidden lg:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 shadow-lg items-center justify-center"
             >
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
             </Button>
           </>
         )}
 
         {/* Enhanced Media Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 px-0 lg:px-12">
           {visibleAssets.map((asset, index) => (
             <PremiumCard
               key={`${asset.url}-${index}`}
               variant="default"
-              className="group cursor-pointer border-0 shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500"
+              className="group cursor-pointer border-0 shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 touch-manipulation"
               onClick={() => setSelectedAsset(asset)}
             >
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-48 sm:h-56 overflow-hidden">
                 <Image
                   src={asset.url}
                   alt={asset.title}
@@ -417,14 +417,14 @@ export function MediaShowcase() {
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                
+
                 {/* Series Badge */}
-                <Badge className="absolute top-3 left-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white text-xs font-bold">
+                <Badge className="absolute top-2 lg:top-3 left-2 lg:left-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white text-xs font-bold">
                   Series {asset.series}
                 </Badge>
 
                 {/* Category Badge */}
-                <Badge className="absolute top-3 right-3 bg-white/90 dark:bg-black/90 text-gray-800 dark:text-white backdrop-blur-sm text-xs">
+                <Badge className="absolute top-2 lg:top-3 right-2 lg:right-3 bg-white/90 dark:bg-black/90 text-gray-800 dark:text-white backdrop-blur-sm text-xs">
                   {asset.category}
                 </Badge>
 
