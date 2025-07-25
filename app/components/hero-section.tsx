@@ -70,36 +70,36 @@ export function HeroSection() {
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 grid-pattern opacity-30 z-10" />
 
-      <div className="relative container mx-auto px-4 py-20 lg:py-32 z-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative container mx-auto px-4 py-16 lg:py-32 z-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div
             className={`transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
           >
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
+            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down">
               <div className="flex items-center gap-1">
-                <Sparkles className="w-4 h-4 text-yellow-500" />
-                <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-500" />
+                <span className="text-xs lg:text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Trusted by 50,000+ Users
                 </span>
               </div>
-              <div className="w-1 h-4 bg-gray-300 dark:bg-gray-600" />
+              <div className="w-1 h-3 lg:h-4 bg-gray-300 dark:bg-gray-600" />
               <div className="flex -space-x-1">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    className="w-4 h-4 fill-slate-700 text-slate-700 dark:fill-white dark:text-white"
+                    className="w-3 h-3 lg:w-4 lg:h-4 fill-slate-700 text-slate-700 dark:fill-white dark:text-white"
                   />
                 ))}
               </div>
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+              <span className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300">
                 4.9/5
               </span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 lg:mb-8 leading-tight">
               <span className="text-hero-premium">Premium Local Services</span>
               <br />
               <span className="text-gray-900 dark:text-white">
@@ -108,7 +108,7 @@ export function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-3xl leading-relaxed font-medium">
               Connect with verified, elite service providers in your area. From
               home maintenance to personal services, experience the future of
               local commerce with AI-powered matching.
