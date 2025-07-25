@@ -13,6 +13,8 @@ import ProvidersSection from "../components/providers-section";
 import { StatsSection } from "../components/stats-section";
 import TestimonialsSection from "../components/testimonials-section";
 import { MediaShowcase } from "../components/media-showcase";
+import { EnhancedFeatureGallery } from "../components/enhanced-feature-gallery";
+import { EnhancedProviderShowcase } from "../components/enhanced-provider-showcase";
 import CTASection from "../components/cta-section";
 
 export default function HomePage() {
