@@ -77,7 +77,7 @@ export default function HowItWorksPage() {
       icon: Shield,
       title: "Military-Grade Security",
       description:
-        "Every provider undergoes comprehensive background, checks, license, verification, and continuous monitoring. Your safety and privacy are our top priorities with bank-level encryption.",
+        "Every provider undergoes comprehensive background checks, license verification, and continuous monitoring. Your safety and privacy are our top priorities with bank-level encryption.",
       gradient: "from-emerald-500 to-teal-600",
       stats: "Zero security incidents",
     },
