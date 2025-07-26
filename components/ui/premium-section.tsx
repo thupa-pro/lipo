@@ -8,17 +8,17 @@ const premiumSectionVariants = cva("py-24 relative overflow-hidden", {
     variant: {
       default: "bg-background",
       gradient:
-        "bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950",
+        "bg-gradient-to-br from-background via-ai-50 to-primary-100 dark:from-background dark:via-ai-950 dark:to-primary-950",
       dark: "bg-gray-950 text-white",
       muted: "bg-muted/30",
-      accent: "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
+      accent: "bg-gradient-to-r from-ai-600 to-primary-600 text-white",
     },
     pattern: {
       none: "",
       dots: "before:absolute before:inset-0 before:dot-pattern before:opacity-20",
       grid: "before:absolute before:inset-0 before:grid-pattern before:opacity-30",
       floating:
-        "before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-400/20 before:to-purple-600/20 before:rounded-full before:blur-3xl before:animate-float",
+        "before:absolute before:inset-0 before:bg-gradient-to-br before:from-ai-400/20 before:to-primary-600/20 before:rounded-full before:blur-3xl before:animate-float",
     },
   },
   defaultVariants: {
