@@ -196,12 +196,12 @@ export default function EnhancedDashboard() {
 
   const getStatColor = (color: string) => {
     const colors = {
-      blue: "from-blue-500 to-blue-600",
-      green: "from-green-500 to-green-600",
-      purple: "from-purple-500 to-purple-600",
-      yellow: "from-yellow-500 to-yellow-600",
-      orange: "from-orange-500 to-orange-600",
-      emerald: "from-emerald-500 to-emerald-600"
+      blue: "from-ai to-primary",
+      green: "from-trust to-success",
+      purple: "from-primary to-ai",
+      yellow: "from-warning to-premium",
+      orange: "from-premium to-warning",
+      emerald: "from-success to-trust"
     };
     return colors[color as keyof typeof colors] || "from-gray-500 to-gray-600";
   };
@@ -222,10 +222,10 @@ export default function EnhancedDashboard() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'success': return 'bg-green-100 text-green-800 border-green-200';
-      case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'failed': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'success': return 'bg-success/10 text-success border-success/20';
+      case 'pending': return 'bg-warning/10 text-warning border-warning/20';
+      case 'failed': return 'bg-destructive/10 text-destructive border-destructive/20';
+      default: return 'bg-muted text-muted-foreground border-border';
     }
   };
 
@@ -241,7 +241,7 @@ export default function EnhancedDashboard() {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <motion.div
-              className="w-16 h-16 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-xl"
+              className="w-16 h-16 bg-gradient-ai rounded-2xl flex items-center justify-center shadow-glow"
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
