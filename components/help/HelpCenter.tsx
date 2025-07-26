@@ -614,7 +614,7 @@ export default function HelpCenter() {
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
-                    <Phone className="w-5 h-5 text-orange-600" />
+                    <Phone className="w-5 h-5 text-premium-600" />
                     <div>
                       <h4 className="font-medium">Phone Support</h4>
                       <p className="text-sm text-muted-foreground">1-800-LOCONOMY</p>
