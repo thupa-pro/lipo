@@ -364,9 +364,9 @@ export default function GrowthAnalyticsPage() {
         </div>
 
         {/* Footer CTA */}
-        <Card className="mt-10 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-950/30 dark:to-blue-950/30 shadow-xl border-none">
+        <Card className="card-glass-success mt-10">
           <CardContent className="p-8 text-center">
-            <h3 className="text-3xl font-bold mb-3 text-green-800 dark:text-green-200">
+            <h3 className="text-3xl font-bold mb-3 text-success-gradient">
               Drive Continuous Growth and Optimization
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
