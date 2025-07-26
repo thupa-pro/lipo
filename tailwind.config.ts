@@ -374,6 +374,30 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "neural-glow": {
+          "0%, 100%": {
+            boxShadow: "inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 0.8)",
+          },
+          "50%": {
+            boxShadow: "inset 3px 3px 6px rgba(0, 0, 0, 0.15), inset -3px -3px 6px rgba(255, 255, 255, 0.9)",
+          },
+        },
+        "shimmer": {
+          "0%": {
+            backgroundPosition: "-200% 0",
+          },
+          "100%": {
+            backgroundPosition: "200% 0",
+          },
+        },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+        },
       },
       
       animation: {
@@ -397,6 +421,9 @@ const config: Config = {
         "fade-up": "fade-up 0.3s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "neural-glow": "neural-glow 2s ease-in-out infinite",
+        "shimmer": "shimmer 2s linear infinite",
+        "float": "float 3s ease-in-out infinite",
       },
       
       // Modern Transition System
@@ -540,6 +567,90 @@ const config: Config = {
           background: "linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1))",
           backgroundSize: "200px 100%",
           animation: "skeleton 2s ease-in-out infinite",
+        },
+
+        // Missing Component Utilities
+        ".bg-glass": {
+          background: "rgba(255, 255, 255, 0.8)",
+          backdropFilter: "blur(16px) saturate(1.4)",
+        },
+        ".border-glass-border": {
+          borderColor: "rgba(255, 255, 255, 0.3)",
+        },
+        ".backdrop-blur-glass": {
+          backdropFilter: "blur(16px)",
+        },
+        ".shadow-glass": {
+          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.15)",
+        },
+        ".shadow-glass-lg": {
+          boxShadow: "0 16px 64px 0 rgba(0, 0, 0, 0.2)",
+        },
+        ".bg-glass-strong": {
+          background: "rgba(255, 255, 255, 0.95)",
+        },
+        ".rounded-glass": {
+          borderRadius: "1rem",
+        },
+        ".bg-gradient-ai": {
+          background: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
+        },
+        ".shadow-glow-primary": {
+          boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)",
+        },
+        ".shadow-glow-lg": {
+          boxShadow: "0 0 40px rgba(139, 92, 246, 0.3)",
+        },
+        ".bg-size-200": {
+          backgroundSize: "200% 100%",
+        },
+        ".bg-pos-100": {
+          backgroundPosition: "100% 0",
+        },
+        ".bg-shimmer": {
+          background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)",
+        },
+        ".bg-gradient-premium": {
+          background: "linear-gradient(135deg, #f59e0b, #d97706)",
+        },
+        ".shadow-neural": {
+          boxShadow: "inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 0.8)",
+        },
+        ".animate-neural-glow": {
+          animation: "neural-glow 2s ease-in-out infinite",
+        },
+        ".shadow-neural-lg": {
+          boxShadow: "inset 4px 4px 8px rgba(0, 0, 0, 0.15), inset -4px -4px 8px rgba(255, 255, 255, 0.9)",
+        },
+        ".animate-shimmer": {
+          animation: "shimmer 2s linear infinite",
+        },
+        ".bg-glass-black": {
+          background: "rgba(0, 0, 0, 0.8)",
+        },
+        ".border-glass-border-dark": {
+          borderColor: "rgba(255, 255, 255, 0.1)",
+        },
+        ".bg-glass-black-md": {
+          background: "rgba(0, 0, 0, 0.9)",
+        },
+        ".hover-lift": {
+          transition: "transform 0.2s ease-out",
+          "&:hover": {
+            transform: "translateY(-2px) scale(1.02)",
+          },
+        },
+        ".animate-float": {
+          animation: "float 3s ease-in-out infinite",
+        },
+        ".shadow-premium": {
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+        },
+        ".text-gradient": {
+          background: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
         },
       });
       
