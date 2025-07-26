@@ -372,15 +372,15 @@
   }
 
   .btn-ai-secondary {
-    @apply bg-gradient-to-r from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 text-primary-700 dark:text-primary-300 border border-primary-200/50 dark:border-primary-800/50 hover:shadow-lg transition-all duration-200 rounded-xl px-6 py-2.5 font-medium backdrop-blur-md;
+    @apply bg-gradient-to-r from-ai-50 to-ai-100 dark:from-ai-950 dark:to-ai-900 text-ai-700 dark:text-ai-300 border border-ai-200 dark:border-ai-800 hover:shadow-lg transition-all duration-200 rounded-xl px-6 py-2.5 font-medium backdrop-blur-md;
   }
 
   .btn-trust {
-    @apply bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-lg hover:shadow-teal-500/25 transition-all duration-300 rounded-xl px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-trust-500 to-trust-600 text-white shadow-lg hover:shadow-glow-trust transition-all duration-300 rounded-xl px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-premium {
-    @apply bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg hover:shadow-amber-500/25 transition-all duration-300 rounded-xl px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-premium-400 to-premium-500 text-white shadow-lg hover:shadow-glow transition-all duration-300 rounded-xl px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   /* Enhanced Glass Card Variants */
