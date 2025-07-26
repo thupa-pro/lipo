@@ -133,7 +133,7 @@ export function HeroSection() {
                       placeholder="Search premium services..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 input-glass text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <div className="relative flex-1">
@@ -142,7 +142,7 @@ export function HeroSection() {
                       placeholder="Enter your location"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 input-glass text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <Button
