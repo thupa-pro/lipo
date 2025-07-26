@@ -44,7 +44,7 @@ export default function BrowseFilters({
               <SelectTrigger className="rounded-md input-glass dark:bg-input transition-colors">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-md shadow-lg dark:bg-popover">
+              <SelectContent className="rounded-md shadow-glass dark:bg-popover">
                 {categories.map((cat) => (
                   <SelectItem key={cat.value} value={cat.value} className="transition-colors hover:bg-accent hover:text-accent-foreground">
                     {cat.label}
@@ -76,7 +76,7 @@ export default function BrowseFilters({
               <SelectTrigger className="rounded-md input-glass dark:bg-input transition-colors">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-md shadow-lg dark:bg-popover">
+              <SelectContent className="rounded-md shadow-glass dark:bg-popover">
                 {sortOptions.map((option) => (
                   <SelectItem key={option.value} value={option.value} className="transition-colors hover:bg-accent hover:text-accent-foreground">
                     {option.label}
