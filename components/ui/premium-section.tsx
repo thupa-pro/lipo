@@ -81,7 +81,7 @@ const PremiumSection = React.forwardRef<HTMLElement, PremiumSectionProps>(
             {description && (
               <p
                 className={cn(
-                  "text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto",
+                  "text-xl text-muted-foreground max-w-2xl mx-auto",
                   descriptionClassName,
                 )}
               >
