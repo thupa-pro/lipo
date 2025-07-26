@@ -389,15 +389,15 @@
   }
 
   .card-glass-ai {
-    @apply bg-gradient-to-br from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 border border-primary-200/50 dark:border-primary-800/50 backdrop-blur-md rounded-lg shadow-glass hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+    @apply bg-gradient-to-br from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 border border-primary-200/50 dark:border-primary-800/50 backdrop-blur-md rounded-lg shadow-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
   }
 
   .card-glass-trust {
-    @apply bg-gradient-to-br from-trust-50/80 to-trust-100/60 dark:from-trust-950/40 dark:to-trust-900/20 border border-trust-200/50 dark:border-trust-800/50 backdrop-blur-md rounded-lg shadow-glass hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+    @apply bg-gradient-to-br from-trust-50/80 to-trust-100/60 dark:from-trust-950/40 dark:to-trust-900/20 border border-trust-200/50 dark:border-trust-800/50 backdrop-blur-md rounded-lg shadow-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
   }
 
   .card-glass-premium {
-    @apply bg-gradient-to-br from-premium-50/80 to-premium-100/60 dark:from-premium-950/40 dark:to-premium-900/20 border border-premium-200/50 dark:border-premium-800/50 backdrop-blur-md rounded-lg shadow-glass hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+    @apply bg-gradient-to-br from-premium-50/80 to-premium-100/60 dark:from-premium-950/40 dark:to-premium-900/20 border border-premium-200/50 dark:border-premium-800/50 backdrop-blur-md rounded-lg shadow-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
   }
 
   /* Enhanced Input Field Variants */
