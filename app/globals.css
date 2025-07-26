@@ -372,7 +372,7 @@
   }
 
   .btn-ai-secondary {
-    @apply bg-gradient-to-r from-ai-50/80 to-ai-100/60 dark:from-ai-950/40 dark:to-ai-900/20 text-ai-700 dark:text-ai-300 border border-ai-200/50 dark:border-ai-800/50 hover:shadow-glow-ai transition-all duration-200 rounded-button px-6 py-2.5 font-medium backdrop-blur-md;
+    @apply bg-gradient-to-r from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 text-primary-700 dark:text-primary-300 border border-primary-200/50 dark:border-primary-800/50 hover:shadow-lg transition-all duration-200 rounded-button px-6 py-2.5 font-medium backdrop-blur-md;
   }
 
   .btn-trust {
