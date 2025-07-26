@@ -400,7 +400,7 @@ export function NotificationDropdown({
                 <Bell className="w-4 h-4" />
                 <span className="font-semibold">Notifications</span>
                 {unreadCount > 0 && (
-                  <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs">
+                  <Badge className="bg-gradient-ai text-white text-xs shadow-glow">
                     {unreadCount}
                   </Badge>
                 )}
