@@ -2,12 +2,12 @@ import React from "react";
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 overflow-hidden relative">
+    <div className="min-h-screen bg-background overflow-hidden relative">
       {/* Global Background Effects - Matching Homepage */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-blue-400/5 to-purple-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-primary-400/10 to-primary-600/10 rounded-full blur-3xl animate-ai-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-teal-400/10 to-cyan-400/10 rounded-full blur-3xl animate-ai-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary-400/5 to-primary-600/5 rounded-full blur-3xl animate-ai-pulse stagger-3"></div>
       </div>
 
       {/* Grid Pattern Overlay */}
@@ -18,15 +18,15 @@ export default function PricingPage() {
         {/* Hero Section */}
         <section className="pt-32 pb-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-8 animate-fade-in-down">
+            <div className="inline-flex items-center gap-2 card-glass-premium rounded-full px-6 py-3 mb-8 animate-fade-in-down">
               <span className="text-2xl">💎</span>
-              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-sm font-semibold text-premium-gradient">
                 Transparent Pricing
               </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="text-hero-premium">
+              <span className="text-premium-gradient">
                 Simple, Fair
               </span>
               <br />
@@ -47,7 +47,7 @@ export default function PricingPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Starter Plan */}
-              <div className="group p-8 rounded-2xl glass-ultra hover:border-blue-400 dark:hover:border-blue-500/30 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="group p-8 rounded-2xl card-glass interactive-hover">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
                     Starter
