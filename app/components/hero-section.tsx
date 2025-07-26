@@ -43,7 +43,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-background via-ai-50 to-primary-50 dark:from-background dark:via-ai-900/10 dark:to-primary-900/10 overflow-hidden">
+    <section className="relative min-h-screen bg-background overflow-hidden">
       {/* Hero Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
