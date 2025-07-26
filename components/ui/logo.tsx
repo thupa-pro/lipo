@@ -44,7 +44,7 @@ export function Logo({
   }, []);
 
   // Determine the effective theme
-  const effectiveTheme = theme || resolvedTheme || systemTheme || ThemeMode.LIGHT;
+  const effectiveTheme = theme || resolvedTheme || ThemeMode.LIGHT;
   
   // Get the appropriate logo variant
   const logoVariant = getLogoVariant(effectiveTheme, context, variant);
