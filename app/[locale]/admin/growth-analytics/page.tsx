@@ -288,7 +288,7 @@ export default function GrowthAnalyticsPage() {
 
         {/* Marketing Campaign Performance & Key Insights */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <DollarSign className="w-6 h-6 text-primary" />
