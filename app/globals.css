@@ -453,15 +453,15 @@
 
   /* Neural UI Elements */
   .neural-button {
-    @apply neural-raised hover:neural-subtle active:neural-inset transition-all duration-200 rounded-lg px-6 py-2.5 font-medium;
+    @apply shadow-md hover:shadow-lg active:shadow-sm transition-all duration-200 rounded-lg px-6 py-2.5 font-medium;
   }
 
   .neural-card {
-    @apply neural-raised hover:neural-subtle transition-all duration-300 rounded-lg p-6;
+    @apply shadow-md hover:shadow-lg transition-all duration-300 rounded-lg p-6;
   }
 
   .neural-input {
-    @apply neural-inset focus:neural-subtle transition-all duration-200 rounded-md px-3 py-2;
+    @apply shadow-inner focus:shadow-md transition-all duration-200 rounded-md px-3 py-2;
   }
 
   /* Text Effects */
