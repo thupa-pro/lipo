@@ -166,7 +166,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
+                className="rounded-full hover:bg-primary-50 dark:hover:bg-primary-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
               >
                 <Link href="/request-service">
                   <Clock className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
@@ -177,7 +177,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="rounded-full hover:bg-purple-50 dark:hover:bg-purple-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
+                className="rounded-full hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
               >
                 <Link href="/become-provider">
                   <Users className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
@@ -187,7 +187,7 @@ export function HeroSection() {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full hover:bg-green-50 dark:hover:bg-green-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
+                className="rounded-full hover:bg-teal-50 dark:hover:bg-teal-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
                 onClick={() =>
                   toast({
                     title: "Premium Demo",
