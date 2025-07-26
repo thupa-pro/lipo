@@ -469,6 +469,30 @@
     @apply bg-gradient-to-r from-ai-600 via-ai-500 to-ai-700 bg-clip-text text-transparent font-semibold;
   }
 
+  .text-gradient-ai {
+    @apply bg-gradient-to-r from-ai-600 via-ai-500 to-ai-700 bg-clip-text text-transparent font-semibold;
+  }
+
+  .text-gradient-trust {
+    @apply bg-gradient-to-r from-trust-600 via-trust-500 to-trust-700 bg-clip-text text-transparent font-semibold;
+  }
+
+  .text-gradient-premium {
+    @apply bg-gradient-to-r from-premium-600 via-premium-500 to-premium-700 bg-clip-text text-transparent font-semibold;
+  }
+
+  .text-gradient-success {
+    @apply bg-gradient-to-r from-success-600 via-success-500 to-success-700 bg-clip-text text-transparent font-semibold;
+  }
+
+  .text-trust-gradient {
+    @apply bg-gradient-to-r from-trust-600 via-trust-500 to-trust-700 bg-clip-text text-transparent font-semibold;
+  }
+
+  .text-success-gradient {
+    @apply bg-gradient-to-r from-success-600 via-success-500 to-success-700 bg-clip-text text-transparent font-semibold;
+  }
+
   .text-trust-gradient {
     @apply bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent font-semibold;
   }
