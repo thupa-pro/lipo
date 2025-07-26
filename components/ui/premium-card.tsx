@@ -8,13 +8,13 @@ const premiumCardVariants = cva(
     variants: {
       variant: {
         default:
-          "card-premium bg-card text-card-foreground shadow-md hover:shadow-xl",
-        glass: "glass-ultra border-white/20 shadow-lg hover:shadow-2xl",
+          "card-glass bg-card text-card-foreground interactive-hover",
+        glass: "card-glass-ai interactive-hover",
         gradient:
-          "bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 border-blue-200/50 dark:border-blue-800/50",
+          "card-glass-premium interactive-hover",
         elevated:
-          "bg-card shadow-xl hover:shadow-2xl border-border/50 hover:-translate-y-2",
-        glow: "bg-card border-primary/20 shadow-lg hover:shadow-primary/25 hover:shadow-2xl",
+          "card-glass shadow-xl hover:shadow-2xl border-border/50 interactive-hover",
+        glow: "card-glass-ai border-primary/20 interactive-glow",
       },
       size: {
         sm: "p-4",
