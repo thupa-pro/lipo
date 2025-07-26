@@ -108,14 +108,14 @@ export function AIContextualModal({
                 {/* Close Button */}
                 <button
                   onClick={onClose}
-                  className="absolute right-4 top-4 z-10 p-1 rounded-lg hover:bg-glass transition-colors"
+                  className="absolute right-4 top-4 z-10 p-1 rounded-lg glass-medium hover:glass-strong transition-colors"
                 >
                   <X className="h-4 w-4" />
                 </button>
 
                 <CardHeader>
                   <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500">
+                    <div className="p-2 rounded-lg bg-gradient-ai">
                       <Sparkles className="h-5 w-5 text-white" />
                     </div>
                     <div className="flex-1">
