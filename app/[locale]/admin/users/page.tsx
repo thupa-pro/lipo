@@ -32,7 +32,7 @@ export default function AdminUsersPage() {
       value: "2.1M",
       change: "+12.5%",
       icon: Users,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-ai-500 to-trust-600",
     },
     {
       title: "Active Today",
