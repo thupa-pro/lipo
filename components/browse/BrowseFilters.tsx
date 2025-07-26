@@ -41,7 +41,7 @@ export default function BrowseFilters({
           <div>
             <label className="text-sm font-medium mb-2 block text-foreground">Category</label>
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="rounded-md shadow-sm dark:bg-input transition-colors">
+              <SelectTrigger className="rounded-md input-glass dark:bg-input transition-colors">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-md shadow-lg dark:bg-popover">
@@ -73,7 +73,7 @@ export default function BrowseFilters({
           <div>
             <label className="text-sm font-medium mb-2 block text-foreground">Sort By</label>
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="rounded-md shadow-sm dark:bg-input transition-colors">
+              <SelectTrigger className="rounded-md input-glass dark:bg-input transition-colors">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-md shadow-lg dark:bg-popover">
