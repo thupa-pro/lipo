@@ -652,6 +652,12 @@ const config: Config = {
           WebkitBackgroundClip: "text",
           color: "transparent",
         },
+        ".shadow-glow": {
+          boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)",
+        },
+        ".scale-98": {
+          transform: "scale(0.98)",
+        },
       });
       
       // Enhanced Component Styles
