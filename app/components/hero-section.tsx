@@ -91,7 +91,7 @@ export function HeroSection() {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    className="w-3 h-3 lg:w-4 lg:h-4 fill-premium text-premium"
+                    className="w-3 h-3 lg:w-4 lg:h-4 fill-amber-500 text-amber-500"
                   />
                 ))}
               </div>
