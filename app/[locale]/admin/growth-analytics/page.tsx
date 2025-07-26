@@ -250,7 +250,7 @@ export default function GrowthAnalyticsPage() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <FlaskConical className="w-6 h-6 text-primary" />
