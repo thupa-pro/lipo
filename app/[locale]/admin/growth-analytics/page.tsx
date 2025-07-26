@@ -261,7 +261,7 @@ export default function GrowthAnalyticsPage() {
             <CardContent>
               <div className="space-y-4">
                 {abTestSummaries.map((test) => (
-                  <Card key={test.id} className="shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={test.id} className="card-glass-ai interactive-hover">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold text-lg">{test.name}</h3>
