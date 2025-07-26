@@ -440,15 +440,15 @@
   }
 
   .interactive-ai {
-    @apply hover:shadow-primary-500/25 transition-all duration-300;
+    @apply hover:shadow-glow-ai transition-all duration-300;
   }
 
   .interactive-trust {
-    @apply hover:shadow-teal-500/25 transition-all duration-300;
+    @apply hover:shadow-glow-trust transition-all duration-300;
   }
 
   .interactive-premium {
-    @apply hover:shadow-amber-500/25 transition-all duration-300;
+    @apply hover:shadow-glow transition-all duration-300;
   }
 
   /* Neural UI Elements */
