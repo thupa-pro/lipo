@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { PremiumTypewriter } from "@/components/ui/typewriter-text";
 import {
   Search,
   MapPin,
