@@ -194,12 +194,12 @@ export default function FinancialOverviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-success-50/30 to-ai-50/30 dark:from-background dark:via-success-900/10 dark:to-ai-900/10 py-8 px-4">
+    <div className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <DollarSign className="w-9 h-9 text-success" />
+            <DollarSign className="w-9 h-9 text-success-600" />
             Financial Overview
           </h1>
           <Button variant="outline" asChild>
@@ -216,7 +216,7 @@ export default function FinancialOverviewPage() {
 
         {/* Key Financial Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card variant="glass" className="interactive-hover">
+          <Card className="card-glass-success interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Total Revenue (YTD)</CardTitle>
@@ -231,7 +231,7 @@ export default function FinancialOverviewPage() {
               <DollarSign className="w-12 h-12 text-green-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-blue-50 dark:bg-blue-950/20">
+          <Card className="card-glass-ai interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Net Profit (YTD)</CardTitle>
@@ -243,7 +243,7 @@ export default function FinancialOverviewPage() {
               <BarChart3 className="w-12 h-12 text-blue-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-yellow-50 dark:bg-yellow-950/20">
+          <Card className="card-glass-premium interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Payouts Due</CardTitle>
@@ -257,7 +257,7 @@ export default function FinancialOverviewPage() {
               <Wallet className="w-12 h-12 text-yellow-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-purple-50 dark:bg-purple-950/20">
+          <Card className="card-glass-trust interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Avg. Transaction Fee</CardTitle>
