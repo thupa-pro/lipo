@@ -415,7 +415,7 @@
 
   /* Loading States */
   .skeleton-ai {
-    @apply bg-gradient-to-r from-ai-100 via-ai-200 to-ai-100 dark:from-ai-900/20 dark:via-ai-800/30 dark:to-ai-900/20 animate-skeleton rounded;
+    @apply bg-gradient-to-r from-primary-100 via-primary-200 to-primary-100 dark:from-primary-900/20 dark:via-primary-800/30 dark:to-primary-900/20 animate-skeleton rounded;
   }
 
   .skeleton-glass {
