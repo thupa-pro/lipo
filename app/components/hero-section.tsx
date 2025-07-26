@@ -27,6 +27,7 @@ export function HeroSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
