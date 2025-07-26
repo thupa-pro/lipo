@@ -99,13 +99,12 @@ export function HeroSection() {
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 lg:mb-8 leading-tight">
-              <span className="text-ai-gradient">Premium Local Services</span>
-              <br />
-              <span className="text-foreground">
-                At Your Fingertips
-              </span>
+            {/* Main Headline with Premium Typewriter Effect */}
+            <h1 className="mb-6 lg:mb-8 leading-tight typewriter-container">
+              <PremiumTypewriter
+                startDelay={800}
+                className="typewriter-text-glow"
+              />
             </h1>
 
             {/* Subheadline */}
