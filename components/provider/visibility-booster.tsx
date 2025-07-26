@@ -148,26 +148,26 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{metrics.currentViews}</div>
-              <div className="text-xs text-gray-600">Profile Views</div>
+              <div className="text-2xl font-bold text-ai-600">{metrics.currentViews}</div>
+              <div className="text-xs text-muted-foreground">Profile Views</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{metrics.lastWeekJobs}</div>
-              <div className="text-xs text-gray-600">Jobs This Week</div>
+              <div className="text-2xl font-bold text-success-600">{metrics.lastWeekJobs}</div>
+              <div className="text-xs text-muted-foreground">Jobs This Week</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600">{metrics.averageRating}</div>
-              <div className="text-xs text-gray-600">Average Rating</div>
+              <div className="text-2xl font-bold text-primary-600">{metrics.averageRating}</div>
+              <div className="text-xs text-muted-foreground">Average Rating</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600">{metrics.responseRate}%</div>
-              <div className="text-xs text-gray-600">Response Rate</div>
+              <div className="text-2xl font-bold text-premium-600">{metrics.responseRate}%</div>
+              <div className="text-xs text-muted-foreground">Response Rate</div>
             </div>
           </div>
 
-          <div className="mt-4 p-3 bg-white rounded-lg">
+          <div className="mt-4 p-3 bg-card rounded-card">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm text-gray-600">vs. Competitor Average</span>
+              <span className="text-sm text-muted-foreground">vs. Competitor Average</span>
               <span className="text-sm font-medium">{metrics.competitorAverage} jobs/week</span>
             </div>
             <Progress value={(metrics.lastWeekJobs / metrics.competitorAverage) * 100} className="h-2" />
@@ -187,7 +187,7 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
             {boostOptions.map((option) => (
               <Card
                 key={option.id}
-                className={`cursor-pointer transition-all hover:shadow-md ${
+                className={`cursor-pointer interactive-hover ${
                   selectedBoost === option.id ? "ring-2 ring-blue-500" : ""
                 } ${option.popular ? "border-yellow-400" : ""}`}
                 onClick={() => setSelectedBoost(option.id)}
