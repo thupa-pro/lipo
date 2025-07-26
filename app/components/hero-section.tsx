@@ -108,7 +108,7 @@ export function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-3xl leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 lg:mb-12 max-w-3xl leading-relaxed font-medium">
               Connect with verified, elite service providers in your area. From
               home maintenance to personal services, experience the future of
               local commerce with AI-powered matching.
@@ -119,30 +119,30 @@ export function HeroSection() {
               className="max-w-4xl mb-8 lg:mb-12 animate-scale-in"
               style={{ animationDelay: "0.3s" }}
             >
-              <div className="glass-ultra rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-2xl">
+              <div className="bg-glass border border-glass-border backdrop-blur-glass rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-glass-lg">
                 <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
                   <div className="relative flex-1">
-                    <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 lg:w-5 lg:h-5" />
+                    <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
                     <Input
                       placeholder="Search premium services..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <div className="relative flex-1">
-                    <MapPin className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 lg:w-5 lg:h-5" />
+                    <MapPin className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
                     <Input
                       placeholder="Enter your location"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <Button
                     size="lg"
                     onClick={handleSearch}
-                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full lg:w-auto text-sm lg:text-base"
+                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 bg-gradient-ai hover:scale-105 w-full lg:w-auto text-sm lg:text-base"
                   >
                     <Search className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                     Find Services
