@@ -303,10 +303,10 @@ export default function AdminDashboard() {
           {/* Alerts & Quick Actions */}
           <div className="space-y-8">
             {/* Alerts */}
-            <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-xl">
+            <Card className="card-glass">
               <CardHeader className="p-8">
                 <CardTitle className="flex items-center gap-3 text-2xl">
-                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-success-500 to-premium-500 flex items-center justify-center">
                     <Bell className="w-5 h-5 text-white" />
                   </div>
                   System Alerts
@@ -320,7 +320,7 @@ export default function AdminDashboard() {
                   {alerts.map((alert) => (
                     <div
                       key={alert.id}
-                      className="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-blue-50/30 dark:hover:bg-white/5 transition-all duration-300"
+                      className="p-6 card-glass-ai interactive-hover"
                     >
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 mt-1">
@@ -353,10 +353,10 @@ export default function AdminDashboard() {
             </Card>
 
             {/* Quick Actions */}
-            <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-xl">
+            <Card className="card-glass">
               <CardHeader className="p-8">
                 <CardTitle className="flex items-center gap-3 text-2xl">
-                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-premium-500 to-ai-500 flex items-center justify-center">
                     <Zap className="w-5 h-5 text-white" />
                   </div>
                   Quick Actions
@@ -365,7 +365,7 @@ export default function AdminDashboard() {
               <CardContent className="p-8 pt-0 space-y-4">
                 <Button
                   variant="outline"
-                  className="w-full justify-start h-14 rounded-2xl border-blue-300 dark:border-white/20 hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-300"
+                  className="btn-outline-ai w-full justify-start h-14"
                   asChild
                 >
                   <Link href="/admin/users">
@@ -375,7 +375,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start h-14 rounded-2xl border-blue-300 dark:border-white/20 hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-300"
+                  className="btn-outline-ai w-full justify-start h-14"
                   asChild
                 >
                   <Link href="/admin/providers">
@@ -385,7 +385,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start h-14 rounded-2xl border-blue-300 dark:border-white/20 hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-300"
+                  className="btn-outline-ai w-full justify-start h-14"
                   asChild
                 >
                   <Link href="/admin/reports">
@@ -395,7 +395,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start h-14 rounded-2xl border-blue-300 dark:border-white/20 hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-300"
+                  className="btn-outline-ai w-full justify-start h-14"
                   asChild
                 >
                   <Link href="/admin/settings">
@@ -405,7 +405,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start h-14 rounded-2xl border-blue-300 dark:border-white/20 hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-300"
+                  className="btn-outline-ai w-full justify-start h-14"
                   asChild
                 >
                   <Link href="/admin/launch">
@@ -415,7 +415,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start h-14 rounded-2xl border-blue-300 dark:border-white/20 hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-300"
+                  className="btn-outline-ai w-full justify-start h-14"
                   asChild
                 >
                   <Link href="/admin/optimization">
