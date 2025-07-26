@@ -214,7 +214,7 @@ export default function GrowthAnalyticsPage() {
 
         {/* User Growth Chart & A/B Test Summary */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Users className="w-6 h-6 text-primary" />
