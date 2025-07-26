@@ -101,11 +101,16 @@ export function HeroSection() {
             </div>
 
             {/* Main Headline with Premium Typewriter Effect */}
-            <h1 className="mb-6 lg:mb-8 leading-tight typewriter-container">
+            <h1 className="mb-6 lg:mb-8 leading-tight typewriter-container relative">
               <PremiumTypewriter
                 startDelay={800}
                 className="typewriter-text-glow"
               />
+              {/* Subtle glow effect that appears during typing */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-ai/5 via-primary/5 to-trust/5 rounded-3xl blur-xl opacity-0 animate-pulse pointer-events-none"
+                   style={{
+                     animation: isVisible ? "fade-in 2s ease-out 2s forwards, pulse 4s ease-in-out 3s infinite" : "none"
+                   }} />
             </h1>
 
             {/* Subheadline */}
