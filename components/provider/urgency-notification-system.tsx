@@ -172,7 +172,7 @@ export default function UrgencyNotificationSystem() {
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
-              <span className="text-success-600 dark:text-green-400">+12 this week</span>
+              <span className="text-success-600 dark:text-success-400">+12 this week</span>
             </div>
           </CardContent>
         </Card>
@@ -188,7 +188,7 @@ export default function UrgencyNotificationSystem() {
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
-              <span className="text-success-600 dark:text-green-400">+5% vs avg</span>
+              <span className="text-success-600 dark:text-success-400">+5% vs avg</span>
             </div>
           </CardContent>
         </Card>
@@ -204,7 +204,7 @@ export default function UrgencyNotificationSystem() {
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
-              <span className="text-success-600 dark:text-green-400">2x faster</span>
+              <span className="text-success-600 dark:text-success-400">2x faster</span>
             </div>
           </CardContent>
         </Card>
@@ -220,7 +220,7 @@ export default function UrgencyNotificationSystem() {
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
-              <span className="text-success-600 dark:text-green-400">+$320 this month</span>
+              <span className="text-success-600 dark:text-success-400">+$320 this month</span>
             </div>
           </CardContent>
         </Card>
