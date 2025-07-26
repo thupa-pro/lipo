@@ -41,7 +41,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-background via-ai-50 to-primary-50 dark:from-background dark:via-ai-900/10 dark:to-primary-900/10 overflow-hidden">
       {/* Hero Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -51,18 +51,18 @@ export function HeroSection() {
           className="object-cover opacity-20"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/80 via-blue-50/80 to-indigo-100/80 dark:from-slate-950/90 dark:via-blue-950/90 dark:to-indigo-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-ai-50/80 to-primary-50/80 dark:from-background/95 dark:via-ai-900/20 dark:to-primary-900/20" />
       </div>
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden z-10">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-ai/20 to-primary/20 rounded-full blur-3xl animate-float" />
         <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl animate-float"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-trust/20 to-ai/20 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}
         />
         <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-purple-400/10 to-pink-600/10 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary/10 to-premium/10 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}
         />
       </div>
