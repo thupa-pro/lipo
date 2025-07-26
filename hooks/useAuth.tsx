@@ -33,12 +33,19 @@ export function useAuth() {
 
       if (response.ok) {
         const userData = await response.json();
-        setUser(userData.user);
+        // Handle direct user object or nested user object
+        setUser(userData.user || userData);
+      } else if (response.status === 401) {
+        // Normal unauthenticated state - no error logging needed
+        setUser(null);
       } else {
         setUser(null);
       }
     } catch (error) {
-      console.error('Failed to fetch user:', error);
+      // Only log actual errors, not network issues or expected auth failures
+      if (!(error instanceof TypeError && error.message.includes('fetch'))) {
+        console.error('Failed to fetch user:', error);
+      }
       setUser(null);
     } finally {
       setIsLoading(false);
