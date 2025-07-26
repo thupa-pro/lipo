@@ -132,13 +132,13 @@ export default function UserManagementPage() {
   const getUserStatusColor = (status: User["status"]) => {
     switch (status) {
       case "active":
-        return "bg-green-100 text-green-700"
+        return "bg-success/10 text-success border-success/20"
       case "suspended":
-        return "bg-red-100 text-red-700"
+        return "bg-destructive/10 text-destructive border-destructive/20"
       case "pending":
-        return "bg-yellow-100 text-yellow-700"
+        return "bg-warning/10 text-warning border-warning/20"
       default:
-        return "bg-gray-100 text-gray-700"
+        return "bg-muted text-muted-foreground border-border"
     }
   }
 
@@ -171,12 +171,12 @@ export default function UserManagementPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-background via-ai-50/30 to-primary-50/30 dark:from-background dark:via-ai-900/10 dark:to-primary-900/10 py-8 px-4">
       <div className="container mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <Users className="w-9 h-9 text-blue-600" />
+            <Users className="w-9 h-9 text-ai" />
             User Management
           </h1>
           <Button variant="outline" asChild>
@@ -193,7 +193,7 @@ export default function UserManagementPage() {
 
         {/* User Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-blue-50 dark:bg-blue-950/20">
+          <Card variant="glass" className="interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Total Users</CardTitle>
