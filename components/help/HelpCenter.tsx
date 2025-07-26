@@ -598,7 +598,7 @@ export default function HelpCenter() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
-                    <MessageSquare className="w-5 h-5 text-blue-600" />
+                    <MessageSquare className="w-5 h-5 text-ai-600" />
                     <div>
                       <h4 className="font-medium">Live Chat</h4>
                       <p className="text-sm text-muted-foreground">Average response: 2 minutes</p>
