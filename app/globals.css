@@ -466,7 +466,7 @@
 
   /* Text Effects */
   .text-ai-gradient {
-    @apply bg-gradient-to-r from-ai-600 via-ai-500 to-ai-700 bg-clip-text text-transparent font-semibold;
+    @apply bg-gradient-to-r from-primary-600 via-primary-500 to-primary-700 bg-clip-text text-transparent font-semibold;
   }
 
   .text-trust-gradient {
