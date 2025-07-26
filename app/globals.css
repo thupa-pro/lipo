@@ -412,6 +412,34 @@
   .typewriter-text-glow:hover {
     text-shadow: 0 0 15px hsl(var(--ai-primary) / 0.5);
   }
+
+  /* Premium floating animation for background elements */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(1deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+    75% { transform: translateY(-15px) rotate(-1deg); }
+  }
+
+  /* Premium glow pulse for typewriter background */
+  .typewriter-glow-bg {
+    animation: typewriter-bg-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes typewriter-bg-glow {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(1.05);
+    }
+  }
 }
 
 /* Reduced Motion Support */
