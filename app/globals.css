@@ -389,7 +389,7 @@
   }
 
   .card-glass-ai {
-    @apply bg-gradient-to-br from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 border border-primary-200/50 dark:border-primary-800/50 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+    @apply bg-gradient-to-br from-ai-50 to-ai-100 dark:from-ai-950 dark:to-ai-900 border border-ai-200 dark:border-ai-800 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
   }
 
   .card-glass-trust {
@@ -402,7 +402,7 @@
 
   /* Enhanced Input Field Variants */
   .input-ai {
-    @apply bg-gradient-to-r from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 border border-primary-200/50 dark:border-primary-800/50 focus:border-primary-500 focus:ring-primary-500/20 focus:shadow-lg backdrop-blur-md transition-all duration-200;
+    @apply bg-gradient-to-r from-ai-50 to-ai-100 dark:from-ai-950 dark:to-ai-900 border border-ai-200 dark:border-ai-800 focus:border-ai-500 focus:ring-ai-500 focus:shadow-lg backdrop-blur-md transition-all duration-200;
   }
 
   .input-trust {
@@ -415,7 +415,7 @@
 
   /* Loading States */
   .skeleton-ai {
-    @apply bg-gradient-to-r from-primary-100 via-primary-200 to-primary-100 dark:from-primary-900/20 dark:via-primary-800/30 dark:to-primary-900/20 animate-pulse rounded;
+    @apply bg-gradient-to-r from-ai-100 via-ai-200 to-ai-100 dark:from-ai-900 dark:via-ai-800 dark:to-ai-900 animate-pulse rounded;
   }
 
   .skeleton-glass {
@@ -466,7 +466,7 @@
 
   /* Text Effects */
   .text-ai-gradient {
-    @apply bg-gradient-to-r from-primary-600 via-primary-500 to-primary-700 bg-clip-text text-transparent font-semibold;
+    @apply bg-gradient-to-r from-ai-600 via-ai-500 to-ai-700 bg-clip-text text-transparent font-semibold;
   }
 
   .text-trust-gradient {
@@ -532,7 +532,7 @@
 
   /* Backdrop Effects */
   .backdrop-ai {
-    @apply backdrop-blur-md bg-gradient-to-br from-primary-50/20 to-primary-100/10 dark:from-primary-950/10 dark:to-primary-900/5;
+    @apply backdrop-blur-md bg-gradient-to-br from-ai-50 to-ai-100 dark:from-ai-950 dark:to-ai-900;
   }
 
   .backdrop-trust {
@@ -703,7 +703,7 @@
 
   /* Enhanced Gradient Utilities */
   .bg-gradient-ai {
-    @apply bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-950 dark:to-primary-900;
+    @apply bg-gradient-to-br from-ai-50 to-ai-100 dark:from-ai-950 dark:to-ai-900;
   }
 
   .bg-gradient-trust {
