@@ -156,12 +156,12 @@ export default function ContentModerationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-8 px-4">
+    <div className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <Shield className="w-9 h-9 text-purple-600" />
+            <Shield className="w-9 h-9 text-trust-600" />
             Content & Moderation
           </h1>
           <Button variant="outline" asChild>
@@ -178,7 +178,7 @@ export default function ContentModerationPage() {
 
         {/* Moderation Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-red-50 dark:bg-red-950/20">
+          <Card className="card-glass-ai interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Pending Reports</CardTitle>
@@ -190,7 +190,7 @@ export default function ContentModerationPage() {
               <Flag className="w-12 h-12 text-red-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-yellow-50 dark:bg-yellow-950/20">
+          <Card className="card-glass-premium interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Reviewed Content</CardTitle>
@@ -202,7 +202,7 @@ export default function ContentModerationPage() {
               <Eye className="w-12 h-12 text-yellow-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-green-50 dark:bg-green-950/20">
+          <Card className="card-glass-success interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Action Taken</CardTitle>
@@ -217,7 +217,7 @@ export default function ContentModerationPage() {
         </div>
 
         {/* Reported Content List and Filters */}
-        <Card className="shadow-lg dark:bg-card">
+        <Card className="card-glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
               <Flag className="w-6 h-6 text-primary" />
@@ -270,7 +270,7 @@ export default function ContentModerationPage() {
                 </div>
               ) : (
                 filteredContent.map((item) => (
-                  <Card key={item.id} className="border-l-4 border-l-purple-500 shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={item.id} className="card-glass-trust border-l-4 border-l-trust-500 interactive-hover">
                     <CardContent className="p-4 flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-2">
@@ -313,9 +313,9 @@ export default function ContentModerationPage() {
         </Card>
 
         {/* Footer CTA */}
-        <Card className="mt-10 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-950/30 dark:to-pink-950/30 shadow-xl border-none">
+        <Card className="card-glass-premium mt-10">
           <CardContent className="p-8 text-center">
-            <h3 className="text-3xl font-bold mb-3 text-purple-800 dark:text-purple-200">
+            <h3 className="text-3xl font-bold mb-3 text-trust-gradient">
               Maintain a Safe and Trustworthy Platform
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
