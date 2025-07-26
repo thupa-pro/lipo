@@ -12,7 +12,7 @@ import {
   FileText,
   ExternalLink,
   ThumbsUp,
-  ThumbsDown
+  ThumbsDown,
   User,
   Tag,
   Filter,
@@ -21,14 +21,14 @@ import {
   Download,
   Share2,
   Bookmark,
-  Copy
+  Copy,
   AlertCircle,
   Info,
   Lightbulb,
   Code,
   Terminal,
   Globe,
-  Shield
+  Shield,
   Settings,
   Users,
   CreditCard,
