@@ -368,19 +368,19 @@
 @layer components {
   /* Enhanced Button Styles */
   .btn-ai-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-primary-500/25 transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-primary-500/25 transition-all duration-300 rounded-lg px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-ai-secondary {
-    @apply bg-gradient-to-r from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 text-primary-700 dark:text-primary-300 border border-primary-200/50 dark:border-primary-800/50 hover:shadow-lg transition-all duration-200 rounded-button px-6 py-2.5 font-medium backdrop-blur-md;
+    @apply bg-gradient-to-r from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 text-primary-700 dark:text-primary-300 border border-primary-200/50 dark:border-primary-800/50 hover:shadow-lg transition-all duration-200 rounded-lg px-6 py-2.5 font-medium backdrop-blur-md;
   }
 
   .btn-trust {
-    @apply bg-gradient-to-r from-trust-500 to-trust-600 text-white shadow-lg hover:shadow-trust-500/25 transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-trust-500 to-trust-600 text-white shadow-lg hover:shadow-trust-500/25 transition-all duration-300 rounded-lg px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-premium {
-    @apply bg-gradient-to-r from-premium-400 to-premium-500 text-white shadow-lg hover:shadow-premium-500/25 transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-premium-400 to-premium-500 text-white shadow-lg hover:shadow-premium-500/25 transition-all duration-300 rounded-lg px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   /* Enhanced Glass Card Variants */
@@ -453,7 +453,7 @@
 
   /* Neural UI Elements */
   .neural-button {
-    @apply neural-raised hover:neural-subtle active:neural-inset transition-all duration-200 rounded-button px-6 py-2.5 font-medium;
+    @apply neural-raised hover:neural-subtle active:neural-inset transition-all duration-200 rounded-lg px-6 py-2.5 font-medium;
   }
 
   .neural-card {
