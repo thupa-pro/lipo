@@ -53,7 +53,7 @@ const categories = [
     icon: Heart,
     name: "Health & Wellness",
     count: "750+ providers",
-    gradient: "from-pink-500 to-rose-500",
+    gradient: "from-premium to-destructive",
     description: "Fitness, therapy, nutrition",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Faa64b10a73474c169cc7fb3fc239e3db?alt=media&token=f032bf2e-d00d-4795-9e44-7fd13eee8daa&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
@@ -61,7 +61,7 @@ const categories = [
     icon: Camera,
     name: "Creative Services",
     count: "650+ providers",
-    gradient: "from-indigo-500 to-purple-500",
+    gradient: "from-ai to-primary",
     description: "Photography, design, events",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6933a12df7534198b49b37c4cae71b5c?alt=media&token=13404641-8e22-40b1-9db5-c9e80c311472&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
@@ -69,7 +69,7 @@ const categories = [
     icon: Scissors,
     name: "Beauty & Personal",
     count: "550+ providers",
-    gradient: "from-yellow-500 to-orange-500",
+    gradient: "from-premium to-warning",
     description: "Hair, makeup, spa services",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fee83a8904a0d4a6d97fa663f79580e9d?alt=media&token=ce032fe6-8214-4b5b-8b63-c2ccf20d9501&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
@@ -77,7 +77,7 @@ const categories = [
     icon: Paintbrush,
     name: "Art & Design",
     count: "450+ providers",
-    gradient: "from-teal-500 to-cyan-500",
+    gradient: "from-trust to-ai",
     description: "Interior design, art, crafts",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F44e95d003c2e440d8442038d194fd292?alt=media&token=7d8f7b65-9156-4b58-92e4-be0233254eba&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
