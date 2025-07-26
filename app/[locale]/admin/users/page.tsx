@@ -39,7 +39,7 @@ export default function AdminUsersPage() {
       value: "186K",
       change: "+8.2%",
       icon: UserCheck,
-      color: "from-emerald-500 to-teal-600",
+      color: "from-trust-500 to-success-600",
     },
     {
       title: "New This Week",
