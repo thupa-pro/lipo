@@ -163,12 +163,12 @@ export function PaymentAnalytics({
             onClick={() => setRealtimeEnabled(!realtimeEnabled)}
             className={cn(
               realtimeEnabled
-                ? "text-emerald-600 border-emerald-200"
-                : "text-gray-400",
+                ? "text-success border-success/20"
+                : "text-muted-foreground",
             )}
           >
             {realtimeEnabled && (
-              <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse" />
+              <div className="w-2 h-2 bg-success rounded-full mr-2 animate-pulse" />
             )}
             Live
           </Button>
@@ -193,11 +193,11 @@ export function PaymentAnalytics({
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ai/10 to-primary/10" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-2">
-              <DollarSign className="w-8 h-8 text-blue-600" />
-              <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300">
+              <DollarSign className="w-8 h-8 text-ai" />
+              <Badge className="bg-ai/10 text-ai border-ai/20">
                 {timeframe}
               </Badge>
             </div>
@@ -372,7 +372,7 @@ export function PaymentAnalytics({
 
             <TabsContent value="performance" className="space-y-6 mt-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center p-4 rounded-lg bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20">
+                <div className="text-center p-4 rounded-lg bg-gradient-to-br from-success/10 to-trust/10">
                   <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-emerald-500 flex items-center justify-center">
                     <Zap className="w-6 h-6 text-white" />
                   </div>
