@@ -170,12 +170,12 @@ export default function GrowthAnalyticsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-8 px-4">
+    <div className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <BarChart3 className="w-9 h-9 text-green-600" />
+            <BarChart3 className="w-9 h-9 text-success-600" />
             Growth & Analytics
           </h1>
           <Button variant="outline" asChild>
@@ -193,7 +193,7 @@ export default function GrowthAnalyticsPage() {
         {/* Key Growth Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {growthMetrics.map((metric, index) => (
-            <Card key={index} className="shadow-lg hover:shadow-xl transition-all duration-300 bg-blue-50 dark:bg-blue-950/20">
+            <Card key={index} className="card-glass-ai interactive-hover">
               <CardContent className="p-6 flex items-center justify-between">
                 <div>
                   <CardTitle className="text-sm font-medium text-muted-foreground">{metric.name}</CardTitle>
@@ -214,7 +214,7 @@ export default function GrowthAnalyticsPage() {
 
         {/* User Growth Chart & A/B Test Summary */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Users className="w-6 h-6 text-primary" />
@@ -250,7 +250,7 @@ export default function GrowthAnalyticsPage() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <FlaskConical className="w-6 h-6 text-primary" />
@@ -261,7 +261,7 @@ export default function GrowthAnalyticsPage() {
             <CardContent>
               <div className="space-y-4">
                 {abTestSummaries.map((test) => (
-                  <Card key={test.id} className="shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={test.id} className="card-glass-ai interactive-hover">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold text-lg">{test.name}</h3>
@@ -288,7 +288,7 @@ export default function GrowthAnalyticsPage() {
 
         {/* Marketing Campaign Performance & Key Insights */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <DollarSign className="w-6 h-6 text-primary" />
@@ -299,7 +299,7 @@ export default function GrowthAnalyticsPage() {
             <CardContent>
               <div className="space-y-4">
                 {marketingCampaigns.map((campaign) => (
-                  <Card key={campaign.id} className="shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={campaign.id} className="card-glass-premium interactive-hover">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold text-lg">{campaign.name}</h3>
@@ -321,7 +321,7 @@ export default function GrowthAnalyticsPage() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Lightbulb className="w-6 h-6 text-primary" />
@@ -364,9 +364,9 @@ export default function GrowthAnalyticsPage() {
         </div>
 
         {/* Footer CTA */}
-        <Card className="mt-10 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-950/30 dark:to-blue-950/30 shadow-xl border-none">
+        <Card className="card-glass-success mt-10">
           <CardContent className="p-8 text-center">
-            <h3 className="text-3xl font-bold mb-3 text-green-800 dark:text-green-200">
+            <h3 className="text-3xl font-bold mb-3 text-success-gradient">
               Drive Continuous Growth and Optimization
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">

@@ -43,7 +43,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-background via-ai-50 to-primary-50 dark:from-background dark:via-ai-900/10 dark:to-primary-900/10 overflow-hidden">
+    <section className="relative min-h-screen bg-background overflow-hidden">
       {/* Hero Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -79,9 +79,9 @@ export function HeroSection() {
             className={`transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
           >
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 bg-glass border border-glass-border backdrop-blur-glass rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down shadow-glass">
+            <div className="inline-flex items-center gap-2 card-glass rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down">
               <div className="flex items-center gap-1">
-                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-premium" />
+                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" />
                 <span className="text-xs lg:text-sm font-semibold text-ai-gradient">
                   Trusted by 50,000+ Users
                 </span>
@@ -91,7 +91,7 @@ export function HeroSection() {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    className="w-3 h-3 lg:w-4 lg:h-4 fill-premium text-premium"
+                    className="w-3 h-3 lg:w-4 lg:h-4 fill-amber-500 text-amber-500"
                   />
                 ))}
               </div>
@@ -125,7 +125,7 @@ export function HeroSection() {
               className="max-w-4xl mb-8 lg:mb-12 animate-scale-in"
               style={{ animationDelay: "0.3s" }}
             >
-              <div className="bg-glass border border-glass-border backdrop-blur-glass rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-glass-lg">
+              <div className="card-glass rounded-xl lg:rounded-2xl p-2 lg:p-3">
                 <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
                   <div className="relative flex-1">
                     <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
@@ -133,7 +133,7 @@ export function HeroSection() {
                       placeholder="Search premium services..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 input-glass text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <div className="relative flex-1">
@@ -142,13 +142,13 @@ export function HeroSection() {
                       placeholder="Enter your location"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 input-glass text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <Button
                     size="lg"
                     onClick={handleSearch}
-                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 bg-gradient-ai hover:scale-105 w-full lg:w-auto text-sm lg:text-base"
+                    className="btn-ai-primary h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl w-full lg:w-auto text-sm lg:text-base"
                   >
                     <Search className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                     Find Services
@@ -166,7 +166,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
+                className="rounded-full hover:bg-primary-50 dark:hover:bg-primary-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
               >
                 <Link href="/request-service">
                   <Clock className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
@@ -177,7 +177,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="rounded-full hover:bg-purple-50 dark:hover:bg-purple-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
+                className="rounded-full hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
               >
                 <Link href="/become-provider">
                   <Users className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
@@ -187,7 +187,7 @@ export function HeroSection() {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full hover:bg-green-50 dark:hover:bg-green-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
+                className="rounded-full hover:bg-teal-50 dark:hover:bg-teal-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
                 onClick={() =>
                   toast({
                     title: "Premium Demo",

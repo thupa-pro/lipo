@@ -108,14 +108,14 @@ export function AIContextualModal({
                 {/* Close Button */}
                 <button
                   onClick={onClose}
-                  className="absolute right-4 top-4 z-10 p-1 rounded-lg hover:bg-glass transition-colors"
+                  className="absolute right-4 top-4 z-10 p-1 rounded-lg glass-medium hover:glass-strong transition-colors"
                 >
                   <X className="h-4 w-4" />
                 </button>
 
                 <CardHeader>
                   <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500">
+                    <div className="p-2 rounded-lg bg-gradient-ai">
                       <Sparkles className="h-5 w-5 text-white" />
                     </div>
                     <div className="flex-1">
@@ -173,7 +173,7 @@ export function AIContextualModal({
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <div 
-                                  className="h-1 w-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"
+                                  className="h-1 w-16 bg-gradient-to-r from-success-500 to-ai-500 rounded-full"
                                   style={{ width: `${suggestion.confidence * 64}px` }}
                                 />
                                 <span className="text-xs text-muted-foreground">
@@ -182,7 +182,7 @@ export function AIContextualModal({
                               </div>
 
                               {selectedSuggestion === suggestion.id && processingAction ? (
-                                <div className="flex items-center gap-2 text-xs text-green-600">
+                                <div className="flex items-center gap-2 text-xs text-success-600">
                                   <Check className="h-3 w-3" />
                                   Processing...
                                 </div>

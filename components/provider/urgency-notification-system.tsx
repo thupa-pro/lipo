@@ -168,11 +168,11 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Notifications</p>
                 <p className="text-2xl font-bold">{stats.totalNotifications}</p>
               </div>
-              <Bell className="w-8 h-8 text-blue-500" />
+              <Bell className="w-8 h-8 text-ai-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
-              <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
-              <span className="text-green-600 dark:text-green-400">+12 this week</span>
+              <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
+              <span className="text-success-600 dark:text-success-400">+12 this week</span>
             </div>
           </CardContent>
         </Card>
@@ -184,11 +184,11 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Response Rate</p>
                 <p className="text-2xl font-bold">{stats.responseRate}%</p>
               </div>
-              <CheckCircle className="w-8 h-8 text-green-500" />
+              <CheckCircle className="w-8 h-8 text-success-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
-              <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
-              <span className="text-green-600 dark:text-green-400">+5% vs avg</span>
+              <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
+              <span className="text-success-600 dark:text-success-400">+5% vs avg</span>
             </div>
           </CardContent>
         </Card>
@@ -203,8 +203,8 @@ export default function UrgencyNotificationSystem() {
               <Clock className="w-8 h-8 text-orange-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
-              <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
-              <span className="text-green-600 dark:text-green-400">2x faster</span>
+              <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
+              <span className="text-success-600 dark:text-success-400">2x faster</span>
             </div>
           </CardContent>
         </Card>
@@ -216,11 +216,11 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Earnings</p>
                 <p className="text-2xl font-bold">${stats.earnings}</p>
               </div>
-              <DollarSign className="w-8 h-8 text-green-500" />
+              <DollarSign className="w-8 h-8 text-success-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
-              <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
-              <span className="text-green-600 dark:text-green-400">+$320 this month</span>
+              <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
+              <span className="text-success-600 dark:text-success-400">+$320 this month</span>
             </div>
           </CardContent>
         </Card>

@@ -194,12 +194,12 @@ export default function FinancialOverviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-success-50/30 to-ai-50/30 dark:from-background dark:via-success-900/10 dark:to-ai-900/10 py-8 px-4">
+    <div className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <DollarSign className="w-9 h-9 text-success" />
+            <DollarSign className="w-9 h-9 text-success-600" />
             Financial Overview
           </h1>
           <Button variant="outline" asChild>
@@ -216,7 +216,7 @@ export default function FinancialOverviewPage() {
 
         {/* Key Financial Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card variant="glass" className="interactive-hover">
+          <Card className="card-glass-success interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Total Revenue (YTD)</CardTitle>
@@ -231,7 +231,7 @@ export default function FinancialOverviewPage() {
               <DollarSign className="w-12 h-12 text-green-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-blue-50 dark:bg-blue-950/20">
+          <Card className="card-glass-ai interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Net Profit (YTD)</CardTitle>
@@ -243,7 +243,7 @@ export default function FinancialOverviewPage() {
               <BarChart3 className="w-12 h-12 text-blue-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-yellow-50 dark:bg-yellow-950/20">
+          <Card className="card-glass-premium interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Payouts Due</CardTitle>
@@ -257,7 +257,7 @@ export default function FinancialOverviewPage() {
               <Wallet className="w-12 h-12 text-yellow-600 opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-purple-50 dark:bg-purple-950/20">
+          <Card className="card-glass-trust interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Avg. Transaction Fee</CardTitle>
@@ -273,7 +273,7 @@ export default function FinancialOverviewPage() {
 
         {/* Revenue Chart & Payouts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <BarChart3 className="w-6 h-6 text-primary" />
@@ -309,7 +309,7 @@ export default function FinancialOverviewPage() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg dark:bg-card">
+          <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Wallet className="w-6 h-6 text-primary" />
@@ -357,7 +357,7 @@ export default function FinancialOverviewPage() {
         </div>
 
         {/* Transaction History */}
-        <Card className="shadow-lg dark:bg-card">
+        <Card className="card-glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
               <Receipt className="w-6 h-6 text-primary" />
@@ -388,7 +388,7 @@ export default function FinancialOverviewPage() {
                 </div>
               ) : (
                 filteredTransactions.map((txn) => (
-                  <Card key={txn.id} className="border-l-4 border-l-green-500 shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={txn.id} className="card-glass-success border-l-4 border-l-success-500 interactive-hover">
                     <CardContent className="p-4 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3 flex-1">
                         {getTransactionIcon(txn.type)}
@@ -429,9 +429,9 @@ export default function FinancialOverviewPage() {
         </Card>
 
         {/* Footer CTA */}
-        <Card className="mt-10 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-950/30 dark:to-blue-950/30 shadow-xl border-none">
+        <Card className="card-glass-success mt-10">
           <CardContent className="p-8 text-center">
-            <h3 className="text-3xl font-bold mb-3 text-green-800 dark:text-green-200">
+            <h3 className="text-3xl font-bold mb-3 text-success-gradient">
               Gain Full Financial Clarity
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">

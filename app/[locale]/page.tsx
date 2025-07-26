@@ -7,15 +7,15 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 // Import all enhanced section components
-import { HeroSection } from "../components/hero-section";
-import { CategoriesSection } from "../components/categories-section";
-import ProvidersSection from "../components/providers-section";
-import { StatsSection } from "../components/stats-section";
-import TestimonialsSection from "../components/testimonials-section";
-import { MediaShowcase } from "../components/media-showcase";
-import { EnhancedFeatureGallery } from "../components/enhanced-feature-gallery";
-import { EnhancedProviderShowcase } from "../components/enhanced-provider-showcase";
-import CTASection from "../components/cta-section";
+import { HeroSection } from "@/app/components/hero-section";
+import { CategoriesSection } from "@/app/components/categories-section";
+import ProvidersSection from "@/app/components/providers-section";
+import { StatsSection } from "@/app/components/stats-section";
+import TestimonialsSection from "@/app/components/testimonials-section";
+import { MediaShowcase } from "@/app/components/media-showcase";
+import { EnhancedFeatureGallery } from "@/app/components/enhanced-feature-gallery";
+import { EnhancedProviderShowcase } from "@/app/components/enhanced-provider-showcase";
+import CTASection from "@/app/components/cta-section";
 
 export default function HomePage() {
   const router = useRouter();
@@ -31,18 +31,18 @@ export default function HomePage() {
   // Loading state with enhanced design
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-ai-50 via-background to-primary-50 dark:from-background dark:via-background dark:to-background flex items-center justify-center" suppressHydrationWarning>
-        <div className="text-center">
-          <div className="w-20 h-20 rounded-3xl bg-gradient-ai flex items-center justify-center mx-auto mb-6 shadow-2xl animate-ai-pulse">
+      <div className="min-h-screen bg-background flex items-center justify-center backdrop-ai" suppressHydrationWarning>
+        <div className="card-glass-ai text-center p-8 max-w-sm mx-4">
+          <div className="w-20 h-20 rounded-3xl bg-gradient-to-r from-primary-500 to-primary-600 flex items-center justify-center mx-auto mb-6 shadow-lg animate-ai-pulse">
             <Sparkles className="w-10 h-10 text-white" />
           </div>
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold text-foreground">Loading Loconomy...</h2>
+            <h2 className="text-2xl font-bold text-ai-gradient">Loading Loconomy...</h2>
             <p className="text-muted-foreground">Preparing your elite service experience</p>
             <div className="flex items-center justify-center gap-1 mt-4">
               <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-ai rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-              <div className="w-2 h-2 bg-trust rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+              <div className="w-2 h-2 bg-primary rounded-full animate-bounce stagger-1"></div>
+              <div className="w-2 h-2 bg-primary rounded-full animate-bounce stagger-2"></div>
             </div>
           </div>
         </div>

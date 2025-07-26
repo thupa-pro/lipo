@@ -14,7 +14,7 @@ import {
   Shield,
   Link
 } from "lucide-react";
-importfrom "next/link";
+import Link from "next/link";
 import { UserRole } from "@/lib/rbac/types";
 import { createClient } from "@/lib/supabase/client";
 
@@ -72,7 +72,7 @@ export function ClientRoleGate({
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[200px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-ai-600"></div>
       </div>
     );
   }
@@ -84,10 +84,10 @@ export function ClientRoleGate({
         fallback || (
           <div className="flex items-center justify-center min-h-[400px] p-8">
             <div className="text-center max-w-md">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-ai-500 to-trust-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Lock className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
                 Authentication Required
               </h2>
               <p className="text-slate-600 dark:text-gray-300 mb-6">

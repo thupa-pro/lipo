@@ -5,7 +5,7 @@
  * Automatically selects the appropriate logo variant based on theme, context, and use case
  */
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/components/providers/ThemeProvider';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { 
@@ -35,7 +35,7 @@ export function Logo({
   loading = 'lazy',
   ...props
 }: LogoProps) {
-  const { theme: systemTheme, resolvedTheme } = useTheme();
+  const { theme: currentTheme, resolvedTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
@@ -44,7 +44,7 @@ export function Logo({
   }, []);
 
   // Determine the effective theme
-  const effectiveTheme = theme || resolvedTheme || systemTheme || ThemeMode.LIGHT;
+  const effectiveTheme = theme || currentTheme || resolvedTheme || ThemeMode.LIGHT;
   
   // Get the appropriate logo variant
   const logoVariant = getLogoVariant(effectiveTheme, context, variant);

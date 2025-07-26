@@ -29,7 +29,7 @@ export default function BrowseFilters({
 }: BrowseFiltersProps) {
   return (
     <div className="lg:w-80">
-      <Card className="rounded-xl shadow-sm dark:bg-card dark:border-gray-800">
+      <Card className="card-glass">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-lg">
             <SlidersHorizontal className="w-5 h-5 text-primary" />
@@ -41,10 +41,10 @@ export default function BrowseFilters({
           <div>
             <label className="text-sm font-medium mb-2 block text-foreground">Category</label>
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="rounded-md shadow-sm dark:bg-input transition-colors">
+              <SelectTrigger className="rounded-md input-glass dark:bg-input transition-colors">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-md shadow-lg dark:bg-popover">
+              <SelectContent className="rounded-md shadow-glass dark:bg-popover">
                 {categories.map((cat) => (
                   <SelectItem key={cat.value} value={cat.value} className="transition-colors hover:bg-accent hover:text-accent-foreground">
                     {cat.label}
@@ -73,10 +73,10 @@ export default function BrowseFilters({
           <div>
             <label className="text-sm font-medium mb-2 block text-foreground">Sort By</label>
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="rounded-md shadow-sm dark:bg-input transition-colors">
+              <SelectTrigger className="rounded-md input-glass dark:bg-input transition-colors">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-md shadow-lg dark:bg-popover">
+              <SelectContent className="rounded-md shadow-glass dark:bg-popover">
                 {sortOptions.map((option) => (
                   <SelectItem key={option.value} value={option.value} className="transition-colors hover:bg-accent hover:text-accent-foreground">
                     {option.label}

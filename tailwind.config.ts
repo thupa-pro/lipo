@@ -85,8 +85,15 @@ const config: Config = {
           foreground: "oklch(98% 0 0)",
           50: "oklch(96% 0.02 270)",
           100: "oklch(92% 0.05 270)",
+          200: "oklch(86% 0.1 270)",
+          300: "oklch(78% 0.15 270)",
+          400: "oklch(70% 0.18 270)",
           500: "oklch(65% 0.2 270)",
+          600: "oklch(58% 0.18 270)",
+          700: "oklch(50% 0.15 270)",
+          800: "oklch(40% 0.12 270)",
           900: "oklch(25% 0.08 270)",
+          950: "oklch(15% 0.04 270)",
         },
         
         // Trust & Local Context
@@ -95,7 +102,13 @@ const config: Config = {
           foreground: "oklch(98% 0 0)",
           50: "oklch(96% 0.02 240)",
           100: "oklch(92% 0.04 240)",
+          200: "oklch(86% 0.08 240)",
+          300: "oklch(78% 0.12 240)",
+          400: "oklch(74% 0.14 240)",
           500: "oklch(70% 0.15 240)",
+          600: "oklch(64% 0.14 240)",
+          700: "oklch(56% 0.13 240)",
+          800: "oklch(44% 0.12 240)",
           900: "oklch(30% 0.12 240)",
         },
         
@@ -105,7 +118,13 @@ const config: Config = {
           foreground: "oklch(20% 0 0)",
           50: "oklch(96% 0.02 45)",
           100: "oklch(92% 0.04 45)",
-          500: "oklch(85% 0.12 45)",
+          200: "oklch(88% 0.06 45)",
+          300: "oklch(84% 0.08 45)",
+          400: "oklch(80% 0.10 45)",
+          500: "oklch(75% 0.12 45)",
+          600: "oklch(70% 0.14 45)",
+          700: "oklch(60% 0.12 45)",
+          800: "oklch(50% 0.10 45)",
           900: "oklch(35% 0.08 45)",
         },
 
@@ -115,7 +134,13 @@ const config: Config = {
           foreground: "oklch(98% 0 0)",
           50: "oklch(96% 0.02 142)",
           100: "oklch(92% 0.04 142)",
+          200: "oklch(88% 0.08 142)",
+          300: "oklch(82% 0.12 142)",
+          400: "oklch(76% 0.15 142)",
           500: "oklch(70% 0.17 142)",
+          600: "oklch(64% 0.16 142)",
+          700: "oklch(56% 0.15 142)",
+          800: "oklch(44% 0.14 142)",
           900: "oklch(30% 0.14 142)",
         },
 
@@ -407,6 +432,8 @@ const config: Config = {
         
         // AI-Native Animations
         "ai-pulse": "ai-pulse 2s ease-in-out infinite",
+        "ai-ping": "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "ai-bounce": "bounce 1s infinite",
         "ai-thinking": "ai-thinking 1.5s ease-in-out infinite",
         "ai-shimmer": "ai-shimmer 2s linear infinite",
         
