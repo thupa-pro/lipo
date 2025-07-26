@@ -21,7 +21,7 @@ const categories = [
     icon: Home,
     name: "Home Services",
     count: "2,400+ providers",
-    gradient: "from-blue-500 to-cyan-500",
+    gradient: "from-ai to-trust",
     description: "Cleaning, maintenance, repairs",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fb2459d5036794deb84d52bf82ca745cd?alt=media&token=4fdbb222-3123-42c6-841c-0c811ce9f2d7&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
@@ -29,7 +29,7 @@ const categories = [
     icon: Wrench,
     name: "Professional Work",
     count: "1,800+ providers",
-    gradient: "from-green-500 to-emerald-500",
+    gradient: "from-trust to-success",
     description: "Handyman, electrical, plumbing",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fc84ae154ac94479691e1046893001a2d?alt=media&token=c7099c88-9280-4da7-b35c-b5f58763194c&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
@@ -37,7 +37,7 @@ const categories = [
     icon: Car,
     name: "Auto & Transport",
     count: "1,200+ providers",
-    gradient: "from-red-500 to-rose-500",
+    gradient: "from-destructive to-warning",
     description: "Car wash, repairs, delivery",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6a812cf3fada40e8a56166bfb07c5a39?alt=media&token=d77ca34f-c367-436a-90ed-34fa2898ae6f&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
@@ -45,7 +45,7 @@ const categories = [
     icon: GraduationCap,
     name: "Education",
     count: "900+ providers",
-    gradient: "from-purple-500 to-violet-500",
+    gradient: "from-primary to-ai",
     description: "Tutoring, coaching, training",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F2d1b9717651f4661982da5e0f4f11d8c?alt=media&token=018784fd-f15a-4fd5-b3d0-39354815b3cb&apiKey=efd5169b47d04c9886e111b6074edfba"
   },
