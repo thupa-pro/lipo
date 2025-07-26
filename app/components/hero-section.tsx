@@ -125,7 +125,7 @@ export function HeroSection() {
               className="max-w-4xl mb-8 lg:mb-12 animate-scale-in"
               style={{ animationDelay: "0.3s" }}
             >
-              <div className="bg-glass border border-glass-border backdrop-blur-glass rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-glass-lg">
+              <div className="card-glass rounded-xl lg:rounded-2xl p-2 lg:p-3">
                 <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
                   <div className="relative flex-1">
                     <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
