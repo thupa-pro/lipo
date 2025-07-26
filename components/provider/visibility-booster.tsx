@@ -201,16 +201,16 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-lg font-semibold flex items-center">
-                        {option.id === "featured" && <Star className="w-5 h-5 mr-2 text-blue-600" />}
-                        {option.id === "spotlight" && <Eye className="w-5 h-5 mr-2 text-purple-600" />}
-                        {option.id === "premium" && <Crown className="w-5 h-5 mr-2 text-yellow-600" />}
+                        {option.id === "featured" && <Star className="w-5 h-5 mr-2 text-ai-600" />}
+                        {option.id === "spotlight" && <Eye className="w-5 h-5 mr-2 text-primary-600" />}
+                        {option.id === "premium" && <Crown className="w-5 h-5 mr-2 text-premium-600" />}
                         {option.name}
                       </h3>
-                      <p className="text-gray-600 text-sm mt-1">{option.description}</p>
+                      <p className="text-muted-foreground text-sm mt-1">{option.description}</p>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-green-600">${option.price}</div>
-                      <div className="text-xs text-gray-500">{option.duration}</div>
+                      <div className="text-2xl font-bold text-success-600">${option.price}</div>
+                      <div className="text-xs text-muted-foreground">{option.duration}</div>
                     </div>
                   </div>
 
@@ -219,17 +219,17 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
                       <h4 className="font-medium mb-2">Features:</h4>
                       <ul className="space-y-1">
                         {option.features.map((feature, index) => (
-                          <li key={index} className="text-sm text-gray-600 flex items-center">
-                            <Zap className="w-3 h-3 mr-2 text-green-500" />
+                          <li key={index} className="text-sm text-muted-foreground flex items-center">
+                            <Zap className="w-3 h-3 mr-2 text-success-500" />
                             {feature}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="bg-blue-50 p-3 rounded-lg">
-                      <div className="text-sm text-blue-700 mb-1">Expected Return:</div>
-                      <div className="font-medium text-blue-900">{option.roi}</div>
-                      <div className="text-xs text-blue-600 mt-2">ROI: {calculateROI(option).roiPercentage}%</div>
+                    <div className="bg-gradient-ai p-3 rounded-card">
+                      <div className="text-sm text-ai-700 dark:text-ai-300 mb-1">Expected Return:</div>
+                      <div className="font-medium text-ai-900 dark:text-ai-100">{option.roi}</div>
+                      <div className="text-xs text-ai-600 dark:text-ai-400 mt-2">ROI: {calculateROI(option).roiPercentage}%</div>
                     </div>
                   </div>
 
