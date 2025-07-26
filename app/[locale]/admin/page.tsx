@@ -147,27 +147,27 @@ export default function AdminDashboard() {
       <div className="relative z-10 container mx-auto px-6 py-24">
         {/* Hero Header */}
         <section className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-8 group hover:bg-blue-50 dark:hover:bg-white/10 transition-all duration-500">
+          <div className="card-glass-trust inline-flex items-center gap-2 px-4 py-2 mb-8 group interactive-hover">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+            <span className="text-sm font-medium text-trust-gradient">
               Admin Dashboard • Live System Monitoring
             </span>
-            <Shield className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+            <Shield className="w-4 h-4 text-trust-500" />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-none">
-            <span className="bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent">
+            <span className="text-gradient-ai">
               Platform
             </span>
             <br />
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="text-gradient-premium">
               Command Center
             </span>
           </h1>
 
           <p className="text-xl text-slate-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             Monitor and manage the Loconomy platform with
-            <span className="text-transparent bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-violet-400 dark:to-purple-400 bg-clip-text font-semibold">
+            <span className="text-trust-gradient font-semibold">
               {" "}
               real-time insights{" "}
             </span>
@@ -175,13 +175,13 @@ export default function AdminDashboard() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 dark:from-violet-600 dark:to-purple-600 dark:hover:from-violet-500 dark:hover:to-purple-500 text-white rounded-2xl px-8 py-3 font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/25 dark:hover:shadow-violet-500/25">
+            <Button className="btn-ai-primary px-8 py-3">
               <Eye className="w-4 h-4 mr-2" />
               View Reports
             </Button>
             <Button
               variant="outline"
-              className="rounded-2xl px-8 py-3 font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all"
+              className="btn-outline-ai px-8 py-3"
             >
               <Settings className="w-4 h-4 mr-2" />
               Settings
