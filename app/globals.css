@@ -461,7 +461,7 @@
   }
 
   .neural-input {
-    @apply neural-inset focus:neural-subtle transition-all duration-200 rounded-input px-3 py-2;
+    @apply neural-inset focus:neural-subtle transition-all duration-200 rounded-md px-3 py-2;
   }
 
   /* Text Effects */
