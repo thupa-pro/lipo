@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React, { Suspense } from 'react';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import './globals.minimal-test.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
