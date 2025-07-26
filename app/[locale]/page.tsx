@@ -31,18 +31,18 @@ export default function HomePage() {
   // Loading state with enhanced design
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center" suppressHydrationWarning>
+      <div className="min-h-screen bg-gradient-to-br from-ai-50 via-background to-primary-50 dark:from-background dark:via-background dark:to-background flex items-center justify-center" suppressHydrationWarning>
         <div className="text-center">
-          <div className="w-20 h-20 rounded-3xl bg-gradient-to-r from-violet-600 via-purple-600 to-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-2xl animate-pulse">
+          <div className="w-20 h-20 rounded-3xl bg-gradient-ai flex items-center justify-center mx-auto mb-6 shadow-2xl animate-ai-pulse">
             <Sparkles className="w-10 h-10 text-white" />
           </div>
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Loading Loconomy...</h2>
-            <p className="text-gray-600 dark:text-gray-400">Preparing your elite service experience</p>
+            <h2 className="text-2xl font-bold text-foreground">Loading Loconomy...</h2>
+            <p className="text-muted-foreground">Preparing your elite service experience</p>
             <div className="flex items-center justify-center gap-1 mt-4">
-              <div className="w-2 h-2 bg-violet-600 rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-              <div className="w-2 h-2 bg-emerald-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+              <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-ai rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+              <div className="w-2 h-2 bg-trust rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
             </div>
           </div>
         </div>
