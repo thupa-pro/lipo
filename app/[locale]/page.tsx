@@ -7,15 +7,15 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 // Import all enhanced section components
-import { HeroSection } from "../components/hero-section";
-import { CategoriesSection } from "../components/categories-section";
-import ProvidersSection from "../components/providers-section";
-import { StatsSection } from "../components/stats-section";
-import TestimonialsSection from "../components/testimonials-section";
-import { MediaShowcase } from "../components/media-showcase";
-import { EnhancedFeatureGallery } from "../components/enhanced-feature-gallery";
-import { EnhancedProviderShowcase } from "../components/enhanced-provider-showcase";
-import CTASection from "../components/cta-section";
+import { HeroSection } from "@/app/components/hero-section";
+import { CategoriesSection } from "@/app/components/categories-section";
+import ProvidersSection from "@/app/components/providers-section";
+import { StatsSection } from "@/app/components/stats-section";
+import TestimonialsSection from "@/app/components/testimonials-section";
+import { MediaShowcase } from "@/app/components/media-showcase";
+import { EnhancedFeatureGallery } from "@/app/components/enhanced-feature-gallery";
+import { EnhancedProviderShowcase } from "@/app/components/enhanced-provider-showcase";
+import CTASection from "@/app/components/cta-section";
 
 export default function HomePage() {
   const router = useRouter();
