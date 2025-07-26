@@ -5,7 +5,7 @@
  * Automatically selects the appropriate logo variant based on theme, context, and use case
  */
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/components/providers/ThemeProvider';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { 
