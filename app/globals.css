@@ -356,6 +356,62 @@
       opacity: 1;
     }
   }
+
+  /* Premium Typewriter Animations */
+  .typewriter-container {
+    min-height: 1.2em;
+    display: flex;
+    align-items: center;
+  }
+
+  .typewriter-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: linear-gradient(to bottom, hsl(var(--ai-primary)), hsl(var(--primary)));
+    margin-left: 2px;
+    animation: typewriter-blink 1.1s infinite;
+    border-radius: 1px;
+  }
+
+  .typewriter-cursor-gradient {
+    background: linear-gradient(45deg,
+      hsl(var(--ai-primary)),
+      hsl(var(--primary)),
+      hsl(var(--trust-primary))
+    );
+    background-size: 200% 200%;
+    animation: typewriter-blink 1.1s infinite, gradient-shift 3s ease-in-out infinite;
+  }
+
+  @keyframes typewriter-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes typewriter-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--ai-primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--ai-primary) / 0.6);
+    }
+  }
+
+  .typewriter-text-glow {
+    text-shadow: 0 0 10px hsl(var(--ai-primary) / 0.3);
+    transition: text-shadow 0.3s ease;
+  }
+
+  .typewriter-text-glow:hover {
+    text-shadow: 0 0 15px hsl(var(--ai-primary) / 0.5);
+  }
 }
 
 /* Reduced Motion Support */
