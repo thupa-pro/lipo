@@ -415,19 +415,19 @@
 
   /* Loading States */
   .skeleton-ai {
-    @apply bg-gradient-to-r from-primary-100 via-primary-200 to-primary-100 dark:from-primary-900/20 dark:via-primary-800/30 dark:to-primary-900/20 animate-skeleton rounded;
+    @apply bg-gradient-to-r from-primary-100 via-primary-200 to-primary-100 dark:from-primary-900/20 dark:via-primary-800/30 dark:to-primary-900/20 animate-pulse rounded;
   }
 
   .skeleton-glass {
-    @apply bg-gradient-to-r from-white/20 via-white/40 to-white/20 dark:from-white/5 dark:via-white/10 dark:to-white/5 animate-skeleton rounded backdrop-blur-sm;
+    @apply bg-gradient-to-r from-white/20 via-white/40 to-white/20 dark:from-white/5 dark:via-white/10 dark:to-white/5 animate-pulse rounded backdrop-blur-sm;
   }
 
   .skeleton-trust {
-    @apply bg-gradient-to-r from-trust-100 via-trust-200 to-trust-100 dark:from-trust-900/20 dark:via-trust-800/30 dark:to-trust-900/20 animate-skeleton rounded;
+    @apply bg-gradient-to-r from-trust-100 via-trust-200 to-trust-100 dark:from-trust-900/20 dark:via-trust-800/30 dark:to-trust-900/20 animate-pulse rounded;
   }
 
   .skeleton-premium {
-    @apply bg-gradient-to-r from-premium-100 via-premium-200 to-premium-100 dark:from-premium-900/20 dark:via-premium-800/30 dark:to-premium-900/20 animate-skeleton rounded;
+    @apply bg-gradient-to-r from-premium-100 via-premium-200 to-premium-100 dark:from-premium-900/20 dark:via-premium-800/30 dark:to-premium-900/20 animate-pulse rounded;
   }
 
   /* Interactive States */
