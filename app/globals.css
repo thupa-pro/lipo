@@ -376,11 +376,11 @@
   }
 
   .btn-trust {
-    @apply bg-gradient-to-r from-trust-500 to-trust-600 text-white shadow-glow-trust hover:shadow-glow-lg transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-trust-500 to-trust-600 text-white shadow-lg hover:shadow-trust-500/25 transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-premium {
-    @apply bg-gradient-to-r from-premium-400 to-premium-500 text-premium-foreground shadow-glow-premium hover:shadow-glow-lg transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-to-r from-premium-400 to-premium-500 text-white shadow-lg hover:shadow-premium-500/25 transition-all duration-300 rounded-button px-6 py-2.5 font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   /* Enhanced Glass Card Variants */
