@@ -50,7 +50,7 @@ export function TypewriterText({
     if (!hasStarted) return;
 
     const currentText = texts[currentIndex];
-    
+
     if (isWaiting) {
       const timer = setTimeout(() => {
         setIsWaiting(false);
@@ -75,7 +75,12 @@ export function TypewriterText({
       if (displayText.length < currentText.length) {
         const timer = setTimeout(() => {
           setDisplayText(currentText.slice(0, displayText.length + 1));
-        }, speed);
+
+          // Add subtle haptic feedback simulation (visual)
+          if (typeof window !== "undefined" && window.navigator?.vibrate) {
+            window.navigator.vibrate(1);
+          }
+        }, speed + Math.random() * 20 - 10); // Add slight variation for natural feel
         return () => clearTimeout(timer);
       } else {
         if (infinite || currentIndex < texts.length - 1) {
