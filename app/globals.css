@@ -402,11 +402,11 @@
 
   /* Enhanced Input Field Variants */
   .input-ai {
-    @apply bg-gradient-to-r from-ai-50/80 to-ai-100/60 dark:from-ai-950/40 dark:to-ai-900/20 border border-ai-200/50 dark:border-ai-800/50 focus:border-ai-500 focus:ring-ai-500/20 focus:shadow-glow-ai backdrop-blur-md transition-all duration-200;
+    @apply bg-gradient-to-r from-primary-50/80 to-primary-100/60 dark:from-primary-950/40 dark:to-primary-900/20 border border-primary-200/50 dark:border-primary-800/50 focus:border-primary-500 focus:ring-primary-500/20 focus:shadow-lg backdrop-blur-md transition-all duration-200;
   }
 
   .input-trust {
-    @apply bg-gradient-to-r from-trust-50/80 to-trust-100/60 dark:from-trust-950/40 dark:to-trust-900/20 border border-trust-200/50 dark:border-trust-800/50 focus:border-trust-500 focus:ring-trust-500/20 focus:shadow-glow-trust backdrop-blur-md transition-all duration-200;
+    @apply bg-gradient-to-r from-trust-50/80 to-trust-100/60 dark:from-trust-950/40 dark:to-trust-900/20 border border-trust-200/50 dark:border-trust-800/50 focus:border-trust-500 focus:ring-trust-500/20 focus:shadow-lg backdrop-blur-md transition-all duration-200;
   }
 
   .input-glass {
