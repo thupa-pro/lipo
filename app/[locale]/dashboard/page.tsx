@@ -70,8 +70,8 @@ export default function DashboardPage() {
                 change: "-15%",
               },
             ].map((stat) => (
-              <Card key={stat.label} className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
+              <Card key={stat.label} className="card-glass-ai relative overflow-hidden interactive-hover">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10" />
                 <CardContent className="relative p-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -81,7 +81,7 @@ export default function DashboardPage() {
                       <p className="text-2xl font-bold">{stat.value}</p>
                     </div>
                     <div className="flex flex-col items-end gap-1">
-                      <stat.icon className="w-5 h-5 text-primary" />
+                      <stat.icon className="w-5 h-5 text-primary-600" />
                       <Badge variant="secondary" className="text-xs">
                         {stat.change}
                       </Badge>
