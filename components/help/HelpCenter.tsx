@@ -397,7 +397,7 @@ export default function HelpCenter() {
           <div className="h-8 bg-muted rounded w-1/3"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-48 bg-muted rounded-lg"></div>
+              <div key={i} className="h-48 bg-muted rounded-card"></div>
             ))}
           </div>
         </div>
@@ -597,7 +597,7 @@ export default function HelpCenter() {
                   <CardTitle>Contact Support</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 border rounded-lg hover:bg-accent cursor-pointer">
+                  <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
                     <MessageSquare className="w-5 h-5 text-blue-600" />
                     <div>
                       <h4 className="font-medium">Live Chat</h4>
@@ -605,7 +605,7 @@ export default function HelpCenter() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 border rounded-lg hover:bg-accent cursor-pointer">
+                  <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
                     <Mail className="w-5 h-5 text-green-600" />
                     <div>
                       <h4 className="font-medium">Email Support</h4>
@@ -613,7 +613,7 @@ export default function HelpCenter() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 border rounded-lg hover:bg-accent cursor-pointer">
+                  <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
                     <Phone className="w-5 h-5 text-orange-600" />
                     <div>
                       <h4 className="font-medium">Phone Support</h4>
@@ -683,7 +683,7 @@ export default function HelpCenter() {
                 <CardContent>
                   <div className="space-y-4">
                     {tickets.map((ticket) => (
-                      <div key={ticket.id} className="border rounded-lg p-4">
+                      <div key={ticket.id} className="border rounded-card p-4">
                         <div className="flex items-start justify-between mb-3">
                           <div>
                             <h4 className="font-medium text-lg">{ticket.subject}</h4>
@@ -760,7 +760,7 @@ export default function HelpCenter() {
                     Our REST API uses JSON for requests and responses.
                   </p>
                   
-                  <div className="bg-muted p-4 rounded-lg">
+                  <div className="bg-muted p-4 rounded-card">
                     <h4 className="font-medium mb-2">Base URL</h4>
                     <code className="text-sm">https://api.loconomy.com/v1</code>
                   </div>
@@ -786,7 +786,7 @@ export default function HelpCenter() {
                   <CardTitle>Example Request</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                  <div className="bg-gray-900 text-green-400 p-4 rounded-card font-mono text-sm overflow-x-auto">
                     <div className="text-gray-400">// Get all services</div>
                     <div><span className="text-blue-400">curl</span> -X GET \</div>
                     <div className="ml-4">https://api.loconomy.com/v1/services \</div>
