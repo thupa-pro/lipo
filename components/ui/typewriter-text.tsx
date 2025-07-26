@@ -137,18 +137,19 @@ interface PremiumTypewriterProps {
 export function PremiumTypewriter({ className, startDelay = 500 }: PremiumTypewriterProps) {
   const [phase, setPhase] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [showSecondLine, setShowSecondLine] = useState(false);
 
   const phases = [
     {
       texts: ["Premium Local Services"],
-      className: "text-ai-gradient",
-      speed: 80,
-      pauseTime: 800,
+      className: "text-ai-gradient drop-shadow-lg",
+      speed: 85,
+      pauseTime: 600,
     },
     {
       texts: ["At Your Fingertips"],
-      className: "text-foreground",
-      speed: 85,
+      className: "text-foreground drop-shadow-md",
+      speed: 90,
       pauseTime: 1500,
     },
   ];
@@ -157,21 +158,31 @@ export function PremiumTypewriter({ className, startDelay = 500 }: PremiumTypewr
     if (phase < phases.length - 1) {
       setTimeout(() => {
         setPhase(phase + 1);
-      }, 300);
+        if (phase === 0) {
+          setShowSecondLine(true);
+        }
+      }, 400);
     } else {
       setIsComplete(true);
     }
   };
 
   return (
-    <div className={cn("space-y-2", className)}>
+    <div className={cn("space-y-1 lg:space-y-2", className)}>
       {phases.map((phaseConfig, index) => (
-        <div key={index} className="block">
+        <div
+          key={index}
+          className={cn(
+            "block transition-all duration-700 ease-out",
+            index === 1 && !showSecondLine && "opacity-0 transform translate-y-4"
+          )}
+        >
           {index <= phase && (
             <TypewriterText
               texts={phaseConfig.texts}
               className={cn(
                 "text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-tight",
+                "transition-all duration-300 ease-out hover:scale-[1.02] hover:drop-shadow-xl",
                 phaseConfig.className
               )}
               speed={phaseConfig.speed}
@@ -179,11 +190,23 @@ export function PremiumTypewriter({ className, startDelay = 500 }: PremiumTypewr
               startDelay={index === 0 ? startDelay : 0}
               infinite={false}
               onComplete={index === phase ? handlePhaseComplete : undefined}
-              cursorClassName="bg-gradient-to-b from-ai to-primary w-1 animate-pulse"
+              cursorClassName={cn(
+                "typewriter-cursor-gradient w-1 lg:w-1.5 animate-pulse shadow-lg",
+                index === 1 && "bg-gradient-to-b from-foreground via-primary to-ai"
+              )}
             />
           )}
         </div>
       ))}
+
+      {/* Subtle particle effect when complete */}
+      {isComplete && (
+        <div className="absolute -inset-4 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-1 h-1 bg-ai rounded-full animate-ping opacity-70" style={{ animationDelay: "0s" }} />
+          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full animate-ping opacity-60" style={{ animationDelay: "0.5s" }} />
+          <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-trust-primary rounded-full animate-ping opacity-50" style={{ animationDelay: "1s" }} />
+        </div>
+      )}
     </div>
   );
 }
