@@ -200,37 +200,37 @@ export default function UserManagementPage() {
                 <div className="text-4xl font-bold mt-2 text-blue-800 dark:text-blue-200">{mockUsers.length}</div>
                 <p className="text-xs text-muted-foreground mt-1">+50 new this month</p>
               </div>
-              <Users className="w-12 h-12 text-blue-600 opacity-30" />
+              <Users className="w-12 h-12 text-ai opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-green-50 dark:bg-green-950/20">
+          <Card variant="glass" className="interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Active Users</CardTitle>
-                <div className="text-4xl font-bold mt-2 text-green-800 dark:text-green-200">
+                <div className="text-4xl font-bold mt-2 text-success">
                   {mockUsers.filter((u) => u.status === "active").length}
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">85% engagement rate</p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600 opacity-30" />
+              <CheckCircle className="w-12 h-12 text-success opacity-30" />
             </CardContent>
           </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-yellow-50 dark:bg-yellow-950/20">
+          <Card variant="glass" className="interactive-hover">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
                 <CardTitle className="text-sm font-medium text-muted-foreground">Pending/Suspended</CardTitle>
-                <div className="text-4xl font-bold mt-2 text-yellow-800 dark:text-yellow-200">
+                <div className="text-4xl font-bold mt-2 text-warning">
                   {mockUsers.filter((u) => u.status === "pending" || u.status === "suspended").length}
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">Requires attention</p>
               </div>
-              <UserX className="w-12 h-12 text-yellow-600 opacity-30" />
+              <UserX className="w-12 h-12 text-warning opacity-30" />
             </CardContent>
           </Card>
         </div>
 
         {/* User List and Filters */}
-        <Card className="shadow-lg dark:bg-card">
+        <Card variant="glass" className="shadow-glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
               <Users className="w-6 h-6 text-primary" />
