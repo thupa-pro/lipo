@@ -71,7 +71,7 @@ export default function ProviderCard({
   };
 
   return (
-    <Card className="rounded-xl shadow-sm hover:shadow-lg transition-shadow cursor-pointer dark:bg-card dark:border-gray-800">
+    <Card variant="glass" className="interactive-hover cursor-pointer">
       <CardContent
         className={`p-4 flex ${viewMode === "list" ? "flex-row gap-4" : "flex-col"}`}
       >
