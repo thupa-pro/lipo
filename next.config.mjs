@@ -2,6 +2,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
+// Temporarily disable Sentry while fixing bundling issues
+const withSentry = (config) => config;
+
 // Security headers
 const securityHeaders = [
   {
