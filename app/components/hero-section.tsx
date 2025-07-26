@@ -148,7 +148,7 @@ export function HeroSection() {
                   <Button
                     size="lg"
                     onClick={handleSearch}
-                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 bg-gradient-ai hover:scale-105 w-full lg:w-auto text-sm lg:text-base"
+                    className="btn-ai-primary h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl w-full lg:w-auto text-sm lg:text-base"
                   >
                     <Search className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                     Find Services
