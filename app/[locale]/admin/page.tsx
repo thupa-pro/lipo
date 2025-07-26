@@ -36,7 +36,7 @@ export default function AdminDashboard() {
       change: "+12.5%",
       trend: "up",
       icon: Users,
-      color: "from-blue-500 to-cyan-600",
+      color: "from-primary-500 to-primary-600",
     },
     {
       title: "Active Providers",
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
       change: "+8.2%",
       trend: "up",
       icon: UserCheck,
-      color: "from-emerald-500 to-teal-600",
+      color: "from-teal-500 to-teal-600",
     },
     {
       title: "Monthly Revenue",
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
       change: "+15.3%",
       trend: "up",
       icon: DollarSign,
-      color: "from-purple-500 to-violet-600",
+      color: "from-primary-500 to-primary-600",
     },
     {
       title: "Service Requests",
@@ -60,7 +60,7 @@ export default function AdminDashboard() {
       change: "+22.1%",
       trend: "up",
       icon: Briefcase,
-      color: "from-pink-500 to-rose-600",
+      color: "from-amber-500 to-amber-600",
     },
   ];
 
