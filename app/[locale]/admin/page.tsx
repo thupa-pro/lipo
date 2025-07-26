@@ -36,7 +36,7 @@ export default function AdminDashboard() {
       change: "+12.5%",
       trend: "up",
       icon: Users,
-      color: "from-primary-500 to-primary-600",
+      color: "from-ai-500 to-ai-600",
     },
     {
       title: "Active Providers",
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
       change: "+8.2%",
       trend: "up",
       icon: UserCheck,
-      color: "from-teal-500 to-teal-600",
+      color: "from-trust-500 to-trust-600",
     },
     {
       title: "Monthly Revenue",
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
       change: "+15.3%",
       trend: "up",
       icon: DollarSign,
-      color: "from-primary-500 to-primary-600",
+      color: "from-premium-500 to-premium-600",
     },
     {
       title: "Service Requests",
@@ -60,7 +60,7 @@ export default function AdminDashboard() {
       change: "+22.1%",
       trend: "up",
       icon: Briefcase,
-      color: "from-amber-500 to-amber-600",
+      color: "from-success-500 to-success-600",
     },
   ];
 
@@ -129,20 +129,19 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden relative">
-      {/* Animated Background - Same as Homepage */}
+      {/* Animated Background - 2025 Design System */}
       <div className="absolute inset-0 backdrop-ai">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(139,92,246,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_40%_60%,rgba(16,185,129,0.08),transparent_50%)]" />
+        <div className="neural-grid opacity-20" />
+        <div className="floating-orbs" />
       </div>
 
-      {/* Floating Elements */}
+      {/* Floating Elements - Enhanced Design System */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-primary-400 rounded-full animate-ai-pulse opacity-30" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-teal-400 rounded-full animate-ping opacity-20" />
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-primary-400 rounded-full animate-bounce opacity-15" />
-        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-cyan-400 dark:bg-pink-400 rounded-full animate-pulse opacity-20 dark:opacity-30" />
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-indigo-400 dark:bg-cyan-400 rounded-full animate-ping opacity-15 dark:opacity-25" />
+        <div className="absolute top-20 left-10 w-2 h-2 bg-ai-400 rounded-full animate-ai-pulse opacity-30" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-trust-400 rounded-full animate-ai-ping opacity-20" />
+        <div className="absolute bottom-40 left-20 w-3 h-3 bg-premium-400 rounded-full animate-ai-bounce opacity-15" />
+        <div className="absolute top-60 left-1/3 w-1.5 h-1.5 bg-success-400 rounded-full animate-ai-pulse opacity-20" />
+        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-ai-300 rounded-full animate-ai-ping opacity-15" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-24">
