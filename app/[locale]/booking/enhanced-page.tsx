@@ -299,8 +299,8 @@ export default function EnhancedBookingPage() {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/5 to-transparent"></div>
       
       {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/20 rounded-full blur-xl animate-float"></div>
-      <div className="absolute top-40 right-20 w-24 h-24 bg-purple-400/20 rounded-full blur-xl animate-float-delayed"></div>
+      <div className="absolute top-20 left-10 w-32 h-32 bg-ai/20 rounded-full blur-xl animate-float"></div>
+      <div className="absolute top-40 right-20 w-24 h-24 bg-primary/20 rounded-full blur-xl animate-float-delayed"></div>
 
       <div className="relative container mx-auto px-6 py-8">
         {/* Enhanced Header */}
@@ -311,19 +311,19 @@ export default function EnhancedBookingPage() {
         >
           <div className="text-center mb-8">
             <motion.div
-              className="inline-flex items-center gap-2 glass-strong rounded-full px-6 py-3 mb-6"
+              className="inline-flex items-center gap-2 bg-glass border border-glass-border backdrop-blur-glass rounded-full px-6 py-3 mb-6 shadow-glass"
               whileHover={{ scale: 1.05 }}
             >
-              <Star className="w-4 h-4 text-yellow-500" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Star className="w-4 h-4 text-premium" />
+              <span className="text-sm font-medium text-foreground">
                 Premium Service Marketplace
               </span>
             </motion.div>
             
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-ai-gradient mb-6">
               Book Elite Services
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Connect with verified professionals for all your service needs. Quality guaranteed, 
               satisfaction promised, excellence delivered.
             </p>
