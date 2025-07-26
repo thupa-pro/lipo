@@ -461,7 +461,7 @@ const config: Config = {
         base: "0",
         docked: "10",
         dropdown: "1000",
-        sticky: "1100", 
+        sticky: "1100",
         banner: "1200",
         overlay: "1300",
         modal: "1400",
@@ -469,6 +469,11 @@ const config: Config = {
         skipLink: "1600",
         toast: "1700",
         tooltip: "1800",
+      },
+
+      // Additional Scale Utilities
+      scale: {
+        '98': '0.98',
       },
     },
   },
