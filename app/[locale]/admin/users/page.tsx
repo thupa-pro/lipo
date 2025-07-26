@@ -46,7 +46,7 @@ export default function AdminUsersPage() {
       value: "12.4K",
       change: "+15.3%",
       icon: TrendingUp,
-      color: "from-purple-500 to-violet-600",
+      color: "from-premium-500 to-ai-600",
     },
     {
       title: "Verified Users",
