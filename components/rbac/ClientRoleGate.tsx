@@ -14,7 +14,7 @@ import {
   Shield,
   Link
 } from "lucide-react";
-importfrom "next/link";
+import Link from "next/link";
 import { UserRole } from "@/lib/rbac/types";
 import { createClient } from "@/lib/supabase/client";
 
