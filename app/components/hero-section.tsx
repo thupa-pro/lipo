@@ -81,7 +81,7 @@ export function HeroSection() {
             {/* Trust Badge */}
             <div className="inline-flex items-center gap-2 card-glass rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down">
               <div className="flex items-center gap-1">
-                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-premium" />
+                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" />
                 <span className="text-xs lg:text-sm font-semibold text-ai-gradient">
                   Trusted by 50,000+ Users
                 </span>
