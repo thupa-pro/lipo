@@ -193,7 +193,7 @@ export default function AdminDashboard() {
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="text-gradient-trust">
                 Platform Metrics
               </span>
             </h2>
@@ -206,7 +206,7 @@ export default function AdminDashboard() {
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className="relative bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl p-8 group hover:bg-white/10 transition-all duration-500 hover:scale-105"
+                className="card-glass-ai relative p-8 group interactive-hover hover:scale-105"
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"
@@ -239,10 +239,10 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Recent Activity */}
           <div className="lg:col-span-2">
-            <Card className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border-blue-200/50 dark:border-white/10 rounded-3xl shadow-xl">
+            <Card className="card-glass">
               <CardHeader className="p-8">
                 <CardTitle className="flex items-center gap-3 text-2xl">
-                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-ai-500 to-trust-500 flex items-center justify-center">
                     <Activity className="w-5 h-5 text-white" />
                   </div>
                   Recent Activity
@@ -256,9 +256,9 @@ export default function AdminDashboard() {
                   {recentActivities.map((activity) => (
                     <div
                       key={activity.id}
-                      className="flex items-start gap-4 p-6 rounded-2xl bg-blue-50/50 dark:bg-white/5 border border-blue-200/50 dark:border-white/10 hover:bg-blue-50/70 dark:hover:bg-white/10 transition-all duration-300"
+                      className="flex items-start gap-4 p-6 card-glass-ai interactive-hover"
                     >
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-ai-500 to-trust-500 flex items-center justify-center flex-shrink-0">
                         <div className="w-3 h-3 bg-white rounded-full" />
                       </div>
                       <div className="flex-1 min-w-0">
