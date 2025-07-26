@@ -168,7 +168,7 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Notifications</p>
                 <p className="text-2xl font-bold">{stats.totalNotifications}</p>
               </div>
-              <Bell className="w-8 h-8 text-blue-500" />
+              <Bell className="w-8 h-8 text-ai-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
