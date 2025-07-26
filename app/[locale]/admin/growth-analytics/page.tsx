@@ -299,7 +299,7 @@ export default function GrowthAnalyticsPage() {
             <CardContent>
               <div className="space-y-4">
                 {marketingCampaigns.map((campaign) => (
-                  <Card key={campaign.id} className="shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={campaign.id} className="card-glass-premium interactive-hover">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold text-lg">{campaign.name}</h3>
