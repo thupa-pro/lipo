@@ -493,9 +493,7 @@
     @apply bg-gradient-to-r from-success-600 via-success-500 to-success-700 bg-clip-text text-transparent font-semibold;
   }
 
-  .text-trust-gradient {
-    @apply bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent font-semibold;
-  }
+
 
   .text-premium-gradient {
     @apply bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent font-semibold;
