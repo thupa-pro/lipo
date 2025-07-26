@@ -29,7 +29,7 @@ export default function BrowseFilters({
 }: BrowseFiltersProps) {
   return (
     <div className="lg:w-80">
-      <Card className="rounded-xl shadow-sm dark:bg-card dark:border-gray-800">
+      <Card className="card-glass">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-lg">
             <SlidersHorizontal className="w-5 h-5 text-primary" />
