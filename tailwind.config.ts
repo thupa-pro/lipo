@@ -432,6 +432,8 @@ const config: Config = {
         
         // AI-Native Animations
         "ai-pulse": "ai-pulse 2s ease-in-out infinite",
+        "ai-ping": "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "ai-bounce": "bounce 1s infinite",
         "ai-thinking": "ai-thinking 1.5s ease-in-out infinite",
         "ai-shimmer": "ai-shimmer 2s linear infinite",
         
