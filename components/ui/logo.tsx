@@ -35,7 +35,7 @@ export function Logo({
   loading = 'lazy',
   ...props
 }: LogoProps) {
-  const { theme, resolvedTheme, systemTheme } = useTheme();
+  const { theme: currentTheme, resolvedTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
