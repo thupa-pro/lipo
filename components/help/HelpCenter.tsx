@@ -606,7 +606,7 @@ export default function HelpCenter() {
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
-                    <Mail className="w-5 h-5 text-green-600" />
+                    <Mail className="w-5 h-5 text-success-600" />
                     <div>
                       <h4 className="font-medium">Email Support</h4>
                       <p className="text-sm text-muted-foreground">support@loconomy.com</p>
