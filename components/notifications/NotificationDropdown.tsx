@@ -19,10 +19,10 @@ import {
   Check,
   AlertCircle,
   CreditCard,
-  Calendar
+  Calendar,
   Settings,
   MoreHorizontal,
-  Eye
+  Eye,
   Volume2,
   VolumeX,
   Link,
@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
-importfrom "next/link";
+import Link from "next/link";
 
 interface Notification {
   id: string;
@@ -400,7 +400,7 @@ export function NotificationDropdown({
                 <Bell className="w-4 h-4" />
                 <span className="font-semibold">Notifications</span>
                 {unreadCount > 0 && (
-                  <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs">
+                  <Badge className="bg-gradient-ai text-white text-xs shadow-glow">
                     {unreadCount}
                   </Badge>
                 )}

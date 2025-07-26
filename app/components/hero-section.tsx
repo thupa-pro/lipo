@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { PremiumTypewriter } from "@/components/ui/typewriter-text";
 import {
   Search,
   MapPin,
@@ -26,6 +27,7 @@ export function HeroSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
@@ -41,7 +43,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-background via-ai-50 to-primary-50 dark:from-background dark:via-ai-900/10 dark:to-primary-900/10 overflow-hidden">
       {/* Hero Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -51,18 +53,18 @@ export function HeroSection() {
           className="object-cover opacity-20"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/80 via-blue-50/80 to-indigo-100/80 dark:from-slate-950/90 dark:via-blue-950/90 dark:to-indigo-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-ai-50/80 to-primary-50/80 dark:from-background/95 dark:via-ai-900/20 dark:to-primary-900/20" />
       </div>
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden z-10">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-ai/20 to-primary/20 rounded-full blur-3xl animate-float" />
         <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl animate-float"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-trust/20 to-ai/20 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}
         />
         <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-purple-400/10 to-pink-600/10 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary/10 to-premium/10 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}
         />
       </div>
@@ -77,38 +79,42 @@ export function HeroSection() {
             className={`transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
           >
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 glass-strong rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down">
+            <div className="inline-flex items-center gap-2 bg-glass border border-glass-border backdrop-blur-glass rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down shadow-glass">
               <div className="flex items-center gap-1">
-                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-500" />
-                <span className="text-xs lg:text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-premium" />
+                <span className="text-xs lg:text-sm font-semibold text-ai-gradient">
                   Trusted by 50,000+ Users
                 </span>
               </div>
-              <div className="w-1 h-3 lg:h-4 bg-gray-300 dark:bg-gray-600" />
+              <div className="w-1 h-3 lg:h-4 bg-border" />
               <div className="flex -space-x-1">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    className="w-3 h-3 lg:w-4 lg:h-4 fill-slate-700 text-slate-700 dark:fill-white dark:text-white"
+                    className="w-3 h-3 lg:w-4 lg:h-4 fill-premium text-premium"
                   />
                 ))}
               </div>
-              <span className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300">
+              <span className="text-xs lg:text-sm font-medium text-muted-foreground">
                 4.9/5
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 lg:mb-8 leading-tight">
-              <span className="text-hero-premium">Premium Local Services</span>
-              <br />
-              <span className="text-gray-900 dark:text-white">
-                At Your Fingertips
-              </span>
+            {/* Main Headline with Premium Typewriter Effect */}
+            <h1 className="mb-6 lg:mb-8 leading-tight typewriter-container relative">
+              <PremiumTypewriter
+                startDelay={800}
+                className="typewriter-text-glow"
+              />
+              {/* Subtle glow effect that appears during typing */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-ai/5 via-primary/5 to-trust/5 rounded-3xl blur-xl opacity-0 animate-pulse pointer-events-none"
+                   style={{
+                     animation: isVisible ? "fade-in 2s ease-out 2s forwards, pulse 4s ease-in-out 3s infinite" : "none"
+                   }} />
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-3xl leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 lg:mb-12 max-w-3xl leading-relaxed font-medium">
               Connect with verified, elite service providers in your area. From
               home maintenance to personal services, experience the future of
               local commerce with AI-powered matching.
@@ -119,30 +125,30 @@ export function HeroSection() {
               className="max-w-4xl mb-8 lg:mb-12 animate-scale-in"
               style={{ animationDelay: "0.3s" }}
             >
-              <div className="glass-ultra rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-2xl">
+              <div className="bg-glass border border-glass-border backdrop-blur-glass rounded-xl lg:rounded-2xl p-2 lg:p-3 shadow-glass-lg">
                 <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
                   <div className="relative flex-1">
-                    <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 lg:w-5 lg:h-5" />
+                    <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
                     <Input
                       placeholder="Search premium services..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <div className="relative flex-1">
-                    <MapPin className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 lg:w-5 lg:h-5" />
+                    <MapPin className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
                     <Input
                       placeholder="Enter your location"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 bg-glass backdrop-blur-sm text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
                     />
                   </div>
                   <Button
                     size="lg"
                     onClick={handleSearch}
-                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full lg:w-auto text-sm lg:text-base"
+                    className="h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 bg-gradient-ai hover:scale-105 w-full lg:w-auto text-sm lg:text-base"
                   >
                     <Search className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                     Find Services

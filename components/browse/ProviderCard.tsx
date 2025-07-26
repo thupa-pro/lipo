@@ -71,7 +71,7 @@ export default function ProviderCard({
   };
 
   return (
-    <Card className="rounded-xl shadow-sm hover:shadow-lg transition-shadow cursor-pointer dark:bg-card dark:border-gray-800">
+    <Card variant="glass" className="interactive-hover cursor-pointer">
       <CardContent
         className={`p-4 flex ${viewMode === "list" ? "flex-row gap-4" : "flex-col"}`}
       >
@@ -94,7 +94,7 @@ export default function ProviderCard({
                 {provider.name}
               </CardTitle>
               {provider.verified && (
-                <CheckCircle className="w-3 h-3 text-green-500" />
+                <CheckCircle className="w-3 h-3 text-trust" />
               )}
             </div>
             <CardDescription className="text-xs text-muted-foreground">
@@ -102,7 +102,7 @@ export default function ProviderCard({
             </CardDescription>
             <div className="flex items-center gap-1 mt-1">
               <div className="flex items-center gap-0.5">
-                <Star className="w-3 h-3 fill-slate-700 text-slate-700 dark:fill-white dark:text-white" />
+                <Star className="w-3 h-3 fill-premium text-premium" />
                 <span className="font-medium text-xs">{provider.rating}</span>
               </div>
               <span className="text-2xs text-muted-foreground">
@@ -117,7 +117,7 @@ export default function ProviderCard({
           className={`flex-1 space-y-2 ${viewMode === "list" ? "border-l border-border pl-4 ml-4" : ""}`}
         >
           <div className="flex items-center justify-between">
-            <div className="text-lg font-bold text-green-600 dark:text-green-400">
+            <div className="text-lg font-bold text-success">
               {provider.price}
             </div>
             <div className="flex items-center gap-0.5 text-xs text-muted-foreground">
