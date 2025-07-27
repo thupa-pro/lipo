@@ -143,7 +143,7 @@ export async function middleware(request: NextRequest) {
 
   // Handle auth routes for authenticated users
   if (isAuthRoute(pathWithoutLocale)) {
-    const redirectResult = await handleAuthRouteRedirect(pathWithoutLocale, locale);
+    const redirectResult = await handleAuthRouteRedirect(pathWithoutLocale, locale, request);
     if (redirectResult) {
       return redirectResult;
     }
