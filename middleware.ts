@@ -524,14 +524,22 @@ function isBruteForceAttempt(pathname: string, ip: string): boolean {
 }
 
 function addSecurityHeaders(response: NextResponse, request: NextRequest): void {
-  const config = env.getConfig();
-  
+  let config;
+  try {
+    config = env.getConfig();
+  } catch (error) {
+    // Fallback to process.env if validation fails
+    config = {
+      NODE_ENV: process.env.NODE_ENV || 'development'
+    };
+  }
+
   // Core security headers
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set('X-XSS-Protection', '1; mode=block');
-  
+
   // Content Security Policy
   const cspDirectives = [
     "default-src 'self'",
@@ -544,9 +552,9 @@ function addSecurityHeaders(response: NextResponse, request: NextRequest): void 
     "worker-src 'self' blob:",
     "manifest-src 'self'",
   ];
-  
+
   response.headers.set('Content-Security-Policy', cspDirectives.join('; '));
-  
+
   // HSTS in production
   if (config.NODE_ENV === 'production') {
     response.headers.set(
@@ -554,7 +562,7 @@ function addSecurityHeaders(response: NextResponse, request: NextRequest): void 
       'max-age=31536000; includeSubDomains; preload'
     );
   }
-  
+
   // Permissions Policy
   response.headers.set(
     'Permissions-Policy',
@@ -565,7 +573,7 @@ function addSecurityHeaders(response: NextResponse, request: NextRequest): void 
   response.headers.set('X-DNS-Prefetch-Control', 'off');
   response.headers.set('X-Download-Options', 'noopen');
   response.headers.set('X-Permitted-Cross-Domain-Policies', 'none');
-  
+
   // Security monitoring headers
   response.headers.set('X-Security-Version', '2.0');
   response.headers.set('X-Environment', config.NODE_ENV);
