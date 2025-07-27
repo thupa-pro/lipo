@@ -202,20 +202,24 @@ class EnvironmentValidator {
 
   public hasFeature(feature: string): boolean {
     if (!this.config) return false;
-    
+
+    const isValidValue = (value: string | undefined): boolean => {
+      return !!(value && !value.startsWith('your_') && value.length > 5);
+    };
+
     switch (feature) {
       case 'redis':
-        return !!(this.config.UPSTASH_REDIS_REST_URL && this.config.UPSTASH_REDIS_REST_TOKEN);
+        return isValidValue(this.config.UPSTASH_REDIS_REST_URL) && isValidValue(this.config.UPSTASH_REDIS_REST_TOKEN);
       case 'stripe':
-        return !!(this.config.STRIPE_SECRET_KEY && this.config.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+        return isValidValue(this.config.STRIPE_SECRET_KEY) && isValidValue(this.config.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
       case 'sentry':
-        return !!this.config.NEXT_PUBLIC_SENTRY_DSN;
+        return isValidValue(this.config.NEXT_PUBLIC_SENTRY_DSN);
       case 'posthog':
-        return !!this.config.POSTHOG_API_KEY;
+        return isValidValue(this.config.POSTHOG_API_KEY);
       case 'analytics':
-        return !!(this.config.NEXT_PUBLIC_GA_MEASUREMENT_ID || this.config.NEXT_PUBLIC_FB_PIXEL_ID);
+        return isValidValue(this.config.NEXT_PUBLIC_GA_MEASUREMENT_ID) || isValidValue(this.config.NEXT_PUBLIC_FB_PIXEL_ID);
       case 'clerk_webhooks':
-        return !!this.config.CLERK_WEBHOOK_SECRET;
+        return isValidValue(this.config.CLERK_WEBHOOK_SECRET);
       default:
         return false;
     }
