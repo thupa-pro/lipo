@@ -402,14 +402,19 @@ function extractLocaleAndPath(pathname: string): { locale: string; pathWithoutLo
   return { locale, pathWithoutLocale };
 }
 
-async function handleAuthRouteRedirect(pathWithoutLocale: string, locale: string): Promise<NextResponse | null> {
+async function handleAuthRouteRedirect(pathWithoutLocale: string, locale: string, request: NextRequest): Promise<NextResponse | null> {
   try {
+    // Skip auth checks if environment validation failed
+    if (!env.isValidConfig()) {
+      return null;
+    }
+
     const isAuthenticated = await EnterpriseAuthService.isAuthenticated();
-    
+
     if (isAuthenticated) {
       const currentUser = await EnterpriseAuthService.getCurrentUser();
       const redirectPath = getRedirectPath(currentUser?.role || 'consumer');
-      return NextResponse.redirect(new URL(`/${locale}${redirectPath}`, window.location.origin));
+      return NextResponse.redirect(new URL(`/${locale}${redirectPath}`, request.url));
     }
   } catch (error) {
     console.warn('Error checking auth for auth route:', error);
