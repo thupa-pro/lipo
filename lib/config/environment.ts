@@ -48,28 +48,47 @@ const envSchema = z.object({
   // External Services - Optional
   NEXT_PUBLIC_SENTRY_DSN: z
     .string()
-    .url('Invalid Sentry DSN')
+    .refine(
+      (val) => !val || val.startsWith('your_') || z.string().url().safeParse(val).success,
+      'Invalid Sentry DSN - must be a valid URL or placeholder'
+    )
     .optional(),
   POSTHOG_API_KEY: z
     .string()
+    .refine(
+      (val) => !val || val.startsWith('your_') || val.length > 5,
+      'Invalid PostHog API key'
+    )
     .optional(),
   POSTHOG_HOST: z
     .string()
-    .url('Invalid PostHog host')
+    .refine(
+      (val) => !val || val.startsWith('your_') || z.string().url().safeParse(val).success,
+      'Invalid PostHog host'
+    )
     .default('https://app.posthog.com'),
 
   // Payment (Stripe) - Optional
   STRIPE_SECRET_KEY: z
     .string()
-    .min(1, 'Stripe secret key required')
+    .refine(
+      (val) => !val || val.startsWith('your_') || val.startsWith('sk_'),
+      'Invalid Stripe secret key'
+    )
     .optional(),
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z
     .string()
-    .min(1, 'Stripe publishable key required')
+    .refine(
+      (val) => !val || val.startsWith('your_') || val.startsWith('pk_'),
+      'Invalid Stripe publishable key'
+    )
     .optional(),
   STRIPE_WEBHOOK_SECRET: z
     .string()
-    .min(1, 'Stripe webhook secret required')
+    .refine(
+      (val) => !val || val.startsWith('your_') || val.startsWith('whsec_'),
+      'Invalid Stripe webhook secret'
+    )
     .optional(),
 
   // Analytics - Optional
