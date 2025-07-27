@@ -238,6 +238,10 @@ export class SecureSupabaseService {
   // Get user profile by Clerk ID
   static async getUserProfile(clerkUserId: string): Promise<UserProfile | null> {
     try {
+      // If Supabase is not configured, return null
+      if (!isSupabaseConfigured) {
+        return null;
+      }
       const { data, error } = await this.adminClient
         .from('user_profiles')
         .select('*')
