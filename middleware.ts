@@ -425,6 +425,11 @@ async function handleAuthRouteRedirect(pathWithoutLocale: string, locale: string
 
 async function addUserContextHeaders(response: NextResponse) {
   try {
+    // Skip if environment validation failed
+    if (!env.isValidConfig()) {
+      return;
+    }
+
     const currentUser = await EnterpriseAuthService.getCurrentUser();
     if (currentUser) {
       response.headers.set('X-User-ID', currentUser.clerkUserId);
