@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SecureClerkAuth } from '@/lib/auth/clerk-secure';
+import { IntegratedAuthService } from '@/lib/auth/integrated-auth';
 import { logSecurityEvent } from '@/lib/security/audit-logger';
 import { headers } from 'next/headers';
 
@@ -12,21 +12,23 @@ export async function GET(req: NextRequest) {
                     req.ip || 
                     'unknown';
 
-    // Get current user with validation
-    const user = await SecureClerkAuth.getCurrentUser();
+    // Get current integrated user (Clerk + Supabase data)
+    const user = await IntegratedAuthService.getCurrentUser();
     
     if (user) {
       // Log successful user data access
       await logSecurityEvent({
         type: 'USER_DATA_ACCESS',
-        userId: user.id,
+        userId: user.clerkUserId,
         email: user.email,
         ip: clientIP,
         severity: 'info',
       });
 
+      // Return safe user data (exclude sensitive information)
       return NextResponse.json({
         id: user.id,
+        clerkUserId: user.clerkUserId,
         email: user.email,
         name: user.name,
         firstName: user.firstName,
@@ -34,8 +36,12 @@ export async function GET(req: NextRequest) {
         role: user.role,
         verified: user.verified,
         avatar: user.avatar,
+        phone: user.phone,
         createdAt: user.createdAt,
         lastSignIn: user.lastSignIn,
+        // Only include non-sensitive metadata
+        preferences: user.metadata?.preferences,
+        onboardingCompleted: user.metadata?.onboardingCompleted,
       });
     } else {
       // Log unauthorized access attempt
