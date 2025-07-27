@@ -317,6 +317,11 @@ export class SecureSupabaseService {
   // Log security event to database
   static async logSecurityEvent(event: Omit<SecurityEvent, 'id' | 'created_at'>): Promise<boolean> {
     try {
+      if (!isSupabaseConfigured) {
+        // Log to console in development
+        console.log('[SECURITY EVENT]', event);
+        return true;
+      }
       const eventData = {
         ...event,
         created_at: new Date().toISOString(),
