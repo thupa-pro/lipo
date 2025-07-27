@@ -88,27 +88,36 @@ export async function middleware(request: NextRequest) {
 
   // Rate limiting for sensitive endpoints
   if (isSensitiveRoute(pathname)) {
-    const rateLimitResult = await checkRateLimit(getClientIP(request), 'api_general');
-    if (!rateLimitResult.success) {
-      await logSecurityEvent({
-        type: SecurityEventTypes.RATE_LIMIT_EXCEEDED,
-        ip: getClientIP(request),
-        severity: 'high',
-        details: { 
-          path: pathname,
-          userAgent: request.headers.get('user-agent'),
-        },
-      });
-
-      return new NextResponse('Rate limit exceeded', { 
-        status: 429,
-        headers: {
-          'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
-          'X-RateLimit-Limit': rateLimitResult.limit.toString(),
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+    try {
+      const rateLimitResult = await checkRateLimit(getClientIP(request), 'api_general');
+      if (!rateLimitResult.success) {
+        try {
+          await logSecurityEvent({
+            type: SecurityEventTypes.RATE_LIMIT_EXCEEDED,
+            ip: getClientIP(request),
+            severity: 'high',
+            details: {
+              path: pathname,
+              userAgent: request.headers.get('user-agent'),
+            },
+          });
+        } catch (logError) {
+          console.warn('Failed to log rate limit event:', logError);
         }
-      });
+
+        return new NextResponse('Rate limit exceeded', {
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+          }
+        });
+      }
+    } catch (rateLimitError) {
+      console.warn('Rate limiting failed, allowing request:', rateLimitError);
+      // Continue without rate limiting if it fails
     }
   }
 
