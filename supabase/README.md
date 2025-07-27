@@ -1,345 +1,233 @@
-# Loconomy Platform - Supabase Backend Setup
+# Supabase Database Setup for Loconomy
 
-This directory contains all the necessary SQL scripts to set up a complete Supabase backend for the Loconomy local services platform.
+This guide will help you set up the Supabase database with the required tables and security policies for the Loconomy application.
 
-## 🚀 Quick Start
+## Prerequisites
 
-### Prerequisites
+1. Supabase project created at [supabase.com](https://supabase.com)
+2. Environment variables configured in `.env.local`
+3. Supabase CLI installed (optional, for migrations)
 
-- Supabase account and project created
-- Supabase CLI installed (optional)
-- Admin access to your Supabase project
+## Quick Setup
 
-### Environment Variables
+### Option 1: Using Supabase Dashboard (Recommended)
 
-Make sure these are set in your application:
+1. **Go to your Supabase Dashboard**
+   - Navigate to your project at [supabase.com/dashboard](https://supabase.com/dashboard)
+   - Click on your project
+
+2. **Open SQL Editor**
+   - Click on "SQL Editor" in the left sidebar
+   - Click "New Query"
+
+3. **Run the Migration**
+   - Copy the entire contents of `migrations/001_initial_schema.sql`
+   - Paste it into the SQL editor
+   - Click "Run" to execute the migration
+
+### Option 2: Using Supabase CLI
+
+1. **Install Supabase CLI**
+   ```bash
+   npm install -g supabase
+   ```
+
+2. **Login to Supabase**
+   ```bash
+   supabase login
+   ```
+
+3. **Link your project**
+   ```bash
+   supabase link --project-ref YOUR_PROJECT_REF
+   ```
+
+4. **Run migrations**
+   ```bash
+   supabase db push
+   ```
+
+## Database Schema Overview
+
+The migration creates the following tables:
+
+### Core Tables
+
+1. **user_profiles** - User account information
+   - Links Clerk users to Supabase profiles
+   - Stores user role, verification status, metadata
+
+2. **user_sessions** - Active session tracking
+   - Tracks user sessions across devices
+   - Links Clerk sessions to Supabase records
+
+3. **security_events** - Security audit log
+   - Logs all security-related events
+   - Used for monitoring and compliance
+
+4. **rate_limits** - Rate limiting data
+   - Prevents abuse and brute force attacks
+   - Tracks request counts per IP/user
+
+### Business Tables
+
+5. **provider_profiles** - Provider-specific data
+   - Business information, services, ratings
+   - Verification and compliance data
+
+6. **services** - Available services
+   - Service descriptions, pricing, categories
+   - Linked to provider profiles
+
+7. **bookings** - Service bookings
+   - Customer-provider transactions
+   - Payment and scheduling information
+
+8. **reviews** - Customer reviews
+   - Ratings and feedback
+   - Linked to completed bookings
+
+## Security Features
+
+### Row Level Security (RLS)
+- All tables have RLS enabled
+- Users can only access their own data
+- Service role has full access for server operations
+
+### Data Encryption
+- Sensitive data encrypted at rest
+- All connections use TLS 1.3
+- JWT tokens for authentication
+
+### Audit Logging
+- All security events logged
+- Failed login attempts tracked
+- Suspicious activity detection
+
+## Configuration Verification
+
+After running the migration, verify the setup:
+
+1. **Check Tables Created**
+   ```sql
+   SELECT table_name 
+   FROM information_schema.tables 
+   WHERE table_schema = 'public'
+   ORDER BY table_name;
+   ```
+
+2. **Verify RLS Policies**
+   ```sql
+   SELECT schemaname, tablename, policyname, cmd, qual
+   FROM pg_policies
+   WHERE schemaname = 'public'
+   ORDER BY tablename, policyname;
+   ```
+
+3. **Test User Profile Creation**
+   ```sql
+   SELECT * FROM user_profiles LIMIT 1;
+   ```
+
+## Environment Variables
+
+Ensure these are set in your `.env.local`:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+NEXT_PUBLIC_SUPABASE_URL=https://zjcdznphvvnkebibkame.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-## 📁 File Overview
+## Security Best Practices
 
-| File                          | Purpose                              | Required    |
-| ----------------------------- | ------------------------------------ | ----------- |
-| `complete_database_setup.sql` | Main database schema with all tables | ✅ Yes      |
-| `rls_policies.sql`            | Row-level security policies          | ✅ Yes      |
-| `functions_and_triggers.sql`  | Automated functions and triggers     | ✅ Yes      |
-| `seed_data.sql`               | Sample data for development          | 🟡 Optional |
+1. **Never expose service role key** on client-side
+2. **Use anon key** for client-side operations
+3. **Implement proper RLS policies** for all tables
+4. **Regularly audit security events**
+5. **Monitor database performance**
 
-## 🔧 Setup Instructions
+## Maintenance
 
-### Method 1: Using Supabase Dashboard (Recommended)
+### Automatic Cleanup
+The database includes functions for automatic cleanup:
 
-1. **Open your Supabase project dashboard**
-2. **Navigate to SQL Editor**
-3. **Run scripts in this exact order:**
+- `cleanup_expired_sessions()` - Removes expired sessions
+- `cleanup_old_security_events()` - Removes old audit logs
+- `cleanup_expired_rate_limits()` - Removes expired rate limits
 
-#### Step 1: Database Schema
-
+### Manual Cleanup (Run periodically)
 ```sql
--- Copy and paste the entire content of complete_database_setup.sql
--- This creates all tables, types, enums, and indexes
+-- Clean up expired sessions
+SELECT cleanup_expired_sessions();
+
+-- Clean up old security events (keeps 90 days)
+SELECT cleanup_old_security_events();
+
+-- Clean up expired rate limits
+SELECT cleanup_expired_rate_limits();
 ```
 
-#### Step 2: Security Policies
+## Monitoring
 
-```sql
--- Copy and paste the entire content of rls_policies.sql
--- This sets up row-level security for all tables
-```
+Monitor these metrics regularly:
 
-#### Step 3: Functions & Triggers
-
-```sql
--- Copy and paste the entire content of functions_and_triggers.sql
--- This adds automated functionality
-```
-
-#### Step 4: Seed Data (Optional)
-
-```sql
--- Copy and paste the entire content of seed_data.sql
--- This adds sample data for development/testing
-```
-
-### Method 2: Using Supabase CLI
-
-```bash
-# Initialize Supabase in your project (if not already done)
-supabase init
-
-# Link to your project
-supabase link --project-ref your-project-ref
-
-# Run migrations
-supabase db push
-
-# Apply the scripts
-psql -h your-db-host -U postgres -d postgres -f supabase/complete_database_setup.sql
-psql -h your-db-host -U postgres -d postgres -f supabase/rls_policies.sql
-psql -h your-db-host -U postgres -d postgres -f supabase/functions_and_triggers.sql
-psql -h your-db-host -U postgres -d postgres -f supabase/seed_data.sql
-```
-
-## 🏗️ Database Architecture
-
-### Core Features
-
-#### 🔐 Authentication & Authorization
-
-- **User Roles**: guest, consumer, provider, admin
-- **RBAC System**: Role-based access control
-- **Multi-tenant**: Provider workspaces
-- **Row-level Security**: Comprehensive RLS policies
-
-#### 🏪 Service Marketplace
-
-- **Service Listings**: Categorized services with pricing
-- **Booking System**: Request, confirm, track bookings
-- **Reviews & Ratings**: Multi-dimensional rating system
-- **Search & Discovery**: Location-based service search
-
-#### 💳 Payments & Subscriptions
-
-- **Stripe Integration**: Payment processing
-- **Subscription Plans**: Tiered pricing model
-- **Transaction History**: Complete payment tracking
-
-#### 💬 Communication
-
-- **Messaging System**: Real-time conversations
-- **Notifications**: Multi-channel notification system
-- **Activity Tracking**: User behavior analytics
-
-### Database Tables (30+ tables)
-
-<details>
-<summary>Core Tables</summary>
-
-- `user_roles` - User role management
-- `user_preferences` - User settings and consent
-- `tenants` - Multi-tenant workspaces
-- `consumer_profiles` - Consumer information
-- `provider_profiles` - Provider business profiles
-</details>
-
-<details>
-<summary>Service Management</summary>
-
-- `service_categories` - Service categorization
-- `service_listings` - Provider service offerings
-- `listing_images` - Service listing media
-- `provider_availability` - Provider schedules
-</details>
-
-<details>
-<summary>Booking System</summary>
-
-- `bookings` - Service booking requests
-- `booking_status_history` - Status change tracking
-</details>
-
-<details>
-<summary>Payment System</summary>
-
-- `subscription_plans` - Available plans
-- `user_subscriptions` - User plan subscriptions
-- `payments` - Payment transactions
-</details>
-
-<details>
-<summary>Communication</summary>
-
-- `conversations` - Message threads
-- `messages` - Individual messages
-- `notifications` - User notifications
-</details>
-
-<details>
-<summary>Reviews & Analytics</summary>
-
-- `reviews` - Service reviews and ratings
-- `review_responses` - Provider responses
-- `user_activities` - User behavior tracking
-- `analytics_events` - Platform analytics
-</details>
-
-## 🔒 Security Features
-
-### Row-Level Security (RLS)
-
-- **Enabled on all tables**
-- **User-based data isolation**
-- **Role-based access control**
-- **Multi-tenant data separation**
-
-### Key Security Policies
-
-- Users can only access their own data
-- Providers can manage their own listings
-- Admins have elevated access for moderation
-- Public data is accessible to all users
-
-### Data Protection
-
-- **Personal data encryption** at rest
-- **Secure API access** through RLS
-- **Audit trails** for all changes
-- **Content moderation** system
-
-## ⚡ Automated Features
-
-### Triggers & Functions
-
-- **Auto user setup** on registration
-- **Booking number generation**
-- **Status change notifications**
-- **Review notifications**
-- **Timestamp management**
-- **Search functionality**
-
-### Example Automated Workflows
-
-1. **New User Registration**
-
-   ```
-   User signs up → Auto-create user role → Create preferences → Start onboarding
+1. **Active Sessions**
+   ```sql
+   SELECT COUNT(*) FROM user_sessions WHERE is_active = true;
    ```
 
-2. **Booking Creation**
-
-   ```
-   Booking created → Generate booking number → Create conversation → Notify provider
-   ```
-
-3. **Status Changes**
-   ```
-   Status updated → Log history → Send notifications → Update timestamps
+2. **Security Events (Last 24h)**
+   ```sql
+   SELECT event_type, COUNT(*) 
+   FROM security_events 
+   WHERE created_at > NOW() - INTERVAL '24 hours'
+   GROUP BY event_type
+   ORDER BY COUNT(*) DESC;
    ```
 
-## 🧪 Development & Testing
+3. **High Severity Events**
+   ```sql
+   SELECT * FROM security_events 
+   WHERE severity IN ('high', 'critical')
+   AND created_at > NOW() - INTERVAL '7 days'
+   ORDER BY created_at DESC;
+   ```
 
-### Sample Data
-
-The `seed_data.sql` script includes:
-
-- 15 service categories
-- 4 subscription plans
-- 1000 sample analytics events
-- Utility functions for creating test data
-
-### Creating Test Users
-
-```sql
--- Use the provided utility function
-SELECT create_sample_user('test@example.com', 'Test User', 'provider');
-```
-
-### Testing Features
-
-1. **Authentication**: Test user creation and role assignment
-2. **Bookings**: Create sample bookings and test status changes
-3. **Reviews**: Test review creation and notifications
-4. **Search**: Test service discovery functionality
-
-## 📊 Performance Optimizations
-
-### Indexes Created
-
-- **User lookups**: user_id, role, tenant_id
-- **Service search**: category, location, rating
-- **Booking queries**: dates, status, participants
-- **Full-text search**: service titles and descriptions
-- **Analytics**: event tracking and user activities
-
-### Query Optimization
-
-- **Efficient joins** with proper foreign keys
-- **Location-based search** with PostGIS
-- **Pagination support** for large datasets
-- **Caching-friendly** structure
-
-## 🔧 Maintenance
-
-### Regular Tasks
-
-1. **Monitor performance** using Supabase dashboard
-2. **Review security policies** regularly
-3. **Update subscription limits** as needed
-4. **Clean up old analytics data** periodically
-
-### Backup Strategy
-
-- **Automatic backups** via Supabase
-- **Export critical data** regularly
-- **Test restore procedures** periodically
-
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
-#### Setup Problems
+1. **Migration Fails**
+   - Check database permissions
+   - Ensure no existing conflicting tables
+   - Verify Supabase project is active
 
-```sql
--- Check if tables were created
-SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';
+2. **RLS Blocking Queries**
+   - Use service role for server operations
+   - Check policy conditions
+   - Verify user context is set
 
--- Verify RLS is enabled
-SELECT schemaname, tablename, rowsecurity FROM pg_tables WHERE schemaname = 'public';
-```
-
-#### Permission Issues
-
-```sql
--- Check user roles
-SELECT * FROM user_roles WHERE user_id = 'your-user-id';
-
--- Test RLS policies
-SELECT * FROM service_listings; -- Should only show accessible listings
-```
+3. **Performance Issues**
+   - Check indexes are created
+   - Monitor query performance
+   - Consider table partitioning for large datasets
 
 ### Support
 
-- Check Supabase documentation
-- Review error logs in Supabase dashboard
-- Test queries in SQL editor
-- Verify environment variables
+For database-related issues:
+1. Check Supabase documentation
+2. Review security event logs
+3. Contact Supabase support
+4. Check application error logs
 
-## 🚀 Production Deployment
+## Next Steps
 
-### Before Going Live
+After database setup:
+1. Test authentication flows
+2. Verify user profile creation
+3. Test role-based access
+4. Monitor security events
+5. Set up regular maintenance tasks
 
-- [ ] Remove or modify seed data script
-- [ ] Review and adjust RLS policies
-- [ ] Set up monitoring and alerts
-- [ ] Configure backup policies
-- [ ] Test all critical user flows
-- [ ] Verify Stripe integration
-- [ ] Set up analytics tracking
-
-### Post-Deployment
-
-- [ ] Monitor performance metrics
-- [ ] Set up log aggregation
-- [ ] Configure alerting for errors
-- [ ] Plan for data archival
-- [ ] Regular security audits
-
----
-
-## 📝 Additional Notes
-
-This setup provides a production-ready foundation for a local services marketplace. The schema is designed to scale and can handle:
-
-- **Thousands of users** across all roles
-- **Complex service categorization**
-- **Real-time messaging** and notifications
-- **Advanced search** and filtering
-- **Comprehensive analytics** tracking
-- **Multi-tenant architecture** for providers
-- **Subscription-based** revenue model
-
-For questions or issues, refer to the Supabase documentation or create an issue in your project repository.
+Your Supabase database is now ready for production use with enterprise-grade security!
