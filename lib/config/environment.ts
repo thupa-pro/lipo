@@ -156,29 +156,33 @@ class EnvironmentValidator {
   private validateRelatedVars(): void {
     if (!this.config) return;
 
-    // Redis validation - both URL and token required if one is provided
-    const hasRedisUrl = !!this.config.UPSTASH_REDIS_REST_URL;
-    const hasRedisToken = !!this.config.UPSTASH_REDIS_REST_TOKEN;
-    
+    const isRealValue = (value: string | undefined): boolean => {
+      return !!(value && !value.startsWith('your_') && value.length > 5);
+    };
+
+    // Redis validation - both URL and token required if one is provided (and not placeholder)
+    const hasRedisUrl = isRealValue(this.config.UPSTASH_REDIS_REST_URL);
+    const hasRedisToken = isRealValue(this.config.UPSTASH_REDIS_REST_TOKEN);
+
     if (hasRedisUrl && !hasRedisToken) {
       this.errors.push('UPSTASH_REDIS_REST_TOKEN is required when UPSTASH_REDIS_REST_URL is provided');
       this.isValid = false;
     }
-    
+
     if (hasRedisToken && !hasRedisUrl) {
       this.errors.push('UPSTASH_REDIS_REST_URL is required when UPSTASH_REDIS_REST_TOKEN is provided');
       this.isValid = false;
     }
 
-    // Stripe validation - both keys required if one is provided
-    const hasStripeSecret = !!this.config.STRIPE_SECRET_KEY;
-    const hasStripePublic = !!this.config.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
-    
+    // Stripe validation - both keys required if one is provided (and not placeholder)
+    const hasStripeSecret = isRealValue(this.config.STRIPE_SECRET_KEY);
+    const hasStripePublic = isRealValue(this.config.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
     if (hasStripeSecret && !hasStripePublic) {
       this.errors.push('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is required when STRIPE_SECRET_KEY is provided');
       this.isValid = false;
     }
-    
+
     if (hasStripePublic && !hasStripeSecret) {
       this.errors.push('STRIPE_SECRET_KEY is required when NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is provided');
       this.isValid = false;
