@@ -201,13 +201,29 @@ class EnterpriseSecurityAuditLogger {
 
   private async logToDatabase(log: AuditLog) {
     try {
-      // This will integrate with the Supabase security_events table
-      if (hasFeature('supabase')) {
-        // Implementation will be added with Supabase integration
-        console.log('📝 Database logging:', log.type);
-      }
+      // Log to Supabase security_events table
+      const { logSecurityEvent } = await import('@/lib/supabase/enterprise-client');
+
+      await logSecurityEvent({
+        userId: log.userId,
+        eventType: log.type,
+        ipAddress: log.ip || '0.0.0.0',
+        userAgent: log.userAgent,
+        severity: log.severity,
+        details: {
+          ...log.details,
+          email: log.email,
+          sessionId: log.sessionId,
+          resource: log.resource,
+          action: log.action,
+          environment: log.environment,
+          version: log.version,
+          logId: log.id,
+        },
+      });
     } catch (error) {
       console.error('Database logging failed:', error);
+      // Don't throw here as logging failure shouldn't break the main flow
     }
   }
 
