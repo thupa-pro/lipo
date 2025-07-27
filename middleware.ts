@@ -84,7 +84,12 @@ export async function middleware(request: NextRequest) {
   }
 
   // Security monitoring - detect potential attacks
-  await detectSecurityThreats(request);
+  try {
+    await detectSecurityThreats(request);
+  } catch (securityError) {
+    console.warn('Security threat detection failed:', securityError);
+    // Continue without threat detection if it fails
+  }
 
   // Rate limiting for sensitive endpoints
   if (isSensitiveRoute(pathname)) {
