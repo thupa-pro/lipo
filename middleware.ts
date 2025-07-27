@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { advancedAuthMiddleware } from '@/lib/security/advanced-auth-middleware';
 
 // Supported locales
 const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
@@ -39,7 +40,7 @@ const protectedRoutes = [
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Skip middleware for static files and API routes
+  // Skip middleware for static files and specific API routes
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/favicon.ico') ||
@@ -49,7 +50,29 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Handle internationalization
+  // Protection against CVE-2025-29927 (Next.js Middleware Bypass)
+  const suspiciousHeaders = request.headers.get('x-middleware-subrequest');
+  if (suspiciousHeaders) {
+    console.warn('⚠️ SECURITY ALERT: Potential middleware bypass attempt detected', {
+      ip: request.headers.get('x-forwarded-for') || request.ip,
+      userAgent: request.headers.get('user-agent'),
+      path: pathname,
+      header: suspiciousHeaders
+    });
+    
+    // Block the request
+    return NextResponse.json(
+      { error: 'Forbidden: Security violation detected' },
+      { status: 403 }
+    );
+  }
+
+  // Apply advanced authentication middleware for API routes
+  if (pathname.startsWith('/api/')) {
+    return advancedAuthMiddleware.processRequest(request);
+  }
+
+  // Handle internationalization for non-API routes
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
@@ -74,15 +97,18 @@ export async function middleware(request: NextRequest) {
   // Check authentication for protected routes
   if (isProtectedRoute(pathWithoutLocale)) {
     try {
-      // For now, we'll allow access to protected routes
-      // In production, you would check authentication here
-      const response = NextResponse.next();
+      // Apply advanced authentication for protected page routes
+      const authResponse = await advancedAuthMiddleware.processRequest(request);
       
-      // Add security headers
-      response.headers.set('X-Frame-Options', 'DENY');
-      response.headers.set('X-Content-Type-Options', 'nosniff');
-      response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
-      response.headers.set('X-XSS-Protection', '1; mode=block');
+      // If auth middleware returns an error response, handle it
+      if (authResponse.status >= 400) {
+        // Redirect to signin for authentication errors
+        return NextResponse.redirect(new URL(`/${locale}/auth/signin`, request.url));
+      }
+      
+      // Add comprehensive security headers
+      const response = NextResponse.next();
+      addSecurityHeaders(response);
       
       return response;
     } catch (error) {
@@ -94,10 +120,7 @@ export async function middleware(request: NextRequest) {
 
   // Add security headers to all responses
   const response = NextResponse.next();
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
-  response.headers.set('X-XSS-Protection', '1; mode=block');
+  addSecurityHeaders(response);
 
   return response;
 }
@@ -138,15 +161,47 @@ function isProtectedRoute(pathname: string): boolean {
   );
 }
 
+/**
+ * Add comprehensive security headers to response
+ */
+function addSecurityHeaders(response: NextResponse): void {
+  // Prevent clickjacking
+  response.headers.set('X-Frame-Options', 'DENY');
+  
+  // Prevent MIME type sniffing
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  
+  // Control referrer information
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+  // Enable XSS protection (legacy browsers)
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  
+  // Enforce HTTPS
+  if (process.env.NODE_ENV === 'production') {
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  }
+  
+  // Permissions Policy (restrict dangerous features)
+  response.headers.set('Permissions-Policy', 
+    'accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(self), usb=()'
+  );
+  
+  // Cross-Origin Policies
+  response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  response.headers.set('Cross-Origin-Resource-Policy', 'same-origin');
+}
+
 export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
-     * - api (API routes)
+     * - api (API routes are handled by the advanced auth middleware)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 };
