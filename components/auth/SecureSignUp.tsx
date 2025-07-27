@@ -108,8 +108,30 @@ export function SecureSignUp() {
   };
 
   const handleGoogleSignUp = async () => {
-    // TODO: Implement Google OAuth flow
-    console.log('Google sign up');
+    try {
+      setIsSubmitting(true);
+
+      // Get Google OAuth URL
+      const response = await fetch('/api/auth/google-oauth', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.url) {
+        // Redirect to Google OAuth
+        window.location.href = result.url;
+      } else {
+        console.error('Google OAuth URL generation failed:', result.error);
+      }
+    } catch (error) {
+      console.error('Google sign up error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = 
