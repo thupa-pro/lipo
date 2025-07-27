@@ -364,6 +364,9 @@ export class SecureSupabaseService {
   // Check for suspicious activity
   static async checkSuspiciousActivity(ipAddress: string, hours: number = 24): Promise<boolean> {
     try {
+      if (!isSupabaseConfigured) {
+        return false; // No suspicious activity when not configured
+      }
       const startTime = new Date(Date.now() - hours * 60 * 60 * 1000).toISOString();
 
       const { data, error } = await this.adminClient
