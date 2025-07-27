@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SecureClerkAuth } from '@/lib/auth/clerk-secure';
+import { IntegratedAuthService } from '@/lib/auth/integrated-auth';
 import { logSecurityEvent } from '@/lib/security/audit-logger';
 import { headers } from 'next/headers';
 
@@ -13,15 +13,15 @@ export async function POST(req: NextRequest) {
                     'unknown';
 
     // Get current user before sign out for logging
-    const currentUser = await SecureClerkAuth.getCurrentUser();
+    const currentUser = await IntegratedAuthService.getCurrentUser();
 
-    // Perform secure sign out
-    const result = await SecureClerkAuth.signOut();
+    // Perform integrated sign out (Clerk + Supabase)
+    const result = await IntegratedAuthService.signOut(currentUser?.clerkUserId);
 
     // Log sign out event
     await logSecurityEvent({
       type: 'USER_SIGNOUT',
-      userId: currentUser?.id,
+      userId: currentUser?.clerkUserId,
       email: currentUser?.email,
       ip: clientIP,
       severity: 'info',
