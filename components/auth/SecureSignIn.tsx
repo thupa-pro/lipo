@@ -57,8 +57,38 @@ export function SecureSignIn() {
   };
 
   const handleGoogleSignIn = async () => {
-    // TODO: Implement Google OAuth flow
-    console.log('Google sign in');
+    try {
+      setIsSubmitting(true);
+
+      // Get Google OAuth URL
+      const response = await fetch('/api/auth/google-oauth', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.url) {
+        // Redirect to Google OAuth
+        window.location.href = result.url;
+      } else {
+        setAuthState(prev => ({
+          ...prev,
+          isLoading: false,
+          error: 'Google sign in failed. Please try again.'
+        }));
+      }
+    } catch (error) {
+      setAuthState(prev => ({
+        ...prev,
+        isLoading: false,
+        error: 'Google sign in failed. Please try again.'
+      }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
