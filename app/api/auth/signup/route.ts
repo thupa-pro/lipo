@@ -1,15 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SecureClerkAuth } from '@/lib/auth/clerk-secure';
+import { IntegratedAuthService } from '@/lib/auth/integrated-auth';
 import { headers } from 'next/headers';
+import { rateLimit } from '@/lib/security/rate-limiter';
 
 export async function POST(req: NextRequest) {
   try {
-    // Get client IP for rate limiting and logging
+    // Get client information
     const headersList = headers();
     const clientIP = headersList.get('x-forwarded-for') || 
                     headersList.get('x-real-ip') || 
                     req.ip || 
                     'unknown';
+    const userAgent = headersList.get('user-agent') || 'unknown';
+
+    // Rate limiting check
+    const rateLimitResult = await rateLimit.check(clientIP, 'auth_signup');
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { 
+          success: false,
+          error: `Too many registration attempts. Please try again in ${Math.ceil((rateLimitResult.reset - Date.now()) / 60000)} minutes.`,
+          retryAfter: rateLimitResult.reset
+        },
+        { 
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+          }
+        }
+      );
+    }
 
     // Parse request body
     const body = await req.json();
@@ -26,10 +49,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Attempt secure sign up
-    const result = await SecureClerkAuth.signUpWithCredentials(
+    // Validate role
+    if (!['consumer', 'provider'].includes(role)) {
+      return NextResponse.json(
+        { 
+          success: false,
+          error: 'Invalid role specified' 
+        },
+        { status: 400 }
+      );
+    }
+
+    // Attempt integrated sign up
+    const result = await IntegratedAuthService.signUpWithCredentials(
       { email, password, firstName, lastName, role },
-      clientIP
+      clientIP,
+      userAgent
     );
 
     if (result.success) {
@@ -39,10 +74,15 @@ export async function POST(req: NextRequest) {
         userId: result.userId,
         needsVerification: result.needsVerification,
         redirectTo: result.redirectTo
+      }, {
+        headers: {
+          'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+        }
       });
     } else {
       // Return appropriate error status
-      const status = result.error?.includes('rate limit') ? 429 : 400;
+      const status = result.error?.includes('rate limit') ? 429 : 
+                    result.error?.includes('exists') ? 409 : 400;
       
       return NextResponse.json(
         { 
