@@ -84,4 +84,4 @@ export const rateLimit = {
   },
 };
 
-export const fallbackRateLimit as fallbackRateLimitExport = fallbackRateLimit;
+export { fallbackRateLimit };
