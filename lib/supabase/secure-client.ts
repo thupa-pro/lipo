@@ -299,6 +299,9 @@ export class SecureSupabaseService {
   // Invalidate session
   static async invalidateSession(clerkSessionId: string): Promise<boolean> {
     try {
+      if (!isSupabaseConfigured) {
+        return true;
+      }
       const { error } = await this.adminClient
         .from('user_sessions')
         .update({ is_active: false })
