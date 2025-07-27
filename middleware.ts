@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SecureClerkAuth } from '@/lib/auth/clerk-secure';
+import { IntegratedAuthService } from '@/lib/auth/integrated-auth';
 import { logSecurityEvent } from '@/lib/security/audit-logger';
 
 // Supported locales
@@ -73,12 +73,12 @@ const providerRoutes = [
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Skip middleware for static files and API routes
+  // Skip middleware for static files and API routes (except auth)
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/favicon.ico') ||
     pathname.startsWith('/api/webhooks') ||
-    pathname.includes('.')
+    (pathname.includes('.') && !pathname.startsWith('/api'))
   ) {
     return NextResponse.next();
   }
@@ -105,17 +105,18 @@ export async function middleware(request: NextRequest) {
   const locale = segments[1];
   const pathWithoutLocale = segments.slice(2).join('/') || '/';
 
-  // Get client IP for logging
+  // Get client information for logging
   const clientIP = request.headers.get('x-forwarded-for') || 
                   request.headers.get('x-real-ip') || 
                   request.ip || 
                   'unknown';
+  const userAgent = request.headers.get('user-agent') || 'unknown';
 
   // Check authentication for protected routes
   if (isProtectedRoute(pathWithoutLocale)) {
     try {
-      // Check if user is authenticated
-      const isAuthenticated = await SecureClerkAuth.isAuthenticated();
+      // Check if user is authenticated using integrated auth
+      const isAuthenticated = await IntegratedAuthService.isAuthenticated();
       
       if (!isAuthenticated) {
         // Log unauthorized access attempt
@@ -125,7 +126,7 @@ export async function middleware(request: NextRequest) {
           severity: 'medium',
           details: { 
             attemptedPath: pathWithoutLocale,
-            userAgent: request.headers.get('user-agent') || 'unknown'
+            userAgent: userAgent
           },
         });
 
@@ -135,16 +136,21 @@ export async function middleware(request: NextRequest) {
         return NextResponse.redirect(signInUrl);
       }
 
+      // Get current user for role-based checks
+      const currentUser = await IntegratedAuthService.getCurrentUser();
+      
       // Check role-based access for specific routes
       if (isAdminRoute(pathWithoutLocale)) {
-        const hasAdminRole = await SecureClerkAuth.hasRole(['admin']);
+        const hasAdminRole = currentUser?.role === 'admin';
         if (!hasAdminRole) {
           await logSecurityEvent({
             type: 'ROLE_ESCALATION_ATTEMPT',
+            userId: currentUser?.clerkUserId,
             ip: clientIP,
             severity: 'high',
             details: { 
               attemptedPath: pathWithoutLocale,
+              userRole: currentUser?.role,
               requiredRole: 'admin'
             },
           });
@@ -154,14 +160,16 @@ export async function middleware(request: NextRequest) {
       }
 
       if (isProviderRoute(pathWithoutLocale)) {
-        const hasProviderRole = await SecureClerkAuth.hasRole(['provider', 'admin']);
+        const hasProviderRole = ['provider', 'admin'].includes(currentUser?.role || '');
         if (!hasProviderRole) {
           await logSecurityEvent({
             type: 'ROLE_ESCALATION_ATTEMPT',
+            userId: currentUser?.clerkUserId,
             ip: clientIP,
             severity: 'medium',
             details: { 
               attemptedPath: pathWithoutLocale,
+              userRole: currentUser?.role,
               requiredRole: 'provider'
             },
           });
@@ -173,6 +181,12 @@ export async function middleware(request: NextRequest) {
       // Add security headers for authenticated users
       const response = NextResponse.next();
       addSecurityHeaders(response);
+      
+      // Add user context header for server components
+      if (currentUser) {
+        response.headers.set('X-User-ID', currentUser.clerkUserId);
+        response.headers.set('X-User-Role', currentUser.role);
+      }
       
       return response;
 
@@ -191,6 +205,22 @@ export async function middleware(request: NextRequest) {
       const signInUrl = new URL(`/${locale}/auth/signin`, request.url);
       signInUrl.searchParams.set('error', 'auth_failed');
       return NextResponse.redirect(signInUrl);
+    }
+  }
+
+  // Handle auth routes - redirect authenticated users
+  if (isAuthRoute(pathWithoutLocale)) {
+    try {
+      const isAuthenticated = await IntegratedAuthService.isAuthenticated();
+      
+      if (isAuthenticated) {
+        const currentUser = await IntegratedAuthService.getCurrentUser();
+        const redirectPath = getRedirectPath(currentUser?.role || 'consumer');
+        return NextResponse.redirect(new URL(`/${locale}${redirectPath}`, request.url));
+      }
+    } catch (error) {
+      // If there's an error checking auth, allow access to auth pages
+      console.warn('Error checking auth for auth route:', error);
     }
   }
 
@@ -249,6 +279,25 @@ function isProviderRoute(pathname: string): boolean {
   );
 }
 
+function isAuthRoute(pathname: string): boolean {
+  const authRoutes = ['/auth/signin', '/auth/signup'];
+  return authRoutes.some(route => 
+    pathname === route || pathname.startsWith(route + '/')
+  );
+}
+
+function getRedirectPath(role: string): string {
+  switch (role) {
+    case 'admin':
+      return '/admin';
+    case 'provider':
+      return '/provider/dashboard';
+    case 'consumer':
+    default:
+      return '/dashboard';
+  }
+}
+
 function addSecurityHeaders(response: NextResponse): void {
   // Security headers
   response.headers.set('X-Frame-Options', 'DENY');
@@ -260,12 +309,12 @@ function addSecurityHeaders(response: NextResponse): void {
   response.headers.set(
     'Content-Security-Policy',
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.accounts.dev; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.accounts.dev https://*.clerk.accounts.dev; " +
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: https: blob:; " +
     "font-src 'self' data: https:; " +
-    "connect-src 'self' https: wss:; " +
-    "frame-src 'self' https://clerk.accounts.dev;"
+    "connect-src 'self' https: wss: https://*.supabase.co https://clerk.accounts.dev; " +
+    "frame-src 'self' https://clerk.accounts.dev https://*.clerk.accounts.dev;"
   );
   
   // Strict Transport Security (HTTPS only in production)
@@ -292,6 +341,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 };
