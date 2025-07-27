@@ -135,6 +135,24 @@ export class SecureSupabaseService {
     clientIP: string
   ): Promise<{ success: boolean; user?: UserProfile; error?: string }> {
     try {
+      // If Supabase is not configured, return mock success
+      if (!isSupabaseConfigured) {
+        console.warn('Supabase not configured, skipping user profile upsert');
+        return {
+          success: true,
+          user: {
+            id: clerkUserId,
+            clerk_user_id: clerkUserId,
+            email: userData.email || '',
+            first_name: userData.first_name || '',
+            last_name: userData.last_name || '',
+            role: userData.role || 'consumer',
+            email_verified: userData.email_verified || false,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          } as UserProfile
+        };
+      }
       // Validate required fields
       if (!clerkUserId || !userData.email) {
         return { success: false, error: 'Missing required user data' };
