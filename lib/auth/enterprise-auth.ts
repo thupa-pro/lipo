@@ -604,28 +604,100 @@ export class EnterpriseAuthService {
   }
 
   private static async createSupabaseProfile(userId: string, userData: any, clientIP: string) {
-    // Placeholder for Supabase profile creation
-    console.log('Creating Supabase profile for:', userId);
+    try {
+      const { createUserProfile, logSecurityEvent: logSupabaseEvent } = await import('@/lib/supabase/enterprise-client');
+
+      await createUserProfile({
+        clerkUserId: userId,
+        email: userData.email || userData.emailAddresses?.[0]?.emailAddress,
+        firstName: userData.firstName || userData.given_name || 'Unknown',
+        lastName: userData.lastName || userData.family_name || 'User',
+        role: userData.role || 'consumer',
+        avatar: userData.avatar || userData.picture,
+        metadata: {
+          signupMethod: userData.signupMethod || 'clerk',
+          signupIP: clientIP,
+          signupUserAgent: userData.userAgent,
+        },
+      });
+
+      await logSupabaseEvent({
+        userId,
+        eventType: 'USER_PROFILE_CREATED',
+        ipAddress: clientIP,
+        severity: 'info',
+        details: {
+          method: userData.signupMethod || 'clerk',
+          role: userData.role || 'consumer',
+        },
+      });
+    } catch (error) {
+      console.error('Error creating Supabase profile:', error);
+      // Don't throw here as profile creation shouldn't break auth flow
+    }
   }
 
   private static async updateSupabaseProfile(userId: string, userData: any, clientIP: string) {
-    // Placeholder for Supabase profile update
-    console.log('Updating Supabase profile for:', userId);
+    try {
+      const { updateUserProfile, logSecurityEvent: logSupabaseEvent } = await import('@/lib/supabase/enterprise-client');
+
+      await updateUserProfile(userId, {
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        avatar: userData.avatar,
+        phone: userData.phone,
+        lastSignInAt: new Date().toISOString(),
+        metadata: userData.metadata,
+      });
+
+      await logSupabaseEvent({
+        userId,
+        eventType: 'USER_PROFILE_UPDATED',
+        ipAddress: clientIP,
+        severity: 'info',
+        details: { updateReason: 'signin' },
+      });
+    } catch (error) {
+      console.error('Error updating Supabase profile:', error);
+      // Don't throw here as profile update shouldn't break auth flow
+    }
   }
 
   private static async getSupabaseProfile(userId: string) {
-    // Placeholder for Supabase profile retrieval
-    return null;
+    try {
+      const { getUserProfile } = await import('@/lib/supabase/enterprise-client');
+      return await getUserProfile(userId);
+    } catch (error) {
+      console.error('Error fetching Supabase profile:', error);
+      return null;
+    }
   }
 
   private static async trackSession(userId: string, sessionId: string, ip: string, userAgent?: string) {
-    // Placeholder for session tracking in Supabase
-    console.log('Tracking session for:', userId);
+    try {
+      const { createSession } = await import('@/lib/supabase/enterprise-client');
+
+      await createSession({
+        userId,
+        clerkSessionId: sessionId,
+        ipAddress: ip,
+        userAgent,
+        expiresAt: new Date(Date.now() + this.MAX_SESSION_DURATION).toISOString(),
+      });
+    } catch (error) {
+      console.error('Error tracking session in Supabase:', error);
+      // Don't throw here as session tracking shouldn't break auth flow
+    }
   }
 
   private static async invalidateSupabaseSession(sessionId: string) {
-    // Placeholder for session invalidation in Supabase
-    console.log('Invalidating session:', sessionId);
+    try {
+      const { invalidateSession } = await import('@/lib/supabase/enterprise-client');
+      await invalidateSession(sessionId);
+    } catch (error) {
+      console.error('Error invalidating Supabase session:', error);
+      // Don't throw here as session invalidation shouldn't break auth flow
+    }
   }
 
   private static async setSecureSessionCookie(sessionId: string) {
