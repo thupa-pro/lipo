@@ -267,6 +267,9 @@ export class SecureSupabaseService {
     userAgent: string
   ): Promise<{ success: boolean; session?: UserSession; error?: string }> {
     try {
+      if (!isSupabaseConfigured) {
+        return { success: true };
+      }
       const sessionData = {
         user_id: userId,
         clerk_session_id: clerkSessionId,
