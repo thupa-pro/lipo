@@ -74,18 +74,10 @@ export function SecureSignIn() {
         // Redirect to Google OAuth
         window.location.href = result.url;
       } else {
-        setAuthState(prev => ({
-          ...prev,
-          isLoading: false,
-          error: 'Google sign in failed. Please try again.'
-        }));
+        console.error('Google OAuth URL generation failed:', result.error);
       }
     } catch (error) {
-      setAuthState(prev => ({
-        ...prev,
-        isLoading: false,
-        error: 'Google sign in failed. Please try again.'
-      }));
+      console.error('Google sign in error:', error);
     } finally {
       setIsSubmitting(false);
     }
