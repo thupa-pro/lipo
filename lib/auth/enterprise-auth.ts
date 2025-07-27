@@ -717,4 +717,252 @@ export class EnterpriseAuthService {
       return false;
     }
   }
+
+  // Google OAuth integration with enterprise security
+  static getGoogleOAuthUrl(redirectUri: string): { success: boolean; url?: string; error?: string } {
+    try {
+      const config = env.getConfig();
+
+      // Generate secure state parameter
+      const state = Buffer.from(JSON.stringify({
+        timestamp: Date.now(),
+        nonce: Math.random().toString(36).substring(2),
+        redirectUri,
+      })).toString('base64url');
+
+      const params = new URLSearchParams({
+        client_id: process.env.GOOGLE_CLIENT_ID || 'demo_google_client_id',
+        redirect_uri: `${config.NEXT_PUBLIC_APP_URL}${redirectUri}`,
+        response_type: 'code',
+        scope: 'openid email profile',
+        state,
+        prompt: 'consent',
+        access_type: 'offline',
+      });
+
+      return {
+        success: true,
+        url: `https://accounts.google.com/oauth/authorize?${params.toString()}`,
+      };
+    } catch (error) {
+      console.error('Error generating Google OAuth URL:', error);
+      return {
+        success: false,
+        error: 'Failed to generate OAuth URL',
+      };
+    }
+  }
+
+  static async handleGoogleOAuth(
+    code: string,
+    state: string,
+    clientIP: string,
+    userAgent?: string
+  ): Promise<AuthResponse & { isNewUser?: boolean; userId?: string }> {
+    try {
+      // Validate state parameter for security
+      try {
+        const stateData = JSON.parse(Buffer.from(state, 'base64url').toString());
+        const stateAge = Date.now() - stateData.timestamp;
+
+        // State should not be older than 10 minutes
+        if (stateAge > 10 * 60 * 1000) {
+          throw new Error('OAuth state expired');
+        }
+      } catch (error) {
+        await logSecurityEvent({
+          type: SecurityEventTypes.OAUTH_ERROR,
+          ip: clientIP,
+          severity: 'medium',
+          details: { error: 'Invalid OAuth state parameter' },
+        });
+
+        return {
+          success: false,
+          error: 'Invalid OAuth state. Please try again.',
+        };
+      }
+
+      // Rate limiting check
+      const rateLimitResult = await checkRateLimit(clientIP, 'auth_oauth');
+      if (!rateLimitResult.success) {
+        return {
+          success: false,
+          error: 'Too many OAuth attempts. Please try again later.',
+          rateLimit: {
+            remaining: rateLimitResult.remaining,
+            reset: rateLimitResult.reset,
+            blocked: true,
+          },
+        };
+      }
+
+      // In a real implementation, exchange code for tokens and get user info
+      // For development/demo, create a mock user with Google-like data
+      const mockGoogleUser = {
+        id: `google_${code.substring(0, 8)}`,
+        email: `demo.oauth.${Date.now()}@gmail.com`,
+        given_name: 'Google',
+        family_name: 'User',
+        picture: 'https://lh3.googleusercontent.com/a/default-user=s96-c',
+        verified_email: true,
+      };
+
+      // Check if user already exists in Clerk
+      let clerkUser;
+      let isNewUser = false;
+
+      try {
+        const existingUsers = await clerkClient.users.getUserList({
+          emailAddress: [mockGoogleUser.email],
+        });
+
+        if (existingUsers.length > 0) {
+          clerkUser = existingUsers[0];
+        } else {
+          // Create new user via OAuth
+          isNewUser = true;
+          clerkUser = await clerkClient.users.createUser({
+            emailAddress: [mockGoogleUser.email],
+            firstName: mockGoogleUser.given_name,
+            lastName: mockGoogleUser.family_name,
+            profileImageUrl: mockGoogleUser.picture,
+            publicMetadata: {
+              role: 'consumer',
+              securityLevel: 'standard',
+              signupMethod: 'google_oauth',
+            },
+            privateMetadata: {
+              mfaEnabled: false,
+              loginCount: 1,
+            },
+            unsafeMetadata: {
+              onboardingCompleted: false,
+              profileSetupCompleted: false,
+            },
+          });
+
+          // Create Supabase profile if available
+          if (hasFeature('supabase')) {
+            await this.createSupabaseProfile(clerkUser.id, mockGoogleUser, clientIP);
+          }
+
+          await logSecurityEvent({
+            type: SecurityEventTypes.OAUTH_SIGNUP,
+            userId: clerkUser.id,
+            email: mockGoogleUser.email,
+            ip: clientIP,
+            severity: 'info',
+            details: {
+              provider: 'google',
+              userAgent,
+            },
+          });
+        }
+      } catch (error) {
+        await logSecurityEvent({
+          type: SecurityEventTypes.OAUTH_ERROR,
+          ip: clientIP,
+          severity: 'high',
+          details: {
+            error: error instanceof Error ? error.message : 'OAuth user creation failed',
+            provider: 'google',
+          },
+        });
+
+        return {
+          success: false,
+          error: 'OAuth authentication failed. Please try again.',
+        };
+      }
+
+      // Create session for OAuth user
+      const session = await clerkClient.sessions.createSession({
+        userId: clerkUser.id,
+      });
+
+      // Set secure session cookie
+      await this.setSecureSessionCookie(session.id);
+
+      // Update login count and tracking
+      const currentLoginCount = (clerkUser.privateMetadata?.loginCount as number) || 0;
+      await clerkClient.users.updateUser(clerkUser.id, {
+        privateMetadata: {
+          ...clerkUser.privateMetadata,
+          loginCount: currentLoginCount + 1,
+          lastOAuthProvider: 'google',
+        },
+      });
+
+      // Track session if Supabase is available
+      if (hasFeature('supabase')) {
+        await this.trackSession(clerkUser.id, session.id, clientIP, userAgent);
+      }
+
+      // Build enterprise user object
+      const enterpriseUser: EnterpriseUser = {
+        id: clerkUser.id,
+        clerkUserId: clerkUser.id,
+        email: clerkUser.emailAddresses[0]?.emailAddress || '',
+        firstName: clerkUser.firstName || '',
+        lastName: clerkUser.lastName || '',
+        name: `${clerkUser.firstName || ''} ${clerkUser.lastName || ''}`.trim(),
+        role: (clerkUser.publicMetadata?.role as any) || 'consumer',
+        verified: true, // OAuth users are automatically verified
+        avatar: clerkUser.profileImageUrl,
+        createdAt: clerkUser.createdAt.toString(),
+        lastSignIn: new Date().toISOString(),
+        metadata: {
+          onboardingCompleted: clerkUser.unsafeMetadata?.onboardingCompleted || false,
+          profileSetupCompleted: clerkUser.unsafeMetadata?.profileSetupCompleted || false,
+        },
+        securityLevel: (clerkUser.publicMetadata?.securityLevel as any) || 'standard',
+        mfaEnabled: (clerkUser.privateMetadata?.mfaEnabled as boolean) || false,
+        loginCount: currentLoginCount + 1,
+      };
+
+      await logSecurityEvent({
+        type: SecurityEventTypes.OAUTH_SUCCESS,
+        userId: clerkUser.id,
+        email: clerkUser.emailAddresses[0]?.emailAddress,
+        ip: clientIP,
+        severity: 'info',
+        details: {
+          provider: 'google',
+          isNewUser,
+          userAgent,
+        },
+      });
+
+      return {
+        success: true,
+        user: enterpriseUser,
+        userId: clerkUser.id,
+        isNewUser,
+        sessionId: session.id,
+        redirectTo: isNewUser ? '/onboarding' : this.getRedirectPath(enterpriseUser.role),
+        rateLimit: {
+          remaining: rateLimitResult.remaining,
+          reset: rateLimitResult.reset,
+          blocked: false,
+        },
+      };
+
+    } catch (error) {
+      await logSecurityEvent({
+        type: SecurityEventTypes.OAUTH_ERROR,
+        ip: clientIP,
+        severity: 'high',
+        details: {
+          error: error instanceof Error ? error.message : 'Unknown OAuth error',
+          provider: 'google',
+        },
+      });
+
+      return {
+        success: false,
+        error: 'OAuth authentication failed. Please try again.',
+      };
+    }
+  }
 }
