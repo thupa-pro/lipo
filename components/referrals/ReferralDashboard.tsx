@@ -44,7 +44,8 @@ import {
   Clock,
   MessageSquare,
   Target,
-  Zap
+  Zap,
+  Link
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
