@@ -203,8 +203,8 @@ async function detectSecurityThreats(request: NextRequest) {
 
 // Authentication and authorization handling
 async function handleAuthentication(
-  request: NextRequest, 
-  pathWithoutLocale: string, 
+  request: NextRequest,
+  pathWithoutLocale: string,
   locale: string
 ): Promise<NextResponse | null> {
   if (!isProtectedRoute(pathWithoutLocale)) {
@@ -215,19 +215,37 @@ async function handleAuthentication(
   const userAgent = request.headers.get('user-agent') || '';
 
   try {
+    // Check if environment is validated for auth services
+    if (!env.isValidConfig()) {
+      console.warn('Environment validation failed, skipping auth checks for development');
+
+      // In development with invalid config, allow access but log warning
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`⚠️ Allowing access to ${pathWithoutLocale} due to env validation issues`);
+        return null; // Allow access
+      }
+
+      // In production, redirect to error page
+      return NextResponse.redirect(new URL(`/${locale}/auth/signin?error=config_error`, request.url));
+    }
+
     // Check if user is authenticated
     const isAuthenticated = await EnterpriseAuthService.isAuthenticated();
-    
+
     if (!isAuthenticated) {
-      await logSecurityEvent({
-        type: SecurityEventTypes.UNAUTHORIZED_ACCESS_ATTEMPT,
-        ip: clientIP,
-        severity: 'medium',
-        details: { 
-          attemptedPath: pathWithoutLocale,
-          userAgent: userAgent,
-        },
-      });
+      try {
+        await logSecurityEvent({
+          type: SecurityEventTypes.UNAUTHORIZED_ACCESS_ATTEMPT,
+          ip: clientIP,
+          severity: 'medium',
+          details: {
+            attemptedPath: pathWithoutLocale,
+            userAgent: userAgent,
+          },
+        });
+      } catch (logError) {
+        console.warn('Failed to log security event:', logError);
+      }
 
       // Redirect to sign in with return URL
       const signInUrl = new URL(`/${locale}/auth/signin`, request.url);
