@@ -20,7 +20,6 @@ export function SecureSignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { signIn, error, clearError } = useSecureAuth();
-  const [authState, setAuthState] = useState({ isLoading: false, error: null });
   const router = useRouter();
   const searchParams = useSearchParams();
   
