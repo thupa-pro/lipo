@@ -190,9 +190,19 @@ export default async function RootLayout({
                     Skip to main content
                   </a>
 
-                  {/* Navigation */}
+                  {/* Enhanced Navigation */}
                   <Suspense fallback={
-                    <div className="h-16 bg-background/80 backdrop-blur-sm border-b animate-pulse" />
+                    <div className="h-16 glass-nav animate-skeleton-pulse">
+                      <div className="container mx-auto px-4 h-full flex items-center justify-between">
+                        <div className="skeleton w-32 h-8 rounded-xl"></div>
+                        <div className="hidden md:flex gap-4">
+                          <div className="skeleton w-16 h-6 rounded-lg"></div>
+                          <div className="skeleton w-20 h-6 rounded-lg"></div>
+                          <div className="skeleton w-18 h-6 rounded-lg"></div>
+                        </div>
+                        <div className="skeleton w-24 h-8 rounded-xl"></div>
+                      </div>
+                    </div>
                   }>
                     <RoleAwareNavigation />
                   </Suspense>
