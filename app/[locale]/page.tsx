@@ -336,8 +336,18 @@ export default function HomePage() {
           </div>
         </SectionTransition>
 
-        {/* Comprehensive Media Showcase */}
+        {/* Builder.io Assets Showcase */}
         <SectionTransition delay={0.7}>
+          <div className="py-16 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-50/30 via-purple-50/20 to-indigo-50/30 dark:from-violet-950/20 dark:via-purple-950/10 dark:to-indigo-950/20" />
+            <div className="relative z-10">
+              <BuilderAssetsShowcase />
+            </div>
+          </div>
+        </SectionTransition>
+
+        {/* Comprehensive Media Showcase */}
+        <SectionTransition delay={0.8}>
           <div className="py-16 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-50/30 via-pink-50/20 to-orange-50/30 dark:from-purple-950/20 dark:via-pink-950/10 dark:to-orange-950/20" />
             <div className="relative z-10">
