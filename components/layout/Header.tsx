@@ -439,8 +439,11 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                 </DropdownMenu>
               )}
 
-              {/* Theme Toggle */}
-              <ThemeToggle />
+              {/* Theme Controls */}
+              <div className="flex items-center gap-1">
+                <ThemeToggle />
+                <ThemeSwitcher />
+              </div>
 
               {/* User Menu */}
               {isSignedIn ? (
