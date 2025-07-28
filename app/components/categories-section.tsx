@@ -203,10 +203,10 @@ export function CategoriesSection() {
         transition: { duration: 0.2 }
       }}
       className={`
-        group relative overflow-hidden rounded-2xl cursor-pointer border border-gray-200/50 dark:border-gray-800/30 
+        group relative overflow-hidden rounded-2xl cursor-pointer glass-ultra border border-glass-border-strong
         ${viewMode === 'grid' ? 'aspect-[4/5]' : 'aspect-auto h-32 flex'}
-        ${selectedCategory === index ? 'ring-2 ring-blue-500/50 ring-offset-2 ring-offset-white dark:ring-offset-gray-950' : ''}
-        bg-white dark:bg-gray-950 shadow-sm hover:shadow-lg dark:shadow-gray-950/50 transition-all duration-300
+        ${selectedCategory === index ? 'ring-2 ring-ai-500/50 ring-offset-2 ring-offset-background shadow-glow-ai' : ''}
+        shadow-glass-sm hover:shadow-glass-lg neural-card interactive-lift transition-all duration-300
       `}
       onHoverStart={() => setHoveredIndex(index)}
       onHoverEnd={() => setHoveredIndex(null)}
