@@ -377,30 +377,30 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                size="lg" 
-                asChild 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 px-8 py-4 text-lg rounded-2xl"
+            <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                asChild
+                className="btn-ai-primary interactive-lift shadow-glow-ai hover:shadow-glow-lg px-8 py-4 text-lg rounded-2xl focus-visible-ring"
               >
                 <Link href="/browse" className="flex items-center gap-2">
                   <Rocket className="w-5 h-5" />
-                  Get Started Now
+                  Start Elite Journey
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
             </motion.div>
-            
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                size="lg" 
-                variant="outline" 
+
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                variant="outline"
                 asChild
-                className="border-2 border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 px-8 py-4 text-lg rounded-2xl"
+                className="glass-interactive neural-button border-2 border-glass-border-strong hover:border-ai-400 px-8 py-4 text-lg rounded-2xl focus-visible-ring"
               >
                 <Link href="#demo" className="flex items-center gap-2">
                   <Play className="w-5 h-5" />
-                  Watch Demo
+                  AI Demo
                 </Link>
               </Button>
             </motion.div>
