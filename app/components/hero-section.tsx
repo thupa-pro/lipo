@@ -158,7 +158,7 @@ const FloatingStats = () => {
           whileHover={{ scale: 1.1, y: -5 }}
           className={`absolute ${stat.position} hidden lg:block`}
         >
-          <div className="bg-white/20 dark:bg-gray-800/30 backdrop-blur-xl border border-white/30 dark:border-gray-600/30 rounded-2xl p-4 shadow-xl">
+          <div className="glass-ultra border border-glass-border-strong rounded-2xl p-4 shadow-glass-lg neural-card interactive-lift">
             <div className="text-center">
               <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {stat.value}
