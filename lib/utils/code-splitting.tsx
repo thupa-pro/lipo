@@ -1,11 +1,10 @@
 import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React, { lazy, Suspense, ComponentType, ReactNode } from 'react';
-;
 
 // Loading component for lazy-loaded components
 const LoadingSpinner = ({ className = '' }: { className?: string }) => (
   <div className={`flex items-center justify-center p-8 ${className}`}>
-    <UIIcons.Loader2 className="h-8 w-8 animate-spin text-blue-600" / />
+    <UIIcons.Loader2 className="h-8 w-8 animate-spin text-blue-600" />
     <span className="ml-2 text-sm text-gray-600">Loading...</span>
   </div>
 );
