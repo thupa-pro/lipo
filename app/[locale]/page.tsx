@@ -382,25 +382,25 @@ export default function HomePage() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Button 
-                    size="lg" 
-                    asChild 
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+                  <Button
+                    size="lg"
+                    asChild
+                    className="btn-ai-primary interactive-lift shadow-glow-ai hover:shadow-glow-lg transform hover:scale-105 focus-visible-ring"
                   >
                     <Link href="/browse" className="flex items-center gap-2">
                       <Sparkles className="w-5 h-5" />
-                      Explore Services
+                      Explore Elite Services
                     </Link>
                   </Button>
-                  
-                  <Button 
-                    size="lg" 
+
+                  <Button
+                    size="lg"
                     variant="outline"
                     asChild
-                    className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all duration-300"
+                    className="premium-button glass-strong border-2 border-premium-border text-white hover:border-premium-accent hover:shadow-glow-premium transition-all duration-300 focus-visible-ring"
                   >
                     <Link href="/become-provider">
-                      Become a Provider
+                      Join Elite Network
                     </Link>
                   </Button>
                 </div>
