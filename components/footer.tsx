@@ -25,7 +25,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/ui/logo";
 import { LogoVariant, UIContext } from "@/lib/types/logo";
-import { Sparkles, Twitter, Instagram, Linkedin, Youtube, Globe, Award, BookOpen, GraduationCap, Newspaper, Lightbulb, Handshake, Accessibility, Crown, Brain, Rocket, Gem, Building2, TrendingUp, Zap, Heart, ChevronUp, ChevronDown, MessageCircle, ExternalLink, Download, HelpCircle, FileText, Lock, Eye, Cookie, UserCheck, Scale, Target, BarChart3, Headphones, Monitor, Smartphone, Tablet, Cpu, Code, Database, Server, GitBranch, Wifi, Layers } from "lucide-react";
+import { Sparkles, Twitter, Instagram, Linkedin, Youtube, Globe, Award, BookOpen, GraduationCap, Newspaper, Lightbulb, Handshake, Accessibility, Crown, Brain, Rocket, Gem, Building2, TrendingUp, Zap, Heart, ChevronUp, ChevronDown, MessageCircle, ExternalLink, Download, HelpCircle, FileText, Lock, Eye, Cookie, UserCheck, Scale, Target, BarChart3, Headphones, Monitor, Smartphone, Tablet, Cpu, Code, Database, Server, GitBranch, Wifi, Layers, Users, DollarSign, CheckCircle, Star, Shield, Briefcase } from "lucide-react";
 
 // Comprehensive language configuration with all supported locales
 const languages = [
