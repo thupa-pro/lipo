@@ -362,9 +362,9 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <Badge variant="secondary" className="mb-6 bg-white/10 text-white border-white/20">
+                <Badge variant="secondary" className="mb-6 premium-badge glass-strong text-white border-premium-border shadow-glow-premium">
                   <Zap className="w-4 h-4 mr-2" />
-                  Ready to Transform Your Life?
+                  Ready for Elite Transformation?
                 </Badge>
                 
                 <h2 className="text-4xl md:text-6xl font-bold mb-6">
