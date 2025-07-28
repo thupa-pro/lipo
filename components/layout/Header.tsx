@@ -275,11 +275,11 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
           <div className="flex h-16 items-center justify-between">
             {/* Left Section: Logo & Mobile Menu */}
             <div className="flex items-center gap-6">
-              {/* Mobile Menu Toggle */}
+              {/* Enhanced Mobile Menu Toggle */}
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-9 w-9 p-0 lg:hidden rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                className="h-9 w-9 p-0 lg:hidden neural-button interactive-lift focus-visible-ring"
                 onClick={onSidebarToggle}
               >
                 <AnimatePresence mode="wait">
