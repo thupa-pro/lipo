@@ -301,7 +301,7 @@ export function ProviderCalendar({
               <Dialog open={showSettings} onOpenChange={setShowSettings}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm">
-                    <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+                    <NavigationIcons.Settings className="w-4 h-4 mr-2" />
                     Availability
                   </Button>
                 </DialogTrigger>

@@ -33,7 +33,7 @@ export default function ProviderTermsPage() {
             <CardContent className="p-6">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <UIIcons.AlertTriangle className="w-6 h-6 text-blue-600" / />
+                  <UIIcons.AlertTriangle className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-blue-900 mb-2">Important Notice</h3>
@@ -62,19 +62,19 @@ export default function ProviderTermsPage() {
                 <h4 className="font-semibold">Account Requirements</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">You must be at least 18 years old and legally authorized to work</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Provide, accurate, complete, and current information</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Complete identity verification process</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Maintain professional profile and communications</span>
                   </li>
                 </ul>
@@ -95,19 +95,19 @@ export default function ProviderTermsPage() {
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Arrive on time for scheduled appointments</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Communicate clearly and professionally with customers</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Complete work according to agreed specifications</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">Respect customer property and privacy</span>
                   </li>
                 </ul>
@@ -145,19 +145,19 @@ export default function ProviderTermsPage() {
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">You control how and when you work</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">You're responsible for your own taxes and insurance</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">You may work for other platforms or customers</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500 mt-0.5" />
                     <span className="text-sm">You provide your own tools and equipment</span>
                   </li>
                 </ul>
@@ -194,19 +194,19 @@ export default function ProviderTermsPage() {
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
-                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" / />
+                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" />
                     <span className="text-sm">Taking payments outside the platform</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" / />
+                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" />
                     <span className="text-sm">Discriminating against customers</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" / />
+                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" />
                     <span className="text-sm">Providing false information or fake reviews</span>
                   </li>
                   <li className="flex items-start">
-                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" / />
+                    <UIIcons.AlertTriangle className="w-4 h-4 mr-2 text-red-500 mt-0.5" />
                     <span className="text-sm">Engaging in inappropriate behavior</span>
                   </li>
                 </ul>
@@ -242,7 +242,7 @@ export default function ProviderTermsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" onClick={() => router.push("/provider-support")}>
               Contact Provider Support
-              <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+              <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
             </Button>
             <Button size="lg" variant="outline" onClick={() => router.push("/help")}>
               Visit Help Center

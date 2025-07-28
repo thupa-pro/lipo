@@ -198,7 +198,7 @@ export function AIRecommendationSystem({
   const getPriorityIcon = (priority: string) => {
     switch (priority) {
       case "high":
-        return <UIIcons.AlertTriangle className="h-4 w-4 text-red-500" / />
+        return <UIIcons.AlertTriangle className="h-4 w-4 text-red-500" />
       case "medium":
         return <Lightbulb className="h-4 w-4 text-amber-500" />
       default:
@@ -220,9 +220,9 @@ export function AIRecommendationSystem({
   const getTypeIcon = (type: string) => {
     switch (type) {
       case "pricing":
-        return <BusinessIcons.DollarSign className="h-4 w-4" / />
+        return <BusinessIcons.DollarSign className="h-4 w-4" />
       case "availability":
-        return <BusinessIcons.Calendar className="h-4 w-4" / />
+        return <BusinessIcons.Calendar className="h-4 w-4" />
       case "profile":
         return <Camera className="h-4 w-4" />
       case "marketing":
@@ -230,7 +230,7 @@ export function AIRecommendationSystem({
       case "quality":
         return <OptimizedIcon name="Star" className="h-4 w-4" />
       case "booking":
-        return <NavigationIcons.Users className="h-4 w-4" / />
+        return <NavigationIcons.Users className="h-4 w-4" />
       default:
         return <Brain className="h-4 w-4" />
     }

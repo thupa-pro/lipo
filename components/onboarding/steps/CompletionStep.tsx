@@ -38,7 +38,7 @@ export function CompletionStep({
     role === "provider"
       ? [
           {
-            icon: <BusinessIcons.Briefcase className="w-5 h-5" / />,
+            icon: <BusinessIcons.Briefcase className="w-5 h-5" />,
             title: "Business Profile Created",
             description:
               "Your professional profile is ready to attract customers",
@@ -49,19 +49,19 @@ export function CompletionStep({
             description: "Your service categories and details are set up",
           },
           {
-            icon: <BusinessIcons.DollarSign className="w-5 h-5" / />,
+            icon: <BusinessIcons.DollarSign className="w-5 h-5" />,
             title: "Pricing Set",
             description: "Your rates and payment methods are configured",
           },
           {
-            icon: <BusinessIcons.Calendar className="w-5 h-5" / />,
+            icon: <BusinessIcons.Calendar className="w-5 h-5" />,
             title: "Availability Configured",
             description: "Customers can now see when you're available",
           },
         ]
       : [
           {
-            icon: <NavigationIcons.Users className="w-5 h-5" / />,
+            icon: <NavigationIcons.Users className="w-5 h-5" />,
             title: "Profile Created",
             description: "Your customer profile is complete",
           },
@@ -71,7 +71,7 @@ export function CompletionStep({
             description: "We'll show you the most relevant services",
           },
           {
-            icon: <UIIcons.CheckCircle className="w-5 h-5" / />,
+            icon: <UIIcons.CheckCircle className="w-5 h-5" />,
             title: "Ready to Book",
             description: "You can now start booking services",
           },
@@ -81,21 +81,21 @@ export function CompletionStep({
     role === "provider"
       ? [
           {
-            icon: <BusinessIcons.Briefcase className="w-4 h-4" / />,
+            icon: <BusinessIcons.Briefcase className="w-4 h-4" />,
             title: "Create Your First Listing",
             description: "Add detailed service listings to attract customers",
             action: "Create Listing",
             href: "/provider/listings/new",
           },
           {
-            icon: <BusinessIcons.Calendar className="w-4 h-4" / />,
+            icon: <BusinessIcons.Calendar className="w-4 h-4" />,
             title: "Review Your Calendar",
             description: "Make sure your availability is accurate",
             action: "View Calendar",
             href: "/provider/calendar",
           },
           {
-            icon: <NavigationIcons.Users className="w-4 h-4" / />,
+            icon: <NavigationIcons.Users className="w-4 h-4" />,
             title: "Complete Your Profile",
             description: "Add, photos, certifications, and more details",
             action: "Edit Profile",
@@ -118,7 +118,7 @@ export function CompletionStep({
             href: "/browse",
           },
           {
-            icon: <NavigationIcons.Users className="w-4 h-4" / />,
+            icon: <NavigationIcons.Users className="w-4 h-4" />,
             title: "Refer Friends",
             description: "Earn credits by inviting friends to Loconomy",
             action: "Refer Now",
@@ -131,7 +131,7 @@ export function CompletionStep({
       {/* Success Header */}
       <div className="space-y-4">
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-          <UIIcons.CheckCircle className="w-10 h-10 text-green-600" / />
+          <UIIcons.CheckCircle className="w-10 h-10 text-green-600" />
         </div>
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -325,7 +325,7 @@ export function CompletionStep({
           ) : (
             <>
               Go to Dashboard
-              <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+              <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
             </>
           )}
         </Button>

@@ -162,7 +162,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
               <CardHeader className="text-center pb-6">
                 <div className="mx-auto mb-4 animate-scale-in">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
-                    <UIIcons.AlertTriangle className="w-10 h-10 text-white" / />
+                    <UIIcons.AlertTriangle className="w-10 h-10 text-white" />
                   </div>
                 </div>
 
@@ -240,7 +240,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                     size="lg"
                     className="w-full"
                   >
-                    <NavigationIcons.Home className="w-4 h-4 mr-2" / />
+                    <NavigationIcons.Home className="w-4 h-4 mr-2" />
                     Go Home
                   </Button>
                 </div>

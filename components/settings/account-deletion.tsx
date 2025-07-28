@@ -89,7 +89,7 @@ export function AccountDeletion({
           </div>
 
           <Alert>
-            <UIIcons.AlertTriangle className="h-4 w-4" / />
+            <UIIcons.AlertTriangle className="h-4 w-4" />
             <AlertDescription>
               Data exports may take up to 24 hours to process. You'll receive an
               email when your download is ready.
@@ -142,7 +142,7 @@ export function AccountDeletion({
         </CardHeader>
         <CardContent className="space-y-4">
           <Alert className="border-red-200 bg-red-50">
-            <UIIcons.AlertTriangle className="h-4 w-4 text-red-600" / />
+            <UIIcons.AlertTriangle className="h-4 w-4 text-red-600" />
             <AlertDescription className="text-red-800">
               <strong>Warning:</strong> Account deletion is permanent and cannot
               be undone. All your data will be permanently removed from our

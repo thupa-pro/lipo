@@ -90,7 +90,7 @@ export default function ProvidersSection() {
               {provider.verified && (
                 <div className="absolute top-4 right-4">
                   <div className="flex items-center gap-1 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <UIIcons.CheckCircle className="w-3 h-3 text-green-500" / />
+                    <UIIcons.CheckCircle className="w-3 h-3 text-green-500" />
                     <span className="text-xs font-semibold">Verified</span>
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export default function ProvidersSection() {
               {/* Location & Jobs */}
               <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-6">
                 <div className="flex items-center gap-1">
-                  <BusinessIcons.MapPin className="w-4 h-4" / />
+                  <BusinessIcons.MapPin className="w-4 h-4" />
                   {provider.location}
                 </div>
                 <div className="flex items-center gap-1">
@@ -181,7 +181,7 @@ export default function ProvidersSection() {
                 onClick={() => router.push(`/providers/${provider.id}`)}
               >
                 View Profile
-                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </PremiumCard>
@@ -197,7 +197,7 @@ export default function ProvidersSection() {
           className="hover:bg-blue-50 dark:hover:bg-blue-950/20"
         >
           View All Elite Providers
-          <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+          <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
         </Button>
       </div>
     </PremiumSection>

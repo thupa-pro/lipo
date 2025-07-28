@@ -511,7 +511,7 @@ export default function AIChat({
                 variant="outline"
                 className="border-gray-200 hover:border-gray-300"
               >
-                <NavigationIcons.Settings className="h-4 w-4" / />
+                <NavigationIcons.Settings className="h-4 w-4" />
               </Button>
             </div>
 

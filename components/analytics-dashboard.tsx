@@ -215,7 +215,7 @@ export default function AnalyticsDashboard() {
                   {Math.abs(data.overview.growthRate)}% vs last period
                 </div>
               </div>
-              <NavigationIcons.Users className="w-8 h-8 text-blue-600 dark:text-blue-400" / />
+              <NavigationIcons.Users className="w-8 h-8 text-blue-600 dark:text-blue-400" />
             </div>
           </CardContent>
         </Card>
@@ -247,7 +247,7 @@ export default function AnalyticsDashboard() {
                   <TrendingUp className="w-4 h-4" /> 18.7% vs last period
                 </div>
               </div>
-              <BusinessIcons.DollarSign className="w-8 h-8 text-green-600 dark:text-green-400" / />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
           </CardContent>
         </Card>
@@ -282,7 +282,7 @@ export default function AnalyticsDashboard() {
             <Card className="shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <NavigationIcons.Users className="w-5 h-5 mr-2 text-blue-600" / />
+                  <NavigationIcons.Users className="w-5 h-5 mr-2 text-blue-600" />
                   User Growth
                 </CardTitle>
                 <CardDescription>
@@ -475,7 +475,7 @@ export default function AnalyticsDashboard() {
             <Card className="shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <BusinessIcons.Calendar className="w-5 h-5 mr-2 text-orange-600" / />
+                  <BusinessIcons.Calendar className="w-5 h-5 mr-2 text-orange-600" />
                   Job Categories
                 </CardTitle>
                 <CardDescription>
@@ -509,7 +509,7 @@ export default function AnalyticsDashboard() {
             <Card className="shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <BusinessIcons.DollarSign className="w-5 h-5 mr-2 text-green-600" / />
+                  <BusinessIcons.DollarSign className="w-5 h-5 mr-2 text-green-600" />
                   Revenue Overview
                 </CardTitle>
                 <CardDescription>Daily revenue trends.</CardDescription>
@@ -725,7 +725,7 @@ export default function AnalyticsDashboard() {
         <CardContent className="space-y-4">
           <div className="space-y-3">
             <div className="flex items-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <div className="font-medium text-foreground">
                   User retention is, strong, but new signups could be boosted.
@@ -737,7 +737,7 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
             <div className="flex items-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <div className="font-medium text-foreground">
                   House Cleaning and Handyman services drive significant
@@ -750,7 +750,7 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
             <div className="flex items-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <div className="font-medium text-foreground">
                   Average response time for messages is, good, but can be

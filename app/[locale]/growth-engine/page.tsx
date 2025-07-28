@@ -13,7 +13,7 @@ export default function GrowthEnginePage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-              <BusinessIcons.MapPin className="w-5 h-5 text-white" / />
+              <BusinessIcons.MapPin className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
               Loconomy

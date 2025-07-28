@@ -96,7 +96,7 @@ export default function SitemapPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/")}>
             Back to Home
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>

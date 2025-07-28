@@ -525,7 +525,7 @@ export function PaymentMethods({
                             {cardBrand?.name} ending in {method.card?.last4}
                           </span>
                           <span className="flex items-center space-x-1">
-                            <BusinessIcons.Calendar className="w-3 h-3" / />
+                            <BusinessIcons.Calendar className="w-3 h-3" />
                             <span>
                               {method.card?.expMonth
                                 .toString()
@@ -542,7 +542,7 @@ export function PaymentMethods({
                                 variant="outline"
                                 className="ml-2 border-orange-300 text-orange-600"
                               >
-                                <UIIcons.AlertTriangle className="w-3 h-3 mr-1" / />
+                                <UIIcons.AlertTriangle className="w-3 h-3 mr-1" />
                                 Expires Soon
                               </Badge>
                             )}
@@ -566,7 +566,7 @@ export function PaymentMethods({
                           onClick={() => handleSetDefault(method.id)}
                           disabled={loading}
                         >
-                          <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
+                          <UIIcons.CheckCircle className="w-4 h-4 mr-2" />
                           Set Default
                         </Button>
                       )}

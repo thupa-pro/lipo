@@ -85,7 +85,7 @@ export default function CustomerDashboard() {
             {/* Search */}
             <div className="flex-1 max-w-lg mx-8">
               <div className="relative">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
                   placeholder="Search for services..."
                   value={searchQuery}
@@ -184,7 +184,7 @@ export default function CustomerDashboard() {
                     12
                   </p>
                 </div>
-                <BusinessIcons.Calendar className="w-8 h-8 text-blue-600" / />
+                <BusinessIcons.Calendar className="w-8 h-8 text-blue-600" />
               </div>
             </CardContent>
           </Card>
@@ -250,7 +250,7 @@ export default function CustomerDashboard() {
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                          <NavigationIcons.User className="w-6 h-6 text-white" / />
+                          <NavigationIcons.User className="w-6 h-6 text-white" />
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -285,7 +285,7 @@ export default function CustomerDashboard() {
                 </div>
                 <Button variant="outline" className="w-full mt-4">
                   View All Bookings
-                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </CardContent>
             </Card>
@@ -316,7 +316,7 @@ export default function CustomerDashboard() {
                 </div>
                 <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500">
                   Explore All Services
-                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </CardContent>
             </Card>
@@ -332,11 +332,11 @@ export default function CustomerDashboard() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
-                  <NavigationIcons.Search className="w-6 h-6 text-blue-600" / />
+                  <NavigationIcons.Search className="w-6 h-6 text-blue-600" />
                   <span>Find Services</span>
                 </Button>
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
-                  <BusinessIcons.Calendar className="w-6 h-6 text-green-600" / />
+                  <BusinessIcons.Calendar className="w-6 h-6 text-green-600" />
                   <span>Schedule Service</span>
                 </Button>
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
@@ -344,7 +344,7 @@ export default function CustomerDashboard() {
                   <span>View Favorites</span>
                 </Button>
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
-                  <NavigationIcons.User className="w-6 h-6 text-purple-600" / />
+                  <NavigationIcons.User className="w-6 h-6 text-purple-600" />
                   <span>Edit Profile</span>
                 </Button>
               </div>

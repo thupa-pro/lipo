@@ -314,7 +314,7 @@ export function EnhancedAIAssistant({
                         <div className="space-y-1">
                           {message.metadata.features.map((feature: string, index: number) => (
                             <div key={index} className="flex items-center gap-2 text-sm">
-                              <UIIcons.CheckCircle className="w-3 h-3 text-emerald-500" / />
+                              <UIIcons.CheckCircle className="w-3 h-3 text-emerald-500" />
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -452,7 +452,7 @@ export function EnhancedAIAssistant({
               className="h-12 w-12 p-0 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
             >
               {isTyping ? (
-                <UIIcons.Loader2 className="w-5 h-5 animate-spin" / />
+                <UIIcons.Loader2 className="w-5 h-5 animate-spin" />
               ) : (
                 <Send className="w-5 h-5" />
               )}

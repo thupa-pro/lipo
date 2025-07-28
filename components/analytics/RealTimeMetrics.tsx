@@ -212,7 +212,7 @@ export function RealTimeMetrics() {
           {/* Active Users */}
           <div className="flex items-center space-x-3 p-3 border rounded-lg">
             <div className="p-2 bg-blue-100 rounded-lg">
-              <NavigationIcons.Users className="h-5 w-5 text-blue-600" / />
+              <NavigationIcons.Users className="h-5 w-5 text-blue-600" />
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">
@@ -346,7 +346,7 @@ export function RealTimeMetrics() {
           <Card>
             <CardHeader>
               <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <BusinessIcons.MapPin className="h-4 w-4" / />
+                <BusinessIcons.MapPin className="h-4 w-4" />
                 Geographic Activity
               </CardTitle>
             </CardHeader>

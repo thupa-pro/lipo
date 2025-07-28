@@ -94,7 +94,7 @@ export default function ProviderAppPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Become a Provider
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </section>

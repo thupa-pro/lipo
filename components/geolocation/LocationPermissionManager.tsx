@@ -139,11 +139,11 @@ export default function LocationPermissionManager({
   const getPermissionIcon = () => {
     switch (permission.state) {
       case "granted":
-        return <UIIcons.CheckCircle className="h-5 w-5 text-green-500" / />;
+        return <UIIcons.CheckCircle className="h-5 w-5 text-green-500" />;
       case "denied":
         return <XCircle className="h-5 w-5 text-red-500" />;
       case "prompt":
-        return <UIIcons.AlertTriangle className="h-5 w-5 text-yellow-500" / />;
+        return <UIIcons.AlertTriangle className="h-5 w-5 text-yellow-500" />;
       default:
         return <OptimizedIcon name="Shield" className="h-5 w-5 text-gray-500" />;
     }
@@ -199,7 +199,7 @@ export default function LocationPermissionManager({
         <CardContent className="space-y-4">
           {permission.message && (
             <Alert>
-              <UIIcons.AlertTriangle className="h-4 w-4" / />
+              <UIIcons.AlertTriangle className="h-4 w-4" />
               <AlertDescription>{permission.message}</AlertDescription>
             </Alert>
           )}
@@ -222,12 +222,12 @@ export default function LocationPermissionManager({
             >
               {isLoading ? (
                 <>
-                  <UIIcons.Loader2 className="mr-2 h-4 w-4 animate-spin" / />
+                  <UIIcons.Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Getting Location...
                 </>
               ) : (
                 <>
-                  <BusinessIcons.MapPin className="mr-2 h-4 w-4" / />
+                  <BusinessIcons.MapPin className="mr-2 h-4 w-4" />
                   Request Location Access
                 </>
               )}
@@ -241,7 +241,7 @@ export default function LocationPermissionManager({
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <BusinessIcons.MapPin className="h-5 w-5" / />
+              <BusinessIcons.MapPin className="h-5 w-5" />
               Current Location
             </CardTitle>
             <CardDescription>
@@ -294,7 +294,7 @@ export default function LocationPermissionManager({
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <NavigationIcons.Settings className="h-5 w-5" / />
+            <NavigationIcons.Settings className="h-5 w-5" />
             Location Preferences
           </CardTitle>
           <CardDescription>
@@ -393,7 +393,7 @@ export default function LocationPermissionManager({
                   onClick={requestLocation}
                   disabled={isLoading}
                 >
-                  <BusinessIcons.MapPin className="mr-2 h-4 w-4" / />
+                  <BusinessIcons.MapPin className="mr-2 h-4 w-4" />
                   Refresh Location
                 </Button>
                 <Button

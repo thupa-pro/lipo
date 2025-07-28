@@ -164,7 +164,7 @@ export default function EscrowExplainer() {
                   <ul className="text-xs text-muted-foreground space-y-1">
                     {step.details.map((detail, i) => (
                       <li key={i} className="flex items-start">
-                        <UIIcons.ArrowRight className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" / />
+                        <UIIcons.ArrowRight className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" />
                         {detail}
                       </li>
                     ))}

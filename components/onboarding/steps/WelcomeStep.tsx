@@ -9,7 +9,7 @@ export function WelcomeStep({ onNext }: OnboardingStepProps) {
     <div className="text-center, space-y-8">
       <div className="space-y-4">
         <div className="w-16 h-16 bg-blue-100 rounded-full, flex items-center, justify-center, mx-auto">
-          <UIIcons.CheckCircle className="w-8 h-8 text-blue-600" / />
+          <UIIcons.CheckCircle className="w-8 h-8 text-blue-600" />
         </div>
         <h1 className="text-3xl, font-bold, text-gray-900">
           Welcome to Loconomy!
@@ -23,26 +23,26 @@ export function WelcomeStep({ onNext }: OnboardingStepProps) {
       <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
           <div className="flex items-center gap-3 mb-4">
-            <NavigationIcons.Users className="w-6 h-6 text-blue-600" / />
+            <NavigationIcons.Users className="w-6 h-6 text-blue-600" />
             <h3 className="text-lg font-semibold text-gray-900">
               For Consumers
             </h3>
           </div>
           <ul className="space-y-2 text-sm text-gray-600">
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Find local service providers
             </li>
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Book services instantly
             </li>
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Rate and review experiences
             </li>
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Secure payments
             </li>
           </ul>
@@ -50,26 +50,26 @@ export function WelcomeStep({ onNext }: OnboardingStepProps) {
 
         <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-lg p-6 border border-emerald-200">
           <div className="flex items-center gap-3 mb-4">
-            <BusinessIcons.Briefcase className="w-6 h-6 text-emerald-600" / />
+            <BusinessIcons.Briefcase className="w-6 h-6 text-emerald-600" />
             <h3 className="text-lg font-semibold text-gray-900">
               For Providers
             </h3>
           </div>
           <ul className="space-y-2 text-sm text-gray-600">
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               List your services
             </li>
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Manage bookings & schedule
             </li>
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Build your reputation
             </li>
             <li className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               Grow your business
             </li>
           </ul>
@@ -87,7 +87,7 @@ export function WelcomeStep({ onNext }: OnboardingStepProps) {
           size="lg"
         >
           Get Started
-          <UIIcons.ArrowRight className="w-5 h-5" / />
+          <UIIcons.ArrowRight className="w-5 h-5" />
         </Button>
       </div>
     </div>

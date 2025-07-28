@@ -176,7 +176,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
             <Button onClick={analyzeUserInput} disabled={!userInput.trim() || isAnalyzing} className="w-full" size="lg">
               {isAnalyzing ? (
                 <>
-                  <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+                  <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   Analyzing your request...
                 </>
               ) : (
@@ -244,7 +244,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
         <div className="space-y-6">
           <div className="text-center">
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <UIIcons.CheckCircle className="w-6 h-6 text-green-600" / />
+              <UIIcons.CheckCircle className="w-6 h-6 text-green-600" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Perfect Match Found!</h3>
             <p className="text-muted-foreground">Your AI-optimized job posting is ready to go live</p>

@@ -144,9 +144,9 @@ export function PerformanceMetrics({
     thresholds: { good: number; warning: number },
   ) => {
     if (value <= thresholds.good)
-      return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />;
+      return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />;
     if (value <= thresholds.warning)
-      return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />;
+      return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" />;
     return <XCircle className="w-4 h-4 text-red-500" />;
   };
 
@@ -163,7 +163,7 @@ export function PerformanceMetrics({
                   {data.systemHealth.uptime}%
                 </p>
                 <div className="flex items-center text-sm text-green-600">
-                  <UIIcons.CheckCircle className="w-4 h-4" / />
+                  <UIIcons.CheckCircle className="w-4 h-4" />
                   Excellent
                 </div>
               </div>
@@ -208,7 +208,7 @@ export function PerformanceMetrics({
                   {data.systemHealth.errorRate}%
                 </p>
                 <div className="flex items-center text-sm text-green-600">
-                  <UIIcons.CheckCircle className="w-4 h-4" / />
+                  <UIIcons.CheckCircle className="w-4 h-4" />
                   Low
                 </div>
               </div>
@@ -559,7 +559,7 @@ export function PerformanceMetrics({
                 </div>
                 <div className="text-sm text-green-600">System is secure</div>
               </div>
-              <UIIcons.CheckCircle className="w-8 h-8 text-green-500" / />
+              <UIIcons.CheckCircle className="w-8 h-8 text-green-500" />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -604,7 +604,7 @@ export function PerformanceMetrics({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <UIIcons.AlertTriangle className="w-5 h-5" / />
+              <UIIcons.AlertTriangle className="w-5 h-5" />
               Error Analysis
             </CardTitle>
           </CardHeader>

@@ -312,7 +312,7 @@ export default function IntegrationHub() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "active":
-        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />;
       case "warning":
         return <AlertCircle className="w-4 h-4 text-yellow-600" />;
       case "error":
@@ -476,7 +476,7 @@ export default function IntegrationHub() {
                     {integration.isConnected ? (
                       <>
                         <Button variant="outline" size="sm" className="flex-1">
-                          <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+                          <NavigationIcons.Settings className="w-4 h-4 mr-2" />
                           Configure
                         </Button>
                         <Button variant="outline" size="sm">
@@ -616,7 +616,7 @@ export default function IntegrationHub() {
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="sm">
-                              <NavigationIcons.Settings className="w-4 h-4" / />
+                              <NavigationIcons.Settings className="w-4 h-4" />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
@@ -740,7 +740,7 @@ export default function IntegrationHub() {
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="outline" size="sm">
-                          <NavigationIcons.Settings className="w-4 h-4" / />
+                          <NavigationIcons.Settings className="w-4 h-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>

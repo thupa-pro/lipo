@@ -138,13 +138,13 @@ export default function GlobalPolishPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "completed":
-        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />;
       case "in-progress":
-        return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-600" / />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-600" />;
       case "pending":
-        return <UIIcons.AlertTriangle className="w-4 h-4 text-red-600" / />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-red-600" />;
       default:
-        return <UIIcons.AlertTriangle className="w-4 h-4 text-gray-600" / />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-gray-600" />;
     }
   };
 
@@ -318,7 +318,7 @@ export default function GlobalPolishPage() {
 
           <Card className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-200/50 dark:border-green-700/50">
             <CardContent className="p-6 text-center space-y-4">
-              <NavigationIcons.Users className="w-12 h-12 mx-auto text-green-500" / />
+              <NavigationIcons.Users className="w-12 h-12 mx-auto text-green-500" />
               <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                 User Acceptance Testing
               </h3>
@@ -357,7 +357,7 @@ export default function GlobalPolishPage() {
         <Card className="bg-gradient-to-r from-green-500/10 via-blue-500/10 to-purple-500/10 border-green-200/50 dark:border-green-700/50">
           <CardContent className="p-8 text-center">
             <div className="space-y-4">
-              <UIIcons.CheckCircle className="w-16 h-16 mx-auto text-green-500" / />
+              <UIIcons.CheckCircle className="w-16 h-16 mx-auto text-green-500" />
               <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200">
                 Platform Ready for Launch
               </h2>

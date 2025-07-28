@@ -234,7 +234,7 @@ export default function EnhancedDashboard() {
           
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm" className="glass-subtle border-white/40">
-              <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+              <NavigationIcons.Settings className="w-4 h-4 mr-2" />
               Settings
             </Button>
             <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">

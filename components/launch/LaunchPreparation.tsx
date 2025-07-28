@@ -461,7 +461,7 @@ export function LaunchPreparation() {
                 <p className="text-2xl font-bold text-gray-900">{criticalTasksCompleted}/{totalCriticalTasks}</p>
               </div>
               <div className="h-12 w-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <UIIcons.AlertTriangle className="h-6 w-6 text-red-600" / />
+                <UIIcons.AlertTriangle className="h-6 w-6 text-red-600" />
               </div>
             </div>
             <Progress 
@@ -816,7 +816,7 @@ export function LaunchPreparation() {
                           View Details
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
+                          <NavigationIcons.Settings className="h-4 w-4 mr-2" />
                           Edit Task
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -1085,7 +1085,7 @@ export function LaunchPreparation() {
                     </Badge>
                     
                     {index < 6 && (
-                      <UIIcons.ArrowRight className="h-4 w-4 text-gray-300 ml-2" / />
+                      <UIIcons.ArrowRight className="h-4 w-4 text-gray-300 ml-2" />
                     )}
                   </div>
                 ))}

@@ -382,7 +382,7 @@ export function ServiceDetailsStep({
         size="lg"
       >
         {isLoading ? "Saving Details..." : "Continue to Pricing"}
-        <UIIcons.ArrowRight className="w-4 h-4" / />
+        <UIIcons.ArrowRight className="w-4 h-4" />
       </Button>
     </div>
   );

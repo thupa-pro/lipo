@@ -118,7 +118,7 @@ export default function DataInjection({ className }: DataInjectionProps) {
           {/* Status Messages */}
           {status === 'completed' && (
             <Alert>
-              <UIIcons.CheckCircle className="h-4 w-4" / />
+              <UIIcons.CheckCircle className="h-4 w-4" />
               <AlertDescription>
                 Data injection completed successfully! {stats.successCount} records processed.
               </AlertDescription>

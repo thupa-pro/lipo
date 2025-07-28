@@ -235,7 +235,7 @@ export default function BookingsPage() {
                         <span className="text-sm">{booking.time}</span>
                       </div>
                       <div className="flex items-start gap-2 md:col-span-2">
-                        <BusinessIcons.MapPin className="w-4 h-4 text-muted-foreground mt-0.5" / />
+                        <BusinessIcons.MapPin className="w-4 h-4 text-muted-foreground mt-0.5" />
                         <span className="text-sm text-muted-foreground">
                           {booking.address}
                         </span>

@@ -170,7 +170,7 @@ export default function GrowthAnalyticsPage() {
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
               Back to Admin
             </Link>
           </Button>
@@ -196,7 +196,7 @@ export default function GrowthAnalyticsPage() {
                     {Math.abs(metric.change)}% vs last period
                   </p>
                 </div>
-                <NavigationIcons.Users className="w-12 h-12 text-blue-600 opacity-30" / />
+                <NavigationIcons.Users className="w-12 h-12 text-blue-600 opacity-30" />
               </CardContent>
             </Card>
           ))}
@@ -207,7 +207,7 @@ export default function GrowthAnalyticsPage() {
           <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                <NavigationIcons.Users className="w-6 h-6 text-primary" / />
+                <NavigationIcons.Users className="w-6 h-6 text-primary" />
                 User Growth Trend
               </CardTitle>
               <CardDescription>Daily new user signups over the last {timeRange}.</CardDescription>
@@ -281,7 +281,7 @@ export default function GrowthAnalyticsPage() {
           <Card className="card-glass">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                <BusinessIcons.DollarSign className="w-6 h-6 text-primary" / />
+                <BusinessIcons.DollarSign className="w-6 h-6 text-primary" />
                 Marketing Campaign Performance
               </CardTitle>
               <CardDescription>Track the effectiveness of your marketing initiatives.</CardDescription>
@@ -322,7 +322,7 @@ export default function GrowthAnalyticsPage() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex items-start space-x-3 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg shadow-sm">
-                  <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" / />
+                  <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
                   <div>
                     <div className="font-medium text-foreground">Optimized CTA buttons increased conversions by 18.5%.</div>
                     <div className="text-sm text-muted-foreground">
@@ -331,7 +331,7 @@ export default function GrowthAnalyticsPage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg shadow-sm">
-                  <UIIcons.CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" / />
+                  <UIIcons.CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" />
                   <div>
                     <div className="font-medium text-foreground">User retention is, strong, focus on acquisition.</div>
                     <div className="text-sm text-muted-foreground">
@@ -340,7 +340,7 @@ export default function GrowthAnalyticsPage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg shadow-sm">
-                  <UIIcons.CheckCircle className="w-5 h-5 text-purple-600 mt-0.5" / />
+                  <UIIcons.CheckCircle className="w-5 h-5 text-purple-600 mt-0.5" />
                   <div>
                     <div className="font-medium text-foreground">High ROI from targeted seasonal campaigns.</div>
                     <div className="text-sm text-muted-foreground">
@@ -363,7 +363,7 @@ export default function GrowthAnalyticsPage() {
               Leverage data-driven insights to make informed decisions and accelerate your platform's success.
             </p>
             <Button size="lg" variant="default" asChild className="shadow-md hover:shadow-lg transition-all">
-              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / /></Link>
+              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" /></Link>
             </Button>
           </CardContent>
         </Card>

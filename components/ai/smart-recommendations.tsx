@@ -443,7 +443,7 @@ export default function SmartRecommendations({
 
               <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-gray-300">
                 <div className="flex items-center gap-1">
-                  <BusinessIcons.MapPin className="w-3 h-3" / />
+                  <BusinessIcons.MapPin className="w-3 h-3" />
                   <span>{recommendation.distance} mi</span>
                 </div>
                 <div className="flex items-center gap-1">
@@ -475,7 +475,7 @@ export default function SmartRecommendations({
               {/* Price and Availability */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1">
-                  <BusinessIcons.DollarSign className="w-4 h-4 text-green-600" / />
+                  <BusinessIcons.DollarSign className="w-4 h-4 text-green-600" />
                   <span className="font-semibold text-slate-900 dark:text-white">
                     ${recommendation.price.amount}
                   </span>
@@ -539,7 +539,7 @@ export default function SmartRecommendations({
           onClick={() => (window.location.href = "/browse")}
         >
           View All Services
-          <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+          <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </div>
     </div>

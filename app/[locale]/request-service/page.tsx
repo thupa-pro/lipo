@@ -468,7 +468,7 @@ export default function RequestServicePage() {
                           Location *
                         </Label>
                         <div className="relative">
-                          <BusinessIcons.MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-slate-500 dark:text-slate-400" / />
+                          <BusinessIcons.MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-slate-500 dark:text-slate-400" />
                           <Input
                             id="location"
                             placeholder="Enter your address or zip code"
@@ -721,7 +721,7 @@ export default function RequestServicePage() {
                       className="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 dark:from-blue-500 dark:to-indigo-600 dark:hover:from-blue-400 dark:hover:to-indigo-500 text-white rounded-2xl font-bold px-8 py-3 text-lg transition-all duration-300 shadow-lg hover:shadow-blue-600/30 dark:hover:shadow-blue-500/30 hover:scale-105"
                     >
                       Continue
-                      <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+                      <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
                   ) : (
                     <Button
@@ -778,7 +778,7 @@ export default function RequestServicePage() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg">
-                  <UIIcons.CheckCircle className="w-6 h-6 text-white" / />
+                  <UIIcons.CheckCircle className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-left">
                   <div className="font-bold text-slate-900 dark:text-slate-100">
@@ -808,7 +808,7 @@ export default function RequestServicePage() {
                 className="rounded-2xl border-blue-300 dark:border-blue-400/40 hover:bg-blue-50 dark:hover:bg-slate-700/50 hover:border-blue-500 dark:hover:border-blue-300 transition-all duration-300 px-8 py-3 text-lg font-semibold text-slate-800 dark:text-slate-200"
               >
                 <Link href="/browse">
-                  <NavigationIcons.Search className="w-5 h-5 mr-3" / />
+                  <NavigationIcons.Search className="w-5 h-5 mr-3" />
                   Browse Services
                 </Link>
               </Button>

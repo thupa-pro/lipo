@@ -112,7 +112,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <NavigationIcons.Menu className="h-4 w-4" / />
+                  <NavigationIcons.Menu className="h-4 w-4" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -161,7 +161,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
             className="h-9 w-9 p-0 md:hidden"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           >
-            <NavigationIcons.Search className="h-4 w-4" / />
+            <NavigationIcons.Search className="h-4 w-4" />
           </Button>
 
           {/* Search Bar (Desktop) */}
@@ -218,13 +218,13 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/profile" className="w-full">
-                    <NavigationIcons.User className="mr-2 h-4 w-4" / />
+                    <NavigationIcons.User className="mr-2 h-4 w-4" />
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings" className="w-full">
-                    <NavigationIcons.Settings className="mr-2 h-4 w-4" / />
+                    <NavigationIcons.Settings className="mr-2 h-4 w-4" />
                     Settings
                   </Link>
                 </DropdownMenuItem>

@@ -325,7 +325,7 @@ const RevolutionaryNav: React.FC<RevolutionaryNavProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <NavigationIcons.Search className="w-5 h-5 text-white/80" / />
+                  <NavigationIcons.Search className="w-5 h-5 text-white/80" />
                 </motion.button>
 
                 <AnimatePresence>
@@ -390,7 +390,7 @@ const RevolutionaryNav: React.FC<RevolutionaryNavProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <NavigationIcons.User className="w-5 h-5 text-white/80" / />
+                <NavigationIcons.User className="w-5 h-5 text-white/80" />
               </motion.button>
 
               {/* Mobile Menu Toggle */}
@@ -400,7 +400,7 @@ const RevolutionaryNav: React.FC<RevolutionaryNavProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {isMobileOpen ? <X className="w-5 h-5" /> : <NavigationIcons.Menu className="w-5 h-5" / />}
+                {isMobileOpen ? <X className="w-5 h-5" /> : <NavigationIcons.Menu className="w-5 h-5" />}
               </motion.button>
             </div>
           </div>
@@ -482,7 +482,7 @@ export const sampleNavItems: NavItem[] = [
     id: 'home',
     label: 'Home',
     href: '/',
-    icon: <NavigationIcons.Home className="w-4 h-4" / />
+    icon: <NavigationIcons.Home className="w-4 h-4" />
   },
   {
     id: 'services',
@@ -490,8 +490,8 @@ export const sampleNavItems: NavItem[] = [
     href: '/services',
     icon: <OptimizedIcon name="Star" className="w-4 h-4" />,
     submenu: [
-      { id: 'cleaning', label: 'Cleaning', href: '/services/cleaning', icon: <NavigationIcons.Home className="w-4 h-4" / /> },
-      { id: 'maintenance', label: 'Maintenance', href: '/services/maintenance', icon: <NavigationIcons.Settings className="w-4 h-4" / /> }
+      { id: 'cleaning', label: 'Cleaning', href: '/services/cleaning', icon: <NavigationIcons.Home className="w-4 h-4" /> },
+      { id: 'maintenance', label: 'Maintenance', href: '/services/maintenance', icon: <NavigationIcons.Settings className="w-4 h-4" /> }
     ]
   },
   {

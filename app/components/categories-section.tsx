@@ -128,7 +128,7 @@ export function CategoriesSection() {
                   <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                     Explore Category
                   </span>
-                  <UIIcons.ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
             </PremiumCardContent>
@@ -140,7 +140,7 @@ export function CategoriesSection() {
         <Button size="lg" asChild className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
           <Link href="/browse">
             Explore All Categories
-            <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+            <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
           </Link>
         </Button>
       </div>

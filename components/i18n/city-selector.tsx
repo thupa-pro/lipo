@@ -234,7 +234,7 @@ export default function CitySelector({ selectedCity, onCitySelect, className }: 
       {/* Search and Filters */}
       <div className="space-y-4">
         <div className="relative">
-          <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+          <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
             placeholder="Search, cities, countries, or service types..."
             value={searchQuery}
@@ -396,11 +396,11 @@ export default function CitySelector({ selectedCity, onCitySelect, className }: 
                           <span>Digital: {city.localization.digitalAdoption}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <BusinessIcons.DollarSign className="w-3 h-3 text-green-500" / />
+                          <BusinessIcons.DollarSign className="w-3 h-3 text-green-500" />
                           <span>${(city.localization.economicIndicators.gdpPerCapita / 1000).toFixed(0)}k</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <NavigationIcons.Users className="w-3 h-3 text-purple-500" / />
+                          <NavigationIcons.Users className="w-3 h-3 text-purple-500" />
                           <span>{city.localization.economicIndicators.serviceEconomyShare}% Services</span>
                         </div>
                       </div>
@@ -420,7 +420,7 @@ export default function CitySelector({ selectedCity, onCitySelect, className }: 
 
       {filteredCities.length === 0 && (
         <div className="text-center py-12">
-          <BusinessIcons.MapPin className="w-16 h-16 text-muted-foreground mx-auto mb-4" / />
+          <BusinessIcons.MapPin className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">No cities found</h3>
           <p className="text-muted-foreground">
             Try adjusting your search criteria or filters

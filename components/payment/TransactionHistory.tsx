@@ -353,9 +353,9 @@ export function TransactionHistory({
       case "refund":
         return <ArrowUpRight className="w-4 h-4 text-yellow-600" />;
       case "fee":
-        return <BusinessIcons.DollarSign className="w-4 h-4 text-purple-600" / />;
+        return <BusinessIcons.DollarSign className="w-4 h-4 text-purple-600" />;
       case "chargeback":
-        return <UIIcons.AlertTriangle className="w-4 h-4 text-red-600" / />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-red-600" />;
       case "dispute_resolution":
         return <OptimizedIcon name="Shield" className="w-4 h-4 text-orange-600" />;
       default:
@@ -554,7 +554,7 @@ export function TransactionHistory({
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" / />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search transactions..."
                 value={searchQuery}
@@ -593,7 +593,7 @@ export function TransactionHistory({
 
               <Select value={dateRange} onValueChange={setDateRange}>
                 <SelectTrigger className="w-32">
-                  <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
+                  <BusinessIcons.Calendar className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Date" />
                 </SelectTrigger>
                 <SelectContent>

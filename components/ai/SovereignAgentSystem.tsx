@@ -161,7 +161,7 @@ export function SovereignAgentSystem() {
 
   const getAgentTypeIcon = (type: string) => {
     switch (type) {
-      case "personal": return <NavigationIcons.Users className="w-5 h-5 text-blue-500" / />;
+      case "personal": return <NavigationIcons.Users className="w-5 h-5 text-blue-500" />;
       case "provider": return <Crown className="w-5 h-5 text-purple-500" />;
       case "negotiator": return <Target className="w-5 h-5 text-orange-500" />;
       case "community": return <OptimizedIcon name="Shield" className="w-5 h-5 text-green-500" />;
@@ -494,7 +494,7 @@ export function SovereignAgentSystem() {
                     <Card key={capability}>
                       <CardContent className="p-4">
                         <div className="flex items-center space-x-2">
-                          <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500" / />
+                          <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500" />
                           <span className="font-medium capitalize">{capability}</span>
                         </div>
                       </CardContent>

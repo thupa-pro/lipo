@@ -286,7 +286,7 @@ const RevolutionaryInput: React.FC<RevolutionaryInputProps> = ({
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {/* Loading */}
           {loading && (
-            <UIIcons.Loader2 className="w-4 h-4 animate-spin text-gray-400" / />
+            <UIIcons.Loader2 className="w-4 h-4 animate-spin text-gray-400" />
           )}
 
           {/* Success */}

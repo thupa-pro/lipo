@@ -90,7 +90,7 @@ export default function PressMediaPage() {
                   <p className="text-muted-foreground mb-4">{release.summary}</p>
                   <Button variant="outline" onClick={() => toast({ title: "Read More", description: `Opening press release: ${release.title}... (Simulated)`, variant: "default" })}>
                     Read More
-                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </CardContent>
               </Card>
@@ -118,7 +118,7 @@ export default function PressMediaPage() {
                   </p>
                   <Button variant="outline" onClick={() => toast({ title: "View Article", description: `Opening article from ${mention.source}... (Simulated)`, variant: "default" })}>
                     View Article
-                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </CardContent>
               </Card>

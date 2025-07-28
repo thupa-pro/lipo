@@ -143,7 +143,7 @@ export default function FinancialOverviewPage() {
   const getTransactionIcon = (type: Transaction["type"]) => {
     switch (type) {
       case "job_payment":
-        return <BusinessIcons.DollarSign className="w-4 h-4 text-success" / />
+        return <BusinessIcons.DollarSign className="w-4 h-4 text-success" />
       case "payout":
         return <Wallet className="w-4 h-4 text-ai" />
       case "fee":
@@ -151,7 +151,7 @@ export default function FinancialOverviewPage() {
       case "refund":
         return <RefreshCcw className="w-4 h-4 text-warning" />
       default:
-        return <BusinessIcons.DollarSign className="w-4 h-4 text-muted-foreground" / />
+        return <BusinessIcons.DollarSign className="w-4 h-4 text-muted-foreground" />
     }
   }
 
@@ -186,12 +186,12 @@ export default function FinancialOverviewPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <BusinessIcons.DollarSign className="w-9 h-9 text-success-600" / />
+            <BusinessIcons.DollarSign className="w-9 h-9 text-success-600" />
             Financial Overview
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
               Back to Admin
             </Link>
           </Button>
@@ -215,7 +215,7 @@ export default function FinancialOverviewPage() {
                   {financialMetrics.monthlyGrowth}% last month
                 </p>
               </div>
-              <BusinessIcons.DollarSign className="w-12 h-12 text-green-600 opacity-30" / />
+              <BusinessIcons.DollarSign className="w-12 h-12 text-green-600 opacity-30" />
             </CardContent>
           </Card>
           <Card className="card-glass-ai interactive-hover">
@@ -319,7 +319,7 @@ export default function FinancialOverviewPage() {
                 <h4 className="font-semibold text-lg mb-2">Pending Payouts</h4>
                 {mockTransactions.filter(t => t.type === "payout" && t.status === "pending").length === 0 ? (
                   <div className="text-center py-4 text-muted-foreground">
-                    <UIIcons.CheckCircle className="w-8 h-8 mx-auto mb-2 opacity-50" / />
+                    <UIIcons.CheckCircle className="w-8 h-8 mx-auto mb-2 opacity-50" />
                     <p>No pending payouts at this time.</p>
                   </div>
                 ) : (
@@ -369,7 +369,7 @@ export default function FinancialOverviewPage() {
             <div className="space-y-4">
               {filteredTransactions.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" / />
+                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p className="text-lg font-medium">No transactions found matching your criteria.</p>
                   <p className="text-sm">Try adjusting your filters.</p>
                 </div>
@@ -382,7 +382,7 @@ export default function FinancialOverviewPage() {
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-lg truncate">{txn.description}</h3>
                           <p className="text-sm text-muted-foreground flex items-center gap-1">
-                            <NavigationIcons.Users className="w-3 h-3" / />
+                            <NavigationIcons.Users className="w-3 h-3" />
                             {txn.relatedUser}
                           </p>
                         </div>
@@ -395,7 +395,7 @@ export default function FinancialOverviewPage() {
                           </Badge>
                           <Badge className={getTransactionStatusColor(txn.status)}>{txn.status}</Badge>
                           <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
-                            <BusinessIcons.Calendar className="w-3 h-3" / />
+                            <BusinessIcons.Calendar className="w-3 h-3" />
                             {txn.date}
                           </p>
                         </div>
@@ -425,7 +425,7 @@ export default function FinancialOverviewPage() {
               Monitor every, dollar, manage, payouts, and ensure the financial health of your platform.
             </p>
             <Button size="lg" variant="default" asChild className="shadow-md hover:shadow-lg transition-all">
-              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / /></Link>
+              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" /></Link>
             </Button>
           </CardContent>
         </Card>

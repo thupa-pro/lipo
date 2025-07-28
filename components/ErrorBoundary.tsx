@@ -49,7 +49,7 @@ class ErrorBoundary extends Component<Props, State> {
         <Card className="max-w-md mx-auto m-4">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-red-600">
-              <UIIcons.AlertTriangle className="w-5 h-5" / />
+              <UIIcons.AlertTriangle className="w-5 h-5" />
               Something went wrong
             </CardTitle>
             <CardDescription>

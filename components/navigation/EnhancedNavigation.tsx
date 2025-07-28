@@ -255,7 +255,7 @@ export default function EnhancedNavigation({ onSidebarToggle, isSidebarOpen }: E
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <NavigationIcons.Menu className="h-4 w-4" / />
+                    <NavigationIcons.Menu className="h-4 w-4" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -317,7 +317,7 @@ export default function EnhancedNavigation({ onSidebarToggle, isSidebarOpen }: E
               className="h-9 w-9 p-0 lg:hidden glass-subtle border-white/40"
               onClick={() => setIsSearchOpen(!isSearchOpen)}
             >
-              <NavigationIcons.Search className="h-4 w-4" / />
+              <NavigationIcons.Search className="h-4 w-4" />
             </Button>
 
             {/* Search Bar (Desktop) */}

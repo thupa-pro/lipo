@@ -72,7 +72,7 @@ export default function NewListingPage() {
       <div className="mb-6">
         <Link href="/provider/listings">
           <Button variant="outline" size="sm" className="mb-4">
-            <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+            <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
             Back to Listings
           </Button>
         </Link>
@@ -165,7 +165,7 @@ export default function NewListingPage() {
               <div>
                 <Label htmlFor="location">Service Area</Label>
                 <div className="relative">
-                  <BusinessIcons.MapPin className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" / />
+                  <BusinessIcons.MapPin className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
                   <Input
                     id="location"
                     placeholder="City, State"

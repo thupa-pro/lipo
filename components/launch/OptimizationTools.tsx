@@ -377,7 +377,7 @@ export function OptimizationTools() {
       case 'running':
         return <OptimizedIcon name="Clock" className="h-4 w-4 text-blue-500 animate-spin" />;
       case 'failed':
-        return <UIIcons.AlertTriangle className="h-4 w-4 text-red-500" / />;
+        return <UIIcons.AlertTriangle className="h-4 w-4 text-red-500" />;
       default:
         return <OptimizedIcon name="Clock" className="h-4 w-4 text-gray-400" />;
     }
@@ -766,7 +766,7 @@ export function OptimizationTools() {
                           View Details
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
+                          <NavigationIcons.Settings className="h-4 w-4 mr-2" />
                           Configure
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -875,7 +875,7 @@ export function OptimizationTools() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <UIIcons.AlertTriangle className="h-5 w-5" / />
+                <UIIcons.AlertTriangle className="h-5 w-5" />
                 Duplicate Dependencies
               </CardTitle>
               <CardDescription>
@@ -993,7 +993,7 @@ export function OptimizationTools() {
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem>
-                            <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
+                            <NavigationIcons.Settings className="h-4 w-4 mr-2" />
                             Adjust Quality
                           </DropdownMenuItem>
                         </DropdownMenuContent>

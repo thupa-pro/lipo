@@ -263,7 +263,7 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <NavigationIcons.Settings className="w-5 h-5" / />
+              <NavigationIcons.Settings className="w-5 h-5" />
               General Settings
             </CardTitle>
           </CardHeader>
@@ -367,7 +367,7 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
-                <NavigationIcons.Users className="w-5 h-5" / />
+                <NavigationIcons.Users className="w-5 h-5" />
                 Team Members ({formatMemberCount(members.length)})
               </CardTitle>
               <Dialog
@@ -402,7 +402,7 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                       {/* User avatar would go here */}
-                      <NavigationIcons.Users className="w-4 h-4" / />
+                      <NavigationIcons.Users className="w-4 h-4" />
                     </div>
                     <div>
                       <p className="font-medium">{member.user_id}</p>

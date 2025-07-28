@@ -40,7 +40,7 @@ export function CookieConsentDemo() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'accepted':
-        return <UIIcons.CheckCircle className="h-4 w-4 text-green-600" / />;
+        return <UIIcons.CheckCircle className="h-4 w-4 text-green-600" />;
       case 'rejected':
         return <XCircle className="h-4 w-4 text-red-600" />;
       default:
@@ -50,7 +50,7 @@ export function CookieConsentDemo() {
 
   const getConsentIcon = (hasConsent: boolean) => {
     return hasConsent ? (
-      <UIIcons.CheckCircle className="h-3 w-3 text-green-600" / />
+      <UIIcons.CheckCircle className="h-3 w-3 text-green-600" />
     ) : (
       <XCircle className="h-3 w-3 text-red-600" />
     );
@@ -138,7 +138,7 @@ export function CookieConsentDemo() {
           </CardHeader>
           <CardContent className="space-y-3">
             <Button onClick={acceptAll} className="w-full">
-              <UIIcons.CheckCircle className="mr-2 h-4 w-4" / />
+              <UIIcons.CheckCircle className="mr-2 h-4 w-4" />
               Accept All Cookies
             </Button>
             <Button onClick={rejectAll} variant="outline" className="w-full">

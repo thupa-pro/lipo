@@ -136,7 +136,7 @@ export default function HyperlocalProviderCard({
                 {provider.name}
               </CardTitle>
               {provider.verified && (
-                <UIIcons.CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" / />
+                <UIIcons.CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
               )}
             </div>
             <CardDescription className="text-xs text-muted-foreground truncate">
@@ -258,7 +258,7 @@ export default function HyperlocalProviderCard({
           {/* Stats Row */}
           <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-2xs text-muted-foreground">
             <div className="flex items-center gap-0.5">
-              <UIIcons.CheckCircle className="w-2.5 h-2.5 text-green-500" / />
+              <UIIcons.CheckCircle className="w-2.5 h-2.5 text-green-500" />
               {provider.completedJobs} jobs
             </div>
             <div className="flex items-center gap-0.5">
@@ -266,7 +266,7 @@ export default function HyperlocalProviderCard({
               {provider.availability}
             </div>
             <div className="col-span-2 flex items-center gap-0.5">
-              <BusinessIcons.MapPin className="w-2.5 h-2.5" / />
+              <BusinessIcons.MapPin className="w-2.5 h-2.5" />
               {provider.location}
             </div>
           </div>
@@ -282,7 +282,7 @@ export default function HyperlocalProviderCard({
             onClick={() => router.push(`/providers/${provider.id}`)}
           >
             View Details
-            <UIIcons.ArrowRight className="w-3 h-3 ml-1" / />
+            <UIIcons.ArrowRight className="w-3 h-3 ml-1" />
           </Button>
           <div className="flex gap-1">
             <Button

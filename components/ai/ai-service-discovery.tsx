@@ -114,7 +114,7 @@ export default function AIServiceDiscovery({
               disabled={isLoading}
               className="px-8 py-3"
             >
-              <NavigationIcons.Search className="w-4 h-4 mr-2" / />
+              <NavigationIcons.Search className="w-4 h-4 mr-2" />
               {isLoading ? "Searching..." : "Search"}
             </Button>
           </div>
@@ -160,7 +160,7 @@ export default function AIServiceDiscovery({
 
               {/* Location */}
               <div className="flex items-center gap-1 text-sm text-gray-600">
-                <BusinessIcons.MapPin className="w-4 h-4" / />
+                <BusinessIcons.MapPin className="w-4 h-4" />
                 {service.location}
               </div>
 
@@ -180,7 +180,7 @@ export default function AIServiceDiscovery({
                 variant="outline"
               >
                 Select Provider
-                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </CardContent>
           </Card>

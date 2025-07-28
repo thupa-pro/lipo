@@ -360,7 +360,7 @@ export function ProgressTracker({
 
                 {/* Status indicator */}
                 {isCompleted && (
-                  <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" / />
+                  <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                 )}
                 {isCurrent && (
                   <OptimizedIcon name="Clock" className="w-5 h-5 text-blue-500 flex-shrink-0 animate-spin" />
@@ -378,7 +378,7 @@ export function ProgressTracker({
           </Button>
           {transaction.status === "in-progress" && (
             <Button variant="outline" size="sm">
-              <BusinessIcons.MapPin className="w-4 h-4 mr-2" / />
+              <BusinessIcons.MapPin className="w-4 h-4 mr-2" />
               Track Live
             </Button>
           )}

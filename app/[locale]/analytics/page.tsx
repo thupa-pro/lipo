@@ -234,11 +234,11 @@ export default function AnalyticsPage() {
               <span className="hidden sm:inline">Overview</span>
             </TabsTrigger>
             <TabsTrigger value="users" className="flex items-center gap-2">
-              <NavigationIcons.Users className="w-4 h-4" / />
+              <NavigationIcons.Users className="w-4 h-4" />
               <span className="hidden sm:inline">Users</span>
             </TabsTrigger>
             <TabsTrigger value="revenue" className="flex items-center gap-2">
-              <BusinessIcons.DollarSign className="w-4 h-4" / />
+              <BusinessIcons.DollarSign className="w-4 h-4" />
               <span className="hidden sm:inline">Revenue</span>
             </TabsTrigger>
             <TabsTrigger

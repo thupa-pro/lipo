@@ -166,8 +166,8 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
   const getInsightIcon = (type: Insight['type']) => {
     const icons = {
       opportunity: <Target className="h-4 w-4" />,
-      warning: <UIIcons.AlertTriangle className="h-4 w-4" / />,
-      success: <UIIcons.CheckCircle className="h-4 w-4" / />,
+      warning: <UIIcons.AlertTriangle className="h-4 w-4" />,
+      success: <UIIcons.CheckCircle className="h-4 w-4" />,
       prediction: <Brain className="h-4 w-4" />
     };
     return icons[type];
@@ -360,7 +360,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <NavigationIcons.Users className="h-4 w-4 text-blue-600" / />
+                <NavigationIcons.Users className="h-4 w-4 text-blue-600" />
                 <span className="text-sm font-medium text-blue-900">User Activity Patterns</span>
               </div>
               <p className="text-xs text-blue-700 mb-2">Peak hours: 2-4 PM, 7-9 PM</p>
@@ -369,7 +369,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
 
             <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <BusinessIcons.DollarSign className="h-4 w-4 text-green-600" / />
+                <BusinessIcons.DollarSign className="h-4 w-4 text-green-600" />
                 <span className="text-sm font-medium text-green-900">Revenue Trends</span>
               </div>
               <p className="text-xs text-green-700 mb-2">Consistent growth trajectory</p>

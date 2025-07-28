@@ -21,7 +21,7 @@ export default function AccessibilityPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Accessibility Statement", description: "Opening our detailed accessibility statement...", variant: "default" })}>
             Read Our Accessibility Statement
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -51,7 +51,7 @@ export default function AccessibilityPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto mb-4">
-                  <NavigationIcons.Users className="w-7 h-7" / />
+                  <NavigationIcons.Users className="w-7 h-7" />
                 </div>
                 <CardTitle className="text-xl">User Feedback</CardTitle>
               </CardHeader>

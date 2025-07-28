@@ -288,7 +288,7 @@ export function AgentCommandInput({
           className="flex-shrink-0 h-8 w-8 p-0"
         >
           {disabled ? (
-            <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
+            <UIIcons.Loader2 className="w-4 h-4 animate-spin" />
           ) : (
             <Send className="w-4 h-4" />
           )}

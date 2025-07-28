@@ -44,7 +44,7 @@ export function HealthCheck() {
         {hydrationError ? (
           <AlertCircle className="w-4 h-4" />
         ) : (
-          <UIIcons.CheckCircle className="w-4 h-4" / />
+          <UIIcons.CheckCircle className="w-4 h-4" />
         )}
         <span className="font-medium">
           {hydrationError ? "Hydration Error" : "App Healthy"}

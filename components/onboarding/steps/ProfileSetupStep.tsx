@@ -138,7 +138,7 @@ export function ProfileSetupStep({
         {/* Name/Business Name */}
         <div className="space-y-2">
           <Label htmlFor={role === "consumer" ? "full_name" : "business_name"}>
-            <NavigationIcons.User className="w-4 h-4 inline mr-2" / />
+            <NavigationIcons.User className="w-4 h-4 inline mr-2" />
             {role === "consumer" ? "Full Name" : "Business Name"}
           </Label>
           <Input
@@ -216,7 +216,7 @@ export function ProfileSetupStep({
       {/* Address */}
       <div className="space-y-4">
         <Label className="flex items-center gap-2">
-          <BusinessIcons.MapPin className="w-4 h-4" / />
+          <BusinessIcons.MapPin className="w-4 h-4" />
           {role === "consumer" ? "Your Address" : "Business Address"}
         </Label>
 
@@ -292,7 +292,7 @@ export function ProfileSetupStep({
         size="lg"
       >
         {isLoading ? "Saving..." : "Continue"}
-        <UIIcons.ArrowRight className="w-4 h-4" / />
+        <UIIcons.ArrowRight className="w-4 h-4" />
       </Button>
     </form>
   );

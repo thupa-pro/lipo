@@ -188,7 +188,7 @@ export default function AIAssistantWidget({
                     </p>
                   </div>
                   {message.role === "user" && (
-                    <NavigationIcons.User className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" / />
+                    <NavigationIcons.User className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
                   )}
                 </div>
               </div>

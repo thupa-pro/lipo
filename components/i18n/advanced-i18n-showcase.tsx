@@ -136,7 +136,7 @@ export default function AdvancedI18nShowcase({
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <BusinessIcons.MapPin className="w-5 h-5 mr-2" / />
+                  <BusinessIcons.MapPin className="w-5 h-5 mr-2" />
                   Location Details
                 </CardTitle>
               </CardHeader>
@@ -170,7 +170,7 @@ export default function AdvancedI18nShowcase({
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <BusinessIcons.DollarSign className="w-5 h-5 mr-2" / />
+                  <BusinessIcons.DollarSign className="w-5 h-5 mr-2" />
                   Currency & Formats
                 </CardTitle>
               </CardHeader>
@@ -240,7 +240,7 @@ export default function AdvancedI18nShowcase({
             <Card className="md:col-span-2 lg:col-span-3">
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <BusinessIcons.Calendar className="w-5 h-5 mr-2" / />
+                  <BusinessIcons.Calendar className="w-5 h-5 mr-2" />
                   Local Holidays & Cultural Events
                 </CardTitle>
               </CardHeader>

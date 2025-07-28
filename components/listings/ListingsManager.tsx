@@ -228,7 +228,7 @@ export function ListingsManager() {
               <CardTitle className="text-sm font-medium">
                 Total Bookings
               </CardTitle>
-              <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />
+              <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.total_bookings}</div>
@@ -241,7 +241,7 @@ export function ListingsManager() {
               <CardTitle className="text-sm font-medium">
                 Draft Listings
               </CardTitle>
-              <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
+              <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.draft_listings}</div>
@@ -257,7 +257,7 @@ export function ListingsManager() {
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             <div className="flex gap-4 items-center flex-1">
               <div className="relative flex-1 max-w-md">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search listings..."
                   value={searchQuery}

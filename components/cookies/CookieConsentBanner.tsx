@@ -181,7 +181,7 @@ export function CookieConsentBanner({
                         className="order-3 sm:order-1 min-w-fit"
                         aria-label="Customize cookie settings"
                       >
-                        <NavigationIcons.Settings className="mr-2 h-4 w-4" aria-hidden="true" / />
+                        <NavigationIcons.Settings className="mr-2 h-4 w-4" aria-hidden="true" />
                         <span className="hidden sm:inline">Settings</span>
                         <span className="sm:hidden">Customize</span>
                       </Button>

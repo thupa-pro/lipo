@@ -71,7 +71,7 @@ export default function ProviderCalendarPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <BusinessIcons.Calendar className="h-5 w-5" / />
+                  <BusinessIcons.Calendar className="h-5 w-5" />
                   {currentDate.toLocaleDateString("en-US", {
                     month: "long",
                     year: "numeric",
@@ -149,14 +149,14 @@ export default function ProviderCalendarPage() {
 
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 text-sm">
-                      <NavigationIcons.User className="h-3 w-3 text-gray-500" / />
+                      <NavigationIcons.User className="h-3 w-3 text-gray-500" />
                       <span className="font-medium">{booking.client}</span>
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
                       {booking.service} • {booking.duration}
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <BusinessIcons.MapPin className="h-3 w-3" / />
+                      <BusinessIcons.MapPin className="h-3 w-3" />
                       <span>{booking.location}</span>
                     </div>
                   </div>

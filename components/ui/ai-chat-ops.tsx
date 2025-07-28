@@ -183,7 +183,7 @@ export function AIChatOps({
       case "ai":
         return <Bot className="h-4 w-4" />
       case "user":
-        return <NavigationIcons.User className="h-4 w-4" / />
+        return <NavigationIcons.User className="h-4 w-4" />
       default:
         return <Sparkles className="h-4 w-4" />
     }
@@ -365,7 +365,7 @@ export function AIChatOps({
                 <div className="flex items-center gap-2">
                   <Bot className="h-4 w-4" />
                   <div className="flex items-center gap-2">
-                    <UIIcons.Loader2 className="h-3 w-3 animate-spin" / />
+                    <UIIcons.Loader2 className="h-3 w-3 animate-spin" />
                     <span className="text-sm">AI is thinking...</span>
                   </div>
                 </div>

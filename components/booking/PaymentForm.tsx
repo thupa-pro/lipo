@@ -145,7 +145,7 @@ export default function PaymentForm({
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">Secure Payment</h3>
         <Button variant="ghost" size="sm" onClick={onCancel}>
-          <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+          <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
       </div>
@@ -178,7 +178,7 @@ export default function PaymentForm({
           
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <BusinessIcons.Calendar className="w-4 h-4" / />
+              <BusinessIcons.Calendar className="w-4 h-4" />
               <span>{bookingDetails.selectedDate?.toLocaleDateString()}</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
@@ -186,7 +186,7 @@ export default function PaymentForm({
               <span>{bookingDetails.selectedTime && formatTime(bookingDetails.selectedTime)}</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <BusinessIcons.MapPin className="w-4 h-4" / />
+              <BusinessIcons.MapPin className="w-4 h-4" />
               <span className="truncate">{bookingDetails.address || "Address to be confirmed"}</span>
             </div>
           </div>

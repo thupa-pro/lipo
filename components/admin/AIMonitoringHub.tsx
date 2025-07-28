@@ -161,7 +161,7 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
       'Memory Usage': <Database className="h-4 w-4" />,
       'API Response Time': <Network className="h-4 w-4" />,
       'Database Connections': <Server className="h-4 w-4" />,
-      'Error Rate': <UIIcons.AlertTriangle className="h-4 w-4" / />,
+      'Error Rate': <UIIcons.AlertTriangle className="h-4 w-4" />,
       'Throughput': <Activity className="h-4 w-4" />
     };
     return icons[name] || <Gauge className="h-4 w-4" />;
@@ -299,7 +299,7 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
           <div className="space-y-3">
             {alerts.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
-                <UIIcons.CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" / />
+                <UIIcons.CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" />
                 <p>All systems operating optimally</p>
               </div>
             ) : (
@@ -313,10 +313,10 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        {alert.type === 'critical' && <UIIcons.AlertTriangle className="h-4 w-4" / />}
-                        {alert.type === 'warning' && <UIIcons.AlertTriangle className="h-4 w-4" / />}
+                        {alert.type === 'critical' && <UIIcons.AlertTriangle className="h-4 w-4" />}
+                        {alert.type === 'warning' && <UIIcons.AlertTriangle className="h-4 w-4" />}
                         {alert.type === 'info' && <Bell className="h-4 w-4" />}
-                        {alert.type === 'success' && <UIIcons.CheckCircle className="h-4 w-4" / />}
+                        {alert.type === 'success' && <UIIcons.CheckCircle className="h-4 w-4" />}
                         <span className="font-medium">{alert.title}</span>
                         {alert.resolved && (
                           <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">

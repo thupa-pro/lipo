@@ -225,7 +225,7 @@ export default function EnhancedSettingsPage() {
         >
           <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="profile" className="flex items-center gap-2">
-              <NavigationIcons.User className="w-4 h-4" / />
+              <NavigationIcons.User className="w-4 h-4" />
               <span className="hidden sm:inline">Profile</span>
             </TabsTrigger>
             <TabsTrigger
@@ -248,7 +248,7 @@ export default function EnhancedSettingsPage() {
               <span className="hidden sm:inline">Payments</span>
             </TabsTrigger>
             <TabsTrigger value="account" className="flex items-center gap-2">
-              <NavigationIcons.Settings className="w-4 h-4" / />
+              <NavigationIcons.Settings className="w-4 h-4" />
               <span className="hidden sm:inline">Account</span>
             </TabsTrigger>
           </TabsList>
@@ -297,7 +297,7 @@ export default function EnhancedSettingsPage() {
         {/* Auto-save indicator */}
         {hasUnsavedChanges && (
           <Alert className="mt-6">
-            <UIIcons.AlertTriangle className="h-4 w-4" / />
+            <UIIcons.AlertTriangle className="h-4 w-4" />
             <AlertDescription>
               You have unsaved changes. They will be saved automatically in a
               few, seconds, or you can save manually.

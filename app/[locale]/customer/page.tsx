@@ -33,7 +33,7 @@ export default function CustomerDashboardPage() {
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-lg animate-pulse">
-            <NavigationIcons.User className="w-8 h-8 text-white" / />
+            <NavigationIcons.User className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Loading Customer Dashboard...</h2>
           <p className="text-gray-600 dark:text-gray-400">Preparing your personalized service experience</p>
@@ -97,11 +97,11 @@ export default function CustomerDashboardPage() {
             </div>
             <div className="mt-4 md:mt-0 flex gap-3">
               <Button onClick={() => router.push(`/${locale}/browse`)} className="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700">
-                <NavigationIcons.Search className="w-4 h-4 mr-2" / />
+                <NavigationIcons.Search className="w-4 h-4 mr-2" />
                 Find Services
               </Button>
               <Button variant="outline" onClick={() => router.push(`/${locale}/bookings`)}>
-                <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
+                <BusinessIcons.Calendar className="w-4 h-4 mr-2" />
                 My Bookings
               </Button>
             </div>
@@ -123,7 +123,7 @@ export default function CustomerDashboardPage() {
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">{dashboardStats.totalBookings}</p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
-                  <BusinessIcons.Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" / />
+                  <BusinessIcons.Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
               </div>
             </CardContent>
@@ -151,7 +151,7 @@ export default function CustomerDashboardPage() {
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">{dashboardStats.completedServices}</p>
                 </div>
                 <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
-                  <UIIcons.CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" / />
+                  <UIIcons.CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
                 </div>
               </div>
             </CardContent>
@@ -218,7 +218,7 @@ export default function CustomerDashboardPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <BusinessIcons.Calendar className="w-5 h-5" / />
+                    <BusinessIcons.Calendar className="w-5 h-5" />
                     Recent Bookings
                   </CardTitle>
                   <CardDescription>
@@ -315,7 +315,7 @@ export default function CustomerDashboardPage() {
                   </div>
                   <div className="mt-6 text-center">
                     <Button variant="outline" onClick={() => router.push(`/${locale}/browse`)}>
-                      <NavigationIcons.Search className="w-4 h-4 mr-2" / />
+                      <NavigationIcons.Search className="w-4 h-4 mr-2" />
                       Discover More Providers
                     </Button>
                   </div>
@@ -327,7 +327,7 @@ export default function CustomerDashboardPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <NavigationIcons.Search className="w-5 h-5" / />
+                    <NavigationIcons.Search className="w-5 h-5" />
                     Discover Services
                   </CardTitle>
                   <CardDescription>
@@ -336,7 +336,7 @@ export default function CustomerDashboardPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-8">
-                    <NavigationIcons.Search className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-4" / />
+                    <NavigationIcons.Search className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-4" />
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Explore Local Services</h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
                       Find trusted professionals for, cleaning, repairs, wellness, and more
@@ -357,7 +357,7 @@ export default function CustomerDashboardPage() {
                     </div>
                     <div className="mt-6">
                       <Button onClick={() => router.push(`/${locale}/browse`)} className="bg-gradient-to-r from-emerald-600 to-blue-600">
-                        <NavigationIcons.Search className="w-4 h-4 mr-2" / />
+                        <NavigationIcons.Search className="w-4 h-4 mr-2" />
                         Browse All Services
                       </Button>
                     </div>
@@ -370,7 +370,7 @@ export default function CustomerDashboardPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <NavigationIcons.User className="w-5 h-5" / />
+                    <NavigationIcons.User className="w-5 h-5" />
                     My Profile
                   </CardTitle>
                   <CardDescription>
@@ -390,17 +390,17 @@ export default function CustomerDashboardPage() {
                         <p className="text-gray-600 dark:text-gray-400">Loconomy Customer</p>
                         <div className="flex items-center gap-4 mt-2">
                           <div className="flex items-center gap-1">
-                            <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" / />
+                            <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" />
                             <span className="text-sm text-gray-600 dark:text-gray-400">Member since 2024</span>
                           </div>
                           <div className="flex items-center gap-1">
-                            <BusinessIcons.MapPin className="w-4 h-4 text-gray-500" / />
+                            <BusinessIcons.MapPin className="w-4 h-4 text-gray-500" />
                             <span className="text-sm text-gray-600 dark:text-gray-400">Local Area</span>
                           </div>
                         </div>
                       </div>
                       <Button>
-                        <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+                        <NavigationIcons.Settings className="w-4 h-4 mr-2" />
                         Edit Profile
                       </Button>
                     </div>
@@ -423,7 +423,7 @@ export default function CustomerDashboardPage() {
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Quick Actions</h4>
                         <div className="space-y-2">
                           <Button variant="outline" size="sm" className="w-full justify-start">
-                            <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+                            <NavigationIcons.Settings className="w-4 h-4 mr-2" />
                             Account Settings
                           </Button>
                           <Button variant="outline" size="sm" className="w-full justify-start">

@@ -133,7 +133,7 @@ export default function GDPRPage() {
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center">
-                    <UIIcons.CheckCircle className="w-5 h-5 mr-2 text-green-600" / />
+                    <UIIcons.CheckCircle className="w-5 h-5 mr-2 text-green-600" />
                     {right.title}
                   </CardTitle>
                 </CardHeader>

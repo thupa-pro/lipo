@@ -35,7 +35,7 @@ export default function BrowseSearchHeader({
           <div className="flex-1">
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search services or providers..."
                   value={searchQuery}
@@ -44,7 +44,7 @@ export default function BrowseSearchHeader({
                 />
               </div>
               <div className="relative flex-1">
-                <BusinessIcons.MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                <BusinessIcons.MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Location"
                   value={location}
@@ -53,7 +53,7 @@ export default function BrowseSearchHeader({
                 />
               </div>
               <Button onClick={handleSearch} disabled={loading} className="rounded-md shadow-sm transition-all hover:shadow-md">
-                {loading ? <UIIcons.Loader2 className="w-4 h-4 animate-spin" / /> : <NavigationIcons.Search className="w-4 h-4" / />}
+                {loading ? <UIIcons.Loader2 className="w-4 h-4 animate-spin" /> : <NavigationIcons.Search className="w-4 h-4" />}
               </Button>
             </div>
           </div>

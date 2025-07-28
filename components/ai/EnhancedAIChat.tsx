@@ -666,7 +666,7 @@ export default function EnhancedAIChat({
                   variant="outline"
                   className="border-white/40 hover:border-gray-300 hover:scale-105 transition-all duration-200 rounded-xl"
                 >
-                  <NavigationIcons.Settings className="h-4 w-4" / />
+                  <NavigationIcons.Settings className="h-4 w-4" />
                 </Button>
               </div>
 

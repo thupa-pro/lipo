@@ -87,11 +87,11 @@ export function CreateWorkspaceForm({
   const getTypeIcon = (type: WorkspaceType) => {
     switch (type) {
       case "personal":
-        return <NavigationIcons.Users className="w-5 h-5" / />;
+        return <NavigationIcons.Users className="w-5 h-5" />;
       case "team":
         return <Building2 className="w-5 h-5" />;
       case "business":
-        return <BusinessIcons.Briefcase className="w-5 h-5" / />;
+        return <BusinessIcons.Briefcase className="w-5 h-5" />;
       case "enterprise":
         return <Enterprise className="w-5 h-5" />;
       default:
@@ -333,7 +333,7 @@ export function CreateWorkspaceForm({
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
-              <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+              <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
               Creating...
             </>
           ) : (

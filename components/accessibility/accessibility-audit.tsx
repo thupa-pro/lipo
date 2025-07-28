@@ -199,9 +199,9 @@ export function AccessibilityAudit({ onComplete }: AccessibilityAuditProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "pass":
-        return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />;
       case "warning":
-        return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" />;
       case "fail":
         return <X className="w-4 h-4 text-red-500" />;
       default:

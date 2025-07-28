@@ -113,7 +113,7 @@ export function SubscriptionPlans({
 
   const getFeatureIcon = (feature: string) => {
     if (feature.includes("team") || feature.includes("members"))
-      return <NavigationIcons.Users className="h-4 w-4" / />;
+      return <NavigationIcons.Users className="h-4 w-4" />;
     if (feature.includes("support")) return <Headphones className="h-4 w-4" />;
     if (feature.includes("storage")) return <Database className="h-4 w-4" />;
     if (feature.includes("analytics"))
@@ -307,7 +307,7 @@ export function SubscriptionPlans({
                       ) : (
                         <>
                           {currentSubscription ? "Upgrade" : "Get Started"}
-                          <UIIcons.ArrowRight className="ml-2 h-4 w-4" / />
+                          <UIIcons.ArrowRight className="ml-2 h-4 w-4" />
                         </>
                       )}
                     </Button>
@@ -351,7 +351,7 @@ export function SubscriptionPlans({
             </div>
             <Button variant="outline">
               Contact Sales
-              <UIIcons.ArrowRight className="ml-2 h-4 w-4" / />
+              <UIIcons.ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </CardContent>
@@ -361,7 +361,7 @@ export function SubscriptionPlans({
       <div className="text-center">
         <Button variant="link" className="text-muted-foreground">
           Compare all features in detail
-          <UIIcons.ArrowRight className="ml-2 h-4 w-4" / />
+          <UIIcons.ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </div>

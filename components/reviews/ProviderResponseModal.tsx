@@ -167,7 +167,7 @@ export function ProviderResponseModal({
                         </h4>
                         {review.isVerified && (
                           <Badge variant="secondary" className="text-xs">
-                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                             Verified
                           </Badge>
                         )}
@@ -267,7 +267,7 @@ export function ProviderResponseModal({
               <Card className="border-l-4 border-green-500">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <NavigationIcons.User className="w-4 h-4 text-green-600" / />
+                    <NavigationIcons.User className="w-4 h-4 text-green-600" />
                     <span className="text-sm font-medium">Your Response</span>
                     <Badge variant="outline" className="text-xs">
                       Provider

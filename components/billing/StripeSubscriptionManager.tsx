@@ -548,7 +548,7 @@ export function StripeSubscriptionManager({
                 
                 <CardHeader className="text-center pb-4">
                   <div className="mx-auto w-12 h-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center mb-4">
-                    {plan.tier === 'free' && <NavigationIcons.Users className="w-6 h-6 text-white" / />}
+                    {plan.tier === 'free' && <NavigationIcons.Users className="w-6 h-6 text-white" />}
                     {plan.tier === 'premium' && <Zap className="w-6 h-6 text-white" />}
                     {plan.tier === 'enterprise' && <Crown className="w-6 h-6 text-white" />}
                   </div>
@@ -579,7 +579,7 @@ export function StripeSubscriptionManager({
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-center gap-2 text-sm">
                           {feature.included ? (
-                            <UIIcons.CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" / />
+                            <UIIcons.CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                           ) : (
                             <div className="w-4 h-4 rounded-full border-2 border-gray-300 flex-shrink-0" />
                           )}
@@ -628,7 +628,7 @@ export function StripeSubscriptionManager({
                         <li key={index} className="space-y-1">
                           <div className="flex items-center gap-2 text-sm">
                             {feature.available ? (
-                              <UIIcons.CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" / />
+                              <UIIcons.CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                             ) : (
                               <div className="w-4 h-4 rounded-full border-2 border-gray-300 flex-shrink-0" />
                             )}
@@ -648,7 +648,7 @@ export function StripeSubscriptionManager({
                   <div className="pt-4">
                     {isCurrentPlan ? (
                       <Button variant="outline" className="w-full" disabled>
-                        <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
+                        <UIIcons.CheckCircle className="w-4 h-4 mr-2" />
                         Current Plan
                       </Button>
                     ) : (

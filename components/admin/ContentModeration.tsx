@@ -215,7 +215,7 @@ export function ContentModeration() {
               onClick={() => handleFlagReview(flag.id, "approve")}
               className="text-red-600"
             >
-              <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
+              <UIIcons.CheckCircle className="w-4 h-4 mr-2" />
               Approve & Remove
             </DropdownMenuItem>
             <DropdownMenuItem
@@ -516,7 +516,7 @@ export function ContentModeration() {
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="destructive">
-                            <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
+                            <UIIcons.CheckCircle className="w-4 h-4 mr-2" />
                             Approve & Remove Content
                           </Button>
                         </AlertDialogTrigger>

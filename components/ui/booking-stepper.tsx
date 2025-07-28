@@ -282,7 +282,7 @@ export function BookingStepper({
                 
                 {isLoadingSlots ? (
                   <div className="flex items-center justify-center py-8">
-                    <UIIcons.Loader2 className="w-6 h-6 animate-spin" / />
+                    <UIIcons.Loader2 className="w-6 h-6 animate-spin" />
                     <span className="ml-2 text-muted-foreground">Loading slots...</span>
                   </div>
                 ) : (
@@ -457,7 +457,7 @@ export function BookingStepper({
           >
             {isProcessing ? (
               <>
-                <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
+                <UIIcons.Loader2 className="w-4 h-4 animate-spin" />
                 Processing...
               </>
             ) : currentStep === steps.length - 1 ? (

@@ -140,7 +140,7 @@ export function BiometricAuth({
 
           {authStatus === "success" && (
             <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 animate-bounce">
-              <UIIcons.CheckCircle className="w-10 h-10 text-white" / />
+              <UIIcons.CheckCircle className="w-10 h-10 text-white" />
             </div>
           )}
 

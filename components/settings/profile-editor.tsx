@@ -148,7 +148,7 @@ export function ProfileEditor({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <NavigationIcons.User className="w-5 h-5" / />
+            <NavigationIcons.User className="w-5 h-5" />
             Profile Completion
           </CardTitle>
         </CardHeader>
@@ -164,7 +164,7 @@ export function ProfileEditor({
 
             {missingFields.length > 0 && (
               <Alert>
-                <UIIcons.AlertTriangle className="h-4 w-4" / />
+                <UIIcons.AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
                   Complete your profile by adding: {missingFields.join(", ")}
                 </AlertDescription>
@@ -322,7 +322,7 @@ export function ProfileEditor({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.MapPin className="w-5 h-5" / />
+            <BusinessIcons.MapPin className="w-5 h-5" />
             Location
           </CardTitle>
         </CardHeader>

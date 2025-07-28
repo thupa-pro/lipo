@@ -150,7 +150,7 @@ export function UserAnalytics({ timeframe }: UserAnalyticsProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -285,7 +285,7 @@ export function UserAnalytics({ timeframe }: UserAnalyticsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <NavigationIcons.Users className="h-5 w-5" / />
+              <NavigationIcons.Users className="h-5 w-5" />
               User Segments
             </CardTitle>
             <CardDescription>
@@ -316,7 +316,7 @@ export function UserAnalytics({ timeframe }: UserAnalyticsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BusinessIcons.MapPin className="h-5 w-5" / />
+              <BusinessIcons.MapPin className="h-5 w-5" />
               Geographic Distribution
             </CardTitle>
             <CardDescription>Users by location and region</CardDescription>

@@ -33,7 +33,7 @@ export default function ProviderDashboardPage() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg animate-pulse">
-            <NavigationIcons.Users className="w-8 h-8 text-white" / />
+            <NavigationIcons.Users className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Loading Provider Dashboard...</h2>
           <p className="text-gray-600 dark:text-gray-400">Preparing your elite service management platform</p>
@@ -95,7 +95,7 @@ export default function ProviderDashboardPage() {
                 Add Service
               </Button>
               <Button variant="outline" onClick={() => router.push(`/${locale}/provider/calendar`)}>
-                <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
+                <BusinessIcons.Calendar className="w-4 h-4 mr-2" />
                 Calendar
               </Button>
             </div>
@@ -117,7 +117,7 @@ export default function ProviderDashboardPage() {
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">{dashboardStats.totalEarnings}</p>
                 </div>
                 <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
-                  <BusinessIcons.DollarSign className="w-6 h-6 text-green-600 dark:text-green-400" / />
+                  <BusinessIcons.DollarSign className="w-6 h-6 text-green-600 dark:text-green-400" />
                 </div>
               </div>
             </CardContent>
@@ -131,7 +131,7 @@ export default function ProviderDashboardPage() {
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">{dashboardStats.activeBookings}</p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
-                  <BusinessIcons.Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" / />
+                  <BusinessIcons.Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
               </div>
             </CardContent>
@@ -145,7 +145,7 @@ export default function ProviderDashboardPage() {
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">{dashboardStats.completedServices}</p>
                 </div>
                 <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
-                  <NavigationIcons.Users className="w-6 h-6 text-purple-600 dark:text-purple-400" / />
+                  <NavigationIcons.Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                 </div>
               </div>
             </CardContent>
@@ -212,7 +212,7 @@ export default function ProviderDashboardPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <BusinessIcons.Calendar className="w-5 h-5" / />
+                    <BusinessIcons.Calendar className="w-5 h-5" />
                     Recent Bookings
                   </CardTitle>
                   <CardDescription>
@@ -323,7 +323,7 @@ export default function ProviderDashboardPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <NavigationIcons.Settings className="w-5 h-5" / />
+                    <NavigationIcons.Settings className="w-5 h-5" />
                     Provider Profile
                   </CardTitle>
                   <CardDescription>
@@ -347,7 +347,7 @@ export default function ProviderDashboardPage() {
                             <span className="text-sm font-medium">4.9 rating</span>
                           </div>
                           <div className="flex items-center gap-1">
-                            <BusinessIcons.MapPin className="w-4 h-4 text-gray-500" / />
+                            <BusinessIcons.MapPin className="w-4 h-4 text-gray-500" />
                             <span className="text-sm text-gray-600 dark:text-gray-400">Local Area</span>
                           </div>
                         </div>
@@ -376,11 +376,11 @@ export default function ProviderDashboardPage() {
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Quick Actions</h4>
                         <div className="space-y-2">
                           <Button variant="outline" size="sm" className="w-full justify-start">
-                            <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+                            <NavigationIcons.Settings className="w-4 h-4 mr-2" />
                             Account Settings
                           </Button>
                           <Button variant="outline" size="sm" className="w-full justify-start">
-                            <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
+                            <BusinessIcons.Calendar className="w-4 h-4 mr-2" />
                             Availability Settings
                           </Button>
                         </div>

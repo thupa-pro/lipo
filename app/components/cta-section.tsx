@@ -66,7 +66,7 @@ export default function CTASection() {
               <Link href="/request-service">
                 <OptimizedIcon name="Clock" className="w-5 h-5 mr-2" />
                 Book Premium Service
-                <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+                <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
             <Button
@@ -78,7 +78,7 @@ export default function CTASection() {
               <Link href="/become-provider">
                 <Award className="w-5 h-5 mr-2" />
                 Become Elite Provider
-                <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+                <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
           </div>

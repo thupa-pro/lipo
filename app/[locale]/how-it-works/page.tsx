@@ -280,7 +280,7 @@ export default function HowItWorksPage() {
                   >
                     <Link href={step.action.href}>
                       {step.action.label}
-                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
                 </CardContent>

@@ -376,7 +376,7 @@ export default function HelpCenter() {
         {/* Search */}
         <div className="max-w-2xl mx-auto">
           <div className="relative">
-            <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" / />
+            <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
             <Input
               placeholder="Search for help, articles, tutorials, and FAQs..."
               value={searchQuery}
@@ -490,12 +490,12 @@ export default function HelpCenter() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <NavigationIcons.User className="w-4 h-4" / />
+                      <NavigationIcons.User className="w-4 h-4" />
                       <span>{article.author.name}</span>
                     </div>
                     <Button size="sm">
                       Read More
-                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </div>
                 </CardContent>

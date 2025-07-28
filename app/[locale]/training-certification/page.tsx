@@ -49,7 +49,7 @@ export default function TrainingCertificationPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/provider-resources")}>
             Explore All Resources
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -79,7 +79,7 @@ export default function TrainingCertificationPage() {
                     <ul className="text-sm text-muted-foreground space-y-1">
                       {program.modules.map((module, i) => (
                         <li key={i} className="flex items-center">
-                          <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500" / />
+                          <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500" />
                           {module}
                         </li>
                       ))}
@@ -103,7 +103,7 @@ export default function TrainingCertificationPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Join Our Network
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </section>

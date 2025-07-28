@@ -243,7 +243,7 @@ export function FeedbackWidget({
         )}
       >
         <CardContent className="p-6 text-center">
-          <UIIcons.CheckCircle className="w-12 h-12 mx-auto mb-4 text-emerald-500" / />
+          <UIIcons.CheckCircle className="w-12 h-12 mx-auto mb-4 text-emerald-500" />
           <h3 className="text-lg font-bold mb-2 text-emerald-700 dark:text-emerald-300">
             Thank You!
           </h3>

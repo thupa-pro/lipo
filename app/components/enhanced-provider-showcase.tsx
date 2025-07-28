@@ -184,7 +184,7 @@ export function EnhancedProviderShowcase() {
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-bold text-base lg:text-lg text-gray-900 dark:text-white truncate">{provider.name}</h3>
                     {provider.verified && (
-                      <UIIcons.CheckCircle className="w-4 h-4 lg:w-5 lg:h-5 text-blue-500 flex-shrink-0" / />
+                      <UIIcons.CheckCircle className="w-4 h-4 lg:w-5 lg:h-5 text-blue-500 flex-shrink-0" />
                     )}
                   </div>
                   <p className="text-blue-600 dark:text-blue-400 font-semibold text-xs lg:text-sm mb-1 truncate">{provider.title}</p>
@@ -236,7 +236,7 @@ export function EnhancedProviderShowcase() {
               {/* Location & Reviews */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400 mb-4 lg:mb-6">
                 <div className="flex items-center gap-1">
-                  <BusinessIcons.MapPin className="w-3 h-3 lg:w-4 lg:h-4" / />
+                  <BusinessIcons.MapPin className="w-3 h-3 lg:w-4 lg:h-4" />
                   <span className="truncate">{provider.location}</span>
                 </div>
                 <div className="flex items-center gap-1">
@@ -253,7 +253,7 @@ export function EnhancedProviderShowcase() {
                   onClick={() => setSelectedProvider(provider)}
                 >
                   View Profile
-                  <UIIcons.ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 ml-1.5 lg:ml-2" / />
+                  <UIIcons.ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 ml-1.5 lg:ml-2" />
                 </Button>
                 <Button size="sm" variant="outline" className="px-3 lg:px-4">
                   <Heart className="w-3 h-3 lg:w-4 lg:h-4" />
@@ -304,7 +304,7 @@ export function EnhancedProviderShowcase() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <h2 className="text-xl lg:text-2xl font-bold truncate">{selectedProvider.name}</h2>
-                      {selectedProvider.verified && <UIIcons.CheckCircle className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0" / />}
+                      {selectedProvider.verified && <UIIcons.CheckCircle className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0" />}
                     </div>
                     <p className="text-blue-300 font-semibold mb-1 text-sm lg:text-base truncate">{selectedProvider.title}</p>
                     <p className="text-white/90 text-sm lg:text-base truncate">{selectedProvider.specialty}</p>
@@ -409,7 +409,7 @@ export function EnhancedProviderShowcase() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-gray-200 dark:border-gray-700">
                 <Button size="lg" className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm lg:text-base">
-                  <BusinessIcons.Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" / />
+                  <BusinessIcons.Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
                   Book Now
                 </Button>
                 <Button size="lg" variant="outline" className="flex-1 sm:flex-none text-sm lg:text-base">
@@ -435,7 +435,7 @@ export function EnhancedProviderShowcase() {
           </p>
           <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100 w-full sm:w-auto text-sm lg:text-base">
             Become a Provider
-            <UIIcons.ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" />
           </Button>
         </div>
       </div>

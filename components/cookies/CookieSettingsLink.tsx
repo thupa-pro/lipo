@@ -81,7 +81,7 @@ export function CookieSettingsLink({
           className={className}
           aria-label="Open cookie settings"
         >
-          {showIcon && <NavigationIcons.Settings className="mr-2 h-4 w-4" / />}
+          {showIcon && <NavigationIcons.Settings className="mr-2 h-4 w-4" />}
           {text}
         </Button>
         

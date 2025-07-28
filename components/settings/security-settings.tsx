@@ -200,7 +200,7 @@ export function SecuritySettings({
 
           {securitySettings.twoFactorEnabled ? (
             <Alert>
-              <UIIcons.CheckCircle className="h-4 w-4" / />
+              <UIIcons.CheckCircle className="h-4 w-4" />
               <AlertDescription>
                 Two-factor authentication is enabled. Your account is more
                 secure.
@@ -208,7 +208,7 @@ export function SecuritySettings({
             </Alert>
           ) : (
             <Alert>
-              <UIIcons.AlertTriangle className="h-4 w-4" / />
+              <UIIcons.AlertTriangle className="h-4 w-4" />
               <AlertDescription>
                 Enable two-factor authentication to add an extra layer of
                 security to your account.
@@ -346,26 +346,26 @@ export function SecuritySettings({
         <CardContent>
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               <span className="text-sm">Strong password set</span>
             </div>
             <div className="flex items-center gap-2">
               {securitySettings.twoFactorEnabled ? (
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               ) : (
-                <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />
+                <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" />
               )}
               <span className="text-sm">Two-factor authentication</span>
             </div>
             <div className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               <span className="text-sm">Email verified</span>
             </div>
             <div className="flex items-center gap-2">
               {securitySettings.loginAlerts ? (
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
               ) : (
-                <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />
+                <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" />
               )}
               <span className="text-sm">Login alerts enabled</span>
             </div>

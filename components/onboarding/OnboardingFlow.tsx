@@ -167,7 +167,7 @@ export function OnboardingFlow({
   if (isLoading && !progress) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <UIIcons.Loader2 className="w-8 h-8 animate-spin" / />
+        <UIIcons.Loader2 className="w-8 h-8 animate-spin" />
       </div>
     );
   }
@@ -214,14 +214,14 @@ export function OnboardingFlow({
               }
               className="flex items-center gap-2"
             >
-              <UIIcons.ArrowLeft className="w-4 h-4" / />
+              <UIIcons.ArrowLeft className="w-4 h-4" />
               Previous
             </Button>
 
             <div className="flex items-center gap-2 text-sm text-gray-500">
               {isLoading && (
                 <>
-                  <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
+                  <UIIcons.Loader2 className="w-4 h-4 animate-spin" />
                   Saving...
                 </>
               )}

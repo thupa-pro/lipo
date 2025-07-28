@@ -82,7 +82,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
             <label className="text-sm font-medium mb-2 block">Current Region</label>
             {isLoadingLocation ? (
               <div className="flex items-center space-x-2">
-                <UIIcons.Loader2 className="w-4 h-4 animate-spin text-primary" / />
+                <UIIcons.Loader2 className="w-4 h-4 animate-spin text-primary" />
                 <span className="text-muted-foreground">Detecting location...</span>
               </div>
             ) : (
@@ -94,7 +94,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
                   {Object.values(REGIONS).map((region) => (
                     <SelectItem key={region.code} value={region.code}>
                       <div className="flex items-center">
-                        <BusinessIcons.MapPin className="w-4 h-4 mr-2" / />
+                        <BusinessIcons.MapPin className="w-4 h-4 mr-2" />
                         {region.name}
                       </div>
                     </SelectItem>
@@ -109,7 +109,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Currency</span>
                 <Badge variant="outline" className="flex items-center">
-                  <BusinessIcons.DollarSign className="w-3 h-3 mr-1" / />
+                  <BusinessIcons.DollarSign className="w-3 h-3 mr-1" />
                   {regionConfig.currency}
                 </Badge>
               </div>

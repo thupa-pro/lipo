@@ -74,7 +74,7 @@ export function AIContextualModal({
       case "warning":
         return <Lightbulb className="h-4 w-4 text-amber-600" />
       case "opportunity":
-        return <UIIcons.ArrowRight className="h-4 w-4 text-emerald-600" / />
+        return <UIIcons.ArrowRight className="h-4 w-4 text-emerald-600" />
       default:
         return <Brain className="h-4 w-4 text-blue-600" />
     }
@@ -188,7 +188,7 @@ export function AIContextualModal({
                                   Processing...
                                 </div>
                               ) : (
-                                <UIIcons.ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" / />
+                                <UIIcons.ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" />
                               )}
                             </div>
                           </div>

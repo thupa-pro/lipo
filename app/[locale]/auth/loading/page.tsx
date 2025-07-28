@@ -47,7 +47,7 @@ export default function AuthLoadingPage() {
       <div className="relative z-10 text-center">
         <div className="mb-8 animate-fade-in">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <UIIcons.Loader2 className="w-8 h-8 text-white animate-spin" / />
+            <UIIcons.Loader2 className="w-8 h-8 text-white animate-spin" />
           </div>
           <h1 className="text-2xl font-black bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent">
             Loconomy

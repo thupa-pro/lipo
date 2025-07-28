@@ -312,9 +312,9 @@ export function EscrowPayoutSystem({
       case "released":
         return <Unlock className="w-4 h-4" />;
       case "disputed":
-        return <UIIcons.AlertTriangle className="w-4 h-4" / />;
+        return <UIIcons.AlertTriangle className="w-4 h-4" />;
       case "refunded":
-        return <UIIcons.ArrowLeft className="w-4 h-4" / />;
+        return <UIIcons.ArrowLeft className="w-4 h-4" />;
       case "expired":
         return <OptimizedIcon name="Clock" className="w-4 h-4" />;
       default:
@@ -489,7 +489,7 @@ export function EscrowPayoutSystem({
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-xl flex items-center justify-center">
-                <BusinessIcons.DollarSign className="w-6 h-6 text-green-600" / />
+                <BusinessIcons.DollarSign className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -510,7 +510,7 @@ export function EscrowPayoutSystem({
                 </p>
               </div>
               <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-xl flex items-center justify-center">
-                <UIIcons.AlertTriangle className="w-6 h-6 text-red-600" / />
+                <UIIcons.AlertTriangle className="w-6 h-6 text-red-600" />
               </div>
             </div>
           </CardContent>
@@ -652,7 +652,7 @@ export function EscrowPayoutSystem({
                                   )}
                                 >
                                   {value ? (
-                                    <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                                    <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                                   ) : (
                                     <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                                   )}
@@ -666,7 +666,7 @@ export function EscrowPayoutSystem({
                         {/* Dispute Info */}
                         {transaction.dispute && (
                           <Alert className="mt-3">
-                            <UIIcons.AlertTriangle className="w-4 h-4" / />
+                            <UIIcons.AlertTriangle className="w-4 h-4" />
                             <AlertDescription className="text-sm">
                               <strong>Dispute:</strong>{" "}
                               {transaction.dispute.reason}
@@ -691,7 +691,7 @@ export function EscrowPayoutSystem({
                             }}
                             disabled={isLoading}
                           >
-                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                             Release Payment
                           </Button>
                         )}
@@ -709,7 +709,7 @@ export function EscrowPayoutSystem({
                               );
                             }}
                           >
-                            <UIIcons.AlertTriangle className="w-3 h-3 mr-1" / />
+                            <UIIcons.AlertTriangle className="w-3 h-3 mr-1" />
                             Dispute
                           </Button>
                         )}
@@ -746,7 +746,7 @@ export function EscrowPayoutSystem({
                     }
                     disabled={availableForPayout === 0 || isLoading}
                   >
-                    <BusinessIcons.DollarSign className="w-4 h-4 mr-2" / />
+                    <BusinessIcons.DollarSign className="w-4 h-4 mr-2" />
                     Request Payout
                   </Button>
                 </div>

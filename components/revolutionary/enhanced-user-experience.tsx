@@ -138,7 +138,7 @@ export const SmartSearchExperience: React.FC = () => {
         className="relative"
       >
         <div className="relative flex items-center">
-          <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" / />
+          <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <Input
             ref={searchRef}
             value={query}
@@ -221,7 +221,7 @@ export const SmartSearchExperience: React.FC = () => {
                   className="w-full text-left px-6 py-4 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
                 >
                   <div className="flex items-center space-x-3">
-                    <NavigationIcons.Search className="w-4 h-4 text-gray-400" / />
+                    <NavigationIcons.Search className="w-4 h-4 text-gray-400" />
                     <span>{suggestion}</span>
                   </div>
                 </motion.button>
@@ -491,7 +491,7 @@ const EnhancedServiceCard: React.FC<{
               </div>
               
               <div className="flex items-center space-x-1 text-gray-600">
-                <BusinessIcons.MapPin className="w-4 h-4" / />
+                <BusinessIcons.MapPin className="w-4 h-4" />
                 <span className="text-sm">{service.distance}mi</span>
               </div>
             </div>
@@ -519,7 +519,7 @@ const EnhancedServiceCard: React.FC<{
               }}
             >
               Book Now
-              <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+              <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
         </CardContent>

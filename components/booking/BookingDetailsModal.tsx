@@ -138,7 +138,7 @@ export function BookingDetailsModal({
     {
       value: "confirmed",
       label: "Confirmed",
-      icon: <UIIcons.CheckCircle className="w-4 h-4" / />,
+      icon: <UIIcons.CheckCircle className="w-4 h-4" />,
     },
     {
       value: "in_progress",
@@ -148,7 +148,7 @@ export function BookingDetailsModal({
     {
       value: "completed",
       label: "Completed",
-      icon: <UIIcons.CheckCircle className="w-4 h-4" / />,
+      icon: <UIIcons.CheckCircle className="w-4 h-4" />,
     },
     {
       value: "cancelled",
@@ -158,7 +158,7 @@ export function BookingDetailsModal({
     {
       value: "disputed",
       label: "Disputed",
-      icon: <UIIcons.AlertTriangle className="w-4 h-4" / />,
+      icon: <UIIcons.AlertTriangle className="w-4 h-4" />,
     },
   ];
 
@@ -193,7 +193,7 @@ export function BookingDetailsModal({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" / />
+                      <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" />
                       <div>
                         <div className="font-medium">
                           {format(
@@ -219,7 +219,7 @@ export function BookingDetailsModal({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" / />
+                      <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" />
                       <div>
                         <div className="font-medium">
                           ${booking.total_amount.toFixed(2)}
@@ -235,7 +235,7 @@ export function BookingDetailsModal({
                   <div className="space-y-3">
                     {booking.service_address && (
                       <div className="flex items-start gap-2">
-                        <BusinessIcons.MapPin className="w-4 h-4 text-gray-500 mt-1" / />
+                        <BusinessIcons.MapPin className="w-4 h-4 text-gray-500 mt-1" />
                         <div>
                           <div className="font-medium">Service Location</div>
                           <div className="text-sm text-gray-600">
@@ -250,7 +250,7 @@ export function BookingDetailsModal({
                     )}
 
                     <div className="flex items-start gap-2">
-                      <NavigationIcons.User className="w-4 h-4 text-gray-500 mt-1" / />
+                      <NavigationIcons.User className="w-4 h-4 text-gray-500 mt-1" />
                       <div>
                         <div className="font-medium">Confirmation Code</div>
                         <div className="text-sm text-gray-600 font-mono">
@@ -437,7 +437,7 @@ export function BookingDetailsModal({
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <NavigationIcons.User className="w-4 h-4 text-gray-500" / />
+                  <NavigationIcons.User className="w-4 h-4 text-gray-500" />
                   <div>
                     <div className="font-medium">Customer</div>
                     <div className="text-sm text-gray-600">
@@ -447,7 +447,7 @@ export function BookingDetailsModal({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <NavigationIcons.User className="w-4 h-4 text-gray-500" / />
+                  <NavigationIcons.User className="w-4 h-4 text-gray-500" />
                   <div>
                     <div className="font-medium">Provider</div>
                     <div className="text-sm text-gray-600">
@@ -543,7 +543,7 @@ export function BookingDetailsModal({
                     View Reviews
                   </Button>
                   <Button variant="outline" size="sm" className="w-full">
-                    <BusinessIcons.DollarSign className="w-4 h-4 mr-2" / />
+                    <BusinessIcons.DollarSign className="w-4 h-4 mr-2" />
                     View Payment
                   </Button>
                 </CardContent>

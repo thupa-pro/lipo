@@ -235,7 +235,7 @@ export default function MonetizationEngine() {
                   <div className="space-y-2">
                     {boost.features.map((feature, index) => (
                       <div key={index} className="flex items-center text-sm">
-                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500 mr-2" / />
+                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                         {feature}
                       </div>
                     ))}
@@ -314,7 +314,7 @@ export default function MonetizationEngine() {
                   <div className="space-y-2">
                     {plan.features.map((feature, index) => (
                       <div key={index} className="flex items-center text-sm">
-                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500 mr-2" / />
+                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                         {feature}
                       </div>
                     ))}
@@ -459,7 +459,7 @@ export default function MonetizationEngine() {
             <CardContent className="p-6">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <NavigationIcons.Users className="w-6 h-6 text-yellow-600" / />
+                  <NavigationIcons.Users className="w-6 h-6 text-yellow-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-yellow-900 mb-2">Smart Bidding Tips</h3>

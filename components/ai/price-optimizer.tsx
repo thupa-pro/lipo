@@ -263,7 +263,7 @@ export default function PriceOptimizer({
               </CardTitle>
             </div>
             <Badge variant="secondary" className="bg-green-100 text-green-700">
-              <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+              <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
               {priceInsight.confidence}% Confidence
             </Badge>
           </div>
@@ -341,7 +341,7 @@ export default function PriceOptimizer({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BusinessIcons.Calendar className="w-5 h-5 text-purple-600" / />
+              <BusinessIcons.Calendar className="w-5 h-5 text-purple-600" />
               Optimal Timing
             </CardTitle>
             <CardDescription>

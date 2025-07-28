@@ -180,7 +180,7 @@ export default function RequestsPage() {
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <Input
                   placeholder="Search your requests..."
                   className="pl-10"
@@ -208,7 +208,7 @@ export default function RequestsPage() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center">
-                  <BusinessIcons.Briefcase className="w-6 h-6 text-blue-600" / />
+                  <BusinessIcons.Briefcase className="w-6 h-6 text-blue-600" />
                 </div>
               </div>
             </CardContent>
@@ -262,7 +262,7 @@ export default function RequestsPage() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-xl flex items-center justify-center">
-                  <NavigationIcons.Users className="w-6 h-6 text-purple-600" / />
+                  <NavigationIcons.Users className="w-6 h-6 text-purple-600" />
                 </div>
               </div>
             </CardContent>
@@ -295,15 +295,15 @@ export default function RequestsPage() {
                     </p>
                     <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
                       <span className="flex items-center gap-1">
-                        <BusinessIcons.Briefcase className="w-4 h-4" / />
+                        <BusinessIcons.Briefcase className="w-4 h-4" />
                         {request.category}
                       </span>
                       <span className="flex items-center gap-1">
-                        <BusinessIcons.DollarSign className="w-4 h-4" / />
+                        <BusinessIcons.DollarSign className="w-4 h-4" />
                         {request.budget}
                       </span>
                       <span className="flex items-center gap-1">
-                        <BusinessIcons.MapPin className="w-4 h-4" / />
+                        <BusinessIcons.MapPin className="w-4 h-4" />
                         {request.location}
                       </span>
                       <span className="flex items-center gap-1">
@@ -311,7 +311,7 @@ export default function RequestsPage() {
                         {request.posted}
                       </span>
                       <span className="flex items-center gap-1">
-                        <NavigationIcons.Users className="w-4 h-4" / />
+                        <NavigationIcons.Users className="w-4 h-4" />
                         {request.responses} responses
                       </span>
                     </div>
@@ -375,7 +375,7 @@ export default function RequestsPage() {
                             size="sm"
                             className="text-blue-600"
                           >
-                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                             View Receipt
                           </Button>
                         </div>
@@ -392,7 +392,7 @@ export default function RequestsPage() {
         {requests.length === 0 && (
           <Card className="border-0 shadow-sm">
             <CardContent className="p-12 text-center">
-              <BusinessIcons.Briefcase className="w-16 h-16 text-slate-400 mx-auto mb-4" / />
+              <BusinessIcons.Briefcase className="w-16 h-16 text-slate-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                 No service requests yet
               </h3>

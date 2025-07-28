@@ -17,7 +17,7 @@ export default function InsightsSection() {
         </Card>
         <Card>
           <CardContent className="p-6 text-center">
-            <NavigationIcons.Users className="w-8 h-8 text-blue-600 mx-auto mb-2" / />
+            <NavigationIcons.Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
             <div className="text-2xl font-bold">12,450</div>
             <div className="text-sm text-gray-600">Total Test Participants</div>
           </CardContent>
@@ -39,7 +39,7 @@ export default function InsightsSection() {
         <CardContent className="space-y-4">
           <div className="space-y-3">
             <div className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg">
-              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <div className="font-medium">Action-oriented CTAs perform 27% better</div>
                 <div className="text-sm text-gray-600">
@@ -48,7 +48,7 @@ export default function InsightsSection() {
               </div>
             </div>
             <div className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
-              <UIIcons.CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" />
               <div>
                 <div className="font-medium">Visual trust signals increase contact rates</div>
                 <div className="text-sm text-gray-600">
@@ -57,7 +57,7 @@ export default function InsightsSection() {
               </div>
             </div>
             <div className="flex items-start space-x-3 p-3 bg-purple-50 rounded-lg">
-              <UIIcons.CheckCircle className="w-5 h-5 text-purple-600 mt-0.5" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-purple-600 mt-0.5" />
               <div>
                 <div className="font-medium">Shorter forms reduce abandonment by 18%</div>
                 <div className="text-sm text-gray-600">

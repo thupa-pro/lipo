@@ -104,13 +104,13 @@ export default function NotificationSystem() {
       case "message":
         return <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600" />
       case "job_match":
-        return <BusinessIcons.MapPin className="w-5 h-5 text-green-600" / />
+        return <BusinessIcons.MapPin className="w-5 h-5 text-green-600" />
       case "payment":
-        return <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
+        return <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" />
       case "review":
         return <OptimizedIcon name="Star" className="w-5 h-5 text-yellow-600" />
       case "booking":
-        return <BusinessIcons.Calendar className="w-5 h-5 text-purple-600" / />
+        return <BusinessIcons.Calendar className="w-5 h-5 text-purple-600" />
       default:
         return <Bell className="w-5 h-5 text-gray-600" />
     }
@@ -173,7 +173,7 @@ export default function NotificationSystem() {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center">
-                <NavigationIcons.Settings className="w-5 h-5 mr-2" / />
+                <NavigationIcons.Settings className="w-5 h-5 mr-2" />
                 Notification Settings
               </CardTitle>
               <CardDescription>Customize how and when you receive notifications</CardDescription>
@@ -239,7 +239,7 @@ export default function NotificationSystem() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <BusinessIcons.MapPin className="w-5 h-5 text-green-600" / />
+                  <BusinessIcons.MapPin className="w-5 h-5 text-green-600" />
                   <div>
                     <Label htmlFor="jobMatches">Job Matches</Label>
                     <p className="text-sm text-gray-600">When new jobs match your skills</p>
@@ -269,7 +269,7 @@ export default function NotificationSystem() {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
+                  <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" />
                   <div>
                     <Label htmlFor="payments">Payments</Label>
                     <p className="text-sm text-gray-600">Payment confirmations and payouts</p>
@@ -316,7 +316,7 @@ export default function NotificationSystem() {
 
           <div className="flex justify-end">
             <Button onClick={() => setShowSettings(false)}>
-              <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
+              <UIIcons.CheckCircle className="w-4 h-4 mr-2" />
               Save Settings
             </Button>
           </div>
@@ -348,7 +348,7 @@ export default function NotificationSystem() {
               </Button>
             )}
             <Button variant="ghost" size="sm" onClick={() => setShowSettings(true)}>
-              <NavigationIcons.Settings className="w-4 h-4" / />
+              <NavigationIcons.Settings className="w-4 h-4" />
             </Button>
           </div>
         </div>
@@ -393,7 +393,7 @@ export default function NotificationSystem() {
                     )}
                     {!notification.read && (
                       <Button size="sm" variant="ghost" onClick={() => markAsRead(notification.id)}>
-                        <UIIcons.CheckCircle className="w-4 h-4" / />
+                        <UIIcons.CheckCircle className="w-4 h-4" />
                       </Button>
                     )}
                     <Button size="sm" variant="ghost" onClick={() => deleteNotification(notification.id)}>

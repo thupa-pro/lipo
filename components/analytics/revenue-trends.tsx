@@ -148,7 +148,7 @@ export function RevenueTrends({ filters, isRealtime }: RevenueTrendsProps) {
                   {data.revenueMetrics.monthlyGrowthRate}%
                 </div>
               </div>
-              <BusinessIcons.DollarSign className="w-8 h-8 text-green-500 opacity-80" / />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-green-500 opacity-80" />
             </div>
           </CardContent>
         </Card>
@@ -398,7 +398,7 @@ export function RevenueTrends({ filters, isRealtime }: RevenueTrendsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.Calendar className="w-5 h-5" / />
+            <BusinessIcons.Calendar className="w-5 h-5" />
             Daily Revenue Pattern
           </CardTitle>
         </CardHeader>

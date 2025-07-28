@@ -124,7 +124,7 @@ export default function OnboardingFlow() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-                  <BusinessIcons.MapPin className="w-5 h-5 text-white" / />
+                  <BusinessIcons.MapPin className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
                   Loconomy
@@ -155,7 +155,7 @@ export default function OnboardingFlow() {
                     <RadioGroupItem value="customer" id="customer" />
                     <div className="flex items-center space-x-4 flex-1">
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <NavigationIcons.Users className="w-6 h-6 text-blue-600" / />
+                        <NavigationIcons.Users className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
                         <Label htmlFor="customer" className="text-lg font-medium cursor-pointer">
@@ -181,7 +181,7 @@ export default function OnboardingFlow() {
                     <RadioGroupItem value="provider" id="provider" />
                     <div className="flex items-center space-x-4 flex-1">
                       <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <BusinessIcons.Briefcase className="w-6 h-6 text-green-600" / />
+                        <BusinessIcons.Briefcase className="w-6 h-6 text-green-600" />
                       </div>
                       <div>
                         <Label htmlFor="provider" className="text-lg font-medium cursor-pointer">
@@ -207,7 +207,7 @@ export default function OnboardingFlow() {
 
               <Button onClick={handleNext} disabled={!data.userType} className="w-full" size="lg">
                 Continue
-                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </CardContent>
           </Card>
@@ -218,7 +218,7 @@ export default function OnboardingFlow() {
           <Card className="shadow-lg animate-fade-in">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl flex items-center justify-center">
-                <BusinessIcons.MapPin className="w-6 h-6 mr-2 text-primary" / />
+                <BusinessIcons.MapPin className="w-6 h-6 mr-2 text-primary" />
                 Where are you located?
               </CardTitle>
               <CardDescription>
@@ -258,7 +258,7 @@ export default function OnboardingFlow() {
                 </Button>
                 <Button onClick={handleNext} disabled={!data.location.trim()} className="flex-1">
                   Continue
-                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             </CardContent>
@@ -320,7 +320,7 @@ export default function OnboardingFlow() {
                 </Button>
                 <Button onClick={handleNext} disabled={data.interests.length === 0} className="flex-1">
                   Continue
-                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             </CardContent>
@@ -414,7 +414,7 @@ export default function OnboardingFlow() {
                   className="flex-1"
                 >
                   Continue
-                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             </CardContent>
@@ -426,7 +426,7 @@ export default function OnboardingFlow() {
           <Card className="shadow-lg animate-fade-in">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl flex items-center justify-center">
-                <UIIcons.CheckCircle className="w-6 h-6 mr-2 text-green-600" / />
+                <UIIcons.CheckCircle className="w-6 h-6 mr-2 text-green-600" />
                 You're all set!
               </CardTitle>
               <CardDescription>Just one more thing to help you stay connected</CardDescription>

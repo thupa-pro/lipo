@@ -191,7 +191,7 @@ export default function PaymentsDashboard() {
       case "bonus":
         return <TrendingUp className="w-4 h-4 text-purple-600" />;
       default:
-        return <BusinessIcons.DollarSign className="w-4 h-4 text-gray-600" / />;
+        return <BusinessIcons.DollarSign className="w-4 h-4 text-gray-600" />;
     }
   };
 
@@ -256,7 +256,7 @@ export default function PaymentsDashboard() {
             Export
           </Button>
           <Button>
-            <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+            <NavigationIcons.Settings className="w-4 h-4 mr-2" />
             Settings
           </Button>
         </div>
@@ -276,7 +276,7 @@ export default function PaymentsDashboard() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <BusinessIcons.DollarSign className="w-6 h-6 text-green-600" / />
+                  <BusinessIcons.DollarSign className="w-6 h-6 text-green-600" />
                 </div>
               </div>
             </CardContent>
@@ -400,7 +400,7 @@ export default function PaymentsDashboard() {
               <div className="flex gap-4">
                 <div className="flex-1">
                   <div className="relative">
-                    <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                    <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                     <Input
                       placeholder="Search transactions..."
                       value={searchQuery}
@@ -518,7 +518,7 @@ export default function PaymentsDashboard() {
                           )}
                           {method.isVerified && (
                             <Badge className="bg-green-100 text-green-800">
-                              <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                              <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                               Verified
                             </Badge>
                           )}
@@ -596,7 +596,7 @@ export default function PaymentsDashboard() {
                       {["identity_verification", "address_verification", "business_verification", "enhanced_due_diligence"].map((step) => (
                         <div key={step} className="flex items-center gap-3">
                           {kycStatus.completedSteps.includes(step) ? (
-                            <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
+                            <UIIcons.CheckCircle className="w-5 h-5 text-green-600" />
                           ) : kycStatus.requiredSteps.includes(step) ? (
                             <OptimizedIcon name="Clock" className="w-5 h-5 text-yellow-600" />
                           ) : (

@@ -165,7 +165,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <NavigationIcons.Users className="h-5 w-5" / />
+              <NavigationIcons.Users className="h-5 w-5" />
               User Growth
             </CardTitle>
             <CardDescription>
@@ -206,7 +206,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BusinessIcons.DollarSign className="h-5 w-5" / />
+              <BusinessIcons.DollarSign className="h-5 w-5" />
               Revenue & Bookings
             </CardTitle>
             <CardDescription>Revenue trends and booking volume</CardDescription>
@@ -389,7 +389,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
             <CardTitle className="text-sm font-medium">
               Return Visitors
             </CardTitle>
-            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">42.1%</div>

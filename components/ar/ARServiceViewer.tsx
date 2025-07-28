@@ -660,7 +660,7 @@ export function ARServiceViewer({
             className="flex-1 bg-violet-600 hover:bg-violet-700"
             size="lg"
           >
-            <BusinessIcons.MapPin className="w-4 h-4 mr-2" / />
+            <BusinessIcons.MapPin className="w-4 h-4 mr-2" />
             {t("bookThisService")}
           </Button>
           
@@ -669,7 +669,7 @@ export function ARServiceViewer({
             variant="outline"
             size="lg"
           >
-            <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+            <NavigationIcons.Settings className="w-4 h-4 mr-2" />
             {t("help")}
           </Button>
         </div>

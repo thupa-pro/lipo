@@ -481,7 +481,7 @@ export function BillingSettings() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.DollarSign className="h-5 w-5" / />
+            <BusinessIcons.DollarSign className="h-5 w-5" />
             Payment Settings
           </CardTitle>
           <CardDescription>

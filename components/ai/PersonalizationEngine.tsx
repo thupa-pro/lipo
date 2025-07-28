@@ -252,7 +252,7 @@ export default function PersonalizationEngine({
       message: "3 new highly-rated providers just joined in Downtown. Check them out!",
       action: "Explore New Providers",
       actionUrl: "/search?filter=new&location=downtown",
-      icon: <BusinessIcons.MapPin className="w-4 h-4" / />,
+      icon: <BusinessIcons.MapPin className="w-4 h-4" />,
       priority: "low",
       dismissible: true,
     },
@@ -263,7 +263,7 @@ export default function PersonalizationEngine({
       message: "Your favorite provider Sarah is offering 15% off for repeat customers this week!",
       action: "Book Now",
       actionUrl: "/booking/provider-1",
-      icon: <BusinessIcons.DollarSign className="w-4 h-4" / />,
+      icon: <BusinessIcons.DollarSign className="w-4 h-4" />,
       priority: "high",
       dismissible: false,
       expiresAt: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
@@ -301,11 +301,11 @@ export default function PersonalizationEngine({
       case "service":
         return <Zap className="w-4 h-4" />;
       case "provider":
-        return <NavigationIcons.Users className="w-4 h-4" / />;
+        return <NavigationIcons.Users className="w-4 h-4" />;
       case "category":
         return <Target className="w-4 h-4" />;
       case "deal":
-        return <BusinessIcons.DollarSign className="w-4 h-4" / />;
+        return <BusinessIcons.DollarSign className="w-4 h-4" />;
       default:
         return <Sparkles className="w-4 h-4" />;
     }
@@ -375,7 +375,7 @@ export default function PersonalizationEngine({
                       </p>
                       <Button size="sm" variant="outline" className="text-xs">
                         {nudge.action}
-                        <UIIcons.ArrowRight className="w-3 h-3 ml-1" / />
+                        <UIIcons.ArrowRight className="w-3 h-3 ml-1" />
                       </Button>
                     </div>
                   </div>
@@ -442,7 +442,7 @@ export default function PersonalizationEngine({
 
                   <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                     <div className="flex items-center gap-1">
-                      <BusinessIcons.MapPin className="w-3 h-3" / />
+                      <BusinessIcons.MapPin className="w-3 h-3" />
                       {rec.location}
                     </div>
                     {rec.estimatedTime && (
@@ -453,7 +453,7 @@ export default function PersonalizationEngine({
                     )}
                     {rec.saving && (
                       <div className="flex items-center gap-1 text-green-600">
-                        <BusinessIcons.DollarSign className="w-3 h-3" / />
+                        <BusinessIcons.DollarSign className="w-3 h-3" />
                         Save ${rec.saving}
                       </div>
                     )}

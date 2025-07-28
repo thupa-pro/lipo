@@ -190,7 +190,7 @@ export function UsageMetrics({ usageData, subscription }: UsageMetricsProps) {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <BusinessIcons.Calendar className="h-4 w-4" / />
+              <BusinessIcons.Calendar className="h-4 w-4" />
               Monthly Bookings
             </CardTitle>
           </CardHeader>
@@ -244,7 +244,7 @@ export function UsageMetrics({ usageData, subscription }: UsageMetricsProps) {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <NavigationIcons.Users className="h-4 w-4" / />
+              <NavigationIcons.Users className="h-4 w-4" />
               Team Members
             </CardTitle>
           </CardHeader>

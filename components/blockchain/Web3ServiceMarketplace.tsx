@@ -447,9 +447,9 @@ export function Web3ServiceMarketplace({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "confirmed": return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />;
+      case "confirmed": return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />;
       case "pending": return <OptimizedIcon name="Clock" className="w-4 h-4 text-yellow-500" />;
-      case "failed": return <UIIcons.AlertTriangle className="w-4 h-4 text-red-500" / />;
+      case "failed": return <UIIcons.AlertTriangle className="w-4 h-4 text-red-500" />;
       default: return <OptimizedIcon name="Clock" className="w-4 h-4 text-gray-500" />;
     }
   };
@@ -470,7 +470,7 @@ export function Web3ServiceMarketplace({
             {isConnected ? (
               <>
                 <Badge variant="default" className="bg-green-500">
-                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                   {t("connected")}
                 </Badge>
                 <Badge variant="outline">
@@ -715,7 +715,7 @@ export function Web3ServiceMarketplace({
                         <h3 className="font-semibold">{credential.name}</h3>
                         {credential.verified && (
                           <Badge variant="default" className="bg-green-500">
-                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                             {t("verified")}
                           </Badge>
                         )}

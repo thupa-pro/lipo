@@ -181,7 +181,7 @@ export function BusinessIntelligence({ className }: BusinessIntelligenceProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.MapPin className="w-5 h-5" / />
+            <BusinessIcons.MapPin className="w-5 h-5" />
             Regional Performance
           </CardTitle>
         </CardHeader>

@@ -448,7 +448,7 @@ export function PerformanceOptimizer({
                     <div className="flex items-center gap-2">
                       {suggestion.status === "applied" ? (
                         <Badge variant="default">
-                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                           Applied
                         </Badge>
                       ) : (

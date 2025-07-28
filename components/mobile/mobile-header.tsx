@@ -132,7 +132,7 @@ export function MobileHeader({
               onClick={() => router.push("/browse")}
               className="relative p-2 rounded-xl hover:bg-accent transition-all duration-300"
             >
-              <NavigationIcons.Search className="w-5 h-5" / />
+              <NavigationIcons.Search className="w-5 h-5" />
             </Button>
           )}
 

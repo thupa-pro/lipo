@@ -251,7 +251,7 @@ export default function FunnelAnalyzer() {
                       {stage.issues.length > 0 && (
                         <div className="space-y-2">
                           <div className="flex items-center text-sm text-muted-foreground">
-                            <UIIcons.AlertTriangle className="w-4 h-4 mr-1 text-yellow-500" / />
+                            <UIIcons.AlertTriangle className="w-4 h-4 mr-1 text-yellow-500" />
                             Issues Identified:
                           </div>
                           <div className="flex flex-wrap gap-1">
@@ -328,7 +328,7 @@ export default function FunnelAnalyzer() {
                         </p>
                         <p className="text-2xl font-bold">20%</p>
                       </div>
-                      <NavigationIcons.Users className="w-8 h-8 text-blue-500" / />
+                      <NavigationIcons.Users className="w-8 h-8 text-blue-500" />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
                       <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
@@ -368,7 +368,7 @@ export default function FunnelAnalyzer() {
                         </p>
                         <p className="text-2xl font-bold">$47</p>
                       </div>
-                      <BusinessIcons.DollarSign className="w-8 h-8 text-green-500" / />
+                      <BusinessIcons.DollarSign className="w-8 h-8 text-green-500" />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
                       <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
@@ -391,7 +391,7 @@ export default function FunnelAnalyzer() {
                       <Target className="w-8 h-8 text-purple-500" />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
-                      <UIIcons.CheckCircle className="w-4 h-4 mr-1 text-green-500" / />
+                      <UIIcons.CheckCircle className="w-4 h-4 mr-1 text-green-500" />
                       <span className="text-green-600 dark:text-green-400">
                         Excellent
                       </span>

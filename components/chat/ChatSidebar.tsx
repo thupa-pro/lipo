@@ -44,7 +44,7 @@ export function ChatSidebar({
   const getConversationIcon = (type: string) => {
     switch (type) {
       case "onboarding":
-        return <NavigationIcons.Settings className="h-4 w-4 text-blue-500" / />;
+        return <NavigationIcons.Settings className="h-4 w-4 text-blue-500" />;
       case "support":
         return <HelpCircle className="h-4 w-4 text-orange-500" />;
       case "general":
@@ -144,7 +144,7 @@ export function ChatSidebar({
       {/* Search */}
       <div className="p-4 border-b border-gray-200">
         <div className="relative">
-          <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" / />
+          <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search conversations..."
             value={searchQuery}

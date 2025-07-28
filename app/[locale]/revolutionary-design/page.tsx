@@ -44,11 +44,11 @@ const RevolutionaryDesignPage = () => {
       content: (
         <div className="grid grid-cols-2 gap-2">
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
-            <NavigationIcons.User className="w-4 h-4" / />
+            <NavigationIcons.User className="w-4 h-4" />
             <span className="text-xs">Profile</span>
           </div>
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
-            <NavigationIcons.Settings className="w-4 h-4" / />
+            <NavigationIcons.Settings className="w-4 h-4" />
             <span className="text-xs">Settings</span>
           </div>
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
@@ -91,7 +91,7 @@ const RevolutionaryDesignPage = () => {
       title: 'Calendar',
       content: (
         <div className="text-center">
-          <BusinessIcons.Calendar className="w-8 h-8 mx-auto mb-2" / />
+          <BusinessIcons.Calendar className="w-8 h-8 mx-auto mb-2" />
           <div className="text-lg font-bold">March 15</div>
           <div className="text-sm opacity-80">3 events today</div>
         </div>
@@ -339,7 +339,7 @@ const RevolutionaryDesignPage = () => {
                   placeholder="Try voice search..."
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  leftIcon={<NavigationIcons.Search className="w-4 h-4" / />}
+                  leftIcon={<NavigationIcons.Search className="w-4 h-4" />}
                   voiceInput={true}
                   glowEffect={true}
                 />

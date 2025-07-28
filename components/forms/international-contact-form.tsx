@@ -154,7 +154,7 @@ export default function InternationalContactForm() {
     return (
       <Card className="max-w-2xl mx-auto">
         <CardContent className="text-center py-12">
-          <UIIcons.CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" / />
+          <UIIcons.CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Thank You!</h2>
           <p className="text-muted-foreground mb-4">
             Your message has been submitted successfully. We'll get back to you
@@ -202,7 +202,7 @@ export default function InternationalContactForm() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.MapPin className="w-5 h-5" / />
+            <BusinessIcons.MapPin className="w-5 h-5" />
             Location Detection
           </CardTitle>
           <CardDescription>
@@ -214,12 +214,12 @@ export default function InternationalContactForm() {
           <div className="flex items-center gap-4">
             {isDetecting ? (
               <div className="flex items-center gap-2">
-                <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
+                <UIIcons.Loader2 className="w-4 h-4 animate-spin" />
                 <span>Detecting your location...</span>
               </div>
             ) : isDetected ? (
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />
                 <span>
                   Detected: <strong>{country}</strong>
                 </span>
@@ -251,7 +251,7 @@ export default function InternationalContactForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2">
-                  <NavigationIcons.User className="w-4 h-4" / />
+                  <NavigationIcons.User className="w-4 h-4" />
                   Full Name
                 </Label>
                 <Input
@@ -312,7 +312,7 @@ export default function InternationalContactForm() {
                 <div className="text-sm text-muted-foreground">
                   Formatted: <strong>{formatPhone(formData.phone)}</strong>
                   {validatePhone(formData.phone) ? (
-                    <UIIcons.CheckCircle className="w-4 h-4 text-green-600 inline ml-2" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 text-green-600 inline ml-2" />
                   ) : (
                     <XCircle className="w-4 h-4 text-red-600 inline ml-2" />
                   )}
@@ -326,7 +326,7 @@ export default function InternationalContactForm() {
             {/* Budget with Currency Formatting */}
             <div className="space-y-2">
               <Label htmlFor="budget" className="flex items-center gap-2">
-                <BusinessIcons.DollarSign className="w-4 h-4" / />
+                <BusinessIcons.DollarSign className="w-4 h-4" />
                 Project Budget
                 {currency && (
                   <Badge variant="outline" className="text-xs">
@@ -400,7 +400,7 @@ export default function InternationalContactForm() {
             <Button type="submit" disabled={isSubmitting} className="w-full">
               {isSubmitting ? (
                 <>
-                  <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+                  <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   Submitting...
                 </>
               ) : (

@@ -323,7 +323,7 @@ export function TranslationManager() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-green-600" />
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Completed
@@ -351,7 +351,7 @@ export function TranslationManager() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" / />
+              <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" />
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Needs Review
@@ -396,7 +396,7 @@ export function TranslationManager() {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
                   placeholder="Search translations..."
                   value={searchTerm}
@@ -719,7 +719,7 @@ function QualityCheckView({
         {issues.length === 0 && (
           <Card>
             <CardContent className="p-8 text-center">
-              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" / />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">No Issues Found!</h3>
               <p className="text-gray-600">
                 All translations for {localeNames[locale]} look good.

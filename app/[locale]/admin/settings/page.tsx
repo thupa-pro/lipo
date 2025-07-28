@@ -109,7 +109,7 @@ export default function AdminSettingsPage() {
             <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Admin Panel • System Settings
             </span>
-            <NavigationIcons.Settings className="w-4 h-4 text-emerald-500 dark:text-emerald-400" / />
+            <NavigationIcons.Settings className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-none">

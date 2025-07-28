@@ -361,7 +361,7 @@ export default function ContentManagement() {
               <div className="flex gap-4">
                 <div className="flex-1">
                   <div className="relative">
-                    <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                    <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                     <Input
                       placeholder="Search content..."
                       value={searchQuery}
@@ -420,11 +420,11 @@ export default function ContentManagement() {
                       
                       <div className="flex items-center gap-6 text-sm text-muted-foreground mb-3">
                         <div className="flex items-center gap-1">
-                          <NavigationIcons.User className="w-4 h-4" / />
+                          <NavigationIcons.User className="w-4 h-4" />
                           <span>{content.author.name}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <BusinessIcons.Calendar className="w-4 h-4" / />
+                          <BusinessIcons.Calendar className="w-4 h-4" />
                           <span>{content.updatedAt.toLocaleDateString()}</span>
                         </div>
                         <div className="flex items-center gap-1">
@@ -460,7 +460,7 @@ export default function ContentManagement() {
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="outline" size="sm">
-                            <NavigationIcons.Settings className="w-4 h-4" / />
+                            <NavigationIcons.Settings className="w-4 h-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>

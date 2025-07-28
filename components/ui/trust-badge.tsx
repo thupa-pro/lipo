@@ -146,9 +146,9 @@ export default function TrustBadge({
       case "verification":
         return <OptimizedIcon name="Shield" className="w-4 h-4" />;
       case "experience":
-        return <UIIcons.CheckCircle className="w-4 h-4" / />;
+        return <UIIcons.CheckCircle className="w-4 h-4" />;
       case "location":
-        return <BusinessIcons.MapPin className="w-4 h-4" / />;
+        return <BusinessIcons.MapPin className="w-4 h-4" />;
       case "availability":
         return <OptimizedIcon name="Clock" className="w-4 h-4" />;
       case "responseTime":
@@ -223,7 +223,7 @@ export default function TrustBadge({
                   {Object.entries(verifications).map(([key, verified]) => (
                     <div key={key} className="flex items-center gap-2">
                       {verified ? (
-                        <UIIcons.CheckCircle className="w-3 h-3 text-green-600" / />
+                        <UIIcons.CheckCircle className="w-3 h-3 text-green-600" />
                       ) : (
                         <OptimizedIcon name="Clock" className="w-3 h-3 text-gray-400" />
                       )}
@@ -346,7 +346,7 @@ export default function TrustBadge({
                       {key}
                     </span>
                     {verified && (
-                      <UIIcons.CheckCircle className="w-3 h-3 text-green-600" / />
+                      <UIIcons.CheckCircle className="w-3 h-3 text-green-600" />
                     )}
                   </div>
                 );
@@ -357,7 +357,7 @@ export default function TrustBadge({
 
         <div className="bg-gray-50 p-4 rounded-lg">
           <div className="flex items-start">
-            <UIIcons.AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 mr-2" / />
+            <UIIcons.AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 mr-2" />
             <div className="text-xs text-gray-700">
               <div className="font-medium mb-1">Trust Score Calculation</div>
               <div>

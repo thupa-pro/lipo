@@ -23,11 +23,11 @@ export function ChatSuggestions({
   const getSuggestionIcon = (type: string) => {
     switch (type) {
       case "quick_reply":
-        return <UIIcons.ArrowRight className="h-3 w-3" / />;
+        return <UIIcons.ArrowRight className="h-3 w-3" />;
       case "action":
         return <Zap className="h-3 w-3" />;
       case "onboarding":
-        return <NavigationIcons.Settings className="h-3 w-3" / />;
+        return <NavigationIcons.Settings className="h-3 w-3" />;
       case "help":
         return <HelpCircle className="h-3 w-3" />;
       default:

@@ -270,9 +270,9 @@ export function PerformanceMonitor({
                 {currentScore}
               </span>
               {currentScore >= 90 ? (
-                <UIIcons.CheckCircle className="w-5 h-5 text-emerald-600" / />
+                <UIIcons.CheckCircle className="w-5 h-5 text-emerald-600" />
               ) : (
-                <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" / />
+                <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" />
               )}
             </div>
           </div>

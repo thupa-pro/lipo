@@ -87,7 +87,7 @@ export default function ProviderCard({
                 {provider.name}
               </CardTitle>
               {provider.verified && (
-                <UIIcons.CheckCircle className="w-3 h-3 text-trust" / />
+                <UIIcons.CheckCircle className="w-3 h-3 text-trust" />
               )}
             </div>
             <CardDescription className="text-xs text-muted-foreground">
@@ -114,7 +114,7 @@ export default function ProviderCard({
               {provider.price}
             </div>
             <div className="flex items-center gap-0.5 text-xs text-muted-foreground">
-              <BusinessIcons.MapPin className="w-2.5 h-2.5" / />
+              <BusinessIcons.MapPin className="w-2.5 h-2.5" />
               {provider.location} • {provider.distance}mi
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function ProviderCard({
 
           <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-2xs text-muted-foreground">
             <div className="flex items-center gap-0.5">
-              <UIIcons.CheckCircle className="w-2.5 h-2.5 text-green-500" / />
+              <UIIcons.CheckCircle className="w-2.5 h-2.5 text-green-500" />
               {provider.completedJobs} jobs completed
             </div>
             <div className="flex items-center gap-0.5">
@@ -161,7 +161,7 @@ export default function ProviderCard({
             onClick={() => router.push(`/dashboard`)}
           >
             View Profile
-            <UIIcons.ArrowRight className="w-3 h-3 ml-1" / />
+            <UIIcons.ArrowRight className="w-3 h-3 ml-1" />
           </Button>
           <div className="flex gap-1">
             <Button

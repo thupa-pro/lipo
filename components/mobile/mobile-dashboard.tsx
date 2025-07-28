@@ -192,7 +192,7 @@ export function MobileDashboard({ className }: MobileDashboardProps) {
       <div className="px-4 mb-6">
         <div className="relative">
           <div className="absolute inset-y-0 left-3 flex items-center">
-            <NavigationIcons.Search className="w-4 h-4 text-muted-foreground" / />
+            <NavigationIcons.Search className="w-4 h-4 text-muted-foreground" />
           </div>
           <Input
             placeholder={t("search_placeholder")}
@@ -283,7 +283,7 @@ export function MobileDashboard({ className }: MobileDashboardProps) {
                         >
                           <Icon className="w-5 h-5 text-white" />
                         </div>
-                        <UIIcons.ArrowRight className="w-4 h-4 text-muted-foreground" / />
+                        <UIIcons.ArrowRight className="w-4 h-4 text-muted-foreground" />
                       </div>
 
                       <div>

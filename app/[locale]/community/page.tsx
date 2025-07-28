@@ -38,7 +38,7 @@ export default function CommunityPage() {
     <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container mx-auto max-w-4xl">
-          <NavigationIcons.Users className="w-16 h-16 text-purple-600 mx-auto mb-4" / />
+          <NavigationIcons.Users className="w-16 h-16 text-purple-600 mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             Loconomy Community
           </h1>
@@ -47,7 +47,7 @@ export default function CommunityPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Join Community", description: "Joining the Loconomy Community...", variant: "default" })}>
             Join Our Community
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -90,7 +90,7 @@ export default function CommunityPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/feedback")}>
             Share Your Feedback
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </section>

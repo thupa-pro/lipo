@@ -48,7 +48,7 @@ export default function FeedbackPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/contact")}>
             Contact Support
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>

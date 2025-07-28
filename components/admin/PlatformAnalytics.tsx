@@ -165,7 +165,7 @@ export function PlatformAnalytics() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
+            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$324,590</div>
@@ -180,7 +180,7 @@ export function PlatformAnalytics() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Users</CardTitle>
-            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12,459</div>
@@ -197,7 +197,7 @@ export function PlatformAnalytics() {
             <CardTitle className="text-sm font-medium">
               Total Bookings
             </CardTitle>
-            <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />
+            <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1,847</div>

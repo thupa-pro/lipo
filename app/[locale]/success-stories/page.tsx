@@ -72,7 +72,7 @@ export default function SuccessStoriesPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Share Your Story
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -141,7 +141,7 @@ export default function SuccessStoriesPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Become a Provider
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </section>

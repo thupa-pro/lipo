@@ -249,7 +249,7 @@ export function ReviewModal({
                   <span>with {booking.provider.name}</span>
                   {booking.provider.verified && (
                     <Badge variant="secondary" className="text-xs">
-                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                       Verified
                     </Badge>
                   )}

@@ -273,7 +273,7 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.DollarSign className="w-5 h-5" / />
+            <BusinessIcons.DollarSign className="w-5 h-5" />
             Auto-Pay Settings
           </CardTitle>
         </CardHeader>
@@ -296,7 +296,7 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
 
           {billingSettings.autoPayEnabled && (
             <Alert>
-              <UIIcons.CheckCircle className="h-4 w-4" / />
+              <UIIcons.CheckCircle className="h-4 w-4" />
               <AlertDescription>
                 Auto-pay is enabled. Services will be automatically charged to
                 your default payment method upon completion.
@@ -396,7 +396,7 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.Calendar className="w-5 h-5" / />
+            <BusinessIcons.Calendar className="w-5 h-5" />
             Billing Preferences
           </CardTitle>
         </CardHeader>
@@ -469,29 +469,29 @@ export function PaymentSettings({ onUpdate, isLoading }: PaymentSettingsProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-sm">256-bit SSL encryption</span>
               </div>
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-sm">PCI DSS compliant</span>
               </div>
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-sm">Two-factor authentication</span>
               </div>
             </div>
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-sm">Fraud monitoring</span>
               </div>
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-sm">Secure tokenization</span>
               </div>
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-sm">Regular security audits</span>
               </div>
             </div>

@@ -269,7 +269,7 @@ export function WorkspaceSelector({
             }}
             className="flex items-center gap-2 p-3 cursor-pointer"
           >
-            <NavigationIcons.Settings className="w-4 h-4" / />
+            <NavigationIcons.Settings className="w-4 h-4" />
             <span>Workspace Settings</span>
           </DropdownMenuItem>
         </DropdownMenuContent>

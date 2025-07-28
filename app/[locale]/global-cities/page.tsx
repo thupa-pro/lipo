@@ -249,7 +249,7 @@ export default function GlobalCitiesPage() {
                 {/* Demographics */}
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
-                    <NavigationIcons.Users className="w-5 h-5 text-blue-600" / />
+                    <NavigationIcons.Users className="w-5 h-5 text-blue-600" />
                     Demographics
                   </h3>
                   <div className="space-y-2 text-sm">
@@ -321,7 +321,7 @@ export default function GlobalCitiesPage() {
                   <div className="space-y-2">
                     {selectedCityData.serviceTypes.slice(0, 5).map((service, index) => (
                       <div key={index} className="flex items-center gap-2 text-sm">
-                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                         <span>{service}</span>
                       </div>
                     ))}
@@ -333,11 +333,11 @@ export default function GlobalCitiesPage() {
               <div className="mt-6 pt-6 border-t">
                 <div className="grid md:grid-cols-4 gap-4 text-sm">
                   <div className="flex items-center gap-2">
-                    <BusinessIcons.MapPin className="w-4 h-4 text-blue-500" / />
+                    <BusinessIcons.MapPin className="w-4 h-4 text-blue-500" />
                     <span>Emergency: {selectedCityData.emergencyNumber}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <BusinessIcons.DollarSign className="w-4 h-4 text-green-500" / />
+                    <BusinessIcons.DollarSign className="w-4 h-4 text-green-500" />
                     <span>Currency: {selectedCityData.currency} ({selectedCityData.currencySymbol})</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -385,7 +385,7 @@ export default function GlobalCitiesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-50">
                   Find Services Near Me
-                  <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+                  <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Become a Provider

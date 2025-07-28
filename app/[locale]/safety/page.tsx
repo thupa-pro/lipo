@@ -58,7 +58,7 @@ export default function SafetyTrustPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/contact")}>
             Contact Safety Team
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -98,7 +98,7 @@ export default function SafetyTrustPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Report Submitted", description: "Thank you for helping us keep Loconomy safe!", variant: "default" })}>
             Report an Incident
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </section>

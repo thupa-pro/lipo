@@ -301,7 +301,7 @@ export default function AdvancedSettings() {
         </div>
         <div className="flex gap-3">
           <Button variant="outline" onClick={handleSaveSettings} disabled={isLoading}>
-            {isLoading ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />}
+            {isLoading ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <UIIcons.CheckCircle className="w-4 h-4 mr-2" />}
             Save All Changes
           </Button>
         </div>
@@ -385,7 +385,7 @@ export default function AdvancedSettings() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <BusinessIcons.MapPin className="w-4 h-4" / />
+                      <BusinessIcons.MapPin className="w-4 h-4" />
                       <Label>Show Location</Label>
                     </div>
                     <Switch

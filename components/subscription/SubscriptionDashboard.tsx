@@ -308,7 +308,7 @@ export function SubscriptionDashboard() {
 
         {renderUsageCard(
           "Monthly Bookings",
-          <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />,
+          <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" />,
           "max_bookings_per_month",
         )}
 
@@ -334,7 +334,7 @@ export function SubscriptionDashboard() {
                 <CardTitle className="text-sm font-medium">
                   Completed Bookings
                 </CardTitle>
-                <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" / />
+                <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">
@@ -407,12 +407,12 @@ export function SubscriptionDashboard() {
                 >
                   {isCreatingPortal ? (
                     <>
-                      <NavigationIcons.Settings className="w-4 h-4 mr-2 animate-spin" / />
+                      <NavigationIcons.Settings className="w-4 h-4 mr-2 animate-spin" />
                       Loading...
                     </>
                   ) : (
                     <>
-                      <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+                      <NavigationIcons.Settings className="w-4 h-4 mr-2" />
                       Manage Billing
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </>

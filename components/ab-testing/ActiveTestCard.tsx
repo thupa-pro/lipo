@@ -101,7 +101,7 @@ export default function ActiveTestCard({
                   {variant.isControl && <Badge variant="outline">Control</Badge>}
                   {test.winner === variant.id && (
                     <Badge className="bg-green-500">
-                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                       Winner
                     </Badge>
                   )}

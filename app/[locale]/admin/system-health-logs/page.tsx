@@ -262,7 +262,7 @@ export default function SystemHealthLogsPage() {
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
               Back to Admin
             </Link>
           </Button>
@@ -288,7 +288,7 @@ export default function SystemHealthLogsPage() {
                   All systems nominal
                 </p>
               </div>
-              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" / />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" />
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-yellow-50 dark:bg-yellow-950/20">
@@ -304,7 +304,7 @@ export default function SystemHealthLogsPage() {
                   Minor issues detected
                 </p>
               </div>
-              <UIIcons.AlertTriangle className="w-12 h-12 text-yellow-600 opacity-30" / />
+              <UIIcons.AlertTriangle className="w-12 h-12 text-yellow-600 opacity-30" />
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-red-50 dark:bg-red-950/20">
@@ -478,7 +478,7 @@ export default function SystemHealthLogsPage() {
               className="shadow-md hover:shadow-lg transition-all"
             >
               <Link href="/admin">
-                Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
           </CardContent>

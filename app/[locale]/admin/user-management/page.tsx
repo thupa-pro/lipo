@@ -160,12 +160,12 @@ export default function UserManagementPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <NavigationIcons.Users className="w-9 h-9 text-ai" / />
+            <NavigationIcons.Users className="w-9 h-9 text-ai" />
             User Management
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
               Back to Admin
             </Link>
           </Button>
@@ -184,7 +184,7 @@ export default function UserManagementPage() {
                 <div className="text-4xl font-bold mt-2 text-blue-800 dark:text-blue-200">{mockUsers.length}</div>
                 <p className="text-xs text-muted-foreground mt-1">+50 new this month</p>
               </div>
-              <NavigationIcons.Users className="w-12 h-12 text-ai opacity-30" / />
+              <NavigationIcons.Users className="w-12 h-12 text-ai opacity-30" />
             </CardContent>
           </Card>
           <Card variant="glass" className="interactive-hover">
@@ -196,7 +196,7 @@ export default function UserManagementPage() {
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">85% engagement rate</p>
               </div>
-              <UIIcons.CheckCircle className="w-12 h-12 text-success opacity-30" / />
+              <UIIcons.CheckCircle className="w-12 h-12 text-success opacity-30" />
             </CardContent>
           </Card>
           <Card variant="glass" className="interactive-hover">
@@ -217,7 +217,7 @@ export default function UserManagementPage() {
         <Card variant="glass" className="shadow-glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
-              <NavigationIcons.Users className="w-6 h-6 text-primary" / />
+              <NavigationIcons.Users className="w-6 h-6 text-primary" />
               All Users
             </CardTitle>
             <CardDescription>Browse, filter, and manage all user accounts.</CardDescription>
@@ -225,7 +225,7 @@ export default function UserManagementPage() {
           <CardContent>
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               <div className="relative flex-1">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search by, name, email, or phone..."
                   value={searchQuery}
@@ -260,7 +260,7 @@ export default function UserManagementPage() {
             <div className="space-y-4">
               {filteredUsers.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" / />
+                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p className="text-lg font-medium">No users found matching your criteria.</p>
                   <p className="text-sm">Try adjusting your search or filters.</p>
                 </div>
@@ -293,7 +293,7 @@ export default function UserManagementPage() {
                           </Badge>
                           <Badge className={getUserStatusColor(user.status)}>{user.status}</Badge>
                           <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
-                            <BusinessIcons.Calendar className="w-3 h-3" / />
+                            <BusinessIcons.Calendar className="w-3 h-3" />
                             {user.lastActive}
                           </p>
                         </div>
@@ -311,7 +311,7 @@ export default function UserManagementPage() {
                           </Button>
                           <Select onValueChange={(value: User["role"]) => handleChangeRole(user.id, value)}>
                             <SelectTrigger className="w-10 h-10 p-0 flex items-center justify-center">
-                              <BusinessIcons.Briefcase className="w-4 h-4" / />
+                              <BusinessIcons.Briefcase className="w-4 h-4" />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="customer">Customer</SelectItem>
@@ -339,7 +339,7 @@ export default function UserManagementPage() {
               Maintain a healthy and secure community with powerful user management tools at your fingertips.
             </p>
             <Button size="lg" variant="default" asChild className="shadow-md hover:shadow-lg transition-all">
-              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / /></Link>
+              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" /></Link>
             </Button>
           </CardContent>
         </Card>

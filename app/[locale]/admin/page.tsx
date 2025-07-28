@@ -166,7 +166,7 @@ export default function AdminDashboard() {
               variant="outline"
               className="btn-outline-ai px-8 py-3"
             >
-              <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
+              <NavigationIcons.Settings className="w-4 h-4 mr-2" />
               Settings
             </Button>
           </div>
@@ -267,7 +267,7 @@ export default function AdminDashboard() {
                         </p>
                         <div className="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-500">
                           <span className="flex items-center gap-2">
-                            <BusinessIcons.MapPin className="w-4 h-4" / />
+                            <BusinessIcons.MapPin className="w-4 h-4" />
                             {activity.location}
                           </span>
                           <span className="flex items-center gap-2">
@@ -308,10 +308,10 @@ export default function AdminDashboard() {
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 mt-1">
                           {alert.type === "warning" && (
-                            <UIIcons.AlertTriangle className="w-5 h-5 text-amber-500" / />
+                            <UIIcons.AlertTriangle className="w-5 h-5 text-amber-500" />
                           )}
                           {alert.type === "success" && (
-                            <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500" / />
+                            <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500" />
                           )}
                           {alert.type === "info" && (
                             <Activity className="w-5 h-5 text-blue-500" />
@@ -352,7 +352,7 @@ export default function AdminDashboard() {
                   asChild
                 >
                   <Link href="/admin/users">
-                    <NavigationIcons.Users className="w-5 h-5 mr-3" / />
+                    <NavigationIcons.Users className="w-5 h-5 mr-3" />
                     <span className="font-semibold">Manage Users</span>
                   </Link>
                 </Button>
@@ -382,7 +382,7 @@ export default function AdminDashboard() {
                   asChild
                 >
                   <Link href="/admin/settings">
-                    <NavigationIcons.Settings className="w-5 h-5 mr-3" / />
+                    <NavigationIcons.Settings className="w-5 h-5 mr-3" />
                     <span className="font-semibold">System Settings</span>
                   </Link>
                 </Button>

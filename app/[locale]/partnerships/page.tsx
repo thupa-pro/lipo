@@ -46,7 +46,7 @@ export default function PartnershipsPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Start Partnership", description: "Sending partnership inquiry...", variant: "default" })}>
             Propose a Partnership
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -76,7 +76,7 @@ export default function PartnershipsPage() {
                     <ul className="text-sm text-muted-foreground space-y-1">
                       {type.benefits.map((benefit, i) => (
                         <li key={i} className="flex items-center">
-                          <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500" / />
+                          <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500" />
                           {benefit}
                         </li>
                       ))}

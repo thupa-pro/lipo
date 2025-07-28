@@ -104,7 +104,7 @@ export function PricingSetupStep({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BusinessIcons.DollarSign className="w-5 h-5" / />
+              <BusinessIcons.DollarSign className="w-5 h-5" />
               Pricing Model
             </CardTitle>
           </CardHeader>

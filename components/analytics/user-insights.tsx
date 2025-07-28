@@ -136,7 +136,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
                   12.7%
                 </div>
               </div>
-              <NavigationIcons.Users className="w-8 h-8 text-green-500 opacity-80" / />
+              <NavigationIcons.Users className="w-8 h-8 text-green-500 opacity-80" />
             </div>
           </CardContent>
         </Card>
@@ -242,7 +242,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <NavigationIcons.Users className="w-5 h-5" / />
+              <NavigationIcons.Users className="w-5 h-5" />
               Age Demographics
             </CardTitle>
           </CardHeader>
@@ -353,7 +353,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.MapPin className="w-5 h-5" / />
+            <BusinessIcons.MapPin className="w-5 h-5" />
             Top Locations
           </CardTitle>
         </CardHeader>

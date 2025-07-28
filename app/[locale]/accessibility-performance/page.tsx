@@ -308,7 +308,7 @@ export default function AccessibilityPerformancePage() {
                 Load Testing
               </Button>
               <Button variant="outline" className="h-16 flex-col">
-                <UIIcons.CheckCircle className="w-6 h-6 mb-2" / />
+                <UIIcons.CheckCircle className="w-6 h-6 mb-2" />
                 Compliance Check
               </Button>
             </div>

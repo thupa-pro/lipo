@@ -162,7 +162,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
 
         {isAnalyzing && (
           <div className="flex items-center mt-2 text-sm text-blue-600">
-            <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+            <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
             AI is analyzing your request...
           </div>
         )}
@@ -193,7 +193,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
                   </div>
                   <div className="text-right">
                     <div className="text-sm font-medium text-green-600 flex items-center">
-                      <BusinessIcons.DollarSign className="w-3 h-3 mr-1" / />
+                      <BusinessIcons.DollarSign className="w-3 h-3 mr-1" />
                       {suggestion.estimatedPrice}
                     </div>
                     <div className="text-xs text-gray-500">{suggestion.confidence}% match</div>

@@ -58,7 +58,7 @@ export default function InvestorsPage() {
     <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20">
         <div className="container mx-auto max-w-4xl">
-          <BusinessIcons.DollarSign className="w-16 h-16 text-green-600 mx-auto mb-4" / />
+          <BusinessIcons.DollarSign className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
             Investor Relations
           </h1>
@@ -67,7 +67,7 @@ export default function InvestorsPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Request Investor Access", description: "Sending request for investor portal access...", variant: "default" })}>
             Request Investor Access
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -120,7 +120,7 @@ export default function InvestorsPage() {
                   </div>
                   <Button variant="outline" onClick={report.action.onClick}>
                     {report.action.label} ({report.type})
-                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </CardContent>
               </Card>

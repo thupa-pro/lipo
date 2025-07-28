@@ -438,7 +438,7 @@ export function NotificationDropdown({
                         variant="ghost"
                         className="w-full justify-start h-8 px-2 text-xs"
                       >
-                        <NavigationIcons.Settings className="w-3 h-3 mr-2" / />
+                        <NavigationIcons.Settings className="w-3 h-3 mr-2" />
                         Settings
                       </Button>
                     </Link>

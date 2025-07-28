@@ -199,7 +199,7 @@ export function SubscriptionPlans({
     if (processingPlan === planId) {
       return (
         <>
-          <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+          <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
           Processing...
         </>
       );
@@ -385,7 +385,7 @@ export function SubscriptionPlans({
                 >
                   {getButtonText(plan.plan_id as SubscriptionPlan)}
                   {!isCurrent && processingPlan !== plan.plan_id && (
-                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                   )}
                 </Button>
               </CardContent>

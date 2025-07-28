@@ -154,7 +154,7 @@ export default function BookingConfirmation({
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6">
-            <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
+            <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" />
             <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Secure Booking Process
             </span>
@@ -212,7 +212,7 @@ export default function BookingConfirmation({
                       </span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <BusinessIcons.MapPin className="w-4 h-4 text-slate-500" / />
+                      <BusinessIcons.MapPin className="w-4 h-4 text-slate-500" />
                       <span className="text-sm text-slate-500">
                         {provider.location}
                       </span>
@@ -469,7 +469,7 @@ export default function BookingConfirmation({
                         <>
                           <Sparkles className="w-4 h-4 mr-2" />
                           Confirm Booking ${total}
-                          <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                          <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                         </>
                       )}
                     </Button>
@@ -490,7 +490,7 @@ export default function BookingConfirmation({
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <UIIcons.CheckCircle className="w-5 h-5 text-blue-500" / />
+              <UIIcons.CheckCircle className="w-5 h-5 text-blue-500" />
               <span className="text-sm text-slate-600 dark:text-gray-300">
                 Instant Confirmation
               </span>

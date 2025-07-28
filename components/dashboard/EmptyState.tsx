@@ -165,7 +165,7 @@ export default function EmptyState({
             <Link href={actionHref || config.actionHref}>
               <Sparkles className="w-5 h-5 mr-2" />
               {actionText || config.actionText}
-              <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+              <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
 

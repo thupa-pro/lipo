@@ -180,7 +180,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
       type: "verification",
       title: "Background Checked",
       description: "Criminal background check completed",
-      icon: <UIIcons.CheckCircle className="w-4 h-4" / />,
+      icon: <UIIcons.CheckCircle className="w-4 h-4" />,
       earned: true,
       earnedDate: "2023-01-20",
       criteria: "Pass comprehensive background check",
@@ -540,7 +540,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
                         <h4 className="font-medium">{review.customer.name}</h4>
                         {review.customer.isVerified && (
                           <Badge variant="secondary" className="text-xs">
-                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                             Verified
                           </Badge>
                         )}

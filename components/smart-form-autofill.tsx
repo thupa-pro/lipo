@@ -148,7 +148,7 @@ export default function SmartFormAutofill() {
                 {freeTextInput.length > 50 ? "✨ AI analysis in progress..." : "Keep typing for AI suggestions"}
               </div>
               <Button onClick={analyzeAndSuggest} disabled={!freeTextInput.trim() || isAnalyzing} size="sm">
-                {isAnalyzing ? <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / /> : <Wand2 className="w-4 h-4 mr-2" />}
+                {isAnalyzing ? <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Wand2 className="w-4 h-4 mr-2" />}
                 Analyze
               </Button>
             </div>
@@ -166,7 +166,7 @@ export default function SmartFormAutofill() {
                 AI Suggestions
               </span>
               <Button onClick={applyAllSuggestions} size="sm">
-                <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
+                <UIIcons.CheckCircle className="w-4 h-4 mr-2" />
                 Apply All
               </Button>
             </CardTitle>

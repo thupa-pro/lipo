@@ -106,7 +106,7 @@ export function WalletSummaryCard({
       case "fee":
         return <Minus className="w-4 h-4 text-gray-600" />;
       default:
-        return <BusinessIcons.DollarSign className="w-4 h-4" / />;
+        return <BusinessIcons.DollarSign className="w-4 h-4" />;
     }
   };
 

@@ -170,7 +170,7 @@ export function NotificationSystem({ className }: NotificationSystemProps) {
           <CreditCard {...iconProps} className="w-5 h-5 text-emerald-600" />
         );
       case "booking":
-        return <BusinessIcons.Calendar {...iconProps} className="w-5 h-5 text-blue-600" / />;
+        return <BusinessIcons.Calendar {...iconProps} className="w-5 h-5 text-blue-600" />;
       case "message":
         return (
           <OptimizedIcon name="MessageSquare" {...iconProps} className="w-5 h-5 text-purple-600" />
@@ -179,7 +179,7 @@ export function NotificationSystem({ className }: NotificationSystemProps) {
         return <OptimizedIcon name="Star" {...iconProps} className="w-5 h-5 text-yellow-600" />;
       case "success":
         return (
-          <UIIcons.CheckCircle {...iconProps} className="w-5 h-5 text-emerald-600" / />
+          <UIIcons.CheckCircle {...iconProps} className="w-5 h-5 text-emerald-600" />
         );
       case "warning":
         return (

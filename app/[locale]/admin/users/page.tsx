@@ -112,7 +112,7 @@ export default function AdminUsersPage() {
             <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Admin Panel • User Management
             </span>
-            <NavigationIcons.Users className="w-4 h-4 text-emerald-500 dark:text-emerald-400" / />
+            <NavigationIcons.Users className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-none">
@@ -209,7 +209,7 @@ export default function AdminUsersPage() {
                 <div>
                   <CardTitle className="flex items-center gap-3 text-2xl">
                     <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
-                      <NavigationIcons.Users className="w-5 h-5 text-white" / />
+                      <NavigationIcons.Users className="w-5 h-5 text-white" />
                     </div>
                     Recent Users
                   </CardTitle>
@@ -219,7 +219,7 @@ export default function AdminUsersPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Button variant="outline" className="rounded-2xl">
-                    <NavigationIcons.Search className="w-4 h-4 mr-2" / />
+                    <NavigationIcons.Search className="w-4 h-4 mr-2" />
                     Search
                   </Button>
                   <Button variant="outline" className="rounded-2xl">
@@ -265,7 +265,7 @@ export default function AdminUsersPage() {
                             {user.email}
                           </span>
                           <span className="flex items-center gap-1">
-                            <BusinessIcons.MapPin className="w-4 h-4" / />
+                            <BusinessIcons.MapPin className="w-4 h-4" />
                             {user.location}
                           </span>
                           <span className="flex items-center gap-1">

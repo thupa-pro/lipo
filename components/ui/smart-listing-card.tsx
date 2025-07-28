@@ -219,7 +219,7 @@ export function SmartListingCard({
         {/* Location and Price */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            <BusinessIcons.MapPin className="w-3 h-3" / />
+            <BusinessIcons.MapPin className="w-3 h-3" />
             <span>{location.distance}km • {location.area}</span>
           </div>
           

@@ -54,9 +54,9 @@ export default function ProviderReputationScorecard({
       case "quick responder":
         return <OptimizedIcon name="Clock" className="w-3 h-3" />;
       case "customer favorite":
-        return <NavigationIcons.Users className="w-3 h-3" / />;
+        return <NavigationIcons.Users className="w-3 h-3" />;
       default:
-        return <UIIcons.CheckCircle className="w-3 h-3" / />;
+        return <UIIcons.CheckCircle className="w-3 h-3" />;
     }
   };
 
@@ -81,11 +81,11 @@ export default function ProviderReputationScorecard({
                 <p className="text-blue-100">{provider.category}</p>
                 <div className="flex items-center space-x-4 mt-2 text-sm">
                   <div className="flex items-center">
-                    <BusinessIcons.MapPin className="w-4 h-4 mr-1" / />
+                    <BusinessIcons.MapPin className="w-4 h-4 mr-1" />
                     {provider.location}
                   </div>
                   <div className="flex items-center">
-                    <BusinessIcons.Calendar className="w-4 h-4 mr-1" / />
+                    <BusinessIcons.Calendar className="w-4 h-4 mr-1" />
                     Since {provider.joinedDate}
                   </div>
                 </div>
@@ -117,7 +117,7 @@ export default function ProviderReputationScorecard({
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center mb-2">
-                <UIIcons.CheckCircle className="w-5 h-5 text-green-500" / />
+                <UIIcons.CheckCircle className="w-5 h-5 text-green-500" />
               </div>
               <div className="text-2xl font-bold">
                 {provider.completionRate}%
@@ -165,7 +165,7 @@ export default function ProviderReputationScorecard({
             <div className="flex flex-wrap gap-2">
               {provider.verifications.map((verification, index) => (
                 <Badge key={index} className="bg-green-100 text-green-700">
-                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                   {verification}
                 </Badge>
               ))}

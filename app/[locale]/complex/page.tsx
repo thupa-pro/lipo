@@ -143,7 +143,7 @@ export default function ComplexPage() {
               className="h-12 bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 transition-all duration-500"
             >
               <Link href="/browse">
-                <NavigationIcons.Search className="w-5 h-5 mr-3" / />
+                <NavigationIcons.Search className="w-5 h-5 mr-3" />
                 Find Services Now
               </Link>
             </Button>

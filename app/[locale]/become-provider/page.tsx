@@ -515,7 +515,7 @@ export default function BecomeProviderPage() {
                       onClick={handleStartApplication}
                     >
                       Apply Now
-                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </div>
                 </CardContent>

@@ -294,7 +294,7 @@ export function AIPatternShowcase({ className }: AIPatternShowcaseProps) {
                             <div className="text-2xl font-bold text-green-600">$75</div>
                             <div className="text-xs text-muted-foreground">Recommended</div>
                           </div>
-                          <UIIcons.ArrowRight className="h-4 w-4 text-muted-foreground" / />
+                          <UIIcons.ArrowRight className="h-4 w-4 text-muted-foreground" />
                           <div className="text-sm text-muted-foreground">
                             Based on 47 similar services in your area
                           </div>

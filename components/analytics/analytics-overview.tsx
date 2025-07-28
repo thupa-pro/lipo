@@ -143,7 +143,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.totalUsers.change)}%
                 </div>
               </div>
-              <NavigationIcons.Users className="w-8 h-8 text-blue-500 opacity-80" / />
+              <NavigationIcons.Users className="w-8 h-8 text-blue-500 opacity-80" />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">
@@ -168,7 +168,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.activeJobs.change)}%
                 </div>
               </div>
-              <BusinessIcons.Briefcase className="w-8 h-8 text-green-500 opacity-80" / />
+              <BusinessIcons.Briefcase className="w-8 h-8 text-green-500 opacity-80" />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">
@@ -193,7 +193,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.revenue.change)}%
                 </div>
               </div>
-              <BusinessIcons.DollarSign className="w-8 h-8 text-emerald-500 opacity-80" / />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-emerald-500 opacity-80" />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">

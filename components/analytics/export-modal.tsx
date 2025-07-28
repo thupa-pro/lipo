@@ -164,9 +164,9 @@ export function ExportModal({ open, onOpenChange, filters }: ExportModalProps) {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               {exportComplete ? (
-                <UIIcons.CheckCircle className="w-5 h-5 text-green-500" / />
+                <UIIcons.CheckCircle className="w-5 h-5 text-green-500" />
               ) : (
-                <UIIcons.Loader2 className="w-5 h-5 animate-spin" / />
+                <UIIcons.Loader2 className="w-5 h-5 animate-spin" />
               )}
               {exportComplete ? "Export Complete" : "Exporting Report"}
             </DialogTitle>
@@ -327,7 +327,7 @@ export function ExportModal({ open, onOpenChange, filters }: ExportModalProps) {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
-                <BusinessIcons.Calendar className="w-4 h-4" / />
+                <BusinessIcons.Calendar className="w-4 h-4" />
                 <span className="font-medium">Report Period</span>
               </div>
               <p className="text-sm text-muted-foreground">

@@ -104,7 +104,7 @@ export function PreferencesStep({ onNext, initialData }: OnboardingStepProps) {
       {/* Budget Range */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <BusinessIcons.DollarSign className="w-5 h-5 text-green-500" / />
+          <BusinessIcons.DollarSign className="w-5 h-5 text-green-500" />
           <Label className="text-lg font-medium">Typical Budget Range</Label>
         </div>
         <p className="text-sm text-gray-600">
@@ -244,7 +244,7 @@ export function PreferencesStep({ onNext, initialData }: OnboardingStepProps) {
         size="lg"
       >
         {isLoading ? "Saving Preferences..." : "Continue"}
-        <UIIcons.ArrowRight className="w-4 h-4" / />
+        <UIIcons.ArrowRight className="w-4 h-4" />
       </Button>
     </div>
   );

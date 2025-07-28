@@ -269,7 +269,7 @@ export default function SmartListingCard({
             {/* Meta Info */}
             <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-gray-400 mb-4">
               <div className="flex items-center gap-1">
-                <BusinessIcons.MapPin className="w-3 h-3" / />
+                <BusinessIcons.MapPin className="w-3 h-3" />
                 {listing.location}
               </div>
               {listing.responseTime && (
@@ -280,7 +280,7 @@ export default function SmartListingCard({
               )}
               {listing.completedJobs && (
                 <div className="flex items-center gap-1">
-                  <NavigationIcons.Users className="w-3 h-3" / />
+                  <NavigationIcons.Users className="w-3 h-3" />
                   {listing.completedJobs} jobs
                 </div>
               )}

@@ -174,7 +174,7 @@ export default function FunnelOptimizationPage() {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <NavigationIcons.Settings className="w-5 h-5 mr-2" / />
+              <NavigationIcons.Settings className="w-5 h-5 mr-2" />
               Active Optimizations
             </CardTitle>
             <CardDescription>
@@ -261,7 +261,7 @@ export default function FunnelOptimizationPage() {
           <CardContent className="p-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <UIIcons.CheckCircle className="w-8 h-8 text-white" / />
+                <UIIcons.CheckCircle className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-2">
                 Optimization Engine Fully Deployed!

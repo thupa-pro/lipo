@@ -40,7 +40,7 @@ export default function CustomerSupportPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/help")}>
             Visit Help Center
-            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </header>
@@ -82,7 +82,7 @@ export default function CustomerSupportPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-900/20 text-purple-600 mb-4">
-                  <NavigationIcons.Users className="w-7 h-7" / />
+                  <NavigationIcons.Users className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Community Forum</h3>
                 <p className="text-muted-foreground mb-4">Ask questions and get help from other users.</p>

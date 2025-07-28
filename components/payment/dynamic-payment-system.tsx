@@ -602,7 +602,7 @@ export function DynamicPaymentSystem({
   const renderSuccess = () => (
     <div className="text-center space-y-6">
       <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-        <UIIcons.CheckCircle className="w-10 h-10 text-white" / />
+        <UIIcons.CheckCircle className="w-10 h-10 text-white" />
       </div>
 
       <div>
@@ -696,7 +696,7 @@ export function DynamicPaymentSystem({
 
             <div className="flex gap-3">
               <Button variant="outline" onClick={onCancel} className="flex-1">
-                <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+                <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
                 Cancel
               </Button>
               <Button
@@ -707,7 +707,7 @@ export function DynamicPaymentSystem({
                 className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
                 Pay ${getTotalAmount().toFixed(2)}
-                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </>
@@ -738,7 +738,7 @@ export function DynamicPaymentSystem({
                 className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
               >
                 Done
-                <UIIcons.CheckCircle className="w-4 h-4 ml-2" / />
+                <UIIcons.CheckCircle className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </>

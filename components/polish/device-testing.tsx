@@ -278,7 +278,7 @@ export default function DeviceTesting({ className }: DeviceTestingProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'pass':
-        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />;
       case 'warning':
         return <AlertCircle className="w-4 h-4 text-yellow-600" />;
       case 'fail':

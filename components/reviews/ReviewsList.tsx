@@ -262,7 +262,7 @@ export function ReviewsList({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <UIIcons.CheckCircle className="w-4 h-4 text-blue-600" / />
+                <UIIcons.CheckCircle className="w-4 h-4 text-blue-600" />
                 <span className="text-sm">
                   {filteredAndSortedReviews.filter((r) => r.isVerified).length}{" "}
                   verified reviews
@@ -282,7 +282,7 @@ export function ReviewsList({
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" / />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search reviews..."
                 value={searchQuery}
@@ -368,7 +368,7 @@ export function ReviewsList({
                           </h4>
                           {review.isVerified && (
                             <Badge variant="secondary" className="text-xs">
-                              <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                              <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                               Verified
                             </Badge>
                           )}

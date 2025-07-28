@@ -470,7 +470,7 @@ export function SmartHomeIntegration({
       case "speaker": return <Speaker className="w-5 h-5" />;
       case "tv": return <Tv className="w-5 h-5" />;
       case "sensor": return <Gauge className="w-5 h-5" />;
-      default: return <NavigationIcons.Home className="w-5 h-5" / />;
+      default: return <NavigationIcons.Home className="w-5 h-5" />;
     }
   };
 
@@ -488,7 +488,7 @@ export function SmartHomeIntegration({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
-            <NavigationIcons.Home className="w-5 h-5" / />
+            <NavigationIcons.Home className="w-5 h-5" />
             {t("title")} - {serviceType}
           </CardTitle>
           <div className="flex items-center gap-2">
@@ -497,7 +497,7 @@ export function SmartHomeIntegration({
             </Badge>
             {emergencyMode && (
               <Badge variant="destructive">
-                <UIIcons.AlertTriangle className="w-3 h-3 mr-1" / />
+                <UIIcons.AlertTriangle className="w-3 h-3 mr-1" />
                 {t("emergencyMode")}
               </Badge>
             )}
@@ -542,7 +542,7 @@ export function SmartHomeIntegration({
             variant={emergencyMode ? "destructive" : "outline"}
             className="h-20 flex-col"
           >
-            <UIIcons.AlertTriangle className="w-6 h-6" / />
+            <UIIcons.AlertTriangle className="w-6 h-6" />
             <span className="text-sm mt-2">{t("emergency")}</span>
           </Button>
 

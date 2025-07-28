@@ -131,7 +131,7 @@ export function OnboardingProgress({
                     onClick={() => (window.location.href = nextStep.actionUrl!)}
                   >
                     Start Now
-                    <UIIcons.ArrowRight className="ml-1 h-3 w-3" / />
+                    <UIIcons.ArrowRight className="ml-1 h-3 w-3" />
                   </Button>
                 )}
               </div>
@@ -166,7 +166,7 @@ export function OnboardingProgress({
               >
                 <div className="shrink-0">
                   {step.completed ? (
-                    <UIIcons.CheckCircle className="h-4 w-4 text-green-600" / />
+                    <UIIcons.CheckCircle className="h-4 w-4 text-green-600" />
                   ) : (
                     <Circle className="h-4 w-4 text-muted-foreground" />
                   )}

@@ -161,7 +161,7 @@ export function InviteMemberForm({
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
-              <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+              <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
               Sending...
             </>
           ) : (

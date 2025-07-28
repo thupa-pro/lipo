@@ -156,7 +156,7 @@ export default function ContentModerationPage() {
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
               Back to Admin
             </Link>
           </Button>
@@ -201,7 +201,7 @@ export default function ContentModerationPage() {
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">Resolved issues</p>
               </div>
-              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" / />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" />
             </CardContent>
           </Card>
         </div>
@@ -218,7 +218,7 @@ export default function ContentModerationPage() {
           <CardContent>
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               <div className="relative flex-1">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search by, content, user, or reason..."
                   value={searchQuery}
@@ -254,7 +254,7 @@ export default function ContentModerationPage() {
             <div className="space-y-4">
               {filteredContent.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" / />
+                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p className="text-lg font-medium">No reported content found matching your criteria.</p>
                   <p className="text-sm">All clear! Or try adjusting your filters.</p>
                 </div>
@@ -283,7 +283,7 @@ export default function ContentModerationPage() {
                         {item.status === "pending" && (
                           <>
                             <Button size="sm" onClick={() => handleApprove(item.id)}>
-                              <UIIcons.CheckCircle className="w-4 h-4" / />
+                              <UIIcons.CheckCircle className="w-4 h-4" />
                             </Button>
                             <Button size="sm" variant="destructive" onClick={() => handleReject(item.id)}>
                               <XCircle className="w-4 h-4" />
@@ -312,7 +312,7 @@ export default function ContentModerationPage() {
               Proactively moderate content and ensure a positive experience for all users.
             </p>
             <Button size="lg" variant="default" asChild className="shadow-md hover:shadow-lg transition-all">
-              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / /></Link>
+              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" /></Link>
             </Button>
           </CardContent>
         </Card>

@@ -245,7 +245,7 @@ export function EmptyStateEnhanced({
               {config.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-3 text-left">
                   <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <UIIcons.CheckCircle className="w-4 h-4 text-white" / />
+                    <UIIcons.CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {benefit}
@@ -290,7 +290,7 @@ export function EmptyStateEnhanced({
                 <Link href={customActionHref || config.actionHref}>
                   <Sparkles className="w-5 h-5 mr-2" />
                   {customActionText || config.actionText}
-                  <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+                  <UIIcons.ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
             </motion.div>

@@ -182,7 +182,7 @@ export default function AgentCommandInput({
         <div className="relative flex items-center">
           <div className="absolute left-3 flex items-center">
             {isLoading ? (
-              <UIIcons.Loader2 className="w-4 h-4 animate-spin text-blue-600" / />
+              <UIIcons.Loader2 className="w-4 h-4 animate-spin text-blue-600" />
             ) : input.startsWith('/') ? (
               <Command className="w-4 h-4 text-purple-600" />
             ) : (
@@ -306,8 +306,8 @@ export default function AgentCommandInput({
                               console.log('Action:', action);
                             }}
                           >
-                            {action.type === 'search' && <NavigationIcons.Search className="w-3 h-3 mr-1" / />}
-                            {action.type === 'book' && <BusinessIcons.Calendar className="w-3 h-3 mr-1" / />}
+                            {action.type === 'search' && <NavigationIcons.Search className="w-3 h-3 mr-1" />}
+                            {action.type === 'book' && <BusinessIcons.Calendar className="w-3 h-3 mr-1" />}
                             {action.type === 'notification' && <MessageCircle className="w-3 h-3 mr-1" />}
                             {action.type.replace('_', ' ')}
                           </Button>

@@ -185,11 +185,11 @@ export function BookingForm({
               <h3 className="font-semibold text-lg mb-2">{listing.title}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                  <BusinessIcons.MapPin className="w-4 h-4 text-gray-500" / />
+                  <BusinessIcons.MapPin className="w-4 h-4 text-gray-500" />
                   <span>{listing.location_type || "On-site"}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" / />
+                  <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" />
                   <span>
                     {listing.pricing_type === "hourly"
                       ? `$${listing.hourly_rate}/hour`
@@ -259,7 +259,7 @@ export function BookingForm({
                 <Label>Available Time Slots</Label>
                 {isLoadingSlots ? (
                   <div className="flex items-center justify-center py-8">
-                    <UIIcons.Loader2 className="w-6 h-6 animate-spin" / />
+                    <UIIcons.Loader2 className="w-6 h-6 animate-spin" />
                     <span className="ml-2">Loading available times...</span>
                   </div>
                 ) : availableSlotsByTime.length > 0 ? (
@@ -305,7 +305,7 @@ export function BookingForm({
             {selectedSlot && (
               <div className="p-4 bg-blue-50 rounded-lg space-y-2">
                 <h4 className="font-semibold flex items-center gap-2">
-                  <BusinessIcons.DollarSign className="w-4 h-4" / />
+                  <BusinessIcons.DollarSign className="w-4 h-4" />
                   Price Breakdown
                 </h4>
                 <div className="space-y-1 text-sm">
@@ -329,7 +329,7 @@ export function BookingForm({
             {selectedDate && selectedSlot && (
               <div className="p-4 border rounded-lg">
                 <h4 className="font-semibold mb-2 flex items-center gap-2">
-                  <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />
                   Booking Summary
                 </h4>
                 <div className="space-y-1 text-sm">
@@ -372,7 +372,7 @@ export function BookingForm({
               >
                 {isSubmitting ? (
                   <>
-                    <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
+                    <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
                     Creating Booking...
                   </>
                 ) : (

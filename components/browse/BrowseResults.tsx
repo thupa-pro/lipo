@@ -97,7 +97,7 @@ export default function BrowseResults({ providers, loading, searchQuery, viewMod
       {!loading && providers.length === 0 && (
         <div className="text-center py-12">
           <div className="text-muted-foreground mb-4">
-            <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" / />
+            <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
             <h3 className="text-lg font-medium mb-2">No providers found</h3>
             <p>Try adjusting your search criteria or filters</p>
           </div>

@@ -211,13 +211,13 @@ export function VerificationDashboard({
   const getStatusIcon = (status: VerificationItem["status"]) => {
     switch (status) {
       case "verified":
-        return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />;
+        return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" />;
       case "in_progress":
         return <OptimizedIcon name="Clock" className="w-5 h-5 text-blue-600" />;
       case "rejected":
         return <X className="w-5 h-5 text-red-600" />;
       case "expired":
-        return <UIIcons.AlertTriangle className="w-5 h-5 text-orange-600" / />;
+        return <UIIcons.AlertTriangle className="w-5 h-5 text-orange-600" />;
       default:
         return <OptimizedIcon name="Clock" className="w-5 h-5 text-gray-400" />;
     }
@@ -302,7 +302,7 @@ export function VerificationDashboard({
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-xl flex items-center justify-center">
-                <UIIcons.CheckCircle className="w-6 h-6 text-green-600" / />
+                <UIIcons.CheckCircle className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -391,7 +391,7 @@ export function VerificationDashboard({
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
                   <div className="text-center">
                     <div className="w-8 h-8 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
+                      <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />
                     </div>
                     <div className="text-sm font-medium">
                       {
@@ -493,7 +493,7 @@ export function VerificationDashboard({
 
                         {item.rejectionReason && (
                           <Alert className="mb-3">
-                            <UIIcons.AlertTriangle className="w-4 h-4" / />
+                            <UIIcons.AlertTriangle className="w-4 h-4" />
                             <AlertDescription className="text-sm">
                               {item.rejectionReason}
                             </AlertDescription>
@@ -614,7 +614,7 @@ export function VerificationDashboard({
                                 {key}
                               </span>
                               {value.verified && (
-                                <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
+                                <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />
                               )}
                             </div>
                             <div className="text-sm">
@@ -704,7 +704,7 @@ export function VerificationDashboard({
                     key={index}
                     className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg"
                   >
-                    <UIIcons.CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" / />
+                    <UIIcons.CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
                     <span className="text-sm">{benefit}</span>
                   </div>
                 ))}

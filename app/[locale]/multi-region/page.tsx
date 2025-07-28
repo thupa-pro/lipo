@@ -122,7 +122,7 @@ export default function MultiRegionPage() {
                     <div key={region.region} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                       <div className="flex items-center">
                         <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mr-4">
-                          <BusinessIcons.MapPin className="w-5 h-5 text-blue-600" / />
+                          <BusinessIcons.MapPin className="w-5 h-5 text-blue-600" />
                         </div>
                         <div>
                           <div className="font-semibold">{region.region}</div>
@@ -334,7 +334,7 @@ export default function MultiRegionPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mr-4">
-                  <NavigationIcons.Settings className="w-6 h-6 text-white" / />
+                  <NavigationIcons.Settings className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-blue-900">Multi-Region Engine</h3>

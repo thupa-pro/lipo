@@ -82,7 +82,7 @@ export default function EnhancedHomePage() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
             >
               Dashboard
-              <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+              <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           ) : (
             <>
@@ -94,7 +94,7 @@ export default function EnhancedHomePage() {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
               >
                 Get Started
-                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </>
           )}
@@ -113,7 +113,7 @@ export default function EnhancedHomePage() {
             <span className="text-sm font-medium text-blue-900 dark:text-blue-100">
               {COPY.homepage.hero.trustSignal}
             </span>
-            <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
+            <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" />
           </div>
 
           <h1 className="text-5xl md:text-7xl font-black mb-6 leading-none">
@@ -145,7 +145,7 @@ export default function EnhancedHomePage() {
               onClick={() => router.push(`/${locale}/become-provider`)}
               className="text-lg px-8 py-4 rounded-2xl font-semibold border-2 border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300"
             >
-              <NavigationIcons.Users className="w-5 h-5 mr-2" / />
+              <NavigationIcons.Users className="w-5 h-5 mr-2" />
               {COPY.homepage.hero.ctaSecondary}
             </Button>
           </div>

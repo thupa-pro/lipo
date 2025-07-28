@@ -183,7 +183,7 @@ export default function EnhancedBrowseSearchHeader({
             <div className="flex gap-2">
               {/* Service Search */}
               <div className="relative flex-1">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search services or providers..."
                   value={searchQuery}
@@ -194,7 +194,7 @@ export default function EnhancedBrowseSearchHeader({
 
               {/* Location Input with GPS */}
               <div className="relative flex-1">
-                <BusinessIcons.MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
+                <BusinessIcons.MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Location"
                   value={location}
@@ -210,7 +210,7 @@ export default function EnhancedBrowseSearchHeader({
                   disabled={isGettingLocation}
                 >
                   {isGettingLocation ? (
-                    <UIIcons.Loader2 className="w-3 h-3 animate-spin" / />
+                    <UIIcons.Loader2 className="w-3 h-3 animate-spin" />
                   ) : gpsEnabled ? (
                     <Navigation className="w-3 h-3" />
                   ) : (
@@ -226,9 +226,9 @@ export default function EnhancedBrowseSearchHeader({
                 className="rounded-md shadow-sm transition-all hover:shadow-md"
               >
                 {loading ? (
-                  <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
+                  <UIIcons.Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
-                  <NavigationIcons.Search className="w-4 h-4" / />
+                  <NavigationIcons.Search className="w-4 h-4" />
                 )}
               </Button>
             </div>

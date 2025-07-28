@@ -175,7 +175,7 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Response Rate</p>
                 <p className="text-2xl font-bold">{stats.responseRate}%</p>
               </div>
-              <UIIcons.CheckCircle className="w-8 h-8 text-success-500" / />
+              <UIIcons.CheckCircle className="w-8 h-8 text-success-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
@@ -207,7 +207,7 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Earnings</p>
                 <p className="text-2xl font-bold">${stats.earnings}</p>
               </div>
-              <BusinessIcons.DollarSign className="w-8 h-8 text-success-500" / />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-success-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
@@ -245,10 +245,10 @@ export default function UrgencyNotificationSystem() {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-muted-foreground mb-3">
                       <div className="flex items-center">
-                        <BusinessIcons.DollarSign className="w-4 h-4 mr-1" / />${job.budget}
+                        <BusinessIcons.DollarSign className="w-4 h-4 mr-1" />${job.budget}
                       </div>
                       <div className="flex items-center">
-                        <BusinessIcons.MapPin className="w-4 h-4 mr-1" / />
+                        <BusinessIcons.MapPin className="w-4 h-4 mr-1" />
                         {job.distance} mi
                       </div>
                       <div className="flex items-center">
@@ -288,7 +288,7 @@ export default function UrgencyNotificationSystem() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <NavigationIcons.Settings className="w-5 h-5 mr-2" / />
+            <NavigationIcons.Settings className="w-5 h-5 mr-2" />
             Notification Settings
           </CardTitle>
           <CardDescription>Customize your alert preferences for better matches</CardDescription>

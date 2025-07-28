@@ -228,7 +228,7 @@ export default function BillingPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Spend</CardTitle>
-            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
+            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -247,7 +247,7 @@ export default function BillingPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Next Billing</CardTitle>
-            <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />
+            <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -432,7 +432,7 @@ export default function BillingPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <NavigationIcons.Settings className="h-5 w-5" / />
+                  <NavigationIcons.Settings className="h-5 w-5" />
                   Quick Actions
                 </CardTitle>
               </CardHeader>

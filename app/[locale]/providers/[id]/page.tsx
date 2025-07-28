@@ -75,7 +75,7 @@ export default function ProviderDetailPage() {
   return (
     <div className="container mx-auto p-6">
       <Button variant="ghost" onClick={() => router.back()} className="mb-6">
-        <UIIcons.ArrowLeft className="h-4 w-4 mr-2" / />
+        <UIIcons.ArrowLeft className="h-4 w-4 mr-2" />
         Back to Results
       </Button>
 
@@ -117,7 +117,7 @@ export default function ProviderDetailPage() {
                       <span>({provider.reviewCount} reviews)</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <BusinessIcons.MapPin className="w-4 h-4" / />
+                      <BusinessIcons.MapPin className="w-4 h-4" />
                       <span>{provider.location}</span>
                     </div>
                     <div className="flex items-center gap-1">
@@ -248,7 +248,7 @@ export default function ProviderDetailPage() {
 
               <div className="space-y-4 mb-6">
                 <Button className="w-full" size="lg">
-                  <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
+                  <BusinessIcons.Calendar className="w-4 h-4 mr-2" />
                   Book Now
                 </Button>
 

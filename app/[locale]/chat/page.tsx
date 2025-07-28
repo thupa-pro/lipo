@@ -379,7 +379,7 @@ export default function ChatPage() {
                 <RefreshCw className="h-4 w-4" />
               </Button>
               <Button variant="ghost" size="sm">
-                <NavigationIcons.Settings className="h-4 w-4" / />
+                <NavigationIcons.Settings className="h-4 w-4" />
               </Button>
             </div>
           </div>

@@ -264,7 +264,7 @@ export default function BookingDetailPage() {
             onClick={() => router.back()}
             className="mb-4"
           >
-            <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+            <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
             Back to Search
           </Button>
         </motion.div>
@@ -344,7 +344,7 @@ export default function BookingDetailPage() {
                             {service.rating} ({service.reviewCount} reviews)
                           </div>
                           <div className="flex items-center gap-1">
-                            <BusinessIcons.MapPin className="w-4 h-4" / />
+                            <BusinessIcons.MapPin className="w-4 h-4" />
                             {service.location}
                           </div>
                           <div className="flex items-center gap-1">
@@ -403,7 +403,7 @@ export default function BookingDetailPage() {
                           "Take out trash and recycling",
                         ].map((feature, index) => (
                           <div key={index} className="flex items-center gap-2">
-                            <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
+                            <UIIcons.CheckCircle className="w-4 h-4 text-green-500" />
                             <span className="text-sm">{feature}</span>
                           </div>
                         ))}

@@ -297,7 +297,7 @@ function AIListingGenerator({
             AI Generation
           </TabsTrigger>
           <TabsTrigger value="result" disabled={!generationResult} className="flex items-center gap-2">
-            <UIIcons.CheckCircle className="w-4 h-4" / />
+            <UIIcons.CheckCircle className="w-4 h-4" />
             Generated Listing
           </TabsTrigger>
         </TabsList>
@@ -455,7 +455,7 @@ function AIListingGenerator({
                         'bg-gray-100 dark:bg-gray-800'
                       }`}>
                         {step.status === 'completed' ? (
-                          <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
+                          <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />
                         ) : step.status === 'processing' ? (
                           <RefreshCw className="w-4 h-4 text-blue-600 animate-spin" />
                         ) : step.status === 'error' ? (
@@ -522,7 +522,7 @@ function GeneratedListingResult({
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
+            <UIIcons.CheckCircle className="w-5 h-5 text-green-600" />
             Generated Listing Preview
           </CardTitle>
           <CardDescription>
@@ -570,7 +570,7 @@ function GeneratedListingResult({
             <div>
               <Label className="text-sm font-medium text-muted-foreground">PRICING</Label>
               <div className="flex items-center gap-2 mt-1">
-                <BusinessIcons.DollarSign className="w-4 h-4" / />
+                <BusinessIcons.DollarSign className="w-4 h-4" />
                 <span className="font-medium">
                   ${result.pricing.basePrice} {result.pricing.type === 'hourly' ? '/hour' : ''}
                 </span>

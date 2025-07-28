@@ -88,7 +88,7 @@ export default function MatchTimeline({ jobId }: MatchTimelineProps) {
 
   const getStepIcon = (step: TimelineStep, index: number) => {
     if (step.status === "completed") {
-      return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
+      return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" />
     } else if (step.status === "active") {
       return <div className="w-5 h-5 border-2 border-blue-600 rounded-full animate-pulse bg-blue-100" />
     } else {
@@ -179,7 +179,7 @@ export default function MatchTimeline({ jobId }: MatchTimelineProps) {
                       <OptimizedIcon name="MessageSquare" className="w-3 h-3 mr-1" />3 providers have responded
                     </div>
                     <div className="flex items-center text-xs text-blue-600">
-                      <NavigationIcons.Users className="w-3 h-3 mr-1" / />2 more reviewing your job
+                      <NavigationIcons.Users className="w-3 h-3 mr-1" />2 more reviewing your job
                     </div>
                   </div>
                 )}

@@ -128,7 +128,7 @@ export function ListingCard({
 
         {/* Location and Service Area */}
         <div className="flex items-center text-sm text-gray-500">
-          <BusinessIcons.MapPin className="w-4 h-4 mr-1" / />
+          <BusinessIcons.MapPin className="w-4 h-4 mr-1" />
           <span className="capitalize">
             {listing.location_type === "on_site"
               ? "On-site"
@@ -171,7 +171,7 @@ export function ListingCard({
             </div>
             {listing.booking_count > 0 && (
               <div className="flex items-center">
-                <BusinessIcons.Calendar className="w-4 h-4 mr-1" / />
+                <BusinessIcons.Calendar className="w-4 h-4 mr-1" />
                 {listing.booking_count}
               </div>
             )}

@@ -380,7 +380,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div className="flex items-center space-x-2">
-                <BusinessIcons.MapPin className="h-4 w-4 text-blue-600" / />
+                <BusinessIcons.MapPin className="h-4 w-4 text-blue-600" />
                 <span>{userContext.location}</span>
               </div>
               <div className="flex items-center space-x-2">
@@ -388,7 +388,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                 <span>{userContext.timeOfDay}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <BusinessIcons.Calendar className="h-4 w-4 text-purple-600" / />
+                <BusinessIcons.Calendar className="h-4 w-4 text-purple-600" />
                 <span>{userContext.dayOfWeek}</span>
               </div>
               <div className="flex items-center space-x-2">
@@ -516,7 +516,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                   {/* Social Proof */}
                   <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
                     <div className="flex items-center space-x-1">
-                      <NavigationIcons.User className="h-4 w-4" / />
+                      <NavigationIcons.User className="h-4 w-4" />
                       <span>{service.similarUsers} similar users booked this</span>
                     </div>
                     <div className="flex items-center space-x-1">
@@ -531,7 +531,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                       onClick={() => onServiceSelect(service)}
                       className="flex-1"
                     >
-                      <BusinessIcons.Calendar className="h-4 w-4 mr-2" / />
+                      <BusinessIcons.Calendar className="h-4 w-4 mr-2" />
                       Book Now
                     </Button>
                     <Button

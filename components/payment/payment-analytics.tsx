@@ -177,7 +177,7 @@ export function PaymentAnalytics({
           <div className="absolute inset-0 bg-gradient-to-br from-ai/10 to-primary/10" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-2">
-              <BusinessIcons.DollarSign className="w-8 h-8 text-ai" / />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-ai" />
               <Badge className="bg-ai/10 text-ai border-ai/20">
                 {timeframe}
               </Badge>
@@ -461,7 +461,7 @@ export function PaymentAnalytics({
                 <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950/20">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <NavigationIcons.Users className="w-5 h-5 text-blue-600" / />
+                      <NavigationIcons.Users className="w-5 h-5 text-blue-600" />
                       <span className="font-semibold text-blue-700 dark:text-blue-300">
                         User Behavior
                       </span>
@@ -476,7 +476,7 @@ export function PaymentAnalytics({
                 <Card className="border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" / />
+                      <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" />
                       <span className="font-semibold text-yellow-700 dark:text-yellow-300">
                         Optimization
                       </span>

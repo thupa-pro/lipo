@@ -177,7 +177,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
           </Button>
           
           <Button variant="outline" size="sm">
-            <NavigationIcons.Settings className="w-4 h-4" / />
+            <NavigationIcons.Settings className="w-4 h-4" />
           </Button>
         </div>
       </div>

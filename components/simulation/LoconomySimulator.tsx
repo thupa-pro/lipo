@@ -386,7 +386,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <BusinessIcons.Calendar className="w-5 h-5 text-blue-600" / />
+              <BusinessIcons.Calendar className="w-5 h-5 text-blue-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Bookings</p>
                 <p className="text-2xl font-bold">{currentUser.stats.bookings}</p>
@@ -481,7 +481,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <BusinessIcons.Calendar className="w-5 h-5 text-blue-600" / />
+              <BusinessIcons.Calendar className="w-5 h-5 text-blue-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Bookings</p>
                 <p className="text-2xl font-bold">{currentUser.stats.bookings}</p>
@@ -492,7 +492,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
+              <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Earnings</p>
                 <p className="text-2xl font-bold">${currentUser.stats.earnings}</p>
@@ -660,7 +660,7 @@ export function LoconomySimulator() {
                         className="w-full justify-start"
                         onClick={() => switchUser("consumer")}
                       >
-                        <NavigationIcons.Users className="w-4 h-4 mr-2" / />
+                        <NavigationIcons.Users className="w-4 h-4 mr-2" />
                         Switch to Consumer
                       </Button>
                       <Button
@@ -669,7 +669,7 @@ export function LoconomySimulator() {
                         className="w-full justify-start"
                         onClick={() => switchUser("provider")}
                       >
-                        <BusinessIcons.Briefcase className="w-4 h-4 mr-2" / />
+                        <BusinessIcons.Briefcase className="w-4 h-4 mr-2" />
                         Switch to Provider
                       </Button>
                       <Button
@@ -881,7 +881,7 @@ export function LoconomySimulator() {
                       <ul className="text-sm text-muted-foreground space-y-1">
                         {currentUser.subscription.features.map((feature, index) => (
                           <li key={index} className="flex items-center gap-2">
-                            <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
+                            <UIIcons.CheckCircle className="w-4 h-4 text-green-600" />
                             {feature}
                           </li>
                         ))}

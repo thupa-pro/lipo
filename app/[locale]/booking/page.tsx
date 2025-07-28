@@ -35,7 +35,7 @@ export default function BookingPage() {
       <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-violet-600 via-blue-600 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg animate-pulse">
-            <BusinessIcons.Calendar className="w-8 h-8 text-white" / />
+            <BusinessIcons.Calendar className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Loading Booking Services...</h2>
           <p className="text-gray-600 dark:text-gray-400">Finding the perfect service providers for you</p>
@@ -178,7 +178,7 @@ export default function BookingPage() {
           {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
             <div className="flex-1 relative">
-              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" / />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <Input
                 placeholder="Search for, services, providers, or keywords..."
                 value={searchQuery}
@@ -274,7 +274,7 @@ export default function BookingPage() {
                     {/* Location and Duration */}
                     <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                       <div className="flex items-center gap-1">
-                        <BusinessIcons.MapPin className="w-4 h-4" / />
+                        <BusinessIcons.MapPin className="w-4 h-4" />
                         <span>{service.location}</span>
                       </div>
                       <div className="flex items-center gap-1">
@@ -286,12 +286,12 @@ export default function BookingPage() {
                     {/* Price and Availability */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1">
-                        <BusinessIcons.DollarSign className="w-4 h-4 text-green-600" / />
+                        <BusinessIcons.DollarSign className="w-4 h-4 text-green-600" />
                         <span className="font-semibold text-green-600">{service.price}</span>
                       </div>
                       {service.available ? (
                         <Badge className="bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
-                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                           Available
                         </Badge>
                       ) : (
@@ -310,10 +310,10 @@ export default function BookingPage() {
                         disabled={!service.available}
                       >
                         {service.available ? "Book Now" : "Join Waitlist"}
-                        <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                        <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                       <Button variant="outline" size="sm">
-                        <NavigationIcons.Users className="w-4 h-4" / />
+                        <NavigationIcons.Users className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
@@ -325,7 +325,7 @@ export default function BookingPage() {
           {/* No Results */}
           {filteredServices.length === 0 && (
             <div className="text-center py-12">
-              <NavigationIcons.Search className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-4" / />
+              <NavigationIcons.Search className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No services found</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
                 Try adjusting your search criteria or explore different categories

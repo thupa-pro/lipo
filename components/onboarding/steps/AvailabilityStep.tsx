@@ -199,7 +199,7 @@ export function AvailabilityStep({
               onClick={applyToAllDays}
               className="flex-1"
             >
-              <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
+              <BusinessIcons.Calendar className="w-4 h-4 mr-2" />
               Copy Monday to All Days
             </Button>
           </div>
@@ -214,7 +214,7 @@ export function AvailabilityStep({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.Calendar className="w-5 h-5" / />
+            <BusinessIcons.Calendar className="w-5 h-5" />
             Weekly Schedule
           </CardTitle>
           <p className="text-sm text-gray-600">
@@ -418,7 +418,7 @@ export function AvailabilityStep({
       <Card className="bg-green-50 border-green-200">
         <CardContent className="pt-6">
           <div className="flex items-start gap-3">
-            <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" / />
+            <UIIcons.CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
             <div>
               <h4 className="font-medium text-green-900 mb-2">
                 Your Availability Summary

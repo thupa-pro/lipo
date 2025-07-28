@@ -264,7 +264,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
                     disabled={isLoading}
                     className="w-full sm:w-auto"
                   >
-                    <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
+                    <NavigationIcons.Settings className="h-4 w-4 mr-2" />
                     Customize
                   </Button>
                   <Button
@@ -285,7 +285,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <NavigationIcons.Settings className="h-5 w-5" / />
+              <NavigationIcons.Settings className="h-5 w-5" />
               Cookie Preferences
             </DialogTitle>
             <DialogDescription>
@@ -412,7 +412,7 @@ export function CookiePreferencesButton() {
         onClick={() => setShowDialog(true)}
         className="text-muted-foreground hover:text-foreground"
       >
-        <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
+        <NavigationIcons.Settings className="h-4 w-4 mr-2" />
         Cookie Preferences
       </Button>
 

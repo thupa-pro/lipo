@@ -110,7 +110,7 @@ export function PrivacySettings({ onUpdate, isLoading }: PrivacySettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BusinessIcons.MapPin className="w-5 h-5" / />
+            <BusinessIcons.MapPin className="w-5 h-5" />
             Location & Activity
           </CardTitle>
         </CardHeader>
@@ -166,7 +166,7 @@ export function PrivacySettings({ onUpdate, isLoading }: PrivacySettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <NavigationIcons.Users className="w-5 h-5" / />
+            <NavigationIcons.Users className="w-5 h-5" />
             Advertising & Marketing
           </CardTitle>
         </CardHeader>

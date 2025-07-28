@@ -89,7 +89,7 @@ export default function ProviderAvailabilityPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BusinessIcons.Calendar className="h-5 w-5" / />
+              <BusinessIcons.Calendar className="h-5 w-5" />
               Weekly Schedule
             </CardTitle>
           </CardHeader>

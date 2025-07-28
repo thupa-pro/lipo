@@ -152,7 +152,7 @@ export function BookingDashboard() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
           <div className="flex items-center gap-2">
-            <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" / />
+            <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" />
             <span>{formatDate(booking.booking_date)}</span>
           </div>
 
@@ -165,7 +165,7 @@ export function BookingDashboard() {
           </div>
 
           <div className="flex items-center gap-2">
-            <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" / />
+            <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" />
             <span>${booking.total_amount.toFixed(2)}</span>
           </div>
         </div>
@@ -182,7 +182,7 @@ export function BookingDashboard() {
   const renderEmptyState = (tab: string) => (
     <div className="text-center py-12">
       <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-        <BusinessIcons.Calendar className="w-8 h-8 text-gray-400" / />
+        <BusinessIcons.Calendar className="w-8 h-8 text-gray-400" />
       </div>
       <h3 className="text-lg font-medium text-gray-900 mb-2">
         No {tab} bookings
@@ -223,7 +223,7 @@ export function BookingDashboard() {
               <CardTitle className="text-sm font-medium">
                 Total Bookings
               </CardTitle>
-              <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
+              <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.total_bookings}</div>
@@ -247,7 +247,7 @@ export function BookingDashboard() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Completed</CardTitle>
-              <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" / />
+              <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -262,7 +262,7 @@ export function BookingDashboard() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
-              <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
+              <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -280,7 +280,7 @@ export function BookingDashboard() {
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             <div className="flex gap-4 items-center flex-1">
               <div className="relative flex-1 max-w-md">
-                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" / />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search by service or confirmation code..."
                   value={searchQuery}

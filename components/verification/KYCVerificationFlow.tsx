@@ -430,7 +430,7 @@ export function KYCVerificationFlow({
   const renderPersonalInfoStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <NavigationIcons.User className="w-12 h-12 mx-auto mb-3 text-blue-600" / />
+        <NavigationIcons.User className="w-12 h-12 mx-auto mb-3 text-blue-600" />
         <h3 className="text-xl font-semibold mb-2">Personal Information</h3>
         <p className="text-muted-foreground">
           Provide your basic identity information for verification
@@ -664,7 +664,7 @@ export function KYCVerificationFlow({
                       )}
                       {uploadedDoc?.status === "verified" && (
                         <Badge className="bg-green-100 text-green-700">
-                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                           Verified
                         </Badge>
                       )}
@@ -963,7 +963,7 @@ export function KYCVerificationFlow({
   const renderReviewStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <UIIcons.CheckCircle className="w-12 h-12 mx-auto mb-3 text-green-600" / />
+        <UIIcons.CheckCircle className="w-12 h-12 mx-auto mb-3 text-green-600" />
         <h3 className="text-xl font-semibold mb-2">Review & Submit</h3>
         <p className="text-muted-foreground">
           Review your information and submit for verification
@@ -975,7 +975,7 @@ export function KYCVerificationFlow({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <NavigationIcons.User className="w-4 h-4" / />
+              <NavigationIcons.User className="w-4 h-4" />
               Personal Information
             </CardTitle>
           </CardHeader>
@@ -1045,7 +1045,7 @@ export function KYCVerificationFlow({
                   <span className="text-sm">{docType.title}</span>
                   {uploadedDoc ? (
                     <Badge className="bg-green-100 text-green-700">
-                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
+                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" />
                       Uploaded
                     </Badge>
                   ) : docType.required ? (
@@ -1181,7 +1181,7 @@ export function KYCVerificationFlow({
               onClick={prevStep}
               disabled={currentStep === 0}
             >
-              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" />
               Previous
             </Button>
 
@@ -1211,7 +1211,7 @@ export function KYCVerificationFlow({
               ) : (
                 <Button onClick={nextStep} disabled={!validateCurrentStep()}>
                   Next
-                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               )}
             </div>

@@ -136,7 +136,7 @@ export default function BookingCalendar({
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <BusinessIcons.Calendar className="w-4 h-4 text-muted-foreground" / />
+              <BusinessIcons.Calendar className="w-4 h-4 text-muted-foreground" />
               <span className="font-medium">
                 {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
               </span>
