@@ -27,7 +27,10 @@ import {
   Filter,
   Grid3X3,
   List,
-  ChevronRight
+  ChevronRight,
+  MapPin,
+  Award,
+  CheckCircle
 } from "lucide-react";
 
 const categories = [
@@ -41,11 +44,13 @@ const categories = [
     description: "Premium home cleaning, maintenance & repairs",
     subcategories: ["Cleaning", "Plumbing", "Electrical", "HVAC"],
     gradient: "from-emerald-500 via-teal-500 to-cyan-500",
-    bgGradient: "from-emerald-50 to-teal-50",
-    darkBgGradient: "from-emerald-950/50 to-teal-950/50",
+    lightGradient: "from-emerald-400 via-teal-400 to-cyan-400",
+    bgGradient: "from-emerald-50 via-teal-50 to-cyan-50",
+    darkBgGradient: "from-emerald-950/30 via-teal-950/30 to-cyan-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fb2459d5036794deb84d52bf82ca745cd?alt=media&token=4fdbb222-3123-42c6-841c-0c811ce9f2d7&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Verified Professionals", "Same-day Service", "Quality Guarantee"],
-    popularity: 95
+    popularity: 95,
+    color: "emerald"
   },
   {
     icon: Wrench,
@@ -57,11 +62,13 @@ const categories = [
     description: "Expert handyman, electrical & plumbing services",
     subcategories: ["Handyman", "Electrical", "Plumbing", "Construction"],
     gradient: "from-blue-500 via-indigo-500 to-purple-500",
-    bgGradient: "from-blue-50 to-indigo-50",
-    darkBgGradient: "from-blue-950/50 to-indigo-950/50",
+    lightGradient: "from-blue-400 via-indigo-400 to-purple-400",
+    bgGradient: "from-blue-50 via-indigo-50 to-purple-50",
+    darkBgGradient: "from-blue-950/30 via-indigo-950/30 to-purple-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fc84ae154ac94479691e1046893001a2d?alt=media&token=c7099c88-9280-4da7-b35c-b5f58763194c&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Licensed Experts", "Emergency Available", "Fixed Pricing"],
-    popularity: 88
+    popularity: 88,
+    color: "blue"
   },
   {
     icon: Car,
@@ -73,11 +80,13 @@ const categories = [
     description: "Car wash, repairs & delivery services",
     subcategories: ["Car Wash", "Repairs", "Delivery", "Maintenance"],
     gradient: "from-orange-500 via-red-500 to-pink-500",
-    bgGradient: "from-orange-50 to-red-50",
-    darkBgGradient: "from-orange-950/50 to-red-950/50",
+    lightGradient: "from-orange-400 via-red-400 to-pink-400",
+    bgGradient: "from-orange-50 via-red-50 to-pink-50",
+    darkBgGradient: "from-orange-950/30 via-red-950/30 to-pink-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6a812cf3fada40e8a56166bfb07c5a39?alt=media&token=d77ca34f-c367-436a-90ed-34fa2898ae6f&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Mobile Service", "Real-time Tracking", "Warranty Included"],
-    popularity: 82
+    popularity: 82,
+    color: "orange"
   },
   {
     icon: GraduationCap,
@@ -89,11 +98,13 @@ const categories = [
     description: "Expert tutoring, coaching & training",
     subcategories: ["Tutoring", "Music", "Languages", "Skills"],
     gradient: "from-violet-500 via-purple-500 to-fuchsia-500",
-    bgGradient: "from-violet-50 to-purple-50",
-    darkBgGradient: "from-violet-950/50 to-purple-950/50",
+    lightGradient: "from-violet-400 via-purple-400 to-fuchsia-400",
+    bgGradient: "from-violet-50 via-purple-50 to-fuchsia-50",
+    darkBgGradient: "from-violet-950/30 via-purple-950/30 to-fuchsia-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F2d1b9717651f4661982da5e0f4f11d8c?alt=media&token=018784fd-f15a-4fd5-b3d0-39354815b3cb&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Certified Teachers", "Flexible Schedule", "Progress Tracking"],
-    popularity: 90
+    popularity: 90,
+    color: "violet"
   },
   {
     icon: Heart,
@@ -105,11 +116,13 @@ const categories = [
     description: "Fitness, therapy & nutrition experts",
     subcategories: ["Fitness", "Therapy", "Nutrition", "Wellness"],
     gradient: "from-rose-500 via-pink-500 to-red-500",
-    bgGradient: "from-rose-50 to-pink-50",
-    darkBgGradient: "from-rose-950/50 to-pink-950/50",
+    lightGradient: "from-rose-400 via-pink-400 to-red-400",
+    bgGradient: "from-rose-50 via-pink-50 to-red-50",
+    darkBgGradient: "from-rose-950/30 via-pink-950/30 to-red-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Faa64b10a73474c169cc7fb3fc239e3db?alt=media&token=f032bf2e-d00d-4795-9e44-7fd13eee8daa&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Health Certified", "Personalized Plans", "Holistic Approach"],
-    popularity: 85
+    popularity: 85,
+    color: "rose"
   },
   {
     icon: Camera,
@@ -121,11 +134,13 @@ const categories = [
     description: "Photography, design & event services",
     subcategories: ["Photography", "Design", "Events", "Video"],
     gradient: "from-cyan-500 via-sky-500 to-blue-500",
-    bgGradient: "from-cyan-50 to-sky-50",
-    darkBgGradient: "from-cyan-950/50 to-sky-950/50",
+    lightGradient: "from-cyan-400 via-sky-400 to-blue-400",
+    bgGradient: "from-cyan-50 via-sky-50 to-blue-50",
+    darkBgGradient: "from-cyan-950/30 via-sky-950/30 to-blue-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6933a12df7534198b49b37c4cae71b5c?alt=media&token=13404641-8e22-40b1-9db5-c9e80c311472&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Portfolio Verified", "Creative Excellence", "Custom Solutions"],
-    popularity: 78
+    popularity: 78,
+    color: "cyan"
   },
   {
     icon: Scissors,
@@ -137,11 +152,13 @@ const categories = [
     description: "Hair, makeup & spa services",
     subcategories: ["Hair", "Makeup", "Spa", "Nails"],
     gradient: "from-amber-500 via-yellow-500 to-lime-500",
-    bgGradient: "from-amber-50 to-yellow-50",
-    darkBgGradient: "from-amber-950/50 to-yellow-950/50",
+    lightGradient: "from-amber-400 via-yellow-400 to-lime-400",
+    bgGradient: "from-amber-50 via-yellow-50 to-lime-50",
+    darkBgGradient: "from-amber-950/30 via-yellow-950/30 to-lime-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fee83a8904a0d4a6d97fa663f79580e9d?alt=media&token=ce032fe6-8214-4b5b-8b63-c2ccf20d9501&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Licensed Stylists", "Premium Products", "Relaxing Experience"],
-    popularity: 80
+    popularity: 80,
+    color: "amber"
   },
   {
     icon: Paintbrush,
@@ -153,11 +170,13 @@ const categories = [
     description: "Interior design, art & crafts",
     subcategories: ["Interior", "Art", "Crafts", "Decor"],
     gradient: "from-green-500 via-emerald-500 to-teal-500",
-    bgGradient: "from-green-50 to-emerald-50",
-    darkBgGradient: "from-green-950/50 to-emerald-950/50",
+    lightGradient: "from-green-400 via-emerald-400 to-teal-400",
+    bgGradient: "from-green-50 via-emerald-50 to-teal-50",
+    darkBgGradient: "from-green-950/30 via-emerald-950/30 to-teal-950/30",
     image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F44e95d003c2e440d8442038d194fd292?alt=media&token=7d8f7b65-9156-4b58-92e4-be0233254eba&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Design Expertise", "Custom Creations", "Artistic Vision"],
-    popularity: 75
+    popularity: 75,
+    color: "green"
   }
 ];
 
@@ -189,21 +208,22 @@ export function CategoriesSection() {
         ease: [0.22, 1, 0.36, 1]
       }}
       whileHover={{ 
-        y: -8,
+        y: viewMode === 'grid' ? -8 : -2,
         transition: { duration: 0.2 }
       }}
       className={`
-        group relative overflow-hidden rounded-2xl cursor-pointer
-        ${viewMode === 'grid' ? 'aspect-[4/5]' : 'aspect-[3/1] flex'}
-        ${selectedCategory === index ? 'ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-gray-900' : ''}
+        group relative overflow-hidden rounded-2xl cursor-pointer border border-gray-200/50 dark:border-gray-800/30 
+        ${viewMode === 'grid' ? 'aspect-[4/5]' : 'aspect-auto h-32 flex'}
+        ${selectedCategory === index ? 'ring-2 ring-blue-500/50 ring-offset-2 ring-offset-white dark:ring-offset-gray-950' : ''}
+        bg-white dark:bg-gray-950 shadow-sm hover:shadow-lg dark:shadow-gray-950/50 transition-all duration-300
       `}
       onHoverStart={() => setHoveredIndex(index)}
       onHoverEnd={() => setHoveredIndex(null)}
       onClick={() => setSelectedCategory(selectedCategory === index ? null : index)}
     >
       {/* Background Gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${category.darkBgGradient} dark:opacity-100 opacity-0 transition-opacity duration-300`} />
-      <div className={`absolute inset-0 bg-gradient-to-br ${category.bgGradient} dark:opacity-0 opacity-100 transition-opacity duration-300`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${category.darkBgGradient} dark:opacity-60 opacity-0 transition-opacity duration-300`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${category.bgGradient} dark:opacity-0 opacity-40 transition-opacity duration-300`} />
       
       {/* Image Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -211,27 +231,28 @@ export function CategoriesSection() {
           src={category.image}
           alt={category.name}
           fill
-          className="object-cover transition-all duration-700 group-hover:scale-110"
+          className="object-cover transition-all duration-700 group-hover:scale-105"
           style={{
-            filter: 'brightness(0.7) saturate(1.2)',
-            opacity: hoveredIndex === index ? 0.9 : 0.6
+            filter: 'brightness(0.3) saturate(1.1)',
+            opacity: hoveredIndex === index ? 0.6 : 0.4
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20" />
       </div>
 
       {/* Content */}
-      <div className={`relative z-10 p-6 h-full flex ${viewMode === 'grid' ? 'flex-col justify-between' : 'items-center gap-6'}`}>
+      <div className={`relative z-10 p-4 h-full flex ${viewMode === 'grid' ? 'flex-col justify-between' : 'items-center gap-4'}`}>
         {/* Header */}
-        <div className={`flex items-start justify-between ${viewMode === 'list' ? 'flex-1' : ''}`}>
+        <div className={`flex items-start justify-between ${viewMode === 'list' ? 'flex-1 w-48' : ''}`}>
           <div className="flex items-center gap-3">
             {/* Icon */}
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileHover={{ scale: 1.05, rotate: 3 }}
               className={`
                 inline-flex items-center justify-center rounded-xl shadow-lg
                 ${viewMode === 'grid' ? 'w-12 h-12' : 'w-10 h-10'}
-                bg-gradient-to-br ${category.gradient}
+                bg-gradient-to-br ${category.lightGradient}
               `}
             >
               <category.icon className={`text-white ${viewMode === 'grid' ? 'w-6 h-6' : 'w-5 h-5'}`} />
@@ -244,9 +265,9 @@ export function CategoriesSection() {
                   {viewMode === 'grid' ? category.name : category.shortName}
                 </h3>
                 {category.trending && (
-                  <Badge variant="secondary" className="bg-orange-500/20 text-orange-300 border-orange-400/30">
+                  <Badge variant="secondary" className="bg-orange-500/20 text-orange-200 border-orange-400/30 text-xs px-2 py-0.5">
                     <TrendingUp className="w-3 h-3 mr-1" />
-                    Trending
+                    Hot
                   </Badge>
                 )}
               </div>
@@ -259,22 +280,22 @@ export function CategoriesSection() {
                 </div>
                 <div className="flex items-center gap-1">
                   <Users className="w-3 h-3" />
-                  <span>{category.count} providers</span>
+                  <span>{category.count}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Popularity Bar */}
+          {/* Popularity Indicator (Grid Only) */}
           {viewMode === 'grid' && (
             <div className="text-right">
-              <div className="text-xs text-gray-300 mb-1">Popularity</div>
+              <div className="text-xs text-gray-300 mb-1">Popular</div>
               <div className="w-12 h-2 bg-white/20 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${category.popularity}%` }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                  className="h-full bg-gradient-to-r from-white to-gray-200 rounded-full"
+                  transition={{ duration: 1.2, delay: index * 0.1 }}
+                  className="h-full bg-gradient-to-r from-white/80 to-white/60 rounded-full"
                 />
               </div>
               <div className="text-xs text-gray-300 mt-1">{category.popularity}%</div>
@@ -282,11 +303,11 @@ export function CategoriesSection() {
           )}
         </div>
 
-        {/* Description & Features */}
+        {/* Description & Features (Grid Only) */}
         {viewMode === 'grid' && (
           <>
-            <div className="space-y-3">
-              <p className="text-sm text-gray-200 leading-relaxed">
+            <div className="space-y-3 flex-1">
+              <p className="text-sm text-gray-200 leading-relaxed line-clamp-2">
                 {category.description}
               </p>
               
@@ -295,13 +316,13 @@ export function CategoriesSection() {
                 {category.subcategories.slice(0, 3).map((sub, subIndex) => (
                   <span
                     key={subIndex}
-                    className="px-2 py-1 text-xs bg-white/10 backdrop-blur-sm text-white rounded-lg border border-white/20"
+                    className="px-2 py-1 text-xs bg-white/10 backdrop-blur-sm text-white/90 rounded-lg border border-white/20"
                   >
                     {sub}
                   </span>
                 ))}
                 {category.subcategories.length > 3 && (
-                  <span className="px-2 py-1 text-xs bg-white/10 backdrop-blur-sm text-white rounded-lg border border-white/20">
+                  <span className="px-2 py-1 text-xs bg-white/10 backdrop-blur-sm text-white/90 rounded-lg border border-white/20">
                     +{category.subcategories.length - 3}
                   </span>
                 )}
@@ -312,7 +333,7 @@ export function CategoriesSection() {
             <div className="space-y-2">
               {category.features.slice(0, 2).map((feature, featureIndex) => (
                 <div key={featureIndex} className="flex items-center gap-2 text-xs text-gray-300">
-                  <Shield className="w-3 h-3 text-green-400" />
+                  <CheckCircle className="w-3 h-3 text-green-400 flex-shrink-0" />
                   <span>{feature}</span>
                 </div>
               ))}
@@ -322,13 +343,13 @@ export function CategoriesSection() {
 
         {/* List View Content */}
         {viewMode === 'list' && (
-          <div className="flex-1 flex items-center justify-between">
-            <div className="space-y-1">
-              <p className="text-sm text-gray-200">{category.description}</p>
+          <div className="flex-1 flex items-center justify-between gap-4">
+            <div className="space-y-1 flex-1">
+              <p className="text-sm text-gray-200 line-clamp-1">{category.description}</p>
               <div className="flex items-center gap-4 text-xs text-gray-400">
                 {category.features.slice(0, 2).map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center gap-1">
-                    <Shield className="w-3 h-3 text-green-400" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -336,25 +357,25 @@ export function CategoriesSection() {
             </div>
             
             <div className="text-right">
-              <div className="text-sm font-semibold text-white">{category.popularity}% Popular</div>
-              <div className="text-xs text-gray-300">{category.count} providers</div>
+              <div className="text-sm font-semibold text-white">{category.popularity}%</div>
+              <div className="text-xs text-gray-300">Popular</div>
             </div>
           </div>
         )}
 
         {/* Action Button */}
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           className={`
             flex items-center justify-between gap-2 p-3 
             bg-white/10 backdrop-blur-sm rounded-xl border border-white/20
             hover:bg-white/20 transition-all duration-200
-            ${viewMode === 'list' ? 'ml-4' : ''}
+            ${viewMode === 'list' ? 'ml-4 w-32' : ''}
           `}
         >
           <span className="text-sm font-medium text-white">
-            {viewMode === 'grid' ? 'Explore Services' : 'View'}
+            {viewMode === 'grid' ? 'Explore' : 'View'}
           </span>
           <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
         </motion.div>
@@ -363,7 +384,7 @@ export function CategoriesSection() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-          className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"
         />
       </div>
 
@@ -371,10 +392,10 @@ export function CategoriesSection() {
       <AnimatePresence>
         {selectedCategory === index && (
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            className="absolute top-4 right-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            className="absolute top-4 right-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg z-20"
           >
             <ChevronRight className="w-4 h-4 text-white" />
           </motion.div>
@@ -384,12 +405,12 @@ export function CategoriesSection() {
   );
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-24 overflow-hidden bg-gray-50/30 dark:bg-gray-950/30">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-violet-500/5 to-pink-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="container mx-auto px-4">
@@ -400,8 +421,8 @@ export function CategoriesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-500/20 mb-6">
-            <Sparkles className="w-4 h-4 text-blue-500" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-full border border-blue-500/20 dark:border-blue-400/30 mb-6">
+            <Sparkles className="w-4 h-4 text-blue-500 dark:text-blue-400" />
             <span className="text-sm font-medium text-blue-600 dark:text-blue-400">Elite Service Categories</span>
           </div>
           
@@ -437,7 +458,7 @@ export function CategoriesSection() {
                 placeholder="Search categories..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 dark:focus:border-blue-400/50 transition-all"
               />
             </div>
 
@@ -453,7 +474,7 @@ export function CategoriesSection() {
                 Filters
               </Button>
 
-              <div className="flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-lg p-1">
+              <div className="flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-lg p-1">
                 <Button
                   variant={viewMode === 'grid' ? "default" : "ghost"}
                   size="sm"
@@ -487,6 +508,10 @@ export function CategoriesSection() {
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-green-500" />
               <span>24/7 Available</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-purple-500" />
+              <span>Verified Quality</span>
             </div>
           </div>
         </motion.div>
@@ -553,7 +578,7 @@ export function CategoriesSection() {
               size="lg" 
               variant="outline"
               asChild
-              className="border-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
+              className="border-2 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
             >
               <Link href="/become-provider" className="flex items-center gap-2">
                 Become a Provider
