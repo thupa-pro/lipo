@@ -836,8 +836,45 @@ const config: Config = {
           background: "#f5f5f5",
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
         },
+
+        // Builder.io Asset Integration Utilities
+        ".asset-container": {
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: "0.5rem",
+        },
+        ".asset-overlay": {
+          position: "absolute",
+          inset: "0",
+          background: "linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent, transparent)",
+        },
+        ".asset-content": {
+          position: "relative",
+          zIndex: "10",
+          padding: "1.5rem",
+          color: "white",
+        },
+        ".asset-hero": {
+          minHeight: "60vh",
+          display: "flex",
+          alignItems: "end",
+        },
+        ".asset-card": {
+          minHeight: "40vh",
+          display: "flex",
+          alignItems: "end",
+        },
+        ".asset-thumbnail": {
+          minHeight: "20vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        },
+        ".asset-gallery": {
+          minHeight: "30vh",
+        }
       });
-      
+
       // Enhanced Component Styles
       addComponents({
         ".btn-ai": {
