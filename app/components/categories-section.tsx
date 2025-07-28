@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 import {
   Home,
@@ -47,7 +46,6 @@ const categories = [
     lightGradient: "from-emerald-400 via-teal-400 to-cyan-400",
     bgGradient: "from-emerald-50 via-teal-50 to-cyan-50",
     darkBgGradient: "from-emerald-950/30 via-teal-950/30 to-cyan-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fb2459d5036794deb84d52bf82ca745cd?alt=media&token=4fdbb222-3123-42c6-841c-0c811ce9f2d7&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Verified Professionals", "Same-day Service", "Quality Guarantee"],
     popularity: 95,
     color: "emerald"
@@ -65,7 +63,6 @@ const categories = [
     lightGradient: "from-blue-400 via-indigo-400 to-purple-400",
     bgGradient: "from-blue-50 via-indigo-50 to-purple-50",
     darkBgGradient: "from-blue-950/30 via-indigo-950/30 to-purple-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fc84ae154ac94479691e1046893001a2d?alt=media&token=c7099c88-9280-4da7-b35c-b5f58763194c&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Licensed Experts", "Emergency Available", "Fixed Pricing"],
     popularity: 88,
     color: "blue"
@@ -83,7 +80,6 @@ const categories = [
     lightGradient: "from-orange-400 via-red-400 to-pink-400",
     bgGradient: "from-orange-50 via-red-50 to-pink-50",
     darkBgGradient: "from-orange-950/30 via-red-950/30 to-pink-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6a812cf3fada40e8a56166bfb07c5a39?alt=media&token=d77ca34f-c367-436a-90ed-34fa2898ae6f&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Mobile Service", "Real-time Tracking", "Warranty Included"],
     popularity: 82,
     color: "orange"
@@ -101,7 +97,6 @@ const categories = [
     lightGradient: "from-violet-400 via-purple-400 to-fuchsia-400",
     bgGradient: "from-violet-50 via-purple-50 to-fuchsia-50",
     darkBgGradient: "from-violet-950/30 via-purple-950/30 to-fuchsia-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F2d1b9717651f4661982da5e0f4f11d8c?alt=media&token=018784fd-f15a-4fd5-b3d0-39354815b3cb&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Certified Teachers", "Flexible Schedule", "Progress Tracking"],
     popularity: 90,
     color: "violet"
@@ -119,7 +114,6 @@ const categories = [
     lightGradient: "from-rose-400 via-pink-400 to-red-400",
     bgGradient: "from-rose-50 via-pink-50 to-red-50",
     darkBgGradient: "from-rose-950/30 via-pink-950/30 to-red-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Faa64b10a73474c169cc7fb3fc239e3db?alt=media&token=f032bf2e-d00d-4795-9e44-7fd13eee8daa&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Health Certified", "Personalized Plans", "Holistic Approach"],
     popularity: 85,
     color: "rose"
@@ -137,7 +131,6 @@ const categories = [
     lightGradient: "from-cyan-400 via-sky-400 to-blue-400",
     bgGradient: "from-cyan-50 via-sky-50 to-blue-50",
     darkBgGradient: "from-cyan-950/30 via-sky-950/30 to-blue-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6933a12df7534198b49b37c4cae71b5c?alt=media&token=13404641-8e22-40b1-9db5-c9e80c311472&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Portfolio Verified", "Creative Excellence", "Custom Solutions"],
     popularity: 78,
     color: "cyan"
@@ -155,7 +148,6 @@ const categories = [
     lightGradient: "from-amber-400 via-yellow-400 to-lime-400",
     bgGradient: "from-amber-50 via-yellow-50 to-lime-50",
     darkBgGradient: "from-amber-950/30 via-yellow-950/30 to-lime-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fee83a8904a0d4a6d97fa663f79580e9d?alt=media&token=ce032fe6-8214-4b5b-8b63-c2ccf20d9501&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Licensed Stylists", "Premium Products", "Relaxing Experience"],
     popularity: 80,
     color: "amber"
@@ -173,7 +165,6 @@ const categories = [
     lightGradient: "from-green-400 via-emerald-400 to-teal-400",
     bgGradient: "from-green-50 via-emerald-50 to-teal-50",
     darkBgGradient: "from-green-950/30 via-emerald-950/30 to-teal-950/30",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F44e95d003c2e440d8442038d194fd292?alt=media&token=7d8f7b65-9156-4b58-92e4-be0233254eba&apiKey=efd5169b47d04c9886e111b6074edfba",
     features: ["Design Expertise", "Custom Creations", "Artistic Vision"],
     popularity: 75,
     color: "green"
@@ -225,18 +216,11 @@ export function CategoriesSection() {
       <div className={`absolute inset-0 bg-gradient-to-br ${category.darkBgGradient} dark:opacity-60 opacity-0 transition-opacity duration-300`} />
       <div className={`absolute inset-0 bg-gradient-to-br ${category.bgGradient} dark:opacity-0 opacity-40 transition-opacity duration-300`} />
       
-      {/* Image Background */}
+      {/* Icon Background Pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src={category.image}
-          alt={category.name}
-          fill
-          className="object-cover transition-all duration-700 group-hover:scale-105"
-          style={{
-            filter: 'brightness(0.3) saturate(1.1)',
-            opacity: hoveredIndex === index ? 0.6 : 0.4
-          }}
-        />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 opacity-5 dark:opacity-10">
+          <category.icon className="w-full h-full" />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20" />
       </div>
