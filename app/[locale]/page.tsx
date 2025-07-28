@@ -347,11 +347,12 @@ export default function HomePage() {
 
         {/* Final CTA Section with artistic flair */}
         <SectionTransition delay={0.8}>
-          <div className="relative py-24 overflow-hidden">
-            {/* Artistic background */}
+          <div className="relative py-24 overflow-hidden theme-premium">
+            {/* Enhanced Artistic background */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.3),transparent)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.4),transparent)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.3),transparent)]" />
+            <div className="absolute inset-0 bg-gradient-holographic opacity-20" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.4),transparent)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(245,158,11,0.3),transparent)]" />
             
             <div className="container mx-auto px-4 relative z-10">
               <motion.div
