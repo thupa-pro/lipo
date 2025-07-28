@@ -33,7 +33,7 @@ const originalAssets = {
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F8010a38e78d1406babeedcbc69aea72d?alt=media&token=1cf23adc-c2b6-4dcb-b339-31e346c86a39&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       title: "Elite Professional Network",
       description: "Connecting you with verified experts",
       category: "Hero",
@@ -42,28 +42,28 @@ const originalAssets = {
   ],
   services: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fa680612acb3849c2b1f9dc6486f6485f?alt=media&token=0086ec7b-4200-4e6f-b236-6cd8016503ab&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
       title: "Quality Assurance",
       description: "5-star rated services",
       category: "Services",
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fd3c87ccfc1444887934d07fc7e7dab29?alt=media&token=86deb8fe-c92e-47c0-8137-dc0e670dc3ec&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
       title: "Fast Response",
       description: "Under 30 minutes response time",
       category: "Services",
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fb2459d5036794deb84d52bf82ca745cd?alt=media&token=4fdbb222-3123-42c6-841c-0c811ce9f2d7&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
       title: "Home Services",
       description: "Professional home maintenance",
       category: "Services",
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fc84ae154ac94479691e1046893001a2d?alt=media&token=c7099c88-9280-4da7-b35c-b5f58763194c&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop",
       title: "Technical Work",
       description: "Expert technical solutions",
       category: "Services",
@@ -72,21 +72,21 @@ const originalAssets = {
   ],
   providers: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Ff9b0ad35c687412daf8f1df3626700db?alt=media&token=b1792661-6cc2-414a-9d4c-76917ab8e4d1&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1494790108755-2616b612b21c?w=150&h=150&fit=crop&crop=face",
       title: "Sarah Mitchell",
       description: "Premium House Cleaning Specialist",
       category: "Providers",
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F1e1e8ed62ef9468f99ec1e90b2542a8f?alt=media&token=39c74ba2-4310-43c0-a3a8-ea2bc409b530&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       title: "Marcus Rodriguez",
       description: "Licensed Master Plumber",
       category: "Providers",
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5bd41b69e1b143908d31f58b14060b98?alt=media&token=5b782adc-7672-41d7-b396-696cef354606&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       title: "Emma Thompson",
       description: "Certified Pet Care Specialist",
       category: "Providers",
@@ -95,7 +95,7 @@ const originalAssets = {
   ],
   gallery: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fde884aceaab54333a2029504284a93ee?alt=media&token=7872437b-ecf7-4b86-9e8e-44ee8aeb0949&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
       title: "Technical Excellence",
       description: "Precision and expertise",
       category: "Gallery",
