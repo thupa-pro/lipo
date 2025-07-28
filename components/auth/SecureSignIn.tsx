@@ -161,18 +161,18 @@ export function SecureSignIn() {
               </div>
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full btn-ai-primary interactive-lift shadow-glow-ai hover:shadow-glow-lg focus-visible-ring"
               disabled={isSubmitting || !formData.email || !formData.password}
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
+                  Accessing Elite Network...
                 </>
               ) : (
-                'Sign in'
+                'Enter Elite Network'
               )}
             </Button>
           </form>
