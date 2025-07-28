@@ -89,7 +89,7 @@ export default function AdminProvidersPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-600 dark:text-gray-300">
                 <div className="flex items-center gap-2">
-                  <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" />
                   Background Checks
                 </div>
                 <div className="flex items-center gap-2">
