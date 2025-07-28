@@ -78,9 +78,9 @@ const SearchBar = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative max-w-2xl mx-auto mt-12"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl" />
-            <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-2 shadow-2xl">
+          <div className="relative ai-component">
+            <div className="absolute inset-0 bg-gradient-holographic rounded-2xl blur-xl opacity-30" />
+            <div className="relative glass-ultra border border-glass-border-strong rounded-2xl p-2 shadow-glass-lg">
               <div className="flex items-center gap-3">
                 <div className="flex-1 relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
