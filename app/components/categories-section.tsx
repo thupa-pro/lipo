@@ -232,11 +232,12 @@ export function CategoriesSection() {
           <div className="flex items-center gap-3">
             {/* Icon */}
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 3 }}
+              whileHover={{ scale: 1.08, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
               className={`
-                inline-flex items-center justify-center rounded-xl shadow-lg
+                inline-flex items-center justify-center rounded-xl neural-raised shadow-glow-ai
                 ${viewMode === 'grid' ? 'w-12 h-12' : 'w-10 h-10'}
-                bg-gradient-to-br ${category.lightGradient}
+                bg-gradient-to-br ${category.lightGradient} hover:shadow-glow-lg transition-all duration-300
               `}
             >
               <category.icon className={`text-white ${viewMode === 'grid' ? 'w-6 h-6' : 'w-5 h-5'}`} />
