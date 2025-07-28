@@ -163,10 +163,23 @@ export default async function RootLayout({
                     disableTransitionOnChange={true}
                   >
                 <div className="relative flex min-h-screen flex-col">
-                  {/* Background Effects */}
+                  {/* Enhanced Background Effects */}
                   <div className="fixed inset-0 -z-10 overflow-hidden">
-                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse" />
-                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse" />
+                    {/* Primary gradient orbs */}
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-ai-primary/10 to-ai-accent/10 rounded-full blur-3xl animate-float" />
+                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-trust-primary/10 to-trust-accent/10 rounded-full blur-3xl animate-float-gentle" />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-premium-primary/8 to-premium-accent/8 rounded-full blur-3xl animate-pulse-glow" />
+
+                    {/* Secondary ambient light */}
+                    <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}} />
+                    <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-white/3 to-transparent rounded-full blur-2xl animate-float-gentle" style={{animationDelay: '4s'}} />
+
+                    {/* Neural pattern overlay */}
+                    <div className="absolute inset-0 opacity-5 dark:opacity-10"
+                         style={{
+                           backgroundImage: `radial-gradient(circle at 2px 2px, rgba(139, 92, 246, 0.3) 1px, transparent 0)`,
+                           backgroundSize: '50px 50px'
+                         }} />
                   </div>
 
                   {/* Skip to main content for accessibility */}
