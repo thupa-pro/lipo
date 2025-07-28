@@ -218,7 +218,18 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
   };
 
   const ThemeToggle = () => {
-    if (!mounted) return null;
+    if (!mounted) {
+      return (
+        <Button
+          variant="ghost"
+          size="sm"
+          className="h-9 w-9 p-0 neural-button interactive-lift focus-visible-ring opacity-50"
+          disabled
+        >
+          <div className="h-4 w-4 bg-gray-300 rounded-full animate-pulse" />
+        </Button>
+      );
+    }
 
     return (
       <DropdownMenu>
