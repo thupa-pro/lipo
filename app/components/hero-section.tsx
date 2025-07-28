@@ -49,7 +49,7 @@ const TrustedBadges = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
           whileHover={{ scale: 1.05, y: -2 }}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm border border-white/20 dark:border-gray-700/30 text-sm font-medium`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full glass-strong trust-badge interactive-lift border border-trust-border shadow-glow-trust text-sm font-medium`}
         >
           <badge.icon className={`w-4 h-4 text-${badge.color}-400`} />
           <span className="text-gray-700 dark:text-gray-300">{badge.text}</span>
