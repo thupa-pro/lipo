@@ -26,7 +26,7 @@ import {
 const originalAssets = {
   hero: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5813ae9f923e4ec2a07d2e1543fb6d54?alt=media&token=0ef56f97-041d-49cb-9f80-00350ad0d93b&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
       title: "Professional Service Excellence",
       description: "Premium quality service delivery",
       category: "Hero",
