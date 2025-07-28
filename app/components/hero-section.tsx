@@ -1,306 +1,441 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { PremiumTypewriter } from "@/components/ui/typewriter-text";
-import {
-  Search,
-  MapPin,
-  TrendingUp,
-  Users,
-  Play,
-  Sparkles,
-  Shield,
-  ArrowRight,
-  Star,
-  Clock
-} from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Sparkles,
+  ArrowRight,
+  Search,
+  Star,
+  Users,
+  Zap,
+  Shield,
+  MapPin,
+  Clock,
+  Award,
+  ChevronDown,
+  Play,
+  Rocket,
+  Globe,
+  Heart,
+  TrendingUp,
+  CheckCircle
+} from "lucide-react";
 
-export function HeroSection() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [location, setLocation] = useState("");
-  const [isVisible, setIsVisible] = useState(false);
-  const [typewriterComplete, setTypewriterComplete] = useState(false);
-  const router = useRouter();
-  const { toast } = useToast();
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const handleSearch = () => {
-    const params = new URLSearchParams();
-    if (searchQuery) params.set("q", searchQuery);
-    if (location) params.set("location", location);
-    router.push(`/browse?${params.toString()}`);
-  };
+const TrustedBadges = () => {
+  const badges = [
+    { icon: Star, text: "4.9/5 Rating", color: "yellow" },
+    { icon: Users, text: "50K+ Users", color: "blue" },
+    { icon: Shield, text: "Verified Safe", color: "green" },
+    { icon: Award, text: "Award Winning", color: "purple" },
+  ];
 
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5813ae9f923e4ec2a07d2e1543fb6d54?alt=media&token=0ef56f97-041d-49cb-9f80-00350ad0d93b&apiKey=efd5169b47d04c9886e111b6074edfba"
-          alt="Loconomy Hero Background"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-ai-50/80 to-primary-50/80 dark:from-background/95 dark:via-ai-900/20 dark:to-primary-900/20" />
-      </div>
-
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden z-10">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-ai/20 to-primary/20 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-trust/20 to-ai/20 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary/10 to-premium/10 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        />
-      </div>
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-30 z-10" />
-
-      <div className="relative container mx-auto px-4 py-16 lg:py-32 z-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content */}
-          <div
-            className={`transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-          >
-            {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 card-glass rounded-full px-4 lg:px-6 py-2 lg:py-3 mb-6 lg:mb-8 animate-fade-in-down">
-              <div className="flex items-center gap-1">
-                <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-amber-500" />
-                <span className="text-xs lg:text-sm font-semibold text-ai-gradient">
-                  Trusted by 50,000+ Users
-                </span>
-              </div>
-              <div className="w-1 h-3 lg:h-4 bg-border" />
-              <div className="flex -space-x-1">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    className="w-3 h-3 lg:w-4 lg:h-4 fill-amber-500 text-amber-500"
-                  />
-                ))}
-              </div>
-              <span className="text-xs lg:text-sm font-medium text-muted-foreground">
-                4.9/5
-              </span>
-            </div>
-
-            {/* Main Headline with Premium Typewriter Effect */}
-            <h1 className="mb-6 lg:mb-8 leading-tight typewriter-container relative">
-              <PremiumTypewriter
-                startDelay={800}
-                className="typewriter-text-glow"
-              />
-              {/* Subtle glow effect that appears during typing */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-ai/5 via-primary/5 to-trust/5 rounded-3xl blur-xl opacity-0 animate-pulse pointer-events-none"
-                   style={{
-                     animation: isVisible ? "fade-in 2s ease-out 2s forwards, pulse 4s ease-in-out 3s infinite" : "none"
-                   }} />
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 lg:mb-12 max-w-3xl leading-relaxed font-medium">
-              Connect with verified, elite service providers in your area. From
-              home maintenance to personal services, experience the future of
-              local commerce with AI-powered matching.
-            </p>
-
-            {/* Premium Search Bar */}
-            <div
-              className="max-w-4xl mb-8 lg:mb-12 animate-scale-in"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <div className="card-glass rounded-xl lg:rounded-2xl p-2 lg:p-3">
-                <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
-                  <div className="relative flex-1">
-                    <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
-                    <Input
-                      placeholder="Search premium services..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 input-glass text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
-                    />
-                  </div>
-                  <div className="relative flex-1">
-                    <MapPin className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 lg:w-5 lg:h-5" />
-                    <Input
-                      placeholder="Enter your location"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      className="pl-10 lg:pl-12 h-12 lg:h-14 border-0 input-glass text-base lg:text-lg font-medium rounded-lg lg:rounded-xl focus:ring-2 focus:ring-primary transition-all"
-                    />
-                  </div>
-                  <Button
-                    size="lg"
-                    onClick={handleSearch}
-                    className="btn-ai-primary h-12 lg:h-14 px-6 lg:px-8 text-white font-semibold rounded-lg lg:rounded-xl w-full lg:w-auto text-sm lg:text-base"
-                  >
-                    <Search className="w-4 h-4 lg:w-5 lg:h-5 mr-1.5 lg:mr-2" />
-                    Find Services
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Action Pills */}
-            <div
-              className="flex flex-col sm:flex-row flex-wrap gap-3 lg:gap-4 mb-12 lg:mb-16 animate-fade-in-up"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="rounded-full hover:bg-primary-50 dark:hover:bg-primary-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
-              >
-                <Link href="/request-service">
-                  <Clock className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
-                  Book Instantly
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="rounded-full hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
-              >
-                <Link href="/become-provider">
-                  <Users className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
-                  Earn Premium Income
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="rounded-full hover:bg-teal-50 dark:hover:bg-teal-950/20 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
-                onClick={() =>
-                  toast({
-                    title: "Premium Demo",
-                    description:
-                      "Watch how elite providers deliver exceptional service",
-                    variant: "default",
-                  })
-                }
-              >
-                <Play className="w-3 h-3 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" />
-                Watch Demo
-              </Button>
-            </div>
-          </div>
-
-          {/* Right Content - Featured Images */}
-          <div className="relative">
-            {/* Main Hero Image */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F8010a38e78d1406babeedcbc69aea72d?alt=media&token=1cf23adc-c2b6-4dcb-b339-31e346c86a39&apiKey=efd5169b47d04c9886e111b6074edfba"
-                alt="Professional Service Provider"
-                width={600}
-                height={400}
-                className="object-cover w-full h-auto"
-              />
-            </div>
-
-            {/* Floating Card 1 */}
-            <div className="absolute -top-8 -left-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 max-w-48">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fa680612acb3849c2b1f9dc6486f6485f?alt=media&token=0086ec7b-4200-4e6f-b236-6cd8016503ab&apiKey=efd5169b47d04c9886e111b6074edfba"
-                  alt="Service Quality"
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
-                />
-                <div>
-                  <div className="font-bold text-sm">5.0 Rating</div>
-                  <div className="text-xs text-gray-500">Premium Quality</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Card 2 */}
-            <div className="absolute -bottom-8 -right-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 max-w-48">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fd3c87ccfc1444887934d07fc7e7dab29?alt=media&token=86deb8fe-c92e-47c0-8137-dc0e670dc3ec&apiKey=efd5169b47d04c9886e111b6074edfba"
-                  alt="Fast Service"
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
-                />
-                <div>
-                  <div className="font-bold text-sm">&lt; 30 mins</div>
-                  <div className="text-xs text-gray-500">Response Time</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Trust Indicators */}
-        <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-20 animate-slide-in-up"
-          style={{ animationDelay: "0.9s" }}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.2 }}
+      className="flex flex-wrap items-center justify-center gap-4 mt-12"
+    >
+      {badges.map((badge, index) => (
+        <motion.div
+          key={badge.text}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
+          whileHover={{ scale: 1.05, y: -2 }}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm border border-white/20 dark:border-gray-700/30 text-sm font-medium`}
         >
-          {[
-            {
-              icon: Users,
-              value: "50K+",
-              label: "Active Users",
-              color: "from-blue-500 to-cyan-500",
-            },
-            {
-              icon: Shield,
-              value: "250K+",
-              label: "Jobs Completed",
-              color: "from-green-500 to-emerald-500",
-            },
-            {
-              icon: Star,
-              value: "4.9",
-              label: "Average Rating",
-              color: "from-yellow-500 to-orange-500",
-            },
-            {
-              icon: MapPin,
-              value: "1,200+",
-              label: "Cities Served",
-              color: "from-purple-500 to-pink-500",
-            },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="glass-strong rounded-2xl p-6 hover:scale-105 transition-all duration-300 group"
-            >
-              <div
-                className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <stat.icon className="w-7 h-7 text-white" />
+          <badge.icon className={`w-4 h-4 text-${badge.color}-400`} />
+          <span className="text-gray-700 dark:text-gray-300">{badge.text}</span>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
+const SearchBar = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -50, scale: 0.9 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative max-w-2xl mx-auto mt-12"
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl" />
+            <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-2 shadow-2xl">
+              <div className="flex items-center gap-3">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Input
+                    type="text"
+                    placeholder="What service do you need? (e.g., house cleaning, plumber...)"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    className="pl-12 pr-4 py-4 text-lg border-0 bg-transparent focus:ring-0 focus:outline-none placeholder:text-gray-500"
+                  />
+                </div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg px-8 py-4 rounded-xl"
+                  >
+                    <Search className="w-5 h-5 mr-2" />
+                    Search
+                  </Button>
+                </motion.div>
               </div>
-              <div className="text-3xl font-black mb-2 gradient-text">
+            </div>
+          </div>
+
+          {/* Popular searches */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.6 }}
+            className="flex items-center justify-center gap-2 mt-6 flex-wrap"
+          >
+            <span className="text-sm text-gray-500 dark:text-gray-400">Popular:</span>
+            {["House Cleaning", "Plumber", "Electrician", "Handyman", "Tutoring"].map((term, index) => (
+              <motion.button
+                key={term}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.6 + index * 0.1, duration: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSearchValue(term)}
+                className="px-3 py-1 text-sm bg-gray-100/80 dark:bg-gray-800/80 hover:bg-gray-200/80 dark:hover:bg-gray-700/80 rounded-full text-gray-700 dark:text-gray-300 transition-colors"
+              >
+                {term}
+              </motion.button>
+            ))}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const FloatingStats = () => {
+  const stats = [
+    { value: "90sec", label: "Avg. Response", position: "top-20 left-20", delay: 0.5 },
+    { value: "24/7", label: "Available", position: "top-32 right-16", delay: 0.7 },
+    { value: "99.9%", label: "Success Rate", position: "bottom-32 left-16", delay: 0.9 },
+    { value: "50K+", label: "Happy Users", position: "bottom-20 right-20", delay: 1.1 },
+  ];
+
+  return (
+    <>
+      {stats.map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, scale: 0, rotate: -180 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ 
+            duration: 1, 
+            delay: stat.delay, 
+            ease: [0.22, 1, 0.36, 1],
+            rotate: { duration: 0.8 }
+          }}
+          whileHover={{ scale: 1.1, y: -5 }}
+          className={`absolute ${stat.position} hidden lg:block`}
+        >
+          <div className="bg-white/20 dark:bg-gray-800/30 backdrop-blur-xl border border-white/30 dark:border-gray-600/30 rounded-2xl p-4 shadow-xl">
+            <div className="text-center">
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {stat.value}
               </div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                 {stat.label}
               </div>
             </div>
-          ))}
+          </div>
+        </motion.div>
+      ))}
+    </>
+  );
+};
+
+const AnimatedBackground = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Gradient mesh background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20" />
+      
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          rotate: [0, 180, 360],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl"
+      />
+      
+      <motion.div
+        animate={{
+          scale: [1, 0.8, 1],
+          rotate: [360, 180, 0],
+          opacity: [0.2, 0.5, 0.2],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+          delay: 5
+        }}
+        className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-purple-400/20 to-transparent rounded-full blur-3xl"
+      />
+
+      {/* Floating geometric shapes */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <motion.div
+          key={i}
+          animate={{
+            y: [0, -50, 0],
+            x: [0, 30, 0],
+            rotate: [0, 180, 360],
+            opacity: [0.1, 0.3, 0.1],
+          }}
+          transition={{
+            duration: 8 + i * 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 1.5
+          }}
+          className="absolute w-2 h-2 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full"
+          style={{
+            left: `${10 + i * 10}%`,
+            top: `${20 + i * 8}%`,
+          }}
+        />
+      ))}
+
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-5 dark:opacity-10"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+    </div>
+  );
+};
+
+export function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, -200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
+
+  return (
+    <section 
+      ref={containerRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <motion.div 
+        style={{ y, opacity }}
+        className="absolute inset-0"
+      >
+        <AnimatedBackground />
+      </motion.div>
+
+      <FloatingStats />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center max-w-6xl mx-auto">
+          {/* Hero badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8"
+          >
+            <Badge 
+              variant="secondary" 
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-500/20 dark:border-blue-400/30 text-blue-600 dark:text-blue-400 rounded-full backdrop-blur-sm"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Elite AI-Powered Service Platform</span>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              >
+                <Zap className="w-4 h-4" />
+              </motion.div>
+            </Badge>
+          </motion.div>
+
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8"
+          >
+            <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
+              Transform Your
+            </span>
+            <br />
+            <motion.span 
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+              animate={{ 
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              style={{ 
+                backgroundSize: '200% 200%' 
+              }}
+            >
+              Service Experience
+            </motion.span>
+          </motion.h1>
+
+          {/* Subtitle with enhanced animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mb-12"
+          >
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Experience the world's most advanced AI marketplace where{" "}
+              <motion.span 
+                className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                whileHover={{ scale: 1.05 }}
+              >
+                elite professionals
+              </motion.span>{" "}
+              meet{" "}
+              <motion.span 
+                className="font-semibold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+                whileHover={{ scale: 1.05 }}
+              >
+                intelligent matching
+              </motion.span>{" "}
+              in under 90 seconds.
+            </p>
+
+            {/* Key features */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="flex items-center justify-center gap-8 mt-8 text-sm text-gray-500 dark:text-gray-400"
+            >
+              {[
+                { icon: Clock, text: "Instant Matching" },
+                { icon: Shield, text: "Verified Quality" },
+                { icon: Star, text: "Premium Experience" }
+              ].map((feature, index) => (
+                <motion.div
+                  key={feature.text}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
+                  className="flex items-center gap-2"
+                >
+                  <feature.icon className="w-4 h-4 text-green-500" />
+                  <span>{feature.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Enhanced CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                size="lg" 
+                asChild 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 px-8 py-4 text-lg rounded-2xl"
+              >
+                <Link href="/browse" className="flex items-center gap-2">
+                  <Rocket className="w-5 h-5" />
+                  Get Started Now
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+            </motion.div>
+            
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                asChild
+                className="border-2 border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 px-8 py-4 text-lg rounded-2xl"
+              >
+                <Link href="#demo" className="flex items-center gap-2">
+                  <Play className="w-5 h-5" />
+                  Watch Demo
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Enhanced search bar */}
+          <SearchBar />
+
+          {/* Trust indicators */}
+          <TrustedBadges />
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 0.8 }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-gray-400 dark:text-gray-500"
+            >
+              <ChevronDown className="w-6 h-6" />
+            </motion.div>
+          </motion.div>
         </div>
+      </div>
+
+      {/* Additional artistic elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Subtle gradient overlays */}
+        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-500/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-purple-500/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/4 h-1/4 bg-gradient-to-r from-pink-500/5 to-transparent rounded-full blur-3xl" />
       </div>
     </section>
   );
