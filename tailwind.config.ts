@@ -79,21 +79,47 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
 
-        // AI-Native Context Colors
+        // AI-Native Context Colors (Enhanced)
         ai: {
           DEFAULT: "oklch(65% 0.2 270)",
           foreground: "oklch(98% 0 0)",
-          50: "oklch(96% 0.02 270)",
-          100: "oklch(92% 0.05 270)",
-          200: "oklch(86% 0.1 270)",
-          300: "oklch(78% 0.15 270)",
-          400: "oklch(70% 0.18 270)",
-          500: "oklch(65% 0.2 270)",
-          600: "oklch(58% 0.18 270)",
-          700: "oklch(50% 0.15 270)",
-          800: "oklch(40% 0.12 270)",
-          900: "oklch(25% 0.08 270)",
-          950: "oklch(15% 0.04 270)",
+          50: "oklch(98% 0.01 270)",
+          100: "oklch(95% 0.02 270)",
+          200: "oklch(90% 0.04 270)",
+          300: "oklch(85% 0.06 270)",
+          400: "oklch(80% 0.08 270)",
+          500: "oklch(75% 0.10 270)",
+          600: "oklch(70% 0.12 270)",
+          700: "oklch(65% 0.15 270)",
+          800: "oklch(60% 0.18 270)",
+          900: "oklch(55% 0.20 270)",
+          950: "oklch(30% 0.15 270)",
+        },
+
+        // Neural UI Colors
+        neural: {
+          DEFAULT: "oklch(85% 0.02 0)",
+          foreground: "oklch(25% 0 0)",
+          50: "oklch(98% 0.005 0)",
+          100: "oklch(95% 0.01 0)",
+          200: "oklch(90% 0.015 0)",
+          300: "oklch(85% 0.02 0)",
+          400: "oklch(80% 0.025 0)",
+          500: "oklch(75% 0.03 0)",
+          600: "oklch(65% 0.025 0)",
+          700: "oklch(55% 0.02 0)",
+          800: "oklch(45% 0.015 0)",
+          900: "oklch(25% 0.01 0)",
+          950: "oklch(15% 0.005 0)",
+        },
+
+        // Glass Morphism Colors
+        glass: {
+          DEFAULT: "rgba(255, 255, 255, 0.8)",
+          subtle: "rgba(255, 255, 255, 0.6)",
+          medium: "rgba(255, 255, 255, 0.75)",
+          strong: "rgba(255, 255, 255, 0.9)",
+          ultra: "rgba(255, 255, 255, 0.95)",
         },
         
         // Trust & Local Context
@@ -167,6 +193,21 @@ const config: Config = {
           800: "oklch(28% 0 0)",
           900: "oklch(20% 0 0)",
           950: "oklch(15% 0 0)",
+        },
+
+        // Holographic Colors
+        holographic: {
+          50: "oklch(98% 0.02 300)",
+          100: "oklch(95% 0.04 300)",
+          200: "oklch(90% 0.08 300)",
+          300: "oklch(85% 0.12 300)",
+          400: "oklch(80% 0.16 300)",
+          500: "oklch(75% 0.20 300)",
+          600: "oklch(70% 0.18 300)",
+          700: "oklch(65% 0.16 300)",
+          800: "oklch(60% 0.14 300)",
+          900: "oklch(55% 0.12 300)",
+          950: "oklch(30% 0.08 300)",
         },
         
         chart: {
@@ -245,6 +286,11 @@ const config: Config = {
           "Liberation Mono",
           "monospace"
         ],
+        serif: [
+          "Fraunces",
+          "Times New Roman",
+          "serif"
+        ],
         display: [
           "var(--font-cal-sans)",
           "Cal Sans",
@@ -273,7 +319,7 @@ const config: Config = {
         prose: "clamp(1rem, 2vw, 1.5rem)",
       },
       
-      // Modern Border Radius Scale
+      // Enhanced Border Radius Scale
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -281,34 +327,53 @@ const config: Config = {
         xl: "calc(var(--radius) + 4px)",
         "2xl": "calc(var(--radius) + 8px)",
         "3xl": "calc(var(--radius) + 12px)",
-        
+        "4xl": "calc(var(--radius) + 16px)",
+        "5xl": "calc(var(--radius) + 20px)",
+
         // Component-specific
         button: "0.75rem",
         input: "0.5rem",
         card: "1rem",
         modal: "1.5rem",
+        pill: "9999px",
+        blob: "30% 70% 70% 30% / 30% 30% 70% 70%",
       },
       
       // Advanced Shadow System
       boxShadow: {
-        // Glass morphism shadows
-        glass: "0 8px 32px 0 oklch(20% 0 270 / 0.15)",
-        "glass-lg": "0 16px 64px 0 oklch(20% 0 270 / 0.2)",
+        // Enhanced Glass morphism shadows
+        glass: "0 8px 32px 0 rgba(0, 0, 0, 0.12)",
+        "glass-sm": "0 4px 16px 0 rgba(0, 0, 0, 0.08)",
+        "glass-lg": "0 16px 64px 0 rgba(0, 0, 0, 0.16)",
+        "glass-xl": "0 24px 96px 0 rgba(0, 0, 0, 0.20)",
+        "glass-subtle": "0 2px 8px 0 rgba(0, 0, 0, 0.04)",
+        "glass-strong": "0 32px 128px 0 rgba(0, 0, 0, 0.24)",
         
-        // Neural/Soft UI shadows
-        neural: "inset 2px 2px 4px oklch(85% 0 0), inset -2px -2px 4px oklch(100% 0 0)",
-        "neural-raised": "4px 4px 8px oklch(85% 0 0 / 0.3), -4px -4px 8px oklch(100% 0 0 / 0.8)",
-        "neural-inset": "inset 4px 4px 8px oklch(85% 0 0 / 0.3), inset -4px -4px 8px oklch(100% 0 0 / 0.8)",
+        // Enhanced Neural/Soft UI shadows
+        neural: "inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 0.8)",
+        "neural-sm": "inset 1px 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 2px rgba(255, 255, 255, 0.9)",
+        "neural-lg": "inset 4px 4px 8px rgba(0, 0, 0, 0.12), inset -4px -4px 8px rgba(255, 255, 255, 0.85)",
+        "neural-raised": "6px 6px 12px rgba(0, 0, 0, 0.15), -6px -6px 12px rgba(255, 255, 255, 0.9)",
+        "neural-inset": "inset 6px 6px 12px rgba(0, 0, 0, 0.15), inset -6px -6px 12px rgba(255, 255, 255, 0.9)",
+        "neural-flat": "0 2px 4px rgba(0, 0, 0, 0.1)",
         
-        // Glow effects
-        glow: "0 0 20px oklch(var(--primary) / 0.4)",
-        "glow-lg": "0 0 40px oklch(var(--primary) / 0.3)",
-        "glow-ai": "0 0 20px oklch(65% 0.2 270 / 0.4)",
-        "glow-trust": "0 0 20px oklch(70% 0.15 240 / 0.4)",
+        // Enhanced Glow effects
+        glow: "0 0 20px rgba(139, 92, 246, 0.4)",
+        "glow-sm": "0 0 10px rgba(139, 92, 246, 0.3)",
+        "glow-lg": "0 0 40px rgba(139, 92, 246, 0.3)",
+        "glow-xl": "0 0 60px rgba(139, 92, 246, 0.25)",
+        "glow-ai": "0 0 20px rgba(139, 92, 246, 0.4)",
+        "glow-trust": "0 0 20px rgba(20, 184, 166, 0.4)",
+        "glow-premium": "0 0 20px rgba(245, 158, 11, 0.4)",
+        "glow-success": "0 0 20px rgba(34, 197, 94, 0.4)",
+        "glow-warning": "0 0 20px rgba(251, 191, 36, 0.4)",
+        "glow-error": "0 0 20px rgba(239, 68, 68, 0.4)",
         
-        // Interactive states
-        "hover-lift": "0 20px 25px -5px oklch(0% 0 0 / 0.15), 0 8px 10px -6px oklch(0% 0 0 / 0.1)",
-        "active-press": "0 2px 4px 0 oklch(0% 0 0 / 0.15), inset 0 1px 2px 0 oklch(0% 0 0 / 0.1)",
+        // Enhanced Interactive states
+        "hover-lift": "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+        "hover-lift-lg": "0 25px 30px -5px rgba(0, 0, 0, 0.18), 0 12px 15px -6px rgba(0, 0, 0, 0.12)",
+        "active-press": "0 2px 4px 0 rgba(0, 0, 0, 0.15), inset 0 1px 2px 0 rgba(0, 0, 0, 0.1)",
+        "active-press-deep": "inset 0 4px 8px 0 rgba(0, 0, 0, 0.2)",
       },
       
       // Spring-based Animation System
@@ -430,27 +495,51 @@ const config: Config = {
         "spring-in": "spring-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
         "spring-out": "spring-out 0.2s cubic-bezier(0.4, 0, 0.6, 1)",
         
-        // AI-Native Animations
+        // Enhanced AI-Native Animations
         "ai-pulse": "ai-pulse 2s ease-in-out infinite",
+        "ai-pulse-slow": "ai-pulse 3s ease-in-out infinite",
         "ai-ping": "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
         "ai-bounce": "bounce 1s infinite",
         "ai-thinking": "ai-thinking 1.5s ease-in-out infinite",
         "ai-shimmer": "ai-shimmer 2s linear infinite",
+        "ai-glow": "ai-glow 2s ease-in-out infinite",
+        "ai-scan": "ai-scan 3s ease-in-out infinite",
+        "holographic": "holographic 4s ease-in-out infinite",
         
-        // Micro-interactions
+        // Enhanced Micro-interactions
         "hover-lift": "hover-lift 0.2s ease-out",
+        "hover-lift-gentle": "hover-lift-gentle 0.3s ease-out",
         "click-bounce": "click-bounce 0.15s ease-out",
+        "click-scale": "click-scale 0.1s ease-out",
+        "focus-ring": "focus-ring 0.2s ease-out",
+        "slide-in-up": "slide-in-up 0.4s ease-out",
+        "slide-in-down": "slide-in-down 0.4s ease-out",
+        "slide-in-left": "slide-in-left 0.4s ease-out",
+        "slide-in-right": "slide-in-right 0.4s ease-out",
         
-        // Loading States
+        // Enhanced Loading States
         "skeleton": "skeleton-wave 2s linear infinite",
+        "skeleton-pulse": "skeleton-pulse 2s ease-in-out infinite",
+        "shimmer": "shimmer 2s linear infinite",
+        "shimmer-slow": "shimmer 3s linear infinite",
+        "loading-dots": "loading-dots 1.4s ease-in-out infinite",
+        "loading-bars": "loading-bars 1.2s ease-in-out infinite",
         
-        // Progressive Disclosure
+        // Enhanced Progressive Disclosure
         "fade-up": "fade-up 0.3s ease-out",
+        "fade-down": "fade-down 0.3s ease-out",
+        "fade-left": "fade-left 0.3s ease-out",
+        "fade-right": "fade-right 0.3s ease-out",
+        "scale-up": "scale-up 0.3s ease-out",
+        "scale-down": "scale-down 0.3s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "neural-glow": "neural-glow 2s ease-in-out infinite",
         "shimmer": "shimmer 2s linear infinite",
         "float": "float 3s ease-in-out infinite",
+        "float-gentle": "float-gentle 4s ease-in-out infinite",
+        "rotate": "rotate 1s linear infinite",
+        "rotate-slow": "rotate 2s linear infinite",
       },
       
       // Modern Transition System
@@ -540,7 +629,7 @@ const config: Config = {
           boxShadow: "inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.8)",
         },
         
-        // AI-Native States
+        // Enhanced AI-Native States
         ".ai-thinking": {
           position: "relative",
           overflow: "hidden",
@@ -556,6 +645,16 @@ const config: Config = {
           background: "rgba(139, 92, 246, 0.1)",
           borderColor: "rgba(139, 92, 246, 0.3)",
           boxShadow: "0 0 20px rgba(139, 92, 246, 0.2)",
+        },
+        ".ai-processing": {
+          background: "linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.15), transparent)",
+          backgroundSize: "200% 100%",
+          animation: "ai-shimmer 2s linear infinite",
+        },
+        ".ai-ready": {
+          background: "rgba(34, 197, 94, 0.1)",
+          borderColor: "rgba(34, 197, 94, 0.3)",
+          boxShadow: "0 0 15px rgba(34, 197, 94, 0.2)",
         },
         
         // Interaction States
@@ -580,7 +679,7 @@ const config: Config = {
           },
         },
         
-        // Text Effects
+        // Enhanced Text Effects
         ".text-gradient-primary": {
           background: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
           backgroundClip: "text",
@@ -593,6 +692,22 @@ const config: Config = {
           WebkitBackgroundClip: "text",
           color: "transparent",
         },
+        ".text-gradient-holographic": {
+          background: "linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080)",
+          backgroundSize: "300% 300%",
+          animation: "holographic 4s ease-in-out infinite",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        },
+        ".text-gradient-aurora": {
+          background: "linear-gradient(45deg, #00c9ff, #92fe9d, #00c9ff)",
+          backgroundSize: "400% 400%",
+          animation: "aurora 6s ease-in-out infinite",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        },
         
         // Loading States
         ".skeleton": {
@@ -601,10 +716,22 @@ const config: Config = {
           animation: "skeleton 2s ease-in-out infinite",
         },
 
-        // Missing Component Utilities
+        // Enhanced Glass Components
         ".bg-glass": {
           background: "rgba(255, 255, 255, 0.8)",
           backdropFilter: "blur(16px) saturate(1.4)",
+        },
+        ".bg-glass-subtle": {
+          background: "rgba(255, 255, 255, 0.6)",
+          backdropFilter: "blur(8px) saturate(1.2)",
+        },
+        ".bg-glass-strong": {
+          background: "rgba(255, 255, 255, 0.9)",
+          backdropFilter: "blur(24px) saturate(1.6)",
+        },
+        ".bg-glass-ultra": {
+          background: "rgba(255, 255, 255, 0.95)",
+          backdropFilter: "blur(32px) saturate(1.8)",
         },
         ".border-glass-border": {
           borderColor: "rgba(255, 255, 255, 0.3)",
@@ -689,6 +816,25 @@ const config: Config = {
         },
         ".scale-98": {
           transform: "scale(0.98)",
+        },
+        ".scale-102": {
+          transform: "scale(1.02)",
+        },
+        ".scale-105": {
+          transform: "scale(1.05)",
+        },
+        // Neural UI Utilities
+        ".neural-raised": {
+          background: "linear-gradient(145deg, #ffffff, #f0f0f0)",
+          boxShadow: "6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff",
+        },
+        ".neural-inset": {
+          background: "linear-gradient(145deg, #e0e0e0, #ffffff)",
+          boxShadow: "inset 6px 6px 12px #d1d1d1, inset -6px -6px 12px #ffffff",
+        },
+        ".neural-flat": {
+          background: "#f5f5f5",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
         },
       });
       
