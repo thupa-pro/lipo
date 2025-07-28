@@ -55,6 +55,7 @@ import {
   DropdownMenuSub
 } from "@/components/ui/dropdown-menu";
 import AgentCommandInput from "@/components/ai/AgentCommandInput";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
 interface HeaderProps {
   onSidebarToggle?: () => void;
