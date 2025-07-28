@@ -307,20 +307,26 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                 </AnimatePresence>
               </Button>
 
-              {/* Logo */}
-              <Link href="/" className="flex items-center gap-3 group">
-                <motion.div 
-                  whileHover={{ scale: 1.05, rotate: 5 }}
-                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
+              {/* Enhanced Premium Logo */}
+              <Link href="/" className="flex items-center gap-3 group interactive-lift focus-visible-ring">
+                <motion.div
+                  whileHover={{ scale: 1.08, rotate: 8 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 rounded-2xl bg-gradient-ai neural-raised flex items-center justify-center shadow-glow-ai group-hover:shadow-glow-lg transition-all duration-300"
                 >
-                  <Sparkles className="w-5 h-5 text-white" />
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </motion.div>
                 </motion.div>
                 <div className="hidden sm:block">
-                  <span className="text-xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
+                  <span className="text-xl font-bold text-gradient-holographic">
                     Loconomy
                   </span>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1">
-                    Elite Services
+                  <div className="text-xs text-ai-600 dark:text-ai-400 -mt-1 font-medium">
+                    Elite AI Services
                   </div>
                 </div>
               </Link>
