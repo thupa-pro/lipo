@@ -453,7 +453,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
               {/* Theme Controls */}
               <div className="flex items-center gap-1">
                 <ThemeToggle />
-                <ThemeSwitcher />
+                {mounted && <ThemeSwitcher />}
               </div>
 
               {/* User Menu */}
