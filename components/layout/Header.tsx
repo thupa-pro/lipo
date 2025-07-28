@@ -564,7 +564,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="border-t border-gray-200/50 dark:border-gray-800/50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl p-4 md:hidden"
+              className="border-t border-glass-border-medium glass-ultra p-4 md:hidden shadow-glass-sm"
             >
               <AgentCommandInput
                 placeholder="Search services, providers, or use AI commands..."
