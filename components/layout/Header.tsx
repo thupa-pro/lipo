@@ -398,9 +398,9 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                       )}
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent 
-                    align="end" 
-                    className="w-80 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50"
+                  <DropdownMenuContent
+                    align="end"
+                    className="w-80 glass-ultra border border-glass-border-strong shadow-glass-lg animate-spring-in"
                   >
                     <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                     <DropdownMenuSeparator />
