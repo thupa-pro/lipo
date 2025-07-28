@@ -18,6 +18,7 @@ import TestimonialsSection from "@/app/components/testimonials-section";
 import { MediaShowcase } from "@/app/components/media-showcase";
 import { EnhancedFeatureGallery } from "@/app/components/enhanced-feature-gallery";
 import { EnhancedProviderShowcase } from "@/app/components/enhanced-provider-showcase";
+import { BuilderAssetsShowcase } from "@/app/components/builder-assets-showcase";
 import CTASection from "@/app/components/cta-section";
 
 // Floating elements component
