@@ -287,8 +287,33 @@ export function EnhancedChatInterface({
 
       mediaRecorder.onstop = () => {
         const audioBlob = new Blob(chunks, { type: 'audio/wav' });
-        // TODO: Upload audio blob and send as voice message
-        console.log('Audio recorded:', audioBlob);
+        // Upload audio blob and send as voice message
+        const formData = new FormData();
+        formData.append('audio', audioBlob, 'voice-message.wav');
+
+        try {
+          const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          const data = await response.json();
+
+          if (data.success) {
+            const voiceMessage = {
+              id: Date.now().toString(),
+              content: '[Voice Message]',
+              audioUrl: data.url,
+              timestamp: new Date().toISOString(),
+              sender: 'user',
+              type: 'audio' as const,
+            };
+
+            setMessages(prev => [...prev, voiceMessage]);
+            onSendMessage?.(voiceMessage);
+          }
+        } catch (error) {
+          console.error('Failed to upload audio:', error);
+        }
         
         // Stop all tracks
         stream.getTracks().forEach(track => track.stop());
