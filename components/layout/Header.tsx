@@ -454,9 +454,9 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                       </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent 
-                    className="w-72 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50" 
-                    align="end" 
+                  <DropdownMenuContent
+                    className="w-72 glass-ultra border border-glass-border-strong shadow-glass-lg animate-spring-in"
+                    align="end"
                     forceMount
                   >
                     <DropdownMenuLabel className="font-normal p-4">
