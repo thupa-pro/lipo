@@ -260,14 +260,14 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         style={{
-          backdropFilter: `blur(${headerBlur}px)`,
-          WebkitBackdropFilter: `blur(${headerBlur}px)`,
+          backdropFilter: `blur(${headerBlur}px) saturate(1.4)`,
+          WebkitBackdropFilter: `blur(${headerBlur}px) saturate(1.4)`,
         }}
         className={`
-          fixed top-0 left-0 right-0 z-50 transition-all duration-300
-          ${isScrolled 
-            ? 'bg-white/80 dark:bg-gray-950/80 border-b border-gray-200/50 dark:border-gray-800/50 shadow-lg' 
-            : 'bg-white/70 dark:bg-gray-950/70 border-b border-gray-200/30 dark:border-gray-800/30'
+          fixed top-0 left-0 right-0 z-banner transition-all duration-300 theme-adaptive
+          ${isScrolled
+            ? 'glass-nav shadow-glass-lg border-b border-glass-border-medium'
+            : 'glass-subtle border-b border-glass-border-subtle'
           }
         `}
       >
