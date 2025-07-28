@@ -87,11 +87,11 @@ export function SecureSignIn() {
     <div className="min-h-screen flex items-center justify-center theme-ai glass-subtle bg-gradient-holographic p-4">
       <Card className="w-full max-w-md glass-ultra shadow-glass-lg border border-glass-border-strong neural-card animate-spring-in">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl text-center">
-            Welcome back
+          <CardTitle className="text-2xl text-center text-gradient-ai">
+            Welcome to Elite Network
           </CardTitle>
-          <CardDescription className="text-center">
-            Sign in to your Loconomy account
+          <CardDescription className="text-center text-ai-600 dark:text-ai-400">
+            Access your premium AI-powered service platform
           </CardDescription>
         </CardHeader>
         
