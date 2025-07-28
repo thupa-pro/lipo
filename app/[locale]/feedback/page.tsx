@@ -16,7 +16,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Lightbulb,
   ArrowRight,
-  MessageSquare
+  MessageSquare,
+  Star
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
