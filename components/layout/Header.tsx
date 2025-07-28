@@ -167,8 +167,8 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
               <ChevronDown className="w-3 h-3 opacity-50" />
             </motion.button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent 
-            className="w-64 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50 shadow-xl"
+          <DropdownMenuContent
+            className="w-64 glass-ultra border border-glass-border-strong shadow-glass-lg animate-spring-in"
             align="start"
           >
             <div className="p-2">
