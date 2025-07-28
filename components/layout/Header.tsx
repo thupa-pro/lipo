@@ -232,9 +232,9 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
             <span className="sr-only">Toggle theme</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent 
-          align="end" 
-          className="bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50"
+        <DropdownMenuContent
+          align="end"
+          className="glass-ultra border border-glass-border-strong shadow-glass-lg animate-spring-in"
         >
           <DropdownMenuItem onClick={() => setTheme("light")}>
             <Sun className="mr-2 h-4 w-4" />
