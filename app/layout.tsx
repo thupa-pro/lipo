@@ -3,6 +3,7 @@ import React, { Suspense } from 'react';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import './globals.enhanced.css';
+import './globals.enhanced.2025.css';
 import './themes.2025.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
