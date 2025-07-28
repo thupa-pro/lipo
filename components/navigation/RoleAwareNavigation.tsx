@@ -4,7 +4,7 @@ import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/ic
 import React, { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Sparkles, BarChart3, X, ChevronDown, LogOut, Crown, Zap } from "lucide-react";
+import { Sparkles, BarChart3, X, ChevronDown, LogOut, Crown, Zap, MapPin, Calendar, MessageSquare, Shield } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -205,7 +205,7 @@ export function RoleAwareNavigation({ user }: RoleAwareNavigationProps) {
               className="lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <NavigationIcons.Menu className="w-4 h-4" / />}
+              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <NavigationIcons.Menu className="w-4 h-4" />}
             </Button>
           </div>
         </div>
@@ -269,7 +269,7 @@ function UserMenu({
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="flex items-center gap-2 h-9">
           <div className="w-7 h-7 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center">
-            <NavigationIcons.User className="w-4 h-4 text-white" / />
+            <NavigationIcons.User className="w-4 h-4 text-white" />
           </div>
           <div className="hidden sm:flex flex-col items-start">
             <span className="text-sm font-medium">{user.firstName || 'User'}</span>
@@ -294,13 +294,13 @@ function UserMenu({
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href={`/${locale}/profile`} className="flex items-center gap-2">
-            <NavigationIcons.User className="w-4 h-4" / />
+            <NavigationIcons.User className="w-4 h-4" />
             Profile
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link href={`/${locale}/settings`} className="flex items-center gap-2">
-            <NavigationIcons.Settings className="w-4 h-4" / />
+            <NavigationIcons.Settings className="w-4 h-4" />
             Settings
           </Link>
         </DropdownMenuItem>
