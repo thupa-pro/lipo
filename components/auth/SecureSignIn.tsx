@@ -139,12 +139,12 @@ export function SecureSignIn() {
                   id="password"
                   name="password"
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Enter your password"
+                  placeholder="Enter your secure password"
                   value={formData.password}
                   onChange={handleInputChange}
                   required
                   disabled={isSubmitting}
-                  className="pr-10"
+                  className="pr-10 neural-input focus:shadow-glow-ai transition-all duration-200"
                 />
                 <button
                   type="button"
