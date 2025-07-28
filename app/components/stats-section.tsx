@@ -1,5 +1,5 @@
 import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
-import { Award, TrendingUp } from "lucide-react";
+import { Award, TrendingUp, Users, CheckCircle, Star, MapPin, Clock, Shield } from "lucide-react";
 
 const stats = [
   {
