@@ -216,18 +216,18 @@ export function SecureSignIn() {
           </Button>
 
           <div className="text-center text-sm">
-            <span className="text-muted-foreground">Don't have an account? </span>
-            <Link 
-              href="/auth/signup" 
-              className="text-primary hover:underline font-medium"
+            <span className="text-ai-600 dark:text-ai-400">Need elite access? </span>
+            <Link
+              href="/auth/signup"
+              className="text-ai-700 dark:text-ai-300 hover:text-ai-800 dark:hover:text-ai-200 hover:underline font-medium transition-colors focus-visible-ring"
             >
-              Sign up
+              Join Elite Network
             </Link>
           </div>
 
           {/* Security notice */}
           <div className="text-xs text-center text-muted-foreground mt-6 p-3 bg-muted/50 rounded-lg">
-            🔒 Your data is protected with enterprise-grade security
+            �� Your data is protected with enterprise-grade security
           </div>
         </CardContent>
       </Card>
