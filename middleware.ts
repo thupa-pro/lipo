@@ -4,7 +4,6 @@ import { logSecurityEvent, SecurityEventTypes } from '@/lib/security/enterprise-
 import { checkRateLimit } from '@/lib/security/enterprise-rate-limiter';
 import { env, hasFeature } from '@/lib/config/environment';
 import { advancedAuthMiddleware } from '@/lib/security/advanced-auth-middleware';
- main
 
 // Supported locales
 const locales = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
@@ -79,7 +78,6 @@ const sensitiveRoutes = [
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const startTime = Date.now();
-  
 
   // Skip middleware for static files and certain API routes
   if (shouldSkipMiddleware(pathname)) {
@@ -414,7 +412,6 @@ function handleInternationalization(request: NextRequest): NextResponse | null {
   }
 
   // Handle internationalization for non-API routes
-main
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
@@ -440,35 +437,11 @@ function extractLocaleAndPath(pathname: string): { locale: string; pathWithoutLo
   return { locale, pathWithoutLocale };
 }
 
-
 async function handleAuthRouteRedirect(pathWithoutLocale: string, locale: string, request: NextRequest): Promise<NextResponse | null> {
   try {
     // Skip auth checks if environment validation failed
     if (!env.isValidConfig()) {
       return null;
-
-  // Check authentication for protected routes
-  if (isProtectedRoute(pathWithoutLocale)) {
-    try {
-      // Apply advanced authentication for protected page routes
-      const authResponse = await advancedAuthMiddleware.processRequest(request);
-      
-      // If auth middleware returns an error response, handle it
-      if (authResponse.status >= 400) {
-        // Redirect to signin for authentication errors
-        return NextResponse.redirect(new URL(`/${locale}/auth/signin`, request.url));
-      }
-      
-      // Add comprehensive security headers
-      const response = NextResponse.next();
-      addSecurityHeaders(response);
-      
-      return response;
-    } catch (error) {
-      console.error('Middleware auth error:', error);
-      // On auth error, redirect to signin
-      return NextResponse.redirect(new URL(`/${locale}/auth/signin`, request.url));
- main
     }
 
     const isAuthenticated = await EnterpriseAuthService.isAuthenticated();
@@ -482,14 +455,8 @@ async function handleAuthRouteRedirect(pathWithoutLocale: string, locale: string
     console.warn('Error checking auth for auth route:', error);
   }
 
-
   return null;
 }
-
-  // Add security headers to all responses
-  const response = NextResponse.next();
-  addSecurityHeaders(response);
-main
 
 async function addUserContextHeaders(response: NextResponse) {
   try {
@@ -546,7 +513,6 @@ function isProtectedRoute(pathname: string): boolean {
     pathname === route || pathname.startsWith(route + '/')
   );
 }
-
 
 function isAdminRoute(pathname: string): boolean {
   return adminRoutes.some(route => 
@@ -694,49 +660,13 @@ function addPerformanceHeaders(response: NextResponse, startTime: number): void 
   const processingTime = Date.now() - startTime;
   response.headers.set('X-Response-Time', `${processingTime}ms`);
   response.headers.set('X-Powered-By', 'Loconomy Enterprise');
-
-/**
- * Add comprehensive security headers to response
- */
-function addSecurityHeaders(response: NextResponse): void {
-  // Prevent clickjacking
-  response.headers.set('X-Frame-Options', 'DENY');
-  
-  // Prevent MIME type sniffing
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  
-  // Control referrer information
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
-  // Enable XSS protection (legacy browsers)
-  response.headers.set('X-XSS-Protection', '1; mode=block');
-  
-  // Enforce HTTPS
-  if (process.env.NODE_ENV === 'production') {
-    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  }
-  
-  // Permissions Policy (restrict dangerous features)
-  response.headers.set('Permissions-Policy', 
-    'accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(self), usb=()'
-  );
-  
-  // Cross-Origin Policies
-  response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
-  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
-  response.headers.set('Cross-Origin-Resource-Policy', 'same-origin');
-
 }
 
 export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
-
-     * - api (API routes are handled separately)
-
      * - api (API routes are handled by the advanced auth middleware)
-     main
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
