@@ -86,10 +86,10 @@ const SearchBar = () => {
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
                     type="text"
-                    placeholder="What service do you need? (e.g., house cleaning, plumber...)"
+                    placeholder="What elite service do you need? (AI-powered matching in 90s...)"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className="pl-12 pr-4 py-4 text-lg border-0 bg-transparent focus:ring-0 focus:outline-none placeholder:text-gray-500"
+                    className="pl-12 pr-4 py-4 text-lg border-0 bg-transparent neural-input focus:shadow-glow-ai focus:outline-none placeholder:text-ai-500 dark:placeholder:text-ai-400"
                   />
                 </div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
