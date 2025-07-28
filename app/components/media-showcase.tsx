@@ -102,7 +102,7 @@ const originalAssets = {
       series: 1
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F078b2224baae4dbda0602f97374e7368?alt=media&token=794fe7a5-33fd-4a1b-9837-12a71370128c&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=078b2224baae4dbda0602f97374e7368?alt=media&token=794fe7a5-33fd-4a1b-9837-12a71370128c&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Care & Attention",
       description: "Detail-oriented service",
       category: "Gallery",
@@ -115,14 +115,14 @@ const originalAssets = {
 const newMediaAssets = {
   hero: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F62f2ed47e345487a9c84004d484f2578?alt=media&token=25f2fd33-6b78-47d7-8391-f2c51ed72df8&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=62f2ed47e345487a9c84004d484f2578?alt=media&token=25f2fd33-6b78-47d7-8391-f2c51ed72df8&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Next-Gen Service Platform",
       description: "Revolutionary AI-powered matching",
       category: "Hero",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Ff2b7a918d1c34687a447612c8c1443b4?alt=media&token=773ba395-15fd-4e67-8e89-9e349cf2fd7a&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=f2b7a918d1c34687a447612c8c1443b4?alt=media&token=773ba395-15fd-4e67-8e89-9e349cf2fd7a&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Premium Experience",
       description: "Luxury service standards",
       category: "Hero",
@@ -131,28 +131,28 @@ const newMediaAssets = {
   ],
   services: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F72a2948a44714670986c189cb968e3f8?alt=media&token=a2c5e895-5704-4d6a-b707-19d7146bdfbc&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=72a2948a44714670986c189cb968e3f8?alt=media&token=a2c5e895-5704-4d6a-b707-19d7146bdfbc&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Advanced Technology Services",
       description: "Cutting-edge solutions",
       category: "Services",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F4f06fb5025894aedbccbd66d70680729?alt=media&token=f8b3787f-b405-421a-b91b-cef59461ca20&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=4f06fb5025894aedbccbd66d70680729?alt=media&token=f8b3787f-b405-421a-b91b-cef59461ca20&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Specialized Expertise",
       description: "Domain-specific excellence",
       category: "Services",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F263500866b0d47ffa0800929496a3299?alt=media&token=8c7896a0-2212-40eb-a3e5-a3c4b82965cc&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=263500866b0d47ffa0800929496a3299?alt=media&token=8c7896a0-2212-40eb-a3e5-a3c4b82965cc&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Premium Installations",
       description: "High-end setup services",
       category: "Services",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F39067fd145574d73a22b2a1782cb82a7?alt=media&token=4103663f-9618-4cb2-971f-3d3936c5525d&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=39067fd145574d73a22b2a1782cb82a7?alt=media&token=4103663f-9618-4cb2-971f-3d3936c5525d&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Comprehensive Solutions",
       description: "End-to-end service delivery",
       category: "Services",
@@ -161,28 +161,28 @@ const newMediaAssets = {
   ],
   providers: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fa738b4a6dcb84cf0ab5403c036edd0fa?alt=media&token=75ceb629-d1c7-45bc-a925-ad7dd9607f22&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=a738b4a6dcb84cf0ab5403c036edd0fa?alt=media&token=75ceb629-d1c7-45bc-a925-ad7dd9607f22&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Michael Chen",
       description: "Elite Technology Consultant",
       category: "Providers",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F176836cccfe44505b22a7c0166f9716b?alt=media&token=7e99e21a-99b3-40fa-844b-d53ac7d1e3bc&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=176836cccfe44505b22a7c0166f9716b?alt=media&token=7e99e21a-99b3-40fa-844b-d53ac7d1e3bc&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Jessica Williams",
       description: "Premium Interior Designer",
       category: "Providers",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F82f2111f93874f36a1f87ff804f998f0?alt=media&token=e4b0aec7-dde3-41d9-94da-858f6570bdc3&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=82f2111f93874f36a1f87ff804f998f0?alt=media&token=e4b0aec7-dde3-41d9-94da-858f6570bdc3&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "David Park",
       description: "Master Automotive Specialist",
       category: "Providers",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F0aea14b5972949d6ba27ec52e20efa7f?alt=media&token=46c4cc60-6820-4bc3-896f-4e0382180249&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=0aea14b5972949d6ba27ec52e20efa7f?alt=media&token=46c4cc60-6820-4bc3-896f-4e0382180249&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Ana Sofia Martinez",
       description: "Elite Wellness Coach",
       category: "Providers",
@@ -191,28 +191,28 @@ const newMediaAssets = {
   ],
   categories: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Faa2fe923c2b44b578b941ca4ccef05fc?alt=media&token=8f332b48-f42a-4da1-bf72-61aed3b752dc&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=aa2fe923c2b44b578b941ca4ccef05fc?alt=media&token=8f332b48-f42a-4da1-bf72-61aed3b752dc&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Luxury Home Services",
       description: "Premium residential solutions",
       category: "Categories",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F2a73db3d76ca426289ed58305bfc5128?alt=media&token=3b04d734-b2d4-48db-8b1f-58a10edc298c&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=2a73db3d76ca426289ed58305bfc5128?alt=media&token=3b04d734-b2d4-48db-8b1f-58a10edc298c&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Business Solutions",
       description: "Enterprise-grade services",
       category: "Categories",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F49e1a5c64ff543e8a9765a63a2af3f24?alt=media&token=766164a4-0f23-4b5e-87c0-f9151bbd1d5e&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=49e1a5c64ff543e8a9765a63a2af3f24?alt=media&token=766164a4-0f23-4b5e-87c0-f9151bbd1d5e&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Wellness & Lifestyle",
       description: "Personal enhancement services",
       category: "Categories",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fbceb147a58d64defbccd9e65cfbeca5d?alt=media&token=09072496-0a7b-4307-9e08-81e020647630&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=bceb147a58d64defbccd9e65cfbeca5d?alt=media&token=09072496-0a7b-4307-9e08-81e020647630&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Specialty Services",
       description: "Unique expert solutions",
       category: "Categories",
@@ -221,28 +221,28 @@ const newMediaAssets = {
   ],
   innovations: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F32cf0afd6a81401f9397fd8193bc773d?alt=media&token=ec89e5cb-dbf1-4efb-9e01-7a8edcff8cdf&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=32cf0afd6a81401f9397fd8193bc773d?alt=media&token=ec89e5cb-dbf1-4efb-9e01-7a8edcff8cdf&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "AI-Powered Matching",
       description: "Revolutionary service discovery",
       category: "Innovations",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F0f02702335564a5995e1e145953fba30?alt=media&token=f89bd88c-4624-4816-ae6a-9e0ef03edc0d&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=0f02702335564a5995e1e145953fba30?alt=media&token=f89bd88c-4624-4816-ae6a-9e0ef03edc0d&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Smart Analytics",
       description: "Data-driven insights",
       category: "Innovations",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F4e0f1330c53946eaab774bc379232073?alt=media&token=bef5edcf-c80d-4d9b-9616-ea09f6fa3d57&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=4e0f1330c53946eaab774bc379232073?alt=media&token=bef5edcf-c80d-4d9b-9616-ea09f6fa3d57&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Predictive Quality",
       description: "Future-proof service excellence",
       category: "Innovations",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F58c68b3decc54e79ae8dbe240d3fa4e0?alt=media&token=38a445a1-6099-4aa3-8670-b11b59919ca0&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=58c68b3decc54e79ae8dbe240d3fa4e0?alt=media&token=38a445a1-6099-4aa3-8670-b11b59919ca0&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Automated Excellence",
       description: "Streamlined service delivery",
       category: "Innovations",
@@ -251,28 +251,28 @@ const newMediaAssets = {
   ],
   success: [
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fddb20028f205405aaec7fb537d3891a1?alt=media&token=9b4e9161-10ff-4952-a0fe-87b556db3ec0&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=ddb20028f205405aaec7fb537d3891a1?alt=media&token=9b4e9161-10ff-4952-a0fe-87b556db3ec0&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Customer Success Story",
       description: "Exceeding expectations daily",
       category: "Success Stories",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F8899d7efdf5b46618fd1b6f6b15b5291?alt=media&token=b3a07274-0a93-46c5-81f8-d1ef0d22b130&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=8899d7efdf5b46618fd1b6f6b15b5291?alt=media&token=b3a07274-0a93-46c5-81f8-d1ef0d22b130&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Transformation Results",
       description: "Life-changing service outcomes",
       category: "Success Stories",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F6fe92d1949eb47fa8423aed6a86b982e?alt=media&token=be999211-9dec-4154-9b78-4d95ad132561&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=6fe92d1949eb47fa8423aed6a86b982e?alt=media&token=be999211-9dec-4154-9b78-4d95ad132561&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Excellence Recognition",
       description: "Award-winning service quality",
       category: "Success Stories",
       series: 2
     },
     {
-      url: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F1df8c8e11b0c4d9eb852921bb353beea?alt=media&token=104e74dd-8da8-4549-8458-14969921de18&apiKey=efd5169b47d04c9886e111b6074edfba",
+      url: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&_ignore=1df8c8e11b0c4d9eb852921bb353beea?alt=media&token=104e74dd-8da8-4549-8458-14969921de18&apiKey=efd5169b47d04c9886e111b6074edfba",
       title: "Client Testimonials",
       description: "Verified customer experiences",
       category: "Success Stories",
