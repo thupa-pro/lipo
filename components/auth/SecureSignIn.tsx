@@ -84,8 +84,8 @@ export function SecureSignIn() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 p-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center theme-ai glass-subtle bg-gradient-holographic p-4">
+      <Card className="w-full max-w-md glass-ultra shadow-glass-lg border border-glass-border-strong neural-card animate-spring-in">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl text-center">
             Welcome back
