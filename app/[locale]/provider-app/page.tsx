@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Smartphone, Download, Bell, MapPin, DollarSign, Calendar, ArrowRight } from "lucide-react"
+import { Smartphone, Download, Bell } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -93,7 +94,7 @@ export default function ProviderAppPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Become a Provider
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </section>

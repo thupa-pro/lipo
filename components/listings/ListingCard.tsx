@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React from "react";
@@ -16,16 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import {
-  Eye,
-  Edit,
-  MoreHorizontal,
-  MapPin,
-  Star,
-  Calendar,
-  Clock,
-  Trash2
-} from "lucide-react";
+import { Eye, Edit, MoreHorizontal, Trash2 } from "lucide-react";
 import { ListingCardProps } from "@/lib/listings/types";
 import {
   formatPricingDisplay,
@@ -128,7 +120,7 @@ export function ListingCard({
           </div>
           {listing.duration_minutes && (
             <div className="flex items-center text-sm text-gray-500">
-              <Clock className="w-4 h-4 mr-1" />
+              <OptimizedIcon name="Clock" className="w-4 h-4 mr-1" />
               {Math.round(listing.duration_minutes / 60)}h
             </div>
           )}
@@ -136,7 +128,7 @@ export function ListingCard({
 
         {/* Location and Service Area */}
         <div className="flex items-center text-sm text-gray-500">
-          <MapPin className="w-4 h-4 mr-1" />
+          <BusinessIcons.MapPin className="w-4 h-4 mr-1" / />
           <span className="capitalize">
             {listing.location_type === "on_site"
               ? "On-site"
@@ -179,7 +171,7 @@ export function ListingCard({
             </div>
             {listing.booking_count > 0 && (
               <div className="flex items-center">
-                <Calendar className="w-4 h-4 mr-1" />
+                <BusinessIcons.Calendar className="w-4 h-4 mr-1" / />
                 {listing.booking_count}
               </div>
             )}

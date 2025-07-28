@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState } from "react"
@@ -6,14 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import {
-  Loader2,
-  Sparkles,
-  MessageSquare,
-  Lightbulb,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { Sparkles, Lightbulb } from "lucide-react";
 
 interface JobSuggestion {
   category: string
@@ -168,7 +162,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
 
             <div className="bg-blue-50 p-4 rounded-lg">
               <div className="flex items-start space-x-3">
-                <MessageSquare className="w-5 h-5 text-blue-600 mt-0.5" />
+                <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600 mt-0.5" />
                 <div>
                   <h4 className="font-medium text-blue-900">AI-Powered Suggestions</h4>
                   <p className="text-sm text-blue-700 mt-1">
@@ -182,7 +176,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
             <Button onClick={analyzeUserInput} disabled={!userInput.trim() || isAnalyzing} className="w-full" size="lg">
               {isAnalyzing ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
                   Analyzing your request...
                 </>
               ) : (
@@ -227,7 +221,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
 
                   <div className="flex items-center justify-between">
                     <Badge className={getUrgencyColor(suggestion.urgency)}>
-                      <Clock className="w-3 h-3 mr-1" />
+                      <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                       {suggestion.urgency.charAt(0).toUpperCase() + suggestion.urgency.slice(1)} Priority
                     </Badge>
                     <Button size="sm">Select This Service</Button>
@@ -239,7 +233,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
 
           <div className="text-center">
             <Button variant="outline" onClick={() => setStep(1)}>
-              <MessageSquare className="w-4 h-4 mr-2" />
+              <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-2" />
               Try Different Description
             </Button>
           </div>
@@ -250,7 +244,7 @@ export function AIJobDiscovery({ onSelect }: AIJobDiscoveryProps) {
         <div className="space-y-6">
           <div className="text-center">
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-6 h-6 text-green-600" />
+              <UIIcons.CheckCircle className="w-6 h-6 text-green-600" / />
             </div>
             <h3 className="text-xl font-semibold mb-2">Perfect Match Found!</h3>
             <p className="text-muted-foreground">Your AI-optimized job posting is ready to go live</p>

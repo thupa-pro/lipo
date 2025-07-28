@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,9 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Fingerprint, Globe, Chrome, Github, Users, Shield, Zap
-} from "lucide-react";
+import { Sparkles, Lock, Eye, EyeOff, Fingerprint, Globe, Chrome, Github, Zap } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -171,7 +170,7 @@ export default function SignInPage() {
         href={`/${locale}`}
         className="absolute top-6 left-6 z-20 flex items-center gap-2 text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
       >
-        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <UIIcons.ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" / />
         <span className="font-medium">Back to Home</span>
       </Link>
 
@@ -213,7 +212,7 @@ export default function SignInPage() {
                           Email Address
                         </Label>
                         <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                          <OptimizedIcon name="Mail" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
                           <Input
                             id="email"
                             type="email"
@@ -307,7 +306,7 @@ export default function SignInPage() {
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Shield className="w-8 h-8 text-white" />
+                        <OptimizedIcon name="Shield" className="w-8 h-8 text-white" />
                       </motion.div>
                       <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-800 via-blue-600 to-slate-800 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent mb-3">
                         Enter Password
@@ -373,7 +372,7 @@ export default function SignInPage() {
                       >
                         {isLoading ? (
                           <>
-                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            <UIIcons.Loader2 className="w-5 h-5 mr-2 animate-spin" / />
                             Signing in...
                           </>
                         ) : (
@@ -459,7 +458,7 @@ export default function SignInPage() {
             >
               <div className="text-center">
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Shield className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <OptimizedIcon name="Shield" className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <p className="text-xs text-slate-600 dark:text-gray-400 font-medium">Secure</p>
               </div>
@@ -471,7 +470,7 @@ export default function SignInPage() {
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                  <NavigationIcons.Users className="w-6 h-6 text-emerald-600 dark:text-emerald-400" / />
                 </div>
                 <p className="text-xs text-slate-600 dark:text-gray-400 font-medium">Trusted</p>
               </div>

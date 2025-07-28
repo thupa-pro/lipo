@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -7,26 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import {
-  CreditCard,
-  Wallet,
-  CheckCircle,
-  AlertCircle,
-  Smartphone,
-  QrCode,
-  Banknote,
-  TrendingUp,
-  Lock,
-  Eye,
-  EyeOff,
-  ArrowRight,
-  ArrowLeft,
-  RotateCcw,
-  Fingerprint,
-  Apple,
-  Smartphone as PhoneIcon,
-  Shield
-} from "lucide-react";
+import { CreditCard, Wallet, AlertCircle, Smartphone, QrCode, Banknote, TrendingUp, Lock, Eye, EyeOff, RotateCcw, Fingerprint, Apple, Smartphone as PhoneIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {loadStripe} from '@stripe/stripe-js';
 import {Elements, useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
@@ -603,7 +585,7 @@ export function DynamicPaymentSystem({
 
       {securityCheck && (
         <div className="flex items-center justify-center gap-2 text-emerald-600">
-          <Shield className="w-4 h-4" />
+          <OptimizedIcon name="Shield" className="w-4 h-4" />
           <span className="text-sm">Security verified</span>
         </div>
       )}
@@ -620,7 +602,7 @@ export function DynamicPaymentSystem({
   const renderSuccess = () => (
     <div className="text-center space-y-6">
       <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-        <CheckCircle className="w-10 h-10 text-white" />
+        <UIIcons.CheckCircle className="w-10 h-10 text-white" / />
       </div>
 
       <div>
@@ -714,7 +696,7 @@ export function DynamicPaymentSystem({
 
             <div className="flex gap-3">
               <Button variant="outline" onClick={onCancel} className="flex-1">
-                <ArrowLeft className="w-4 h-4 mr-2" />
+                <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
                 Cancel
               </Button>
               <Button
@@ -725,7 +707,7 @@ export function DynamicPaymentSystem({
                 className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
                 Pay ${getTotalAmount().toFixed(2)}
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Button>
             </div>
           </>
@@ -756,7 +738,7 @@ export function DynamicPaymentSystem({
                 className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
               >
                 Done
-                <CheckCircle className="w-4 h-4 ml-2" />
+                <UIIcons.CheckCircle className="w-4 h-4 ml-2" / />
               </Button>
             </div>
           </>

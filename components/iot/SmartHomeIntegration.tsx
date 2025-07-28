@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -13,32 +14,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Home,
-  Wifi,
-  Bluetooth,
-  Zap,
-  Thermometer,
-  Lightbulb,
-  Shield,
-  Camera,
-  Lock,
-  Smartphone,
-  Tv,
-  Speaker,
-  Fan,
-  Droplets,
-  Gauge,
-  Bell,
-  Settings,
-  Plus,
-  Minus,
-  RotateCcw,
-  Power,
-  Activity,
-  AlertTriangle,
-  CheckCircle
-} from "lucide-react";
+import { Wifi, Bluetooth, Zap, Thermometer, Lightbulb, Camera, Lock, Smartphone, Tv, Speaker, Fan, Droplets, Gauge, Bell, Plus, Minus, RotateCcw, Power, Activity } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -488,13 +464,13 @@ export function SmartHomeIntegration({
     switch (device.type) {
       case "light": return <Lightbulb className="w-5 h-5" />;
       case "thermostat": return <Thermometer className="w-5 h-5" />;
-      case "security": return <Shield className="w-5 h-5" />;
+      case "security": return <OptimizedIcon name="Shield" className="w-5 h-5" />;
       case "camera": return <Camera className="w-5 h-5" />;
       case "lock": return <Lock className="w-5 h-5" />;
       case "speaker": return <Speaker className="w-5 h-5" />;
       case "tv": return <Tv className="w-5 h-5" />;
       case "sensor": return <Gauge className="w-5 h-5" />;
-      default: return <Home className="w-5 h-5" />;
+      default: return <NavigationIcons.Home className="w-5 h-5" / />;
     }
   };
 
@@ -512,7 +488,7 @@ export function SmartHomeIntegration({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
-            <Home className="w-5 h-5" />
+            <NavigationIcons.Home className="w-5 h-5" / />
             {t("title")} - {serviceType}
           </CardTitle>
           <div className="flex items-center gap-2">
@@ -521,7 +497,7 @@ export function SmartHomeIntegration({
             </Badge>
             {emergencyMode && (
               <Badge variant="destructive">
-                <AlertTriangle className="w-3 h-3 mr-1" />
+                <UIIcons.AlertTriangle className="w-3 h-3 mr-1" / />
                 {t("emergencyMode")}
               </Badge>
             )}
@@ -566,7 +542,7 @@ export function SmartHomeIntegration({
             variant={emergencyMode ? "destructive" : "outline"}
             className="h-20 flex-col"
           >
-            <AlertTriangle className="w-6 h-6" />
+            <UIIcons.AlertTriangle className="w-6 h-6" / />
             <span className="text-sm mt-2">{t("emergency")}</span>
           </Button>
 

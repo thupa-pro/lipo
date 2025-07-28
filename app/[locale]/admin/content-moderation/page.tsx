@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState } from "react"
@@ -6,18 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import {
-  Search,
-  XCircle,
-  Eye,
-  ArrowLeft,
-  ArrowRight,
-  Flag,
-  Ban,
-  Shield,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { XCircle, Eye, Flag, Ban } from "lucide-react";
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -161,12 +151,12 @@ export default function ContentModerationPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <Shield className="w-9 h-9 text-trust-600" />
+            <OptimizedIcon name="Shield" className="w-9 h-9 text-trust-600" />
             Content & Moderation
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
               Back to Admin
             </Link>
           </Button>
@@ -211,7 +201,7 @@ export default function ContentModerationPage() {
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">Resolved issues</p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600 opacity-30" />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" / />
             </CardContent>
           </Card>
         </div>
@@ -228,7 +218,7 @@ export default function ContentModerationPage() {
           <CardContent>
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                 <Input
                   placeholder="Search by, content, user, or reason..."
                   value={searchQuery}
@@ -264,7 +254,7 @@ export default function ContentModerationPage() {
             <div className="space-y-4">
               {filteredContent.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  <Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" / />
                   <p className="text-lg font-medium">No reported content found matching your criteria.</p>
                   <p className="text-sm">All clear! Or try adjusting your filters.</p>
                 </div>
@@ -281,7 +271,7 @@ export default function ContentModerationPage() {
                         <p className="text-sm text-muted-foreground mb-2">Reason: {item.reason}</p>
                         <p className="text-sm text-foreground italic line-clamp-2">"{item.contentSnippet}"</p>
                         <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
+                          <OptimizedIcon name="Clock" className="w-3 h-3" />
                           {item.timestamp}
                         </p>
                       </div>
@@ -293,7 +283,7 @@ export default function ContentModerationPage() {
                         {item.status === "pending" && (
                           <>
                             <Button size="sm" onClick={() => handleApprove(item.id)}>
-                              <CheckCircle className="w-4 h-4" />
+                              <UIIcons.CheckCircle className="w-4 h-4" / />
                             </Button>
                             <Button size="sm" variant="destructive" onClick={() => handleReject(item.id)}>
                               <XCircle className="w-4 h-4" />
@@ -322,7 +312,7 @@ export default function ContentModerationPage() {
               Proactively moderate content and ensure a positive experience for all users.
             </p>
             <Button size="lg" variant="default" asChild className="shadow-md hover:shadow-lg transition-all">
-              <Link href="/admin">Back to Admin Dashboard <ArrowRight className="w-4 h-4 ml-2" /></Link>
+              <Link href="/admin">Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / /></Link>
             </Button>
           </CardContent>
         </Card>

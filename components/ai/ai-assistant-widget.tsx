@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useCallback } from "react";
@@ -6,15 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  MessageCircle,
-  Send,
-  Bot,
-  Minimize2,
-  Maximize2,
-  X,
-  User
-} from "lucide-react";
+import { MessageCircle, Send, Bot, Minimize2, Maximize2, X } from "lucide-react";
 
 // Clean, interface - NO, function props, at all
 interface AIAssistantWidgetProps {
@@ -195,7 +188,7 @@ export default function AIAssistantWidget({
                     </p>
                   </div>
                   {message.role === "user" && (
-                    <User className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
+                    <NavigationIcons.User className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" / />
                   )}
                 </div>
               </div>

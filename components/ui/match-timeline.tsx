@@ -1,17 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import {
-  CheckCircle,
-  Users,
-  MessageSquare,
-  Zap,
-  Clock,
-  Star
-} from "lucide-react";
+import { Zap } from "lucide-react";
 
 interface TimelineStep {
   id: string
@@ -94,7 +88,7 @@ export default function MatchTimeline({ jobId }: MatchTimelineProps) {
 
   const getStepIcon = (step: TimelineStep, index: number) => {
     if (step.status === "completed") {
-      return <CheckCircle className="w-5 h-5 text-green-600" />
+      return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
     } else if (step.status === "active") {
       return <div className="w-5 h-5 border-2 border-blue-600 rounded-full animate-pulse bg-blue-100" />
     } else {
@@ -175,17 +169,17 @@ export default function MatchTimeline({ jobId }: MatchTimelineProps) {
                 </p>
                 {step.estimatedTime && step.status !== "completed" && (
                   <div className="flex items-center mt-2 text-xs text-gray-500">
-                    <Clock className="w-3 h-3 mr-1" />
+                    <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                     Est. {step.estimatedTime}
                   </div>
                 )}
                 {step.status === "active" && step.id === "responses" && (
                   <div className="mt-2 space-y-1">
                     <div className="flex items-center text-xs text-green-600">
-                      <MessageSquare className="w-3 h-3 mr-1" />3 providers have responded
+                      <OptimizedIcon name="MessageSquare" className="w-3 h-3 mr-1" />3 providers have responded
                     </div>
                     <div className="flex items-center text-xs text-blue-600">
-                      <Users className="w-3 h-3 mr-1" />2 more reviewing your job
+                      <NavigationIcons.Users className="w-3 h-3 mr-1" / />2 more reviewing your job
                     </div>
                   </div>
                 )}
@@ -198,7 +192,7 @@ export default function MatchTimeline({ jobId }: MatchTimelineProps) {
         {currentStep >= 4 && (
           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
             <div className="flex items-center mb-2">
-              <Star className="w-4 h-4 text-green-600 mr-2" />
+              <OptimizedIcon name="Star" className="w-4 h-4 text-green-600 mr-2" />
               <span className="font-medium text-green-800">Ready for Review!</span>
             </div>
             <p className="text-sm text-green-700">

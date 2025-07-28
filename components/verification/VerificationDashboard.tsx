@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -15,32 +16,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from "@/components/ui/dialog";
-import {
-  CheckCircle,
-  AlertTriangle,
-  X,
-  Upload,
-  FileText,
-  Building,
-  CreditCard,
-  Globe,
-  Phone,
-  Mail,
-  MapPin,
-  Calendar,
-  Award,
-  RefreshCw,
-  Download,
-  Eye,
-  ExternalLink,
-  Info,
-  TrendingUp,
-  Users,
-  Clock,
-  Shield,
-  Star,
-  Zap
-} from "lucide-react";
+import { X, Upload, FileText, Building, CreditCard, Globe, Award, RefreshCw, Download, Eye, ExternalLink, Info, TrendingUp, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import { KYCVerificationFlow } from "./KYCVerificationFlow";
@@ -235,15 +211,15 @@ export function VerificationDashboard({
   const getStatusIcon = (status: VerificationItem["status"]) => {
     switch (status) {
       case "verified":
-        return <CheckCircle className="w-5 h-5 text-green-600" />;
+        return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />;
       case "in_progress":
-        return <Clock className="w-5 h-5 text-blue-600" />;
+        return <OptimizedIcon name="Clock" className="w-5 h-5 text-blue-600" />;
       case "rejected":
         return <X className="w-5 h-5 text-red-600" />;
       case "expired":
-        return <AlertTriangle className="w-5 h-5 text-orange-600" />;
+        return <UIIcons.AlertTriangle className="w-5 h-5 text-orange-600" / />;
       default:
-        return <Clock className="w-5 h-5 text-gray-400" />;
+        return <OptimizedIcon name="Clock" className="w-5 h-5 text-gray-400" />;
     }
   };
 
@@ -308,7 +284,7 @@ export function VerificationDashboard({
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center">
-                <Shield className="w-6 h-6 text-blue-600" />
+                <OptimizedIcon name="Shield" className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -326,7 +302,7 @@ export function VerificationDashboard({
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-xl flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+                <UIIcons.CheckCircle className="w-6 h-6 text-green-600" / />
               </div>
             </div>
           </CardContent>
@@ -396,7 +372,7 @@ export function VerificationDashboard({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-5 h-5" />
+                <OptimizedIcon name="Shield" className="w-5 h-5" />
                 Verification Progress
               </CardTitle>
             </CardHeader>
@@ -415,7 +391,7 @@ export function VerificationDashboard({
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
                   <div className="text-center">
                     <div className="w-8 h-8 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
                     </div>
                     <div className="text-sm font-medium">
                       {
@@ -430,7 +406,7 @@ export function VerificationDashboard({
 
                   <div className="text-center">
                     <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Clock className="w-4 h-4 text-blue-600" />
+                      <OptimizedIcon name="Clock" className="w-4 h-4 text-blue-600" />
                     </div>
                     <div className="text-sm font-medium">
                       {
@@ -446,7 +422,7 @@ export function VerificationDashboard({
 
                   <div className="text-center">
                     <div className="w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Clock className="w-4 h-4 text-gray-600" />
+                      <OptimizedIcon name="Clock" className="w-4 h-4 text-gray-600" />
                     </div>
                     <div className="text-sm font-medium">
                       {
@@ -517,7 +493,7 @@ export function VerificationDashboard({
 
                         {item.rejectionReason && (
                           <Alert className="mb-3">
-                            <AlertTriangle className="w-4 h-4" />
+                            <UIIcons.AlertTriangle className="w-4 h-4" / />
                             <AlertDescription className="text-sm">
                               {item.rejectionReason}
                             </AlertDescription>
@@ -638,7 +614,7 @@ export function VerificationDashboard({
                                 {key}
                               </span>
                               {value.verified && (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
                               )}
                             </div>
                             <div className="text-sm">
@@ -682,7 +658,7 @@ export function VerificationDashboard({
                               key={index}
                               className="flex items-center gap-2 text-sm"
                             >
-                              <Star className="w-3 h-3 text-yellow-500" />
+                              <OptimizedIcon name="Star" className="w-3 h-3 text-yellow-500" />
                               {benefit}
                             </li>
                           ),
@@ -699,7 +675,7 @@ export function VerificationDashboard({
                               key={index}
                               className="flex items-center gap-2 text-sm"
                             >
-                              <Clock className="w-3 h-3 text-blue-500" />
+                              <OptimizedIcon name="Clock" className="w-3 h-3 text-blue-500" />
                               {requirement}
                             </li>
                           ),
@@ -728,7 +704,7 @@ export function VerificationDashboard({
                     key={index}
                     className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg"
                   >
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <UIIcons.CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" / />
                     <span className="text-sm">{benefit}</span>
                   </div>
                 ))}

@@ -1,11 +1,8 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import {
-  Wifi,
-  WifiOff,
-  Clock
-} from "lucide-react";
+import { Wifi, WifiOff } from "lucide-react";
 
 interface RealtimeIndicatorProps {
   isActive: boolean;
@@ -49,7 +46,7 @@ export function RealtimeIndicator({
       </Badge>
 
       <div className="flex items-center gap-1 text-xs text-muted-foreground">
-        <Clock className="w-3 h-3" />
+        <OptimizedIcon name="Clock" className="w-3 h-3" />
         {formatTime(lastUpdated)}
       </div>
     </div>

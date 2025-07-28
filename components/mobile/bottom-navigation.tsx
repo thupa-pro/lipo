@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -5,16 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Home,
-  Search,
-  User,
-  Settings,
-  Bell,
-  Compass,
-  LifeBuoy,
-  Plus
-} from "lucide-react";
+import { Bell, Compass, LifeBuoy, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavigationItem {

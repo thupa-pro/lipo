@@ -1,10 +1,11 @@
-import { lazy, Suspense, ComponentType, ReactNode } from 'react';
-import { Loader2 } from 'lucide-react';
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
+import React, { lazy, Suspense, ComponentType, ReactNode } from 'react';
+;
 
 // Loading component for lazy-loaded components
 const LoadingSpinner = ({ className = '' }: { className?: string }) => (
   <div className={`flex items-center justify-center p-8 ${className}`}>
-    <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+    <UIIcons.Loader2 className="h-8 w-8 animate-spin text-blue-600" / />
     <span className="ml-2 text-sm text-gray-600">Loading...</span>
   </div>
 );
@@ -106,7 +107,7 @@ export const LazyComponents = {
 
   // Navigation components (large)
   EnhancedNavigation: withLazyLoading(
-    () => import('@/components/navigation/EnhancedNavigation'),
+    () => import('@/components/navigation/RoleAwareNavigation').then(mod => ({ default: mod.RoleAwareNavigation })),
     { fallback: () => <div>Loading navigation...</div> }
   ),
 

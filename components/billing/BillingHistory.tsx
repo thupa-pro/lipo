@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -26,21 +27,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import {
-  Download,
-  Search,
-  Filter,
-  Receipt,
-  ExternalLink,
-  Calendar,
-  DollarSign,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  Eye,
-  FileText,
-  Clock
-} from "lucide-react";
+import { Download, Filter, Receipt, ExternalLink, XCircle, AlertCircle, Eye, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { billingClient } from "@/lib/billing/utils";
@@ -102,9 +89,9 @@ export function BillingHistory() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "paid":
-        return <CheckCircle className="h-4 w-4 text-green-600" />;
+        return <UIIcons.CheckCircle className="h-4 w-4 text-green-600" / />;
       case "open":
-        return <Clock className="h-4 w-4 text-blue-600" />;
+        return <OptimizedIcon name="Clock" className="h-4 w-4 text-blue-600" />;
       case "draft":
         return <FileText className="h-4 w-4 text-gray-600" />;
       case "uncollectible":
@@ -238,7 +225,7 @@ export function BillingHistory() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Amount</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -254,7 +241,7 @@ export function BillingHistory() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Paid Amount</CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
+            <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -285,7 +272,7 @@ export function BillingHistory() {
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 mb-6">
             {/* Search */}
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" / />
               <Input
                 placeholder="Search invoices..."
                 value={searchQuery}
@@ -365,7 +352,7 @@ export function BillingHistory() {
 
                       <TableCell>
                         <div className="flex items-center space-x-2">
-                          <Calendar className="h-4 w-4 text-muted-foreground" />
+                          <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />
                           <span>{formatDate(invoice.created)}</span>
                         </div>
                       </TableCell>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,25 +8,7 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Activity,
-  Users,
-  Briefcase,
-  TrendingUp,
-  Settings,
-  Bell,
-  Eye,
-  UserCheck,
-  DollarSign,
-  MapPin,
-  AlertTriangle,
-  ArrowUpRight,
-  Rocket,
-  Shield,
-  Clock,
-  CheckCircle,
-  Zap
-} from "lucide-react";
+import { Activity, TrendingUp, Bell, Eye, UserCheck, ArrowUpRight, Rocket, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function AdminDashboard() {
@@ -152,7 +135,7 @@ export default function AdminDashboard() {
             <span className="text-sm font-medium text-trust-gradient">
               Admin Dashboard • Live System Monitoring
             </span>
-            <Shield className="w-4 h-4 text-trust-500" />
+            <OptimizedIcon name="Shield" className="w-4 h-4 text-trust-500" />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-none">
@@ -183,7 +166,7 @@ export default function AdminDashboard() {
               variant="outline"
               className="btn-outline-ai px-8 py-3"
             >
-              <Settings className="w-4 h-4 mr-2" />
+              <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
               Settings
             </Button>
           </div>
@@ -284,11 +267,11 @@ export default function AdminDashboard() {
                         </p>
                         <div className="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-500">
                           <span className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4" />
+                            <BusinessIcons.MapPin className="w-4 h-4" / />
                             {activity.location}
                           </span>
                           <span className="flex items-center gap-2">
-                            <Clock className="w-4 h-4" />
+                            <OptimizedIcon name="Clock" className="w-4 h-4" />
                             {activity.time}
                           </span>
                         </div>
@@ -325,10 +308,10 @@ export default function AdminDashboard() {
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 mt-1">
                           {alert.type === "warning" && (
-                            <AlertTriangle className="w-5 h-5 text-amber-500" />
+                            <UIIcons.AlertTriangle className="w-5 h-5 text-amber-500" / />
                           )}
                           {alert.type === "success" && (
-                            <CheckCircle className="w-5 h-5 text-emerald-500" />
+                            <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500" / />
                           )}
                           {alert.type === "info" && (
                             <Activity className="w-5 h-5 text-blue-500" />
@@ -369,7 +352,7 @@ export default function AdminDashboard() {
                   asChild
                 >
                   <Link href="/admin/users">
-                    <Users className="w-5 h-5 mr-3" />
+                    <NavigationIcons.Users className="w-5 h-5 mr-3" / />
                     <span className="font-semibold">Manage Users</span>
                   </Link>
                 </Button>
@@ -399,7 +382,7 @@ export default function AdminDashboard() {
                   asChild
                 >
                   <Link href="/admin/settings">
-                    <Settings className="w-5 h-5 mr-3" />
+                    <NavigationIcons.Settings className="w-5 h-5 mr-3" / />
                     <span className="font-semibold">System Settings</span>
                   </Link>
                 </Button>

@@ -1,28 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Eye,
-  EyeOff,
-  Type,
-  MousePointer,
-  Volume2,
-  VolumeX,
-  Contrast,
-  Sun,
-  Moon,
-  ZoomIn,
-  ZoomOut,
-  Languages,
-  Accessibility,
-  Settings,
-  RotateCcw,
-  Play,
-  Pause,
-  SkipForward,
-  SkipBack,
-} from "lucide-react";
+import { Eye, EyeOff, Type, MousePointer, Volume2, VolumeX, Contrast, Sun, Moon, ZoomIn, ZoomOut, Languages, Accessibility, RotateCcw, Play, Pause, SkipForward, SkipBack,  } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";

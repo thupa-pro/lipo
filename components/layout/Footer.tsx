@@ -1,20 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Sparkles,
-  Twitter,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  Heart,
-  Shield,
-  Zap
-} from "lucide-react";
+import { Sparkles, Twitter, Facebook, Instagram, Linkedin, Heart, Zap } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

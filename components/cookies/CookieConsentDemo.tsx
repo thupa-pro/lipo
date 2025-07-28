@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import React from 'react';
@@ -6,18 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CookieSettingsLink } from './CookieSettingsLink';
 import { useCookieSettings, useConsentAwareAnalytics } from '@/hooks/useCookieSettings';
-import {
-  Cookie,
-  BarChart3,
-  Target,
-  CheckCircle,
-  XCircle,
-  RefreshCw,
-  Zap,
-  Clock,
-  Shield,
-  Trash2
-} from "lucide-react";
+import { Cookie, BarChart3, Target, XCircle, RefreshCw, Zap, Trash2 } from "lucide-react";
 
 export function CookieConsentDemo() {
   const {
@@ -50,17 +40,17 @@ export function CookieConsentDemo() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'accepted':
-        return <CheckCircle className="h-4 w-4 text-green-600" />;
+        return <UIIcons.CheckCircle className="h-4 w-4 text-green-600" / />;
       case 'rejected':
         return <XCircle className="h-4 w-4 text-red-600" />;
       default:
-        return <Clock className="h-4 w-4 text-amber-600" />;
+        return <OptimizedIcon name="Clock" className="h-4 w-4 text-amber-600" />;
     }
   };
 
   const getConsentIcon = (hasConsent: boolean) => {
     return hasConsent ? (
-      <CheckCircle className="h-3 w-3 text-green-600" />
+      <UIIcons.CheckCircle className="h-3 w-3 text-green-600" / />
     ) : (
       <XCircle className="h-3 w-3 text-red-600" />
     );
@@ -116,7 +106,7 @@ export function CookieConsentDemo() {
           {/* Preferences Breakdown */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center gap-2">
-              <Shield className="h-4 w-4 text-green-600" />
+              <OptimizedIcon name="Shield" className="h-4 w-4 text-green-600" />
               <span className="text-sm">Essential</span>
               {getConsentIcon(preferences.necessary)}
             </div>
@@ -148,7 +138,7 @@ export function CookieConsentDemo() {
           </CardHeader>
           <CardContent className="space-y-3">
             <Button onClick={acceptAll} className="w-full">
-              <CheckCircle className="mr-2 h-4 w-4" />
+              <UIIcons.CheckCircle className="mr-2 h-4 w-4" / />
               Accept All Cookies
             </Button>
             <Button onClick={rejectAll} variant="outline" className="w-full">

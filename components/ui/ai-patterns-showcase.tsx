@@ -1,8 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import * as React from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Brain, Zap, Target, ArrowRight } from "lucide-react"
+import { Sparkles, Brain, Zap, Target } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -293,7 +294,7 @@ export function AIPatternShowcase({ className }: AIPatternShowcaseProps) {
                             <div className="text-2xl font-bold text-green-600">$75</div>
                             <div className="text-xs text-muted-foreground">Recommended</div>
                           </div>
-                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                          <UIIcons.ArrowRight className="h-4 w-4 text-muted-foreground" / />
                           <div className="text-sm text-muted-foreground">
                             Based on 47 similar services in your area
                           </div>

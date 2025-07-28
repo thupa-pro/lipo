@@ -1,26 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Camera,
-  Upload,
-  Scan,
-  Eye,
-  Brain,
-  AlertTriangle,
-  Sparkles,
-  Tag,
-  DollarSign,
-  MapPin,
-  Star,
-  Edit,
-  Save,
-  Download,
-  Share2,
-  Clock,
-  Trash2
-} from "lucide-react";
+import { Camera, Upload, Scan, Eye, Brain, Sparkles, Tag, Edit, Save, Download, Share2, Trash2 } from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -469,7 +452,7 @@ const ComputerVisionScanner: React.FC<ComputerVisionScannerProps> = ({
                             Estimated Time
                           </label>
                           <div className="flex items-center mt-1">
-                            <Clock className="h-4 w-4 mr-2 text-gray-500" />
+                            <OptimizedIcon name="Clock" className="h-4 w-4 mr-2 text-gray-500" />
                             <span>{editedResult?.estimatedTime}</span>
                           </div>
                         </div>

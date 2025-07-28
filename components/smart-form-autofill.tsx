@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState, useEffect } from "react"
@@ -8,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, Sparkles, Wand2, CheckCircle} from "lucide-react"
+import { Sparkles, Wand2 } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 interface FormData {
@@ -147,7 +148,7 @@ export default function SmartFormAutofill() {
                 {freeTextInput.length > 50 ? "✨ AI analysis in progress..." : "Keep typing for AI suggestions"}
               </div>
               <Button onClick={analyzeAndSuggest} disabled={!freeTextInput.trim() || isAnalyzing} size="sm">
-                {isAnalyzing ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Wand2 className="w-4 h-4 mr-2" />}
+                {isAnalyzing ? <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / /> : <Wand2 className="w-4 h-4 mr-2" />}
                 Analyze
               </Button>
             </div>
@@ -165,7 +166,7 @@ export default function SmartFormAutofill() {
                 AI Suggestions
               </span>
               <Button onClick={applyAllSuggestions} size="sm">
-                <CheckCircle className="w-4 h-4 mr-2" />
+                <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
                 Apply All
               </Button>
             </CardTitle>

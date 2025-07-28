@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -20,18 +21,7 @@ import { RevenueTrends } from "@/components/analytics/revenue-trends";
 import { UserInsights } from "@/components/analytics/user-insights";
 import { ExportModal } from "@/components/analytics/export-modal";
 import { RealtimeIndicator } from "@/components/analytics/realtime-indicator";
-import {
-  BarChart3,
-  Download,
-  RefreshCw,
-  Filter,
-  TrendingUp,
-  Users,
-  DollarSign,
-  Activity,
-  Eye,
-  Share2,
-} from "lucide-react";
+import { BarChart3, Download, RefreshCw, Filter, TrendingUp, Activity, Eye, Share2,  } from "lucide-react";
 
 interface AnalyticsFilter {
   dateRange: {
@@ -244,11 +234,11 @@ export default function AnalyticsPage() {
               <span className="hidden sm:inline">Overview</span>
             </TabsTrigger>
             <TabsTrigger value="users" className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
+              <NavigationIcons.Users className="w-4 h-4" / />
               <span className="hidden sm:inline">Users</span>
             </TabsTrigger>
             <TabsTrigger value="revenue" className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4" />
+              <BusinessIcons.DollarSign className="w-4 h-4" / />
               <span className="hidden sm:inline">Revenue</span>
             </TabsTrigger>
             <TabsTrigger

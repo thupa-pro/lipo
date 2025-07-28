@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
@@ -6,16 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import {
-  Phone,
-  Mail,
-  HelpCircle,
-  BookOpen,
-  Users,
-  ArrowRight,
-  Sparkles,
-  MessageSquare
-} from "lucide-react";
+import { HelpCircle, BookOpen, Sparkles } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import AIChat from "@/components/ai/AIChat"
@@ -48,7 +40,7 @@ export default function CustomerSupportPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/help")}>
             Visit Help Center
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -79,7 +71,7 @@ export default function CustomerSupportPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/20 text-green-600 mb-4">
-                  <MessageSquare className="w-7 h-7" />
+                  <OptimizedIcon name="MessageSquare" className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Live Chat</h3>
                 <p className="text-muted-foreground mb-4">Chat with a support agent in real-time.</p>
@@ -90,7 +82,7 @@ export default function CustomerSupportPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-900/20 text-purple-600 mb-4">
-                  <Users className="w-7 h-7" />
+                  <NavigationIcons.Users className="w-7 h-7" / />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Community Forum</h3>
                 <p className="text-muted-foreground mb-4">Ask questions and get help from other users.</p>
@@ -148,11 +140,11 @@ export default function CustomerSupportPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" variant="outline" onClick={() => toast({ title: "Calling Support", description: "Dialing 1-800-LOCONOMY...", variant: "default" })}>
-              <Phone className="w-4 h-4 mr-2" />
+              <OptimizedIcon name="Phone" className="w-4 h-4 mr-2" />
               Call Us: 1-800-LOCONOMY
             </Button>
             <Button size="lg" variant="outline" onClick={() => toast({ title: "Email Support", description: "Opening your email client to support@loconomy.com...", variant: "default" })}>
-              <Mail className="w-4 h-4 mr-2" />
+              <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
               Email Us: support@loconomy.com
             </Button>
           </div>

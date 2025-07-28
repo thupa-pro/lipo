@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -5,10 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { 
-  TrendingUp, TrendingDown, DollarSign, Users, BarChart3, PieChart, Activity,
-  MapPin, Calendar, Filter, Download
-} from 'lucide-react';
+import { TrendingUp, TrendingDown, BarChart3, PieChart, Activity, Filter, Download } from "lucide-react";
 
 interface MetricData {
   label: string;
@@ -183,7 +181,7 @@ export function BusinessIntelligence({ className }: BusinessIntelligenceProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
+            <BusinessIcons.MapPin className="w-5 h-5" / />
             Regional Performance
           </CardTitle>
         </CardHeader>

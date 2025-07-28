@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState, useEffect } from "react"
@@ -6,13 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import {
-  Loader2,
-  Sparkles,
-  Lightbulb,
-  DollarSign,
-  Clock
-} from "lucide-react";
+import { Sparkles, Lightbulb } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 
 interface JobSuggestion {
@@ -167,7 +162,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
 
         {isAnalyzing && (
           <div className="flex items-center mt-2 text-sm text-blue-600">
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
             AI is analyzing your request...
           </div>
         )}
@@ -198,7 +193,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
                   </div>
                   <div className="text-right">
                     <div className="text-sm font-medium text-green-600 flex items-center">
-                      <DollarSign className="w-3 h-3 mr-1" />
+                      <BusinessIcons.DollarSign className="w-3 h-3 mr-1" / />
                       {suggestion.estimatedPrice}
                     </div>
                     <div className="text-xs text-gray-500">{suggestion.confidence}% match</div>
@@ -209,7 +204,7 @@ export default function SmartJobInput({ label, onSuggestionSelect, value = "", o
 
                 <div className="flex items-center justify-between">
                   <Badge className={getUrgencyColor(suggestion.urgency)}>
-                    <Clock className="w-3 h-3 mr-1" />
+                    <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                     {suggestion.urgency.charAt(0).toUpperCase() + suggestion.urgency.slice(1)} Priority
                   </Badge>
                   <Button size="sm" variant="outline" onClick={() => selectSuggestion(suggestion)}>

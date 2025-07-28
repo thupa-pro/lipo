@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -14,22 +15,7 @@ import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  Brain,
-  TrendingDown,
-  TrendingUp,
-  DollarSign,
-  Calendar,
-  MapPin,
-  Users,
-  AlertCircle,
-  Target,
-  Sparkles,
-  BarChart3,
-  PiggyBank,
-  Zap,
-  CheckCircle
-} from "lucide-react";
+import { Brain, TrendingDown, TrendingUp, AlertCircle, Target, Sparkles, BarChart3, PiggyBank, Zap } from "lucide-react";
 
 interface PriceInsight {
   currentPrice: number;
@@ -277,7 +263,7 @@ export default function PriceOptimizer({
               </CardTitle>
             </div>
             <Badge variant="secondary" className="bg-green-100 text-green-700">
-              <CheckCircle className="w-3 h-3 mr-1" />
+              <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
               {priceInsight.confidence}% Confidence
             </Badge>
           </div>
@@ -355,7 +341,7 @@ export default function PriceOptimizer({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-purple-600" />
+              <BusinessIcons.Calendar className="w-5 h-5 text-purple-600" / />
               Optimal Timing
             </CardTitle>
             <CardDescription>

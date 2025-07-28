@@ -1,19 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Circle,
-  ArrowRight,
-  Trophy,
-  Zap,
-  CheckCircle,
-  Clock,
-  Star,
-  Target
-} from "lucide-react";
+import { Circle, Trophy, Zap, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { OnboardingStep } from "@/lib/ai-chat/types";
 
@@ -139,7 +131,7 @@ export function OnboardingProgress({
                     onClick={() => (window.location.href = nextStep.actionUrl!)}
                   >
                     Start Now
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    <UIIcons.ArrowRight className="ml-1 h-3 w-3" / />
                   </Button>
                 )}
               </div>
@@ -155,7 +147,7 @@ export function OnboardingProgress({
             </span>
             {totalEstimatedTime > 0 && (
               <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Clock className="h-3 w-3" />
+                <OptimizedIcon name="Clock" className="h-3 w-3" />
                 <span>{totalEstimatedTime}m remaining</span>
               </div>
             )}
@@ -174,7 +166,7 @@ export function OnboardingProgress({
               >
                 <div className="shrink-0">
                   {step.completed ? (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <UIIcons.CheckCircle className="h-4 w-4 text-green-600" / />
                   ) : (
                     <Circle className="h-4 w-4 text-muted-foreground" />
                   )}
@@ -248,7 +240,7 @@ export function OnboardingProgress({
             </p>
             <div className="flex items-center gap-2">
               <Badge className="bg-yellow-500 text-white">
-                <Star className="h-3 w-3 mr-1" />
+                <OptimizedIcon name="Star" className="h-3 w-3 mr-1" />
                 Onboarding Champion
               </Badge>
               <Badge variant="outline">

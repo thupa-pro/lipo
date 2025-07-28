@@ -1,20 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import {
-  MapPin,
-  Zap,
-  Heart,
-  Sparkles,
-  TrendingUp,
-  Award,
-  Users,
-  MessageCircle,
-  Clock,
-  Shield,
-  Star
-} from "lucide-react";
+import { Zap, Heart, Sparkles, TrendingUp, Award, MessageCircle } from "lucide-react";
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -95,7 +84,7 @@ export default function SmartListingCard({
       generatedAnnotations.push({
         type: 'high_rating',
         label: '⭐ 5-Star Pro',
-        icon: <Star className="w-3 h-3" />,
+        icon: <OptimizedIcon name="Star" className="w-3 h-3" />,
         color: 'bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-400',
         confidence: 0.92
       });
@@ -117,7 +106,7 @@ export default function SmartListingCard({
       generatedAnnotations.push({
         type: 'verified',
         label: '✓ Verified Pro',
-        icon: <Shield className="w-3 h-3" />,
+        icon: <OptimizedIcon name="Shield" className="w-3 h-3" />,
         color: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
         confidence: 1.0
       });
@@ -150,7 +139,7 @@ export default function SmartListingCard({
       generatedAnnotations.push({
         type: 'premium',
         label: '💎 Premium',
-        icon: <Star className="w-3 h-3" />,
+        icon: <OptimizedIcon name="Star" className="w-3 h-3" />,
         color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400',
         confidence: 0.82
       });
@@ -246,7 +235,7 @@ export default function SmartListingCard({
                 {listing.title}
               </h3>
               <div className="flex items-center gap-1 ml-2">
-                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                 <span className="text-sm font-medium text-slate-700 dark:text-gray-300">
                   {listing.rating}
                 </span>
@@ -273,25 +262,25 @@ export default function SmartListingCard({
                 {listing.provider.name}
               </span>
               {listing.provider.verified && (
-                <Shield className="w-3 h-3 text-green-500" />
+                <OptimizedIcon name="Shield" className="w-3 h-3 text-green-500" />
               )}
             </div>
 
             {/* Meta Info */}
             <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-gray-400 mb-4">
               <div className="flex items-center gap-1">
-                <MapPin className="w-3 h-3" />
+                <BusinessIcons.MapPin className="w-3 h-3" / />
                 {listing.location}
               </div>
               {listing.responseTime && (
                 <div className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
+                  <OptimizedIcon name="Clock" className="w-3 h-3" />
                   {listing.responseTime}min response
                 </div>
               )}
               {listing.completedJobs && (
                 <div className="flex items-center gap-1">
-                  <Users className="w-3 h-3" />
+                  <NavigationIcons.Users className="w-3 h-3" / />
                   {listing.completedJobs} jobs
                 </div>
               )}

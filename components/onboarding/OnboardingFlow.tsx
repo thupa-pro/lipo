@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -5,7 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
+;
 import { ProgressStepper } from "./ProgressStepper";
 import {
   OnboardingFlowProps,
@@ -166,7 +167,7 @@ export function OnboardingFlow({
   if (isLoading && !progress) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin" />
+        <UIIcons.Loader2 className="w-8 h-8 animate-spin" / />
       </div>
     );
   }
@@ -213,14 +214,14 @@ export function OnboardingFlow({
               }
               className="flex items-center gap-2"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <UIIcons.ArrowLeft className="w-4 h-4" / />
               Previous
             </Button>
 
             <div className="flex items-center gap-2 text-sm text-gray-500">
               {isLoading && (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
                   Saving...
                 </>
               )}

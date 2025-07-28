@@ -1,10 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Search, Calendar, Tag, ArrowRight } from "lucide-react"
+import { Tag } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -66,7 +67,7 @@ export default function BlogPage() {
           <div className="max-w-md mx-auto flex gap-2">
             <Input placeholder="Search blog posts..." className="flex-1" />
             <Button onClick={() => toast({ title: "Search Blog", description: "Searching blog posts... (Simulated)", variant: "default" })}>
-              <Search className="w-4 h-4" />
+              <NavigationIcons.Search className="w-4 h-4" / />
             </Button>
           </div>
         </div>
@@ -85,7 +86,7 @@ export default function BlogPage() {
                       <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
+                          <BusinessIcons.Calendar className="w-4 h-4" / />
                           {post.date}
                         </span>
                         <span className="flex items-center gap-1">
@@ -96,7 +97,7 @@ export default function BlogPage() {
                       <p className="text-muted-foreground mb-4 line-clamp-3">{post.summary}</p>
                       <Button variant="outline" onClick={() => toast({ title: "Read Article", description: `Opening blog post: ${post.title}... (Simulated)`, variant: "default" })}>
                         Read Article
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                        <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                       </Button>
                     </div>
                   </CardContent>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -6,19 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Calendar,
-  DollarSign,
-  Award,
-  ArrowLeft,
-  Clock,
-  MessageSquare,
-  Shield,
-  Star
-} from "lucide-react";
+import { Award } from "lucide-react";
 
 export default function ProviderDetailPage() {
   const params = useParams();
@@ -86,7 +75,7 @@ export default function ProviderDetailPage() {
   return (
     <div className="container mx-auto p-6">
       <Button variant="ghost" onClick={() => router.back()} className="mb-6">
-        <ArrowLeft className="h-4 w-4 mr-2" />
+        <UIIcons.ArrowLeft className="h-4 w-4 mr-2" / />
         Back to Results
       </Button>
 
@@ -111,7 +100,7 @@ export default function ProviderDetailPage() {
                     <h1 className="text-2xl font-bold">{provider.name}</h1>
                     {provider.verified && (
                       <Badge className="bg-green-100 text-green-800">
-                        <Shield className="w-3 h-3 mr-1" />
+                        <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                         Verified
                       </Badge>
                     )}
@@ -123,16 +112,16 @@ export default function ProviderDetailPage() {
 
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <OptimizedIcon name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                       <span className="font-medium">{provider.rating}</span>
                       <span>({provider.reviewCount} reviews)</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
+                      <BusinessIcons.MapPin className="w-4 h-4" / />
                       <span>{provider.location}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
+                      <OptimizedIcon name="Clock" className="w-4 h-4" />
                       <span>Responds in {provider.responseTime}</span>
                     </div>
                   </div>
@@ -219,7 +208,7 @@ export default function ProviderDetailPage() {
                     <div className="flex items-center gap-2 mb-2">
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
-                          <Star
+                          <OptimizedIcon name="Star"
                             key={i}
                             className={`w-4 h-4 ${
                               i < review.rating
@@ -259,19 +248,19 @@ export default function ProviderDetailPage() {
 
               <div className="space-y-4 mb-6">
                 <Button className="w-full" size="lg">
-                  <Calendar className="w-4 h-4 mr-2" />
+                  <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
                   Book Now
                 </Button>
 
                 <Button variant="outline" className="w-full" size="lg">
-                  <MessageSquare className="w-4 h-4 mr-2" />
+                  <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-2" />
                   Message
                 </Button>
               </div>
 
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-gray-400" />
+                  <OptimizedIcon name="Phone" className="w-4 h-4 text-gray-400" />
                   <span>Free phone consultation</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -279,7 +268,7 @@ export default function ProviderDetailPage() {
                   <span>Satisfaction guaranteed</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-gray-400" />
+                  <OptimizedIcon name="Shield" className="w-4 h-4 text-gray-400" />
                   <span>Fully insured & bonded</span>
                 </div>
               </div>

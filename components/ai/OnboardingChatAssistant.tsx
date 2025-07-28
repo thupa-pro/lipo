@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -7,27 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import {
-  MessageCircle,
-  Send,
-  Minimize2,
-  Maximize2,
-  X,
-  Sparkles,
-  Bot,
-  Lightbulb, ArrowRight,
-  Mic,
-  MicOff,
-  Volume2,
-  VolumeX,
-  RotateCcw,
-  MapPin,
-  Briefcase,
-  Users,
-  Settings,
-  HelpCircle,
-  Calendar
-} from "lucide-react";
+import { MessageCircle, Send, Minimize2, Maximize2, X, Sparkles, Bot, Lightbulb, Mic, MicOff, Volume2, VolumeX, RotateCcw, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -14,19 +15,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Bell,
-  Mail,
-  Smartphone,
-  MessageSquare,
-  CreditCard,
-  Star,
-  Calendar,
-  Volume2,
-  VolumeX,
-  Settings,
-  Clock
-} from "lucide-react";
+import { Bell, Smartphone, CreditCard, Volume2, VolumeX } from "lucide-react";
 
 interface NotificationSettingsProps {
   onUpdate: () => void;
@@ -195,7 +184,7 @@ export function NotificationSettings({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center justify-between p-3 border rounded-lg">
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-blue-500" />
+                <OptimizedIcon name="Mail" className="w-4 h-4 text-blue-500" />
                 <span className="font-medium">Email</span>
               </div>
               <Badge
@@ -224,7 +213,7 @@ export function NotificationSettings({
 
             <div className="flex items-center justify-between p-3 border rounded-lg">
               <div className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-purple-500" />
+                <OptimizedIcon name="MessageSquare" className="w-4 h-4 text-purple-500" />
                 <span className="font-medium">SMS</span>
               </div>
               <Badge
@@ -241,7 +230,7 @@ export function NotificationSettings({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Mail className="w-5 h-5" />
+            <OptimizedIcon name="Mail" className="w-5 h-5" />
             Email Notifications
           </CardTitle>
         </CardHeader>
@@ -491,7 +480,7 @@ export function NotificationSettings({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5" />
+            <OptimizedIcon name="MessageSquare" className="w-5 h-5" />
             SMS Notifications
           </CardTitle>
         </CardHeader>
@@ -570,7 +559,7 @@ export function NotificationSettings({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Clock className="w-5 h-5" />
+            <OptimizedIcon name="Clock" className="w-5 h-5" />
             Frequency & Timing
           </CardTitle>
         </CardHeader>

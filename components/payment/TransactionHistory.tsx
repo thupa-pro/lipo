@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useMemo } from "react";
@@ -20,28 +21,7 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import {
-  ArrowUpRight,
-  ArrowDownLeft,
-  Search,
-  Filter,
-  Download,
-  RefreshCw,
-  Eye,
-  Receipt,
-  CreditCard,
-  Wallet,
-  DollarSign,
-  TrendingUp,
-  TrendingDown,
-  Calendar,
-  CheckCircle,
-  AlertTriangle,
-  X,
-  ExternalLink,
-  FileText,
-  Shield
-} from "lucide-react";
+import { ArrowUpRight, ArrowDownLeft, Filter, Download, RefreshCw, Eye, Receipt, CreditCard, Wallet, TrendingUp, TrendingDown, X, ExternalLink, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -373,11 +353,11 @@ export function TransactionHistory({
       case "refund":
         return <ArrowUpRight className="w-4 h-4 text-yellow-600" />;
       case "fee":
-        return <DollarSign className="w-4 h-4 text-purple-600" />;
+        return <BusinessIcons.DollarSign className="w-4 h-4 text-purple-600" / />;
       case "chargeback":
-        return <AlertTriangle className="w-4 h-4 text-red-600" />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-red-600" / />;
       case "dispute_resolution":
-        return <Shield className="w-4 h-4 text-orange-600" />;
+        return <OptimizedIcon name="Shield" className="w-4 h-4 text-orange-600" />;
       default:
         return <CreditCard className="w-4 h-4 text-gray-600" />;
     }
@@ -539,10 +519,10 @@ export function TransactionHistory({
                     : "bg-red-100 dark:bg-red-900/20",
                 )}
               >
-                <DollarSign
+                <BusinessIcons.DollarSign
                   className={cn(
                     "w-6 h-6",
-                    netAmount >= 0 ? "text-green-600" : "text-red-600",
+                    netAmount  />= 0 ? "text-green-600" : "text-red-600",
                   )}
                 />
               </div>
@@ -574,7 +554,7 @@ export function TransactionHistory({
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" / />
               <Input
                 placeholder="Search transactions..."
                 value={searchQuery}
@@ -613,7 +593,7 @@ export function TransactionHistory({
 
               <Select value={dateRange} onValueChange={setDateRange}>
                 <SelectTrigger className="w-32">
-                  <Calendar className="w-4 h-4 mr-2" />
+                  <BusinessIcons.Calendar className="w-4 h-4 mr-2" / />
                   <SelectValue placeholder="Date" />
                 </SelectTrigger>
                 <SelectContent>

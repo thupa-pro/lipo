@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
@@ -22,26 +23,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  AlertTriangle,
-  XCircle,
-  Download,
-  Upload,
-  Search,
-  BarChart3,
-  Globe,
-  Code,
-  Eye,
-  Edit,
-  Save,
-  RefreshCw,
-  AlertCircle,
-  TrendingUp,
-  Users,
-  Zap,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { XCircle, Download, Upload, BarChart3, Globe, Code, Eye, Edit, Save, RefreshCw, AlertCircle, TrendingUp, Zap } from "lucide-react";
 import { locales, localeNames, type Locale } from "@/lib/i18n/config";
 import {
   TranslationAnalytics,
@@ -341,7 +323,7 @@ export function TranslationManager() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Completed
@@ -369,7 +351,7 @@ export function TranslationManager() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-yellow-600" />
+              <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" / />
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Needs Review
@@ -414,7 +396,7 @@ export function TranslationManager() {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" / />
                 <Input
                   placeholder="Search translations..."
                   value={searchTerm}
@@ -598,7 +580,7 @@ function TranslationRow({
           {currentTranslation && (
             <div className="flex items-center gap-4 text-xs text-gray-500">
               <div className="flex items-center gap-1">
-                <Clock className="w-3 h-3" />
+                <OptimizedIcon name="Clock" className="w-3 h-3" />
                 <span>
                   Updated {currentTranslation.lastUpdated.toLocaleDateString()}
                 </span>
@@ -737,7 +719,7 @@ function QualityCheckView({
         {issues.length === 0 && (
           <Card>
             <CardContent className="p-8 text-center">
-              <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" / />
               <h3 className="text-lg font-semibold mb-2">No Issues Found!</h3>
               <p className="text-gray-600">
                 All translations for {localeNames[locale]} look good.

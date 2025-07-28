@@ -1,22 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  CheckCircle,
-  ArrowRight,
-  MapPin,
-  Calendar,
-  CreditCard,
-  MessageSquare,
-  AlertCircle,
-  Truck,
-  Home,
-  FileText,
-  Clock
-} from "lucide-react";
+import { CreditCard, AlertCircle, Truck, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProgressStep {
@@ -371,10 +360,10 @@ export function ProgressTracker({
 
                 {/* Status indicator */}
                 {isCompleted && (
-                  <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                  <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" / />
                 )}
                 {isCurrent && (
-                  <Clock className="w-5 h-5 text-blue-500 flex-shrink-0 animate-spin" />
+                  <OptimizedIcon name="Clock" className="w-5 h-5 text-blue-500 flex-shrink-0 animate-spin" />
                 )}
               </div>
             );
@@ -384,12 +373,12 @@ export function ProgressTracker({
         {/* Action Buttons */}
         <div className="mt-6 flex gap-3">
           <Button variant="outline" size="sm" className="flex-1">
-            <MessageSquare className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-2" />
             Contact Provider
           </Button>
           {transaction.status === "in-progress" && (
             <Button variant="outline" size="sm">
-              <MapPin className="w-4 h-4 mr-2" />
+              <BusinessIcons.MapPin className="w-4 h-4 mr-2" / />
               Track Live
             </Button>
           )}

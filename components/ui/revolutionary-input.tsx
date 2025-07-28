@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { Mic, MicOff, Eye, EyeOff, Check, X, Loader2 } from 'lucide-react'
+import { Mic, MicOff, Eye, EyeOff, Check, X } from "lucide-react"
 
 interface RevolutionaryInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string
@@ -285,7 +286,7 @@ const RevolutionaryInput: React.FC<RevolutionaryInputProps> = ({
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {/* Loading */}
           {loading && (
-            <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
+            <UIIcons.Loader2 className="w-4 h-4 animate-spin text-gray-400" / />
           )}
 
           {/* Success */}

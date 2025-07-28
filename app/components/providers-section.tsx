@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -7,15 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
-import {
-  MapPin,
-  ArrowRight,
-  Award,
-  CheckCircle,
-  Star,
-  Clock,
-  ThumbsUp
-} from "lucide-react";
+import { Award, ThumbsUp } from "lucide-react";
 
 const featuredProviders = [
   {
@@ -97,7 +90,7 @@ export default function ProvidersSection() {
               {provider.verified && (
                 <div className="absolute top-4 right-4">
                   <div className="flex items-center gap-1 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <CheckCircle className="w-3 h-3 text-green-500" />
+                    <UIIcons.CheckCircle className="w-3 h-3 text-green-500" / />
                     <span className="text-xs font-semibold">Verified</span>
                   </div>
                 </div>
@@ -105,7 +98,7 @@ export default function ProvidersSection() {
 
               {/* Rating Badge */}
               <div className="absolute bottom-4 left-4 flex items-center gap-1 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full px-3 py-1">
-                <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                <OptimizedIcon name="Star" className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                 <span className="text-xs font-bold">{provider.rating}</span>
               </div>
             </div>
@@ -174,7 +167,7 @@ export default function ProvidersSection() {
               {/* Location & Jobs */}
               <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-6">
                 <div className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4" />
+                  <BusinessIcons.MapPin className="w-4 h-4" / />
                   {provider.location}
                 </div>
                 <div className="flex items-center gap-1">
@@ -188,7 +181,7 @@ export default function ProvidersSection() {
                 onClick={() => router.push(`/providers/${provider.id}`)}
               >
                 View Profile
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Button>
             </div>
           </PremiumCard>
@@ -204,7 +197,7 @@ export default function ProvidersSection() {
           className="hover:bg-blue-50 dark:hover:bg-blue-950/20"
         >
           View All Elite Providers
-          <ArrowRight className="w-5 h-5 ml-2" />
+          <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
         </Button>
       </div>
     </PremiumSection>

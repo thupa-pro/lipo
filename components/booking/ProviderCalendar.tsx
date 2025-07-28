@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -12,16 +13,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from "@/components/ui/dialog";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar as CalendarIcon,
-  User,
-  MapPin,
-  Settings,
-  Plus,
-  X
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Plus, X } from "lucide-react";
 import {
   CalendarDay,
   Booking,
@@ -309,7 +301,7 @@ export function ProviderCalendar({
               <Dialog open={showSettings} onOpenChange={setShowSettings}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm">
-                    <Settings className="w-4 h-4 mr-2" />
+                    <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
                     Availability
                   </Button>
                 </DialogTrigger>

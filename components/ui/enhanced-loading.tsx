@@ -1,19 +1,8 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React from "react";
-import {
-  Loader2,
-  Sparkles,
-  Brain,
-  CheckCircle,
-  AlertCircle,
-  Info,
-  XCircle,
-  Search,
-  Calendar,
-  Users,
-  Heart
-} from "lucide-react";
+import { Sparkles, Brain, AlertCircle, Info, XCircle, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LoadingSpinnerProps {
@@ -86,9 +75,9 @@ export function LoadingSpinner({
   }
 
   return (
-    <Loader2
+    <UIIcons.Loader2
       className={cn("animate-spin text-blue-600", sizeClasses[size], className)}
-    />
+    / />
   );
 }
 
@@ -142,7 +131,7 @@ export function LoadingCard({
                 style={{ animationDelay: `${index * 0.5}s` }}
               >
                 <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center">
-                  <CheckCircle className="w-4 h-4 text-white" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-white" / />
                 </div>
                 <span className="text-sm text-blue-800 dark:text-blue-200">
                   {step}
@@ -165,7 +154,7 @@ export function LoadingCard({
       >
         <div className="text-center space-y-4">
           <div className="animate-pulse">
-            <Search className="w-12 h-12 text-blue-600 mx-auto" />
+            <NavigationIcons.Search className="w-12 h-12 text-blue-600 mx-auto" / />
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white">

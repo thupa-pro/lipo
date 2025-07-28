@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -14,23 +15,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  CreditCard,
-  Download,
-  AlertCircle,
-  CheckCircle,
-  DollarSign,
-  TrendingUp,
-  Receipt,
-  Settings,
-  Star,
-  Shield,
-  Calendar,
-  ArrowUpRight,
-  ExternalLink,
-  RefreshCw,
-  Zap
-} from "lucide-react";
+import { CreditCard, Download, AlertCircle, TrendingUp, Receipt, ArrowUpRight, ExternalLink, RefreshCw, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
@@ -222,7 +207,7 @@ export default function BillingPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Current Plan</CardTitle>
-            <Star className="h-4 w-4 text-muted-foreground" />
+            <OptimizedIcon name="Star" className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -243,7 +228,7 @@ export default function BillingPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Spend</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -262,7 +247,7 @@ export default function BillingPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Next Billing</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -301,7 +286,7 @@ export default function BillingPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Shield className="h-5 w-5" />
+              <OptimizedIcon name="Shield" className="h-5 w-5" />
               Current Subscription
             </CardTitle>
           </CardHeader>
@@ -447,7 +432,7 @@ export default function BillingPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Settings className="h-5 w-5" />
+                  <NavigationIcons.Settings className="h-5 w-5" / />
                   Quick Actions
                 </CardTitle>
               </CardHeader>
@@ -466,7 +451,7 @@ export default function BillingPage() {
                     View Billing History
                   </Button>
                   <Button className="w-full justify-start" variant="outline">
-                    <Star className="mr-2 h-4 w-4" />
+                    <OptimizedIcon name="Star" className="mr-2 h-4 w-4" />
                     Upgrade Plan
                     <ArrowUpRight className="ml-auto h-4 w-4" />
                   </Button>

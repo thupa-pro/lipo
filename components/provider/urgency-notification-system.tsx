@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState, useEffect } from "react"
@@ -7,17 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
-import {
-  Bell,
-  Zap,
-  DollarSign,
-  MapPin,
-  Star,
-  Settings,
-  TrendingUp,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { Bell, Zap, TrendingUp } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 
 interface UrgentJob {
@@ -184,7 +175,7 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Response Rate</p>
                 <p className="text-2xl font-bold">{stats.responseRate}%</p>
               </div>
-              <CheckCircle className="w-8 h-8 text-success-500" />
+              <UIIcons.CheckCircle className="w-8 h-8 text-success-500" / />
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
@@ -200,7 +191,7 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Avg Response</p>
                 <p className="text-2xl font-bold">{stats.avgResponseTime}</p>
               </div>
-              <Clock className="w-8 h-8 text-orange-500" />
+              <OptimizedIcon name="Clock" className="w-8 h-8 text-orange-500" />
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
@@ -216,7 +207,7 @@ export default function UrgencyNotificationSystem() {
                 <p className="text-sm text-muted-foreground">Earnings</p>
                 <p className="text-2xl font-bold">${stats.earnings}</p>
               </div>
-              <DollarSign className="w-8 h-8 text-success-500" />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-success-500" / />
             </div>
             <div className="mt-2 flex items-center text-sm">
               <TrendingUp className="w-4 h-4 mr-1 text-success-500" />
@@ -254,18 +245,18 @@ export default function UrgencyNotificationSystem() {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-muted-foreground mb-3">
                       <div className="flex items-center">
-                        <DollarSign className="w-4 h-4 mr-1" />${job.budget}
+                        <BusinessIcons.DollarSign className="w-4 h-4 mr-1" / />${job.budget}
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-1" />
+                        <BusinessIcons.MapPin className="w-4 h-4 mr-1" / />
                         {job.distance} mi
                       </div>
                       <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
+                        <OptimizedIcon name="Clock" className="w-4 h-4 mr-1" />
                         {job.estimatedDuration}
                       </div>
                       <div className="flex items-center">
-                        <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
+                        <OptimizedIcon name="Star" className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                         {job.customerRating}
                       </div>
                     </div>
@@ -297,7 +288,7 @@ export default function UrgencyNotificationSystem() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <Settings className="w-5 h-5 mr-2" />
+            <NavigationIcons.Settings className="w-5 h-5 mr-2" / />
             Notification Settings
           </CardTitle>
           <CardDescription>Customize your alert preferences for better matches</CardDescription>

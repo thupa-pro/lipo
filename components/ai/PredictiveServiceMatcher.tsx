@@ -1,33 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Brain,
-  Target,
-  TrendingUp,
-  MapPin,
-  Sparkles,
-  Eye,
-  Calendar,
-  Home,
-  Car,
-  Utensils,
-  Wrench,
-  Paintbrush,
-  Scissors,
-  Heart,
-  DollarSign,
-  ArrowRight,
-  RefreshCw,
-  Settings,
-  Bell,
-  XCircle,
-  Info,
-  Clock,
-  Star,
-  User
-} from "lucide-react";
+import { Brain, Target, TrendingUp, Sparkles, Eye, Car, Utensils, Wrench, Paintbrush, Scissors, Heart, RefreshCw, Bell, XCircle, Info } from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -404,15 +380,15 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-blue-600" />
+                <BusinessIcons.MapPin className="h-4 w-4 text-blue-600" / />
                 <span>{userContext.location}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Clock className="h-4 w-4 text-green-600" />
+                <OptimizedIcon name="Clock" className="h-4 w-4 text-green-600" />
                 <span>{userContext.timeOfDay}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Calendar className="h-4 w-4 text-purple-600" />
+                <BusinessIcons.Calendar className="h-4 w-4 text-purple-600" / />
                 <span>{userContext.dayOfWeek}</span>
               </div>
               <div className="flex items-center space-x-2">
@@ -453,7 +429,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                     
                     <div className="text-right">
                       <div className="flex items-center space-x-1 mb-1">
-                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                        <OptimizedIcon name="Star" className="h-4 w-4 text-yellow-500 fill-current" />
                         <span className="text-sm font-medium">{service.rating}</span>
                       </div>
                       <div className="text-lg font-bold text-green-600">
@@ -484,7 +460,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
 
                   {/* Time Window */}
                   <div className="flex items-center space-x-2 mb-4">
-                    <Clock className="h-4 w-4 text-gray-500" />
+                    <OptimizedIcon name="Clock" className="h-4 w-4 text-gray-500" />
                     <span className="text-sm">Best time to book: {service.timeWindow}</span>
                   </div>
 
@@ -540,7 +516,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                   {/* Social Proof */}
                   <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
                     <div className="flex items-center space-x-1">
-                      <User className="h-4 w-4" />
+                      <NavigationIcons.User className="h-4 w-4" / />
                       <span>{service.similarUsers} similar users booked this</span>
                     </div>
                     <div className="flex items-center space-x-1">
@@ -555,7 +531,7 @@ const PredictiveServiceMatcher: React.FC<PredictiveServiceMatcherProps> = ({
                       onClick={() => onServiceSelect(service)}
                       className="flex-1"
                     >
-                      <Calendar className="h-4 w-4 mr-2" />
+                      <BusinessIcons.Calendar className="h-4 w-4 mr-2" / />
                       Book Now
                     </Button>
                     <Button

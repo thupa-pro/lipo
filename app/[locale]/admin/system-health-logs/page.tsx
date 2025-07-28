@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -11,21 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import {
-  XCircle,
-  AlertTriangle,
-  Database,
-  Cloud,
-  Server,
-  ArrowLeft,
-  ArrowRight,
-  RefreshCcw,
-  ExternalLink,
-  FileText,
-  CheckCircle,
-  Clock,
-  Zap
-} from "lucide-react";
+import { XCircle, Database, Cloud, Server, RefreshCcw, ExternalLink, FileText, Zap } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 import {
@@ -275,7 +262,7 @@ export default function SystemHealthLogsPage() {
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
               Back to Admin
             </Link>
           </Button>
@@ -301,7 +288,7 @@ export default function SystemHealthLogsPage() {
                   All systems nominal
                 </p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600 opacity-30" />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" / />
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-yellow-50 dark:bg-yellow-950/20">
@@ -317,7 +304,7 @@ export default function SystemHealthLogsPage() {
                   Minor issues detected
                 </p>
               </div>
-              <AlertTriangle className="w-12 h-12 text-yellow-600 opacity-30" />
+              <UIIcons.AlertTriangle className="w-12 h-12 text-yellow-600 opacity-30" / />
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-red-50 dark:bg-red-950/20">
@@ -342,7 +329,7 @@ export default function SystemHealthLogsPage() {
         <Card className="shadow-lg dark:bg-card">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
-              <Clock className="w-6 h-6 text-primary" />
+              <OptimizedIcon name="Clock" className="w-6 h-6 text-primary" />
               Real-time Performance Metrics
             </CardTitle>
             <CardDescription>
@@ -491,7 +478,7 @@ export default function SystemHealthLogsPage() {
               className="shadow-md hover:shadow-lg transition-all"
             >
               <Link href="/admin">
-                Back to Admin Dashboard <ArrowRight className="w-4 h-4 ml-2" />
+                Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Link>
             </Button>
           </CardContent>

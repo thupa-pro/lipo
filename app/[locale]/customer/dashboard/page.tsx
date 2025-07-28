@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -9,28 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AgentCommandInput from "@/components/ai/AgentCommandInput";
 import SmartListingCard from "@/components/ai/SmartListingCard";
-import {
-  Search,
-  MapPin,
-  Calendar,
-  Bell,
-  LogOut,
-  Heart,
-  CheckCircle,
-  ArrowRight,
-  Home,
-  Car,
-  Wrench,
-  Camera,
-  Laptop,
-  Phone,
-  Sparkles,
-  Bot,
-  Clock,
-  Star,
-  User,
-  Zap
-} from "lucide-react";
+import { Bell, LogOut, Heart, Car, Wrench, Camera, Laptop, Sparkles, Bot, Zap } from "lucide-react";
 
 export default function CustomerDashboard() {
   const { data: session } = useSession();
@@ -105,7 +85,7 @@ export default function CustomerDashboard() {
             {/* Search */}
             <div className="flex-1 max-w-lg mx-8">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" / />
                 <Input
                   placeholder="Search for services..."
                   value={searchQuery}
@@ -204,7 +184,7 @@ export default function CustomerDashboard() {
                     12
                   </p>
                 </div>
-                <Calendar className="w-8 h-8 text-blue-600" />
+                <BusinessIcons.Calendar className="w-8 h-8 text-blue-600" / />
               </div>
             </CardContent>
           </Card>
@@ -218,7 +198,7 @@ export default function CustomerDashboard() {
                   </p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">3</p>
                 </div>
-                <Clock className="w-8 h-8 text-orange-600" />
+                <OptimizedIcon name="Clock" className="w-8 h-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -248,7 +228,7 @@ export default function CustomerDashboard() {
                     4.8
                   </p>
                 </div>
-                <Star className="w-8 h-8 text-yellow-600" />
+                <OptimizedIcon name="Star" className="w-8 h-8 text-yellow-600" />
               </div>
             </CardContent>
           </Card>
@@ -270,7 +250,7 @@ export default function CustomerDashboard() {
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                          <User className="w-6 h-6 text-white" />
+                          <NavigationIcons.User className="w-6 h-6 text-white" / />
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -293,7 +273,7 @@ export default function CustomerDashboard() {
                         </p>
                         {booking.rating && (
                           <div className="flex items-center gap-1 mt-1">
-                            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                            <OptimizedIcon name="Star" className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                             <span className="text-xs text-gray-600 dark:text-gray-400">
                               {booking.rating}
                             </span>
@@ -305,7 +285,7 @@ export default function CustomerDashboard() {
                 </div>
                 <Button variant="outline" className="w-full mt-4">
                   View All Bookings
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
               </CardContent>
             </Card>
@@ -336,7 +316,7 @@ export default function CustomerDashboard() {
                 </div>
                 <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500">
                   Explore All Services
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
               </CardContent>
             </Card>
@@ -352,11 +332,11 @@ export default function CustomerDashboard() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
-                  <Search className="w-6 h-6 text-blue-600" />
+                  <NavigationIcons.Search className="w-6 h-6 text-blue-600" / />
                   <span>Find Services</span>
                 </Button>
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
-                  <Calendar className="w-6 h-6 text-green-600" />
+                  <BusinessIcons.Calendar className="w-6 h-6 text-green-600" / />
                   <span>Schedule Service</span>
                 </Button>
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
@@ -364,7 +344,7 @@ export default function CustomerDashboard() {
                   <span>View Favorites</span>
                 </Button>
                 <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
-                  <User className="w-6 h-6 text-purple-600" />
+                  <NavigationIcons.User className="w-6 h-6 text-purple-600" / />
                   <span>Edit Profile</span>
                 </Button>
               </div>

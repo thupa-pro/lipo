@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -8,16 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AccessibilityAudit } from "@/components/accessibility/accessibility-audit";
 import { PerformanceOptimizer } from "@/components/performance/performance-optimizer";
-import {
-  Eye,
-  CheckCircle,
-  TrendingUp,
-  Activity,
-  BarChart3,
-  Gauge,
-  Zap,
-  Shield
-} from "lucide-react";
+import { Eye, TrendingUp, Activity, BarChart3, Gauge, Zap } from "lucide-react";
 
 export default function AccessibilityPerformancePage() {
   const [accessibilityScore, setAccessibilityScore] = useState(0);
@@ -304,7 +296,7 @@ export default function AccessibilityPerformancePage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Button variant="outline" className="h-16 flex-col">
-                <Shield className="w-6 h-6 mb-2" />
+                <OptimizedIcon name="Shield" className="w-6 h-6 mb-2" />
                 Security Audit
               </Button>
               <Button variant="outline" className="h-16 flex-col">
@@ -316,7 +308,7 @@ export default function AccessibilityPerformancePage() {
                 Load Testing
               </Button>
               <Button variant="outline" className="h-16 flex-col">
-                <CheckCircle className="w-6 h-6 mb-2" />
+                <UIIcons.CheckCircle className="w-6 h-6 mb-2" / />
                 Compliance Check
               </Button>
             </div>

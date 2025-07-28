@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -13,22 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { ReviewModal } from "@/components/reviews/ReviewModal";
-import {
-  Briefcase,
-  Plus,
-  Search,
-  Filter,
-  MapPin,
-  Star,
-  Eye,
-  Edit3,
-  DollarSign,
-  Users,
-  CheckCircle,
-  Clock,
-  MessageSquare,
-  Trash2
-} from "lucide-react";
+import { Plus, Filter, Eye, Edit3, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 export default function RequestsPage() {
@@ -194,7 +180,7 @@ export default function RequestsPage() {
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" / />
                 <Input
                   placeholder="Search your requests..."
                   className="pl-10"
@@ -222,7 +208,7 @@ export default function RequestsPage() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center">
-                  <Briefcase className="w-6 h-6 text-blue-600" />
+                  <BusinessIcons.Briefcase className="w-6 h-6 text-blue-600" / />
                 </div>
               </div>
             </CardContent>
@@ -240,7 +226,7 @@ export default function RequestsPage() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-blue-600" />
+                  <OptimizedIcon name="Clock" className="w-6 h-6 text-blue-600" />
                 </div>
               </div>
             </CardContent>
@@ -258,7 +244,7 @@ export default function RequestsPage() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/20 rounded-xl flex items-center justify-center">
-                  <Star className="w-6 h-6 text-emerald-600" />
+                  <OptimizedIcon name="Star" className="w-6 h-6 text-emerald-600" />
                 </div>
               </div>
             </CardContent>
@@ -276,7 +262,7 @@ export default function RequestsPage() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-xl flex items-center justify-center">
-                  <Users className="w-6 h-6 text-purple-600" />
+                  <NavigationIcons.Users className="w-6 h-6 text-purple-600" / />
                 </div>
               </div>
             </CardContent>
@@ -309,23 +295,23 @@ export default function RequestsPage() {
                     </p>
                     <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
                       <span className="flex items-center gap-1">
-                        <Briefcase className="w-4 h-4" />
+                        <BusinessIcons.Briefcase className="w-4 h-4" / />
                         {request.category}
                       </span>
                       <span className="flex items-center gap-1">
-                        <DollarSign className="w-4 h-4" />
+                        <BusinessIcons.DollarSign className="w-4 h-4" / />
                         {request.budget}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
+                        <BusinessIcons.MapPin className="w-4 h-4" / />
                         {request.location}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                        <OptimizedIcon name="Clock" className="w-4 h-4" />
                         {request.posted}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Users className="w-4 h-4" />
+                        <NavigationIcons.Users className="w-4 h-4" / />
                         {request.responses} responses
                       </span>
                     </div>
@@ -366,7 +352,7 @@ export default function RequestsPage() {
                             {request.provider.name}
                           </p>
                           <div className="flex items-center gap-1">
-                            <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                            <OptimizedIcon name="Star" className="w-3 h-3 text-yellow-500 fill-current" />
                             <span className="text-sm text-slate-600 dark:text-slate-400">
                               {request.provider.rating}
                             </span>
@@ -381,7 +367,7 @@ export default function RequestsPage() {
                             onClick={() => handleLeaveReview(request)}
                             className="flex items-center gap-1"
                           >
-                            <MessageSquare className="w-3 h-3" />
+                            <OptimizedIcon name="MessageSquare" className="w-3 h-3" />
                             Leave Review
                           </Button>
                           <Button
@@ -389,7 +375,7 @@ export default function RequestsPage() {
                             size="sm"
                             className="text-blue-600"
                           >
-                            <CheckCircle className="w-3 h-3 mr-1" />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                             View Receipt
                           </Button>
                         </div>
@@ -406,7 +392,7 @@ export default function RequestsPage() {
         {requests.length === 0 && (
           <Card className="border-0 shadow-sm">
             <CardContent className="p-12 text-center">
-              <Briefcase className="w-16 h-16 text-slate-400 mx-auto mb-4" />
+              <BusinessIcons.Briefcase className="w-16 h-16 text-slate-400 mx-auto mb-4" / />
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                 No service requests yet
               </h3>

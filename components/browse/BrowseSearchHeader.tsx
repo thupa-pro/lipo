@@ -1,8 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, MapPin, Grid3X3, List, Loader2 } from "lucide-react"
+import { Grid3X3, List } from "lucide-react"
 import React from "react"
 
 interface BrowseSearchHeaderProps {
@@ -34,7 +35,7 @@ export default function BrowseSearchHeader({
           <div className="flex-1">
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                 <Input
                   placeholder="Search services or providers..."
                   value={searchQuery}
@@ -43,7 +44,7 @@ export default function BrowseSearchHeader({
                 />
               </div>
               <div className="relative flex-1">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <BusinessIcons.MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                 <Input
                   placeholder="Location"
                   value={location}
@@ -52,7 +53,7 @@ export default function BrowseSearchHeader({
                 />
               </div>
               <Button onClick={handleSearch} disabled={loading} className="rounded-md shadow-sm transition-all hover:shadow-md">
-                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                {loading ? <UIIcons.Loader2 className="w-4 h-4 animate-spin" / /> : <NavigationIcons.Search className="w-4 h-4" / />}
               </Button>
             </div>
           </div>

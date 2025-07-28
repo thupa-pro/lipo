@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -7,18 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  CreditCard,
-  Calendar,
-  TrendingUp,
-  AlertCircle,
-  ExternalLink,
-  Download,
-  Settings,
-  Crown,
-  BarChart3,
-  CheckCircle
-} from "lucide-react";
+import { CreditCard, TrendingUp, AlertCircle, ExternalLink, Download, Crown, BarChart3 } from "lucide-react";
 import { format } from "date-fns";
 import {
   SubscriptionDashboard, as DashboardData,
@@ -318,7 +308,7 @@ export function SubscriptionDashboard() {
 
         {renderUsageCard(
           "Monthly Bookings",
-          <Calendar className="h-4 w-4 text-muted-foreground" />,
+          <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />,
           "max_bookings_per_month",
         )}
 
@@ -344,7 +334,7 @@ export function SubscriptionDashboard() {
                 <CardTitle className="text-sm font-medium">
                   Completed Bookings
                 </CardTitle>
-                <CheckCircle className="h-4 w-4 text-muted-foreground" />
+                <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" / />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">
@@ -417,12 +407,12 @@ export function SubscriptionDashboard() {
                 >
                   {isCreatingPortal ? (
                     <>
-                      <Settings className="w-4 h-4 mr-2 animate-spin" />
+                      <NavigationIcons.Settings className="w-4 h-4 mr-2 animate-spin" / />
                       Loading...
                     </>
                   ) : (
                     <>
-                      <Settings className="w-4 h-4 mr-2" />
+                      <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
                       Manage Billing
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </>

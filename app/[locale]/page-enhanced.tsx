@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,24 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggleButton } from "@/components/ui/theme-toggle";
-import {
-  Sparkles,
-  ArrowRight,
-  Star,
-  Users,
-  Shield,
-  Zap,
-  Globe,
-  Heart,
-  CheckCircle,
-  Brain,
-  Clock,
-  Award,
-  TrendingUp,
-  MapPin,
-  Phone,
-  MessageSquare
-} from "lucide-react";
+import { Sparkles, Zap, Globe, Heart, Brain, Award, TrendingUp } from "lucide-react";
 import { COPY } from "@/lib/content/copy";
 
 export default function EnhancedHomePage() {
@@ -98,7 +82,7 @@ export default function EnhancedHomePage() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
             >
               Dashboard
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
             </Button>
           ) : (
             <>
@@ -110,7 +94,7 @@ export default function EnhancedHomePage() {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
               >
                 Get Started
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Button>
             </>
           )}
@@ -129,7 +113,7 @@ export default function EnhancedHomePage() {
             <span className="text-sm font-medium text-blue-900 dark:text-blue-100">
               {COPY.homepage.hero.trustSignal}
             </span>
-            <CheckCircle className="w-4 h-4 text-emerald-500" />
+            <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
           </div>
 
           <h1 className="text-5xl md:text-7xl font-black mb-6 leading-none">
@@ -161,7 +145,7 @@ export default function EnhancedHomePage() {
               onClick={() => router.push(`/${locale}/become-provider`)}
               className="text-lg px-8 py-4 rounded-2xl font-semibold border-2 border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300"
             >
-              <Users className="w-5 h-5 mr-2" />
+              <NavigationIcons.Users className="w-5 h-5 mr-2" / />
               {COPY.homepage.hero.ctaSecondary}
             </Button>
           </div>

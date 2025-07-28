@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -23,29 +24,7 @@ import {
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import {
-  Share2,
-  Copy,
-  DollarSign,
-  Users,
-  TrendingUp,
-  Gift,
-  Calendar,
-  ExternalLink,
-  Mail,
-  Facebook,
-  Twitter,
-  QrCode,
-  Download,
-  Trophy,
-  CheckCircle,
-  Award,
-  Sparkles,
-  Clock,
-  MessageSquare,
-  Target,
-  Zap
-} from "lucide-react";
+import { Share2, Copy, TrendingUp, Gift, ExternalLink, Facebook, Twitter, QrCode, Download, Trophy, Award, Sparkles, Target, Zap } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
 
@@ -233,7 +212,7 @@ export default function ReferralDashboard() {
       {/* Header */}
       <div className="text-center space-y-2">
         <div className="flex items-center justify-center gap-2">
-          <Users className="h-8 w-8 text-blue-600" />
+          <NavigationIcons.Users className="h-8 w-8 text-blue-600" / />
           <h1 className="text-3xl font-bold">Referral Dashboard</h1>
         </div>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -247,7 +226,7 @@ export default function ReferralDashboard() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center space-x-2">
-              <Users className="h-8 w-8 text-blue-600" />
+              <NavigationIcons.Users className="h-8 w-8 text-blue-600" / />
               <div>
                 <p className="text-2xl font-bold">{stats.totalReferrals}</p>
                 <p className="text-sm text-gray-600">Total Referrals</p>
@@ -259,7 +238,7 @@ export default function ReferralDashboard() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center space-x-2">
-              <DollarSign className="h-8 w-8 text-green-600" />
+              <BusinessIcons.DollarSign className="h-8 w-8 text-green-600" / />
               <div>
                 <p className="text-2xl font-bold">${stats.totalEarnings.toFixed(2)}</p>
                 <p className="text-sm text-gray-600">Total Earnings</p>
@@ -375,7 +354,7 @@ export default function ReferralDashboard() {
                   
                   <div className="grid grid-cols-2 gap-3">
                     <Button onClick={handleShareEmail} variant="outline" className="w-full">
-                      <Mail className="h-4 w-4 mr-2" />
+                      <OptimizedIcon name="Mail" className="h-4 w-4 mr-2" />
                       Email
                     </Button>
                     <Button onClick={() => handleShareSocial("facebook")} variant="outline" className="w-full">
@@ -387,7 +366,7 @@ export default function ReferralDashboard() {
                       Twitter
                     </Button>
                     <Button onClick={() => handleShareSocial("linkedin")} variant="outline" className="w-full">
-                      <MessageSquare className="h-4 w-4 mr-2" />
+                      <OptimizedIcon name="MessageSquare" className="h-4 w-4 mr-2" />
                       LinkedIn
                     </Button>
                   </div>
@@ -403,7 +382,7 @@ export default function ReferralDashboard() {
               <p className="text-2xl font-bold text-blue-600">1,234</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
-              <Users className="h-6 w-6 mx-auto text-green-600 mb-2" />
+              <NavigationIcons.Users className="h-6 w-6 mx-auto text-green-600 mb-2" / />
               <p className="text-sm font-medium">Signups</p>
               <p className="text-2xl font-bold text-green-600">156</p>
             </div>
@@ -413,7 +392,7 @@ export default function ReferralDashboard() {
               <p className="text-2xl font-bold text-purple-600">98</p>
             </div>
             <div className="p-4 bg-orange-50 rounded-lg">
-              <DollarSign className="h-6 w-6 mx-auto text-orange-600 mb-2" />
+              <BusinessIcons.DollarSign className="h-6 w-6 mx-auto text-orange-600 mb-2" / />
               <p className="text-sm font-medium">Avg. Value</p>
               <p className="text-2xl font-bold text-orange-600">${stats.lifetimeValue}</p>
             </div>
@@ -496,7 +475,7 @@ export default function ReferralDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card>
               <CardContent className="p-6 text-center">
-                <DollarSign className="h-12 w-12 mx-auto text-green-600 mb-4" />
+                <BusinessIcons.DollarSign className="h-12 w-12 mx-auto text-green-600 mb-4" / />
                 <p className="text-3xl font-bold text-green-600">${stats.totalEarnings.toFixed(2)}</p>
                 <p className="text-sm text-gray-600">Total Earned</p>
               </CardContent>
@@ -504,7 +483,7 @@ export default function ReferralDashboard() {
             
             <Card>
               <CardContent className="p-6 text-center">
-                <Clock className="h-12 w-12 mx-auto text-yellow-600 mb-4" />
+                <OptimizedIcon name="Clock" className="h-12 w-12 mx-auto text-yellow-600 mb-4" />
                 <p className="text-3xl font-bold text-yellow-600">${stats.pendingEarnings.toFixed(2)}</p>
                 <p className="text-sm text-gray-600">Pending Approval</p>
               </CardContent>

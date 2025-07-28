@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -22,18 +23,7 @@ import {
   Pie,
   Cell
 } from "recharts";
-import {
-  DollarSign,
-  TrendingUp,
-  ArrowUp,
-  ArrowDown,
-  CreditCard,
-  Wallet,
-  PieChart as PieChartIcon,
-  BarChart3,
-  Calendar,
-  Target
-} from "lucide-react";
+import { TrendingUp, ArrowUp, ArrowDown, CreditCard, Wallet, PieChart as PieChartIcon, BarChart3, Target } from "lucide-react";
 
 interface RevenueTrendsProps {
   filters: any;
@@ -158,7 +148,7 @@ export function RevenueTrends({ filters, isRealtime }: RevenueTrendsProps) {
                   {data.revenueMetrics.monthlyGrowthRate}%
                 </div>
               </div>
-              <DollarSign className="w-8 h-8 text-green-500 opacity-80" />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-green-500 opacity-80" / />
             </div>
           </CardContent>
         </Card>
@@ -408,7 +398,7 @@ export function RevenueTrends({ filters, isRealtime }: RevenueTrendsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Calendar className="w-5 h-5" />
+            <BusinessIcons.Calendar className="w-5 h-5" / />
             Daily Revenue Pattern
           </CardTitle>
         </CardHeader>

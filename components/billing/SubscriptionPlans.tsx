@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -12,19 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
-import {
-  Check,
-  Star,
-  Crown,
-  Users,
-  Database,
-  Headphones,
-  ArrowRight,
-  Sparkles,
-  TrendingUp,
-  Shield,
-  Zap
-} from "lucide-react";
+import { Check, Crown, Database, Headphones, Sparkles, TrendingUp, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { billingClient } from "@/lib/billing/utils";
@@ -91,11 +80,11 @@ export function SubscriptionPlans({
       case "starter":
         return <Zap className="h-6 w-6" />;
       case "professional":
-        return <Star className="h-6 w-6" />;
+        return <OptimizedIcon name="Star" className="h-6 w-6" />;
       case "enterprise":
         return <Crown className="h-6 w-6" />;
       default:
-        return <Shield className="h-6 w-6" />;
+        return <OptimizedIcon name="Shield" className="h-6 w-6" />;
     }
   };
 
@@ -124,7 +113,7 @@ export function SubscriptionPlans({
 
   const getFeatureIcon = (feature: string) => {
     if (feature.includes("team") || feature.includes("members"))
-      return <Users className="h-4 w-4" />;
+      return <NavigationIcons.Users className="h-4 w-4" / />;
     if (feature.includes("support")) return <Headphones className="h-4 w-4" />;
     if (feature.includes("storage")) return <Database className="h-4 w-4" />;
     if (feature.includes("analytics"))
@@ -318,7 +307,7 @@ export function SubscriptionPlans({
                       ) : (
                         <>
                           {currentSubscription ? "Upgrade" : "Get Started"}
-                          <ArrowRight className="ml-2 h-4 w-4" />
+                          <UIIcons.ArrowRight className="ml-2 h-4 w-4" / />
                         </>
                       )}
                     </Button>
@@ -362,7 +351,7 @@ export function SubscriptionPlans({
             </div>
             <Button variant="outline">
               Contact Sales
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <UIIcons.ArrowRight className="ml-2 h-4 w-4" / />
             </Button>
           </div>
         </CardContent>
@@ -372,7 +361,7 @@ export function SubscriptionPlans({
       <div className="text-center">
         <Button variant="link" className="text-muted-foreground">
           Compare all features in detail
-          <ArrowRight className="ml-2 h-4 w-4" />
+          <UIIcons.ArrowRight className="ml-2 h-4 w-4" / />
         </Button>
       </div>
     </div>

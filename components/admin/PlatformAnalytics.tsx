@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -28,17 +29,7 @@ import {
   AreaChart,
   Area
 } from "recharts";
-import {
-  TrendingUp,
-  TrendingDown,
-  Users,
-  DollarSign,
-  Calendar,
-  Activity,
-  Download,
-  BarChart3,
-  PieChart as PieChartIcon
-} from "lucide-react";
+import { TrendingUp, TrendingDown, Activity, Download, BarChart3, PieChart as PieChartIcon } from "lucide-react";
 import { PlatformMetrics, useAdminClient } from "@/lib/admin/utils";
 import { useToast } from "@/hooks/use-toast";
 
@@ -174,7 +165,7 @@ export function PlatformAnalytics() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$324,590</div>
@@ -189,7 +180,7 @@ export function PlatformAnalytics() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Users</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12,459</div>
@@ -206,7 +197,7 @@ export function PlatformAnalytics() {
             <CardTitle className="text-sm font-medium">
               Total Bookings
             </CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <BusinessIcons.Calendar className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1,847</div>

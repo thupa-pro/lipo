@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 // Example RBAC Implementation for Loconomy Platform
 // Demonstrates role-based access control with subscription tiers
 
@@ -7,16 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import {
-  Crown,
-  Users,
-  BarChart3,
-  Lock,
-  Shield,
-  CheckCircle,
-  Star,
-  Zap
-} from "lucide-react";
+import { Crown, BarChart3, Lock, Zap } from "lucide-react";
 import Link from 'next/link';
 import { getUserRole, getUserSubscriptionTier } from '@/lib/rbac/utils';
 
@@ -44,9 +36,9 @@ export default async function ExampleRBACPage() {
           <CardContent className="space-y-3">
             <div className="flex items-center justify-center gap-2">
               <Badge variant="outline" className="flex items-center gap-1">
-                {userRole === 'admin' && <Shield className="w-3 h-3" />}
+                {userRole === 'admin' && <OptimizedIcon name="Shield" className="w-3 h-3" />}
                 {userRole === 'provider' && <Crown className="w-3 h-3" />}
-                {userRole === 'consumer' && <Users className="w-3 h-3" />}
+                {userRole === 'consumer' && <NavigationIcons.Users className="w-3 h-3" / />}
                 {userRole === 'guest' && <Lock className="w-3 h-3" />}
                 Role: {userRole.charAt(0).toUpperCase() + userRole.slice(1)}
               </Badge>
@@ -117,7 +109,7 @@ export default async function ExampleRBACPage() {
       {/* Authenticated Users Only */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
-          <CheckCircle className="w-6 h-6" />
+          <UIIcons.CheckCircle className="w-6 h-6" / />
           Authenticated Content
         </h2>
         
@@ -146,7 +138,7 @@ export default async function ExampleRBACPage() {
       {/* Consumer-Specific Content */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
-          <Users className="w-6 h-6" />
+          <NavigationIcons.Users className="w-6 h-6" / />
           Customer Features
         </h2>
         
@@ -154,7 +146,7 @@ export default async function ExampleRBACPage() {
           <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950/20">
             <CardHeader>
               <CardTitle className="text-blue-700 dark:text-blue-300 flex items-center gap-2">
-                <Users className="w-5 h-5" />
+                <NavigationIcons.Users className="w-5 h-5" / />
                 Customer Dashboard
               </CardTitle>
               <CardDescription>
@@ -164,15 +156,15 @@ export default async function ExampleRBACPage() {
             <CardContent>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Book and manage services
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   View booking history
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Rate and review providers
                 </li>
               </ul>
@@ -205,15 +197,15 @@ export default async function ExampleRBACPage() {
             <CardContent>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Manage service listings
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Track earnings and bookings
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Respond to customer requests
                 </li>
               </ul>
@@ -233,7 +225,7 @@ export default async function ExampleRBACPage() {
       {/* Premium Subscription Content */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
-          <Star className="w-6 h-6" />
+          <OptimizedIcon name="Star" className="w-6 h-6" />
           Premium Features
         </h2>
         
@@ -241,7 +233,7 @@ export default async function ExampleRBACPage() {
           <Card className="border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20">
             <CardHeader>
               <CardTitle className="text-yellow-700 dark:text-yellow-300 flex items-center gap-2">
-                <Star className="w-5 h-5" />
+                <OptimizedIcon name="Star" className="w-5 h-5" />
                 Premium Analytics & Tools
               </CardTitle>
               <CardDescription>
@@ -278,7 +270,7 @@ export default async function ExampleRBACPage() {
       {/* Admin-Only Content */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
-          <Shield className="w-6 h-6" />
+          <OptimizedIcon name="Shield" className="w-6 h-6" />
           Admin Features
         </h2>
         
@@ -286,7 +278,7 @@ export default async function ExampleRBACPage() {
           <Card className="border-red-200 bg-red-50 dark:bg-red-950/20">
             <CardHeader>
               <CardTitle className="text-red-700 dark:text-red-300 flex items-center gap-2">
-                <Shield className="w-5 h-5" />
+                <OptimizedIcon name="Shield" className="w-5 h-5" />
                 Administrator Panel
               </CardTitle>
               <CardDescription>
@@ -296,19 +288,19 @@ export default async function ExampleRBACPage() {
             <CardContent>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   User management and moderation
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Platform analytics and insights
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   Content moderation tools
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   System configuration
                 </li>
               </ul>
@@ -371,7 +363,7 @@ export default async function ExampleRBACPage() {
           <Card className="border-yellow-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-600" />
+                <OptimizedIcon name="Star" className="w-5 h-5 text-yellow-600" />
                 Enterprise Features
               </CardTitle>
               <CardDescription>
@@ -413,7 +405,7 @@ export default async function ExampleRBACPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Star className="w-5 h-5" />
+                  <OptimizedIcon name="Star" className="w-5 h-5" />
                   Upgrade Subscription
                 </CardTitle>
                 <CardDescription>

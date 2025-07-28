@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
@@ -10,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {  Quote, TrendingUp, ArrowRight } from "lucide-react";
+import { Quote, TrendingUp } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -71,7 +72,7 @@ export default function SuccessStoriesPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Share Your Story
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -140,7 +141,7 @@ export default function SuccessStoriesPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Become a Provider
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </section>

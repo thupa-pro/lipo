@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -9,20 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  MessageCircle,
-  Send,
-  Bot,
-  Sparkles,
-  ThumbsUp,
-  ThumbsDown,
-  Copy,
-  RefreshCw,
-  Settings,
-  HelpCircle,
-  Lightbulb,
-  Star, ArrowUp
-} from "lucide-react";
+import { MessageCircle, Send, Bot, Sparkles, ThumbsUp, ThumbsDown, Copy, RefreshCw, HelpCircle, Lightbulb, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
@@ -391,7 +379,7 @@ export default function ChatPage() {
                 <RefreshCw className="h-4 w-4" />
               </Button>
               <Button variant="ghost" size="sm">
-                <Settings className="h-4 w-4" />
+                <NavigationIcons.Settings className="h-4 w-4" / />
               </Button>
             </div>
           </div>

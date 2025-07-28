@@ -1,19 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Shield,
-  Users,
-  Mail,
-  Lock,
-  FileText,
-  Info,
-  ArrowRight,
-  Database,
-  CheckCircle
-} from "lucide-react"; // Ensure, Clock is, imported
+import { Lock, FileText, Info, Database } from "lucide-react"; // Ensure, Clock is, imported
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -90,7 +81,7 @@ export default function GDPRPage() {
     <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20">
         <div className="container mx-auto max-w-4xl">
-          <Shield className="w-16 h-16 text-purple-600 mx-auto mb-4" />
+          <OptimizedIcon name="Shield" className="w-16 h-16 text-purple-600 mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             GDPR Compliance
           </h1>
@@ -142,7 +133,7 @@ export default function GDPRPage() {
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center">
-                    <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
+                    <UIIcons.CheckCircle className="w-5 h-5 mr-2 text-green-600" / />
                     {right.title}
                   </CardTitle>
                 </CardHeader>
@@ -162,7 +153,7 @@ export default function GDPRPage() {
             If you have any questions or wish to exercise your GDPR, rights, please contact our Data Protection Officer.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email DPO", description: "Opening your email client to dpo@loconomy.com...", variant: "default" })}>
-            <Mail className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
             Contact Our DPO
           </Button>
         </div>

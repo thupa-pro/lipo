@@ -1,8 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { PremiumCard, PremiumCardContent } from "@/components/ui/premium-card";
 import { PremiumSection } from "@/components/ui/premium-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { MessageCircle, Star, Quote } from "lucide-react";
+import { MessageCircle, Quote } from "lucide-react";
 import Image from "next/image";
 
 const testimonials = [
@@ -86,7 +87,7 @@ export default function TestimonialsSection() {
               {/* Rating Stars */}
               <div className="flex items-center gap-1 mb-4">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star
+                  <OptimizedIcon name="Star"
                     key={i}
                     className="w-4 h-4 fill-yellow-400 text-yellow-400"
                   />

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
@@ -8,27 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { ChatBubble, TypingIndicator } from "@/components/messages/chat-bubble";
-import {
-  Send,
-  Search,
-  MoreVertical,
-  Phone,
-  Video,
-  Paperclip,
-  Smile,
-  Circle,
-  Star,
-  Users,
-  Filter,
-  ArrowDown,
-  AlertCircle,
-  Brain,
-  X,
-  CheckCircle,
-  Clock,
-  MessageSquare,
-  Shield
-} from "lucide-react";
+import { Send, MoreVertical, Video, Paperclip, Smile, Circle, Filter, ArrowDown, AlertCircle, Brain, X } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 interface Conversation {
@@ -326,7 +307,7 @@ export default function EnhancedMessagesPage() {
 
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-gray-400">
-                <Shield className="w-4 h-4 text-emerald-500" />
+                <OptimizedIcon name="Shield" className="w-4 h-4 text-emerald-500" />
                 <span>End-to-end encrypted</span>
               </div>
             </div>
@@ -339,7 +320,7 @@ export default function EnhancedMessagesPage() {
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between mb-4">
                 <CardTitle className="flex items-center gap-2 text-lg font-bold">
-                  <MessageSquare className="w-5 h-5 text-blue-600 dark:text-violet-400" />
+                  <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600 dark:text-violet-400" />
                   Conversations
                 </CardTitle>
                 <Badge className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
@@ -347,7 +328,7 @@ export default function EnhancedMessagesPage() {
                 </Badge>
               </div>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" / />
                 <Input
                   placeholder="Search conversations..."
                   value={searchQuery}
@@ -400,7 +381,7 @@ export default function EnhancedMessagesPage() {
                       />
                       {conversation.isVerified && (
                         <div className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-3 h-3 text-white" />
+                          <UIIcons.CheckCircle className="w-3 h-3 text-white" / />
                         </div>
                       )}
                     </div>
@@ -411,7 +392,7 @@ export default function EnhancedMessagesPage() {
                           {conversation.name}
                         </h3>
                         <div className="flex items-center gap-1 flex-shrink-0">
-                          <Star className="w-3 h-3 text-amber-400 fill-current" />
+                          <OptimizedIcon name="Star" className="w-3 h-3 text-amber-400 fill-current" />
                           <span className="text-xs text-slate-500 dark:text-gray-400">
                             {conversation.rating}
                           </span>
@@ -434,7 +415,7 @@ export default function EnhancedMessagesPage() {
 
                       <div className="flex items-center justify-between mt-2">
                         <span className="text-xs text-slate-500 dark:text-gray-400 flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
+                          <OptimizedIcon name="Clock" className="w-3 h-3" />
                           {conversation.timestamp.toLocaleTimeString([], {
                             hour: "2-digit",
                             minute: "2-digit",
@@ -473,7 +454,7 @@ export default function EnhancedMessagesPage() {
                         </Avatar>
                         {currentConversation.isVerified && (
                           <div className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                            <CheckCircle className="w-3 h-3 text-white" />
+                            <UIIcons.CheckCircle className="w-3 h-3 text-white" / />
                           </div>
                         )}
                       </div>
@@ -502,7 +483,7 @@ export default function EnhancedMessagesPage() {
                         size="sm"
                         className="rounded-2xl"
                       >
-                        <Phone className="w-4 h-4" />
+                        <OptimizedIcon name="Phone" className="w-4 h-4" />
                       </Button>
                       <Button
                         variant="outline"
@@ -603,7 +584,7 @@ export default function EnhancedMessagesPage() {
             ) : (
               <CardContent className="flex-1 flex items-center justify-center">
                 <div className="text-center">
-                  <MessageSquare className="w-16 h-16 text-slate-400 mx-auto mb-4" />
+                  <OptimizedIcon name="MessageSquare" className="w-16 h-16 text-slate-400 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-slate-600 dark:text-gray-400 mb-2">
                     Select a conversation
                   </h3>

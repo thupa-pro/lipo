@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,29 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslations } from "next-intl";
-import {
-  Wallet,
-  Plus,
-  Minus,
-  TrendingUp,
-  TrendingDown,
-  Eye,
-  EyeOff,
-  RefreshCw,
-  Send,
-  QrCode,
-  CreditCard,
-  Banknote,
-  ArrowUpRight,
-  ArrowDownLeft,
-  CheckCircle,
-  AlertCircle,
-  Shield,
-  MoreHorizontal,
-  Clock,
-  Star,
-  Zap
-} from "lucide-react";
+import { Wallet, Plus, Minus, TrendingUp, TrendingDown, Eye, EyeOff, RefreshCw, Send, QrCode, CreditCard, Banknote, ArrowUpRight, ArrowDownLeft, AlertCircle, MoreHorizontal, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface WalletTransaction {
@@ -203,7 +182,7 @@ export function DynamicWallet({ className }: DynamicWalletProps) {
       case "debit":
         return <ArrowUpRight className="w-4 h-4 text-red-600" />;
       case "pending":
-        return <Clock className="w-4 h-4 text-yellow-600" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4 text-yellow-600" />;
       default:
         return <MoreHorizontal className="w-4 h-4 text-gray-400" />;
     }
@@ -356,7 +335,7 @@ export function DynamicWallet({ className }: DynamicWalletProps) {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Star className="w-4 h-4 text-yellow-600" />
+              <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-600" />
               <span className="text-sm text-muted-foreground">Cashback</span>
             </div>
             <p className="text-lg font-bold text-yellow-600">$24.80</p>
@@ -367,7 +346,7 @@ export function DynamicWallet({ className }: DynamicWalletProps) {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Shield className="w-4 h-4 text-blue-600" />
+              <OptimizedIcon name="Shield" className="w-4 h-4 text-blue-600" />
               <span className="text-sm text-muted-foreground">Protected</span>
             </div>
             <p className="text-lg font-bold text-blue-600">100%</p>

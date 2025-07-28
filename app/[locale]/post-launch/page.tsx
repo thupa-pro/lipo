@@ -1,15 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import NotificationSystem from "@/components/notification-system"
 import AnalyticsDashboard from "@/components/analytics-dashboard"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  MapPin,
-  TrendingUp,
-  Bell,
-  BarChart3,
-  Rocket
-} from "lucide-react";
+import { TrendingUp, Bell, BarChart3, Rocket } from "lucide-react";
 import Link from "next/link"
 import { useSearchParams, useRouter } from "next/navigation"
 import OnboardingFlow from "@/components/onboarding-flow"
@@ -36,7 +31,7 @@ export default function PostLaunchPage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-              <MapPin className="w-5 h-5 text-white" />
+              <BusinessIcons.MapPin className="w-5 h-5 text-white" / />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
               Loconomy

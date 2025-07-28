@@ -193,6 +193,8 @@
     "test:coverage": "jest --coverage",
     "performance": "node scripts/performance-test.js",
     "performance:monitor": "node scripts/analyze-performance.js",
+    "optimize:migrate": "node scripts/migrate-to-optimized.js",
+    "deploy:check": "node scripts/deploy-optimized.js",
     "postinstall": "prisma generate"
   },
   "prisma": {

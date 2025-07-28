@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -30,22 +31,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
-import {
-  Calendar,
-  MapPin,
-  DollarSign,
-  Phone,
-  Mail,
-  MessageSquare
-  XCircle,
-  PlayCircle,
-  PauseCircle,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Star,
-  User
-} from "lucide-react";
+import { MessageSquare
+  XCircle, PlayCircle, PauseCircle } from "lucide-react";
 import { format } from "date-fns";
 import { Booking, BookingStatus } from "@/lib/booking/types";
 import {
@@ -147,11 +134,11 @@ export function BookingDetailsModal({
     label: string;
     icon: React.ReactNode;
   }[] = [
-    { value: "pending", label: "Pending", icon: <Clock className="w-4 h-4" /> },
+    { value: "pending", label: "Pending", icon: <OptimizedIcon name="Clock" className="w-4 h-4" /> },
     {
       value: "confirmed",
       label: "Confirmed",
-      icon: <CheckCircle className="w-4 h-4" />,
+      icon: <UIIcons.CheckCircle className="w-4 h-4" / />,
     },
     {
       value: "in_progress",
@@ -161,7 +148,7 @@ export function BookingDetailsModal({
     {
       value: "completed",
       label: "Completed",
-      icon: <CheckCircle className="w-4 h-4" />,
+      icon: <UIIcons.CheckCircle className="w-4 h-4" / />,
     },
     {
       value: "cancelled",
@@ -171,7 +158,7 @@ export function BookingDetailsModal({
     {
       value: "disputed",
       label: "Disputed",
-      icon: <AlertTriangle className="w-4 h-4" />,
+      icon: <UIIcons.AlertTriangle className="w-4 h-4" / />,
     },
   ];
 
@@ -206,7 +193,7 @@ export function BookingDetailsModal({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-gray-500" />
+                      <BusinessIcons.Calendar className="w-4 h-4 text-gray-500" / />
                       <div>
                         <div className="font-medium">
                           {format(
@@ -219,7 +206,7 @@ export function BookingDetailsModal({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-gray-500" />
+                      <OptimizedIcon name="Clock" className="w-4 h-4 text-gray-500" />
                       <div>
                         <div className="font-medium">
                           {formatTime(booking.start_time)} -{" "}
@@ -232,7 +219,7 @@ export function BookingDetailsModal({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <DollarSign className="w-4 h-4 text-gray-500" />
+                      <BusinessIcons.DollarSign className="w-4 h-4 text-gray-500" / />
                       <div>
                         <div className="font-medium">
                           ${booking.total_amount.toFixed(2)}
@@ -248,7 +235,7 @@ export function BookingDetailsModal({
                   <div className="space-y-3">
                     {booking.service_address && (
                       <div className="flex items-start gap-2">
-                        <MapPin className="w-4 h-4 text-gray-500 mt-1" />
+                        <BusinessIcons.MapPin className="w-4 h-4 text-gray-500 mt-1" / />
                         <div>
                           <div className="font-medium">Service Location</div>
                           <div className="text-sm text-gray-600">
@@ -263,7 +250,7 @@ export function BookingDetailsModal({
                     )}
 
                     <div className="flex items-start gap-2">
-                      <User className="w-4 h-4 text-gray-500 mt-1" />
+                      <NavigationIcons.User className="w-4 h-4 text-gray-500 mt-1" / />
                       <div>
                         <div className="font-medium">Confirmation Code</div>
                         <div className="text-sm text-gray-600 font-mono">
@@ -450,7 +437,7 @@ export function BookingDetailsModal({
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-gray-500" />
+                  <NavigationIcons.User className="w-4 h-4 text-gray-500" / />
                   <div>
                     <div className="font-medium">Customer</div>
                     <div className="text-sm text-gray-600">
@@ -460,7 +447,7 @@ export function BookingDetailsModal({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-gray-500" />
+                  <NavigationIcons.User className="w-4 h-4 text-gray-500" / />
                   <div>
                     <div className="font-medium">Provider</div>
                     <div className="text-sm text-gray-600">
@@ -475,7 +462,7 @@ export function BookingDetailsModal({
                     Send Message
                   </Button>
                   <Button variant="outline" size="sm" className="w-full">
-                    <Phone className="w-4 h-4 mr-2" />
+                    <OptimizedIcon name="Phone" className="w-4 h-4 mr-2" />
                     Call Customer
                   </Button>
                 </div>
@@ -552,11 +539,11 @@ export function BookingDetailsModal({
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <Button variant="outline" size="sm" className="w-full">
-                    <Star className="w-4 h-4 mr-2" />
+                    <OptimizedIcon name="Star" className="w-4 h-4 mr-2" />
                     View Reviews
                   </Button>
                   <Button variant="outline" size="sm" className="w-full">
-                    <DollarSign className="w-4 h-4 mr-2" />
+                    <BusinessIcons.DollarSign className="w-4 h-4 mr-2" / />
                     View Payment
                   </Button>
                 </CardContent>

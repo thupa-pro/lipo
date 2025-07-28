@@ -1,8 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useEffect } from 'react';
 import { useRouter, useSearchParams, useParams } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
+;
 
 export default function OAuthCallbackPage() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function OAuthCallbackPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-950 dark:via-blue-950 dark:to-purple-950 flex items-center justify-center">
       <div className="text-center">
-        <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+        <UIIcons.Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" / />
         <h2 className="text-xl font-semibold text-slate-800 dark:text-white mb-2">
           Completing sign in...
         </h2>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -9,9 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import {
-  Sparkles, Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff,
-  Users, Briefcase, Chrome, Github, CheckCircle, User, Star} from "lucide-react";
+import { Sparkles, Lock, Eye, EyeOff, Chrome, Github } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -225,7 +224,7 @@ export default function SignUpPage() {
         href="/"
         className="absolute top-6 left-6 z-20 flex items-center gap-2 text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
       >
-        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <UIIcons.ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" / />
         <span className="font-medium">Back to Home</span>
       </Link>
 
@@ -287,7 +286,7 @@ export default function SignUpPage() {
                                   <div className="grid grid-cols-2 gap-2">
                                     {option.features.map((feature, idx) => (
                                       <div key={idx} className="flex items-center gap-2">
-                                        <CheckCircle className="w-4 h-4 text-emerald-500" />
+                                        <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
                                         <span className="text-sm text-slate-600 dark:text-gray-400">
                                           {feature}
                                         </span>
@@ -336,7 +335,7 @@ export default function SignUpPage() {
                           onClick={() => setStep(1)}
                           className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
                         >
-                          <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-gray-400" />
+                          <UIIcons.ArrowLeft className="w-5 h-5 text-slate-600 dark:text-gray-400" / />
                         </button>
                         <motion.div
                           className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${roleOptions.find(r => r.value === role)?.gradient} flex items-center justify-center shadow-lg`}
@@ -363,7 +362,7 @@ export default function SignUpPage() {
                           Full Name
                         </Label>
                         <div className="relative">
-                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                          <NavigationIcons.User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" / />
                           <Input
                             id="name"
                             type="text"
@@ -381,7 +380,7 @@ export default function SignUpPage() {
                           Email Address
                         </Label>
                         <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                          <OptimizedIcon name="Mail" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
                           <Input
                             id="email"
                             type="email"
@@ -457,12 +456,12 @@ export default function SignUpPage() {
                       >
                         {isLoading ? (
                           <>
-                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            <UIIcons.Loader2 className="w-5 h-5 mr-2 animate-spin" / />
                             Creating Account...
                           </>
                         ) : (
                           <>
-                            <Star className="w-5 h-5 mr-2" />
+                            <OptimizedIcon name="Star" className="w-5 h-5 mr-2" />
                             Create Account
                           </>
                         )}
@@ -525,7 +524,7 @@ export default function SignUpPage() {
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2 }}
                       >
-                        <CheckCircle className="w-10 h-10 text-white" />
+                        <UIIcons.CheckCircle className="w-10 h-10 text-white" / />
                       </motion.div>
                     </motion.div>
                     

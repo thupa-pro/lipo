@@ -1,55 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  FileText,
-  Image,
-  Package,
-  Code,
-  Database,
-  Globe,
-  TrendingUp,
-  TrendingDown,
-  AlertTriangle,
-  CheckCircle2,
-  Settings,
-  Play,
-  Pause,
-  Download,
-  Upload,
-  Minimize2,
-  Maximize2,
-  RotateCcw
-  BarChart3,
-  PieChart,
-  Activity,
-  Gauge,
-  Search,
-  Filter,
-  RefreshCw,
-  ExternalLink,
-  Copy,
-  Eye,
-  EyeOff,
-  Plus,
-  Minus,
-  MoreVertical,
-  Monitor,
-  Smartphone,
-  Tablet,
-  Laptop,
-  Server,
-  HardDrive,
-  Cpu,
-  MemoryStick,
-  Network,
-  Wifi,
-  Signal,
-  Clock,
-  Target,
-  Zap
-} from "lucide-react";
+import { FileText, Image, Package, Code, Database, Globe, TrendingUp, TrendingDown, CheckCircle2, Play, Pause, Download, Upload, Minimize2, Maximize2, RotateCcw
+  BarChart3, PieChart, Activity, Gauge, Filter, RefreshCw, ExternalLink, Copy, Eye, EyeOff, Plus, Minus, MoreVertical, Monitor, Smartphone, Tablet, Laptop, Server, HardDrive, Cpu, MemoryStick, Network, Wifi, Signal, Target, Zap } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -420,11 +375,11 @@ export function OptimizationTools() {
       case 'completed':
         return <CheckCircle2 className="h-4 w-4 text-green-500" />;
       case 'running':
-        return <Clock className="h-4 w-4 text-blue-500 animate-spin" />;
+        return <OptimizedIcon name="Clock" className="h-4 w-4 text-blue-500 animate-spin" />;
       case 'failed':
-        return <AlertTriangle className="h-4 w-4 text-red-500" />;
+        return <UIIcons.AlertTriangle className="h-4 w-4 text-red-500" / />;
       default:
-        return <Clock className="h-4 w-4 text-gray-400" />;
+        return <OptimizedIcon name="Clock" className="h-4 w-4 text-gray-400" />;
     }
   };
 
@@ -634,7 +589,7 @@ export function OptimizationTools() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
+                <OptimizedIcon name="Clock" className="h-5 w-5" />
                 Recent Optimizations
               </CardTitle>
               <CardDescription>
@@ -789,7 +744,7 @@ export function OptimizationTools() {
                     )}
                     {optimization.status === 'running' && (
                       <Button size="sm" variant="outline" disabled>
-                        <Clock className="h-4 w-4 mr-2 animate-spin" />
+                        <OptimizedIcon name="Clock" className="h-4 w-4 mr-2 animate-spin" />
                         Running
                       </Button>
                     )}
@@ -811,7 +766,7 @@ export function OptimizationTools() {
                           View Details
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Settings className="h-4 w-4 mr-2" />
+                          <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
                           Configure
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -920,7 +875,7 @@ export function OptimizationTools() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5" />
+                <UIIcons.AlertTriangle className="h-5 w-5" / />
                 Duplicate Dependencies
               </CardTitle>
               <CardDescription>
@@ -1038,7 +993,7 @@ export function OptimizationTools() {
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem>
-                            <Settings className="h-4 w-4 mr-2" />
+                            <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
                             Adjust Quality
                           </DropdownMenuItem>
                         </DropdownMenuContent>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -6,17 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Search,
-  MapPin,
-  Grid,
-  List,
-  Sparkles,
-  Heart,
-  Brain,
-  MessageCircle,
-  Star
-} from "lucide-react";
+import { Grid, List, Sparkles, Heart, Brain, MessageCircle } from "lucide-react";
 
 // Sample provider data
 const providers = [
@@ -134,7 +125,7 @@ export default function BrowsePage() {
             {/* Search Bar */}
             <div className="relative max-w-2xl mx-auto">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+                <NavigationIcons.Search className="h-5 w-5 text-gray-400 dark:text-gray-500" / />
               </div>
               <Input
                 type="text"
@@ -221,11 +212,11 @@ export default function BrowsePage() {
                       
                       <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                         <div className="flex items-center gap-1">
-                          <MapPin className="w-4 h-4" />
+                          <BusinessIcons.MapPin className="w-4 h-4" / />
                           <span>{provider.location}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <OptimizedIcon name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                           <span className="font-medium">{provider.rating}</span>
                           <span>({provider.reviews})</span>
                         </div>
@@ -286,7 +277,7 @@ export default function BrowsePage() {
           {filteredProviders.length === 0 && (
             <div className="text-center py-12">
               <div className="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="w-12 h-12 text-gray-400" />
+                <NavigationIcons.Search className="w-12 h-12 text-gray-400" / />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                 No providers found

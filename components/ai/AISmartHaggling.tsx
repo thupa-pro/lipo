@@ -1,20 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  MessageCircle, 
-  DollarSign,
-  TrendingDown, 
-  TrendingUp, 
-  Brain,
-  Target, CheckCircle,
-  XCircle,
-  Sparkles,
-  Handshake,
-  Users,
-  BarChart3
-} from 'lucide-react'
+import { MessageCircle, TrendingDown, TrendingUp, Brain, Target, XCircle, Sparkles, Handshake, BarChart3 } from "lucide-react"
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -324,7 +313,7 @@ const AISmartHaggling: React.FC<AIHagglingEngineProps> = ({
               <div className="p-4 border-t bg-gray-50 dark:bg-gray-800">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
-                    <DollarSign className="h-5 w-5 text-gray-500" />
+                    <BusinessIcons.DollarSign className="h-5 w-5 text-gray-500" / />
                     <span className="text-sm font-medium">Your Offer:</span>
                     <Input
                       type="number"
@@ -381,7 +370,7 @@ const AISmartHaggling: React.FC<AIHagglingEngineProps> = ({
                     onClick={handleAcceptDeal}
                     className="bg-green-600 hover:bg-green-700"
                   >
-                    <CheckCircle className="h-4 w-4 mr-2" />
+                    <UIIcons.CheckCircle className="h-4 w-4 mr-2" / />
                     Accept Deal (${currentAIPrice})
                   </Button>
                   <Button

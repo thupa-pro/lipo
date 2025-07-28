@@ -1,32 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { aiClient } from '@/lib/ai/gemini-client';
-import {
-  Monitor,
-  Cpu,
-  Database,
-  Network,
-  AlertTriangle,
-  Activity,
-  Shield,
-  TrendingUp,
-  Bell,
-  Settings,
-  Play,
-  Pause,
-  RefreshCw,
-  Brain,
-  Gauge,
-  Server,
-  Cloud,
-  Eye,
-  Zap,
-  CheckCircle,
-  Target
-} from "lucide-react";
+import { Monitor, Cpu, Database, Network, Activity, TrendingUp, Bell, Play, Pause, RefreshCw, Brain, Gauge, Server, Cloud, Eye, Zap, Target } from "lucide-react";
 
 interface SystemAlert {
   id: string;
@@ -182,7 +161,7 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
       'Memory Usage': <Database className="h-4 w-4" />,
       'API Response Time': <Network className="h-4 w-4" />,
       'Database Connections': <Server className="h-4 w-4" />,
-      'Error Rate': <AlertTriangle className="h-4 w-4" />,
+      'Error Rate': <UIIcons.AlertTriangle className="h-4 w-4" / />,
       'Throughput': <Activity className="h-4 w-4" />
     };
     return icons[name] || <Gauge className="h-4 w-4" />;
@@ -320,7 +299,7 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
           <div className="space-y-3">
             {alerts.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
-                <CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" />
+                <UIIcons.CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" / />
                 <p>All systems operating optimally</p>
               </div>
             ) : (
@@ -334,10 +313,10 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        {alert.type === 'critical' && <AlertTriangle className="h-4 w-4" />}
-                        {alert.type === 'warning' && <AlertTriangle className="h-4 w-4" />}
+                        {alert.type === 'critical' && <UIIcons.AlertTriangle className="h-4 w-4" / />}
+                        {alert.type === 'warning' && <UIIcons.AlertTriangle className="h-4 w-4" / />}
                         {alert.type === 'info' && <Bell className="h-4 w-4" />}
-                        {alert.type === 'success' && <CheckCircle className="h-4 w-4" />}
+                        {alert.type === 'success' && <UIIcons.CheckCircle className="h-4 w-4" / />}
                         <span className="font-medium">{alert.title}</span>
                         {alert.resolved && (
                           <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
@@ -407,7 +386,7 @@ export default function AIMonitoringHub({ platformData }: { platformData: any })
 
             <div className="p-4 bg-purple-50 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <Shield className="h-4 w-4 text-purple-600" />
+                <OptimizedIcon name="Shield" className="h-4 w-4 text-purple-600" />
                 <span className="text-sm font-medium text-purple-900">Security</span>
               </div>
               <div className="text-2xl font-bold text-purple-900">100%</div>

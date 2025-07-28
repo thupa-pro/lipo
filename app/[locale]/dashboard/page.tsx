@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { MobileDashboard } from "@/components/mobile/mobile-dashboard";
 import { BiometricAuth } from "@/components/mobile/biometric-auth";
 import { NotificationSystem } from "@/components/mobile/notification-system";
@@ -11,16 +12,7 @@ import { MobilePaymentFlow } from "@/components/payment/mobile-payment-flow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Smartphone,
-  CreditCard,
-  BarChart,
-  Bell,
-  TrendingUp,
-  Shield,
-  MessageSquare,
-  Zap
-} from "lucide-react";
+import { Smartphone, CreditCard, BarChart, Bell, TrendingUp, Zap } from "lucide-react";
 
 export default function DashboardPage() {
   return (
@@ -121,7 +113,7 @@ export default function DashboardPage() {
               value="security"
               className="flex items-center gap-2 py-3"
             >
-              <Shield className="w-4 h-4" />
+              <OptimizedIcon name="Shield" className="w-4 h-4" />
               Security & Auth
             </TabsTrigger>
           </TabsList>
@@ -167,7 +159,7 @@ export default function DashboardPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <MessageSquare className="w-5 h-5" />
+                    <OptimizedIcon name="MessageSquare" className="w-5 h-5" />
                     Feedback Widget
                   </CardTitle>
                 </CardHeader>
@@ -256,7 +248,7 @@ export default function DashboardPage() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
                       <div className="flex items-center gap-2">
-                        <Shield className="w-5 h-5 text-emerald-600" />
+                        <OptimizedIcon name="Shield" className="w-5 h-5 text-emerald-600" />
                         <span className="font-medium">Security Score</span>
                       </div>
                       <Badge className="bg-emerald-100 text-emerald-700">

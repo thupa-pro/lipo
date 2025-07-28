@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -16,23 +17,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import {
-  Globe,
-  Mic,
-  MicOff,
-  Volume2,
-  VolumeX,
-  Brain,
-  BarChart3,
-  Wifi,
-  WifiOff,
-  MapPin,
-  DollarSign,
-  Calendar,
-  Phone,
-  Clock,
-  Shield
-} from "lucide-react";
+import { Globe, Mic, MicOff, Volume2, VolumeX, Brain, BarChart3, Wifi, WifiOff } from "lucide-react";
 
 interface MetropolitanCityShowcaseProps {
   selectedCity?: string;
@@ -151,7 +136,7 @@ export default function AdvancedI18nShowcase({
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2" />
+                  <BusinessIcons.MapPin className="w-5 h-5 mr-2" / />
                   Location Details
                 </CardTitle>
               </CardHeader>
@@ -185,7 +170,7 @@ export default function AdvancedI18nShowcase({
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <DollarSign className="w-5 h-5 mr-2" />
+                  <BusinessIcons.DollarSign className="w-5 h-5 mr-2" / />
                   Currency & Formats
                 </CardTitle>
               </CardHeader>
@@ -213,7 +198,7 @@ export default function AdvancedI18nShowcase({
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Clock className="w-5 h-5 mr-2" />
+                  <OptimizedIcon name="Clock" className="w-5 h-5 mr-2" />
                   Business Information
                 </CardTitle>
               </CardHeader>
@@ -255,7 +240,7 @@ export default function AdvancedI18nShowcase({
             <Card className="md:col-span-2 lg:col-span-3">
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Calendar className="w-5 h-5 mr-2" />
+                  <BusinessIcons.Calendar className="w-5 h-5 mr-2" / />
                   Local Holidays & Cultural Events
                 </CardTitle>
               </CardHeader>
@@ -500,7 +485,7 @@ export default function AdvancedI18nShowcase({
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Shield className="w-5 h-5 mr-2" />
+                  <OptimizedIcon name="Shield" className="w-5 h-5 mr-2" />
                   Offline Capabilities
                 </CardTitle>
                 <CardDescription>

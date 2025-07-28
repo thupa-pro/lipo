@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useCallback } from "react";
@@ -7,15 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  Brain,
-  Search,
-  MapPin,
-  Heart,
-  ArrowRight,
-  Shield,
-  Star
-} from "lucide-react";
+import { Brain, Heart } from "lucide-react";
 
 // Clean, interface - NO, function props, at all
 interface AIServiceDiscoveryProps {
@@ -121,7 +114,7 @@ export default function AIServiceDiscovery({
               disabled={isLoading}
               className="px-8 py-3"
             >
-              <Search className="w-4 h-4 mr-2" />
+              <NavigationIcons.Search className="w-4 h-4 mr-2" / />
               {isLoading ? "Searching..." : "Search"}
             </Button>
           </div>
@@ -142,7 +135,7 @@ export default function AIServiceDiscovery({
                   <div className="flex items-center gap-2">
                     <CardTitle className="text-lg truncate">{service.name}</CardTitle>
                     {service.verified && (
-                      <Shield className="w-4 h-4 text-blue-600" />
+                      <OptimizedIcon name="Shield" className="w-4 h-4 text-blue-600" />
                     )}
                   </div>
                   <p className="text-sm text-gray-600 truncate">{service.title}</p>
@@ -154,7 +147,7 @@ export default function AIServiceDiscovery({
               {/* Rating */}
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                  <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-500 fill-current" />
                   <span className="font-medium">{service.rating}</span>
                 </div>
                 <span className="text-sm text-gray-500">({service.reviews} reviews)</span>
@@ -167,7 +160,7 @@ export default function AIServiceDiscovery({
 
               {/* Location */}
               <div className="flex items-center gap-1 text-sm text-gray-600">
-                <MapPin className="w-4 h-4" />
+                <BusinessIcons.MapPin className="w-4 h-4" / />
                 {service.location}
               </div>
 
@@ -187,7 +180,7 @@ export default function AIServiceDiscovery({
                 variant="outline"
               >
                 Select Provider
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Button>
             </CardContent>
           </Card>

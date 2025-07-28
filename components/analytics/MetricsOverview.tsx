@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -28,16 +29,7 @@ import {
   Cell,
   Legend
 } from "recharts";
-import {
-  TrendingUp,
-  TrendingDown,
-  Users,
-  Activity,
-  DollarSign,
-  ShoppingCart,
-  Target,
-  Clock
-} from "lucide-react";
+import { TrendingUp, TrendingDown, Activity, ShoppingCart, Target } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";
 import { toast } from "sonner";
@@ -173,7 +165,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
+              <NavigationIcons.Users className="h-5 w-5" / />
               User Growth
             </CardTitle>
             <CardDescription>
@@ -214,7 +206,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <DollarSign className="h-5 w-5" />
+              <BusinessIcons.DollarSign className="h-5 w-5" / />
               Revenue & Bookings
             </CardTitle>
             <CardDescription>Revenue trends and booking volume</CardDescription>
@@ -348,7 +340,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
             <CardTitle className="text-sm font-medium">
               Avg. Session Duration
             </CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <OptimizedIcon name="Clock" className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">4m 32s</div>
@@ -397,7 +389,7 @@ export function MetricsOverview({ timeframe }: MetricsOverviewProps) {
             <CardTitle className="text-sm font-medium">
               Return Visitors
             </CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">42.1%</div>

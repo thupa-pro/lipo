@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,42 +7,7 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Bell,
-  Search,
-  Menu,
-  X,
-  Sun,
-  Moon,
-  Monitor,
-  Settings,
-  LogOut,
-  Sparkles,
-  Home,
-  Briefcase,
-  MessageCircle,
-  Calendar,
-  Heart,
-  HelpCircle,
-  User,
-  ChevronRight,
-  Zap,
-  Brain,
-  BarChart3,
-  Shield,
-  Globe,
-  Star,
-  CreditCard,
-  Users,
-  FileText,
-  MapPin,
-  Building,
-  Award,
-  Rocket,
-  Target,
-  TrendingUp,
-  Activity
-} from "lucide-react";
+import { Bell, X, Sun, Moon, Monitor, LogOut, Sparkles, MessageCircle, Heart, HelpCircle, ChevronRight, Zap, Brain, BarChart3, Globe, CreditCard, FileText, Building, Award, Rocket, Target, TrendingUp, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -289,7 +255,7 @@ export default function EnhancedNavigation({ onSidebarToggle, isSidebarOpen }: E
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="h-4 w-4" />
+                    <NavigationIcons.Menu className="h-4 w-4" / />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -351,7 +317,7 @@ export default function EnhancedNavigation({ onSidebarToggle, isSidebarOpen }: E
               className="h-9 w-9 p-0 lg:hidden glass-subtle border-white/40"
               onClick={() => setIsSearchOpen(!isSearchOpen)}
             >
-              <Search className="h-4 w-4" />
+              <NavigationIcons.Search className="h-4 w-4" / />
             </Button>
 
             {/* Search Bar (Desktop) */}

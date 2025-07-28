@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,32 +22,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  DollarSign,
-  CheckCircle,
-  AlertTriangle,
-  X,
-  Eye,
-  Download,
-  RefreshCw,
-  CreditCard,
-  Banknote,
-  TrendingUp,
-  Calendar,
-  Filter,
-  Search,
-  MoreHorizontal,
-  ExternalLink,
-  FileText,
-  Users,
-  Wallet,
-  ArrowRight,
-  ArrowLeft,
-  Lock,
-  Unlock,
-  Clock,
-  Shield
-} from "lucide-react";
+import { X, Eye, Download, RefreshCw, CreditCard, Banknote, TrendingUp, Filter, MoreHorizontal, ExternalLink, FileText, Wallet, Lock, Unlock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -336,13 +312,13 @@ export function EscrowPayoutSystem({
       case "released":
         return <Unlock className="w-4 h-4" />;
       case "disputed":
-        return <AlertTriangle className="w-4 h-4" />;
+        return <UIIcons.AlertTriangle className="w-4 h-4" / />;
       case "refunded":
-        return <ArrowLeft className="w-4 h-4" />;
+        return <UIIcons.ArrowLeft className="w-4 h-4" / />;
       case "expired":
-        return <Clock className="w-4 h-4" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4" />;
       default:
-        return <Shield className="w-4 h-4" />;
+        return <OptimizedIcon name="Shield" className="w-4 h-4" />;
     }
   };
 
@@ -495,7 +471,7 @@ export function EscrowPayoutSystem({
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center">
-                <Shield className="w-6 h-6 text-blue-600" />
+                <OptimizedIcon name="Shield" className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -513,7 +489,7 @@ export function EscrowPayoutSystem({
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-xl flex items-center justify-center">
-                <DollarSign className="w-6 h-6 text-green-600" />
+                <BusinessIcons.DollarSign className="w-6 h-6 text-green-600" / />
               </div>
             </div>
           </CardContent>
@@ -534,7 +510,7 @@ export function EscrowPayoutSystem({
                 </p>
               </div>
               <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-xl flex items-center justify-center">
-                <AlertTriangle className="w-6 h-6 text-red-600" />
+                <UIIcons.AlertTriangle className="w-6 h-6 text-red-600" / />
               </div>
             </div>
           </CardContent>
@@ -550,7 +526,7 @@ export function EscrowPayoutSystem({
                 <p className="text-2xl font-bold">2.3h</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-xl flex items-center justify-center">
-                <Clock className="w-6 h-6 text-purple-600" />
+                <OptimizedIcon name="Clock" className="w-6 h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>
@@ -676,9 +652,9 @@ export function EscrowPayoutSystem({
                                   )}
                                 >
                                   {value ? (
-                                    <CheckCircle className="w-3 h-3 mr-1" />
+                                    <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                                   ) : (
-                                    <Clock className="w-3 h-3 mr-1" />
+                                    <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                                   )}
                                   {key.replace(/([A-Z])/g, " $1").toLowerCase()}
                                 </Badge>
@@ -690,7 +666,7 @@ export function EscrowPayoutSystem({
                         {/* Dispute Info */}
                         {transaction.dispute && (
                           <Alert className="mt-3">
-                            <AlertTriangle className="w-4 h-4" />
+                            <UIIcons.AlertTriangle className="w-4 h-4" / />
                             <AlertDescription className="text-sm">
                               <strong>Dispute:</strong>{" "}
                               {transaction.dispute.reason}
@@ -715,7 +691,7 @@ export function EscrowPayoutSystem({
                             }}
                             disabled={isLoading}
                           >
-                            <CheckCircle className="w-3 h-3 mr-1" />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                             Release Payment
                           </Button>
                         )}
@@ -733,7 +709,7 @@ export function EscrowPayoutSystem({
                               );
                             }}
                           >
-                            <AlertTriangle className="w-3 h-3 mr-1" />
+                            <UIIcons.AlertTriangle className="w-3 h-3 mr-1" / />
                             Dispute
                           </Button>
                         )}
@@ -770,7 +746,7 @@ export function EscrowPayoutSystem({
                     }
                     disabled={availableForPayout === 0 || isLoading}
                   >
-                    <DollarSign className="w-4 h-4 mr-2" />
+                    <BusinessIcons.DollarSign className="w-4 h-4 mr-2" / />
                     Request Payout
                   </Button>
                 </div>

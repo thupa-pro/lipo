@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,22 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import {
-  Zap,
-  Activity,
-  TrendingUp,
-  AlertTriangle,
-  X,
-  Monitor,
-  Smartphone,
-  Wifi,
-  Image,
-  Code,
-  Database,
-  BarChart3,
-  Gauge,
-  CheckCircle
-} from "lucide-react";
+import { Zap, Activity, TrendingUp, X, Monitor, Smartphone, Wifi, Image, Code, Database, BarChart3, Gauge } from "lucide-react";
 
 interface PerformanceOptimizerProps {
   onComplete?: (score: number) => void;
@@ -462,7 +448,7 @@ export function PerformanceOptimizer({
                     <div className="flex items-center gap-2">
                       {suggestion.status === "applied" ? (
                         <Badge variant="default">
-                          <CheckCircle className="w-3 h-3 mr-1" />
+                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                           Applied
                         </Badge>
                       ) : (

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -29,19 +30,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import {
-  AlertTriangle,
-  TrendingUp,
-  Database,
-  Users,
-  List,
-  Calendar,
-  Activity,
-  ArrowUp,
-  ArrowDown,
-  ExternalLink,
-  Zap
-} from "lucide-react";
+import { TrendingUp, Database, List, Activity, ArrowUp, ArrowDown, ExternalLink, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { billingClient } from "@/lib/billing/utils";
@@ -116,12 +105,12 @@ export function UsageMetrics({ usageData, subscription }: UsageMetricsProps) {
             isCritical && "border-red-200 bg-red-50",
           )}
         >
-          <AlertTriangle
+          <UIIcons.AlertTriangle
             className={cn(
               "h-4 w-4",
               isCritical ? "text-red-600" : "text-orange-600",
             )}
-          />
+          / />
           <AlertDescription
             className={cn("text-orange-800", isCritical && "text-red-800")}
           >
@@ -201,7 +190,7 @@ export function UsageMetrics({ usageData, subscription }: UsageMetricsProps) {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
+              <BusinessIcons.Calendar className="h-4 w-4" / />
               Monthly Bookings
             </CardTitle>
           </CardHeader>
@@ -255,7 +244,7 @@ export function UsageMetrics({ usageData, subscription }: UsageMetricsProps) {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <Users className="h-4 w-4" />
+              <NavigationIcons.Users className="h-4 w-4" / />
               Team Members
             </CardTitle>
           </CardHeader>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
@@ -21,159 +22,7 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover";
-import {
-  Users,
-  Briefcase,
-  Crown,
-  Star,
-  Settings,
-  CreditCard,
-  BarChart3,
-  Plus,
-  Search,
-  Sparkles,
-  Bot,
-  Terminal,
-  ArrowRight,
-  XCircle,
-  AlertCircle,
-  Info,
-  Home,
-  Calendar,
-  Wallet,
-  Bell,
-  Menu,
-  ChevronDown,
-  Command as CommandIcon,
-  Sparkles as SparklesIcon,
-  Brain,
-  Rocket,
-  TrendingUp,
-  DollarSign,
-  MapPin,
-  Phone,
-  Mail,
-  Globe,
-  Lock,
-  Unlock,
-  Eye,
-  EyeOff,
-  RefreshCw,
-  Play,
-  Pause,
-  Stop,
-  Volume2,
-  Mic,
-  MicOff,
-  Send,
-  Smile,
-  Image,
-  FileText,
-  Share,
-  Download,
-  Upload,
-  Edit,
-  Copy,
-  ExternalLink,
-  Maximize,
-  Minimize,
-  RotateCcw,
-  RotateCw,
-  ZoomIn,
-  ZoomOut,
-  Move,
-  Crop,
-  Filter,
-  SortAsc,
-  SortDesc,
-  Grid,
-  List,
-  Columns,
-  Rows,
-  Layout,
-  Sidebar,
-  SidebarClose,
-  SidebarOpen,
-  PanelLeft,
-  PanelRight,
-  PanelTop,
-  PanelBottom,
-  Split,
-  Merge,
-  Layers,
-  Layer,
-  Folder,
-  FolderOpen,
-  File,
-  FilePlus,
-  FileMinus,
-  FileX,
-  FileCheck,
-  FileText as FileTextIcon,
-  FileImage,
-  FileVideo,
-  FileAudio,
-  FileArchive,
-  FileCode,
-  FileSpreadsheet,
-  FilePresentation,
-  FilePdf,
-  FileWord,
-  FileExcel,
-  FilePowerpoint,
-  FileAccess,
-  FileDatabase,
-  FileXml,
-  FileJson,
-  FileCsv,
-  FileTxt,
-  FileMd,
-  FileHtml,
-  FileCss,
-  FileJs,
-  FileTs,
-  FileJsx,
-  FileTsx,
-  FileVue,
-  FileReact,
-  FileAngular,
-  FileSvelte,
-  FilePhp,
-  FilePython,
-  FileJava,
-  FileC,
-  FileCpp,
-  FileCsharp,
-  FileGo,
-  FileRust,
-  FileSwift,
-  FileKotlin,
-  FileScala,
-  FileRuby,
-  FilePerl,
-  FileBash,
-  FileDocker,
-  FileKubernetes,
-  FileTerraform,
-  FileAnsible,
-  FileJenkins,
-  FileGit,
-  FileGithub,
-  FileGitlab,
-  FileBitbucket,
-  FileDocker as DockerIcon,
-  FileKubernetes as K8sIcon,
-  FileTerraform as TerraformIcon,
-  FileAnsible as AnsibleIcon,
-  FileJenkins as JenkinsIcon,
-  FileGit as GitIcon,
-  FileGithub as GithubIcon,
-  FileGitlab as GitlabIcon,
-  FileBitbucket as BitbucketIcon,
-  CheckCircle,
-  MessageSquare,
-  Shield
-} from "lucide-react";
+import { Crown, CreditCard, BarChart3, Plus, Sparkles, Bot, Terminal, XCircle, AlertCircle, Info, Wallet, Bell, ChevronDown, Command as CommandIcon, Sparkles as SparklesIcon, Brain, Rocket, TrendingUp, Globe, Lock, Unlock, Eye, EyeOff, RefreshCw, Play, Pause, Stop, Volume2, Mic, MicOff, Send, Smile, Image, FileText, Share, Download, Upload, Edit, Copy, ExternalLink, Maximize, Minimize, RotateCcw, RotateCw, ZoomIn, ZoomOut, Move, Crop, Filter, SortAsc, SortDesc, Grid, List, Columns, Rows, Layout, Sidebar, SidebarClose, SidebarOpen, PanelLeft, PanelRight, PanelTop, PanelBottom, Split, Merge, Layers, Layer, Folder, FolderOpen, File, FilePlus, FileMinus, FileX, FileCheck, FileText as FileTextIcon, FileImage, FileVideo, FileAudio, FileArchive, FileCode, FileSpreadsheet, FilePresentation, FilePdf, FileWord, FileExcel, FilePowerpoint, FileAccess, FileDatabase, FileXml, FileJson, FileCsv, FileTxt, FileMd, FileHtml, FileCss, FileJs, FileTs, FileJsx, FileTsx, FileVue, FileReact, FileAngular, FileSvelte, FilePhp, FilePython, FileJava, FileC, FileCpp, FileCsharp, FileGo, FileRust, FileSwift, FileKotlin, FileScala, FileRuby, FilePerl, FileBash, FileDocker, FileKubernetes, FileTerraform, FileAnsible, FileJenkins, FileGit, FileGithub, FileGitlab, FileBitbucket, FileDocker as DockerIcon, FileKubernetes as K8sIcon, FileTerraform as TerraformIcon, FileAnsible as AnsibleIcon, FileJenkins as JenkinsIcon, FileGit as GitIcon, FileGithub as GithubIcon, FileGitlab as GitlabIcon, FileBitbucket as BitbucketIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Types
@@ -537,7 +386,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-blue-600" />
+              <BusinessIcons.Calendar className="w-5 h-5 text-blue-600" / />
               <div>
                 <p className="text-sm text-muted-foreground">Total Bookings</p>
                 <p className="text-2xl font-bold">{currentUser.stats.bookings}</p>
@@ -548,7 +397,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-600" />
+              <OptimizedIcon name="Star" className="w-5 h-5 text-yellow-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Average Rating</p>
                 <p className="text-2xl font-bold">{currentUser.stats.rating}</p>
@@ -559,7 +408,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-green-600" />
+              <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-green-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Reviews Given</p>
                 <p className="text-2xl font-bold">{currentUser.stats.reviews}</p>
@@ -632,7 +481,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-blue-600" />
+              <BusinessIcons.Calendar className="w-5 h-5 text-blue-600" / />
               <div>
                 <p className="text-sm text-muted-foreground">Total Bookings</p>
                 <p className="text-2xl font-bold">{currentUser.stats.bookings}</p>
@@ -643,7 +492,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <DollarSign className="w-5 h-5 text-green-600" />
+              <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
               <div>
                 <p className="text-sm text-muted-foreground">Total Earnings</p>
                 <p className="text-2xl font-bold">${currentUser.stats.earnings}</p>
@@ -654,7 +503,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-600" />
+              <OptimizedIcon name="Star" className="w-5 h-5 text-yellow-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Average Rating</p>
                 <p className="text-2xl font-bold">{currentUser.stats.rating}</p>
@@ -665,7 +514,7 @@ export function LoconomySimulator() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-purple-600" />
+              <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-purple-600" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Reviews</p>
                 <p className="text-2xl font-bold">{currentUser.stats.reviews}</p>
@@ -723,7 +572,7 @@ export function LoconomySimulator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Shield className="w-5 h-5" />
+            <OptimizedIcon name="Shield" className="w-5 h-5" />
             Admin Dashboard
           </CardTitle>
         </CardHeader>
@@ -811,7 +660,7 @@ export function LoconomySimulator() {
                         className="w-full justify-start"
                         onClick={() => switchUser("consumer")}
                       >
-                        <Users className="w-4 h-4 mr-2" />
+                        <NavigationIcons.Users className="w-4 h-4 mr-2" / />
                         Switch to Consumer
                       </Button>
                       <Button
@@ -820,7 +669,7 @@ export function LoconomySimulator() {
                         className="w-full justify-start"
                         onClick={() => switchUser("provider")}
                       >
-                        <Briefcase className="w-4 h-4 mr-2" />
+                        <BusinessIcons.Briefcase className="w-4 h-4 mr-2" / />
                         Switch to Provider
                       </Button>
                       <Button
@@ -829,7 +678,7 @@ export function LoconomySimulator() {
                         className="w-full justify-start"
                         onClick={() => switchUser("admin")}
                       >
-                        <Shield className="w-4 h-4 mr-2" />
+                        <OptimizedIcon name="Shield" className="w-4 h-4 mr-2" />
                         Switch to Admin
                       </Button>
                     </div>
@@ -881,7 +730,7 @@ export function LoconomySimulator() {
                           <div className="flex items-center justify-between">
                             <span className="font-bold">${service.price}</span>
                             <div className="flex items-center gap-1">
-                              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                              <OptimizedIcon name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                               <span className="text-sm">{service.rating}</span>
                             </div>
                           </div>
@@ -1032,7 +881,7 @@ export function LoconomySimulator() {
                       <ul className="text-sm text-muted-foreground space-y-1">
                         {currentUser.subscription.features.map((feature, index) => (
                           <li key={index} className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />
                             {feature}
                           </li>
                         ))}

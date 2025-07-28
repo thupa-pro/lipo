@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -20,24 +21,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Calendar as CalendarIcon,
-  MapPin,
-  Shield,
-  CreditCard,
-  Phone,
-  Mail,
-  MessageCircle,
-  AlertCircle,
-  ArrowRight,
-  Heart,
-  Sparkles,
-  Award,
-  CheckCircle,
-  Clock,
-  Star,
-  Zap
-} from "lucide-react";
+import { Calendar as CalendarIcon, CreditCard, MessageCircle, AlertCircle, Heart, Sparkles, Award, Zap } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
@@ -170,11 +154,11 @@ export default function BookingConfirmation({
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-blue-200/50 dark:border-white/10 mb-6">
-            <CheckCircle className="w-4 h-4 text-emerald-500" />
+            <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
             <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Secure Booking Process
             </span>
-            <Shield className="w-4 h-4 text-emerald-500" />
+            <OptimizedIcon name="Shield" className="w-4 h-4 text-emerald-500" />
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -206,7 +190,7 @@ export default function BookingConfirmation({
                     </Avatar>
                     {provider.verified && (
                       <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-3 border-white dark:border-gray-800 flex items-center justify-center">
-                        <Shield className="w-3 h-3 text-white" />
+                        <OptimizedIcon name="Shield" className="w-3 h-3 text-white" />
                       </div>
                     )}
                   </div>
@@ -221,14 +205,14 @@ export default function BookingConfirmation({
 
                   <div className="flex items-center justify-center gap-4 mb-4">
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      <OptimizedIcon name="Star" className="w-4 h-4 fill-amber-400 text-amber-400" />
                       <span className="font-bold">{provider.rating}</span>
                       <span className="text-slate-500 text-sm">
                         ({provider.reviews})
                       </span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4 text-slate-500" />
+                      <BusinessIcons.MapPin className="w-4 h-4 text-slate-500" / />
                       <span className="text-sm text-slate-500">
                         {provider.location}
                       </span>
@@ -287,7 +271,7 @@ export default function BookingConfirmation({
                     variant="outline"
                     className="w-full rounded-2xl border-slate-300 dark:border-white/20"
                   >
-                    <Phone className="w-4 h-4 mr-2" />
+                    <OptimizedIcon name="Phone" className="w-4 h-4 mr-2" />
                     Call Provider
                   </Button>
                 </div>
@@ -344,7 +328,7 @@ export default function BookingConfirmation({
                   {/* Time Selection */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-blue-600 dark:text-violet-400" />
+                      <OptimizedIcon name="Clock" className="w-5 h-5 text-blue-600 dark:text-violet-400" />
                       Select Time
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -485,7 +469,7 @@ export default function BookingConfirmation({
                         <>
                           <Sparkles className="w-4 h-4 mr-2" />
                           Confirm Booking ${total}
-                          <ArrowRight className="w-4 h-4 ml-2" />
+                          <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                         </>
                       )}
                     </Button>
@@ -500,13 +484,13 @@ export default function BookingConfirmation({
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-blue-200/50 dark:border-white/10">
             <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-emerald-500" />
+              <OptimizedIcon name="Shield" className="w-5 h-5 text-emerald-500" />
               <span className="text-sm text-slate-600 dark:text-gray-300">
                 Secure Payment
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-500" />
+              <UIIcons.CheckCircle className="w-5 h-5 text-blue-500" / />
               <span className="text-sm text-slate-600 dark:text-gray-300">
                 Instant Confirmation
               </span>

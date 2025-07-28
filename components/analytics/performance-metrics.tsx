@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -20,23 +21,7 @@ import {
   RadialBarChart,
   RadialBar
 } from "recharts";
-import {
-  Activity,
-  Zap,
-  Shield,
-  Server,
-  Database,
-  Wifi,
-  AlertTriangle,
-  XCircle,
-  TrendingUp,
-  ArrowUp,
-  ArrowDown,
-  Eye,
-  Users,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { Activity, Zap, Server, Database, Wifi, XCircle, TrendingUp, ArrowUp, ArrowDown, Eye } from "lucide-react";
 
 interface PerformanceMetricsProps {
   filters: any;
@@ -159,9 +144,9 @@ export function PerformanceMetrics({
     thresholds: { good: number; warning: number },
   ) => {
     if (value <= thresholds.good)
-      return <CheckCircle className="w-4 h-4 text-green-500" />;
+      return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />;
     if (value <= thresholds.warning)
-      return <AlertTriangle className="w-4 h-4 text-yellow-500" />;
+      return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />;
     return <XCircle className="w-4 h-4 text-red-500" />;
   };
 
@@ -178,7 +163,7 @@ export function PerformanceMetrics({
                   {data.systemHealth.uptime}%
                 </p>
                 <div className="flex items-center text-sm text-green-600">
-                  <CheckCircle className="w-4 h-4" />
+                  <UIIcons.CheckCircle className="w-4 h-4" / />
                   Excellent
                 </div>
               </div>
@@ -209,7 +194,7 @@ export function PerformanceMetrics({
                       : "Slow"}
                 </div>
               </div>
-              <Clock className="w-8 h-8 text-blue-500 opacity-80" />
+              <OptimizedIcon name="Clock" className="w-8 h-8 text-blue-500 opacity-80" />
             </div>
           </CardContent>
         </Card>
@@ -223,11 +208,11 @@ export function PerformanceMetrics({
                   {data.systemHealth.errorRate}%
                 </p>
                 <div className="flex items-center text-sm text-green-600">
-                  <CheckCircle className="w-4 h-4" />
+                  <UIIcons.CheckCircle className="w-4 h-4" / />
                   Low
                 </div>
               </div>
-              <Shield className="w-8 h-8 text-green-500 opacity-80" />
+              <OptimizedIcon name="Shield" className="w-8 h-8 text-green-500 opacity-80" />
             </div>
           </CardContent>
         </Card>
@@ -562,7 +547,7 @@ export function PerformanceMetrics({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-5 h-5" />
+              <OptimizedIcon name="Shield" className="w-5 h-5" />
               Security Status
             </CardTitle>
           </CardHeader>
@@ -574,7 +559,7 @@ export function PerformanceMetrics({
                 </div>
                 <div className="text-sm text-green-600">System is secure</div>
               </div>
-              <CheckCircle className="w-8 h-8 text-green-500" />
+              <UIIcons.CheckCircle className="w-8 h-8 text-green-500" / />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -619,7 +604,7 @@ export function PerformanceMetrics({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5" />
+              <UIIcons.AlertTriangle className="w-5 h-5" / />
               Error Analysis
             </CardTitle>
           </CardHeader>

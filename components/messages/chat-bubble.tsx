@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState } from "react"
@@ -5,15 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Check,
-  CheckCheck,
-  MoreVertical,
-  Reply,
-  Heart,
-  Flag,
-  Clock
-} from "lucide-react";
+import { Check, CheckCheck, MoreVertical, Reply, Heart, Flag } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useToast } from "@/components/ui/use-toast" // Import, useToast
 
@@ -53,7 +46,7 @@ export function ChatBubble({ message, showAvatar = true, onReply, onReact }: Cha
   const getStatusIcon = () => {
     switch (message.status) {
       case "sending":
-        return <Clock className="w-3 h-3 text-gray-400" />
+        return <OptimizedIcon name="Clock" className="w-3 h-3 text-gray-400" />
       case "sent":
         return <Check className="w-3 h-3 text-gray-400" />
       case "delivered":

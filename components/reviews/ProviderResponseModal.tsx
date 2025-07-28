@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -12,15 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import {
-  Send,
-  CheckCircle,
-  User,
-  Calendar,
-  ThumbsUp,
-  Clock,
-  MessageSquare
-} from "lucide-react";
+import { Send, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Review {
@@ -136,7 +129,7 @@ export function ProviderResponseModal({
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-blue-600" />
+            <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600" />
             Respond to Review
           </DialogTitle>
         </DialogHeader>
@@ -174,7 +167,7 @@ export function ProviderResponseModal({
                         </h4>
                         {review.isVerified && (
                           <Badge variant="secondary" className="text-xs">
-                            <CheckCircle className="w-3 h-3 mr-1" />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                             Verified
                           </Badge>
                         )}
@@ -274,13 +267,13 @@ export function ProviderResponseModal({
               <Card className="border-l-4 border-green-500">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <User className="w-4 h-4 text-green-600" />
+                    <NavigationIcons.User className="w-4 h-4 text-green-600" / />
                     <span className="text-sm font-medium">Your Response</span>
                     <Badge variant="outline" className="text-xs">
                       Provider
                     </Badge>
                     <span className="text-xs text-muted-foreground">
-                      <Clock className="w-3 h-3 inline mr-1" />
+                      <OptimizedIcon name="Clock" className="w-3 h-3 inline mr-1" />
                       Just now
                     </span>
                   </div>
