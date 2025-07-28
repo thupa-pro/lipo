@@ -192,7 +192,7 @@ export function SecureSignIn() {
             variant="outline"
             onClick={handleGoogleSignIn}
             disabled={isSubmitting}
-            className="w-full"
+            className="w-full glass-interactive neural-button hover:shadow-glow border-glass-border-medium focus-visible-ring"
           >
             <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
               <path
