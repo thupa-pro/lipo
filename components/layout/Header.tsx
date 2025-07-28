@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   Bell,
   Search,
@@ -23,11 +23,23 @@ import {
   Calendar,
   Heart,
   HelpCircle,
-  ExternalLink,
-  User
+  User,
+  ChevronDown,
+  Grid3X3,
+  Star,
+  MapPin,
+  TrendingUp,
+  Zap,
+  Shield,
+  ArrowRight,
+  Plus,
+  Bookmark,
+  CreditCard,
+  Users,
+  Bot,
+  Palette
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -36,7 +48,11 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal,
+  DropdownMenuSub
 } from "@/components/ui/dropdown-menu";
 import AgentCommandInput from "@/components/ai/AgentCommandInput";
 
@@ -45,6 +61,58 @@ interface HeaderProps {
   isSidebarOpen?: boolean;
 }
 
+const mainNavigation = [
+  { 
+    name: "Home", 
+    href: "/", 
+    icon: Home,
+    description: "Return to homepage"
+  },
+  { 
+    name: "Browse", 
+    href: "/browse", 
+    icon: Grid3X3,
+    description: "Explore all services",
+    submenu: [
+      { name: "All Categories", href: "/browse", icon: Grid3X3 },
+      { name: "Top Rated", href: "/browse?filter=top-rated", icon: Star },
+      { name: "Trending", href: "/browse?filter=trending", icon: TrendingUp },
+      { name: "Near You", href: "/browse?location=nearby", icon: MapPin },
+    ]
+  },
+  { 
+    name: "Services", 
+    href: "#", 
+    icon: Briefcase,
+    description: "Service management",
+    submenu: [
+      { name: "Dashboard", href: "/dashboard", icon: Briefcase },
+      { name: "My Bookings", href: "/bookings", icon: Calendar },
+      { name: "Favorites", href: "/favorites", icon: Heart },
+      { name: "Reviews", href: "/reviews", icon: Star },
+    ]
+  },
+  { 
+    name: "AI Tools", 
+    href: "#", 
+    icon: Bot,
+    description: "AI-powered features",
+    badge: "New",
+    submenu: [
+      { name: "AI Agents", href: "/agents", icon: Bot },
+      { name: "Smart Search", href: "/ai-search", icon: Search },
+      { name: "Auto Booking", href: "/ai-booking", icon: Zap },
+      { name: "Price Optimizer", href: "/ai-pricing", icon: TrendingUp },
+    ]
+  },
+];
+
+const quickActions = [
+  { name: "Book Service", href: "/booking", icon: Plus, gradient: "from-blue-500 to-purple-500" },
+  { name: "Find Provider", href: "/providers", icon: Search, gradient: "from-green-500 to-teal-500" },
+  { name: "AI Assistant", href: "/ai-chat", icon: Bot, gradient: "from-orange-500 to-red-500" },
+];
+
 export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) {
   const { user, isSignedIn, signOut } = useAuth();
   const { theme, setTheme } = useTheme();
@@ -52,18 +120,101 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
   const [mounted, setMounted] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(3);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  const { scrollY } = useScroll();
+  const headerOpacity = useTransform(scrollY, [0, 100], [0.95, 0.98]);
+  const headerBlur = useTransform(scrollY, [0, 100], [16, 24]);
 
   useEffect(() => {
     setMounted(true);
+    
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
-    { name: "Home", href: "/", icon: Home },
-    { name: "Search", href: "/search", icon: Search },
-    { name: "Dashboard", href: `/${user?.role?.toLowerCase()}/dashboard`, icon: Briefcase },
-    { name: "Messages", href: "/messages", icon: MessageCircle },
-    { name: "Bookings", href: "/bookings", icon: Calendar },
-  ];
+  const NavItem = ({ item, index }: { item: typeof mainNavigation[0], index: number }) => {
+    const isActive = pathname === item.href || 
+      (item.href !== "/" && item.href !== "#" && pathname.startsWith(item.href));
+
+    if (item.submenu) {
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`
+                flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200
+                ${isActive
+                  ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400 shadow-sm"
+                  : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                }
+              `}
+            >
+              <item.icon className="w-4 h-4" />
+              <span>{item.name}</span>
+              {item.badge && (
+                <Badge variant="secondary" className="bg-orange-500/20 text-orange-600 dark:text-orange-400 text-xs px-1.5 py-0.5">
+                  {item.badge}
+                </Badge>
+              )}
+              <ChevronDown className="w-3 h-3 opacity-50" />
+            </motion.button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent 
+            className="w-64 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50 shadow-xl"
+            align="start"
+          >
+            <div className="p-2">
+              <div className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 px-2">
+                {item.description}
+              </div>
+              {item.submenu.map((subItem, subIndex) => (
+                <DropdownMenuItem key={subIndex} asChild>
+                  <Link 
+                    href={subItem.href}
+                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
+                      <subItem.icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm font-medium">{subItem.name}</span>
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    }
+
+    return (
+      <Link
+        href={item.href}
+        className={`
+          flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200
+          ${isActive
+            ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400 shadow-sm"
+            : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+          }
+        `}
+      >
+        <item.icon className="w-4 h-4" />
+        <span>{item.name}</span>
+        {item.badge && (
+          <Badge variant="secondary" className="bg-orange-500/20 text-orange-600 dark:text-orange-400 text-xs px-1.5 py-0.5">
+            {item.badge}
+          </Badge>
+        )}
+      </Link>
+    );
+  };
 
   const ThemeToggle = () => {
     if (!mounted) return null;
@@ -71,13 +222,20 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="h-9 w-9 p-0 rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors"
+          >
             <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent 
+          align="end" 
+          className="bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50"
+        >
           <DropdownMenuItem onClick={() => setTheme("light")}>
             <Sun className="mr-2 h-4 w-4" />
             <span>Light</span>
@@ -96,208 +254,325 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="sticky top-0 z-50 w-full border-b border-border/40 bg-glass border-glass-border backdrop-blur-glass supports-[backdrop-filter]:bg-glass/90"
-    >
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4">
-        {/* Left Section: Logo & Mobile Menu */}
-        <div className="flex items-center gap-4">
-          {/* Mobile Menu Toggle */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-9 w-9 p-0 md:hidden"
-            onClick={onSidebarToggle}
-          >
-            <AnimatePresence mode="wait">
-              {isSidebarOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="h-4 w-4" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="h-4 w-4" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Button>
-
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-ai flex items-center justify-center shadow-glow">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-xl font-bold text-ai-gradient">
-              Loconomy
-            </span>
-          </Link>
-        </div>
-
-        {/* Center Section: Navigation (Desktop) */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navigation.map((item) => {
-            const isActive = pathname === item.href || 
-              (item.href !== "/" && pathname.startsWith(item.href));
-            
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                  isActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                }`}
+    <>
+      <motion.header
+        ref={headerRef}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        style={{
+          backdropFilter: `blur(${headerBlur}px)`,
+          WebkitBackdropFilter: `blur(${headerBlur}px)`,
+        }}
+        className={`
+          fixed top-0 left-0 right-0 z-50 transition-all duration-300
+          ${isScrolled 
+            ? 'bg-white/80 dark:bg-gray-950/80 border-b border-gray-200/50 dark:border-gray-800/50 shadow-lg' 
+            : 'bg-white/70 dark:bg-gray-950/70 border-b border-gray-200/30 dark:border-gray-800/30'
+          }
+        `}
+      >
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex h-16 items-center justify-between">
+            {/* Left Section: Logo & Mobile Menu */}
+            <div className="flex items-center gap-6">
+              {/* Mobile Menu Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-9 w-9 p-0 lg:hidden rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                onClick={onSidebarToggle}
               >
-                <item.icon className="w-4 h-4" />
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Right Section: Search, Actions, Profile */}
-        <div className="flex items-center gap-3">
-          {/* Search Toggle (Mobile) */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-9 w-9 p-0 md:hidden"
-            onClick={() => setIsSearchOpen(!isSearchOpen)}
-          >
-            <Search className="h-4 w-4" />
-          </Button>
-
-          {/* Search Bar (Desktop) */}
-          <div className="hidden md:block w-64">
-            <AgentCommandInput
-              placeholder="Search or use /commands..."
-              currentPage={pathname}
-              className="h-9"
-            />
-          </div>
-
-          {/* Notifications */}
-          {isSignedIn && (
-            <div className="relative">
-              <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
-                <Bell className="h-4 w-4" />
-                {notificationCount > 0 && (
-                  <Badge
-                    variant="destructive"
-                    className="absolute -top-1 -right-1 h-5 w-5 p-0 text-xs"
-                  >
-                    {notificationCount}
-                  </Badge>
-                )}
+                <AnimatePresence mode="wait">
+                  {isSidebarOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X className="h-4 w-4" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Menu className="h-4 w-4" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Button>
-            </div>
-          )}
 
-          {/* Theme Toggle */}
-          <ThemeToggle />
-
-          {/* User Menu */}
-          {isSignedIn ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="" alt={user?.name || ""} />
-                    <AvatarFallback>
-                      {user?.name?.charAt(0).toUpperCase() || "U"}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">{user?.name}</p>
-                    <p className="text-xs leading-none text-muted-foreground">
-                      {user?.email}
-                    </p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="w-full">
-                    <User className="mr-2 h-4 w-4" />
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/settings" className="w-full">
-                    <Settings className="mr-2 h-4 w-4" />
-                    Settings
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/favorites" className="w-full">
-                    <Heart className="mr-2 h-4 w-4" />
-                    Favorites
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/help" className="w-full">
-                    <HelpCircle className="mr-2 h-4 w-4" />
-                    Help & Support
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="text-red-600 dark:text-red-400"
-                  onClick={() => signOut()}
+              {/* Logo */}
+              <Link href="/" className="flex items-center gap-3 group">
+                <motion.div 
+                  whileHover={{ scale: 1.05, rotate: 5 }}
+                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Sign out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/auth/signin">Sign in</Link>
-              </Button>
-              <Button size="sm" asChild>
-                <Link href="/auth/signup">Sign up</Link>
-              </Button>
-            </div>
-          )}
-        </div>
-      </div>
+                  <Sparkles className="w-5 h-5 text-white" />
+                </motion.div>
+                <div className="hidden sm:block">
+                  <span className="text-xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
+                    Loconomy
+                  </span>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1">
+                    Elite Services
+                  </div>
+                </div>
+              </Link>
 
-      {/* Mobile Search Overlay */}
-      <AnimatePresence>
-        {isSearchOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="border-t border-border bg-background p-4 md:hidden"
-          >
-            <AgentCommandInput
-              placeholder="Search or use /commands..."
-              currentPage={pathname}
-              onResponse={() => setIsSearchOpen(false)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+              {/* Desktop Navigation */}
+              <nav className="hidden lg:flex items-center gap-2">
+                {mainNavigation.map((item, index) => (
+                  <NavItem key={item.name} item={item} index={index} />
+                ))}
+              </nav>
+            </div>
+
+            {/* Center Section: Search (Desktop) */}
+            <div className="hidden md:block flex-1 max-w-lg mx-8">
+              <AgentCommandInput
+                placeholder="Search services, providers, or use AI commands..."
+                currentPage={pathname}
+                className="h-10 bg-gray-50/50 dark:bg-gray-800/50 border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm"
+              />
+            </div>
+
+            {/* Right Section: Actions & Profile */}
+            <div className="flex items-center gap-2">
+              {/* Quick Actions (Desktop) */}
+              <div className="hidden xl:flex items-center gap-1 mr-2">
+                {quickActions.slice(0, 2).map((action, index) => (
+                  <Button
+                    key={action.name}
+                    variant="ghost"
+                    size="sm"
+                    asChild
+                    className="h-9 px-3 rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
+                    <Link href={action.href} className="flex items-center gap-2">
+                      <action.icon className="w-4 h-4" />
+                      <span className="text-sm font-medium">{action.name}</span>
+                    </Link>
+                  </Button>
+                ))}
+              </div>
+
+              {/* Search Toggle (Mobile) */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-9 w-9 p-0 md:hidden rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+              >
+                <Search className="h-4 w-4" />
+              </Button>
+
+              {/* Notifications */}
+              {isSignedIn && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-9 w-9 p-0 relative rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                    >
+                      <Bell className="h-4 w-4" />
+                      {notificationCount > 0 && (
+                        <Badge
+                          variant="destructive"
+                          className="absolute -top-1 -right-1 h-5 w-5 p-0 text-xs flex items-center justify-center min-w-5"
+                        >
+                          {notificationCount > 9 ? '9+' : notificationCount}
+                        </Badge>
+                      )}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    align="end" 
+                    className="w-80 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50"
+                  >
+                    <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <div className="p-2 space-y-2">
+                      <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                        <div className="flex items-start gap-3">
+                          <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                            <Calendar className="w-4 h-4 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium">Booking Confirmed</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">Your home cleaning is scheduled for tomorrow</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                        <div className="flex items-start gap-3">
+                          <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                            <Star className="w-4 h-4 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium">New Review</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">You received a 5-star review!</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/notifications" className="w-full text-center justify-center">
+                        View All Notifications
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
+
+              {/* Theme Toggle */}
+              <ThemeToggle />
+
+              {/* User Menu */}
+              {isSignedIn ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="relative h-9 w-9 rounded-xl">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src="" alt={user?.name || ""} />
+                        <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-medium">
+                          {user?.name?.charAt(0).toUpperCase() || "U"}
+                        </AvatarFallback>
+                      </Avatar>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    className="w-72 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50" 
+                    align="end" 
+                    forceMount
+                  >
+                    <DropdownMenuLabel className="font-normal p-4">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-12 w-12">
+                          <AvatarImage src="" alt={user?.name || ""} />
+                          <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white text-lg font-medium">
+                            {user?.name?.charAt(0).toUpperCase() || "U"}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-sm font-medium leading-none">{user?.name}</p>
+                          <p className="text-xs leading-none text-gray-500 dark:text-gray-400">
+                            {user?.email}
+                          </p>
+                          <Badge variant="secondary" className="w-fit mt-1">
+                            {user?.role || 'Consumer'}
+                          </Badge>
+                        </div>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    
+                    <div className="p-2 space-y-1">
+                      <DropdownMenuItem asChild>
+                        <Link href="/profile" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <User className="w-4 h-4" />
+                          <span>Profile</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <Briefcase className="w-4 h-4" />
+                          <span>Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/bookings" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <Calendar className="w-4 h-4" />
+                          <span>My Bookings</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/favorites" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <Heart className="w-4 h-4" />
+                          <span>Favorites</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/billing" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <CreditCard className="w-4 h-4" />
+                          <span>Billing</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </div>
+
+                    <DropdownMenuSeparator />
+                    
+                    <div className="p-2 space-y-1">
+                      <DropdownMenuItem asChild>
+                        <Link href="/settings" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <Settings className="w-4 h-4" />
+                          <span>Settings</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/help" className="flex items-center gap-3 px-3 py-2 rounded-lg">
+                          <HelpCircle className="w-4 h-4" />
+                          <span>Help & Support</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </div>
+
+                    <DropdownMenuSeparator />
+                    
+                    <div className="p-2">
+                      <DropdownMenuItem
+                        className="text-red-600 dark:text-red-400 focus:text-red-600 dark:focus:text-red-400 px-3 py-2 rounded-lg"
+                        onClick={() => signOut()}
+                      >
+                        <LogOut className="mr-3 h-4 w-4" />
+                        <span>Sign out</span>
+                      </DropdownMenuItem>
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Button variant="ghost" size="sm" asChild className="rounded-xl">
+                    <Link href="/auth/signin">Sign in</Link>
+                  </Button>
+                  <Button size="sm" asChild className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                    <Link href="/auth/signup">Sign up</Link>
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Search Overlay */}
+        <AnimatePresence>
+          {isSearchOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="border-t border-gray-200/50 dark:border-gray-800/50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl p-4 md:hidden"
+            >
+              <AgentCommandInput
+                placeholder="Search services, providers, or use AI commands..."
+                currentPage={pathname}
+                onResponse={() => setIsSearchOpen(false)}
+                className="bg-gray-50/50 dark:bg-gray-800/50 border-gray-200/50 dark:border-gray-700/50"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+
+      {/* Spacer to prevent content overlap */}
+      <div className="h-16" />
+    </>
   );
 }
