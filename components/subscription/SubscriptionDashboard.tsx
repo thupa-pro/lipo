@@ -36,7 +36,7 @@ import {
   getPlanColor,
   getPlanDisplayName
 } from "@/lib/subscription/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 export function SubscriptionDashboard() {
   const { user, isLoading: authLoading } = useAuth();

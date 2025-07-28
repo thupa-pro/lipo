@@ -35,7 +35,7 @@ import {
   generateWorkspaceSlug,
   validateWorkspaceSlug,
 } from "@/lib/workspace/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 interface CreateWorkspaceFormProps {
   onSuccess: (workspace: any) => void;

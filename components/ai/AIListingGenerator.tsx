@@ -38,7 +38,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceListing, ServiceCategory, ServicePricing } from '@/types/loconomy';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 
 interface AIListingGeneratorProps {
   tenantId: string;

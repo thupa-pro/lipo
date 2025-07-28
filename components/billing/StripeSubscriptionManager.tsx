@@ -45,7 +45,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { UserRole, SubscriptionTier } from '@/types/rbac';
 import { BillingAccount, Subscription, AIOptimization } from '@/types/loconomy';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 import { formatCurrency, formatDate } from '@/lib/utils';
 
 interface SubscriptionPlan {

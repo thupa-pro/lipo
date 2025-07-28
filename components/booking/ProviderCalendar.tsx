@@ -36,7 +36,7 @@ import {
   getBookingStatusColor,
   getBookingStatusIcon
 } from "@/lib/booking/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { AvailabilitySettings } from "./AvailabilitySettings";
 import { BookingDetailsModal } from "./BookingDetailsModal";
 
