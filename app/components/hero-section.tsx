@@ -119,10 +119,10 @@ const SearchBar = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.6 + index * 0.1, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSearchValue(term)}
-                className="px-3 py-1 text-sm bg-gray-100/80 dark:bg-gray-800/80 hover:bg-gray-200/80 dark:hover:bg-gray-700/80 rounded-full text-gray-700 dark:text-gray-300 transition-colors"
+                className="px-3 py-1 text-sm glass-interactive neural-button hover:shadow-glow-ai rounded-full text-ai-700 dark:text-ai-300 transition-all duration-200 focus-visible-ring"
               >
                 {term}
               </motion.button>
