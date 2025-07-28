@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
@@ -12,21 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  ArrowRight,
-  Sparkles,
-  Users,
-  Send,
-  MessageCircle,
-  Heart,
-  Globe,
-  Headphones,
-  Clock,
-  MessageSquare
-} from "lucide-react";
+import { Sparkles, Send, MessageCircle, Heart, Globe, Headphones } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -121,7 +108,7 @@ export default function ContactUsPage() {
               <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 We're Here to Help • 24/7 Support
               </span>
-              <MessageSquare className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+              <OptimizedIcon name="MessageSquare" className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
             </div>
 
             <h1 className="text-4xl md:text-6xl font-black mb-6 leading-none">

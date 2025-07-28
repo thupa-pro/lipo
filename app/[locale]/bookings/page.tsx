@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -12,18 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Calendar as CalendarIcon,
-  MapPin,
-  Phone,
-  MessageSquare,
-  RotateCcw,
-  AlertCircle,
-  XCircle,
-  Plus,
-  Clock,
-  Star
-} from "lucide-react";
+import { Calendar as CalendarIcon, RotateCcw, AlertCircle, XCircle, Plus } from "lucide-react";
 import Link from "next/link";
 
 export default function BookingsPage() {
@@ -215,7 +205,7 @@ export default function BookingsPage() {
                               {booking.provider.name}
                             </p>
                             <div className="flex items-center gap-1">
-                              <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                              <OptimizedIcon name="Star" className="w-3 h-3 text-yellow-500 fill-current" />
                               <span className="text-sm">
                                 {booking.provider.rating}
                               </span>
@@ -241,11 +231,11 @@ export default function BookingsPage() {
                         <span className="text-sm">{booking.date}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-muted-foreground" />
+                        <OptimizedIcon name="Clock" className="w-4 h-4 text-muted-foreground" />
                         <span className="text-sm">{booking.time}</span>
                       </div>
                       <div className="flex items-start gap-2 md:col-span-2">
-                        <MapPin className="w-4 h-4 text-muted-foreground mt-0.5" />
+                        <BusinessIcons.MapPin className="w-4 h-4 text-muted-foreground mt-0.5" / />
                         <span className="text-sm text-muted-foreground">
                           {booking.address}
                         </span>
@@ -261,11 +251,11 @@ export default function BookingsPage() {
                     <div className="flex justify-between items-center">
                       <div className="flex gap-2">
                         <Button size="sm" variant="outline">
-                          <Phone className="w-4 h-4 mr-1" />
+                          <OptimizedIcon name="Phone" className="w-4 h-4 mr-1" />
                           Call
                         </Button>
                         <Button size="sm" variant="outline">
-                          <MessageSquare className="w-4 h-4 mr-1" />
+                          <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-1" />
                           Message
                         </Button>
                       </div>
@@ -324,7 +314,7 @@ export default function BookingsPage() {
                               {booking.provider.name}
                             </p>
                             <div className="flex items-center gap-1">
-                              <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                              <OptimizedIcon name="Star" className="w-3 h-3 text-yellow-500 fill-current" />
                               <span className="text-sm">
                                 {booking.provider.rating}
                               </span>
@@ -350,7 +340,7 @@ export default function BookingsPage() {
                         <span>{booking.date}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
+                        <OptimizedIcon name="Clock" className="w-4 h-4" />
                         <span>{booking.time}</span>
                       </div>
                     </div>
@@ -367,13 +357,13 @@ export default function BookingsPage() {
                       </div>
                       {booking.canReview && (
                         <Button size="sm">
-                          <Star className="w-4 h-4 mr-1" />
+                          <OptimizedIcon name="Star" className="w-4 h-4 mr-1" />
                           Leave Review
                         </Button>
                       )}
                       {booking.hasReview && (
                         <Badge variant="outline">
-                          <Star className="w-3 h-3 mr-1" />
+                          <OptimizedIcon name="Star" className="w-3 h-3 mr-1" />
                           Reviewed
                         </Badge>
                       )}

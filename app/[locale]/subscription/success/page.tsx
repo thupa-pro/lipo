@@ -1,15 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Crown,
-  Loader2,
-  CheckCircle
-} from "lucide-react";
+import { Crown } from "lucide-react";
 import { useSubscriptionClient } from "@/lib/subscription/utils";
 
 export default function SubscriptionSuccessPage() {
@@ -58,7 +54,7 @@ export default function SubscriptionSuccessPage() {
         <Card className="border-green-200 bg-green-50">
           <CardContent className="p-8 text-center">
             <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-white" />
+              <UIIcons.CheckCircle className="w-8 h-8 text-white" / />
             </div>
 
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -113,7 +109,7 @@ export default function SubscriptionSuccessPage() {
                   className="w-full"
                 >
                   Go to Dashboard
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
 
                 <Button

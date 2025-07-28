@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,33 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import {
-  Smartphone,
-  CreditCard,
-  BarChart3,
-  Bell,
-  TrendingUp,
-  Shield,
-  MessageSquare,
-  Zap,
-  Users,
-  DollarSign,
-  Calendar,
-  Star,
-  Activity,
-  Globe,
-  Target,
-  Rocket,
-  Brain,
-  Eye,
-  Clock,
-  Award,
-  ArrowUp,
-  ArrowDown,
-  Sparkles,
-  Heart,
-  Settings
-} from "lucide-react";
+import { Smartphone, CreditCard, BarChart3, Bell, TrendingUp, Zap, Activity, Globe, Target, Rocket, Brain, Eye, Award, ArrowUp, ArrowDown, Sparkles, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MobileDashboard } from "@/components/mobile/mobile-dashboard";
 import { BiometricAuth } from "@/components/mobile/biometric-auth";
@@ -259,7 +234,7 @@ export default function EnhancedDashboard() {
           
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm" className="glass-subtle border-white/40">
-              <Settings className="w-4 h-4 mr-2" />
+              <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
               Settings
             </Button>
             <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -364,7 +339,7 @@ export default function EnhancedDashboard() {
             Analytics
           </TabsTrigger>
           <TabsTrigger value="security" className="flex items-center gap-2 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-blue-500 data-[state=active]:text-white">
-            <Shield className="w-4 h-4" />
+            <OptimizedIcon name="Shield" className="w-4 h-4" />
             Security
           </TabsTrigger>
         </TabsList>
@@ -519,7 +494,7 @@ export default function EnhancedDashboard() {
             <Card className="glass-ultra border-white/40">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <MessageSquare className="w-5 h-5" />
+                  <OptimizedIcon name="MessageSquare" className="w-5 h-5" />
                   Feedback Widget
                 </CardTitle>
               </CardHeader>
@@ -612,7 +587,7 @@ export default function EnhancedDashboard() {
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center">
-                        <Shield className="w-5 h-5 text-white" />
+                        <OptimizedIcon name="Shield" className="w-5 h-5 text-white" />
                       </div>
                       <span className="font-medium">Security Score</span>
                     </div>

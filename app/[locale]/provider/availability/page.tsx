@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -13,13 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Save,
-  Calendar,
-  Plus,
-  X,
-  Clock
-} from "lucide-react";
+import { Save, Plus, X } from "lucide-react";
 
 export default function ProviderAvailabilityPage() {
   const [availability, setAvailability] = useState({
@@ -94,7 +89,7 @@ export default function ProviderAvailabilityPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
+              <BusinessIcons.Calendar className="h-5 w-5" / />
               Weekly Schedule
             </CardTitle>
           </CardHeader>
@@ -150,7 +145,7 @@ export default function ProviderAvailabilityPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
+                <OptimizedIcon name="Clock" className="h-5 w-5" />
                 Time Slot Settings
               </CardTitle>
             </CardHeader>

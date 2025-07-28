@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,19 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import {
-  Settings,
-  Bell,
-  Mail,
-  FileText,
-  Calendar,
-  DollarSign,
-  ExternalLink,
-  Save,
-  RefreshCw,
-  AlertCircle,
-  Shield
-} from "lucide-react";
+import { Bell, FileText, ExternalLink, Save, RefreshCw, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { billingClient } from "@/lib/billing/utils";
@@ -492,7 +481,7 @@ export function BillingSettings() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <DollarSign className="h-5 w-5" />
+            <BusinessIcons.DollarSign className="h-5 w-5" / />
             Payment Settings
           </CardTitle>
           <CardDescription>
@@ -660,7 +649,7 @@ export function BillingSettings() {
       <Card className="bg-blue-50 border-blue-200">
         <CardContent className="p-4">
           <div className="flex items-start space-x-3">
-            <Shield className="w-5 h-5 text-blue-600 mt-0.5" />
+            <OptimizedIcon name="Shield" className="w-5 h-5 text-blue-600 mt-0.5" />
             <div>
               <h4 className="font-medium text-blue-900">Data Security</h4>
               <p className="text-sm text-blue-700">

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -9,28 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTranslations } from "next-intl";
-import {
-  Search,
-  TrendingUp,
-  CreditCard,
-  BarChart3,
-  ShoppingBag,
-  Users,
-  Star,
-  ArrowRight,
-  Plus, Shield,
-  MapPin,
-  Calendar,
-  Wallet,
-  Activity,
-  Bell,
-  Settings,
-  Eye,
-  Lock,
-  Fingerprint,
-  MessageSquare,
-  Zap
-} from "lucide-react";
+import { TrendingUp, CreditCard, BarChart3, ShoppingBag, Plus, Wallet, Activity, Bell, Eye, Lock, Fingerprint, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface DashboardTile {
@@ -212,7 +192,7 @@ export function MobileDashboard({ className }: MobileDashboardProps) {
       <div className="px-4 mb-6">
         <div className="relative">
           <div className="absolute inset-y-0 left-3 flex items-center">
-            <Search className="w-4 h-4 text-muted-foreground" />
+            <NavigationIcons.Search className="w-4 h-4 text-muted-foreground" / />
           </div>
           <Input
             placeholder={t("search_placeholder")}
@@ -303,7 +283,7 @@ export function MobileDashboard({ className }: MobileDashboardProps) {
                         >
                           <Icon className="w-5 h-5 text-white" />
                         </div>
-                        <ArrowRight className="w-4 h-4 text-muted-foreground" />
+                        <UIIcons.ArrowRight className="w-4 h-4 text-muted-foreground" / />
                       </div>
 
                       <div>
@@ -375,7 +355,7 @@ export function MobileDashboard({ className }: MobileDashboardProps) {
                 )}
                 {activity.rating && (
                   <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-slate-700 text-slate-700 dark:fill-white dark:text-white" />
+                    <OptimizedIcon name="Star" className="w-4 h-4 fill-slate-700 text-slate-700 dark:fill-white dark:text-white" />
                     <span className="text-sm font-medium">
                       {activity.rating}
                     </span>
@@ -393,7 +373,7 @@ export function MobileDashboard({ className }: MobileDashboardProps) {
           <CardContent className="p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
-                <Shield className="w-4 h-4 text-white" />
+                <OptimizedIcon name="Shield" className="w-4 h-4 text-white" />
               </div>
               <div>
                 <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">

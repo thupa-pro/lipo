@@ -1,14 +1,8 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  UserCheck,
-  ArrowUpRight,
-  Shield,
-  Award,
-  CheckCircle,
-  Star
-} from "lucide-react";
+import { UserCheck, ArrowUpRight, Award } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -95,15 +89,15 @@ export default function AdminProvidersPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-600 dark:text-gray-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-emerald-500" / />
                   Background Checks
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-emerald-500" />
+                  <OptimizedIcon name="Shield" className="w-4 h-4 text-emerald-500" />
                   Identity Verification
                 </div>
                 <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-emerald-500" />
+                  <OptimizedIcon name="Star" className="w-4 h-4 text-emerald-500" />
                   Quality Monitoring
                 </div>
                 <div className="flex items-center gap-2">

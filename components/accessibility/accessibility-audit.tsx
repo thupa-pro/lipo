@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,22 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import {
-  Eye,
-  EyeOff,
-  Volume2,
-  VolumeX,
-  Keyboard,
-  Mouse,
-  Smartphone,
-  Monitor,
-  AlertTriangle,
-  X,
-  Zap,
-  Activity,
-  BarChart3,
-  CheckCircle
-} from "lucide-react";
+import { Eye, EyeOff, Volume2, VolumeX, Keyboard, Mouse, Smartphone, Monitor, X, Zap, Activity, BarChart3 } from "lucide-react";
 
 interface AccessibilityAuditProps {
   onComplete?: (score: number) => void;
@@ -213,9 +199,9 @@ export function AccessibilityAudit({ onComplete }: AccessibilityAuditProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "pass":
-        return <CheckCircle className="w-4 h-4 text-green-500" />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />;
       case "warning":
-        return <AlertTriangle className="w-4 h-4 text-yellow-500" />;
+        return <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />;
       case "fail":
         return <X className="w-4 h-4 text-red-500" />;
       default:

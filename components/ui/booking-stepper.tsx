@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -10,18 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Calendar as CalendarIcon,
-  MapPin,
-  CreditCard,
-  Check,
-  ChevronRight,
-  ChevronLeft,
-  Loader2,
-  AlertCircle,
-  Star,
-  Shield
-} from "lucide-react";
+import { Calendar as CalendarIcon, CreditCard, Check, ChevronRight, ChevronLeft, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format, addDays, isSameDay, isAfter, isBefore } from "date-fns";
 
@@ -292,7 +282,7 @@ export function BookingStepper({
                 
                 {isLoadingSlots ? (
                   <div className="flex items-center justify-center py-8">
-                    <Loader2 className="w-6 h-6 animate-spin" />
+                    <UIIcons.Loader2 className="w-6 h-6 animate-spin" / />
                     <span className="ml-2 text-muted-foreground">Loading slots...</span>
                   </div>
                 ) : (
@@ -442,7 +432,7 @@ export function BookingStepper({
 
               {/* Security Notice */}
               <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/20 p-3 rounded-lg">
-                <Shield className="w-4 h-4 text-green-600" />
+                <OptimizedIcon name="Shield" className="w-4 h-4 text-green-600" />
                 <span>Your payment is protected by 256-bit SSL encryption</span>
               </div>
             </div>
@@ -467,7 +457,7 @@ export function BookingStepper({
           >
             {isProcessing ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
                 Processing...
               </>
             ) : currentStep === steps.length - 1 ? (

@@ -1,24 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Home,
-  Search,
-  ArrowLeft,
-  Bot,
-  MessageSquare,
-  Sparkles,
-  Shield,
-  Zap,
-  Brain,
-  HelpCircle,
-  Phone,
-  Mail,
-  Clock
-} from "lucide-react";
+import { Bot, Sparkles, Zap, Brain, HelpCircle } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { COPY } from "@/lib/content/copy";
@@ -152,7 +139,7 @@ export default function EnhancedNotFound() {
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
                 >
                   <Link href="/chat">
-                    <MessageSquare className="w-4 h-4 mr-2" />
+                    <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-2" />
                     Get AI Help
                   </Link>
                 </Button>
@@ -173,7 +160,7 @@ export default function EnhancedNotFound() {
               variant="outline"
               className="text-lg px-8 py-4 rounded-2xl border-2 border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10"
             >
-              <ArrowLeft className="w-5 h-5 mr-2" />
+              <UIIcons.ArrowLeft className="w-5 h-5 mr-2" / />
               Go Back
             </Button>
             <Button 
@@ -182,7 +169,7 @@ export default function EnhancedNotFound() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-lg px-8 py-4 rounded-2xl"
             >
               <Link href="/">
-                <Home className="w-5 h-5 mr-2" />
+                <NavigationIcons.Home className="w-5 h-5 mr-2" / />
                 {COPY.errors.notFound.action}
               </Link>
             </Button>
@@ -265,7 +252,7 @@ export default function EnhancedNotFound() {
           className="text-center mt-12 p-6 bg-white/50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="w-5 h-5 text-emerald-500" />
+            <OptimizedIcon name="Shield" className="w-5 h-5 text-emerald-500" />
             <span className="font-semibold text-slate-900 dark:text-white">Elite Support Available</span>
           </div>
           <p className="text-slate-600 dark:text-gray-400 mb-4">
@@ -274,13 +261,13 @@ export default function EnhancedNotFound() {
           <div className="flex justify-center gap-4">
             <Button variant="outline" size="sm" asChild>
               <Link href="mailto:support@loconomy.com" className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
+                <OptimizedIcon name="Mail" className="w-4 h-4" />
                 Email Support
               </Link>
             </Button>
             <Button variant="outline" size="sm" asChild>
               <Link href="/chat" className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4" />
+                <OptimizedIcon name="MessageSquare" className="w-4 h-4" />
                 Live Chat
               </Link>
             </Button>

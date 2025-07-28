@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -12,18 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  TrendingDown,
-  TrendingUp,
-  Users,
-  AlertTriangle,
-  BarChart3,
-  Zap,
-  DollarSign,
-  CheckCircle,
-  Clock,
-  Target
-} from "lucide-react";
+import { TrendingDown, TrendingUp, BarChart3, Zap, Target } from "lucide-react";
 
 interface FunnelStage {
   name: string;
@@ -200,7 +190,7 @@ export default function FunnelAnalyzer() {
             <Button onClick={runAnalysis} disabled={isAnalyzing}>
               {isAnalyzing ? (
                 <>
-                  <Clock className="w-4 h-4 mr-2 animate-spin" />
+                  <OptimizedIcon name="Clock" className="w-4 h-4 mr-2 animate-spin" />
                   Analyzing...
                 </>
               ) : (
@@ -261,7 +251,7 @@ export default function FunnelAnalyzer() {
                       {stage.issues.length > 0 && (
                         <div className="space-y-2">
                           <div className="flex items-center text-sm text-muted-foreground">
-                            <AlertTriangle className="w-4 h-4 mr-1 text-yellow-500" />
+                            <UIIcons.AlertTriangle className="w-4 h-4 mr-1 text-yellow-500" / />
                             Issues Identified:
                           </div>
                           <div className="flex flex-wrap gap-1">
@@ -338,7 +328,7 @@ export default function FunnelAnalyzer() {
                         </p>
                         <p className="text-2xl font-bold">20%</p>
                       </div>
-                      <Users className="w-8 h-8 text-blue-500" />
+                      <NavigationIcons.Users className="w-8 h-8 text-blue-500" / />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
                       <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
@@ -358,7 +348,7 @@ export default function FunnelAnalyzer() {
                         </p>
                         <p className="text-2xl font-bold">4.2min</p>
                       </div>
-                      <Clock className="w-8 h-8 text-orange-500" />
+                      <OptimizedIcon name="Clock" className="w-8 h-8 text-orange-500" />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
                       <TrendingDown className="w-4 h-4 mr-1 text-green-500" />
@@ -378,7 +368,7 @@ export default function FunnelAnalyzer() {
                         </p>
                         <p className="text-2xl font-bold">$47</p>
                       </div>
-                      <DollarSign className="w-8 h-8 text-green-500" />
+                      <BusinessIcons.DollarSign className="w-8 h-8 text-green-500" / />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
                       <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
@@ -401,7 +391,7 @@ export default function FunnelAnalyzer() {
                       <Target className="w-8 h-8 text-purple-500" />
                     </div>
                     <div className="mt-2 flex items-center text-sm">
-                      <CheckCircle className="w-4 h-4 mr-1 text-green-500" />
+                      <UIIcons.CheckCircle className="w-4 h-4 mr-1 text-green-500" / />
                       <span className="text-green-600 dark:text-green-400">
                         Excellent
                       </span>

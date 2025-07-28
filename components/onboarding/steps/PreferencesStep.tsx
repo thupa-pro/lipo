@@ -1,10 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React, { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Bell, DollarSign, Heart } from "lucide-react";
+import { Bell, Heart } from "lucide-react";
 import {
   OnboardingStepProps,
   CONSUMER_INTERESTS,
@@ -103,7 +104,7 @@ export function PreferencesStep({ onNext, initialData }: OnboardingStepProps) {
       {/* Budget Range */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <DollarSign className="w-5 h-5 text-green-500" />
+          <BusinessIcons.DollarSign className="w-5 h-5 text-green-500" / />
           <Label className="text-lg font-medium">Typical Budget Range</Label>
         </div>
         <p className="text-sm text-gray-600">
@@ -243,7 +244,7 @@ export function PreferencesStep({ onNext, initialData }: OnboardingStepProps) {
         size="lg"
       >
         {isLoading ? "Saving Preferences..." : "Continue"}
-        <ArrowRight className="w-4 h-4" />
+        <UIIcons.ArrowRight className="w-4 h-4" / />
       </Button>
     </div>
   );

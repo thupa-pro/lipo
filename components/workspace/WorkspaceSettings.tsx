@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -26,17 +27,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
-import {
-  Settings,
-  Users,
-  Plus,
-  Mail,
-  Save,
-  Activity,
-  Copy,
-  ExternalLink,
-  Trash2
-} from "lucide-react";
+import { Plus, Save, Activity, Copy, ExternalLink, Trash2 } from "lucide-react";
 import {
   Workspace,
   WorkspaceMember,
@@ -272,7 +263,7 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Settings className="w-5 h-5" />
+              <NavigationIcons.Settings className="w-5 h-5" / />
               General Settings
             </CardTitle>
           </CardHeader>
@@ -376,7 +367,7 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5" />
+                <NavigationIcons.Users className="w-5 h-5" / />
                 Team Members ({formatMemberCount(members.length)})
               </CardTitle>
               <Dialog
@@ -411,7 +402,7 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                       {/* User avatar would go here */}
-                      <Users className="w-4 h-4" />
+                      <NavigationIcons.Users className="w-4 h-4" / />
                     </div>
                     <div>
                       <p className="font-medium">{member.user_id}</p>
@@ -463,14 +454,14 @@ export function WorkspaceSettings({ workspaceSlug }: WorkspaceSettingsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Mail className="w-5 h-5" />
+              <OptimizedIcon name="Mail" className="w-5 h-5" />
               Pending Invitations ({invitations.length})
             </CardTitle>
           </CardHeader>
           <CardContent>
             {invitations.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
-                <Mail className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <OptimizedIcon name="Mail" className="w-8 h-8 mx-auto mb-2 opacity-50" />
                 <p>No pending invitations</p>
               </div>
             ) : (

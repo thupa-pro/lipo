@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -12,24 +13,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Mic,
-  MicOff,
-  Volume2,
-  VolumeX,
-  Settings,
-  Languages,
-  Headphones,
-  Waves,
-  Brain,
-  Zap,
-  Globe,
-  Play,
-  Pause,
-  RotateCcw,
-  Download,
-  Upload
-} from "lucide-react";
+import { Mic, MicOff, Volume2, VolumeX, Languages, Headphones, Waves, Brain, Zap, Globe, Play, Pause, RotateCcw, Download, Upload } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
 import { locales, localeNames } from "@/lib/i18n/config";

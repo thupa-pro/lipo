@@ -1,20 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Fingerprint,
-  Scan,
-  Lock,
-  Unlock,
-  AlertCircle,
-  Eye,
-  Smartphone,
-  CheckCircle,
-  Shield
-} from "lucide-react";
+import { Fingerprint, Scan, Lock, Unlock, AlertCircle, Eye, Smartphone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BiometricAuthProps {
@@ -137,7 +128,7 @@ export function BiometricAuth({
         <div className="mb-6">
           {authStatus === "idle" && (
             <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-4">
-              <Shield className="w-10 h-10 text-white" />
+              <OptimizedIcon name="Shield" className="w-10 h-10 text-white" />
             </div>
           )}
 
@@ -149,7 +140,7 @@ export function BiometricAuth({
 
           {authStatus === "success" && (
             <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 animate-bounce">
-              <CheckCircle className="w-10 h-10 text-white" />
+              <UIIcons.CheckCircle className="w-10 h-10 text-white" / />
             </div>
           )}
 

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { DynamicPaymentSystem } from "@/components/payment/dynamic-payment-system";
 import { DynamicWallet } from "@/components/payment/dynamic-wallet";
 import { PaymentAnalytics } from "@/components/payment/payment-analytics";
@@ -5,13 +6,7 @@ import { MobilePaymentFlow } from "@/components/payment/mobile-payment-flow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  CreditCard,
-  Wallet,
-  BarChart,
-  Smartphone,
-  TrendingUp,
-  DollarSign} from "lucide-react";
+import { CreditCard, Wallet, BarChart, Smartphone, TrendingUp } from "lucide-react";
 
 export default function PaymentsPage() {
   return (

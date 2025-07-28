@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -13,22 +14,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
-import {
-  Bell,
-  X,
-  Check,
-  AlertCircle,
-  CreditCard,
-  Calendar,
-  Settings,
-  MoreHorizontal,
-  Eye,
-  Volume2,
-  VolumeX,
-  Link,
-  Star,
-  Trash2
-} from "lucide-react";
+import { Bell, X, Check, AlertCircle, CreditCard, MoreHorizontal, Eye, Volume2, VolumeX, Link, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
@@ -279,7 +265,7 @@ export function NotificationDropdown({
         );
       case "booking":
         return (
-          <Calendar className={cn(baseClass, "text-blue-600", urgentClass)} />
+          <BusinessIcons.Calendar className={cn(baseClass, "text-blue-600", urgentClass)} / />
         );
       case "message":
         return (
@@ -289,7 +275,7 @@ export function NotificationDropdown({
         );
       case "review":
         return (
-          <Star className={cn(baseClass, "text-yellow-600", urgentClass)} />
+          <OptimizedIcon name="Star" className={cn(baseClass, "text-yellow-600", urgentClass)} />
         );
       case "job_match":
         return (
@@ -452,7 +438,7 @@ export function NotificationDropdown({
                         variant="ghost"
                         className="w-full justify-start h-8 px-2 text-xs"
                       >
-                        <Settings className="w-3 h-3 mr-2" />
+                        <NavigationIcons.Settings className="w-3 h-3 mr-2" / />
                         Settings
                       </Button>
                     </Link>

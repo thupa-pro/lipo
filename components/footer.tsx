@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
@@ -24,67 +25,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/ui/logo";
 import { LogoVariant, UIContext } from "@/lib/types/logo";
-import {
-  Sparkles,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Youtube,
-  Mail,
-  Phone,
-  MapPin,
-  Globe,
-  Award,
-  Users,
-  BookOpen,
-  GraduationCap,
-  Newspaper,
-  Lightbulb,
-  Handshake,
-  Accessibility,
-  DollarSign,
-  Crown,
-  Brain,
-  Rocket,
-  Gem,
-  Building2,
-  ArrowRight,
-  TrendingUp,
-  Shield,
-  Zap,
-  Heart,
-  ChevronUp,
-  ChevronDown,
-  Star,
-  CheckCircle,
-  Clock,
-  MessageCircle,
-  ExternalLink,
-  Download,
-  HelpCircle,
-  Settings,
-  FileText,
-  Lock,
-  Eye,
-  Cookie,
-  Briefcase,
-  UserCheck,
-  Scale,
-  AlertTriangle,
-  Target,
-  BarChart3,
-  Headphones,
-  Monitor,
-  Smartphone,
-  Tablet,
-  Cpu,
-  Code,
-  Database,
-  Server,
-  GitBranch,
-  Wifi,
-  Layers
-} from "lucide-react";
+import { Sparkles, Twitter, Instagram, Linkedin, Youtube, Globe, Award, BookOpen, GraduationCap, Newspaper, Lightbulb, Handshake, Accessibility, Crown, Brain, Rocket, Gem, Building2, TrendingUp, Zap, Heart, ChevronUp, ChevronDown, MessageCircle, ExternalLink, Download, HelpCircle, FileText, Lock, Eye, Cookie, UserCheck, Scale, Target, BarChart3, Headphones, Monitor, Smartphone, Tablet, Cpu, Code, Database, Server, GitBranch, Wifi, Layers } from "lucide-react";
 
 // Comprehensive language configuration with all supported locales
 const languages = [
@@ -554,7 +495,7 @@ export default function Footer() {
                           <div className="font-medium">{lang.native}</div>
                           <div className="text-xs text-slate-400">{lang.name} • {lang.region}</div>
                         </div>
-                        {lang.code === currentLocale && <CheckCircle className="w-4 h-4 text-violet-400" />}
+                        {lang.code === currentLocale && <UIIcons.CheckCircle className="w-4 h-4 text-violet-400" / />}
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
@@ -626,7 +567,7 @@ export default function Footer() {
           {/* Social Media */}
           <div>
             <h4 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
-              <Users className="w-5 h-5 text-violet-400" />
+              <NavigationIcons.Users className="w-5 h-5 text-violet-400" / />
               Connect with Excellence
             </h4>
             <div className="grid grid-cols-2 gap-4">
@@ -662,21 +603,21 @@ export default function Footer() {
             </h4>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-slate-300 p-3 rounded-lg bg-slate-800/30 border border-slate-700/50">
-                <Mail className="w-4 h-4 text-violet-400" />
+                <OptimizedIcon name="Mail" className="w-4 h-4 text-violet-400" />
                 <div>
                   <div className="font-medium">elite@loconomy.com</div>
                   <div className="text-xs text-slate-400">24/7 Premium Support</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-slate-300 p-3 rounded-lg bg-slate-800/30 border border-slate-700/50">
-                <Phone className="w-4 h-4 text-violet-400" />
+                <OptimizedIcon name="Phone" className="w-4 h-4 text-violet-400" />
                 <div>
                   <div className="font-medium">+1 (855) ELITE-AI</div>
                   <div className="text-xs text-slate-400">Priority Hotline</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-slate-300 p-3 rounded-lg bg-slate-800/30 border border-slate-700/50">
-                <MapPin className="w-4 h-4 text-violet-400" />
+                <BusinessIcons.MapPin className="w-4 h-4 text-violet-400" / />
                 <div>
                   <div className="font-medium">San Francisco, CA</div>
                   <div className="text-xs text-slate-400">Global Operations</div>
@@ -710,7 +651,7 @@ export default function Footer() {
               ))}
               <div className="mt-4 p-3 rounded-lg bg-gradient-to-r from-emerald-900/20 to-cyan-900/20 border border-emerald-700/30">
                 <div className="flex items-center gap-2 text-emerald-400 mb-1">
-                  <Star className="w-4 h-4" />
+                  <OptimizedIcon name="Star" className="w-4 h-4" />
                   <span className="font-semibold">4.8/5 Rating</span>
                 </div>
                 <div className="text-xs text-slate-400">50K+ Downloads This Month</div>
@@ -748,7 +689,7 @@ export default function Footer() {
           {/* Real-time System Status */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-sm">
-              <Shield className="w-4 h-4 text-emerald-400" />
+              <OptimizedIcon name="Shield" className="w-4 h-4 text-emerald-400" />
               <span className="text-slate-400">System Status:</span>
               <div className="flex items-center gap-1">
                 <div className={`w-2 h-2 rounded-full animate-pulse ${
@@ -764,7 +705,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="text-xs text-slate-400 flex items-center gap-2">
-              <Clock className="w-3 h-3" />
+              <OptimizedIcon name="Clock" className="w-3 h-3" />
               {systemStatus.uptime} uptime • {systemStatus.response} avg
             </div>
           </div>

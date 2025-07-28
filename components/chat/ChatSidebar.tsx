@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -6,18 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import {
-  Plus,
-  Search,
-  MessageCircle,
-  Star,
-  Archive,
-  MoreHorizontal,
-  X,
-  Bot, HelpCircle,
-  Settings,
-  BookOpen
-} from "lucide-react";
+import { Plus, MessageCircle, Archive, MoreHorizontal, X, Bot, HelpCircle, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatConversation } from "@/lib/ai-chat/types";
 
@@ -54,7 +44,7 @@ export function ChatSidebar({
   const getConversationIcon = (type: string) => {
     switch (type) {
       case "onboarding":
-        return <Settings className="h-4 w-4 text-blue-500" />;
+        return <NavigationIcons.Settings className="h-4 w-4 text-blue-500" / />;
       case "support":
         return <HelpCircle className="h-4 w-4 text-orange-500" />;
       case "general":
@@ -154,7 +144,7 @@ export function ChatSidebar({
       {/* Search */}
       <div className="p-4 border-b border-gray-200">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" / />
           <Input
             placeholder="Search conversations..."
             value={searchQuery}
@@ -260,7 +250,7 @@ export function ChatSidebar({
                       {/* Priority indicator */}
                       {conversation.priority === "high" && (
                         <div className="flex items-center gap-1 mt-1">
-                          <Star className="h-3 w-3 text-red-500" />
+                          <OptimizedIcon name="Star" className="h-3 w-3 text-red-500" />
                           <span className="text-xs text-red-600">
                             High Priority
                           </span>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState } from "react"
@@ -9,18 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import {
-  MapPin,
-  Users,
-  Briefcase,
-  ArrowRight,
-  Sparkles,
-  Target,
-  Lightbulb,
-  TrendingUp,
-  CheckCircle,
-  Shield
-} from "lucide-react";
+import { Sparkles, Target, Lightbulb, TrendingUp } from "lucide-react";
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -134,7 +124,7 @@ export default function OnboardingFlow() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-white" />
+                  <BusinessIcons.MapPin className="w-5 h-5 text-white" / />
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
                   Loconomy
@@ -165,7 +155,7 @@ export default function OnboardingFlow() {
                     <RadioGroupItem value="customer" id="customer" />
                     <div className="flex items-center space-x-4 flex-1">
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <Users className="w-6 h-6 text-blue-600" />
+                        <NavigationIcons.Users className="w-6 h-6 text-blue-600" / />
                       </div>
                       <div>
                         <Label htmlFor="customer" className="text-lg font-medium cursor-pointer">
@@ -191,7 +181,7 @@ export default function OnboardingFlow() {
                     <RadioGroupItem value="provider" id="provider" />
                     <div className="flex items-center space-x-4 flex-1">
                       <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <Briefcase className="w-6 h-6 text-green-600" />
+                        <BusinessIcons.Briefcase className="w-6 h-6 text-green-600" / />
                       </div>
                       <div>
                         <Label htmlFor="provider" className="text-lg font-medium cursor-pointer">
@@ -217,7 +207,7 @@ export default function OnboardingFlow() {
 
               <Button onClick={handleNext} disabled={!data.userType} className="w-full" size="lg">
                 Continue
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Button>
             </CardContent>
           </Card>
@@ -228,7 +218,7 @@ export default function OnboardingFlow() {
           <Card className="shadow-lg animate-fade-in">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl flex items-center justify-center">
-                <MapPin className="w-6 h-6 mr-2 text-primary" />
+                <BusinessIcons.MapPin className="w-6 h-6 mr-2 text-primary" / />
                 Where are you located?
               </CardTitle>
               <CardDescription>
@@ -251,7 +241,7 @@ export default function OnboardingFlow() {
 
               <div className="bg-blue-50 p-4 rounded-lg shadow-sm">
                 <div className="flex items-start space-x-3">
-                  <Shield className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <OptimizedIcon name="Shield" className="w-5 h-5 text-blue-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium text-blue-900">Privacy Protected</h4>
                     <p className="text-sm text-blue-700 mt-1">
@@ -268,7 +258,7 @@ export default function OnboardingFlow() {
                 </Button>
                 <Button onClick={handleNext} disabled={!data.location.trim()} className="flex-1">
                   Continue
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
               </div>
             </CardContent>
@@ -330,7 +320,7 @@ export default function OnboardingFlow() {
                 </Button>
                 <Button onClick={handleNext} disabled={data.interests.length === 0} className="flex-1">
                   Continue
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
               </div>
             </CardContent>
@@ -424,7 +414,7 @@ export default function OnboardingFlow() {
                   className="flex-1"
                 >
                   Continue
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
               </div>
             </CardContent>
@@ -436,7 +426,7 @@ export default function OnboardingFlow() {
           <Card className="shadow-lg animate-fade-in">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 mr-2 text-green-600" />
+                <UIIcons.CheckCircle className="w-6 h-6 mr-2 text-green-600" / />
                 You're all set!
               </CardTitle>
               <CardDescription>Just one more thing to help you stay connected</CardDescription>

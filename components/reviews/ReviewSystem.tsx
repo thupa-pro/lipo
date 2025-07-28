@@ -1,24 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ThumbsUp,
-  ThumbsDown,
-  Award,
-  Flag,
-  Heart,
-  MoreHorizontal,
-  Calendar,
-  Verified,
-  TrendingUp,
-  Users,
-  Medal,
-  Trophy,
-  CheckCircle,
-  Shield,
-  Star
-} from "lucide-react";
+import { ThumbsUp, ThumbsDown, Award, Flag, Heart, MoreHorizontal, Verified, TrendingUp, Medal, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -185,7 +170,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
       type: "verification",
       title: "Identity Verified",
       description: "Government-issued ID verified",
-      icon: <Shield className="w-4 h-4" />,
+      icon: <OptimizedIcon name="Shield" className="w-4 h-4" />,
       earned: true,
       earnedDate: "2023-01-15",
       criteria: "Submit valid government ID and pass identity verification",
@@ -195,7 +180,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
       type: "verification",
       title: "Background Checked",
       description: "Criminal background check completed",
-      icon: <CheckCircle className="w-4 h-4" />,
+      icon: <UIIcons.CheckCircle className="w-4 h-4" / />,
       earned: true,
       earnedDate: "2023-01-20",
       criteria: "Pass comprehensive background check",
@@ -205,7 +190,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
       type: "achievement",
       title: "Top Rated Pro",
       description: "Consistently high ratings (4.8+ stars)",
-      icon: <Star className="w-4 h-4" />,
+      icon: <OptimizedIcon name="Star" className="w-4 h-4" />,
       earned: true,
       earnedDate: "2023-06-01",
       criteria: "Maintain 4.8+ star rating with 50+ reviews",
@@ -245,7 +230,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
       type: "safety",
       title: "Insured Professional",
       description: "Liability insurance verified",
-      icon: <Shield className="w-4 h-4" />,
+      icon: <OptimizedIcon name="Shield" className="w-4 h-4" />,
       earned: true,
       earnedDate: "2023-01-25",
       criteria: "Provide proof of valid liability insurance",
@@ -323,7 +308,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
             onClick={interactive ? () => onRatingChange?.(star) : undefined}
             className={interactive ? "cursor-pointer" : "cursor-default"}
           >
-            <Star
+            <OptimizedIcon name="Star"
               className={`w-4 h-4 ${
                 star <= rating
                   ? "fill-yellow-400 text-yellow-400"
@@ -448,7 +433,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
                 {[5, 4, 3, 2, 1].map((stars) => (
                   <div key={stars} className="flex items-center gap-3">
                     <span className="text-sm w-2">{stars}</span>
-                    <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    <OptimizedIcon name="Star" className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                     <Progress
                       value={(stats.ratingDistribution[stars] / stats.totalReviews) * 100}
                       className="flex-1 h-2"
@@ -467,7 +452,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
                 </div>
                 <p className="text-sm font-medium mb-2">Trust Score</p>
                 <Badge variant="secondary" className="text-xs">
-                  <Shield className="w-3 h-3 mr-1" />
+                  <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                   {stats.verificationLevel} verified
                 </Badge>
               </div>
@@ -555,7 +540,7 @@ export default function ReviewSystem({ providerId, showSubmitForm = false, isPro
                         <h4 className="font-medium">{review.customer.name}</h4>
                         {review.customer.isVerified && (
                           <Badge variant="secondary" className="text-xs">
-                            <CheckCircle className="w-3 h-3 mr-1" />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                             Verified
                           </Badge>
                         )}

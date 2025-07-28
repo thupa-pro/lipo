@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
@@ -13,11 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import {
-  Lightbulb,
-  ArrowRight,
-  MessageSquare
-} from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -51,7 +48,7 @@ export default function FeedbackPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/contact")}>
             Contact Support
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -160,7 +157,7 @@ export default function FeedbackPage() {
             entire community.
           </p>
           <Button size="lg" onClick={() => router.push("/community")}>
-            <MessageSquare className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-2" />
             Join the Community Discussion
           </Button>
         </div>

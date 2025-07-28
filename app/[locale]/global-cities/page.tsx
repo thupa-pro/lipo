@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -6,19 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  Globe,
-  Users,
-  TrendingUp,
-  DollarSign,
-  MapPin,
-  Building,
-  Smartphone,
-  Heart,
-  ArrowRight,
-  CheckCircle,
-  Star
-} from "lucide-react";
+import { Globe, TrendingUp, Building, Smartphone, Heart } from "lucide-react";
 import CitySelector from "@/components/i18n/city-selector";
 import {
   metropolitanCities,
@@ -163,7 +152,7 @@ export default function GlobalCitiesPage() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-green-600" />
+                      <OptimizedIcon name="Star" className="w-4 h-4 text-green-600" />
                       High Potential
                     </span>
                     <span className="font-semibold">{globalStats.highPotentialCities}</span>
@@ -172,7 +161,7 @@ export default function GlobalCitiesPage() {
                   
                   <div className="flex justify-between items-center">
                     <span className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-yellow-600" />
+                      <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-600" />
                       Medium Potential
                     </span>
                     <span className="font-semibold">{globalStats.mediumPotentialCities}</span>
@@ -181,7 +170,7 @@ export default function GlobalCitiesPage() {
                   
                   <div className="flex justify-between items-center">
                     <span className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-red-600" />
+                      <OptimizedIcon name="Star" className="w-4 h-4 text-red-600" />
                       Emerging Potential
                     </span>
                     <span className="font-semibold">{globalStats.lowPotentialCities}</span>
@@ -260,7 +249,7 @@ export default function GlobalCitiesPage() {
                 {/* Demographics */}
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
-                    <Users className="w-5 h-5 text-blue-600" />
+                    <NavigationIcons.Users className="w-5 h-5 text-blue-600" / />
                     Demographics
                   </h3>
                   <div className="space-y-2 text-sm">
@@ -332,7 +321,7 @@ export default function GlobalCitiesPage() {
                   <div className="space-y-2">
                     {selectedCityData.serviceTypes.slice(0, 5).map((service, index) => (
                       <div key={index} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                         <span>{service}</span>
                       </div>
                     ))}
@@ -344,11 +333,11 @@ export default function GlobalCitiesPage() {
               <div className="mt-6 pt-6 border-t">
                 <div className="grid md:grid-cols-4 gap-4 text-sm">
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-blue-500" />
+                    <BusinessIcons.MapPin className="w-4 h-4 text-blue-500" / />
                     <span>Emergency: {selectedCityData.emergencyNumber}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <DollarSign className="w-4 h-4 text-green-500" />
+                    <BusinessIcons.DollarSign className="w-4 h-4 text-green-500" / />
                     <span>Currency: {selectedCityData.currency} ({selectedCityData.currencySymbol})</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -396,7 +385,7 @@ export default function GlobalCitiesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-50">
                   Find Services Near Me
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Become a Provider

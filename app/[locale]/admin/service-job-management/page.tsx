@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -18,21 +19,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import {
-  Briefcase,
-  Search,
-  Users,
-  DollarSign,
-  Calendar,
-  MapPin,
-  XCircle,
-  Eye,
-  ArrowLeft,
-  ArrowRight,
-  RefreshCcw,
-  CheckCircle,
-  MessageSquare
-} from "lucide-react";
+import { XCircle, Eye, RefreshCcw } from "lucide-react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -206,12 +193,12 @@ export default function ServiceJobManagementPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-bold text-foreground flex items-center gap-3">
-            <Briefcase className="w-9 h-9 text-orange-600" />
+            <BusinessIcons.Briefcase className="w-9 h-9 text-orange-600" / />
             Service & Job Management
           </h1>
           <Button variant="outline" asChild>
             <Link href="/admin">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
               Back to Admin
             </Link>
           </Button>
@@ -237,7 +224,7 @@ export default function ServiceJobManagementPage() {
                   +200 this month
                 </p>
               </div>
-              <Briefcase className="w-12 h-12 text-blue-600 opacity-30" />
+              <BusinessIcons.Briefcase className="w-12 h-12 text-blue-600 opacity-30" / />
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-green-50 dark:bg-green-950/20">
@@ -253,7 +240,7 @@ export default function ServiceJobManagementPage() {
                   92% completion rate
                 </p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600 opacity-30" />
+              <UIIcons.CheckCircle className="w-12 h-12 text-green-600 opacity-30" / />
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-red-50 dark:bg-red-950/20">
@@ -278,7 +265,7 @@ export default function ServiceJobManagementPage() {
         <Card className="shadow-lg dark:bg-card">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
-              <Briefcase className="w-6 h-6 text-primary" />
+              <BusinessIcons.Briefcase className="w-6 h-6 text-primary" / />
               All Jobs
             </CardTitle>
             <CardDescription>
@@ -288,7 +275,7 @@ export default function ServiceJobManagementPage() {
           <CardContent>
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                 <Input
                   placeholder="Search by job, title, customer, or provider..."
                   value={searchQuery}
@@ -328,7 +315,7 @@ export default function ServiceJobManagementPage() {
             <div className="space-y-4">
               {filteredJobs.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  <Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <NavigationIcons.Search className="w-12 h-12 mx-auto mb-4 opacity-50" / />
                   <p className="text-lg font-medium">
                     No jobs found matching your criteria.
                   </p>
@@ -349,11 +336,11 @@ export default function ServiceJobManagementPage() {
                             {job.title}
                           </h3>
                           <p className="text-sm text-muted-foreground flex items-center gap-1">
-                            <Users className="w-3 h-3" />
+                            <NavigationIcons.Users className="w-3 h-3" / />
                             Customer: {job.customer}
                           </p>
                           <p className="text-sm text-muted-foreground flex items-center gap-1">
-                            <Briefcase className="w-3 h-3" />
+                            <BusinessIcons.Briefcase className="w-3 h-3" / />
                             Provider: {job.provider || "Unassigned"}
                           </p>
                         </div>
@@ -368,7 +355,7 @@ export default function ServiceJobManagementPage() {
                             {job.status}
                           </Badge>
                           <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
+                            <BusinessIcons.Calendar className="w-3 h-3" / />
                             {job.scheduledDate || job.postedDate}
                           </p>
                         </div>
@@ -410,7 +397,7 @@ export default function ServiceJobManagementPage() {
                               variant="destructive"
                               onClick={() => handleResolveConflict(job.id)}
                             >
-                              <MessageSquare className="w-4 h-4" />
+                              <OptimizedIcon name="MessageSquare" className="w-4 h-4" />
                             </Button>
                           )}
                         </div>
@@ -440,7 +427,7 @@ export default function ServiceJobManagementPage() {
               className="shadow-md hover:shadow-lg transition-all"
             >
               <Link href="/admin">
-                Back to Admin Dashboard <ArrowRight className="w-4 h-4 ml-2" />
+                Back to Admin Dashboard <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
               </Link>
             </Button>
           </CardContent>

@@ -1,11 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Home,
-  Search
-} from "lucide-react";
+;
 
 export default function NotFoundPage() {
   const t = useTranslations("Common");
@@ -15,7 +13,7 @@ export default function NotFoundPage() {
       <Card className="w-full, max-w-md, mx-4">
         <CardContent className="p-8 text-center, space-y-6">
           <div className="w-20 h-20 bg-gradient-to-br, from-primary, to-secondary, rounded-full, flex items-center, justify-center, mx-auto, mb-6">
-            <Search className="w-10 h-10 text-white" />
+            <NavigationIcons.Search className="w-10 h-10 text-white" / />
           </div>
 
           <div className="space-y-2">
@@ -31,13 +29,13 @@ export default function NotFoundPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild>
               <Link href="/" className="flex items-center gap-2">
-                <Home className="w-4 h-4" />
+                <NavigationIcons.Home className="w-4 h-4" / />
                 Go Home
               </Link>
             </Button>
             <Button variant="outline" asChild>
               <Link href="/browse" className="flex items-center gap-2">
-                <Search className="w-4 h-4" />
+                <NavigationIcons.Search className="w-4 h-4" / />
                 Browse Services
               </Link>
             </Button>

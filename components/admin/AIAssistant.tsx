@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -6,7 +7,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { AI_AGENTS, aiClient, type AIAgent } from '@/lib/ai/gemini-client';
-import { Send, Eye, MessageCircle, Lightbulb, AlertTriangle, TrendingUp, Sparkles, Shield, Zap } from 'lucide-react';
+import { Send, Eye, MessageCircle, Lightbulb, TrendingUp, Sparkles, Zap } from "lucide-react";
 
 interface Message {
   id: string;
@@ -107,7 +108,7 @@ export default function AIAssistant({ platformData, onInsightGenerated }: AIAssi
   const getAgentIcon = (agentId: string) => {
     const icons = {
       sophia: <Zap className="h-4 w-4" />,
-      marcus: <Shield className="h-4 w-4" />,
+      marcus: <OptimizedIcon name="Shield" className="h-4 w-4" />,
       elena: <Sparkles className="h-4 w-4" />,
       alex: <TrendingUp className="h-4 w-4" />
     };

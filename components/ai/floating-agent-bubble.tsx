@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -5,17 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AgentCommandInput } from "@/components/ui/agent-command-input";
-import {
-  MessageCircle,
-  X,
-  Minimize2,
-  Maximize2,
-  Sparkles,
-  Brain,
-  Bot,
-  User,
-  Zap
-} from "lucide-react";
+import { MessageCircle, X, Minimize2, Maximize2, Sparkles, Brain, Bot, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -333,7 +324,7 @@ export function FloatingAgentBubble({
 
                         {message.sender === "user" && (
                           <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-1">
-                            <User className="w-3 h-3" />
+                            <NavigationIcons.User className="w-3 h-3" / />
                           </div>
                         )}
                       </div>

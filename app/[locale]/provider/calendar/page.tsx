@@ -1,18 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Plus,
-  MapPin,
-  Clock,
-  User
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 
 export default function ProviderCalendarPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -78,7 +71,7 @@ export default function ProviderCalendarPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5" />
+                  <BusinessIcons.Calendar className="h-5 w-5" / />
                   {currentDate.toLocaleDateString("en-US", {
                     month: "long",
                     year: "numeric",
@@ -144,7 +137,7 @@ export default function ProviderCalendarPage() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-blue-600" />
+                      <OptimizedIcon name="Clock" className="h-4 w-4 text-blue-600" />
                       <span className="font-medium text-sm">
                         {booking.time}
                       </span>
@@ -156,14 +149,14 @@ export default function ProviderCalendarPage() {
 
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 text-sm">
-                      <User className="h-3 w-3 text-gray-500" />
+                      <NavigationIcons.User className="h-3 w-3 text-gray-500" / />
                       <span className="font-medium">{booking.client}</span>
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
                       {booking.service} • {booking.duration}
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <MapPin className="h-3 w-3" />
+                      <BusinessIcons.MapPin className="h-3 w-3" / />
                       <span>{booking.location}</span>
                     </div>
                   </div>

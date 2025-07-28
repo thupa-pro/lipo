@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useMemo } from "react";
@@ -13,20 +14,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Search,
-  Filter,
-  ThumbsUp,
-  ThumbsDown,
-  Calendar,
-  Flag,
-  MoreHorizontal,
-  TrendingUp,
-  Award,
-  Heart,
-  CheckCircle,
-  Star
-} from "lucide-react";
+import { Filter, ThumbsUp, ThumbsDown, Flag, MoreHorizontal, TrendingUp, Award, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Review {
@@ -186,7 +174,7 @@ export function ReviewsList({
     return (
       <div className="flex gap-0.5">
         {[1, 2, 3, 4, 5].map((star) => (
-          <Star
+          <OptimizedIcon name="Star"
             key={star}
             className={cn(
               starSize,
@@ -245,7 +233,7 @@ export function ReviewsList({
                 return (
                   <div key={rating} className="flex items-center gap-2">
                     <span className="text-sm w-6">{rating}</span>
-                    <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                    <OptimizedIcon name="Star" className="w-3 h-3 text-yellow-400 fill-yellow-400" />
                     <div className="flex-1 bg-gray-200 rounded-full h-2">
                       <div
                         className="bg-yellow-400 h-2 rounded-full transition-all duration-300"
@@ -274,7 +262,7 @@ export function ReviewsList({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-blue-600" />
+                <UIIcons.CheckCircle className="w-4 h-4 text-blue-600" / />
                 <span className="text-sm">
                   {filteredAndSortedReviews.filter((r) => r.isVerified).length}{" "}
                   verified reviews
@@ -294,7 +282,7 @@ export function ReviewsList({
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" / />
               <Input
                 placeholder="Search reviews..."
                 value={searchQuery}
@@ -338,7 +326,7 @@ export function ReviewsList({
         {filteredAndSortedReviews.length === 0 ? (
           <Card>
             <CardContent className="p-12 text-center">
-              <Star className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+              <OptimizedIcon name="Star" className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">No reviews found</h3>
               <p className="text-muted-foreground">
                 {searchQuery || filterBy !== "all"
@@ -380,7 +368,7 @@ export function ReviewsList({
                           </h4>
                           {review.isVerified && (
                             <Badge variant="secondary" className="text-xs">
-                              <CheckCircle className="w-3 h-3 mr-1" />
+                              <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                               Verified
                             </Badge>
                           )}

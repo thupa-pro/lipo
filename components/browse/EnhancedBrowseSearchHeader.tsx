@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -15,17 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import {
-  Search,
-  MapPin,
-  Grid3X3,
-  List,
-  Loader2,
-  Filter,
-  X,
-  Navigation,
-  Target
-} from "lucide-react";
+import { Grid3X3, List, Filter, X, Navigation, Target } from "lucide-react";
 import { geolocationService } from "@/lib/geolocation/geolocation-service";
 import { hyperlocalService } from "@/lib/geolocation/hyperlocal-service";
 import type { Location, Coordinates } from "@/lib/geolocation/types";
@@ -192,7 +183,7 @@ export default function EnhancedBrowseSearchHeader({
             <div className="flex gap-2">
               {/* Service Search */}
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                 <Input
                   placeholder="Search services or providers..."
                   value={searchQuery}
@@ -203,7 +194,7 @@ export default function EnhancedBrowseSearchHeader({
 
               {/* Location Input with GPS */}
               <div className="relative flex-1">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <BusinessIcons.MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                 <Input
                   placeholder="Location"
                   value={location}
@@ -219,7 +210,7 @@ export default function EnhancedBrowseSearchHeader({
                   disabled={isGettingLocation}
                 >
                   {isGettingLocation ? (
-                    <Loader2 className="w-3 h-3 animate-spin" />
+                    <UIIcons.Loader2 className="w-3 h-3 animate-spin" / />
                   ) : gpsEnabled ? (
                     <Navigation className="w-3 h-3" />
                   ) : (
@@ -235,9 +226,9 @@ export default function EnhancedBrowseSearchHeader({
                 className="rounded-md shadow-sm transition-all hover:shadow-md"
               >
                 {loading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
                 ) : (
-                  <Search className="w-4 h-4" />
+                  <NavigationIcons.Search className="w-4 h-4" / />
                 )}
               </Button>
             </div>

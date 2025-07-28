@@ -1,57 +1,13 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FileText,
-  Plus,
-  Edit,
-  Eye,
-  EyeOff,
-  Search,
-  Filter,
-  Calendar,
-  Globe,
-  BarChart3,
-  Settings,
-  Upload,
-  Download,
-  Copy
-  Image,
-  Video,
-  Mic,
-  Tag
-  CheckCircle,
-  XCircle,
-  AlertCircle
-  TrendingUp,
-  Target
-  BookOpen,
-  Bookmark,
-  Share2,
-  ExternalLink,
-  RefreshCw,
-  Save,
-  Code,
-  Layout,
-  Palette,
-  Type,
-  AlignLeft,
-  Bold,
-  Italic,
-  Underline,
-  List,
-  ListOrdered,
-  Quote,
-  LinkIcon,
-  ImageIcon,
-  Monitor,
-  Smartphone,
-  Tablet,
-  Clock,
-  Trash2,
-  User
-} from "lucide-react";
+import { FileText, Plus, Edit, Eye, EyeOff, Filter, Globe, BarChart3, Upload, Download, Copy
+  Image, Video, Mic, Tag
+  CheckCircle, XCircle, AlertCircle
+  TrendingUp, Target
+  BookOpen, Bookmark, Share2, ExternalLink, RefreshCw, Save, Code, Layout, Palette, Type, AlignLeft, Bold, Italic, Underline, List, ListOrdered, Quote, LinkIcon, ImageIcon, Monitor, Smartphone, Tablet, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -305,7 +261,7 @@ export default function ContentManagement() {
       case "draft":
         return <Edit className="w-4 h-4 text-gray-600" />;
       case "scheduled":
-        return <Clock className="w-4 h-4 text-blue-600" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4 text-blue-600" />;
       case "archived":
         return <XCircle className="w-4 h-4 text-red-600" />;
       default:
@@ -405,7 +361,7 @@ export default function ContentManagement() {
               <div className="flex gap-4">
                 <div className="flex-1">
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                    <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                     <Input
                       placeholder="Search content..."
                       value={searchQuery}
@@ -464,11 +420,11 @@ export default function ContentManagement() {
                       
                       <div className="flex items-center gap-6 text-sm text-muted-foreground mb-3">
                         <div className="flex items-center gap-1">
-                          <User className="w-4 h-4" />
+                          <NavigationIcons.User className="w-4 h-4" / />
                           <span>{content.author.name}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
+                          <BusinessIcons.Calendar className="w-4 h-4" / />
                           <span>{content.updatedAt.toLocaleDateString()}</span>
                         </div>
                         <div className="flex items-center gap-1">
@@ -504,7 +460,7 @@ export default function ContentManagement() {
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="outline" size="sm">
-                            <Settings className="w-4 h-4" />
+                            <NavigationIcons.Settings className="w-4 h-4" / />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>

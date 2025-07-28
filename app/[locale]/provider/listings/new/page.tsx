@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -20,11 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import {
-  ArrowLeft,
-  Upload,
-  MapPin
-} from "lucide-react";
+import { Upload } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useParams  } from "next/navigation";
 
@@ -75,7 +72,7 @@ export default function NewListingPage() {
       <div className="mb-6">
         <Link href="/provider/listings">
           <Button variant="outline" size="sm" className="mb-4">
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
             Back to Listings
           </Button>
         </Link>
@@ -168,7 +165,7 @@ export default function NewListingPage() {
               <div>
                 <Label htmlFor="location">Service Area</Label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                  <BusinessIcons.MapPin className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" / />
                   <Input
                     id="location"
                     placeholder="City, State"

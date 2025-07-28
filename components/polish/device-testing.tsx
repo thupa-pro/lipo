@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -5,18 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import {
-  Smartphone,
-  Monitor,
-  Tablet,
-  AlertCircle,
-  Wifi,
-  Battery,
-  Cpu,
-  HardDrive,
-  MemoryStick,
-  CheckCircle
-} from "lucide-react";
+import { Smartphone, Monitor, Tablet, AlertCircle, Wifi, Battery, Cpu, HardDrive, MemoryStick } from "lucide-react";
 
 interface DeviceTestingProps {
   className?: string;
@@ -288,7 +278,7 @@ export default function DeviceTesting({ className }: DeviceTestingProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'pass':
-        return <CheckCircle className="w-4 h-4 text-green-600" />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />;
       case 'warning':
         return <AlertCircle className="w-4 h-4 text-yellow-600" />;
       case 'fail':

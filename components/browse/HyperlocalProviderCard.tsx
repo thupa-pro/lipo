@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React from "react";
@@ -11,18 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  MapPin,
-  CheckCircle,
-  ArrowRight,
-  Heart,
-  Share2,
-  Navigation2,
-  Award,
-  Clock,
-  Star,
-  Zap
-} from "lucide-react";
+import { Heart, Share2, Navigation2, Award, Zap } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import type { HyperlocalMatch } from "@/lib/geolocation/hyperlocal-service";
@@ -146,7 +136,7 @@ export default function HyperlocalProviderCard({
                 {provider.name}
               </CardTitle>
               {provider.verified && (
-                <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
+                <UIIcons.CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" / />
               )}
             </div>
             <CardDescription className="text-xs text-muted-foreground truncate">
@@ -154,7 +144,7 @@ export default function HyperlocalProviderCard({
             </CardDescription>
             <div className="flex items-center gap-1 mt-1">
               <div className="flex items-center gap-0.5">
-                <Star className="w-3 h-3 fill-current text-yellow-500" />
+                <OptimizedIcon name="Star" className="w-3 h-3 fill-current text-yellow-500" />
                 <span className="font-medium text-xs">{provider.rating}</span>
               </div>
               <span className="text-2xs text-muted-foreground">
@@ -181,7 +171,7 @@ export default function HyperlocalProviderCard({
                 <span className="font-medium">{distance.toFixed(1)}km</span>
               </div>
               <div className="flex items-center gap-0.5 text-muted-foreground">
-                <Clock className="w-3 h-3" />
+                <OptimizedIcon name="Clock" className="w-3 h-3" />
                 <span>{formatTimeToArrival(timeToArrival)}</span>
               </div>
             </div>
@@ -268,15 +258,15 @@ export default function HyperlocalProviderCard({
           {/* Stats Row */}
           <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-2xs text-muted-foreground">
             <div className="flex items-center gap-0.5">
-              <CheckCircle className="w-2.5 h-2.5 text-green-500" />
+              <UIIcons.CheckCircle className="w-2.5 h-2.5 text-green-500" / />
               {provider.completedJobs} jobs
             </div>
             <div className="flex items-center gap-0.5">
-              <Clock className="w-2.5 h-2.5" />
+              <OptimizedIcon name="Clock" className="w-2.5 h-2.5" />
               {provider.availability}
             </div>
             <div className="col-span-2 flex items-center gap-0.5">
-              <MapPin className="w-2.5 h-2.5" />
+              <BusinessIcons.MapPin className="w-2.5 h-2.5" / />
               {provider.location}
             </div>
           </div>
@@ -292,7 +282,7 @@ export default function HyperlocalProviderCard({
             onClick={() => router.push(`/providers/${provider.id}`)}
           >
             View Details
-            <ArrowRight className="w-3 h-3 ml-1" />
+            <UIIcons.ArrowRight className="w-3 h-3 ml-1" / />
           </Button>
           <div className="flex gap-1">
             <Button

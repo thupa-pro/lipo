@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -14,16 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-  BarChart3,
-  Target,
-  Lock,
-  Info,
-  AlertCircle,
-  Shield,
-  Zap,
-  CheckCircle
-} from 'lucide-react';
+import { BarChart3, Target, Lock, Info, AlertCircle, Zap } from "lucide-react";
 import { getConsentPreferences, type ConsentPreferences } from '@/lib/cookies/consent';
 
 interface CookieSettingsModalProps {
@@ -154,7 +146,7 @@ export function CookieSettingsModal({ isOpen, onClose, onSave }: CookieSettingsM
           {/* Summary Stats */}
           <div className="flex flex-wrap gap-2 pt-2">
             <Badge variant="outline" className="flex items-center gap-1">
-              <CheckCircle className="h-3 w-3 text-green-600" />
+              <UIIcons.CheckCircle className="h-3 w-3 text-green-600" / />
               {enabledCount} of {cookieCategories.length} categories enabled
             </Badge>
             {optionalEnabled < totalOptional && (

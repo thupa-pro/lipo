@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -5,26 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Home,
-  Search,
-  Briefcase,
-  MessageCircle,
-  Calendar,
-  Heart,
-  Settings,
-  HelpCircle,
-  Users,
-  TrendingUp,
-  MapPin,
-  CreditCard,
-  FileText,
-  BarChart3,
-  ChevronDown,
-  ChevronRight,
-  Zap,
-  Link
-} from "lucide-react";
+import { MessageCircle, Heart, HelpCircle, TrendingUp, CreditCard, FileText, BarChart3, ChevronDown, ChevronRight, Zap, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";

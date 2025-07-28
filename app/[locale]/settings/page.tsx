@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -34,21 +35,7 @@ import { PaymentSettings } from "@/components/settings/payment-settings";
 import { AccountDeletion } from "@/components/settings/account-deletion";
 import { PrivacySettings } from "@/components/settings/privacy-settings";
 import { SecuritySettings } from "@/components/settings/security-settings";
-import {
-  Settings,
-  Bell,
-  CreditCard,
-  Eye,
-  Key,
-  Trash2,
-  AlertTriangle,
-  Save,
-  RefreshCw,
-  Camera,
-  Upload,
-  Download,
-  User
-} from "lucide-react";
+import { Bell, CreditCard, Eye, Key, Trash2, Save, RefreshCw, Camera, Upload, Download } from "lucide-react";
 
 interface UserProfile {
   id: string;
@@ -238,7 +225,7 @@ export default function EnhancedSettingsPage() {
         >
           <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="profile" className="flex items-center gap-2">
-              <User className="w-4 h-4" />
+              <NavigationIcons.User className="w-4 h-4" / />
               <span className="hidden sm:inline">Profile</span>
             </TabsTrigger>
             <TabsTrigger
@@ -261,7 +248,7 @@ export default function EnhancedSettingsPage() {
               <span className="hidden sm:inline">Payments</span>
             </TabsTrigger>
             <TabsTrigger value="account" className="flex items-center gap-2">
-              <Settings className="w-4 h-4" />
+              <NavigationIcons.Settings className="w-4 h-4" / />
               <span className="hidden sm:inline">Account</span>
             </TabsTrigger>
           </TabsList>
@@ -310,7 +297,7 @@ export default function EnhancedSettingsPage() {
         {/* Auto-save indicator */}
         {hasUnsavedChanges && (
           <Alert className="mt-6">
-            <AlertTriangle className="h-4 w-4" />
+            <UIIcons.AlertTriangle className="h-4 w-4" / />
             <AlertDescription>
               You have unsaved changes. They will be saved automatically in a
               few, seconds, or you can save manually.

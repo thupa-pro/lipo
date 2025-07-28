@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,26 +7,7 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Bell,
-  Search,
-  Menu,
-  X,
-  Sun,
-  Moon,
-  Monitor,
-  Settings,
-  LogOut,
-  Sparkles,
-  Home,
-  Briefcase,
-  MessageCircle,
-  Calendar,
-  Heart,
-  HelpCircle,
-  ExternalLink,
-  User
-} from "lucide-react";
+import { Bell, X, Sun, Moon, Monitor, LogOut, Sparkles, MessageCircle, Heart, HelpCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -130,7 +112,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className="h-4 w-4" />
+                  <NavigationIcons.Menu className="h-4 w-4" / />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -179,7 +161,7 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
             className="h-9 w-9 p-0 md:hidden"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           >
-            <Search className="h-4 w-4" />
+            <NavigationIcons.Search className="h-4 w-4" / />
           </Button>
 
           {/* Search Bar (Desktop) */}
@@ -236,13 +218,13 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/profile" className="w-full">
-                    <User className="mr-2 h-4 w-4" />
+                    <NavigationIcons.User className="mr-2 h-4 w-4" / />
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings" className="w-full">
-                    <Settings className="mr-2 h-4 w-4" />
+                    <NavigationIcons.Settings className="mr-2 h-4 w-4" / />
                     Settings
                   </Link>
                 </DropdownMenuItem>

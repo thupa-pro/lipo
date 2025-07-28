@@ -1,19 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  CreditCard,
-  Lock,
-  AlertCircle,
-  ArrowLeft,
-  Info,
-  Calendar,
-  MapPin,
-  User,
-  Clock,
-  Shield
-} from "lucide-react";
+import { CreditCard, Lock, AlertCircle, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -155,7 +145,7 @@ export default function PaymentForm({
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">Secure Payment</h3>
         <Button variant="ghost" size="sm" onClick={onCancel}>
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
           Back
         </Button>
       </div>
@@ -188,15 +178,15 @@ export default function PaymentForm({
           
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="w-4 h-4" />
+              <BusinessIcons.Calendar className="w-4 h-4" / />
               <span>{bookingDetails.selectedDate?.toLocaleDateString()}</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Clock className="w-4 h-4" />
+              <OptimizedIcon name="Clock" className="w-4 h-4" />
               <span>{bookingDetails.selectedTime && formatTime(bookingDetails.selectedTime)}</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
+              <BusinessIcons.MapPin className="w-4 h-4" / />
               <span className="truncate">{bookingDetails.address || "Address to be confirmed"}</span>
             </div>
           </div>
@@ -370,7 +360,7 @@ export default function PaymentForm({
           
           {/* Escrow Information */}
           <Alert>
-            <Shield className="h-4 w-4" />
+            <OptimizedIcon name="Shield" className="h-4 w-4" />
             <AlertDescription>
               <strong>Escrow Protection:</strong> Your payment will be held securely until the service is completed. 
               Funds are only released to the provider after you confirm satisfaction.
@@ -448,7 +438,7 @@ export default function PaymentForm({
 
       {/* Security Notice */}
       <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <Shield className="w-3 h-3" />
+        <OptimizedIcon name="Shield" className="w-3 h-3" />
         <span>256-bit SSL encryption • PCI DSS compliant • Fraud protection</span>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -26,15 +27,7 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import {
-  Search,
-  Filter,
-  Eye,
-  Download,
-  Calendar,
-  Activity,
-  Database
-} from "lucide-react";
+import { Filter, Eye, Download, Activity, Database } from "lucide-react";
 import { format } from "date-fns";
 import { AuditLogEntry, useAdminClient } from "@/lib/admin/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -156,7 +149,7 @@ export function AuditLogTable() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" / />
               <Input
                 placeholder="Search logs..."
                 value={searchQuery}

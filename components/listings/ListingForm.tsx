@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -14,15 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  X,
-  Upload,
-  Image as ImageIcon,
-  DollarSign,
-  MapPin,
-  Tag,
-  AlertCircle
-} from "lucide-react";
+import { X, Upload, Image as ImageIcon, Tag, AlertCircle } from "lucide-react";
 import {
   ListingFormProps,
   ListingFormData,
@@ -286,7 +279,7 @@ export function ListingForm({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <DollarSign className="w-5 h-5" />
+            <BusinessIcons.DollarSign className="w-5 h-5" / />
             Pricing
           </CardTitle>
         </CardHeader>
@@ -391,7 +384,7 @@ export function ListingForm({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
+            <BusinessIcons.MapPin className="w-5 h-5" / />
             Service Location
           </CardTitle>
         </CardHeader>

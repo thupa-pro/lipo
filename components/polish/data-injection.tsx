@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -6,16 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import {
-  Database,
-  Upload,
-  AlertCircle,
-  RefreshCw,
-  FileText,
-  Users,
-  Activity,
-  CheckCircle
-} from "lucide-react";
+import { Database, Upload, AlertCircle, RefreshCw, FileText, Activity } from "lucide-react";
 
 interface DataInjectionProps {
   className?: string;
@@ -126,7 +118,7 @@ export default function DataInjection({ className }: DataInjectionProps) {
           {/* Status Messages */}
           {status === 'completed' && (
             <Alert>
-              <CheckCircle className="h-4 w-4" />
+              <UIIcons.CheckCircle className="h-4 w-4" / />
               <AlertDescription>
                 Data injection completed successfully! {stats.successCount} records processed.
               </AlertDescription>

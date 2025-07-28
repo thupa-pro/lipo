@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -19,15 +20,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Building2,
-  ChevronDown,
-  Plus,
-  Settings,
-  Users,
-  Crown,
-  Check,
-} from "lucide-react";
+import { Building2, ChevronDown, Plus, Crown, Check,  } from "lucide-react";
 import {
   UserWorkspace,
   WorkspaceType,
@@ -276,7 +269,7 @@ export function WorkspaceSelector({
             }}
             className="flex items-center gap-2 p-3 cursor-pointer"
           >
-            <Settings className="w-4 h-4" />
+            <NavigationIcons.Settings className="w-4 h-4" / />
             <span>Workspace Settings</span>
           </DropdownMenuItem>
         </DropdownMenuContent>

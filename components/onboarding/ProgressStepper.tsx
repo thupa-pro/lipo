@@ -1,7 +1,8 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React from "react";
 import { OnboardingStep } from "@/lib/onboarding/types";
 import { getStepProgress, isStepCompleted } from "@/lib/onboarding/utils";
-import {  Circle, ArrowRight, CheckCircle } from "lucide-react";
+import { Circle } from "lucide-react";
 
 interface ProgressStepperProps {
   currentStep: OnboardingStep;
@@ -60,7 +61,7 @@ export function ProgressStepper({
 
     switch (status) {
       case "completed":
-        return <CheckCircle className="w-5 h-5 text-green-600" />;
+        return <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />;
       case "current":
         return (
           <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
@@ -160,7 +161,7 @@ export function ProgressStepper({
 
                 {/* Connector for mobile */}
                 {index < steps.length - 1 && (
-                  <ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                  <UIIcons.ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" / />
                 )}
               </React.Fragment>
             ))}

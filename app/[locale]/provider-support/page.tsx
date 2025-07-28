@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
@@ -12,15 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Phone,
-  Mail,
-  HelpCircle,
-  BookOpen,
-  Briefcase,
-  ArrowRight,
-  MessageSquare
-} from "lucide-react";
+import { HelpCircle, BookOpen } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import AIChat from "@/components/ai/AIChat";
@@ -45,7 +38,7 @@ export default function ProviderSupportPage() {
     <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20">
         <div className="container mx-auto max-w-4xl">
-          <Briefcase className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <BusinessIcons.Briefcase className="w-16 h-16 text-green-600 mx-auto mb-4" / />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
             Provider Support
           </h1>
@@ -55,7 +48,7 @@ export default function ProviderSupportPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/provider-resources")}>
             Visit Provider Resources
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -90,7 +83,7 @@ export default function ProviderSupportPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 mb-4">
-                  <MessageSquare className="w-7 h-7" />
+                  <OptimizedIcon name="MessageSquare" className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Live Chat</h3>
                 <p className="text-muted-foreground mb-4">
@@ -211,7 +204,7 @@ export default function ProviderSupportPage() {
                 })
               }
             >
-              <Phone className="w-4 h-4 mr-2" />
+              <OptimizedIcon name="Phone" className="w-4 h-4 mr-2" />
               Call Us: 1-800-LOCONOMY
             </Button>
             <Button
@@ -226,7 +219,7 @@ export default function ProviderSupportPage() {
                 })
               }
             >
-              <Mail className="w-4 h-4 mr-2" />
+              <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
               Email Us: providers@loconomy.com
             </Button>
           </div>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -9,25 +10,7 @@ import {
   userAIClient,
   type UserAIAgent
 } from "@/lib/ai/user-ai-agents";
-import {
-  MessageCircle,
-  Send,
-  Minimize2,
-  Maximize2,
-  X,
-  Sparkles,
-  Bot,
-  Lightbulb,
-  Volume2,
-  VolumeX,
-  Copy,
-  ThumbsUp,
-  ThumbsDown,
-  RotateCcw,
-  Mic,
-  Settings,
-  Zap
-} from "lucide-react";
+import { MessageCircle, Send, Minimize2, Maximize2, X, Sparkles, Bot, Lightbulb, Volume2, VolumeX, Copy, ThumbsUp, ThumbsDown, RotateCcw, Mic, Zap } from "lucide-react";
 
 interface Message {
   id: string;
@@ -528,7 +511,7 @@ export default function AIChat({
                 variant="outline"
                 className="border-gray-200 hover:border-gray-300"
               >
-                <Settings className="h-4 w-4" />
+                <NavigationIcons.Settings className="h-4 w-4" / />
               </Button>
             </div>
 

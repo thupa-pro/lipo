@@ -1,10 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Cookie, Settings, ExternalLink } from 'lucide-react';
+import { Cookie, ExternalLink } from "lucide-react";
 import { getConsentStatus, setConsentStatus, type ConsentStatus } from '@/lib/cookies/consent';
 import { CookieSettingsModal } from './CookieSettingsModal';
 
@@ -180,7 +181,7 @@ export function CookieConsentBanner({
                         className="order-3 sm:order-1 min-w-fit"
                         aria-label="Customize cookie settings"
                       >
-                        <Settings className="mr-2 h-4 w-4" aria-hidden="true" />
+                        <NavigationIcons.Settings className="mr-2 h-4 w-4" aria-hidden="true" / />
                         <span className="hidden sm:inline">Settings</span>
                         <span className="sm:hidden">Customize</span>
                       </Button>

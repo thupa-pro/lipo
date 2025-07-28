@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -12,28 +13,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Camera,
-  Smartphone,
-  Glasses,
-  Maximize,
-  Minimize,
-  RotateCcw,
-  ZoomIn,
-  ZoomOut,
-  Move3D,
-  Layers,
-  Sun,
-  Moon,
-  Volume2,
-  Settings,
-  Download,
-  Share,
-  MapPin,
-  Ruler,
-  Palette,
-  Eye
-} from "lucide-react";
+import { Camera, Smartphone, Glasses, Maximize, Minimize, RotateCcw, ZoomIn, ZoomOut, Move3D, Layers, Sun, Moon, Volume2, Download, Share, Ruler, Palette, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -680,7 +660,7 @@ export function ARServiceViewer({
             className="flex-1 bg-violet-600 hover:bg-violet-700"
             size="lg"
           >
-            <MapPin className="w-4 h-4 mr-2" />
+            <BusinessIcons.MapPin className="w-4 h-4 mr-2" / />
             {t("bookThisService")}
           </Button>
           
@@ -689,7 +669,7 @@ export function ARServiceViewer({
             variant="outline"
             size="lg"
           >
-            <Settings className="w-4 h-4 mr-2" />
+            <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
             {t("help")}
           </Button>
         </div>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -5,22 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  TrendingUp,
-  TrendingDown,
-  Brain,
-  ThumbsUp,
-  ThumbsDown,
-  Heart,
-  AlertTriangle,
-  Award,
-  Users,
-  MessageCircle,
-  ChevronDown,
-  ChevronUp,
-  Sparkles,
-  Clock
-} from "lucide-react";
+import { TrendingUp, TrendingDown, Brain, ThumbsUp, ThumbsDown, Heart, Award, MessageCircle, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Review {
@@ -284,7 +270,7 @@ export function ReviewSummaryAgentBox({
         {showDetailedAnalysis && recentReviews.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-muted-foreground" />
+              <OptimizedIcon name="Clock" className="w-4 h-4 text-muted-foreground" />
               <span className="font-medium">Recent Feedback (30 days)</span>
               <Badge variant="outline" className="text-xs">
                 {recentReviews.length} new

@@ -1,18 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import {
-  Award,
-  Shield,
-  DollarSign,
-  Infinity,
-  Clock,
-  CheckCircle,
-  ArrowRight,
-  Sparkles,
-  Users
-} from "lucide-react";
+import { Award, Infinity, Sparkles } from "lucide-react";
 
 export default function CTASection() {
   return (
@@ -73,9 +64,9 @@ export default function CTASection() {
               className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <Link href="/request-service">
-                <Clock className="w-5 h-5 mr-2" />
+                <OptimizedIcon name="Clock" className="w-5 h-5 mr-2" />
                 Book Premium Service
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
               </Link>
             </Button>
             <Button
@@ -87,7 +78,7 @@ export default function CTASection() {
               <Link href="/become-provider">
                 <Award className="w-5 h-5 mr-2" />
                 Become Elite Provider
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
               </Link>
             </Button>
           </div>

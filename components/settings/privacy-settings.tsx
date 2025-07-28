@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -14,15 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Eye,
-  MapPin,
-  Users,
-  Activity,
-  Download,
-  Shield,
-  Trash2
-} from "lucide-react";
+import { Eye, Activity, Download, Trash2 } from "lucide-react";
 
 interface PrivacySettingsProps {
   onUpdate: () => void;
@@ -117,7 +110,7 @@ export function PrivacySettings({ onUpdate, isLoading }: PrivacySettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
+            <BusinessIcons.MapPin className="w-5 h-5" / />
             Location & Activity
           </CardTitle>
         </CardHeader>
@@ -173,7 +166,7 @@ export function PrivacySettings({ onUpdate, isLoading }: PrivacySettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Users className="w-5 h-5" />
+            <NavigationIcons.Users className="w-5 h-5" / />
             Advertising & Marketing
           </CardTitle>
         </CardHeader>
@@ -214,7 +207,7 @@ export function PrivacySettings({ onUpdate, isLoading }: PrivacySettingsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Shield className="w-5 h-5" />
+            <OptimizedIcon name="Shield" className="w-5 h-5" />
             Data Management
           </CardTitle>
         </CardHeader>

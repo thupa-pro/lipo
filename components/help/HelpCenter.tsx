@@ -1,50 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  HelpCircle,
-  Search,
-  BookOpen,
-  Video,
-  Mail,
-  Phone,
-  FileText,
-  ExternalLink,
-  ThumbsUp,
-  ThumbsDown,
-  User,
-  Tag,
-  Filter,
-  ArrowRight,
-  Play,
-  Download,
-  Share2,
-  Bookmark,
-  Copy,
-  AlertCircle,
-  Info,
-  Lightbulb,
-  Code,
-  Terminal,
-  Globe,
-  Shield,
-  Settings,
-  Users,
-  CreditCard,
-  Package,
-  Truck,
-  MapPin,
-  Calendar,
-  Bell,
-  Eye,
-  TrendingUp,
-  Plus,
-  Edit,
-  Clock,
-  MessageSquare,
-  Star
-} from "lucide-react";
+import { HelpCircle, BookOpen, Video, FileText, ExternalLink, ThumbsUp, ThumbsDown, Tag, Filter, Play, Download, Share2, Bookmark, Copy, AlertCircle, Info, Lightbulb, Code, Terminal, Globe, CreditCard, Package, Truck, Bell, Eye, TrendingUp, Plus, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -417,7 +376,7 @@ export default function HelpCenter() {
         {/* Search */}
         <div className="max-w-2xl mx-auto">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+            <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" / />
             <Input
               placeholder="Search for help, articles, tutorials, and FAQs..."
               value={searchQuery}
@@ -456,7 +415,7 @@ export default function HelpCenter() {
         
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="p-6 text-center">
-            <MessageSquare className="w-8 h-8 mx-auto text-orange-600 mb-3" />
+            <OptimizedIcon name="MessageSquare" className="w-8 h-8 mx-auto text-orange-600 mb-3" />
             <h3 className="font-semibold mb-2">Contact Support</h3>
             <p className="text-sm text-muted-foreground">Get help from our support team</p>
           </CardContent>
@@ -508,7 +467,7 @@ export default function HelpCenter() {
                   
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                     <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
+                      <OptimizedIcon name="Clock" className="w-4 h-4" />
                       <span>{article.estimatedTime} min read</span>
                     </div>
                     <div className="flex items-center gap-1">
@@ -516,7 +475,7 @@ export default function HelpCenter() {
                       <span>{article.views.toLocaleString()} views</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-current text-yellow-500" />
+                      <OptimizedIcon name="Star" className="w-4 h-4 fill-current text-yellow-500" />
                       <span>{article.rating}</span>
                     </div>
                   </div>
@@ -531,12 +490,12 @@ export default function HelpCenter() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <User className="w-4 h-4" />
+                      <NavigationIcons.User className="w-4 h-4" / />
                       <span>{article.author.name}</span>
                     </div>
                     <Button size="sm">
                       Read More
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                     </Button>
                   </div>
                 </CardContent>
@@ -598,7 +557,7 @@ export default function HelpCenter() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
-                    <MessageSquare className="w-5 h-5 text-ai-600" />
+                    <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-ai-600" />
                     <div>
                       <h4 className="font-medium">Live Chat</h4>
                       <p className="text-sm text-muted-foreground">Average response: 2 minutes</p>
@@ -606,7 +565,7 @@ export default function HelpCenter() {
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
-                    <Mail className="w-5 h-5 text-success-600" />
+                    <OptimizedIcon name="Mail" className="w-5 h-5 text-success-600" />
                     <div>
                       <h4 className="font-medium">Email Support</h4>
                       <p className="text-sm text-muted-foreground">support@loconomy.com</p>
@@ -614,7 +573,7 @@ export default function HelpCenter() {
                   </div>
                   
                   <div className="flex items-center gap-3 p-3 border rounded-card hover:bg-accent cursor-pointer">
-                    <Phone className="w-5 h-5 text-premium-600" />
+                    <OptimizedIcon name="Phone" className="w-5 h-5 text-premium-600" />
                     <div>
                       <h4 className="font-medium">Phone Support</h4>
                       <p className="text-sm text-muted-foreground">1-800-LOCONOMY</p>

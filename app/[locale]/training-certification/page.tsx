@@ -1,16 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  GraduationCap,
-  Award,
-  BookOpen,
-  Video,
-  ArrowRight,
-  CheckCircle
-} from "lucide-react";
+import { GraduationCap, Award, BookOpen, Video } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -55,7 +49,7 @@ export default function TrainingCertificationPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/provider-resources")}>
             Explore All Resources
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -85,7 +79,7 @@ export default function TrainingCertificationPage() {
                     <ul className="text-sm text-muted-foreground space-y-1">
                       {program.modules.map((module, i) => (
                         <li key={i} className="flex items-center">
-                          <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                          <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500" / />
                           {module}
                         </li>
                       ))}
@@ -109,7 +103,7 @@ export default function TrainingCertificationPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/become-provider")}>
             Join Our Network
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </section>

@@ -1,26 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Sparkles,
-  TrendingUp,
-  Heart,
-  MapPin,
-  Star,
-  Brain,
-  ChevronRight,
-  ArrowRight,
-  Lightbulb,
-  Filter,
-  Calendar,
-  DollarSign,
-  Users,
-  Clock,
-  Target,
-  Zap
-} from "lucide-react";
+import { Sparkles, TrendingUp, Heart, Brain, ChevronRight, Lightbulb, Filter, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -257,7 +241,7 @@ export default function PersonalizationEngine({
       message: "Share your experience with Sarah's cleaning service to help other customers.",
       action: "Write Review",
       actionUrl: "/reviews/create",
-      icon: <Star className="w-4 h-4" />,
+      icon: <OptimizedIcon name="Star" className="w-4 h-4" />,
       priority: "high",
       dismissible: true,
     },
@@ -268,7 +252,7 @@ export default function PersonalizationEngine({
       message: "3 new highly-rated providers just joined in Downtown. Check them out!",
       action: "Explore New Providers",
       actionUrl: "/search?filter=new&location=downtown",
-      icon: <MapPin className="w-4 h-4" />,
+      icon: <BusinessIcons.MapPin className="w-4 h-4" / />,
       priority: "low",
       dismissible: true,
     },
@@ -279,7 +263,7 @@ export default function PersonalizationEngine({
       message: "Your favorite provider Sarah is offering 15% off for repeat customers this week!",
       action: "Book Now",
       actionUrl: "/booking/provider-1",
-      icon: <DollarSign className="w-4 h-4" />,
+      icon: <BusinessIcons.DollarSign className="w-4 h-4" / />,
       priority: "high",
       dismissible: false,
       expiresAt: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
@@ -291,7 +275,7 @@ export default function PersonalizationEngine({
       message: "It's been 3 months since your last deep clean. Time for a refresh?",
       action: "Schedule Cleaning",
       actionUrl: "/search?category=cleaning&type=deep",
-      icon: <Clock className="w-4 h-4" />,
+      icon: <OptimizedIcon name="Clock" className="w-4 h-4" />,
       priority: "medium",
       dismissible: true,
     },
@@ -317,11 +301,11 @@ export default function PersonalizationEngine({
       case "service":
         return <Zap className="w-4 h-4" />;
       case "provider":
-        return <Users className="w-4 h-4" />;
+        return <NavigationIcons.Users className="w-4 h-4" / />;
       case "category":
         return <Target className="w-4 h-4" />;
       case "deal":
-        return <DollarSign className="w-4 h-4" />;
+        return <BusinessIcons.DollarSign className="w-4 h-4" / />;
       default:
         return <Sparkles className="w-4 h-4" />;
     }
@@ -391,7 +375,7 @@ export default function PersonalizationEngine({
                       </p>
                       <Button size="sm" variant="outline" className="text-xs">
                         {nudge.action}
-                        <ArrowRight className="w-3 h-3 ml-1" />
+                        <UIIcons.ArrowRight className="w-3 h-3 ml-1" / />
                       </Button>
                     </div>
                   </div>
@@ -458,18 +442,18 @@ export default function PersonalizationEngine({
 
                   <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                     <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
+                      <BusinessIcons.MapPin className="w-3 h-3" / />
                       {rec.location}
                     </div>
                     {rec.estimatedTime && (
                       <div className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
+                        <OptimizedIcon name="Clock" className="w-3 h-3" />
                         {rec.estimatedTime}
                       </div>
                     )}
                     {rec.saving && (
                       <div className="flex items-center gap-1 text-green-600">
-                        <DollarSign className="w-3 h-3" />
+                        <BusinessIcons.DollarSign className="w-3 h-3" / />
                         Save ${rec.saving}
                       </div>
                     )}
@@ -496,7 +480,7 @@ export default function PersonalizationEngine({
                           <div className="flex items-center gap-2">
                             <span className="text-sm font-medium">${rec.data.price}</span>
                             <div className="flex items-center gap-1">
-                              <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                              <OptimizedIcon name="Star" className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                               <span className="text-xs">{rec.data.rating}</span>
                             </div>
                           </div>

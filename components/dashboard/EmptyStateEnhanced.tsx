@@ -1,33 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Search,
-  Calendar,
-  Sparkles,
-  ArrowRight,
-  Users,
-  Star,
-  Brain,
-  Heart,
-  Award,
-  Gift,
-  MapPin,
-  Shield,
-  Zap,
-  MessageSquare,
-  TrendingUp,
-  Clock,
-  Crown,
-  Target,
-  Bot,
-  Lightbulb,
-  Phone,
-  CheckCircle,
-  Link
-} from "lucide-react";
+import { Sparkles, Brain, Heart, Award, Gift, Zap, TrendingUp, Crown, Target, Bot, Lightbulb, Link } from "lucide-react";
 importfrom "next/link";
 import { motion } from "framer-motion";
 import { COPY } from "@/lib/content/copy";
@@ -268,7 +245,7 @@ export function EmptyStateEnhanced({
               {config.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-3 text-left">
                   <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-4 h-4 text-white" />
+                    <UIIcons.CheckCircle className="w-4 h-4 text-white" / />
                   </div>
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {benefit}
@@ -313,7 +290,7 @@ export function EmptyStateEnhanced({
                 <Link href={customActionHref || config.actionHref}>
                   <Sparkles className="w-5 h-5 mr-2" />
                   {customActionText || config.actionText}
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
                 </Link>
               </Button>
             </motion.div>
@@ -333,7 +310,7 @@ export function EmptyStateEnhanced({
               </Button>
               <Button variant="ghost" size="sm" asChild>
                 <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                  <MessageSquare className="w-4 h-4 mr-2" />
+                  <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-2" />
                   Contact Support
                 </Link>
               </Button>

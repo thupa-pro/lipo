@@ -1,8 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Lightbulb, HelpCircle, Settings, Zap } from "lucide-react";
+import { Lightbulb, HelpCircle, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatSuggestion } from "@/lib/ai-chat/types";
 
@@ -22,11 +23,11 @@ export function ChatSuggestions({
   const getSuggestionIcon = (type: string) => {
     switch (type) {
       case "quick_reply":
-        return <ArrowRight className="h-3 w-3" />;
+        return <UIIcons.ArrowRight className="h-3 w-3" / />;
       case "action":
         return <Zap className="h-3 w-3" />;
       case "onboarding":
-        return <Settings className="h-3 w-3" />;
+        return <NavigationIcons.Settings className="h-3 w-3" / />;
       case "help":
         return <HelpCircle className="h-3 w-3" />;
       default:

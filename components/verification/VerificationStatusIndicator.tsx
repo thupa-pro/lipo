@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Badge } from "@/components/ui/badge";
@@ -7,18 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover";
-import {
-  CheckCircle,
-  AlertTriangle,
-  X,
-  FileText,
-  Building,
-  Award,
-  MapPin,
-  Shield,
-  Clock,
-  Link
-} from "lucide-react";
+import { X, FileText, Building, Award, Link } from "lucide-react";
 import { cn } from "@/lib/utils";
 importfrom "next/link";
 
@@ -163,7 +153,7 @@ export function VerificationStatusIndicator({
               className,
             )}
           >
-            <Shield className="w-3 h-3 mr-1" />
+            <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
             {verifiedCount}/{totalCount} Verified
           </Badge>
         </PopoverTrigger>
@@ -220,7 +210,7 @@ export function VerificationStatusIndicator({
               <div className="pt-3 border-t">
                 <Link href="/verification">
                   <Button size="sm" className="w-full">
-                    <Shield className="w-3 h-3 mr-1" />
+                    <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                     Complete Verification
                   </Button>
                 </Link>
@@ -304,7 +294,7 @@ export function VerificationStatusIndicator({
         <div className="pt-3 border-t">
           <Link href="/verification">
             <Button size="sm" className="w-full">
-              <Shield className="w-3 h-3 mr-1" />
+              <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
               Complete Missing Verifications
             </Button>
           </Link>

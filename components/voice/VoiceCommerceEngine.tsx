@@ -1,33 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Mic,
-  MicOff,
-  Volume2,
-  VolumeX,
-  Play,
-  Pause,
-  RotateCcw,
-  MessageCircle,
-  Brain,
-  Sparkles,
-  CheckCircle,
-  MapPin,
-  Calendar,
-  DollarSign,
-  Phone,
-  Mail,
-  CreditCard,
-  Shield,
-  Target,
-  Settings,
-  Headphones,
-  Waves,
-  Radio,
-  Zap
-} from "lucide-react";
+import { Mic, MicOff, Volume2, VolumeX, Play, Pause, RotateCcw, MessageCircle, Brain, Sparkles, CreditCard, Target, Headphones, Waves, Radio, Zap } from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -548,7 +524,7 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
           {/* Settings Sidebar */}
           <div className="w-80 border-l bg-gray-50 dark:bg-gray-800 p-4 space-y-4">
             <h3 className="font-semibold text-lg flex items-center">
-              <Settings className="h-5 w-5 mr-2" />
+              <NavigationIcons.Settings className="h-5 w-5 mr-2" / />
               Voice Settings
             </h3>
 
@@ -619,7 +595,7 @@ const VoiceCommerceEngine: React.FC<VoiceCommerceEngineProps> = ({
               <Card className="border-green-200 bg-green-50 dark:bg-green-900/20">
                 <CardContent className="p-4">
                   <div className="flex items-center space-x-2 mb-3">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <UIIcons.CheckCircle className="h-5 w-5 text-green-600" / />
                     <span className="font-semibold text-green-800">Booking Complete!</span>
                   </div>
                   <Button

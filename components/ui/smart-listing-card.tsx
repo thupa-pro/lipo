@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React from "react";
@@ -5,18 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  MapPin,
-  Shield,
-  Heart,
-  MessageCircle,
-  Eye,
-  TrendingUp,
-  Award,
-  Zap,
-  Clock,
-  Star
-} from "lucide-react";
+import { Heart, MessageCircle, Eye, TrendingUp, Award, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SmartListingCardProps {
@@ -156,7 +146,7 @@ export function SmartListingCard({
         {availability.isUrgent && (
           <div className="absolute top-3 left-3">
             <Badge variant="destructive" className="animate-pulse">
-              <Clock className="w-3 h-3 mr-1" />
+              <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
               Urgent
             </Badge>
           </div>
@@ -210,13 +200,13 @@ export function SmartListingCard({
                 {provider.name}
               </span>
               {provider.verified && (
-                <Shield className="w-3 h-3 text-blue-500 fill-current" />
+                <OptimizedIcon name="Shield" className="w-3 h-3 text-blue-500 fill-current" />
               )}
             </div>
             
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
-                <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                <OptimizedIcon name="Star" className="w-3 h-3 text-yellow-500 fill-current" />
                 <span>{provider.rating}</span>
                 <span>({provider.reviewCount})</span>
               </div>
@@ -229,7 +219,7 @@ export function SmartListingCard({
         {/* Location and Price */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            <MapPin className="w-3 h-3" />
+            <BusinessIcons.MapPin className="w-3 h-3" / />
             <span>{location.distance}km • {location.area}</span>
           </div>
           
@@ -270,7 +260,7 @@ export function SmartListingCard({
         {/* Availability */}
         <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
           <div className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
+            <OptimizedIcon name="Clock" className="w-3 h-3" />
             <span>Next: {availability.nextSlot}</span>
           </div>
         </div>

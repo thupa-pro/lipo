@@ -1,14 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  AlertTriangle,
-  RefreshCw,
-  Home,
-  Mail
-} from "lucide-react";
+import { RefreshCw } from "lucide-react";
 import Link from "next/link";
 
 interface ErrorProps {
@@ -42,7 +38,7 @@ export default function Error({ error, reset }: ErrorProps) {
         <Card className="shadow-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-red-200/50 dark:border-red-800/50">
           <CardHeader className="text-center pb-4">
             <div className="w-16 h-16 bg-red-100 dark:bg-red-950/30 rounded-full flex items-center justify-center mx-auto mb-4">
-              <AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" />
+              <UIIcons.AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" / />
             </div>
             <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">
               Oops! Something went wrong
@@ -90,14 +86,14 @@ export default function Error({ error, reset }: ErrorProps) {
 
               <Button variant="outline" asChild>
                 <Link href="/">
-                  <Home className="w-4 h-4 mr-2" />
+                  <NavigationIcons.Home className="w-4 h-4 mr-2" / />
                   Go Home
                 </Link>
               </Button>
 
               <Button variant="outline" asChild>
                 <Link href="/contact">
-                  <Mail className="w-4 h-4 mr-2" />
+                  <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
                   Report Issue
                 </Link>
               </Button>

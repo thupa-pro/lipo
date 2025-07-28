@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import type React from "react";
@@ -24,32 +25,7 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DollarSign,
-  Users,
-  Shield,
-  TrendingUp,
-  ArrowRight,
-  ArrowLeft,
-  Upload,
-  X,
-  AlertCircle,
-  Phone,
-  Mail,
-  MapPin,
-  Sparkles,
-  Brain,
-  Heart,
-  Award,
-  Crown,
-  Rocket,
-  Eye,
-  Calendar,
-  FileText,
-  Camera,
-  Play,
-  Clock
-} from "lucide-react";
+import { TrendingUp, Upload, X, AlertCircle, Sparkles, Brain, Heart, Award, Crown, Rocket, Eye, FileText, Camera, Play } from "lucide-react";
 import { useRouter, useParams  } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -539,7 +515,7 @@ export default function BecomeProviderPage() {
                       onClick={handleStartApplication}
                     >
                       Apply Now
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                     </Button>
                   </div>
                 </CardContent>
@@ -587,7 +563,7 @@ export default function BecomeProviderPage() {
                   </p>
 
                   <Badge className="bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300">
-                    <Clock className="w-3 h-3 mr-1" />
+                    <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                     {step.timeframe}
                   </Badge>
                 </CardContent>

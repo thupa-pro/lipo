@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,19 +22,7 @@ import {
   Pie,
   Cell
 } from "recharts";
-import {
-  Users,
-  UserPlus,
-  UserCheck,
-  MapPin,
-  Smartphone,
-  Monitor,
-  Globe,
-  TrendingUp,
-  ArrowUp,
-  ArrowDown,
-  Clock
-} from "lucide-react";
+import { UserPlus, UserCheck, Smartphone, Monitor, Globe, TrendingUp, ArrowUp, ArrowDown } from "lucide-react";
 
 interface UserInsightsProps {
   filters: any;
@@ -147,7 +136,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
                   12.7%
                 </div>
               </div>
-              <Users className="w-8 h-8 text-green-500 opacity-80" />
+              <NavigationIcons.Users className="w-8 h-8 text-green-500 opacity-80" / />
             </div>
           </CardContent>
         </Card>
@@ -181,7 +170,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
                   8.3%
                 </div>
               </div>
-              <Clock className="w-8 h-8 text-orange-500 opacity-80" />
+              <OptimizedIcon name="Clock" className="w-8 h-8 text-orange-500 opacity-80" />
             </div>
           </CardContent>
         </Card>
@@ -253,7 +242,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="w-5 h-5" />
+              <NavigationIcons.Users className="w-5 h-5" / />
               Age Demographics
             </CardTitle>
           </CardHeader>
@@ -364,7 +353,7 @@ export function UserInsights({ filters, isRealtime }: UserInsightsProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
+            <BusinessIcons.MapPin className="w-5 h-5" / />
             Top Locations
           </CardTitle>
         </CardHeader>

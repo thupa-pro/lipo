@@ -1,22 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Activity,
-  Wifi,
-  Signal,
-  Battery,
-  Gauge,
-  TrendingUp,
-  AlertTriangle,
-  X,
-  Clock,
-  Zap,
-  CheckCircle
-} from "lucide-react";
+import { Activity, Wifi, Signal, Battery, Gauge, TrendingUp, X, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PerformanceMetrics {
@@ -281,9 +270,9 @@ export function PerformanceMonitor({
                 {currentScore}
               </span>
               {currentScore >= 90 ? (
-                <CheckCircle className="w-5 h-5 text-emerald-600" />
+                <UIIcons.CheckCircle className="w-5 h-5 text-emerald-600" / />
               ) : (
-                <AlertTriangle className="w-5 h-5 text-yellow-600" />
+                <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" / />
               )}
             </div>
           </div>
@@ -315,7 +304,7 @@ export function PerformanceMonitor({
 
           <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/20">
             <div className="flex items-center gap-2 mb-1">
-              <Clock className="w-4 h-4 text-emerald-600" />
+              <OptimizedIcon name="Clock" className="w-4 h-4 text-emerald-600" />
               <span className="text-xs font-medium">Load Time</span>
             </div>
             <span className="text-lg font-bold text-emerald-600">

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 /**
@@ -9,11 +10,7 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Lock,
-  Shield,
-  Link
-} from "lucide-react";
+import { Lock, Link } from "lucide-react";
 import Link from "next/link";
 import { UserRole } from "@/lib/rbac/types";
 import { createClient } from "@/lib/supabase/client";
@@ -120,7 +117,7 @@ export function ClientRoleGate({
         <div className="flex items-center justify-center min-h-[400px] p-8">
           <div className="text-center max-w-md">
             <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Shield className="w-8 h-8 text-white" />
+              <OptimizedIcon name="Shield" className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
               Access Denied
@@ -130,7 +127,7 @@ export function ClientRoleGate({
               {userRole}
             </p>
             <Alert className="text-left mb-6">
-              <Shield className="h-4 w-4" />
+              <OptimizedIcon name="Shield" className="h-4 w-4" />
               <AlertDescription>
                 Required roles: {allowedRoles.join(", ")}
               </AlertDescription>

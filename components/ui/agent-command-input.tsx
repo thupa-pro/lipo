@@ -1,21 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Send,
-  Mic,
-  MicOff,
-  Loader2,
-  Calendar,
-  DollarSign,
-  AlertTriangle,
-  X,
-  ArrowUp,
-  Zap
-} from "lucide-react";
+import { Send, Mic, MicOff, X, ArrowUp, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Command {
@@ -298,7 +288,7 @@ export function AgentCommandInput({
           className="flex-shrink-0 h-8 w-8 p-0"
         >
           {disabled ? (
-            <Loader2 className="w-4 h-4 animate-spin" />
+            <UIIcons.Loader2 className="w-4 h-4 animate-spin" / />
           ) : (
             <Send className="w-4 h-4" />
           )}

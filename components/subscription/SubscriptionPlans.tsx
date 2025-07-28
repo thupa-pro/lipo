@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -7,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Check, Crown, Star, ArrowRight, Loader2, Zap } from "lucide-react";
+import { Check, Crown, Zap } from "lucide-react";
 import {
   SubscriptionPlanData,
   BillingCycle,
@@ -156,7 +157,7 @@ export function SubscriptionPlans({
       case "starter":
         return <Zap className="w-5 h-5 text-blue-600" />;
       case "professional":
-        return <Star className="w-5 h-5 text-purple-600" />;
+        return <OptimizedIcon name="Star" className="w-5 h-5 text-purple-600" />;
       case "enterprise":
         return <Crown className="w-5 h-5 text-yellow-600" />;
       default:
@@ -198,7 +199,7 @@ export function SubscriptionPlans({
     if (processingPlan === planId) {
       return (
         <>
-          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+          <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
           Processing...
         </>
       );
@@ -384,7 +385,7 @@ export function SubscriptionPlans({
                 >
                   {getButtonText(plan.plan_id as SubscriptionPlan)}
                   {!isCurrent && processingPlan !== plan.plan_id && (
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                   )}
                 </Button>
               </CardContent>

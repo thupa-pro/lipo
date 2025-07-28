@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React from "react";
@@ -5,21 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  Wallet 
-  TrendingUp,
-  TrendingDown,
-  DollarSign,
-  Gift,
-  Crown,
-  ArrowUpRight,
-  ArrowDownRight,
-  Eye,
-  EyeOff,
-  Plus,
-  Minus,
-  Star
-} from "lucide-react";
+import { Wallet 
+  TrendingUp, TrendingDown, Gift, Crown, ArrowUpRight, ArrowDownRight, Eye, EyeOff, Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Transaction {
@@ -112,13 +100,13 @@ export function WalletSummaryCard({
       case "tip":
         return <Gift className="w-4 h-4 text-blue-600" />;
       case "bonus":
-        return <Star className="w-4 h-4 text-yellow-600" />;
+        return <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-600" />;
       case "withdrawal":
         return <ArrowDownRight className="w-4 h-4 text-red-600" />;
       case "fee":
         return <Minus className="w-4 h-4 text-gray-600" />;
       default:
-        return <DollarSign className="w-4 h-4" />;
+        return <BusinessIcons.DollarSign className="w-4 h-4" / />;
     }
   };
 

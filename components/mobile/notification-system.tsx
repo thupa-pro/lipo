@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -5,21 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Bell,
-  X,
-  Check,
-  AlertCircle,
-  CreditCard,
-  Calendar,
-  Shield,
-  TrendingUp,
-  MapPin,
-  CheckCircle,
-  Info,
-  MessageSquare,
-  Star
-} from "lucide-react";
+import { Bell, X, Check, AlertCircle, CreditCard, TrendingUp, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Notification {
@@ -183,16 +170,16 @@ export function NotificationSystem({ className }: NotificationSystemProps) {
           <CreditCard {...iconProps} className="w-5 h-5 text-emerald-600" />
         );
       case "booking":
-        return <Calendar {...iconProps} className="w-5 h-5 text-blue-600" />;
+        return <BusinessIcons.Calendar {...iconProps} className="w-5 h-5 text-blue-600" / />;
       case "message":
         return (
-          <MessageSquare {...iconProps} className="w-5 h-5 text-purple-600" />
+          <OptimizedIcon name="MessageSquare" {...iconProps} className="w-5 h-5 text-purple-600" />
         );
       case "review":
-        return <Star {...iconProps} className="w-5 h-5 text-yellow-600" />;
+        return <OptimizedIcon name="Star" {...iconProps} className="w-5 h-5 text-yellow-600" />;
       case "success":
         return (
-          <CheckCircle {...iconProps} className="w-5 h-5 text-emerald-600" />
+          <UIIcons.CheckCircle {...iconProps} className="w-5 h-5 text-emerald-600" / />
         );
       case "warning":
         return (

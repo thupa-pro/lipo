@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,16 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTranslations } from "next-intl";
-import {
-  Bell,
-  Search,
-  Menu,
-  Shield,
-  Wifi,
-  Battery,
-  Signal,
-  Zap
-} from "lucide-react";
+import { Bell, Wifi, Battery, Signal, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileLogo } from "@/components/ui/logo";
 
@@ -99,7 +91,7 @@ export function MobileHeader({
 
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
-            <Shield className="w-3 h-3 text-emerald-500" />
+            <OptimizedIcon name="Shield" className="w-3 h-3 text-emerald-500" />
             <span className="text-xs">{t("secure")}</span>
           </div>
           <div className="flex items-center gap-1" title={t("battery_level")}>
@@ -140,7 +132,7 @@ export function MobileHeader({
               onClick={() => router.push("/browse")}
               className="relative p-2 rounded-xl hover:bg-accent transition-all duration-300"
             >
-              <Search className="w-5 h-5" />
+              <NavigationIcons.Search className="w-5 h-5" / />
             </Button>
           )}
 

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -7,15 +8,7 @@ import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import {
-  X,
-  Settings,
-  Info,
-  Eye,
-  Heart,
-  Palette,
-  Shield
-} from "lucide-react";
+import { X, Info, Eye, Heart, Palette } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { gdprCompliance, COOKIE_CATEGORIES } from '@/lib/compliance/gdpr';
 
@@ -241,7 +234,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <Shield className="h-5 w-5 text-primary" />
+                    <OptimizedIcon name="Shield" className="h-5 w-5 text-primary" />
                     <h3 className="font-semibold">We value your privacy</h3>
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -271,7 +264,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
                     disabled={isLoading}
                     className="w-full sm:w-auto"
                   >
-                    <Settings className="h-4 w-4 mr-2" />
+                    <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
                     Customize
                   </Button>
                   <Button
@@ -292,7 +285,7 @@ export function CookieBanner({ showBanner = true, onConsentChange }: CookieBanne
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Settings className="h-5 w-5" />
+              <NavigationIcons.Settings className="h-5 w-5" / />
               Cookie Preferences
             </DialogTitle>
             <DialogDescription>
@@ -419,7 +412,7 @@ export function CookiePreferencesButton() {
         onClick={() => setShowDialog(true)}
         className="text-muted-foreground hover:text-foreground"
       >
-        <Settings className="h-4 w-4 mr-2" />
+        <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
         Cookie Preferences
       </Button>
 

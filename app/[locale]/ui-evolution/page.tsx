@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -11,17 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import {
-  Sparkles,
-  TrendingUp,
-  Shield,
-  Eye,
-  Brain,
-  Rocket,
-  MessageSquare,
-  Target,
-  Zap
-} from "lucide-react";
+import { Sparkles, TrendingUp, Eye, Brain, Rocket, Target, Zap } from "lucide-react";
 import SmartJobInput from "@/components/ui/smart-job-input";
 import MatchTimeline from "@/components/ui/match-timeline";
 import VisibilityBooster from "@/components/provider/visibility-booster";
@@ -293,7 +284,7 @@ export default function UIEvolutionPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <MessageSquare className="w-5 h-5 mr-2 text-orange-600" />
+                  <OptimizedIcon name="MessageSquare" className="w-5 h-5 mr-2 text-orange-600" />
                   Enhanced Messaging Experience Demo
                 </CardTitle>
                 <CardDescription>
@@ -323,7 +314,7 @@ export default function UIEvolutionPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center">
-                    <Shield className="w-5 h-5 mr-2 text-indigo-600" />
+                    <OptimizedIcon name="Shield" className="w-5 h-5 mr-2 text-indigo-600" />
                     Trust Badge (Hover)
                   </CardTitle>
                   <CardDescription>

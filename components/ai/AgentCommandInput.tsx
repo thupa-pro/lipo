@@ -1,20 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Send, 
-  Sparkles, 
-  Loader2, 
-  Bot, 
-  Command,
-  Lightbulb,
-  MessageCircle,
-  Search,
-  Calendar,
-  X
-} from 'lucide-react';
+import { Send, Sparkles, Bot, Command, Lightbulb, MessageCircle, X } from "lucide-react";
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -192,7 +182,7 @@ export default function AgentCommandInput({
         <div className="relative flex items-center">
           <div className="absolute left-3 flex items-center">
             {isLoading ? (
-              <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
+              <UIIcons.Loader2 className="w-4 h-4 animate-spin text-blue-600" / />
             ) : input.startsWith('/') ? (
               <Command className="w-4 h-4 text-purple-600" />
             ) : (
@@ -316,8 +306,8 @@ export default function AgentCommandInput({
                               console.log('Action:', action);
                             }}
                           >
-                            {action.type === 'search' && <Search className="w-3 h-3 mr-1" />}
-                            {action.type === 'book' && <Calendar className="w-3 h-3 mr-1" />}
+                            {action.type === 'search' && <NavigationIcons.Search className="w-3 h-3 mr-1" / />}
+                            {action.type === 'book' && <BusinessIcons.Calendar className="w-3 h-3 mr-1" / />}
                             {action.type === 'notification' && <MessageCircle className="w-3 h-3 mr-1" />}
                             {action.type.replace('_', ' ')}
                           </Button>

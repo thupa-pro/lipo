@@ -1,29 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Calendar,
-  MapPin,
-  Heart,
-  Share,
-  MessageCircle,
-  Shield,
-  CreditCard,
-  ArrowLeft,
-  Info,
-  AlertCircle,
-  Badge as BadgeIcon,
-  Phone,
-  Mail,
-  Camera,
-  Award,
-  CheckCircle,
-  Clock,
-  Star
-} from "lucide-react";
+import { Heart, Share, MessageCircle, CreditCard, Info, AlertCircle, Badge as BadgeIcon, Camera, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -282,7 +264,7 @@ export default function BookingDetailPage() {
             onClick={() => router.back()}
             className="mb-4"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
             Back to Search
           </Button>
         </motion.div>
@@ -358,15 +340,15 @@ export default function BookingDetailPage() {
                         </h1>
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            <OptimizedIcon name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                             {service.rating} ({service.reviewCount} reviews)
                           </div>
                           <div className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
+                            <BusinessIcons.MapPin className="w-4 h-4" / />
                             {service.location}
                           </div>
                           <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
+                            <OptimizedIcon name="Clock" className="w-4 h-4" />
                             ~{service.duration}h duration
                           </div>
                         </div>
@@ -421,7 +403,7 @@ export default function BookingDetailPage() {
                           "Take out trash and recycling",
                         ].map((feature, index) => (
                           <div key={index} className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
+                            <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                             <span className="text-sm">{feature}</span>
                           </div>
                         ))}
@@ -445,14 +427,14 @@ export default function BookingDetailPage() {
                             <h3 className="text-xl font-semibold">{service.provider.name}</h3>
                             {service.provider.verified && (
                               <Badge variant="default" className="gap-1">
-                                <Shield className="w-3 h-3" />
+                                <OptimizedIcon name="Shield" className="w-3 h-3" />
                                 Verified
                               </Badge>
                             )}
                           </div>
                           <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                             <div className="flex items-center gap-1">
-                              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                              <OptimizedIcon name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                               {service.provider.rating} rating
                             </div>
                             <div>{service.provider.completedJobs} completed jobs</div>
@@ -483,7 +465,7 @@ export default function BookingDetailPage() {
                         </Button>
                         {service.provider.contact.phone && (
                           <Button variant="outline" className="flex-1">
-                            <Phone className="w-4 h-4 mr-2" />
+                            <OptimizedIcon name="Phone" className="w-4 h-4 mr-2" />
                             Call
                           </Button>
                         )}
@@ -512,7 +494,7 @@ export default function BookingDetailPage() {
                                 <h4 className="font-medium">{review.customer.name}</h4>
                                 <div className="flex items-center gap-1">
                                   {[...Array(5)].map((_, i) => (
-                                    <Star
+                                    <OptimizedIcon name="Star"
                                       key={i}
                                       className={`w-4 h-4 ${
                                         i < review.rating
@@ -649,7 +631,7 @@ export default function BookingDetailPage() {
 
                       {/* Trust & Safety */}
                       <Alert>
-                        <Shield className="h-4 w-4" />
+                        <OptimizedIcon name="Shield" className="h-4 w-4" />
                         <AlertDescription>
                           Your payment is protected. Funds are held in escrow until service completion.
                         </AlertDescription>

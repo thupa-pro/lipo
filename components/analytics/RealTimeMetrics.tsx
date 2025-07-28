@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -12,20 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Activity,
-  Users,
-  AlertTriangle,
-  XCircle,
-  MapPin,
-  Server,
-  Database,
-  Globe,
-  Pause,
-  Play,
-  Clock,
-  Zap
-} from "lucide-react";
+import { Activity, XCircle, Server, Database, Globe, Pause, Play, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { analyticsClient } from "@/lib/analytics/utils";
 import type { RealTimeMetrics as RealTimeMetricsType } from "@/lib/analytics/types";
@@ -224,7 +212,7 @@ export function RealTimeMetrics() {
           {/* Active Users */}
           <div className="flex items-center space-x-3 p-3 border rounded-lg">
             <div className="p-2 bg-blue-100 rounded-lg">
-              <Users className="h-5 w-5 text-blue-600" />
+              <NavigationIcons.Users className="h-5 w-5 text-blue-600" / />
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">
@@ -279,12 +267,12 @@ export function RealTimeMetrics() {
                 metrics.alertsCount === 0 ? "bg-green-100" : "bg-red-100",
               )}
             >
-              <AlertTriangle
+              <UIIcons.AlertTriangle
                 className={cn(
                   "h-5 w-5",
                   metrics.alertsCount === 0 ? "text-green-600" : "text-red-600",
                 )}
-              />
+              / />
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">
@@ -300,7 +288,7 @@ export function RealTimeMetrics() {
           <Card>
             <CardHeader>
               <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Clock className="h-4 w-4" />
+                <OptimizedIcon name="Clock" className="h-4 w-4" />
                 Recent Activity
               </CardTitle>
             </CardHeader>
@@ -358,7 +346,7 @@ export function RealTimeMetrics() {
           <Card>
             <CardHeader>
               <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
+                <BusinessIcons.MapPin className="h-4 w-4" / />
                 Geographic Activity
               </CardTitle>
             </CardHeader>

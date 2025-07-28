@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useTransition } from "react";
@@ -12,7 +13,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/components/ui/use-toast";
-import { Globe, Check, Loader2 } from "lucide-react";
+import { Globe, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   locales,
@@ -87,7 +88,7 @@ export function LanguageSwitcher({
               <span className="font-medium">{localeNames[lang]}</span>
               {locale === lang && <Check className="ml-auto h-4 w-4" />}
               {isPending && (
-                <Loader2 className="ml-auto h-4 w-4 animate-spin" />
+                <UIIcons.Loader2 className="ml-auto h-4 w-4 animate-spin" / />
               )}
             </Button>
           ))}
@@ -112,7 +113,7 @@ export function LanguageSwitcher({
           >
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             {isPending ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <UIIcons.Loader2 className="h-4 w-4 animate-spin" / />
             ) : (
               <Globe className="h-4 w-4" />
             )}
@@ -158,7 +159,7 @@ export function LanguageSwitcher({
           className={cn("gap-2", className)}
         >
           {isPending ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
+            <UIIcons.Loader2 className="h-4 w-4 animate-spin" / />
           ) : (
             <Globe className="h-4 w-4" />
           )}

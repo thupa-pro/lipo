@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -5,24 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Bell,
-  X,
-  AlertCircle,
-  Info,
-  Calendar,
-  DollarSign,
-  Brain,
-  Sparkles,
-  MapPin,
-  Users,
-  TrendingUp,
-  Heart,
-  ArrowRight,
-  MessageCircle,
-  Settings,
-  Clock
-} from "lucide-react";
+import { Bell, X, AlertCircle, Info, Brain, Sparkles, TrendingUp, Heart, MessageCircle } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 interface SmartNotification {
@@ -429,7 +413,7 @@ export default function SmartNotifications({
 
                 <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3">
                   <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
+                    <OptimizedIcon name="Clock" className="w-3 h-3" />
                     {notification.timestamp.toLocaleTimeString()}
                   </div>
                   {notification.agentId && (

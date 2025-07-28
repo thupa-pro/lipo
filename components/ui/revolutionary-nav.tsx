@@ -1,21 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import {
-  ChevronDown,
-  Search,
-  Bell,
-  Menu,
-  X,
-  Home,
-  Settings,
-  HelpCircle,
-  Mic,
-  Star,
-  User
-} from "lucide-react";
+import { ChevronDown, Bell, X, HelpCircle, Mic } from "lucide-react";
 import Link from 'next/link'
 
 interface NavItem {
@@ -336,7 +325,7 @@ const RevolutionaryNav: React.FC<RevolutionaryNavProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Search className="w-5 h-5 text-white/80" />
+                  <NavigationIcons.Search className="w-5 h-5 text-white/80" / />
                 </motion.button>
 
                 <AnimatePresence>
@@ -401,7 +390,7 @@ const RevolutionaryNav: React.FC<RevolutionaryNavProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <User className="w-5 h-5 text-white/80" />
+                <NavigationIcons.User className="w-5 h-5 text-white/80" / />
               </motion.button>
 
               {/* Mobile Menu Toggle */}
@@ -411,7 +400,7 @@ const RevolutionaryNav: React.FC<RevolutionaryNavProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileOpen ? <X className="w-5 h-5" /> : <NavigationIcons.Menu className="w-5 h-5" / />}
               </motion.button>
             </div>
           </div>
@@ -493,16 +482,16 @@ export const sampleNavItems: NavItem[] = [
     id: 'home',
     label: 'Home',
     href: '/',
-    icon: <Home className="w-4 h-4" />
+    icon: <NavigationIcons.Home className="w-4 h-4" / />
   },
   {
     id: 'services',
     label: 'Services',
     href: '/services',
-    icon: <Star className="w-4 h-4" />,
+    icon: <OptimizedIcon name="Star" className="w-4 h-4" />,
     submenu: [
-      { id: 'cleaning', label: 'Cleaning', href: '/services/cleaning', icon: <Home className="w-4 h-4" /> },
-      { id: 'maintenance', label: 'Maintenance', href: '/services/maintenance', icon: <Settings className="w-4 h-4" /> }
+      { id: 'cleaning', label: 'Cleaning', href: '/services/cleaning', icon: <NavigationIcons.Home className="w-4 h-4" / /> },
+      { id: 'maintenance', label: 'Maintenance', href: '/services/maintenance', icon: <NavigationIcons.Settings className="w-4 h-4" / /> }
     ]
   },
   {
