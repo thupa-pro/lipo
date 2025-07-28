@@ -280,7 +280,7 @@ export default function HomePage() {
                     whileHover={{ scale: 1.05, y: -5 }}
                     className="text-center group"
                   >
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-${stat.color}-500/10 to-${stat.color}-600/10 border border-${stat.color}-500/20 mb-4 group-hover:shadow-xl transition-all duration-300`}>
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl neural-raised bg-gradient-to-br from-${stat.color}-500/15 to-${stat.color}-600/15 border border-${stat.color}-500/30 mb-4 group-hover:shadow-glow transition-all duration-300`}>
                       <stat.icon className={`w-8 h-8 text-${stat.color}-500`} />
                     </div>
                     <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-2">
