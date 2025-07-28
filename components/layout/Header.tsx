@@ -222,10 +222,10 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="h-9 w-9 p-0 rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors"
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-9 w-9 p-0 neural-button interactive-lift focus-visible-ring"
           >
             <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
