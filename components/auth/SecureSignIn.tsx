@@ -115,12 +115,12 @@ export function SecureSignIn() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="john@example.com"
+                placeholder="elite@loconomy.com"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
                 disabled={isSubmitting}
-                className="w-full"
+                className="w-full neural-input focus:shadow-glow-ai transition-all duration-200"
               />
             </div>
 
