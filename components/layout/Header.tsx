@@ -545,10 +545,10 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
                 </DropdownMenu>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="sm" asChild className="rounded-xl">
+                  <Button variant="ghost" size="sm" asChild className="glass-interactive neural-button focus-visible-ring">
                     <Link href="/auth/signin">Sign in</Link>
                   </Button>
-                  <Button size="sm" asChild className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                  <Button size="sm" asChild className="btn-ai-primary interactive-lift focus-visible-ring shadow-glow-ai">
                     <Link href="/auth/signup">Sign up</Link>
                   </Button>
                 </div>
