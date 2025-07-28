@@ -111,10 +111,15 @@ export default function SignInPage() {
           throw new Error('Failed to get OAuth URL');
         }
       } else {
-        toast({
-          title: "Coming Soon",
-          description: `${provider} sign-in will be available soon!`,
-        });
+        // Implement other OAuth providers here
+        const response = await fetch(`/api/auth/${provider.toLowerCase()}-oauth`);
+        const data = await response.json();
+
+        if (data.success && data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error(`${provider} OAuth not yet configured`);
+        }
       }
     } catch (error: any) {
       toast({
@@ -170,7 +175,7 @@ export default function SignInPage() {
         href={`/${locale}`}
         className="absolute top-6 left-6 z-20 flex items-center gap-2 text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
       >
-        <UIIcons.ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" / />
+        <UIIcons.ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         <span className="font-medium">Back to Home</span>
       </Link>
 
@@ -372,7 +377,7 @@ export default function SignInPage() {
                       >
                         {isLoading ? (
                           <>
-                            <UIIcons.Loader2 className="w-5 h-5 mr-2 animate-spin" / />
+                            <UIIcons.Loader2 className="w-5 h-5 mr-2 animate-spin" />
                             Signing in...
                           </>
                         ) : (
@@ -470,7 +475,7 @@ export default function SignInPage() {
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <NavigationIcons.Users className="w-6 h-6 text-emerald-600 dark:text-emerald-400" / />
+                  <NavigationIcons.Users className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <p className="text-xs text-slate-600 dark:text-gray-400 font-medium">Trusted</p>
               </div>
