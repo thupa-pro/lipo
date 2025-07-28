@@ -548,25 +548,25 @@ export function CategoriesSection() {
           className="text-center mt-16"
         >
           <div className="inline-flex flex-col sm:flex-row gap-4">
-            <Button 
-              size="lg" 
-              asChild 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            <Button
+              size="lg"
+              asChild
+              className="btn-ai-primary interactive-lift shadow-glow-ai hover:shadow-glow-lg focus-visible-ring"
             >
               <Link href="/browse" className="flex items-center gap-2">
-                Explore All Categories
+                Explore Elite Categories
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
-            
-            <Button 
-              size="lg" 
+
+            <Button
+              size="lg"
               variant="outline"
               asChild
-              className="border-2 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
+              className="premium-button glass-interactive neural-button border-2 border-premium-border hover:border-premium-accent transition-all duration-200 focus-visible-ring"
             >
               <Link href="/become-provider" className="flex items-center gap-2">
-                Become a Provider
+                Become Elite Provider
                 <ChevronRight className="w-5 h-5" />
               </Link>
             </Button>
