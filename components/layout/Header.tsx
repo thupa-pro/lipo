@@ -147,13 +147,13 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <motion.button
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               className={`
-                flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200
+                flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 interactive-lift focus-visible-ring
                 ${isActive
-                  ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400 shadow-sm"
-                  : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                  ? "glass-strong shadow-glow-ai text-ai-700 dark:text-ai-300 border border-ai-300 dark:border-ai-600"
+                  : "glass-subtle hover:glass-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border border-transparent hover:border-glass-border-medium"
                 }
               `}
             >
