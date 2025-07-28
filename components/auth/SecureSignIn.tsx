@@ -127,9 +127,9 @@ export function SecureSignIn() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Password</Label>
-                <Link 
-                  href="/auth/forgot-password" 
-                  className="text-sm text-primary hover:underline"
+                <Link
+                  href="/auth/forgot-password"
+                  className="text-sm text-ai-600 dark:text-ai-400 hover:text-ai-700 dark:hover:text-ai-300 hover:underline transition-colors focus-visible-ring"
                 >
                   Forgot password?
                 </Link>
