@@ -182,10 +182,10 @@ export default async function RootLayout({
                          }} />
                   </div>
 
-                  {/* Skip to main content for accessibility */}
+                  {/* Enhanced Skip to main content for accessibility */}
                   <a
                     href="#main-content"
-                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-violet-600 text-white px-4 py-2 rounded-md z-50 transition-all"
+                    className="skip-link focus-visible-ring btn-ai-primary z-maximum"
                   >
                     Skip to main content
                   </a>
