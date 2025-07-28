@@ -357,7 +357,7 @@ export default function HomePage() {
         </SectionTransition>
 
         {/* Final CTA Section with artistic flair */}
-        <SectionTransition delay={0.8}>
+        <SectionTransition delay={0.9}>
           <div className="relative py-24 overflow-hidden theme-premium">
             {/* Enhanced Artistic background */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />
