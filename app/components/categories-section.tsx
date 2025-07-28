@@ -440,10 +440,10 @@ export function CategoriesSection() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search categories..."
+                placeholder="Search elite categories..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 dark:focus:border-blue-400/50 transition-all"
+                className="w-full pl-10 pr-4 py-3 glass-strong neural-input focus:shadow-glow-ai focus:border-ai-400 dark:focus:border-ai-500 transition-all duration-200"
               />
             </div>
 
