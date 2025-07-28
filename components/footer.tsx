@@ -495,7 +495,7 @@ export default function Footer() {
                           <div className="font-medium">{lang.native}</div>
                           <div className="text-xs text-slate-400">{lang.name} • {lang.region}</div>
                         </div>
-                        {lang.code === currentLocale && <UIIcons.CheckCircle className="w-4 h-4 text-violet-400" / />}
+                        {lang.code === currentLocale && <UIIcons.CheckCircle className="w-4 h-4 text-violet-400" />}
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
@@ -567,7 +567,7 @@ export default function Footer() {
           {/* Social Media */}
           <div>
             <h4 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
-              <NavigationIcons.Users className="w-5 h-5 text-violet-400" / />
+              <NavigationIcons.Users className="w-5 h-5 text-violet-400" />
               Connect with Excellence
             </h4>
             <div className="grid grid-cols-2 gap-4">
@@ -617,7 +617,7 @@ export default function Footer() {
                 </div>
               </div>
               <div className="flex items-center gap-3 text-slate-300 p-3 rounded-lg bg-slate-800/30 border border-slate-700/50">
-                <BusinessIcons.MapPin className="w-4 h-4 text-violet-400" / />
+                <BusinessIcons.MapPin className="w-4 h-4 text-violet-400" />
                 <div>
                   <div className="font-medium">San Francisco, CA</div>
                   <div className="text-xs text-slate-400">Global Operations</div>
