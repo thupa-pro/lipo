@@ -148,8 +148,9 @@ export default async function RootLayout({
       </head>
       <body className={cn(
         inter.className,
-        "min-h-screen bg-background font-sans antialiased",
-        "selection:bg-violet-200 dark:selection:bg-violet-800"
+        "min-h-screen bg-background font-sans antialiased theme-adaptive",
+        "selection:bg-primary/20 selection:text-primary-foreground",
+        "theme-glass" // Default to glass theme - can be changed dynamically
       )}>
         <ErrorBoundary>
           <ClerkProvider>
