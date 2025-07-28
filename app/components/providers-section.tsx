@@ -26,12 +26,12 @@ const featuredProviders = [
     reviews: 347,
     price: "$28/hr",
     location: "Downtown District",
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Ff9b0ad35c687412daf8f1df3626700db?alt=media&token=b1792661-6cc2-414a-9d4c-76917ab8e4d1&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b21c?w=150&h=150&fit=crop&crop=face",
     badges: ["Top Rated", "Background Verified", "Insured"],
     completedJobs: 1289,
     responseTime: "< 30 min",
     verified: true,
-    backgroundImage: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F43c8dbf37a02479a9608fbda54d31476?alt=media&token=eb3aeb01-ab9e-4952-8ce8-d2ebd1fe91e4&apiKey=efd5169b47d04c9886e111b6074edfba"
+    backgroundImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
   },
   {
     id: 2,
@@ -41,12 +41,12 @@ const featuredProviders = [
     reviews: 512,
     price: "$65/hr",
     location: "Metro Area",
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F1e1e8ed62ef9468f99ec1e90b2542a8f?alt=media&token=39c74ba2-4310-43c0-a3a8-ea2bc409b530&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     badges: ["Master Licensed", "Emergency 24/7", "Insured"],
     completedJobs: 2156,
     responseTime: "< 15 min",
     verified: true,
-    backgroundImage: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fde884aceaab54333a2029504284a93ee?alt=media&token=7872437b-ecf7-4b86-9e8e-44ee8aeb0949&apiKey=efd5169b47d04c9886e111b6074edfba"
+    backgroundImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=600&fit=crop"
   },
   {
     id: 3,
@@ -56,12 +56,12 @@ const featuredProviders = [
     reviews: 423,
     price: "$24/hr",
     location: "Uptown Area",
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5bd41b69e1b143908d31f58b14060b98?alt=media&token=5b782adc-7672-41d7-b396-696cef354606&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     badges: ["Pet Certified", "Bonded", "Background Checked"],
     completedJobs: 1876,
     responseTime: "< 45 min",
     verified: true,
-    backgroundImage: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F078b2224baae4dbda0602f97374e7368?alt=media&token=794fe7a5-33fd-4a1b-9837-12a71370128c&apiKey=efd5169b47d04c9886e111b6074edfba"
+    backgroundImage: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=600&fit=crop"
   },
 ];
 

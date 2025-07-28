@@ -12,10 +12,10 @@ const testimonials = [
     content:
       "Loconomy transformed how I manage my home services. The quality of providers is exceptional, and the booking process is seamless. I've saved hours of research time.",
     rating: 5,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fcbb96f0619a54f1e9dbbe573fee86619?alt=media&token=0c7e60fa-8d21-4d4a-a476-7c691f913d51&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     company: "Tech Startup Founder",
     service: "Premium House Cleaning",
-    backgroundImage: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5ff17a00508548d89854319d66ecd561?alt=media&token=5a5c7b4b-2de4-4854-a99f-a678d73fb3d9&apiKey=efd5169b47d04c9886e111b6074edfba"
+    backgroundImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
   },
   {
     name: "David Park",
@@ -23,10 +23,10 @@ const testimonials = [
     content:
       "Since joining Loconomy, my business has grown 300%. The platform connects me with quality clients and handles everything professionally. Best decision for my career.",
     rating: 5,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F793e26ec4ad84eb5bf7ed547d87c7cd1?alt=media&token=4d0d2f61-0be7-4c6b-981d-e35f2fc0552f&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     company: "Elite Home Services",
     service: "Master Plumber",
-    backgroundImage: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5b3a1b8e65bd49ec9d335e62168cf265?alt=media&token=f0548918-c262-48c2-8246-0c91aa4876c6&apiKey=efd5169b47d04c9886e111b6074edfba"
+    backgroundImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=600&fit=crop"
   },
   {
     name: "Maria Santos",
@@ -34,10 +34,10 @@ const testimonials = [
     content:
       "The peace of mind knowing all providers are verified and insured is invaluable. Customer support is white-glove level, and I trust them completely with my home.",
     rating: 5,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fcbb96f0619a54f1e9dbbe573fee86619?alt=media&token=0c7e60fa-8d21-4d4a-a476-7c691f913d51&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     company: "Marketing Director",
     service: "Pet Care Specialist",
-    backgroundImage: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F793e26ec4ad84eb5bf7ed547d87c7cd1?alt=media&token=4d0d2f61-0be7-4c6b-981d-e35f2fc0552f&apiKey=efd5169b47d04c9886e111b6074edfba"
+    backgroundImage: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=600&fit=crop"
   },
 ];
 

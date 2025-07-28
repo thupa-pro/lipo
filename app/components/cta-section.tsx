@@ -20,7 +20,7 @@ export default function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F5813ae9f923e4ec2a07d2e1543fb6d54?alt=media&token=0ef56f97-041d-49cb-9f80-00350ad0d93b&apiKey=efd5169b47d04c9886e111b6074edfba"
+          src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=800&fit=crop"
           alt="Loconomy CTA Background"
           fill
           className="object-cover"
