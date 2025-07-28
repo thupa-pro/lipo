@@ -206,7 +206,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 relative overflow-hidden">
+    <div className="min-h-screen theme-glass glass-subtle relative overflow-hidden">
       <ScrollIndicator />
       <FloatingElements />
 
