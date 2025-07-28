@@ -249,9 +249,9 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
+                <Badge variant="secondary" className="mb-4 ai-badge glass-strong border border-ai-300 dark:border-ai-600 shadow-glow-ai">
                   <TrendingUp className="w-4 h-4 mr-2" />
-                  Trusted by Thousands
+                  Trusted by Elite Network
                 </Badge>
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
