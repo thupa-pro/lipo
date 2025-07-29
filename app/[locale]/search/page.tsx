@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLoading } from "@/components/providers/LoadingProvider";
 import { Filter, Map, List, SlidersHorizontal, Heart, X, ChevronDown, Search, Star, MapPin, Clock, Verified } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
