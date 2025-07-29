@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Brain, Heart, Award, Gift, Zap, Link } from "lucide-react";
-importfrom "next/link";
+import Link from "next/link";
 
 interface EmptyStateProps {
   type: "bookings" | "providers" | "payments" | "messages";
