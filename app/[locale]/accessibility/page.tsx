@@ -1,5 +1,6 @@
+"use client";
+
 import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
-"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accessibility as AccessibilityIcon, Lightbulb } from "lucide-react"
