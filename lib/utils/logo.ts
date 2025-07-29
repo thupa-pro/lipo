@@ -59,6 +59,11 @@ export function getLogoVariant(
  */
 export function getLogoPath(variant: LogoVariant): string {
   const config = LOGO_VARIANT_CONFIG[variant];
+  // If filename is already a full URL, return as-is
+  if (config.filename.startsWith('http')) {
+    return config.filename;
+  }
+  // Otherwise, treat as local asset
   return `/branded/${config.filename}`;
 }
 
