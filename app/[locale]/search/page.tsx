@@ -156,7 +156,7 @@ export default function SearchPage() {
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Filter mock results based on current filters
-    let filteredResults = mockResults.filter(result => {
+    const filteredResults = mockResults.filter(result => {
       if (filters.category !== "all" && !result.title.toLowerCase().includes(filters.category.toLowerCase())) {
         return false;
       }

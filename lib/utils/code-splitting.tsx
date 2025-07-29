@@ -220,7 +220,7 @@ export const DynamicImports = {
 };
 
 // Performance monitoring for lazy loading
-let lazyLoadMetrics = {
+const lazyLoadMetrics = {
   componentsLoaded: 0,
   totalLoadTime: 0,
   errors: 0,

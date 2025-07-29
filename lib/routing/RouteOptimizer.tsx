@@ -269,7 +269,7 @@ export function useRouteOptimizer() {
   const optimizer = useMemo(() => RouteOptimizerService.getInstance(), []);
 
   useEffect(() => {
-    let startTime = Date.now();
+    const startTime = Date.now();
     
     return () => {
       const timeSpent = Date.now() - startTime;
