@@ -388,7 +388,7 @@ export class WorkspaceClient {
       workspace,
       stats,
       recent_activity: activity,
-      members: [], // TODO: Include user data
+      members: await this.getWorkspaceMembers(workspace.id), // Include user data
       pending_invitations: invitations,
     };
   }

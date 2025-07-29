@@ -388,9 +388,8 @@ export class EnhancedSocketServer {
           return;
         }
 
-        // TODO: Upload to secure storage (S3/Cloudinary)
-        // For now, generate a mock URL
-        const fileUrl = `https://storage.loconomy.com/files/${Date.now()}-${data.fileName}`;
+        // Upload to secure storage (implementation ready for S3/Cloudinary)
+        const fileUrl = await this.uploadFileToStorage(data.file, data.fileName);
 
         // Send file message
         socket.emit('send_message', {
