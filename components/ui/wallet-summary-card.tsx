@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Wallet 
+import { Wallet,
   TrendingUp, TrendingDown, Gift, Crown, ArrowUpRight, ArrowDownRight, Eye, EyeOff, Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
