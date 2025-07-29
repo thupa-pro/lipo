@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/popover";
 import { X, FileText, Building, Award, Link } from "lucide-react";
 import { cn } from "@/lib/utils";
-importfrom "next/link";
+import Link from "next/link";
 
 interface VerificationStatus {
   type:
