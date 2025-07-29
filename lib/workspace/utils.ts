@@ -662,3 +662,21 @@ export function canPerformAction(
       return false;
   }
 }
+
+/**
+ * Get workspace members with user data
+ */
+async function getWorkspaceMembers(workspaceId: string) {
+  // This would integrate with your user management system
+  // For now, return empty array as implementation placeholder
+  return [];
+}
+
+/**
+ * Calculate member growth rate
+ */
+async function calculateMemberGrowth(workspaceId: string): Promise<number> {
+  // This would calculate actual growth metrics
+  // For now, return 0 as implementation placeholder
+  return 0;
+}
