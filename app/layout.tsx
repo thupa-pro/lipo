@@ -13,6 +13,7 @@ import { SovereignObservabilityProvider } from '@/lib/observability/providers';
 import { SovereignAnalyticsProvider } from '@/lib/analytics/providers';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { ClerkProvider } from '@/components/providers/ClerkProvider';
+import { LoadingProvider } from '@/components/providers/LoadingProvider';
 import { CookieConsentProvider, CookieConsentBanner, CookieSettingsLink } from '@/components/cookies';
 import Footer from '@/components/footer';
 import { PerformanceProvider } from '@/components/providers/PerformanceProvider';
@@ -128,16 +129,17 @@ export default async function RootLayout({
       <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
         <ErrorBoundary>
           <ClerkProvider>
-            <PerformanceProvider>
-              <SovereignObservabilityProvider>
-                <SovereignAnalyticsProvider>
-                  <ThemeProvider
-                    attribute="class"
-                    defaultTheme="light"
-                    enableSystem={false}
-                    disableTransitionOnChange
-                  >
-                    <CookieConsentProvider>
+            <LoadingProvider>
+              <PerformanceProvider>
+                <SovereignObservabilityProvider>
+                  <SovereignAnalyticsProvider>
+                    <ThemeProvider
+                      attribute="class"
+                      defaultTheme="light"
+                      enableSystem={false}
+                      disableTransitionOnChange
+                    >
+                      <CookieConsentProvider>
                       <div className="relative flex min-h-screen flex-col">
                         {/* Header with lazy-loaded navigation */}
                         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -170,11 +172,12 @@ export default async function RootLayout({
                       <Toaster />
                       <CookieConsentBanner />
                       <CookieSettingsLink />
-                    </CookieConsentProvider>
-                  </ThemeProvider>
-                </SovereignAnalyticsProvider>
-              </SovereignObservabilityProvider>
-            </PerformanceProvider>
+                      </CookieConsentProvider>
+                    </ThemeProvider>
+                  </SovereignAnalyticsProvider>
+                </SovereignObservabilityProvider>
+              </PerformanceProvider>
+            </LoadingProvider>
           </ClerkProvider>
         </ErrorBoundary>
       </body>
