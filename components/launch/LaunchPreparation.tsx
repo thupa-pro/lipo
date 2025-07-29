@@ -3,9 +3,9 @@ import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/ic
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Rocket, TrendingUp, Server, Globe, Database, Code, FileText, Play, Pause, RefreshCw, Download, Upload, Monitor, Activity
-  Award, BarChart3, PieChart
-  Gauge, CheckSquare, XCircle, Info, ExternalLink, Copy, Eye, EyeOff, Plus, Minus, MoreVertical, Filter, Bell, MessageSquare
+import { CheckCircle2, Rocket, TrendingUp, Server, Globe, Database, Code, FileText, Play, Pause, RefreshCw, Download, Upload, Monitor, Activity,
+  Award, BarChart3, PieChart,
+  Gauge, CheckSquare, XCircle, Info, ExternalLink, Copy, Eye, EyeOff, Plus, Minus, MoreVertical, Filter, Bell, MessageSquare,
   Heart, Bookmark, Share2, GitBranch, GitCommit, GitMerge, Target, Zap } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
