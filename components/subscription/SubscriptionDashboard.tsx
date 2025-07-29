@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CreditCard, TrendingUp, AlertCircle, ExternalLink, Download, Crown, BarChart3 } from "lucide-react";
 import { format } from "date-fns";
 import {
-  SubscriptionDashboard, as DashboardData,
+  SubscriptionDashboard as DashboardData,
   TrialInfo,
   UsageLimitCheck
 } from "@/lib/subscription/types";
