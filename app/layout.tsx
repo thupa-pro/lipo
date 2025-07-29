@@ -18,6 +18,9 @@ import { CookieConsentProvider, CookieConsentBanner, CookieSettingsLink } from '
 import Footer from '@/components/footer';
 import { PerformanceProvider } from '@/components/providers/PerformanceProvider';
 
+// Initialize performance optimizations
+import './performance-init';
+
 // Lazy load navigation and heavy components
 import { LazyComponents } from '@/lib/utils/code-splitting';
 
