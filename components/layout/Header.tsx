@@ -7,7 +7,7 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell, X, Sun, Moon, Monitor, LogOut, Sparkles, MessageCircle, Heart, HelpCircle, ExternalLink } from "lucide-react";
+import { Bell, X, Sun, Moon, Monitor, LogOut, MessageCircle, Heart, HelpCircle, ExternalLink, Home, Search, Briefcase, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import AgentCommandInput from "@/components/ai/AgentCommandInput";
+import { NavigationLogo } from "@/components/ui/logo";
 
 interface HeaderProps {
   onSidebarToggle?: () => void;
@@ -119,11 +120,9 @@ export default function Header({ onSidebarToggle, isSidebarOpen }: HeaderProps) 
           </Button>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-ai flex items-center justify-center shadow-glow">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-xl font-bold text-ai-gradient">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <NavigationLogo className="w-8 h-8" />
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
               Loconomy
             </span>
           </Link>
