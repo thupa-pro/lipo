@@ -265,7 +265,7 @@ export function NotificationDropdown({
         );
       case "booking":
         return (
-          <BusinessIcons.Calendar className={cn(baseClass, "text-blue-600", urgentClass)} / />
+          <BusinessIcons.Calendar className={cn(baseClass, "text-blue-600", urgentClass)} />
         );
       case "message":
         return (

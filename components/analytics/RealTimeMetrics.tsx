@@ -112,7 +112,7 @@ export function RealTimeMetrics() {
       case "booking":
         return "📅";
       case "signup":
-        return "👋";
+        return "���";
       case "payment":
         return "💳";
       case "error":
@@ -272,7 +272,7 @@ export function RealTimeMetrics() {
                   "h-5 w-5",
                   metrics.alertsCount === 0 ? "text-green-600" : "text-red-600",
                 )}
-              / />
+              />
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">

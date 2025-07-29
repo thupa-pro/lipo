@@ -77,7 +77,7 @@ export function LoadingSpinner({
   return (
     <UIIcons.Loader2
       className={cn("animate-spin text-blue-600", sizeClasses[size], className)}
-    / />
+    />
   );
 }
 

@@ -110,7 +110,7 @@ export function UsageMetrics({ usageData, subscription }: UsageMetricsProps) {
               "h-4 w-4",
               isCritical ? "text-red-600" : "text-orange-600",
             )}
-          / />
+          />
           <AlertDescription
             className={cn("text-orange-800", isCritical && "text-red-800")}
           >
