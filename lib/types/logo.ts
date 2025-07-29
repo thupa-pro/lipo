@@ -52,31 +52,31 @@ export interface LogoVariantConfig {
 
 export const LOGO_VARIANT_CONFIG: Record<LogoVariant, LogoVariantConfig> = {
   [LogoVariant.LIGHT]: {
-    filename: 'logo-light.svg',
+    filename: 'https://cdn.builder.io/api/v1/image/assets%2Fc9e48d21b17f4c5990f7115c35da4797%2F08ea77eef6ee46b4923532989e12242c?format=webp&width=800',
     defaultWidth: 200,
-    defaultHeight: 50,
-    aspectRatio: 4,
-    useCases: [UIContext.SIDEBAR, UIContext.FOOTER],
+    defaultHeight: 200,
+    aspectRatio: 1,
+    useCases: [UIContext.SIDEBAR, UIContext.FOOTER, UIContext.NAVIGATION],
     themeRecommendation: [ThemeMode.DARK]
   },
   [LogoVariant.DARK]: {
-    filename: 'logo-dark.svg',
+    filename: 'https://cdn.builder.io/api/v1/image/assets%2Fc9e48d21b17f4c5990f7115c35da4797%2F479f9e85785e4a5f87016e60b181802e?format=webp&width=800',
     defaultWidth: 200,
-    defaultHeight: 50,
-    aspectRatio: 4,
+    defaultHeight: 200,
+    aspectRatio: 1,
     useCases: [UIContext.NAVIGATION, UIContext.AUTH],
     themeRecommendation: [ThemeMode.LIGHT]
   },
   [LogoVariant.COLORED]: {
-    filename: 'logo-colored.svg',
+    filename: 'https://cdn.builder.io/api/v1/image/assets%2Fc9e48d21b17f4c5990f7115c35da4797%2F08ea77eef6ee46b4923532989e12242c?format=webp&width=800',
     defaultWidth: 200,
-    defaultHeight: 50,
-    aspectRatio: 4,
+    defaultHeight: 200,
+    aspectRatio: 1,
     useCases: [UIContext.MARKETING, UIContext.AUTH],
     themeRecommendation: [ThemeMode.LIGHT, ThemeMode.DARK]
   },
   [LogoVariant.ICON]: {
-    filename: 'logo-icon.svg',
+    filename: 'https://cdn.builder.io/api/v1/image/assets%2Fc9e48d21b17f4c5990f7115c35da4797%2F08ea77eef6ee46b4923532989e12242c?format=webp&width=800',
     defaultWidth: 40,
     defaultHeight: 40,
     aspectRatio: 1,
@@ -84,10 +84,10 @@ export const LOGO_VARIANT_CONFIG: Record<LogoVariant, LogoVariantConfig> = {
     themeRecommendation: [ThemeMode.LIGHT, ThemeMode.DARK]
   },
   [LogoVariant.OUTLINE]: {
-    filename: 'logo-outline.svg',
+    filename: 'https://cdn.builder.io/api/v1/image/assets%2Fc9e48d21b17f4c5990f7115c35da4797%2F479f9e85785e4a5f87016e60b181802e?format=webp&width=800',
     defaultWidth: 200,
-    defaultHeight: 50,
-    aspectRatio: 4,
+    defaultHeight: 200,
+    aspectRatio: 1,
     useCases: [UIContext.WATERMARK],
     themeRecommendation: [ThemeMode.LIGHT, ThemeMode.DARK]
   }
