@@ -3,10 +3,10 @@ import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/ic
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plug, Globe, Code, Database, Webhook, Key, Play, Pause, XCircle, AlertCircle
-  Download, Upload, Copy, Eye, EyeOff, Edit
-  Plus, ExternalLink, RefreshCw, Activity, BarChart3, Terminal, FileText
-  Server, Cloud, Smartphone, CreditCard, Mail
+import { Plug, Globe, Code, Database, Webhook, Key, Play, Pause, XCircle, AlertCircle,
+  Download, Upload, Copy, Eye, EyeOff, Edit,
+  Plus, ExternalLink, RefreshCw, Activity, BarChart3, Terminal, FileText,
+  Server, Cloud, Smartphone, CreditCard, Mail,
   Calendar, Package, Building, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -179,7 +179,7 @@ export default function IntegrationHub() {
       description: "CRM and marketing automation",
       category: "crm",
       provider: "HubSpot Inc.",
-      logo: "🏢",
+      logo: "���",
       isConnected: false,
       isEnabled: false,
       lastSync: new Date(0),
