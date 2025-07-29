@@ -206,8 +206,10 @@ export default function SearchPage() {
     performSearch();
   }, [performSearch]);
 
-  // Get user location
+  // Initialize page and get user location
   useEffect(() => {
+    showPageLoading("Loading search interface...");
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -215,13 +217,17 @@ export default function SearchPage() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
+          hideLoading();
         },
         (error) => {
           console.log("Could not get location:", error);
+          hideLoading();
         }
       );
+    } else {
+      setTimeout(() => hideLoading(), 1000);
     }
-  }, []);
+  }, [showPageLoading, hideLoading]);
 
   const handleSaveSearch = () => {
     if (searchQuery && !savedSearches.includes(searchQuery)) {
