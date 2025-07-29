@@ -1,5 +1,6 @@
-import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
+
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
