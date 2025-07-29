@@ -522,7 +522,7 @@ export function TransactionHistory({
                 <BusinessIcons.DollarSign
                   className={cn(
                     "w-6 h-6",
-                    netAmount  />= 0 ? "text-green-600" : "text-red-600",
+                    netAmount >= 0 ? "text-green-600" : "text-red-600",
                   )}
                 />
               </div>
