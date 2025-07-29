@@ -3,7 +3,7 @@ import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/ic
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CreditCard, Download, Upload, AlertCircle, TrendingUp, TrendingDown, Filter, MoreHorizontal, Eye, RefreshCw, FileText, Camera
+import { CreditCard, Download, Upload, AlertCircle, TrendingUp, TrendingDown, Filter, MoreHorizontal, Eye, RefreshCw, FileText, Camera,
   MapPin, Building, Globe, Banknote, Wallet, Receipt, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
