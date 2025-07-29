@@ -4,7 +4,7 @@ import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/ic
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, Brain, Heart, Award, Gift, Zap, Link } from "lucide-react";
+import { Sparkles, Brain, Heart, Award, Gift, Zap, Calendar, Users, Search, MapPin, Star, Shield, Phone, MessageSquare, Clock } from "lucide-react";
 import Link from "next/link";
 
 interface EmptyStateProps {
