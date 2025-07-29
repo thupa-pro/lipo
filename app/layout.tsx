@@ -152,9 +152,12 @@ export default async function RootLayout({
                         <main className="flex-1">
                           <Suspense fallback={
                             <div className="min-h-screen flex items-center justify-center">
-                              <div className="text-center">
-                                <div className="loading-skeleton w-16 h-16 rounded-full bg-gray-200 mx-auto mb-4"></div>
-                                <p className="text-gray-600">Loading...</p>
+                              <div className="w-32 h-32 relative">
+                                <img
+                                  src="https://cdn.builder.io/api/v1/image/assets%2Fc9e48d21b17f4c5990f7115c35da4797%2F49e29029ab1347bc97939adb24510e95?format=webp&width=400"
+                                  alt="Loading"
+                                  className="w-full h-full object-contain animate-pulse"
+                                />
                               </div>
                             </div>
                           }>
