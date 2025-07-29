@@ -1,5 +1,6 @@
-import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
+
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
