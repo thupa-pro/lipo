@@ -434,7 +434,7 @@ export class WorkspaceClient {
       total_bookings: bookingsCount.count || 0,
       monthly_revenue: monthlyRevenue,
       growth_metrics: {
-        member_growth: 0, // TODO: Calculate growth
+        member_growth: await this.calculateMemberGrowth(workspace.id),
         listing_growth: 0,
         booking_growth: 0,
       },
