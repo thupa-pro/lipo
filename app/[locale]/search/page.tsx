@@ -53,6 +53,7 @@ interface SearchResult {
 }
 
 export default function SearchPage() {
+  const { showPageLoading, hideLoading } = useLoading();
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
   const [showFilters, setShowFilters] = useState(false);
