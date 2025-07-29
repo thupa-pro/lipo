@@ -3,10 +3,10 @@ import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/ic
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Plus, Edit, Eye, EyeOff, Filter, Globe, BarChart3, Upload, Download, Copy
-  Image, Video, Mic, Tag
-  CheckCircle, XCircle, AlertCircle
-  TrendingUp, Target
+import { FileText, Plus, Edit, Eye, EyeOff, Filter, Globe, BarChart3, Upload, Download, Copy,
+  Image, Video, Mic, Tag,
+  CheckCircle, XCircle, AlertCircle,
+  TrendingUp, Target,
   BookOpen, Bookmark, Share2, ExternalLink, RefreshCw, Save, Code, Layout, Palette, Type, AlignLeft, Bold, Italic, Underline, List, ListOrdered, Quote, LinkIcon, ImageIcon, Monitor, Smartphone, Tablet, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
