@@ -92,7 +92,7 @@ export function BuilderAsset({
       onError={handleError}
       priority={priority}
       sizes={sizes}
-      loading={loading}
+      loading={priority ? undefined : loading}
     />
   );
 
