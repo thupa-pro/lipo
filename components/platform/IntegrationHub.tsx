@@ -1,46 +1,13 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Plug,
-  Globe,
-  Code,
-  Database,
-  Webhook,
-  Key,
-  Shield,
-  Settings,
-  Play,
-  Pause,
-  XCircle,
-  AlertCircle
-  Download,
-  Upload,
-  Copy,
-  Eye,
-  EyeOff,
-  Edit
-  Plus,
-  ExternalLink,
-  RefreshCw,
-  Activity,
-  BarChart3,
-  Terminal,
-  FileText
-  Server,
-  Cloud,
-  Smartphone,
-  CreditCard,
-  Mail
-  Calendar,
-  MapPin,
-  Package,
-  Building,
-  CheckCircle,
-  Clock,
-  Trash2
-} from "lucide-react";
+import { Plug, Globe, Code, Database, Webhook, Key, Play, Pause, XCircle, AlertCircle
+  Download, Upload, Copy, Eye, EyeOff, Edit
+  Plus, ExternalLink, RefreshCw, Activity, BarChart3, Terminal, FileText
+  Server, Cloud, Smartphone, CreditCard, Mail
+  Calendar, Package, Building, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -345,15 +312,15 @@ export default function IntegrationHub() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "active":
-        return <CheckCircle className="w-4 h-4 text-green-600" />;
+        return <UIIcons.CheckCircle className="w-4 h-4 text-green-600" / />;
       case "warning":
         return <AlertCircle className="w-4 h-4 text-yellow-600" />;
       case "error":
         return <XCircle className="w-4 h-4 text-red-600" />;
       case "disabled":
-        return <Clock className="w-4 h-4 text-gray-600" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4 text-gray-600" />;
       default:
-        return <Clock className="w-4 h-4 text-gray-600" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4 text-gray-600" />;
     }
   };
 
@@ -509,7 +476,7 @@ export default function IntegrationHub() {
                     {integration.isConnected ? (
                       <>
                         <Button variant="outline" size="sm" className="flex-1">
-                          <Settings className="w-4 h-4 mr-2" />
+                          <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
                           Configure
                         </Button>
                         <Button variant="outline" size="sm">
@@ -649,7 +616,7 @@ export default function IntegrationHub() {
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="sm">
-                              <Settings className="w-4 h-4" />
+                              <NavigationIcons.Settings className="w-4 h-4" / />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
@@ -773,7 +740,7 @@ export default function IntegrationHub() {
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="outline" size="sm">
-                          <Settings className="w-4 h-4" />
+                          <NavigationIcons.Settings className="w-4 h-4" / />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>

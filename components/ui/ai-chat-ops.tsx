@@ -1,24 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { 
-  Send, 
-  Mic, 
-  MicOff, 
-  Sparkles, 
-  Bot, 
-  User, 
-  Loader2, 
-  Copy, 
-  ThumbsUp, 
-  ThumbsDown,
-  Zap,
-  MessageSquare,
-  X,
-  Minimize2,
-  Maximize2
-} from "lucide-react"
+import { Send, Mic, MicOff, Sparkles, Bot, Copy, ThumbsUp, ThumbsDown, Zap, X, Minimize2, Maximize2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -198,7 +183,7 @@ export function AIChatOps({
       case "ai":
         return <Bot className="h-4 w-4" />
       case "user":
-        return <User className="h-4 w-4" />
+        return <NavigationIcons.User className="h-4 w-4" / />
       default:
         return <Sparkles className="h-4 w-4" />
     }
@@ -223,7 +208,7 @@ export function AIChatOps({
         size="lg"
         className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-glow-primary"
       >
-        <MessageSquare className="h-6 w-6" />
+        <OptimizedIcon name="MessageSquare" className="h-6 w-6" />
       </Button>
     )
   }
@@ -380,7 +365,7 @@ export function AIChatOps({
                 <div className="flex items-center gap-2">
                   <Bot className="h-4 w-4" />
                   <div className="flex items-center gap-2">
-                    <Loader2 className="h-3 w-3 animate-spin" />
+                    <UIIcons.Loader2 className="h-3 w-3 animate-spin" / />
                     <span className="text-sm">AI is thinking...</span>
                   </div>
                 </div>

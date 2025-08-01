@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -26,19 +27,7 @@ import {
   ResponsiveContainer,
   Legend
 } from "recharts";
-import {
-  Activity,
-  Server,
-  Database,
-  AlertTriangle,
-  XCircle,
-  Zap,
-  HardDrive,
-  Cpu,
-  MemoryStick,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { Activity, Server, Database, XCircle, Zap, HardDrive, Cpu, MemoryStick } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";
 import type { PerformanceMetrics } from "@/lib/analytics/types";
@@ -197,7 +186,7 @@ export function PerformanceMonitoring({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">System Uptime</CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
+            <UIIcons.CheckCircle className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -210,7 +199,7 @@ export function PerformanceMonitoring({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Response Time</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <OptimizedIcon name="Clock" className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -228,7 +217,7 @@ export function PerformanceMonitoring({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Error Rate</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+            <UIIcons.AlertTriangle className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -445,7 +434,7 @@ export function PerformanceMonitoring({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="h-5 w-5" />
+            <UIIcons.AlertTriangle className="h-5 w-5" / />
             Error Analysis
           </CardTitle>
           <CardDescription>Recent errors and their impact</CardDescription>
@@ -460,7 +449,7 @@ export function PerformanceMonitoring({
                   className="flex items-center justify-between p-3 border rounded-lg"
                 >
                   <div className="flex items-center space-x-3">
-                    <AlertTriangle className="h-5 w-5 text-red-500" />
+                    <UIIcons.AlertTriangle className="h-5 w-5 text-red-500" / />
                     <div>
                       <p className="text-sm font-medium">{error.errorType}</p>
                       <p className="text-xs text-muted-foreground">
@@ -481,7 +470,7 @@ export function PerformanceMonitoring({
               ))
             ) : (
               <div className="text-center text-muted-foreground py-8">
-                <CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" />
+                <UIIcons.CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" / />
                 <p className="text-sm">No recent errors detected</p>
               </div>
             )}

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,19 +7,7 @@ import { PremiumCard, PremiumCardContent } from "@/components/ui/premium-card";
 import { PremiumSection } from "@/components/ui/premium-section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Sparkles,
-  ArrowRight,
-  Star,
-  Users,
-  Award,
-  Shield,
-  Zap,
-  TrendingUp,
-  Globe,
-  Heart,
-  CheckCircle
-} from "lucide-react";
+import { Sparkles, Award, Zap, TrendingUp, Globe, Heart } from "lucide-react";
 
 // Enhanced feature data with new assets
 const enhancedFeatures = [
@@ -138,7 +127,7 @@ export function EnhancedFeatureGallery() {
             {enhancedFeatures[activeFeature].benefits.map((benefit, index) => (
               <div key={index} className="flex items-center gap-2.5 lg:gap-3">
                 <div className={`w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-gradient-to-r ${enhancedFeatures[activeFeature].color} flex items-center justify-center flex-shrink-0`}>
-                  <CheckCircle className="w-3 h-3 lg:w-4 lg:h-4 text-white" />
+                  <UIIcons.CheckCircle className="w-3 h-3 lg:w-4 lg:h-4 text-white" / />
                 </div>
                 <span className="text-base lg:text-lg font-medium text-gray-700 dark:text-gray-300">{benefit}</span>
               </div>
@@ -149,7 +138,7 @@ export function EnhancedFeatureGallery() {
           <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 pt-3 lg:pt-4">
             <Button size="lg" className={`bg-gradient-to-r ${enhancedFeatures[activeFeature].color} hover:shadow-lg transition-all duration-300 w-full sm:w-auto text-sm lg:text-base`}>
               Experience Now
-              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" />
+              <UIIcons.ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" / />
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto text-sm lg:text-base">
               Learn More
@@ -270,7 +259,7 @@ export function EnhancedFeatureGallery() {
               <h4 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-2 lg:mb-3">Predictive Quality</h4>
               <p className="text-sm lg:text-base text-gray-600 dark:text-gray-400 mb-3 lg:mb-4">AI-powered insights predict and prevent issues before they occur, ensuring seamless experiences.</p>
               <div className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 font-medium">
-                <Star className="w-4 h-4" />
+                <OptimizedIcon name="Star" className="w-4 h-4" />
                 AI-Powered
               </div>
             </div>
@@ -288,7 +277,7 @@ export function EnhancedFeatureGallery() {
           <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
             <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100 w-full sm:w-auto text-sm lg:text-base">
               Start Your Journey
-              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" />
+              <UIIcons.ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-1.5 lg:ml-2" / />
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 w-full sm:w-auto text-sm lg:text-base">
               Watch Demo

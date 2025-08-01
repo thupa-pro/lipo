@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -5,20 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import {
-  Smile,
-  Meh,
-  Frown,
-  Heart,
-  ThumbsUp,
-  ThumbsDown,
-  Send,
-  TrendingUp,
-  BarChart3,
-  X,
-  CheckCircle,
-  MessageSquare
-} from "lucide-react";
+import { Smile, Meh, Frown, Heart, ThumbsUp, ThumbsDown, Send, TrendingUp, BarChart3, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SentimentEmoji {
@@ -255,7 +243,7 @@ export function FeedbackWidget({
         )}
       >
         <CardContent className="p-6 text-center">
-          <CheckCircle className="w-12 h-12 mx-auto mb-4 text-emerald-500" />
+          <UIIcons.CheckCircle className="w-12 h-12 mx-auto mb-4 text-emerald-500" / />
           <h3 className="text-lg font-bold mb-2 text-emerald-700 dark:text-emerald-300">
             Thank You!
           </h3>
@@ -273,7 +261,7 @@ export function FeedbackWidget({
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-blue-600" />
+            <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600" />
             <h3 className="text-lg font-bold">Share Your Experience</h3>
           </div>
           {onClose && (

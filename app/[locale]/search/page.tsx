@@ -1,20 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Search,
-  MapPin,
-  Filter,
-  Map,
-  List,
-  SlidersHorizontal,
-  Star,
-  DollarSign,
-  Shield, Heart,
-  X,
-  ChevronDown
-} from "lucide-react";
+import { Filter, Map, List, SlidersHorizontal, Heart, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -484,7 +473,7 @@ export default function SearchPage() {
                 </h2>
                 {userLocation && (
                   <p className="text-sm text-muted-foreground flex items-center gap-1">
-                    <MapPin className="w-3 h-3" />
+                    <BusinessIcons.MapPin className="w-3 h-3" / />
                     Near your location
                   </p>
                 )}
@@ -539,7 +528,7 @@ export default function SearchPage() {
                 animate={{ opacity: 1 }}
                 className="text-center py-12"
               >
-                <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                <NavigationIcons.Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" / />
                 <h3 className="text-lg font-semibold mb-2">No services found</h3>
                 <p className="text-muted-foreground mb-4">
                   Try adjusting your search filters or location

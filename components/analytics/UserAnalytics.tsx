@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -28,18 +29,7 @@ import {
   Area,
   AreaChart,
 } from "recharts";
-import {
-  Users,
-  UserPlus,
-  UserCheck,
-  TrendingUp,
-  TrendingDown,
-  MapPin,
-  Smartphone,
-  Monitor,
-  Tablet,
-  Globe,
-} from "lucide-react";
+import { UserPlus, UserCheck, TrendingUp, TrendingDown, Smartphone, Monitor, Tablet, Globe,  } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";
 import type { UserMetrics, CohortAnalysis } from "@/lib/analytics/types";
@@ -160,7 +150,7 @@ export function UserAnalytics({ timeframe }: UserAnalyticsProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -295,7 +285,7 @@ export function UserAnalytics({ timeframe }: UserAnalyticsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
+              <NavigationIcons.Users className="h-5 w-5" / />
               User Segments
             </CardTitle>
             <CardDescription>
@@ -326,7 +316,7 @@ export function UserAnalytics({ timeframe }: UserAnalyticsProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <MapPin className="h-5 w-5" />
+              <BusinessIcons.MapPin className="h-5 w-5" / />
               Geographic Distribution
             </CardTitle>
             <CardDescription>Users by location and region</CardDescription>

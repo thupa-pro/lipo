@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -23,16 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  FileText,
-  Download,
-  Calendar,
-  FileSpreadsheet,
-  FileImage,
-  Mail,
-  CheckCircle,
-  Loader2
-} from "lucide-react";
+import { FileText, Download, FileSpreadsheet, FileImage } from "lucide-react";
 
 interface ExportModalProps {
   open: boolean;
@@ -172,9 +164,9 @@ export function ExportModal({ open, onOpenChange, filters }: ExportModalProps) {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               {exportComplete ? (
-                <CheckCircle className="w-5 h-5 text-green-500" />
+                <UIIcons.CheckCircle className="w-5 h-5 text-green-500" / />
               ) : (
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <UIIcons.Loader2 className="w-5 h-5 animate-spin" / />
               )}
               {exportComplete ? "Export Complete" : "Exporting Report"}
             </DialogTitle>
@@ -335,7 +327,7 @@ export function ExportModal({ open, onOpenChange, filters }: ExportModalProps) {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Calendar className="w-4 h-4" />
+                <BusinessIcons.Calendar className="w-4 h-4" / />
                 <span className="font-medium">Report Period</span>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -354,7 +346,7 @@ export function ExportModal({ open, onOpenChange, filters }: ExportModalProps) {
             <div className="space-y-2">
               <Label htmlFor="email">Email Recipients (Optional)</Label>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-muted-foreground" />
+                <OptimizedIcon name="Mail" className="w-4 h-4 text-muted-foreground" />
                 <Input
                   id="email"
                   value={emailRecipients}

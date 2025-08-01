@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -15,15 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Building2,
-  Users,
-  Briefcase,
-  Crown,
-  Loader2,
-  Check,
-  Enterprise
-} from "lucide-react";
+import { Building2, Crown, Check, Enterprise } from "lucide-react";
 import {
   CreateWorkspaceRequest,
   WorkspaceType,
@@ -94,11 +87,11 @@ export function CreateWorkspaceForm({
   const getTypeIcon = (type: WorkspaceType) => {
     switch (type) {
       case "personal":
-        return <Users className="w-5 h-5" />;
+        return <NavigationIcons.Users className="w-5 h-5" / />;
       case "team":
         return <Building2 className="w-5 h-5" />;
       case "business":
-        return <Briefcase className="w-5 h-5" />;
+        return <BusinessIcons.Briefcase className="w-5 h-5" / />;
       case "enterprise":
         return <Enterprise className="w-5 h-5" />;
       default:
@@ -340,7 +333,7 @@ export function CreateWorkspaceForm({
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
               Creating...
             </>
           ) : (

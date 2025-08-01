@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -9,18 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  Key,
-  Smartphone,
-  Eye,
-  EyeOff,
-  AlertTriangle,
-  Lock,
-  Unlock,
-  CheckCircle,
-  Clock,
-  Shield
-} from "lucide-react";
+import { Key, Smartphone, Eye, EyeOff, Lock, Unlock } from "lucide-react";
 
 interface SecuritySettingsProps {
   onUpdate: () => void;
@@ -178,7 +168,7 @@ export function SecuritySettings({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Shield className="w-5 h-5" />
+            <OptimizedIcon name="Shield" className="w-5 h-5" />
             Two-Factor Authentication
           </CardTitle>
         </CardHeader>
@@ -210,7 +200,7 @@ export function SecuritySettings({
 
           {securitySettings.twoFactorEnabled ? (
             <Alert>
-              <CheckCircle className="h-4 w-4" />
+              <UIIcons.CheckCircle className="h-4 w-4" / />
               <AlertDescription>
                 Two-factor authentication is enabled. Your account is more
                 secure.
@@ -218,7 +208,7 @@ export function SecuritySettings({
             </Alert>
           ) : (
             <Alert>
-              <AlertTriangle className="h-4 w-4" />
+              <UIIcons.AlertTriangle className="h-4 w-4" / />
               <AlertDescription>
                 Enable two-factor authentication to add an extra layer of
                 security to your account.
@@ -238,7 +228,7 @@ export function SecuritySettings({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Clock className="w-5 h-5" />
+            <OptimizedIcon name="Clock" className="w-5 h-5" />
             Login & Session Settings
           </CardTitle>
         </CardHeader>
@@ -356,26 +346,26 @@ export function SecuritySettings({
         <CardContent>
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
               <span className="text-sm">Strong password set</span>
             </div>
             <div className="flex items-center gap-2">
               {securitySettings.twoFactorEnabled ? (
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
               ) : (
-                <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />
               )}
               <span className="text-sm">Two-factor authentication</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
               <span className="text-sm">Email verified</span>
             </div>
             <div className="flex items-center gap-2">
               {securitySettings.loginAlerts ? (
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
               ) : (
-                <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />
               )}
               <span className="text-sm">Login alerts enabled</span>
             </div>

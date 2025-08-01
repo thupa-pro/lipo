@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -6,21 +7,7 @@ import { PremiumCard, PremiumCardContent } from "@/components/ui/premium-card";
 import { PremiumSection } from "@/components/ui/premium-section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Camera,
-  Play,
-  ExternalLink,
-  Star,
-  Users,
-  Heart,
-  ArrowLeft,
-  ArrowRight,
-  Maximize2,
-  Sparkles,
-  Award,
-  Shield,
-  TrendingUp
-} from "lucide-react";
+import { Camera, Play, ExternalLink, Heart, Maximize2, Sparkles, Award, TrendingUp } from "lucide-react";
 
 // Original media assets (Series 1)
 const originalAssets = {
@@ -387,7 +374,7 @@ export function MediaShowcase() {
               onClick={prevSlide}
               className="hidden lg:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 shadow-lg items-center justify-center"
             >
-              <ArrowLeft className="w-4 h-4 lg:w-5 lg:h-5" />
+              <UIIcons.ArrowLeft className="w-4 h-4 lg:w-5 lg:h-5" / />
             </Button>
             <Button
               variant="outline"
@@ -395,7 +382,7 @@ export function MediaShowcase() {
               onClick={nextSlide}
               className="hidden lg:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 shadow-lg items-center justify-center"
             >
-              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
+              <UIIcons.ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" / />
             </Button>
           </>
         )}

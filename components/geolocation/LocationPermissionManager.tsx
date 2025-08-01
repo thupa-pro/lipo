@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -13,15 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import {
-  MapPin,
-  AlertTriangle,
-  XCircle,
-  Settings,
-  Loader2,
-  CheckCircle,
-  Shield
-} from "lucide-react";
+import { XCircle } from "lucide-react";
 import { geolocationService } from "@/lib/geolocation/geolocation-service";
 import type { LocationPermission, Location } from "@/lib/geolocation/types";
 import { useToast } from "@/components/ui/use-toast";
@@ -146,13 +139,13 @@ export default function LocationPermissionManager({
   const getPermissionIcon = () => {
     switch (permission.state) {
       case "granted":
-        return <CheckCircle className="h-5 w-5 text-green-500" />;
+        return <UIIcons.CheckCircle className="h-5 w-5 text-green-500" / />;
       case "denied":
         return <XCircle className="h-5 w-5 text-red-500" />;
       case "prompt":
-        return <AlertTriangle className="h-5 w-5 text-yellow-500" />;
+        return <UIIcons.AlertTriangle className="h-5 w-5 text-yellow-500" / />;
       default:
-        return <Shield className="h-5 w-5 text-gray-500" />;
+        return <OptimizedIcon name="Shield" className="h-5 w-5 text-gray-500" />;
     }
   };
 
@@ -206,7 +199,7 @@ export default function LocationPermissionManager({
         <CardContent className="space-y-4">
           {permission.message && (
             <Alert>
-              <AlertTriangle className="h-4 w-4" />
+              <UIIcons.AlertTriangle className="h-4 w-4" / />
               <AlertDescription>{permission.message}</AlertDescription>
             </Alert>
           )}
@@ -229,12 +222,12 @@ export default function LocationPermissionManager({
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <UIIcons.Loader2 className="mr-2 h-4 w-4 animate-spin" / />
                   Getting Location...
                 </>
               ) : (
                 <>
-                  <MapPin className="mr-2 h-4 w-4" />
+                  <BusinessIcons.MapPin className="mr-2 h-4 w-4" / />
                   Request Location Access
                 </>
               )}
@@ -248,7 +241,7 @@ export default function LocationPermissionManager({
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <MapPin className="h-5 w-5" />
+              <BusinessIcons.MapPin className="h-5 w-5" / />
               Current Location
             </CardTitle>
             <CardDescription>
@@ -301,7 +294,7 @@ export default function LocationPermissionManager({
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Settings className="h-5 w-5" />
+            <NavigationIcons.Settings className="h-5 w-5" / />
             Location Preferences
           </CardTitle>
           <CardDescription>
@@ -400,7 +393,7 @@ export default function LocationPermissionManager({
                   onClick={requestLocation}
                   disabled={isLoading}
                 >
-                  <MapPin className="mr-2 h-4 w-4" />
+                  <BusinessIcons.MapPin className="mr-2 h-4 w-4" / />
                   Refresh Location
                 </Button>
                 <Button

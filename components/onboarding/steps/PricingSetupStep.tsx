@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { DollarSign, Info, TrendingUp } from "lucide-react";
+import { Info, TrendingUp } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 
 interface PricingSetupData {
@@ -103,7 +104,7 @@ export function PricingSetupStep({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <DollarSign className="w-5 h-5" />
+              <BusinessIcons.DollarSign className="w-5 h-5" / />
               Pricing Model
             </CardTitle>
           </CardHeader>

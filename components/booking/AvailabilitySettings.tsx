@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -21,16 +22,7 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover";
-import {
-  Calendar as CalendarIcon,
-  Plus,
-  X,
-  Save,
-  Copy,
-  RotateCcw,
-  Info,
-  Clock
-} from "lucide-react";
+import { Calendar as CalendarIcon, Plus, X, Save, Copy, RotateCcw, Info } from "lucide-react";
 import { format } from "date-fns";
 import {
   ProviderAvailability,
@@ -344,7 +336,7 @@ export function AvailabilitySettings({
             <CardContent className="space-y-4">
               <div className="flex gap-3">
                 <Button variant="outline" onClick={setBusinessHours}>
-                  <Clock className="w-4 h-4 mr-2" />
+                  <OptimizedIcon name="Clock" className="w-4 h-4 mr-2" />
                   Standard Business Hours
                 </Button>
                 <Button

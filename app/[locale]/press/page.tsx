@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Newspaper, Download, Mail, ArrowRight } from "lucide-react"
+import { Newspaper, Download } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -89,7 +90,7 @@ export default function PressMediaPage() {
                   <p className="text-muted-foreground mb-4">{release.summary}</p>
                   <Button variant="outline" onClick={() => toast({ title: "Read More", description: `Opening press release: ${release.title}... (Simulated)`, variant: "default" })}>
                     Read More
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                   </Button>
                 </CardContent>
               </Card>
@@ -117,7 +118,7 @@ export default function PressMediaPage() {
                   </p>
                   <Button variant="outline" onClick={() => toast({ title: "View Article", description: `Opening article from ${mention.source}... (Simulated)`, variant: "default" })}>
                     View Article
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                   </Button>
                 </CardContent>
               </Card>
@@ -133,7 +134,7 @@ export default function PressMediaPage() {
             For all press and media-related, inquiries, please contact our communications team.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email Press Team", description: "Opening your email client to press@loconomy.com...", variant: "default" })}>
-            <Mail className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
             Contact Press Team
           </Button>
         </div>

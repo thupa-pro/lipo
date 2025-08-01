@@ -1,26 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Brain,
-  Eye,
-  Mic,
-  Target,
-  Sparkles,
-  Rocket,
-  Play,
-  ChevronRight,
-  ArrowRight,
-  Calendar,
-  DollarSign,
-  MapPin,
-  Camera,
-  Volume2,
-  Scan,
-  Heart,
-  Zap
-} from "lucide-react";
+import { Brain, Eye, Mic, Target, Sparkles, Rocket, Play, ChevronRight, Camera, Volume2, Scan, Heart, Zap } from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

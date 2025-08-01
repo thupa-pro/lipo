@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -28,17 +29,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  CreditCard,
-  Plus,
-  MoreHorizontal,
-  Star,
-  Calendar,
-  AlertTriangle,
-  CheckCircle,
-  Shield,
-  Trash2
-} from "lucide-react";
+import { CreditCard, Plus, MoreHorizontal, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { billingClient } from "@/lib/billing/utils";
@@ -523,7 +514,7 @@ export function PaymentMethods({
                               variant="secondary"
                               className="bg-blue-100 text-blue-600"
                             >
-                              <Star className="w-3 h-3 mr-1" />
+                              <OptimizedIcon name="Star" className="w-3 h-3 mr-1" />
                               Default
                             </Badge>
                           )}
@@ -534,7 +525,7 @@ export function PaymentMethods({
                             {cardBrand?.name} ending in {method.card?.last4}
                           </span>
                           <span className="flex items-center space-x-1">
-                            <Calendar className="w-3 h-3" />
+                            <BusinessIcons.Calendar className="w-3 h-3" / />
                             <span>
                               {method.card?.expMonth
                                 .toString()
@@ -551,7 +542,7 @@ export function PaymentMethods({
                                 variant="outline"
                                 className="ml-2 border-orange-300 text-orange-600"
                               >
-                                <AlertTriangle className="w-3 h-3 mr-1" />
+                                <UIIcons.AlertTriangle className="w-3 h-3 mr-1" / />
                                 Expires Soon
                               </Badge>
                             )}
@@ -575,7 +566,7 @@ export function PaymentMethods({
                           onClick={() => handleSetDefault(method.id)}
                           disabled={loading}
                         >
-                          <CheckCircle className="w-4 h-4 mr-2" />
+                          <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
                           Set Default
                         </Button>
                       )}
@@ -602,7 +593,7 @@ export function PaymentMethods({
       <Card className="bg-blue-50 border-blue-200">
         <CardContent className="p-4">
           <div className="flex items-start space-x-3">
-            <Shield className="w-5 h-5 text-blue-600 mt-0.5" />
+            <OptimizedIcon name="Shield" className="w-5 h-5 text-blue-600 mt-0.5" />
             <div>
               <h4 className="font-medium text-blue-900">
                 Secure Payment Processing

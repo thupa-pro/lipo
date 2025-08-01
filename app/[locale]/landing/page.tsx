@@ -1,16 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Search,
-  Star,
-  Users,
-  Sparkles,
-  ArrowRight,
-  Brain
-} from "lucide-react";
+import { Sparkles, Brain } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -103,9 +97,9 @@ export default function LandingPage() {
               asChild
             >
               <Link href="/auth/signup">
-                <Search className="w-5 h-5 mr-3" />
+                <NavigationIcons.Search className="w-5 h-5 mr-3" / />
                 Start Your Journey
-                <ArrowRight className="w-5 h-5 ml-3" />
+                <UIIcons.ArrowRight className="w-5 h-5 ml-3" / />
               </Link>
             </Button>
             <Button
@@ -197,7 +191,7 @@ export default function LandingPage() {
                 >
                   <Link href="/auth/signup">
                     Create Account
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
                   </Link>
                 </Button>
                 <Button

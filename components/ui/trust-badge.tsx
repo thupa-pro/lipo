@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 "use client";
@@ -18,19 +19,7 @@ import {
   PopoverTrigger
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import {
-  MapPin,
-  CheckCircle,
-  AlertTriangle,
-  Info,
-  Award,
-  Users,
-  FileText,
-  Building,
-  Clock,
-  Shield,
-  Star
-} from "lucide-react";
+import { Info, Award, FileText, Building } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -153,17 +142,17 @@ export default function TrustBadge({
   const getFactorIcon = (factor: string) => {
     switch (factor) {
       case "rating":
-        return <Star className="w-4 h-4" />;
+        return <OptimizedIcon name="Star" className="w-4 h-4" />;
       case "verification":
-        return <Shield className="w-4 h-4" />;
+        return <OptimizedIcon name="Shield" className="w-4 h-4" />;
       case "experience":
-        return <CheckCircle className="w-4 h-4" />;
+        return <UIIcons.CheckCircle className="w-4 h-4" / />;
       case "location":
-        return <MapPin className="w-4 h-4" />;
+        return <BusinessIcons.MapPin className="w-4 h-4" / />;
       case "availability":
-        return <Clock className="w-4 h-4" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4" />;
       case "responseTime":
-        return <Clock className="w-4 h-4" />;
+        return <OptimizedIcon name="Clock" className="w-4 h-4" />;
       default:
         return <Info className="w-4 h-4" />;
     }
@@ -189,7 +178,7 @@ export default function TrustBadge({
           <Badge
             className={`${trustLevel.color} text-white hover:opacity-90 cursor-pointer ${badgeSize[size]}`}
           >
-            <Shield className="w-3 h-3 mr-1" />
+            <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
             {score}% Trust Score
           </Badge>
         </PopoverTrigger>
@@ -234,9 +223,9 @@ export default function TrustBadge({
                   {Object.entries(verifications).map(([key, verified]) => (
                     <div key={key} className="flex items-center gap-2">
                       {verified ? (
-                        <CheckCircle className="w-3 h-3 text-green-600" />
+                        <UIIcons.CheckCircle className="w-3 h-3 text-green-600" / />
                       ) : (
-                        <Clock className="w-3 h-3 text-gray-400" />
+                        <OptimizedIcon name="Clock" className="w-3 h-3 text-gray-400" />
                       )}
                       <span
                         className={cn(
@@ -271,7 +260,7 @@ export default function TrustBadge({
               <div className="mt-4">
                 <Link href="/verification">
                   <Button size="sm" className="w-full">
-                    <Shield className="w-3 h-3 mr-1" />
+                    <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                     Improve Trust Score
                   </Button>
                 </Link>
@@ -289,7 +278,7 @@ export default function TrustBadge({
         <div
           className={`w-16 h-16 ${trustLevel.color} rounded-full flex items-center justify-center mx-auto mb-2`}
         >
-          <Shield className="w-8 h-8 text-white" />
+          <OptimizedIcon name="Shield" className="w-8 h-8 text-white" />
         </div>
         <CardTitle className="text-2xl">{score}%</CardTitle>
         <CardDescription className={`font-medium ${trustLevel.textColor}`}>
@@ -324,7 +313,7 @@ export default function TrustBadge({
         {showVerificationDetails && verifications && (
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <h4 className="font-medium mb-3 flex items-center">
-              <Shield className="w-4 h-4 mr-2 text-blue-600" />
+              <OptimizedIcon name="Shield" className="w-4 h-4 mr-2 text-blue-600" />
               Verification Status
             </h4>
             <div className="grid grid-cols-2 gap-3">
@@ -357,7 +346,7 @@ export default function TrustBadge({
                       {key}
                     </span>
                     {verified && (
-                      <CheckCircle className="w-3 h-3 text-green-600" />
+                      <UIIcons.CheckCircle className="w-3 h-3 text-green-600" / />
                     )}
                   </div>
                 );
@@ -368,7 +357,7 @@ export default function TrustBadge({
 
         <div className="bg-gray-50 p-4 rounded-lg">
           <div className="flex items-start">
-            <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 mr-2" />
+            <UIIcons.AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 mr-2" / />
             <div className="text-xs text-gray-700">
               <div className="font-medium mb-1">Trust Score Calculation</div>
               <div>
@@ -384,7 +373,7 @@ export default function TrustBadge({
           <div className="mt-4">
             <Link href="/verification">
               <Button className="w-full">
-                <Shield className="w-4 h-4 mr-2" />
+                <OptimizedIcon name="Shield" className="w-4 h-4 mr-2" />
                 Complete Verification
               </Button>
             </Link>

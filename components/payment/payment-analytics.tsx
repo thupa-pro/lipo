@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,27 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  BarChart3,
-  TrendingUp,
-  TrendingDown,
-  DollarSign,
-  CreditCard,
-  Wallet,
-  Users,
-  Calendar,
-  Target,
-  Award,
-  AlertTriangle,
-  RefreshCw,
-  Download,
-  Filter,
-  ArrowUpRight,
-  ArrowDownRight,
-  Shield,
-  Zap,
-  Clock
-} from "lucide-react";
+import { BarChart3, TrendingUp, TrendingDown, CreditCard, Wallet, Target, Award, RefreshCw, Download, Filter, ArrowUpRight, ArrowDownRight, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PaymentMetrics {
@@ -196,7 +177,7 @@ export function PaymentAnalytics({
           <div className="absolute inset-0 bg-gradient-to-br from-ai/10 to-primary/10" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-2">
-              <DollarSign className="w-8 h-8 text-ai" />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-ai" / />
               <Badge className="bg-ai/10 text-ai border-ai/20">
                 {timeframe}
               </Badge>
@@ -358,7 +339,7 @@ export function PaymentAnalytics({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Shield className="w-5 h-5" />
+            <OptimizedIcon name="Shield" className="w-5 h-5" />
             Performance & Security
           </CardTitle>
         </CardHeader>
@@ -384,7 +365,7 @@ export function PaymentAnalytics({
 
                 <div className="text-center p-4 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
                   <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-500 flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-white" />
+                    <OptimizedIcon name="Clock" className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-2xl font-bold text-blue-600">99.9%</p>
                   <p className="text-sm text-muted-foreground">Uptime</p>
@@ -431,7 +412,7 @@ export function PaymentAnalytics({
                 <div className="space-y-4">
                   <div className="p-4 rounded-lg bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Shield className="w-5 h-5 text-emerald-600" />
+                      <OptimizedIcon name="Shield" className="w-5 h-5 text-emerald-600" />
                       <span className="font-semibold text-emerald-700 dark:text-emerald-300">
                         Security Score
                       </span>
@@ -480,7 +461,7 @@ export function PaymentAnalytics({
                 <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950/20">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-blue-600" />
+                      <NavigationIcons.Users className="w-5 h-5 text-blue-600" / />
                       <span className="font-semibold text-blue-700 dark:text-blue-300">
                         User Behavior
                       </span>
@@ -495,7 +476,7 @@ export function PaymentAnalytics({
                 <Card className="border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <AlertTriangle className="w-5 h-5 text-yellow-600" />
+                      <UIIcons.AlertTriangle className="w-5 h-5 text-yellow-600" / />
                       <span className="font-semibold text-yellow-700 dark:text-yellow-300">
                         Optimization
                       </span>

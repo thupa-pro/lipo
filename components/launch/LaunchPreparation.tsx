@@ -1,59 +1,12 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  CheckCircle2,
-  AlertTriangle,
-  Rocket,
-  TrendingUp,
-  Server,
-  Shield,
-  Users,
-  Globe,
-  Database,
-  Code,
-  Settings,
-  FileText,
-  Play,
-  Pause,
-  RefreshCw,
-  Download,
-  Upload,
-  Monitor,
-  Activity
-  Award,
-  BarChart3,
-  PieChart
-  Gauge,
-  CheckSquare,
-  XCircle,
-  Info,
-  ArrowRight,
-  ExternalLink,
-  Copy,
-  Eye,
-  EyeOff,
-  Plus,
-  Minus,
-  MoreVertical,
-  Filter,
-  Search,
-  Calendar,
-  Bell,
-  Mail,
-  Phone,
-  MessageSquare
-  Heart,
-  Bookmark,
-  Share2,
-  GitBranch,
-  GitCommit,
-  GitMerge,
-  Clock,
-  Target,
-  Zap
-} from "lucide-react";
+import { CheckCircle2, Rocket, TrendingUp, Server, Globe, Database, Code, FileText, Play, Pause, RefreshCw, Download, Upload, Monitor, Activity
+  Award, BarChart3, PieChart
+  Gauge, CheckSquare, XCircle, Info, ExternalLink, Copy, Eye, EyeOff, Plus, Minus, MoreVertical, Filter, Bell, MessageSquare
+  Heart, Bookmark, Share2, GitBranch, GitCommit, GitMerge, Target, Zap } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -423,11 +376,11 @@ export function LaunchPreparation() {
       case 'completed':
         return <CheckCircle2 className="h-4 w-4 text-green-500" />;
       case 'in-progress':
-        return <Clock className="h-4 w-4 text-blue-500" />;
+        return <OptimizedIcon name="Clock" className="h-4 w-4 text-blue-500" />;
       case 'failed':
         return <XCircle className="h-4 w-4 text-red-500" />;
       default:
-        return <Clock className="h-4 w-4 text-gray-400" />;
+        return <OptimizedIcon name="Clock" className="h-4 w-4 text-gray-400" />;
     }
   };
 
@@ -508,7 +461,7 @@ export function LaunchPreparation() {
                 <p className="text-2xl font-bold text-gray-900">{criticalTasksCompleted}/{totalCriticalTasks}</p>
               </div>
               <div className="h-12 w-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <AlertTriangle className="h-6 w-6 text-red-600" />
+                <UIIcons.AlertTriangle className="h-6 w-6 text-red-600" / />
               </div>
             </div>
             <Progress 
@@ -863,7 +816,7 @@ export function LaunchPreparation() {
                           View Details
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Settings className="h-4 w-4 mr-2" />
+                          <NavigationIcons.Settings className="h-4 w-4 mr-2" / />
                           Edit Task
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -1132,7 +1085,7 @@ export function LaunchPreparation() {
                     </Badge>
                     
                     {index < 6 && (
-                      <ArrowRight className="h-4 w-4 text-gray-300 ml-2" />
+                      <UIIcons.ArrowRight className="h-4 w-4 text-gray-300 ml-2" / />
                     )}
                   </div>
                 ))}

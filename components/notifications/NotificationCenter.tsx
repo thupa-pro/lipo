@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -5,18 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import {
-  Bell,
-  Check,
-  X,
-  Settings,
-  Filter,
-  AlertCircle,
-  Info,
-  CheckCircle,
-  Trash2,
-  Clock
-} from "lucide-react";
+import { Bell, Check, X, Filter, AlertCircle, Info, Trash2 } from "lucide-react";
 
 interface Notification {
   id: string;
@@ -187,7 +177,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
           </Button>
           
           <Button variant="outline" size="sm">
-            <Settings className="w-4 h-4" />
+            <NavigationIcons.Settings className="w-4 h-4" / />
           </Button>
         </div>
       </div>
@@ -229,7 +219,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                                 {notification.message}
                               </p>
                               <div className="flex items-center gap-2 mt-2">
-                                <Clock className="w-4 h-4 text-slate-400" />
+                                <OptimizedIcon name="Clock" className="w-4 h-4 text-slate-400" />
                                 <span className="text-xs text-slate-500">
                                   {formatTimestamp(notification.timestamp)}
                                 </span>

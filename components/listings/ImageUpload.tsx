@@ -1,17 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  X,
-  Upload,
-  Image as ImageIcon,
-  AlertCircle,
-  Check,
-  Loader2
-} from "lucide-react";
+import { X, Upload, Image as ImageIcon, AlertCircle, Check } from "lucide-react";
 import {
   uploadListingImages,
   deleteListingImage,
@@ -141,7 +135,7 @@ export function ImageUpload({
           <input {...getInputProps()} />
           <div className="flex flex-col items-center gap-2">
             {isUploading ? (
-              <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+              <UIIcons.Loader2 className="w-8 h-8 text-blue-500 animate-spin" / />
             ) : (
               <Upload className="w-8 h-8 text-gray-400" />
             )}
@@ -187,7 +181,7 @@ export function ImageUpload({
               ) : upload.url ? (
                 <Check className="w-4 h-4 text-green-500" />
               ) : (
-                <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
+                <UIIcons.Loader2 className="w-4 h-4 animate-spin text-blue-500" / />
               )}
             </div>
           ))}

@@ -1,8 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Cookie, Settings } from 'lucide-react';
+import { Cookie } from "lucide-react";
 import { CookieSettingsModal } from './CookieSettingsModal';
 import { setConsentStatus, type ConsentPreferences } from '@/lib/cookies/consent';
 
@@ -80,7 +81,7 @@ export function CookieSettingsLink({
           className={className}
           aria-label="Open cookie settings"
         >
-          {showIcon && <Settings className="mr-2 h-4 w-4" />}
+          {showIcon && <NavigationIcons.Settings className="mr-2 h-4 w-4" / />}
           {text}
         </Button>
         

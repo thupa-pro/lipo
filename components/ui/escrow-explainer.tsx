@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import type React from "react"
@@ -7,16 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import {
-  CreditCard,
-  CheckCircle,
-  DollarSign,
-  Lock,
-  Users,
-  HelpCircle,
-  ArrowRight,
-  Shield
-} from "lucide-react";
+import { CreditCard, Lock, HelpCircle } from "lucide-react";
 
 interface EscrowStep {
   id: number
@@ -135,7 +127,7 @@ export default function EscrowExplainer() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <Shield className="w-5 h-5 mr-2 text-green-600" />
+            <OptimizedIcon name="Shield" className="w-5 h-5 mr-2 text-green-600" />
             How Escrow Protection Works
           </CardTitle>
           <CardDescription>Your payment is protected every step of the way</CardDescription>
@@ -172,7 +164,7 @@ export default function EscrowExplainer() {
                   <ul className="text-xs text-muted-foreground space-y-1">
                     {step.details.map((detail, i) => (
                       <li key={i} className="flex items-start">
-                        <ArrowRight className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" />
+                        <UIIcons.ArrowRight className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" / />
                         {detail}
                       </li>
                     ))}
@@ -241,7 +233,7 @@ export default function EscrowExplainer() {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
-                <Shield className="w-6 h-6 text-white" />
+                <OptimizedIcon name="Shield" className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h3 className="font-bold text-green-800 dark:text-green-200">100% Payment Protection</h3>

@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React, { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Briefcase } from "lucide-react";
+;
 import {
   OnboardingStepProps,
   SERVICE_CATEGORIES,
@@ -65,7 +66,7 @@ export function ServiceCategoriesStep({
     <div className="space-y-8">
       <div className="text-center space-y-2">
         <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
-          <Briefcase className="w-6 h-6 text-blue-600" />
+          <BusinessIcons.Briefcase className="w-6 h-6 text-blue-600" / />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">
           Select Your Service Categories
@@ -139,7 +140,7 @@ export function ServiceCategoriesStep({
         size="lg"
       >
         {isLoading ? "Saving Categories..." : "Continue to Service Details"}
-        <ArrowRight className="w-4 h-4" />
+        <UIIcons.ArrowRight className="w-4 h-4" / />
       </Button>
     </div>
   );

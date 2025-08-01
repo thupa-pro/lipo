@@ -1,15 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import {
-  Eye,
-  Pause,
-  Play,
-  CheckCircle
-} from "lucide-react";
+import { Eye, Pause, Play } from "lucide-react";
 import { ABTest } from "./types"
 
 interface ActiveTestCardProps {
@@ -105,7 +101,7 @@ export default function ActiveTestCard({
                   {variant.isControl && <Badge variant="outline">Control</Badge>}
                   {test.winner === variant.id && (
                     <Badge className="bg-green-500">
-                      <CheckCircle className="w-3 h-3 mr-1" />
+                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                       Winner
                     </Badge>
                   )}

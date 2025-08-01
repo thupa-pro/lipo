@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -11,15 +12,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  FileText,
-  Download,
-  Calendar,
-  DollarSign,
-  Users,
-  TrendingUp,
-  Clock
-} from "lucide-react";
+import { FileText, Download, TrendingUp } from "lucide-react";
 
 export default function ProviderReportsPage() {
   const [reportType, setReportType] = useState("revenue");
@@ -233,7 +226,7 @@ export default function ProviderReportsPage() {
                     {report.description}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
-                    <Clock className="h-3 w-3 text-gray-400" />
+                    <OptimizedIcon name="Clock" className="h-3 w-3 text-gray-400" />
                     <span className="text-xs text-gray-500">
                       Last generated {report.lastGenerated}
                     </span>

@@ -1,37 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  CreditCard,
-  DollarSign,
-  Download,
-  Upload,
-  Shield,
-  AlertCircle,
-  TrendingUp,
-  TrendingDown,
-  Calendar,
-  Filter,
-  Search,
-  MoreHorizontal,
-  Eye,
-  RefreshCw,
-  FileText,
-  Camera
-  MapPin,
-  Phone,
-  Mail,
-  Building,
-  Globe,
-  Banknote,
-  Wallet,
-  Receipt,
-  Settings,
-  Lock,
-  CheckCircle,
-  Clock
-} from "lucide-react";
+import { CreditCard, Download, Upload, AlertCircle, TrendingUp, TrendingDown, Filter, MoreHorizontal, Eye, RefreshCw, FileText, Camera
+  MapPin, Building, Globe, Banknote, Wallet, Receipt, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -218,7 +191,7 @@ export default function PaymentsDashboard() {
       case "bonus":
         return <TrendingUp className="w-4 h-4 text-purple-600" />;
       default:
-        return <DollarSign className="w-4 h-4 text-gray-600" />;
+        return <BusinessIcons.DollarSign className="w-4 h-4 text-gray-600" / />;
     }
   };
 
@@ -283,7 +256,7 @@ export default function PaymentsDashboard() {
             Export
           </Button>
           <Button>
-            <Settings className="w-4 h-4 mr-2" />
+            <NavigationIcons.Settings className="w-4 h-4 mr-2" / />
             Settings
           </Button>
         </div>
@@ -303,7 +276,7 @@ export default function PaymentsDashboard() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <DollarSign className="w-6 h-6 text-green-600" />
+                  <BusinessIcons.DollarSign className="w-6 h-6 text-green-600" / />
                 </div>
               </div>
             </CardContent>
@@ -320,7 +293,7 @@ export default function PaymentsDashboard() {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-blue-600" />
+                  <OptimizedIcon name="Clock" className="w-6 h-6 text-blue-600" />
                 </div>
               </div>
             </CardContent>
@@ -365,7 +338,7 @@ export default function PaymentsDashboard() {
       {/* KYC Status Alert */}
       {kycStatus && kycStatus.status !== "verified" && (
         <Alert>
-          <Shield className="h-4 w-4" />
+          <OptimizedIcon name="Shield" className="h-4 w-4" />
           <AlertDescription>
             <strong>Verification Required:</strong> Complete your identity verification to unlock full payment features.
             <Button variant="link" className="ml-2 p-0 h-auto">
@@ -427,7 +400,7 @@ export default function PaymentsDashboard() {
               <div className="flex gap-4">
                 <div className="flex-1">
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                    <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" / />
                     <Input
                       placeholder="Search transactions..."
                       value={searchQuery}
@@ -545,7 +518,7 @@ export default function PaymentsDashboard() {
                           )}
                           {method.isVerified && (
                             <Badge className="bg-green-100 text-green-800">
-                              <CheckCircle className="w-3 h-3 mr-1" />
+                              <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                               Verified
                             </Badge>
                           )}
@@ -589,7 +562,7 @@ export default function PaymentsDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Shield className="w-5 h-5" />
+                    <OptimizedIcon name="Shield" className="w-5 h-5" />
                     Identity Verification Status
                   </CardTitle>
                 </CardHeader>
@@ -623,9 +596,9 @@ export default function PaymentsDashboard() {
                       {["identity_verification", "address_verification", "business_verification", "enhanced_due_diligence"].map((step) => (
                         <div key={step} className="flex items-center gap-3">
                           {kycStatus.completedSteps.includes(step) ? (
-                            <CheckCircle className="w-5 h-5 text-green-600" />
+                            <UIIcons.CheckCircle className="w-5 h-5 text-green-600" / />
                           ) : kycStatus.requiredSteps.includes(step) ? (
-                            <Clock className="w-5 h-5 text-yellow-600" />
+                            <OptimizedIcon name="Clock" className="w-5 h-5 text-yellow-600" />
                           ) : (
                             <Circle className="w-5 h-5 text-gray-400" />
                           )}

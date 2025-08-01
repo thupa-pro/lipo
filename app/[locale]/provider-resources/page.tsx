@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { BookOpen, Video, Users, TrendingUp, Lightbulb, Briefcase, ArrowRight } from "lucide-react"
+import { BookOpen, Video, TrendingUp, Lightbulb } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -54,7 +55,7 @@ export default function ProviderResourcesPage() {
     <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20">
         <div className="container mx-auto max-w-4xl">
-          <Briefcase className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <BusinessIcons.Briefcase className="w-16 h-16 text-green-600 mx-auto mb-4" / />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
             Provider Resources
           </h1>
@@ -63,7 +64,7 @@ export default function ProviderResourcesPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/dashboard")}>
             Go to Dashboard
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -106,7 +107,7 @@ export default function ProviderResourcesPage() {
           </p>
           <Button size="lg" onClick={() => router.push("/provider-support")}>
             Contact Provider Support
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </section>

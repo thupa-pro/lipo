@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 "use client";
 
+=======
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
+>>>>>>> origin/main
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
 import { Badge } from "@/components/ui/badge";
 import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 import {
@@ -31,6 +36,12 @@ import {
   Award,
   CheckCircle
 } from "lucide-react";
+=======
+import { PremiumCard, PremiumCardContent } from "@/components/ui/premium-card";
+import { PremiumSection } from "@/components/ui/premium-section";
+import Image from "next/image";
+import { Wrench, Car, GraduationCap, Heart, Camera, Scissors, Paintbrush, Sparkles } from "lucide-react";
+>>>>>>> origin/main
 
 const categories = [
   {
@@ -249,6 +260,7 @@ export function CategoriesSection() {
                 <h3 className={`font-bold text-white ${viewMode === 'grid' ? 'text-lg' : 'text-base'}`}>
                   {viewMode === 'grid' ? category.name : category.shortName}
                 </h3>
+<<<<<<< HEAD
                 {category.trending && (
                   <Badge variant="secondary" className="bg-orange-500/20 text-orange-200 border-orange-400/30 text-xs px-2 py-0.5">
                     <TrendingUp className="w-3 h-3 mr-1" />
@@ -266,6 +278,16 @@ export function CategoriesSection() {
                 <div className="flex items-center gap-1">
                   <Users className="w-3 h-3" />
                   <span>{category.count}</span>
+=======
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  {category.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    Explore Category
+                  </span>
+                  <UIIcons.ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" / />
+>>>>>>> origin/main
                 </div>
               </div>
             </div>
@@ -373,6 +395,7 @@ export function CategoriesSection() {
         />
       </div>
 
+<<<<<<< HEAD
       {/* Selection Indicator */}
       <AnimatePresence>
         {selectedCategory === index && (
@@ -396,6 +419,15 @@ export function CategoriesSection() {
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-violet-500/5 to-pink-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+=======
+      <div className="text-center mt-12">
+        <Button size="lg" asChild className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+          <Link href="/browse">
+            Explore All Categories
+            <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
+          </Link>
+        </Button>
+>>>>>>> origin/main
       </div>
 
       <div className="container mx-auto px-4">

@@ -1,13 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Clock
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -140,7 +136,7 @@ export default function BookingCalendar({
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-muted-foreground" />
+              <BusinessIcons.Calendar className="w-4 h-4 text-muted-foreground" / />
               <span className="font-medium">
                 {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
               </span>
@@ -228,7 +224,7 @@ export default function BookingCalendar({
             <Card>
               <CardContent className="p-4">
                 <div className="flex items-center gap-2 mb-4">
-                  <Clock className="w-4 h-4 text-muted-foreground" />
+                  <OptimizedIcon name="Clock" className="w-4 h-4 text-muted-foreground" />
                   <span className="font-medium">
                     Available times for {selectedDateLocal.toLocaleDateString()}
                   </span>

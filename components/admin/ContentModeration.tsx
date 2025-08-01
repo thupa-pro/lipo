@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -39,15 +40,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
-import {
-  Flag,
-  Eye,
-  XCircle,
-  AlertTriangle,
-  MoreHorizontal,
-  Filter,
-  CheckCircle
-} from "lucide-react";
+import { Flag, Eye, XCircle, MoreHorizontal, Filter } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -222,7 +215,7 @@ export function ContentModeration() {
               onClick={() => handleFlagReview(flag.id, "approve")}
               className="text-red-600"
             >
-              <CheckCircle className="w-4 h-4 mr-2" />
+              <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
               Approve & Remove
             </DropdownMenuItem>
             <DropdownMenuItem
@@ -523,7 +516,7 @@ export function ContentModeration() {
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="destructive">
-                            <CheckCircle className="w-4 h-4 mr-2" />
+                            <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
                             Approve & Remove Content
                           </Button>
                         </AlertDialogTrigger>

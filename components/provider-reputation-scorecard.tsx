@@ -1,21 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Shield,
-  CheckCircle,
-  Award,
-  TrendingUp,
-  Users,
-  MapPin,
-  Calendar,
-  Clock,
-  MessageSquare,
-  Star
-} from "lucide-react";
+import { Award, TrendingUp } from "lucide-react";
 
 interface ProviderReputationProps {
   provider: {
@@ -62,11 +52,11 @@ export default function ProviderReputationScorecard({
       case "top performer":
         return <Award className="w-3 h-3" />;
       case "quick responder":
-        return <Clock className="w-3 h-3" />;
+        return <OptimizedIcon name="Clock" className="w-3 h-3" />;
       case "customer favorite":
-        return <Users className="w-3 h-3" />;
+        return <NavigationIcons.Users className="w-3 h-3" / />;
       default:
-        return <CheckCircle className="w-3 h-3" />;
+        return <UIIcons.CheckCircle className="w-3 h-3" / />;
     }
   };
 
@@ -91,11 +81,11 @@ export default function ProviderReputationScorecard({
                 <p className="text-blue-100">{provider.category}</p>
                 <div className="flex items-center space-x-4 mt-2 text-sm">
                   <div className="flex items-center">
-                    <MapPin className="w-4 h-4 mr-1" />
+                    <BusinessIcons.MapPin className="w-4 h-4 mr-1" / />
                     {provider.location}
                   </div>
                   <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-1" />
+                    <BusinessIcons.Calendar className="w-4 h-4 mr-1" / />
                     Since {provider.joinedDate}
                   </div>
                 </div>
@@ -106,7 +96,7 @@ export default function ProviderReputationScorecard({
               <div
                 className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getTrustScoreColor(provider.trustScore)}`}
               >
-                <Shield className="w-4 h-4 mr-1" />
+                <OptimizedIcon name="Shield" className="w-4 h-4 mr-1" />
                 Trust Score: {provider.trustScore}
               </div>
             </div>
@@ -118,7 +108,7 @@ export default function ProviderReputationScorecard({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="text-center">
               <div className="flex items-center justify-center mb-2">
-                <Star className="w-5 h-5 text-slate-700 dark:text-white fill-current" />
+                <OptimizedIcon name="Star" className="w-5 h-5 text-slate-700 dark:text-white fill-current" />
               </div>
               <div className="text-2xl font-bold">{provider.rating}</div>
               <div className="text-sm text-gray-600">
@@ -127,7 +117,7 @@ export default function ProviderReputationScorecard({
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center mb-2">
-                <CheckCircle className="w-5 h-5 text-green-500" />
+                <UIIcons.CheckCircle className="w-5 h-5 text-green-500" / />
               </div>
               <div className="text-2xl font-bold">
                 {provider.completionRate}%
@@ -136,7 +126,7 @@ export default function ProviderReputationScorecard({
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center mb-2">
-                <Clock className="w-5 h-5 text-blue-500" />
+                <OptimizedIcon name="Clock" className="w-5 h-5 text-blue-500" />
               </div>
               <div className="text-2xl font-bold">{provider.responseTime}</div>
               <div className="text-sm text-gray-600">Response Time</div>
@@ -169,13 +159,13 @@ export default function ProviderReputationScorecard({
           {/* Verifications */}
           <div className="mb-6">
             <h3 className="font-semibold mb-3 flex items-center">
-              <Shield className="w-4 h-4 mr-2 text-green-600" />
+              <OptimizedIcon name="Shield" className="w-4 h-4 mr-2 text-green-600" />
               Verifications
             </h3>
             <div className="flex flex-wrap gap-2">
               {provider.verifications.map((verification, index) => (
                 <Badge key={index} className="bg-green-100 text-green-700">
-                  <CheckCircle className="w-3 h-3 mr-1" />
+                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                   {verification}
                 </Badge>
               ))}
@@ -247,7 +237,7 @@ export default function ProviderReputationScorecard({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <MessageSquare className="w-5 h-5 mr-2" />
+              <OptimizedIcon name="MessageSquare" className="w-5 h-5 mr-2" />
               Recent Reviews
             </CardTitle>
           </CardHeader>
@@ -257,7 +247,7 @@ export default function ProviderReputationScorecard({
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star
+                      <OptimizedIcon name="Star"
                         key={i}
                         className={`w-4 h-4 ${i < review.rating ? "text-slate-700 dark:text-white fill-current" : "text-gray-300 dark:text-gray-600"}`}
                       />
@@ -277,7 +267,7 @@ export default function ProviderReputationScorecard({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <Shield className="w-5 h-5 mr-2" />
+            <OptimizedIcon name="Shield" className="w-5 h-5 mr-2" />
             Trust Score Breakdown
           </CardTitle>
         </CardHeader>

@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Cookie, Info, Settings, Mail, ArrowRight} from "lucide-react"
+import { Cookie, Info } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -123,7 +124,7 @@ export default function CookiePolicyPage() {
             If you have any questions regarding this Cookie, Policy, please contact us.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email Privacy Team", description: "Opening your email client to privacy@loconomy.com...", variant: "default" })}>
-            <Mail className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
             Contact Our Privacy Team
           </Button>
         </div>

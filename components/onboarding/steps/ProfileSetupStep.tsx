@@ -1,15 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  ArrowRight,
-  MapPin,
-  Phone,
-  User
-} from "lucide-react";
+;
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 import { useOnboardingClient } from "@/lib/onboarding/utils";
 
@@ -142,7 +138,7 @@ export function ProfileSetupStep({
         {/* Name/Business Name */}
         <div className="space-y-2">
           <Label htmlFor={role === "consumer" ? "full_name" : "business_name"}>
-            <User className="w-4 h-4 inline mr-2" />
+            <NavigationIcons.User className="w-4 h-4 inline mr-2" / />
             {role === "consumer" ? "Full Name" : "Business Name"}
           </Label>
           <Input
@@ -178,7 +174,7 @@ export function ProfileSetupStep({
         {/* Phone */}
         <div className="space-y-2">
           <Label htmlFor="phone">
-            <Phone className="w-4 h-4 inline mr-2" />
+            <OptimizedIcon name="Phone" className="w-4 h-4 inline mr-2" />
             Phone Number
           </Label>
           <Input
@@ -220,7 +216,7 @@ export function ProfileSetupStep({
       {/* Address */}
       <div className="space-y-4">
         <Label className="flex items-center gap-2">
-          <MapPin className="w-4 h-4" />
+          <BusinessIcons.MapPin className="w-4 h-4" / />
           {role === "consumer" ? "Your Address" : "Business Address"}
         </Label>
 
@@ -296,7 +292,7 @@ export function ProfileSetupStep({
         size="lg"
       >
         {isLoading ? "Saving..." : "Continue"}
-        <ArrowRight className="w-4 h-4" />
+        <UIIcons.ArrowRight className="w-4 h-4" / />
       </Button>
     </form>
   );

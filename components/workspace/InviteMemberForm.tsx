@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState } from "react";
@@ -13,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, Loader2 } from "lucide-react";
+;
 import { InviteMemberRequest, MemberRole } from "@/lib/workspace/types";
 import { getRoleDisplayName } from "@/lib/workspace/utils";
 
@@ -160,12 +161,12 @@ export function InviteMemberForm({
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              <UIIcons.Loader2 className="w-4 h-4 mr-2 animate-spin" / />
               Sending...
             </>
           ) : (
             <>
-              <Mail className="w-4 h-4 mr-2" />
+              <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
               Send Invitation
             </>
           )}

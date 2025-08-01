@@ -1,31 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import {
-  Sparkles,
-  Target,
-  Award,
-  Brain,
-  Heart,
-  Eye,
-  Mic,
-  MicOff,
-  Volume2,
-  VolumeX,
-  Accessibility,
-  Search,
-  Filter,
-  ArrowRight,
-  CheckCircle,
-  MapPin,
-  Phone,
-  Video,
-  Clock,
-  MessageSquare,
-  Star,
-  Zap
-} from "lucide-react";
+import { Sparkles, Target, Award, Brain, Heart, Eye, Mic, MicOff, Volume2, VolumeX, Accessibility, Filter, Video, Zap } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -160,7 +138,7 @@ export const SmartSearchExperience: React.FC = () => {
         className="relative"
       >
         <div className="relative flex items-center">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" / />
           <Input
             ref={searchRef}
             value={query}
@@ -243,7 +221,7 @@ export const SmartSearchExperience: React.FC = () => {
                   className="w-full text-left px-6 py-4 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
                 >
                   <div className="flex items-center space-x-3">
-                    <Search className="w-4 h-4 text-gray-400" />
+                    <NavigationIcons.Search className="w-4 h-4 text-gray-400" / />
                     <span>{suggestion}</span>
                   </div>
                 </motion.button>
@@ -401,7 +379,7 @@ const EnhancedServiceCard: React.FC<{
               <div className="text-right">
                 <div className="text-2xl font-bold text-gray-900">${service.price}</div>
                 <div className="flex items-center mt-1">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-400 fill-current" />
                   <span className="ml-1 text-sm font-medium">{service.rating}</span>
                   <span className="ml-1 text-sm text-gray-500">({service.reviews})</span>
                 </div>
@@ -469,11 +447,11 @@ const EnhancedServiceCard: React.FC<{
                 className="absolute bottom-4 left-4 right-4 flex space-x-2"
               >
                 <Button size="sm" className="flex-1 bg-white/90 text-gray-900 hover:bg-white">
-                  <MessageSquare className="w-4 h-4 mr-1" />
+                  <OptimizedIcon name="MessageSquare" className="w-4 h-4 mr-1" />
                   Chat
                 </Button>
                 <Button size="sm" className="flex-1 bg-white/90 text-gray-900 hover:bg-white">
-                  <Phone className="w-4 h-4 mr-1" />
+                  <OptimizedIcon name="Phone" className="w-4 h-4 mr-1" />
                   Call
                 </Button>
               </motion.div>
@@ -507,13 +485,13 @@ const EnhancedServiceCard: React.FC<{
             {/* Metrics */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-1">
-                <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-400 fill-current" />
                 <span className="font-medium">{service.rating}</span>
                 <span className="text-gray-500">({service.reviews})</span>
               </div>
               
               <div className="flex items-center space-x-1 text-gray-600">
-                <MapPin className="w-4 h-4" />
+                <BusinessIcons.MapPin className="w-4 h-4" / />
                 <span className="text-sm">{service.distance}mi</span>
               </div>
             </div>
@@ -521,7 +499,7 @@ const EnhancedServiceCard: React.FC<{
             {/* Availability */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4 text-green-600" />
+                <OptimizedIcon name="Clock" className="w-4 h-4 text-green-600" />
                 <span className="text-sm text-green-700 font-medium">
                   Available {service.availability}
                 </span>
@@ -541,7 +519,7 @@ const EnhancedServiceCard: React.FC<{
               }}
             >
               Book Now
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
             </Button>
           </div>
         </CardContent>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -26,14 +27,7 @@ import {
   Legend,
   ComposedChart,
 } from "recharts";
-import {
-  DollarSign,
-  TrendingUp,
-  TrendingDown,
-  ShoppingCart,
-  Users,
-  Target
-} from "lucide-react";
+import { TrendingUp, TrendingDown, ShoppingCart, Target } from "lucide-react";
 import { analyticsClient } from "@/lib/analytics/utils";
 import { CHART_COLORS } from "@/lib/analytics/types";
 import type { RevenueMetrics } from "@/lib/analytics/types";
@@ -107,7 +101,7 @@ export function RevenueAnalytics({ timeframe }: RevenueAnalyticsProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <BusinessIcons.DollarSign className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -177,7 +171,7 @@ export function RevenueAnalytics({ timeframe }: RevenueAnalyticsProps) {
             <CardTitle className="text-sm font-medium">
               Total Bookings
             </CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <NavigationIcons.Users className="h-4 w-4 text-muted-foreground" / />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">

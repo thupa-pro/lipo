@@ -1,55 +1,13 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Settings,
-  Lock,
-  Eye,
-  EyeOff,
-  Download,
-  Upload,
-  AlertTriangle
-  Bell,
-  Mail,
-  Smartphone,
-  Globe,
-  Database,
-  FileText,
-  UserCheck,
-  Key,
-  Fingerprint,
-  Wifi,
-  Monitor,
-  HardDrive,
-  Cloud,
-  Activity,
-  BarChart3,
-  MapPin,
-  Camera,
-  Mic,
-  Calendar,
-  CreditCard,
-  Users,
-  MessageSquare
-  Bookmark,
-  Filter,
-  Sliders,
-  Palette,
-  Volume2
-  RefreshCw,
-  Power
-  XCircle,
-  Info,
-  Plus,
-  Minus,
-  Edit,
-  Copy,
-  CheckCircle,
-  Shield,
-  Star,
-  Trash2
-} from "lucide-react";
+import { Lock, Eye, EyeOff, Download, Upload, AlertTriangle
+  Bell, Smartphone, Globe, Database, FileText, UserCheck, Key, Fingerprint, Wifi, Monitor, HardDrive, Cloud, Activity, BarChart3, Camera, Mic, CreditCard, MessageSquare
+  Bookmark, Filter, Sliders, Palette, Volume2
+  RefreshCw, Power
+  XCircle, Info, Plus, Minus, Edit, Copy, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -343,7 +301,7 @@ export default function AdvancedSettings() {
         </div>
         <div className="flex gap-3">
           <Button variant="outline" onClick={handleSaveSettings} disabled={isLoading}>
-            {isLoading ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <CheckCircle className="w-4 h-4 mr-2" />}
+            {isLoading ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />}
             Save All Changes
           </Button>
         </div>
@@ -363,7 +321,7 @@ export default function AdvancedSettings() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-5 h-5" />
+                <OptimizedIcon name="Shield" className="w-5 h-5" />
                 Privacy Controls
               </CardTitle>
             </CardHeader>
@@ -427,7 +385,7 @@ export default function AdvancedSettings() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
+                      <BusinessIcons.MapPin className="w-4 h-4" / />
                       <Label>Show Location</Label>
                     </div>
                     <Switch
@@ -438,7 +396,7 @@ export default function AdvancedSettings() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4" />
+                      <OptimizedIcon name="Mail" className="w-4 h-4" />
                       <Label>Show Contact Info</Label>
                     </div>
                     <Switch
@@ -449,7 +407,7 @@ export default function AdvancedSettings() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4" />
+                      <OptimizedIcon name="Star" className="w-4 h-4" />
                       <Label>Show Ratings</Label>
                     </div>
                     <Switch
@@ -668,7 +626,7 @@ export default function AdvancedSettings() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h4 className="font-medium flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
+                    <OptimizedIcon name="Mail" className="w-4 h-4" />
                     Email Notifications
                   </h4>
                   <Switch

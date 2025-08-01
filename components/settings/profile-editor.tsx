@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useRef } from "react";
@@ -17,20 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Camera,
-  Upload,
-  MapPin,
-  Phone,
-  Mail,
-  Edit3,
-  Check,
-  X,
-  AlertTriangle,
-  Globe,
-  Calendar,
-  User
-} from "lucide-react";
+import { Camera, Upload, Edit3, Check, X, Globe } from "lucide-react";
 
 interface UserProfile {
   id: string;
@@ -160,7 +148,7 @@ export function ProfileEditor({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <User className="w-5 h-5" />
+            <NavigationIcons.User className="w-5 h-5" / />
             Profile Completion
           </CardTitle>
         </CardHeader>
@@ -176,7 +164,7 @@ export function ProfileEditor({
 
             {missingFields.length > 0 && (
               <Alert>
-                <AlertTriangle className="h-4 w-4" />
+                <UIIcons.AlertTriangle className="h-4 w-4" / />
                 <AlertDescription>
                   Complete your profile by adding: {missingFields.join(", ")}
                 </AlertDescription>
@@ -278,7 +266,7 @@ export function ProfileEditor({
                 Email Address <span className="text-red-500">*</span>
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <OptimizedIcon name="Mail" className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="email"
                   type="email"
@@ -296,7 +284,7 @@ export function ProfileEditor({
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
               <div className="relative">
-                <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <OptimizedIcon name="Phone" className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="phone"
                   type="tel"
@@ -334,7 +322,7 @@ export function ProfileEditor({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
+            <BusinessIcons.MapPin className="w-5 h-5" / />
             Location
           </CardTitle>
         </CardHeader>

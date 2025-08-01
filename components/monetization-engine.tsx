@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState } from "react"
@@ -9,17 +10,7 @@ import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
-import {
-  Crown,
-  TrendingUp,
-  Eye,
-  Target,
-  Rocket,
-  Users,
-  CheckCircle,
-  Star,
-  Zap
-} from "lucide-react";
+import { Crown, TrendingUp, Eye, Target, Rocket, Zap } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 
 interface VisibilityBoost {
@@ -228,7 +219,7 @@ export default function MonetizationEngine() {
                 )}
                 <CardHeader className="text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    {boost.id === "featured" && <Star className="w-6 h-6 text-white" />}
+                    {boost.id === "featured" && <OptimizedIcon name="Star" className="w-6 h-6 text-white" />}
                     {boost.id === "premium" && <Crown className="w-6 h-6 text-white" />}
                     {boost.id === "urgent" && <Zap className="w-6 h-6 text-white" />}
                   </div>
@@ -244,7 +235,7 @@ export default function MonetizationEngine() {
                   <div className="space-y-2">
                     {boost.features.map((feature, index) => (
                       <div key={index} className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500 mr-2" / />
                         {feature}
                       </div>
                     ))}
@@ -323,7 +314,7 @@ export default function MonetizationEngine() {
                   <div className="space-y-2">
                     {plan.features.map((feature, index) => (
                       <div key={index} className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                        <UIIcons.CheckCircle className="w-4 h-4 text-green-500 mr-2" / />
                         {feature}
                       </div>
                     ))}
@@ -468,7 +459,7 @@ export default function MonetizationEngine() {
             <CardContent className="p-6">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-yellow-600" />
+                  <NavigationIcons.Users className="w-6 h-6 text-yellow-600" / />
                 </div>
                 <div>
                   <h3 className="font-bold text-yellow-900 mb-2">Smart Bidding Tips</h3>

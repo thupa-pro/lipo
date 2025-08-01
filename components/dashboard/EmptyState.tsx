@@ -1,24 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Search,
-  Calendar,
-  Sparkles,
-  ArrowRight,
-  Users,
-  Star,
-  Brain,
-  Heart,
-  Award,
-  Gift,
-  MapPin,
-  Shield,
-  Zap,
-  Link
-} from "lucide-react";
+import { Sparkles, Brain, Heart, Award, Gift, Zap, Link } from "lucide-react";
 importfrom "next/link";
 
 interface EmptyStateProps {
@@ -179,7 +165,7 @@ export default function EmptyState({
             <Link href={actionHref || config.actionHref}>
               <Sparkles className="w-5 h-5 mr-2" />
               {actionText || config.actionText}
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
             </Link>
           </Button>
 
@@ -191,13 +177,13 @@ export default function EmptyState({
         {/* Trust Indicators */}
         <div className="flex flex-wrap justify-center items-center gap-6 mt-8 pt-8 border-t border-slate-200/50 dark:border-white/10">
           <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-emerald-500" />
+            <OptimizedIcon name="Shield" className="w-4 h-4 text-emerald-500" />
             <span className="text-sm text-slate-600 dark:text-gray-400">
               Verified & Secure
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <Star className="w-4 h-4 text-amber-500" />
+            <OptimizedIcon name="Star" className="w-4 h-4 text-amber-500" />
             <span className="text-sm text-slate-600 dark:text-gray-400">
               4.9★ Average Rating
             </span>

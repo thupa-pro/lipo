@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useEffect, useState } from "react";
@@ -9,33 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Search,
-  Calendar,
-  MapPin,
-  Filter,
-  SortAsc,
-  Heart,
-  Eye,
-  Users,
-  DollarSign,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Star,
-  Sparkles,
-  TrendingUp,
-  Shield,
-  Zap,
-  Award,
-  Globe,
-  MessageSquare,
-  PhoneCall,
-  Video,
-  Camera,
-  Settings,
-  Bookmark
-} from "lucide-react";
+import { Filter, SortAsc, Heart, Eye, Sparkles, TrendingUp, Zap, Award, Globe, PhoneCall, Video, Camera, Bookmark } from "lucide-react";
 
 interface Service {
   id: number;
@@ -97,7 +72,7 @@ export default function EnhancedBookingPage() {
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           >
-            <Calendar className="w-10 h-10 text-white" />
+            <BusinessIcons.Calendar className="w-10 h-10 text-white" / />
           </motion.div>
           <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
             Loading Premium Services
@@ -314,7 +289,7 @@ export default function EnhancedBookingPage() {
               className="inline-flex items-center gap-2 bg-glass border border-glass-border backdrop-blur-glass rounded-full px-6 py-3 mb-6 shadow-glass"
               whileHover={{ scale: 1.05 }}
             >
-              <Star className="w-4 h-4 text-premium" />
+              <OptimizedIcon name="Star" className="w-4 h-4 text-premium" />
               <span className="text-sm font-medium text-foreground">
                 Premium Service Marketplace
               </span>
@@ -338,7 +313,7 @@ export default function EnhancedBookingPage() {
           >
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
+                <NavigationIcons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" / />
                 <Input
                   placeholder="Search services, providers, or keywords..."
                   value={searchQuery}
@@ -429,11 +404,11 @@ export default function EnhancedBookingPage() {
             
             <div className="flex items-center gap-3">
               <Badge className="glass-subtle border-green-200/50 text-green-700">
-                <CheckCircle className="w-3 h-3 mr-1" />
+                <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                 All Verified
               </Badge>
               <Badge className="glass-subtle border-blue-200/50 text-blue-700">
-                <Shield className="w-3 h-3 mr-1" />
+                <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                 Insured
               </Badge>
             </div>
@@ -467,13 +442,13 @@ export default function EnhancedBookingPage() {
                             <div className="flex items-center gap-2 mb-2">
                               {service.featured && (
                                 <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
-                                  <Star className="w-3 h-3 mr-1" />
+                                  <OptimizedIcon name="Star" className="w-3 h-3 mr-1" />
                                   Featured
                                 </Badge>
                               )}
                               {service.verified && (
                                 <Badge variant="outline" className="border-green-200 text-green-700">
-                                  <CheckCircle className="w-3 h-3 mr-1" />
+                                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                                   Verified
                                 </Badge>
                               )}
@@ -530,7 +505,7 @@ export default function EnhancedBookingPage() {
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
                             {[...Array(5)].map((_, i) => (
-                              <Star
+                              <OptimizedIcon name="Star"
                                 key={i}
                                 className={`w-4 h-4 ${
                                   i < Math.floor(service.rating)
@@ -557,11 +532,11 @@ export default function EnhancedBookingPage() {
                       {/* Service Details */}
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                          <MapPin className="w-4 h-4" />
+                          <BusinessIcons.MapPin className="w-4 h-4" / />
                           <span>{service.location}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                          <Clock className="w-4 h-4" />
+                          <OptimizedIcon name="Clock" className="w-4 h-4" />
                           <span>{service.duration}</span>
                         </div>
                       </div>
@@ -578,17 +553,17 @@ export default function EnhancedBookingPage() {
                       {/* Price and Availability */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1">
-                          <DollarSign className="w-5 h-5 text-green-600" />
+                          <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
                           <span className="text-xl font-bold text-green-600">{service.price}</span>
                         </div>
                         {service.available ? (
                           <Badge className="bg-green-100 text-green-800 border-green-200">
-                            <CheckCircle className="w-3 h-3 mr-1" />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                             Available Today
                           </Badge>
                         ) : (
                           <Badge variant="secondary">
-                            <Clock className="w-3 h-3 mr-1" />
+                            <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                             Fully Booked
                           </Badge>
                         )}
@@ -602,10 +577,10 @@ export default function EnhancedBookingPage() {
                           disabled={!service.available}
                         >
                           {service.available ? "Book Now" : "Join Waitlist"}
-                          <ArrowRight className="w-4 h-4 ml-2" />
+                          <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                         </Button>
                         <Button variant="outline" size="sm" className="glass-subtle border-white/40">
-                          <MessageSquare className="w-4 h-4" />
+                          <OptimizedIcon name="MessageSquare" className="w-4 h-4" />
                         </Button>
                         <Button variant="outline" size="sm" className="glass-subtle border-white/40">
                           <PhoneCall className="w-4 h-4" />
@@ -626,7 +601,7 @@ export default function EnhancedBookingPage() {
               animate={{ opacity: 1, y: 0 }}
             >
               <div className="w-24 h-24 mx-auto mb-6 glass-ultra rounded-3xl flex items-center justify-center">
-                <Search className="w-12 h-12 text-gray-400 dark:text-gray-500" />
+                <NavigationIcons.Search className="w-12 h-12 text-gray-400 dark:text-gray-500" / />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">No services found</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">

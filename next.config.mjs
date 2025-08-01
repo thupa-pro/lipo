@@ -1,4 +1,5 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
@@ -64,14 +65,43 @@ const nextConfig = {
     '127.0.0.1:3000'
   ],
 
-  // Prevent hydration mismatches
+  // Performance optimizations
   experimental: {
-    // Ensure stable hydration
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    // Optimize package imports for better tree-shaking
+    optimizePackageImports: [
+      'lucide-react', 
+      '@radix-ui/react-icons',
+      '@radix-ui/react-accordion',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-popover',
+      '@radix-ui/react-select',
+      '@radix-ui/react-tabs',
+      '@radix-ui/react-toast',
+      'framer-motion',
+      'date-fns'
+    ],
+    // Enable turbo mode for faster builds
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+    // Bundle analyzer for production builds
+    bundlePagesExternals: false,
+    esmExternals: true,
+    // Optimize CSS
+    optimizeCss: true,
+    // Enable server component logs
+    serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs', 'sharp'],
   },
 
   // Image optimization
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: ['localhost'],
     remotePatterns: [
       {
@@ -79,18 +109,74 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    // Enable image optimization
+    minimumCacheTTL: 60,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
   // Webpack configuration for better performance
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev, isServer, webpack }) => {
+    // Bundle analyzer for analyzing bundle size
+    if (process.env.ANALYZE === 'true') {
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+          generateStatsFile: true,
+          statsFilename: 'bundle-stats.json',
+        })
+      );
+    }
+
+    // Optimize for production
+    if (!dev) {
+      // Enable tree shaking
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
+      
+      // Split chunks for better caching
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            enforce: true,
+          },
+          icons: {
+            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+            name: 'icons',
+            chunks: 'all',
+          },
+        },
+      };
+    }
+
     // Prevent hydration issues with client-side only code
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
         module: false,
+        path: false,
+        os: false,
+        crypto: false,
       };
     }
+
+    // Optimize module resolution
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      // Reduce bundle size by aliasing to optimized versions
+      'date-fns': 'date-fns/esm',
+    };
 
     return config;
   },
@@ -118,27 +204,52 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
-          // Prevent hydration issues with caching
+        ],
+      },
+      // Cache static assets aggressively
+      {
+        source: '/static/(.*)',
+        headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Cache API routes for 5 minutes
+      {
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, s-maxage=300',
           },
         ],
       },
     ];
   },
 
-  // Compiler options for better hydration
+  // Compiler options for better performance
   compiler: {
     // Remove console.log in production
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+    // Enable React compiler optimizations
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
+
+  // Output options for better performance
+  output: 'standalone',
+  
+  // Enable SWC for better performance
+  swcMinify: true,
+
+  // Enable compression
+  compress: true,
 
   // Ensure consistent rendering between server and client
   reactStrictMode: true,
-  
-  // Enable SWC for better performance and hydration
-  swcMinify: true,
 
   // Prevent hydration mismatches with proper page extensions
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
@@ -148,6 +259,12 @@ const nextConfig = {
 
   // Disable x-powered-by header
   poweredByHeader: false,
+
+  // Generate source maps only in development
+  productionBrowserSourceMaps: false,
+
+  // Optimize fonts
+  optimizeFonts: true,
 };
 
 export default withNextIntl(nextConfig);

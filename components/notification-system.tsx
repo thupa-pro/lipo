@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState, useEffect } from "react"
@@ -7,20 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import {
-  Bell,
-  MessageSquare,
-  DollarSign,
-  Calendar,
-  MapPin,
-  X,
-  Settings,
-  Smartphone,
-  Mail,
-  Volume2,
-  CheckCircle,
-  Star
-} from "lucide-react";
+import { Bell, X, Smartphone, Volume2 } from "lucide-react";
 
 interface Notification {
   id: string
@@ -114,15 +102,15 @@ export default function NotificationSystem() {
   const getNotificationIcon = (type: string) => {
     switch (type) {
       case "message":
-        return <MessageSquare className="w-5 h-5 text-blue-600" />
+        return <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600" />
       case "job_match":
-        return <MapPin className="w-5 h-5 text-green-600" />
+        return <BusinessIcons.MapPin className="w-5 h-5 text-green-600" / />
       case "payment":
-        return <DollarSign className="w-5 h-5 text-green-600" />
+        return <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
       case "review":
-        return <Star className="w-5 h-5 text-yellow-600" />
+        return <OptimizedIcon name="Star" className="w-5 h-5 text-yellow-600" />
       case "booking":
-        return <Calendar className="w-5 h-5 text-purple-600" />
+        return <BusinessIcons.Calendar className="w-5 h-5 text-purple-600" / />
       default:
         return <Bell className="w-5 h-5 text-gray-600" />
     }
@@ -185,7 +173,7 @@ export default function NotificationSystem() {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center">
-                <Settings className="w-5 h-5 mr-2" />
+                <NavigationIcons.Settings className="w-5 h-5 mr-2" / />
                 Notification Settings
               </CardTitle>
               <CardDescription>Customize how and when you receive notifications</CardDescription>
@@ -217,7 +205,7 @@ export default function NotificationSystem() {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-green-600" />
+                  <OptimizedIcon name="Mail" className="w-5 h-5 text-green-600" />
                   <div>
                     <Label htmlFor="email">Email Notifications</Label>
                     <p className="text-sm text-gray-600">Detailed updates via email</p>
@@ -251,7 +239,7 @@ export default function NotificationSystem() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-green-600" />
+                  <BusinessIcons.MapPin className="w-5 h-5 text-green-600" / />
                   <div>
                     <Label htmlFor="jobMatches">Job Matches</Label>
                     <p className="text-sm text-gray-600">When new jobs match your skills</p>
@@ -266,7 +254,7 @@ export default function NotificationSystem() {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <MessageSquare className="w-5 h-5 text-blue-600" />
+                  <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600" />
                   <div>
                     <Label htmlFor="messages">Messages</Label>
                     <p className="text-sm text-gray-600">New messages from customers</p>
@@ -281,7 +269,7 @@ export default function NotificationSystem() {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <DollarSign className="w-5 h-5 text-green-600" />
+                  <BusinessIcons.DollarSign className="w-5 h-5 text-green-600" / />
                   <div>
                     <Label htmlFor="payments">Payments</Label>
                     <p className="text-sm text-gray-600">Payment confirmations and payouts</p>
@@ -296,7 +284,7 @@ export default function NotificationSystem() {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <Star className="w-5 h-5 text-yellow-600" />
+                  <OptimizedIcon name="Star" className="w-5 h-5 text-yellow-600" />
                   <div>
                     <Label htmlFor="reviews">Reviews</Label>
                     <p className="text-sm text-gray-600">New reviews and ratings</p>
@@ -328,7 +316,7 @@ export default function NotificationSystem() {
 
           <div className="flex justify-end">
             <Button onClick={() => setShowSettings(false)}>
-              <CheckCircle className="w-4 h-4 mr-2" />
+              <UIIcons.CheckCircle className="w-4 h-4 mr-2" / />
               Save Settings
             </Button>
           </div>
@@ -360,7 +348,7 @@ export default function NotificationSystem() {
               </Button>
             )}
             <Button variant="ghost" size="sm" onClick={() => setShowSettings(true)}>
-              <Settings className="w-4 h-4" />
+              <NavigationIcons.Settings className="w-4 h-4" / />
             </Button>
           </div>
         </div>
@@ -405,7 +393,7 @@ export default function NotificationSystem() {
                     )}
                     {!notification.read && (
                       <Button size="sm" variant="ghost" onClick={() => markAsRead(notification.id)}>
-                        <CheckCircle className="w-4 h-4" />
+                        <UIIcons.CheckCircle className="w-4 h-4" / />
                       </Button>
                     )}
                     <Button size="sm" variant="ghost" onClick={() => deleteNotification(notification.id)}>

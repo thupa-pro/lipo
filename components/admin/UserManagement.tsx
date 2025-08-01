@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -40,21 +41,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Search,
-  Filter,
-  MoreHorizontal,
-  Eye,
-  Ban,
-  Mail,
-  Calendar,
-  DollarSign,
-  TrendingUp,
-  UserX,
-  UserCheck,
-  Download,
-  Shield
-} from "lucide-react";
+import { Filter, MoreHorizontal, Eye, Ban, TrendingUp, UserX, UserCheck, Download } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -256,12 +243,12 @@ export function UserManagement() {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem onClick={() => setSelectedUser(user)}>
-          <Shield className="w-4 h-4 mr-2" />
+          <OptimizedIcon name="Shield" className="w-4 h-4 mr-2" />
           Change Role
         </DropdownMenuItem>
 
         <DropdownMenuItem>
-          <Mail className="w-4 h-4 mr-2" />
+          <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
           Send Message
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -294,7 +281,7 @@ export function UserManagement() {
         <CardContent>
           <div className="flex gap-4 items-center">
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <NavigationIcons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" / />
               <Input
                 placeholder="Search by email or name..."
                 value={searchQuery}

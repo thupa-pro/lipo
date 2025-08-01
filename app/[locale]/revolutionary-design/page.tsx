@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState } from 'react'
@@ -7,27 +8,7 @@ import RevolutionaryCard from '@/components/ui/revolutionary-card'
 import RevolutionaryInput from '@/components/ui/revolutionary-input'
 import RevolutionaryNav, { sampleNavItems } from '@/components/ui/revolutionary-nav'
 import RevolutionaryBentoGrid from '@/components/ui/revolutionary-bento-grid'
-import {
-  Sparkles,
-  Layers,
-  Palette,
-  MousePointer2,
-  Eye,
-  Search,
-  Mail,
-  Lock,
-  Phone,
-  Heart,
-  TrendingUp,
-  BarChart3,
-  Calendar,
-  Settings,
-  MessageSquare,
-  Shield,
-  Star,
-  User,
-  Zap
-} from "lucide-react";
+import { Sparkles, Layers, Palette, MousePointer2, Eye, Lock, Heart, TrendingUp, BarChart3, Zap } from "lucide-react";
 
 const RevolutionaryDesignPage = () => {
   const [selectedVariant, setSelectedVariant] = useState<string>('glassmorphic')
@@ -63,15 +44,15 @@ const RevolutionaryDesignPage = () => {
       content: (
         <div className="grid grid-cols-2 gap-2">
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
-            <User className="w-4 h-4" />
+            <NavigationIcons.User className="w-4 h-4" / />
             <span className="text-xs">Profile</span>
           </div>
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
-            <Settings className="w-4 h-4" />
+            <NavigationIcons.Settings className="w-4 h-4" / />
             <span className="text-xs">Settings</span>
           </div>
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
-            <Shield className="w-4 h-4" />
+            <OptimizedIcon name="Shield" className="w-4 h-4" />
             <span className="text-xs">Security</span>
           </div>
           <div className="p-3 bg-white/10 rounded-lg flex flex-col items-center gap-1">
@@ -90,7 +71,7 @@ const RevolutionaryDesignPage = () => {
       content: (
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-4 h-4" />
+            <OptimizedIcon name="MessageSquare" className="w-4 h-4" />
             <span className="font-medium">5 New Messages</span>
           </div>
           <div className="space-y-1">
@@ -110,7 +91,7 @@ const RevolutionaryDesignPage = () => {
       title: 'Calendar',
       content: (
         <div className="text-center">
-          <Calendar className="w-8 h-8 mx-auto mb-2" />
+          <BusinessIcons.Calendar className="w-8 h-8 mx-auto mb-2" / />
           <div className="text-lg font-bold">March 15</div>
           <div className="text-sm opacity-80">3 events today</div>
         </div>
@@ -129,7 +110,7 @@ const RevolutionaryDesignPage = () => {
             <div className="text-xs opacity-80">Uptime</div>
           </div>
           <div>
-            <Star className="w-5 h-5 mx-auto mb-1 text-yellow-400" />
+            <OptimizedIcon name="Star" className="w-5 h-5 mx-auto mb-1 text-yellow-400" />
             <div className="font-bold">4.9</div>
             <div className="text-xs opacity-80">Rating</div>
           </div>
@@ -358,7 +339,7 @@ const RevolutionaryDesignPage = () => {
                   placeholder="Try voice search..."
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  leftIcon={<Search className="w-4 h-4" />}
+                  leftIcon={<NavigationIcons.Search className="w-4 h-4" / />}
                   voiceInput={true}
                   glowEffect={true}
                 />
@@ -373,14 +354,14 @@ const RevolutionaryDesignPage = () => {
                     variant={selectedVariant as any}
                     label="Email"
                     type="email"
-                    leftIcon={<Mail className="w-4 h-4" />}
+                    leftIcon={<OptimizedIcon name="Mail" className="w-4 h-4" />}
                     success={true}
                   />
                   <RevolutionaryInput
                     variant={selectedVariant as any}
                     label="Phone"
                     type="tel"
-                    leftIcon={<Phone className="w-4 h-4" />}
+                    leftIcon={<OptimizedIcon name="Phone" className="w-4 h-4" />}
                   />
                 </div>
               </RevolutionaryCard>

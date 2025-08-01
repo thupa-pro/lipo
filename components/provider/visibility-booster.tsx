@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState } from "react"
@@ -6,14 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  TrendingUp,
-  Eye,
-  Crown,
-  Star,
-  Target,
-  Zap
-} from "lucide-react";
+import { TrendingUp, Eye, Crown, Target, Zap } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast"
 
 interface VisibilityBoosterProps {
@@ -201,7 +195,7 @@ export default function VisibilityBooster({ providerId }: VisibilityBoosterProps
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-lg font-semibold flex items-center">
-                        {option.id === "featured" && <Star className="w-5 h-5 mr-2 text-ai-600" />}
+                        {option.id === "featured" && <OptimizedIcon name="Star" className="w-5 h-5 mr-2 text-ai-600" />}
                         {option.id === "spotlight" && <Eye className="w-5 h-5 mr-2 text-primary-600" />}
                         {option.id === "premium" && <Crown className="w-5 h-5 mr-2 text-premium-600" />}
                         {option.name}

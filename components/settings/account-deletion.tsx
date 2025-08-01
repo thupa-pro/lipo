@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -16,14 +17,7 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import {
-  AlertTriangle,
-  Download,
-  Shield,
-  RefreshCw,
-  Clock,
-  Trash2
-} from "lucide-react";
+import { Download, RefreshCw, Trash2 } from "lucide-react";
 
 interface UserProfile {
   id: string;
@@ -95,7 +89,7 @@ export function AccountDeletion({
           </div>
 
           <Alert>
-            <AlertTriangle className="h-4 w-4" />
+            <UIIcons.AlertTriangle className="h-4 w-4" / />
             <AlertDescription>
               Data exports may take up to 24 hours to process. You'll receive an
               email when your download is ready.
@@ -108,7 +102,7 @@ export function AccountDeletion({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Clock className="w-5 h-5" />
+            <OptimizedIcon name="Clock" className="w-5 h-5" />
             Temporarily Deactivate Account
           </CardTitle>
         </CardHeader>
@@ -148,7 +142,7 @@ export function AccountDeletion({
         </CardHeader>
         <CardContent className="space-y-4">
           <Alert className="border-red-200 bg-red-50">
-            <AlertTriangle className="h-4 w-4 text-red-600" />
+            <UIIcons.AlertTriangle className="h-4 w-4 text-red-600" / />
             <AlertDescription className="text-red-800">
               <strong>Warning:</strong> Account deletion is permanent and cannot
               be undone. All your data will be permanently removed from our

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -14,17 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Heart,
-  ThumbsUp,
-  Upload,
-  X,
-  Camera,
-  Award,
-  TrendingUp,
-  CheckCircle,
-  MessageSquare
-} from "lucide-react";
+import { Heart, ThumbsUp, Upload, X, Camera, Award, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Provider {
@@ -221,7 +212,7 @@ export function ReviewModal({
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-blue-600" />
+            <OptimizedIcon name="MessageSquare" className="w-5 h-5 text-blue-600" />
             Review Your Experience
           </DialogTitle>
         </DialogHeader>
@@ -258,7 +249,7 @@ export function ReviewModal({
                   <span>with {booking.provider.name}</span>
                   {booking.provider.verified && (
                     <Badge variant="secondary" className="text-xs">
-                      <CheckCircle className="w-3 h-3 mr-1" />
+                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                       Verified
                     </Badge>
                   )}

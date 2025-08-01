@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -24,32 +25,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Bot,
-  Brain,
-  Zap,
-  Users,
-  DollarSign,
-  Calendar,
-  MessageSquare,
-  Settings,
-  Play,
-  Pause,
-  RotateCcw,
-  TrendingUp,
-  Shield,
-  Sparkles,
-  Crown,
-  Activity,
-  Target,
-  Award,
-  CheckCircle,
-  AlertTriangle,
-  Clock,
-  ArrowRight,
-  Plus,
-  Eye
-} from "lucide-react";
+import { Bot, Brain, Zap, Play, Pause, RotateCcw, TrendingUp, Sparkles, Crown, Activity, Target, Award, Plus, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -177,18 +153,18 @@ export function SovereignAgentSystem() {
     switch (status) {
       case "active": return <Activity className="w-4 h-4" />;
       case "working": return <Zap className="w-4 h-4" />;
-      case "idle": return <Clock className="w-4 h-4" />;
+      case "idle": return <OptimizedIcon name="Clock" className="w-4 h-4" />;
       case "paused": return <Pause className="w-4 h-4" />;
-      default: return <Clock className="w-4 h-4" />;
+      default: return <OptimizedIcon name="Clock" className="w-4 h-4" />;
     }
   };
 
   const getAgentTypeIcon = (type: string) => {
     switch (type) {
-      case "personal": return <Users className="w-5 h-5 text-blue-500" />;
+      case "personal": return <NavigationIcons.Users className="w-5 h-5 text-blue-500" / />;
       case "provider": return <Crown className="w-5 h-5 text-purple-500" />;
       case "negotiator": return <Target className="w-5 h-5 text-orange-500" />;
-      case "community": return <Shield className="w-5 h-5 text-green-500" />;
+      case "community": return <OptimizedIcon name="Shield" className="w-5 h-5 text-green-500" />;
       default: return <Bot className="w-5 h-5" />;
     }
   };
@@ -518,7 +494,7 @@ export function SovereignAgentSystem() {
                     <Card key={capability}>
                       <CardContent className="p-4">
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="w-5 h-5 text-emerald-500" />
+                          <UIIcons.CheckCircle className="w-5 h-5 text-emerald-500" / />
                           <span className="font-medium capitalize">{capability}</span>
                         </div>
                       </CardContent>

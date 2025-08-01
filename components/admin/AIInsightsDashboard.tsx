@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,23 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { aiClient } from '@/lib/ai/gemini-client';
-import {
-  TrendingUp,
-  TrendingDown,
-  AlertTriangle,
-  Brain,
-  Target,
-  Users,
-  DollarSign,
-  Activity,
-  Eye,
-  RefreshCw,
-  Lightbulb,
-  BarChart3,
-  CheckCircle,
-  Clock,
-  Shield
-} from "lucide-react";
+import { TrendingUp, TrendingDown, Brain, Target, Activity, Eye, RefreshCw, Lightbulb, BarChart3 } from "lucide-react";
 
 interface Insight {
   id: string;
@@ -181,8 +166,8 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
   const getInsightIcon = (type: Insight['type']) => {
     const icons = {
       opportunity: <Target className="h-4 w-4" />,
-      warning: <AlertTriangle className="h-4 w-4" />,
-      success: <CheckCircle className="h-4 w-4" />,
+      warning: <UIIcons.AlertTriangle className="h-4 w-4" / />,
+      success: <UIIcons.CheckCircle className="h-4 w-4" / />,
       prediction: <Brain className="h-4 w-4" />
     };
     return icons[type];
@@ -354,7 +339,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-purple-600" />
+              <OptimizedIcon name="Clock" className="h-5 w-5 text-purple-600" />
               Temporal Analysis
             </CardTitle>
             <div className="flex gap-2">
@@ -375,7 +360,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <Users className="h-4 w-4 text-blue-600" />
+                <NavigationIcons.Users className="h-4 w-4 text-blue-600" / />
                 <span className="text-sm font-medium text-blue-900">User Activity Patterns</span>
               </div>
               <p className="text-xs text-blue-700 mb-2">Peak hours: 2-4 PM, 7-9 PM</p>
@@ -384,7 +369,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
 
             <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <DollarSign className="h-4 w-4 text-green-600" />
+                <BusinessIcons.DollarSign className="h-4 w-4 text-green-600" / />
                 <span className="text-sm font-medium text-green-900">Revenue Trends</span>
               </div>
               <p className="text-xs text-green-700 mb-2">Consistent growth trajectory</p>
@@ -393,7 +378,7 @@ export default function AIInsightsDashboard({ platformData }: { platformData: an
 
             <div className="p-4 bg-gradient-to-br from-purple-50 to-violet-50 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <Shield className="h-4 w-4 text-purple-600" />
+                <OptimizedIcon name="Shield" className="h-4 w-4 text-purple-600" />
                 <span className="text-sm font-medium text-purple-900">Security Events</span>
               </div>
               <p className="text-xs text-purple-700 mb-2">All systems secure</p>

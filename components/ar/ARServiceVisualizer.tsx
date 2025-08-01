@@ -1,32 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Camera,
-  Scan,
-  Volume2,
-  VolumeX,
-  RotateCcw,
-  Move3D,
-  Maximize,
-  Minimize,
-  Settings,
-  XCircle,
-  Info,
-  Sparkles,
-  Eye,
-  Timer,
-  MapPin,
-  DollarSign,
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  Share2,
-  CheckCircle,
-  Star
-} from "lucide-react";
+import { Camera, Scan, Volume2, VolumeX, RotateCcw, Move3D, Maximize, Minimize, XCircle, Info, Sparkles, Eye, Timer, ChevronLeft, ChevronRight, Download, Share2 } from "lucide-react";
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -179,7 +156,7 @@ const ARServiceVisualizer: React.FC<ARServiceVisualizerProps> = ({
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="w-32 h-32 border-4 border-yellow-400 rounded-full bg-yellow-100/30 flex items-center justify-center">
                 <div className="text-center">
-                  <Settings className="h-8 w-8 text-yellow-600 mx-auto animate-spin" />
+                  <NavigationIcons.Settings className="h-8 w-8 text-yellow-600 mx-auto animate-spin" / />
                   <div className="text-yellow-800 font-semibold mt-2">Repair Area</div>
                 </div>
               </div>
@@ -343,7 +320,7 @@ const ARServiceVisualizer: React.FC<ARServiceVisualizerProps> = ({
 
         <div className="flex items-center space-x-2">
           <Badge variant="outline" className="bg-black/50 text-white border-white/30">
-            <Star className="h-3 w-3 mr-1" />
+            <OptimizedIcon name="Star" className="h-3 w-3 mr-1" />
             {service.rating}
           </Badge>
           <Badge variant="outline" className="bg-black/50 text-white border-white/30">
@@ -351,7 +328,7 @@ const ARServiceVisualizer: React.FC<ARServiceVisualizerProps> = ({
             {service.duration}
           </Badge>
           <Badge variant="outline" className="bg-black/50 text-white border-white/30">
-            <DollarSign className="h-3 w-3 mr-1" />
+            <BusinessIcons.DollarSign className="h-3 w-3 mr-1" / />
             ${service.price}
           </Badge>
         </div>
@@ -448,7 +425,7 @@ const ARServiceVisualizer: React.FC<ARServiceVisualizerProps> = ({
               <div className="space-y-1">
                 {service.tools.map((tool, index) => (
                   <div key={index} className="flex items-center text-sm">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <UIIcons.CheckCircle className="h-4 w-4 text-green-500 mr-2" / />
                     {tool}
                   </div>
                 ))}
@@ -476,7 +453,7 @@ const ARServiceVisualizer: React.FC<ARServiceVisualizerProps> = ({
               className="flex-1 bg-blue-600 hover:bg-blue-700"
               size="lg"
             >
-              <Calendar className="h-4 w-4 mr-2" />
+              <BusinessIcons.Calendar className="h-4 w-4 mr-2" / />
               Book Service
             </Button>
             <Button

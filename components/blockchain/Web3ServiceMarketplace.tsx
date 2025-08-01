@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -13,29 +14,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import {
-  Wallet,
-  Coins,
-  Shield,
-  Users,
-  Star,
-  TrendingUp,
-  Lock,
-  Unlock,
-  ExternalLink,
-  Copy,
-  QrCode,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Zap,
-  Globe,
-  Database,
-  FileText,
-  Award,
-  Handshake,
-  Plus
-} from "lucide-react";
+import { Wallet, Coins, TrendingUp, Lock, Unlock, ExternalLink, Copy, QrCode, Zap, Globe, Database, FileText, Award, Handshake, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -468,10 +447,10 @@ export function Web3ServiceMarketplace({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "confirmed": return <CheckCircle className="w-4 h-4 text-green-500" />;
-      case "pending": return <Clock className="w-4 h-4 text-yellow-500" />;
-      case "failed": return <AlertTriangle className="w-4 h-4 text-red-500" />;
-      default: return <Clock className="w-4 h-4 text-gray-500" />;
+      case "confirmed": return <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />;
+      case "pending": return <OptimizedIcon name="Clock" className="w-4 h-4 text-yellow-500" />;
+      case "failed": return <UIIcons.AlertTriangle className="w-4 h-4 text-red-500" / />;
+      default: return <OptimizedIcon name="Clock" className="w-4 h-4 text-gray-500" />;
     }
   };
 
@@ -491,7 +470,7 @@ export function Web3ServiceMarketplace({
             {isConnected ? (
               <>
                 <Badge variant="default" className="bg-green-500">
-                  <CheckCircle className="w-3 h-3 mr-1" />
+                  <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                   {t("connected")}
                 </Badge>
                 <Badge variant="outline">
@@ -736,7 +715,7 @@ export function Web3ServiceMarketplace({
                         <h3 className="font-semibold">{credential.name}</h3>
                         {credential.verified && (
                           <Badge variant="default" className="bg-green-500">
-                            <CheckCircle className="w-3 h-3 mr-1" />
+                            <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                             {t("verified")}
                           </Badge>
                         )}
@@ -870,7 +849,7 @@ export function Web3ServiceMarketplace({
                           <Badge variant="outline">{contract.network}</Badge>
                           {contract.verified && (
                             <Badge variant="default" className="bg-green-500">
-                              <Shield className="w-3 h-3 mr-1" />
+                              <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                               {t("verified")}
                             </Badge>
                           )}

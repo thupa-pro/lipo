@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -5,18 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Bot,
-  ThumbsUp,
-  ThumbsDown,
-  Copy,
-  Check,
-  Sparkles,
-  ExternalLink,
-  ArrowRight,
-  Clock,
-  User
-} from "lucide-react";
+import { Bot, ThumbsUp, ThumbsDown, Copy, Check, Sparkles, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import type { ChatMessage as ChatMessageType } from "@/lib/ai-chat/types";
@@ -234,7 +224,7 @@ export function ChatMessage({ message, onReaction }: ChatMessageProps) {
           )}
         >
           <span className="text-xs text-muted-foreground flex items-center gap-1">
-            <Clock className="h-3 w-3" />
+            <OptimizedIcon name="Clock" className="h-3 w-3" />
             {formatTime(message.timestamp)}
           </span>
 
@@ -297,7 +287,7 @@ export function ChatMessage({ message, onReaction }: ChatMessageProps) {
       {!isAssistant && (
         <Avatar className="h-8 w-8 shrink-0">
           <AvatarFallback className="bg-gray-100">
-            <User className="h-4 w-4 text-gray-600" />
+            <NavigationIcons.User className="h-4 w-4 text-gray-600" / />
           </AvatarFallback>
         </Avatar>
       )}

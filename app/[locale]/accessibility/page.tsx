@@ -1,7 +1,8 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accessibility as AccessibilityIcon, ArrowRight, Mail, Lightbulb, Users, Shield } from "lucide-react"
+import { Accessibility as AccessibilityIcon, Lightbulb } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 export default function AccessibilityPage() {
@@ -20,7 +21,7 @@ export default function AccessibilityPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Accessibility Statement", description: "Opening our detailed accessibility statement...", variant: "default" })}>
             Read Our Accessibility Statement
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -50,7 +51,7 @@ export default function AccessibilityPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto mb-4">
-                  <Users className="w-7 h-7" />
+                  <NavigationIcons.Users className="w-7 h-7" / />
                 </div>
                 <CardTitle className="text-xl">User Feedback</CardTitle>
               </CardHeader>
@@ -62,7 +63,7 @@ export default function AccessibilityPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto mb-4">
-                  <Shield className="w-7 h-7" />
+                  <OptimizedIcon name="Shield" className="w-7 h-7" />
                 </div>
                 <CardTitle className="text-xl">WCAG Compliance</CardTitle>
               </CardHeader>
@@ -81,7 +82,7 @@ export default function AccessibilityPage() {
             If you encounter any accessibility barriers or have, suggestions, please contact us.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email Accessibility Team", description: "Opening your email client to accessibility@loconomy.com...", variant: "default" })}>
-            <Mail className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
             Contact Our Accessibility Team
           </Button>
         </div>

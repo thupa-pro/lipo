@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React from "react";
@@ -9,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AlertTriangle, RefreshCw, Home } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -61,7 +62,7 @@ export class ErrorBoundary extends React.Component<
           <Card className="w-full max-w-md shadow-lg">
             <CardHeader className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
-                <AlertTriangle className="w-8 h-8 text-red-600" />
+                <UIIcons.AlertTriangle className="w-8 h-8 text-red-600" / />
               </div>
               <CardTitle className="text-xl text-slate-900">
                 Something went wrong
@@ -97,7 +98,7 @@ export class ErrorBoundary extends React.Component<
                   variant="outline"
                   className="flex-1"
                 >
-                  <Home className="w-4 h-4 mr-2" />
+                  <NavigationIcons.Home className="w-4 h-4 mr-2" / />
                   Go Home
                 </Button>
               </div>

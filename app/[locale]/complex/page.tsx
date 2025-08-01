@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -6,19 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AIServiceDiscovery from "@/components/ai/ai-service-discovery";
 import AIAssistantWidget from "@/components/ai/ai-assistant-widget";
-import {
-  MapPin,
-  Shield,
-  Users,
-  Sparkles,
-  Search,
-  TrendingUp,
-  Award,
-  ArrowRight,
-  Brain,
-  Heart,
-  Home
-} from "lucide-react";
+import { Sparkles, TrendingUp, Award, Brain, Heart } from "lucide-react";
 import Link from "next/link";
 
 export default function ComplexPage() {
@@ -154,7 +143,7 @@ export default function ComplexPage() {
               className="h-12 bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 hover:from-blue-500 hover:via-purple-500 hover:to-emerald-500 text-white rounded-2xl px-12 py-4 font-bold text-lg shadow-2xl hover:shadow-blue-500/30 transition-all duration-500"
             >
               <Link href="/browse">
-                <Search className="w-5 h-5 mr-3" />
+                <NavigationIcons.Search className="w-5 h-5 mr-3" / />
                 Find Services Now
               </Link>
             </Button>

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState } from "react";
@@ -11,14 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import {
-  TrendingUp,
-  Target,
-  Brain,
-  BarChart3,
-  Settings,
-  CheckCircle
-} from "lucide-react";
+import { TrendingUp, Target, Brain, BarChart3 } from "lucide-react";
 import { ThemeToggleIcon } from "@/components/ui/theme-toggle";
 import FunnelAnalyzer from "@/components/analytics/funnel-analyzer";
 import SmartFormAssistant from "@/components/ui/smart-form-assistant";
@@ -180,7 +174,7 @@ export default function FunnelOptimizationPage() {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Settings className="w-5 h-5 mr-2" />
+              <NavigationIcons.Settings className="w-5 h-5 mr-2" / />
               Active Optimizations
             </CardTitle>
             <CardDescription>
@@ -267,7 +261,7 @@ export default function FunnelOptimizationPage() {
           <CardContent className="p-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-white" />
+                <UIIcons.CheckCircle className="w-8 h-8 text-white" / />
               </div>
               <h3 className="text-2xl font-bold mb-2">
                 Optimization Engine Fully Deployed!

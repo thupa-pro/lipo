@@ -9,7 +9,6 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { getUnifiedSession } from '@/lib/auth/session';
-import { RoleAwareNavigation } from '@/components/navigation/RoleAwareNavigation';
 import { Logo } from '@/components/ui/logo';
 import { UIContext, LogoVariant } from '@/lib/types/logo';
 import { getLogoPath } from '@/lib/utils/logo';
@@ -19,8 +18,16 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { ClerkProvider } from '@/components/providers/ClerkProvider';
 import { CookieConsentProvider, CookieConsentBanner, CookieSettingsLink } from '@/components/cookies';
 import Footer from '@/components/footer';
+import { PerformanceProvider } from '@/components/providers/PerformanceProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+// Lazy load navigation and heavy components
+import { LazyComponents } from '@/lib/utils/code-splitting';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: 'Loconomy - Elite AI-Powered Local Services Platform',
@@ -57,9 +64,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Loconomy - Elite AI-Powered Local Services Platform',
-    description: 'Experience the world\'s most advanced AI marketplace where elite professionals meet intelligent matching.',
+    description: 'Experience the world\'s most advanced AI marketplace where elite professionals meet intelligent matching in under 90 seconds.',
     images: [getLogoPath(LogoVariant.COLORED)],
-    creator: '@Loconomy',
   },
   robots: {
     index: true,
@@ -74,95 +80,76 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
-    yandex: process.env.YANDEX_VERIFICATION,
-    other: {
-      'msvalidate.01': process.env.BING_SITE_VERIFICATION || '',
-    },
   },
 };
+
+// Loading component for navigation
+const NavigationSkeleton = () => (
+  <div className="h-16 bg-white border-b border-gray-200 animate-pulse">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-16">
+        <div className="w-32 h-8 bg-gray-200 rounded"></div>
+        <div className="flex space-x-4">
+          <div className="w-16 h-8 bg-gray-200 rounded"></div>
+          <div className="w-16 h-8 bg-gray-200 rounded"></div>
+          <div className="w-16 h-8 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Get session on server side for better performance
   const session = await getUnifiedSession();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationMismatch>
       <head>
-        {/* Preload critical assets */}
-        <link rel="preload" href={getLogoPath(LogoVariant.LIGHT)} as="image" />
-        <link rel="preload" href={getLogoPath(LogoVariant.DARK)} as="image" />
-        <link rel="preload" href={getLogoPath(LogoVariant.COLORED)} as="image" />
+        {/* Preload critical resources */}
+        <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         
-        {/* Critical CSS for logo system - moved to globals.css to prevent hydration issues */}
-
-        {/* Structured Data for SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Loconomy",
-              "description": "Elite AI-Powered Local Services Platform",
-              "url": "https://loconomy.com",
-              "logo": getLogoPath(LogoVariant.COLORED),
-              "sameAs": [
-                "https://twitter.com/Loconomy",
-                "https://linkedin.com/company/loconomy",
-                "https://facebook.com/loconomy"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-855-ELITE-AI",
-                "contactType": "customer service",
-                "availableLanguage": ["English", "Spanish", "French"]
-              }
-            })
-          }}
-        />
-
-        {/* Security Headers */}
-        <meta httpEquiv="Content-Security-Policy" content={`
-          default-src 'self';
-          script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-            https://www.google-analytics.com 
-            https://www.googletagmanager.com
-            https://js.stripe.com
-            https://checkout.stripe.com
-            https://app.posthog.com;
-          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-          font-src 'self' https://fonts.gstatic.com;
-          img-src 'self' data: blob: https: http:;
-          connect-src 'self' 
-            https://api.openai.com
-            https://supabase.co
-            https://app.posthog.com
-            https://o4507659827478528.ingest.us.sentry.io;
-          frame-src 'self' https://js.stripe.com https://checkout.stripe.com;
-          object-src 'none';
-          base-uri 'self';
-          form-action 'self';
-        `.replace(/\s+/g, ' ').trim()} />
+        {/* Performance optimization meta tags */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        
+        {/* Critical CSS inline */}
+        <style>{`
+          /* Critical above-the-fold styles */
+          .loading-skeleton { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+          @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        `}</style>
       </head>
+<<<<<<< HEAD
       <body className={cn(
         inter.className,
         "min-h-screen bg-background font-sans antialiased theme-adaptive",
         "selection:bg-primary/20 selection:text-primary-foreground",
         "theme-glass" // Default to glass theme - can be changed dynamically
       )}>
+=======
+      <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
+>>>>>>> origin/main
         <ErrorBoundary>
           <ClerkProvider>
-            <CookieConsentProvider>
+            <PerformanceProvider>
               <SovereignObservabilityProvider>
-                <SovereignAnalyticsProvider userId={session?.user?.id}>
+                <SovereignAnalyticsProvider>
                   <ThemeProvider
-                    defaultTheme="system"
-                    enableSystem={true}
-                    disableTransitionOnChange={true}
+                    attribute="class"
+                    defaultTheme="light"
+                    enableSystem={false}
+                    disableTransitionOnChange
                   >
+<<<<<<< HEAD
                 <div className="relative flex min-h-screen flex-col">
                   {/* Enhanced Background Effects */}
                   <div className="fixed inset-0 -z-10 overflow-hidden">
@@ -207,52 +194,48 @@ export default async function RootLayout({
                   }>
                     <RoleAwareNavigation />
                   </Suspense>
+=======
+                    <CookieConsentProvider>
+                      <div className="relative flex min-h-screen flex-col">
+                        {/* Header with lazy-loaded navigation */}
+                        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                          <Suspense fallback={<NavigationSkeleton />}>
+                            <LazyComponents.EnhancedNavigation session={session} />
+                          </Suspense>
+                        </header>
 
-                  {/* Main Content */}
-                  <main id="main-content" className="flex-1">
-                    {children}
-                  </main>
+                        {/* Main content */}
+                        <main className="flex-1">
+                          <Suspense fallback={
+                            <div className="min-h-screen flex items-center justify-center">
+                              <div className="text-center">
+                                <div className="loading-skeleton w-16 h-16 rounded-full bg-gray-200 mx-auto mb-4"></div>
+                                <p className="text-gray-600">Loading...</p>
+                              </div>
+                            </div>
+                          }>
+                            {children}
+                          </Suspense>
+                        </main>
 
-                  {/* Enhanced Premium Footer */}
-                  <Footer />
+                        {/* Footer - lazy loaded for performance */}
+                        <Suspense fallback={<div className="h-20 bg-gray-50"></div>}>
+                          <Footer />
+                        </Suspense>
+                      </div>
+>>>>>>> origin/main
 
-                                      {/* Cookie Consent */}
-                    <Suspense fallback={null}>
+                      {/* Global components */}
+                      <Toaster />
                       <CookieConsentBanner />
-                    </Suspense>
-
-                  {/* Toast Notifications */}
-                  <Toaster />
-                </div>
+                      <CookieSettingsLink />
+                    </CookieConsentProvider>
                   </ThemeProvider>
                 </SovereignAnalyticsProvider>
               </SovereignObservabilityProvider>
-            </CookieConsentProvider>
+            </PerformanceProvider>
           </ClerkProvider>
         </ErrorBoundary>
-
-        {/* Performance Monitoring Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Performance monitoring
-              if (typeof window !== 'undefined') {
-                window.addEventListener('load', function() {
-                  setTimeout(function() {
-                    const perfData = performance.getEntriesByType('navigation')[0];
-                    if (perfData && window.posthog) {
-                      window.posthog.capture('page_performance', {
-                        load_time: perfData.loadEventEnd - perfData.loadEventStart,
-                        dom_ready: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
-                        url: window.location.pathname
-                      });
-                    }
-                  }, 0);
-                });
-              }
-            `
-          }}
-        />
       </body>
     </html>
   );

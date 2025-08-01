@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useCallback, useRef } from "react";
@@ -24,32 +25,7 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import {
-  Upload,
-  Camera,
-  FileText,
-  X,
-  AlertTriangle,
-  Eye,
-  Download,
-  User,
-  CreditCard,
-  Building,
-  Globe,
-  Phone,
-  Mail,
-  MapPin,
-  Calendar,
-  Lock,
-  Award,
-  Info,
-  ArrowRight,
-  ArrowLeft,
-  Sparkles,
-  CheckCircle,
-  Shield,
-  Trash2
-} from "lucide-react";
+import { Upload, Camera, FileText, X, Eye, Download, CreditCard, Building, Globe, Lock, Award, Info, Sparkles, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -454,7 +430,7 @@ export function KYCVerificationFlow({
   const renderPersonalInfoStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <User className="w-12 h-12 mx-auto mb-3 text-blue-600" />
+        <NavigationIcons.User className="w-12 h-12 mx-auto mb-3 text-blue-600" / />
         <h3 className="text-xl font-semibold mb-2">Personal Information</h3>
         <p className="text-muted-foreground">
           Provide your basic identity information for verification
@@ -688,7 +664,7 @@ export function KYCVerificationFlow({
                       )}
                       {uploadedDoc?.status === "verified" && (
                         <Badge className="bg-green-100 text-green-700">
-                          <CheckCircle className="w-3 h-3 mr-1" />
+                          <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                           Verified
                         </Badge>
                       )}
@@ -987,7 +963,7 @@ export function KYCVerificationFlow({
   const renderReviewStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <CheckCircle className="w-12 h-12 mx-auto mb-3 text-green-600" />
+        <UIIcons.CheckCircle className="w-12 h-12 mx-auto mb-3 text-green-600" / />
         <h3 className="text-xl font-semibold mb-2">Review & Submit</h3>
         <p className="text-muted-foreground">
           Review your information and submit for verification
@@ -999,7 +975,7 @@ export function KYCVerificationFlow({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <User className="w-4 h-4" />
+              <NavigationIcons.User className="w-4 h-4" / />
               Personal Information
             </CardTitle>
           </CardHeader>
@@ -1069,7 +1045,7 @@ export function KYCVerificationFlow({
                   <span className="text-sm">{docType.title}</span>
                   {uploadedDoc ? (
                     <Badge className="bg-green-100 text-green-700">
-                      <CheckCircle className="w-3 h-3 mr-1" />
+                      <UIIcons.CheckCircle className="w-3 h-3 mr-1" / />
                       Uploaded
                     </Badge>
                   ) : docType.required ? (
@@ -1128,7 +1104,7 @@ export function KYCVerificationFlow({
       </div>
 
       <Alert>
-        <Shield className="w-4 h-4" />
+        <OptimizedIcon name="Shield" className="w-4 h-4" />
         <AlertDescription>
           Your verification typically takes 24-48 hours. You'll receive email
           updates on the progress.
@@ -1142,7 +1118,7 @@ export function KYCVerificationFlow({
       <Card className="w-full max-w-4xl mx-auto">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="w-8 h-8 text-blue-600" />
+            <OptimizedIcon name="Shield" className="w-8 h-8 text-blue-600" />
             <CardTitle className="text-2xl">Identity Verification</CardTitle>
           </div>
 
@@ -1205,7 +1181,7 @@ export function KYCVerificationFlow({
               onClick={prevStep}
               disabled={currentStep === 0}
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <UIIcons.ArrowLeft className="w-4 h-4 mr-2" / />
               Previous
             </Button>
 
@@ -1235,7 +1211,7 @@ export function KYCVerificationFlow({
               ) : (
                 <Button onClick={nextStep} disabled={!validateCurrentStep()}>
                   Next
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                 </Button>
               )}
             </div>

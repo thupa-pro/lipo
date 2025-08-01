@@ -1,19 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { Metadata } from "next";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ReviewsList } from "@/components/reviews/ReviewsList";
-import {
-  TrendingUp,
-  Users,
-  Award,
-  BarChart3,
-  Calendar,
-  Filter,
-  MessageSquare,
-  Star
-} from "lucide-react";
+import { TrendingUp, Award, BarChart3, Filter } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Reviews & Ratings - Loconomy",
@@ -249,7 +241,7 @@ export default function ReviewsPage() {
                     </span>
                     <div className="flex">
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
+                        <OptimizedIcon name="Star"
                           key={i}
                           className={`w-4 h-4 ${
                             i < Math.floor(stats.averageRating)
@@ -262,7 +254,7 @@ export default function ReviewsPage() {
                   </div>
                 </div>
                 <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-xl flex items-center justify-center">
-                  <Star className="w-6 h-6 text-yellow-600" />
+                  <OptimizedIcon name="Star" className="w-6 h-6 text-yellow-600" />
                 </div>
               </div>
             </CardContent>
@@ -279,7 +271,7 @@ export default function ReviewsPage() {
                   <p className="text-xs text-green-600 mt-1">+12% this month</p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center">
-                  <MessageSquare className="w-6 h-6 text-blue-600" />
+                  <OptimizedIcon name="MessageSquare" className="w-6 h-6 text-blue-600" />
                 </div>
               </div>
             </CardContent>
@@ -416,7 +408,7 @@ export default function ReviewsPage() {
                       return (
                         <div key={rating} className="flex items-center gap-3">
                           <span className="w-4">{rating}</span>
-                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                          <OptimizedIcon name="Star" className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                           <div className="flex-1 bg-gray-200 rounded-full h-2">
                             <div
                               className="bg-yellow-400 h-2 rounded-full transition-all duration-300"
@@ -462,7 +454,7 @@ export default function ReviewsPage() {
                             <div className="flex items-center gap-2">
                               <div className="flex">
                                 {Array.from({ length: 5 }).map((_, i) => (
-                                  <Star
+                                  <OptimizedIcon name="Star"
                                     key={i}
                                     className={`w-3 h-3 ${
                                       i < Math.floor(avgRating)

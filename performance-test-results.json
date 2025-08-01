@@ -1,0 +1,10 @@
+{
+  "bundleAnalysis": {},
+  "buildTime": 21630,
+  "typeCheckTime": 3879,
+  "optimizationScore": 100,
+  "recommendations": [
+    "High number of client components (682) - consider server-side rendering for static content",
+    "Many lucide-react imports (214) - consider using optimized icon system"
+  ]
+}

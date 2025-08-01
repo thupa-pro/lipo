@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -9,30 +10,7 @@ import {
   userAIClient,
   type UserAIAgent
 } from "@/lib/ai/user-ai-agents";
-import {
-  MessageCircle,
-  Send,
-  Minimize2,
-  Maximize2,
-  X,
-  Sparkles,
-  Bot,
-  Lightbulb,
-  Volume2,
-  VolumeX,
-  Copy,
-  ThumbsUp,
-  ThumbsDown,
-  RotateCcw,
-  Mic,
-  Settings,
-  Zap,
-  Star,
-  Brain,
-  Globe,
-  Shield,
-  Clock
-} from "lucide-react";
+import { MessageCircle, Send, Minimize2, Maximize2, X, Sparkles, Bot, Lightbulb, Volume2, VolumeX, Copy, ThumbsUp, ThumbsDown, RotateCcw, Mic, Zap, Brain, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -389,7 +367,7 @@ export default function EnhancedAIChat({
                 <div className="flex items-center gap-1 mt-1">
                   <div className="flex text-xs">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      <OptimizedIcon name="Star" key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
                   <span className="text-xs text-gray-500">24/7 Available</span>
@@ -544,7 +522,7 @@ export default function EnhancedAIChat({
                         message.role === "user" ? "text-blue-100" : "text-gray-500"
                       }`}>
                         <div className="flex items-center gap-2">
-                          <Clock className="w-3 h-3" />
+                          <OptimizedIcon name="Clock" className="w-3 h-3" />
                           <span>{message.timestamp.toLocaleTimeString()}</span>
                         </div>
                         {message.sentiment && (
@@ -688,7 +666,7 @@ export default function EnhancedAIChat({
                   variant="outline"
                   className="border-white/40 hover:border-gray-300 hover:scale-105 transition-all duration-200 rounded-xl"
                 >
-                  <Settings className="h-4 w-4" />
+                  <NavigationIcons.Settings className="h-4 w-4" / />
                 </Button>
               </div>
 
@@ -731,7 +709,7 @@ export default function EnhancedAIChat({
                         <span>37+ Languages</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Shield className="w-3 h-3 text-blue-500" />
+                        <OptimizedIcon name="Shield" className="w-3 h-3 text-blue-500" />
                         <span>Secure & Private</span>
                       </div>
                     </div>

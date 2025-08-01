@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useEffect } from "react";
@@ -22,19 +23,7 @@ import {
   Pie,
   Cell
 } from "recharts";
-import {
-  TrendingUp,
-  TrendingDown,
-  Users,
-  DollarSign,
-  Briefcase,
-  ArrowUp,
-  ArrowDown,
-  Activity,
-  Eye,
-  Target,
-  Star
-} from "lucide-react";
+import { TrendingUp, TrendingDown, ArrowUp, ArrowDown, Activity, Eye, Target } from "lucide-react";
 
 interface AnalyticsOverviewProps {
   filters: any;
@@ -154,7 +143,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.totalUsers.change)}%
                 </div>
               </div>
-              <Users className="w-8 h-8 text-blue-500 opacity-80" />
+              <NavigationIcons.Users className="w-8 h-8 text-blue-500 opacity-80" / />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">
@@ -179,7 +168,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.activeJobs.change)}%
                 </div>
               </div>
-              <Briefcase className="w-8 h-8 text-green-500 opacity-80" />
+              <BusinessIcons.Briefcase className="w-8 h-8 text-green-500 opacity-80" / />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">
@@ -204,7 +193,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.revenue.change)}%
                 </div>
               </div>
-              <DollarSign className="w-8 h-8 text-emerald-500 opacity-80" />
+              <BusinessIcons.DollarSign className="w-8 h-8 text-emerald-500 opacity-80" / />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">
@@ -229,7 +218,7 @@ export function AnalyticsOverview({
                   {Math.abs(data.kpis.avgRating.change)}
                 </div>
               </div>
-              <Star className="w-8 h-8 text-yellow-500 opacity-80" />
+              <OptimizedIcon name="Star" className="w-8 h-8 text-yellow-500 opacity-80" />
             </div>
             {isRealtime && (
               <div className="absolute top-2 right-2">

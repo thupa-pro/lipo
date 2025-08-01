@@ -1,10 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, Users, Heart, Rocket, ArrowRight } from "lucide-react"
+import { Heart, Rocket } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 
@@ -69,7 +70,7 @@ export default function CareersPage() {
     <div className="min-h-screen bg-background">
       <header className="py-16 px-4 text-center bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-950/20 dark:to-green-950/20">
         <div className="container mx-auto max-w-4xl">
-          <Briefcase className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+          <BusinessIcons.Briefcase className="w-16 h-16 text-blue-600 mx-auto mb-4" / />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
             Careers at Loconomy
           </h1>
@@ -78,7 +79,7 @@ export default function CareersPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "View Openings", description: "Scrolling to job openings...", variant: "default" })}>
             View Open Positions
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -133,7 +134,7 @@ export default function CareersPage() {
                   <p className="text-muted-foreground mb-4">{job.description}</p>
                   <Button variant="outline" onClick={() => toast({ title: "Apply Now", description: `Applying for ${job.title}... (Simulated)`, variant: "default" })}>
                     Apply Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                   </Button>
                 </CardContent>
               </Card>
@@ -150,7 +151,7 @@ export default function CareersPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Send Resume", description: "Opening email client to careers@loconomy.com...", variant: "default" })}>
             Submit Your Resume
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </section>

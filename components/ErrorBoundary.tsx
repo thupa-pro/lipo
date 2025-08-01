@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
 interface Props {
   children: ReactNode;
@@ -48,7 +49,7 @@ class ErrorBoundary extends Component<Props, State> {
         <Card className="max-w-md mx-auto m-4">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-red-600">
-              <AlertTriangle className="w-5 h-5" />
+              <UIIcons.AlertTriangle className="w-5 h-5" / />
               Something went wrong
             </CardTitle>
             <CardDescription>

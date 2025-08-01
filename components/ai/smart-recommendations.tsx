@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -12,23 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  Brain,
-  Star,
-  MapPin,
-  DollarSign,
-  TrendingUp,
-  Users,
-  Award,
-  Heart,
-  Sparkles,
-  ArrowRight,
-  RefreshCw,
-  ChevronRight,
-  Shield,
-  Clock,
-  Zap
-} from "lucide-react";
+import { Brain, TrendingUp, Award, Heart, Sparkles, RefreshCw, ChevronRight, Zap } from "lucide-react";
 
 interface ServiceRecommendation {
   id: string;
@@ -434,12 +419,12 @@ export default function SmartRecommendations({
                         {recommendation.provider.name}
                       </h3>
                       {recommendation.provider.verified && (
-                        <Shield className="w-4 h-4 text-blue-600" />
+                        <OptimizedIcon name="Shield" className="w-4 h-4 text-blue-600" />
                       )}
                     </div>
                     <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-gray-300">
                       <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-emerald-400 text-emerald-400" />
+                        <OptimizedIcon name="Star" className="w-3 h-3 fill-emerald-400 text-emerald-400" />
                         <span className="font-medium">
                           {recommendation.provider.rating}
                         </span>
@@ -458,11 +443,11 @@ export default function SmartRecommendations({
 
               <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-gray-300">
                 <div className="flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
+                  <BusinessIcons.MapPin className="w-3 h-3" / />
                   <span>{recommendation.distance} mi</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
+                  <OptimizedIcon name="Clock" className="w-3 h-3" />
                   <span>{recommendation.provider.responseTime}</span>
                 </div>
               </div>
@@ -490,7 +475,7 @@ export default function SmartRecommendations({
               {/* Price and Availability */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1">
-                  <DollarSign className="w-4 h-4 text-green-600" />
+                  <BusinessIcons.DollarSign className="w-4 h-4 text-green-600" / />
                   <span className="font-semibold text-slate-900 dark:text-white">
                     ${recommendation.price.amount}
                   </span>
@@ -554,7 +539,7 @@ export default function SmartRecommendations({
           onClick={() => (window.location.href = "/browse")}
         >
           View All Services
-          <ArrowRight className="w-4 h-4 ml-2" />
+          <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
         </Button>
       </div>
     </div>

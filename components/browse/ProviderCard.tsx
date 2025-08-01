@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import {
@@ -9,15 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  MapPin,
-  CheckCircle,
-  ArrowRight,
-  Heart,
-  Share2,
-  Clock,
-  Star
-} from "lucide-react";
+import { Heart, Share2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -94,7 +87,7 @@ export default function ProviderCard({
                 {provider.name}
               </CardTitle>
               {provider.verified && (
-                <CheckCircle className="w-3 h-3 text-trust" />
+                <UIIcons.CheckCircle className="w-3 h-3 text-trust" / />
               )}
             </div>
             <CardDescription className="text-xs text-muted-foreground">
@@ -102,7 +95,7 @@ export default function ProviderCard({
             </CardDescription>
             <div className="flex items-center gap-1 mt-1">
               <div className="flex items-center gap-0.5">
-                <Star className="w-3 h-3 fill-premium text-premium" />
+                <OptimizedIcon name="Star" className="w-3 h-3 fill-premium text-premium" />
                 <span className="font-medium text-xs">{provider.rating}</span>
               </div>
               <span className="text-2xs text-muted-foreground">
@@ -121,7 +114,7 @@ export default function ProviderCard({
               {provider.price}
             </div>
             <div className="flex items-center gap-0.5 text-xs text-muted-foreground">
-              <MapPin className="w-2.5 h-2.5" />
+              <BusinessIcons.MapPin className="w-2.5 h-2.5" / />
               {provider.location} • {provider.distance}mi
             </div>
           </div>
@@ -144,15 +137,15 @@ export default function ProviderCard({
 
           <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-2xs text-muted-foreground">
             <div className="flex items-center gap-0.5">
-              <CheckCircle className="w-2.5 h-2.5 text-green-500" />
+              <UIIcons.CheckCircle className="w-2.5 h-2.5 text-green-500" / />
               {provider.completedJobs} jobs completed
             </div>
             <div className="flex items-center gap-0.5">
-              <Clock className="w-2.5 h-2.5" />
+              <OptimizedIcon name="Clock" className="w-2.5 h-2.5" />
               {provider.availability}
             </div>
             <div className="col-span-2 flex items-center gap-0.5">
-              <Clock className="w-2.5 h-2.5" />
+              <OptimizedIcon name="Clock" className="w-2.5 h-2.5" />
               {provider.responseTime}
             </div>
           </div>
@@ -168,7 +161,7 @@ export default function ProviderCard({
             onClick={() => router.push(`/dashboard`)}
           >
             View Profile
-            <ArrowRight className="w-3 h-3 ml-1" />
+            <UIIcons.ArrowRight className="w-3 h-3 ml-1" / />
           </Button>
           <div className="flex gap-1">
             <Button

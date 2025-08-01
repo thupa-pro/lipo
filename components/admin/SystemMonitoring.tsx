@@ -1,21 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Activity,
-  Server,
-  Database,
-  AlertTriangle,
-  CheckCircle, TrendingUp,
-  TrendingDown,
-  Wifi,
-  HardDrive,
-  Cpu,
-  MemoryStick
-} from "lucide-react";
+import { Activity, Server, Database, TrendingUp, TrendingDown, Wifi, HardDrive, Cpu, MemoryStick } from "lucide-react";
 import { useAdminClient, formatSystemHealth } from "@/lib/admin/utils";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -94,7 +84,7 @@ export function SystemMonitoring() {
       <Card>
         <CardContent className="flex items-center justify-center py-8">
           <div className="text-center">
-            <AlertTriangle className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
+            <UIIcons.AlertTriangle className="w-8 h-8 text-yellow-500 mx-auto mb-2" / />
             <p className="text-gray-600">System health data unavailable</p>
           </div>
         </CardContent>
@@ -294,11 +284,11 @@ export function SystemMonitoring() {
               >
                 <div className="flex items-center gap-2">
                   {service.status === "healthy" ? (
-                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                   ) : service.status === "warning" ? (
-                    <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                    <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />
                   ) : (
-                    <AlertTriangle className="w-4 h-4 text-red-500" />
+                    <UIIcons.AlertTriangle className="w-4 h-4 text-red-500" / />
                   )}
                   <span className="font-medium">{service.name}</span>
                 </div>
@@ -343,10 +333,10 @@ export function SystemMonitoring() {
                 className="flex items-center gap-3 p-3 border rounded-lg"
               >
                 {event.type === "success" && (
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <UIIcons.CheckCircle className="w-4 h-4 text-green-500" / />
                 )}
                 {event.type === "warning" && (
-                  <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                  <UIIcons.AlertTriangle className="w-4 h-4 text-yellow-500" / />
                 )}
                 {event.type === "info" && (
                   <Activity className="w-4 h-4 text-blue-500" />

@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -6,26 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import {
-  Wallet,
-  CreditCard,
-  Smartphone,
-  QrCode,
-  NfcIcon,
-  Apple,
-  AlertCircle,
-  ArrowLeft,
-  ArrowRight,
-  Fingerprint,
-  FaceIcon,
-  Lock,
-  Send,
-  Plus,
-  Minus,
-  RotateCcw,
-  Zap,
-  CheckCircle
-} from "lucide-react";
+import { Wallet, CreditCard, Smartphone, QrCode, NfcIcon, Apple, AlertCircle, Fingerprint, FaceIcon, Lock, Send, Plus, Minus, RotateCcw, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface MobilePaymentFlowProps {
@@ -299,7 +281,7 @@ export function MobilePaymentFlow({
           onClick={removeFromAmount}
           className="h-14"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <UIIcons.ArrowLeft className="w-5 h-5" / />
         </Button>
       </div>
 
@@ -309,7 +291,7 @@ export function MobilePaymentFlow({
         className="w-full bg-gradient-to-r from-blue-600 to-purple-600 h-12 text-lg font-semibold"
       >
         Continue
-        <ArrowRight className="w-5 h-5 ml-2" />
+        <UIIcons.ArrowRight className="w-5 h-5 ml-2" / />
       </Button>
     </div>
   );
@@ -436,7 +418,7 @@ export function MobilePaymentFlow({
               onClick={() => handlePinEntry("delete")}
               className="h-12"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <UIIcons.ArrowLeft className="w-5 h-5" / />
             </Button>
           </div>
         </div>
@@ -544,7 +526,7 @@ export function MobilePaymentFlow({
   const renderCompleteStep = () => (
     <div className="space-y-6 text-center">
       <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-        <CheckCircle className="w-12 h-12 text-white" />
+        <UIIcons.CheckCircle className="w-12 h-12 text-white" / />
       </div>
 
       <div>

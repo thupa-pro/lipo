@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,27 +9,7 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Search,
-  Users,
-  ArrowRight,
-  Lightbulb,
-  DollarSign,
-  Sparkles,
-  Brain,
-  Target,
-  Heart,
-  Award,
-  TrendingUp,
-  Globe,
-  Star,
-  ChevronRight,
-  Play,
-  Eye,
-  Zap,
-  CheckCircle,
-  Shield
-} from "lucide-react";
+import { Lightbulb, Sparkles, Brain, Target, Heart, Award, TrendingUp, Globe, ChevronRight, Play, Eye, Zap } from "lucide-react";
 
 export default function HowItWorksPage() {
   const steps = [
@@ -299,7 +280,7 @@ export default function HowItWorksPage() {
                   >
                     <Link href={step.action.href}>
                       {step.action.label}
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
                     </Link>
                   </Button>
                 </CardContent>
@@ -397,7 +378,7 @@ export default function HowItWorksPage() {
 
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
+                      <OptimizedIcon name="Star"
                         key={i}
                         className="w-4 h-4 fill-emerald-400 text-emerald-400"
                       />

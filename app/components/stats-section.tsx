@@ -1,4 +1,5 @@
-import { Users, Star, MapPin, Award, CheckCircle, Clock, TrendingUp, Shield } from "lucide-react";
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
+import { Award, TrendingUp } from "lucide-react";
 
 const stats = [
   {
@@ -128,7 +129,7 @@ export function StatsSection() {
           </div>
           <div className="w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
           <div className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-            <Shield className="w-4 h-4 text-blue-500" />
+            <OptimizedIcon name="Shield" className="w-4 h-4 text-blue-500" />
             <span>Verified Data</span>
           </div>
           <div className="w-px h-6 bg-gray-300 dark:bg-gray-600"></div>

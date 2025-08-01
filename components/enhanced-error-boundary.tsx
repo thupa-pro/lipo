@@ -1,22 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  AlertTriangle,
-  RefreshCw,
-  MessageCircle,
-  Home,
-  ArrowLeft,
-  Bug,
-  Lightbulb,
-  Sparkles,
-  Brain,
-  Clock,
-  Shield
-} from "lucide-react";
+import { RefreshCw, MessageCircle, Bug, Lightbulb, Sparkles, Brain } from "lucide-react";
 
 interface Props {
   children: ReactNode;
@@ -173,7 +162,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
               <CardHeader className="text-center pb-6">
                 <div className="mx-auto mb-4 animate-scale-in">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
-                    <AlertTriangle className="w-10 h-10 text-white" />
+                    <UIIcons.AlertTriangle className="w-10 h-10 text-white" / />
                   </div>
                 </div>
 
@@ -195,7 +184,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                           : "outline"
                     }
                   >
-                    <Clock className="w-3 h-3 mr-1" />
+                    <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                     {severity === "high"
                       ? "Critical Error"
                       : severity === "medium"
@@ -251,7 +240,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                     size="lg"
                     className="w-full"
                   >
-                    <Home className="w-4 h-4 mr-2" />
+                    <NavigationIcons.Home className="w-4 h-4 mr-2" / />
                     Go Home
                   </Button>
                 </div>
@@ -326,7 +315,7 @@ class EnhancedErrorBoundary extends Component<Props, State> {
                 {/* AI Powered Recovery */}
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-700 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-5 h-5 text-green-600" />
+                    <OptimizedIcon name="Shield" className="w-5 h-5 text-green-600" />
                     <h3 className="font-semibold text-green-900 dark:text-green-100">
                       Smart Recovery Active
                     </h3>

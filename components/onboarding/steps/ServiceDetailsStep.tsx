@@ -1,3 +1,4 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import React, { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { ArrowRight, Award, CreditCard, Shield } from "lucide-react";
+import { Award, CreditCard } from "lucide-react";
 import { OnboardingStepProps } from "@/lib/onboarding/types";
 import { useOnboardingClient } from "@/lib/onboarding/utils";
 
@@ -239,7 +240,7 @@ export function ServiceDetailsStep({
       {/* Insurance Information */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <Shield className="w-5 h-5 text-blue-500" />
+          <OptimizedIcon name="Shield" className="w-5 h-5 text-blue-500" />
           <Label className="text-lg font-medium">
             Insurance Information (Optional)
           </Label>
@@ -381,7 +382,7 @@ export function ServiceDetailsStep({
         size="lg"
       >
         {isLoading ? "Saving Details..." : "Continue to Pricing"}
-        <ArrowRight className="w-4 h-4" />
+        <UIIcons.ArrowRight className="w-4 h-4" / />
       </Button>
     </div>
   );

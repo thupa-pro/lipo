@@ -1,17 +1,11 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client"
 
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import {
-  Globe,
-  MapPin,
-  DollarSign,
-  Shield,
-  Loader2,
-  Clock
-} from "lucide-react";
+import { Globe } from "lucide-react";
 import { REGIONS, getRegionConfig, detectUserRegion, type RegionConfig } from "@/lib/region-config"
 
 interface RegionSelectorProps {
@@ -88,7 +82,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
             <label className="text-sm font-medium mb-2 block">Current Region</label>
             {isLoadingLocation ? (
               <div className="flex items-center space-x-2">
-                <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                <UIIcons.Loader2 className="w-4 h-4 animate-spin text-primary" / />
                 <span className="text-muted-foreground">Detecting location...</span>
               </div>
             ) : (
@@ -100,7 +94,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
                   {Object.values(REGIONS).map((region) => (
                     <SelectItem key={region.code} value={region.code}>
                       <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-2" />
+                        <BusinessIcons.MapPin className="w-4 h-4 mr-2" / />
                         {region.name}
                       </div>
                     </SelectItem>
@@ -115,7 +109,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Currency</span>
                 <Badge variant="outline" className="flex items-center">
-                  <DollarSign className="w-3 h-3 mr-1" />
+                  <BusinessIcons.DollarSign className="w-3 h-3 mr-1" / />
                   {regionConfig.currency}
                 </Badge>
               </div>
@@ -123,7 +117,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Timezone</span>
                 <Badge variant="outline" className="flex items-center">
-                  <Clock className="w-3 h-3 mr-1" />
+                  <OptimizedIcon name="Clock" className="w-3 h-3 mr-1" />
                   {regionConfig.timezone.split("/")[1]}
                 </Badge>
               </div>
@@ -195,7 +189,7 @@ export default function RegionSelector({ onRegionChange, currentRegion }: Region
 
           <div className="bg-blue-50 p-4 rounded-lg">
             <div className="flex items-start">
-              <Shield className="w-5 h-5 text-blue-600 mt-0.5 mr-3" />
+              <OptimizedIcon name="Shield" className="w-5 h-5 text-blue-600 mt-0.5 mr-3" />
               <div>
                 <h4 className="font-medium text-blue-900 mb-1">Regional Compliance</h4>
                 <p className="text-sm text-blue-700">

@@ -1,23 +1,9 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Users,
-  UserCheck,
-  TrendingUp,
-  ArrowUpRight,
-  Filter,
-  Eye,
-  Edit,
-  MoreHorizontal,
-  MapPin,
-  Mail,
-  Search,
-  CheckCircle,
-  Shield,
-  Clock
-} from "lucide-react";
+import { UserCheck, TrendingUp, ArrowUpRight, Filter, Eye, Edit, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -126,7 +112,7 @@ export default function AdminUsersPage() {
             <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
               Admin Panel • User Management
             </span>
-            <Users className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+            <NavigationIcons.Users className="w-4 h-4 text-emerald-500 dark:text-emerald-400" / />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-none">
@@ -223,7 +209,7 @@ export default function AdminUsersPage() {
                 <div>
                   <CardTitle className="flex items-center gap-3 text-2xl">
                     <div className="w-10 h-10 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
-                      <Users className="w-5 h-5 text-white" />
+                      <NavigationIcons.Users className="w-5 h-5 text-white" / />
                     </div>
                     Recent Users
                   </CardTitle>
@@ -233,7 +219,7 @@ export default function AdminUsersPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Button variant="outline" className="rounded-2xl">
-                    <Search className="w-4 h-4 mr-2" />
+                    <NavigationIcons.Search className="w-4 h-4 mr-2" / />
                     Search
                   </Button>
                   <Button variant="outline" className="rounded-2xl">
@@ -261,7 +247,7 @@ export default function AdminUsersPage() {
                           </h3>
                           {user.verified && (
                             <Badge className="bg-emerald-100 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800">
-                              <Shield className="w-3 h-3 mr-1" />
+                              <OptimizedIcon name="Shield" className="w-3 h-3 mr-1" />
                               Verified
                             </Badge>
                           )}
@@ -275,15 +261,15 @@ export default function AdminUsersPage() {
                         </div>
                         <div className="flex items-center gap-4 text-slate-600 dark:text-slate-400">
                           <span className="flex items-center gap-1">
-                            <Mail className="w-4 h-4" />
+                            <OptimizedIcon name="Mail" className="w-4 h-4" />
                             {user.email}
                           </span>
                           <span className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
+                            <BusinessIcons.MapPin className="w-4 h-4" / />
                             {user.location}
                           </span>
                           <span className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
+                            <OptimizedIcon name="Clock" className="w-4 h-4" />
                             {user.joinDate}
                           </span>
                         </div>

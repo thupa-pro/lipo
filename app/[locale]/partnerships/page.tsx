@@ -1,9 +1,10 @@
+import { OptimizedIcon, NavigationIcons, BusinessIcons, UIIcons } from "@/lib/icons/optimized-icons";
 "use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Handshake, Building2, Users, Lightbulb, Mail, ArrowRight, CheckCircle } from "lucide-react";
+import { Handshake, Building2, Lightbulb } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -45,7 +46,7 @@ export default function PartnershipsPage() {
           </p>
           <Button size="lg" onClick={() => toast({ title: "Start Partnership", description: "Sending partnership inquiry...", variant: "default" })}>
             Propose a Partnership
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <UIIcons.ArrowRight className="w-4 h-4 ml-2" / />
           </Button>
         </div>
       </header>
@@ -75,7 +76,7 @@ export default function PartnershipsPage() {
                     <ul className="text-sm text-muted-foreground space-y-1">
                       {type.benefits.map((benefit, i) => (
                         <li key={i} className="flex items-center">
-                          <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                          <UIIcons.CheckCircle className="w-4 h-4 mr-2 text-green-500" / />
                           {benefit}
                         </li>
                       ))}
@@ -95,7 +96,7 @@ export default function PartnershipsPage() {
             We're excited to explore how we can work together to create mutual value.
           </p>
           <Button size="lg" onClick={() => toast({ title: "Email Partnerships", description: "Opening your email client to partnerships@loconomy.com...", variant: "default" })}>
-            <Mail className="w-4 h-4 mr-2" />
+            <OptimizedIcon name="Mail" className="w-4 h-4 mr-2" />
             Contact Our Partnerships Team
           </Button>
         </div>
