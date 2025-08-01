@@ -15,7 +15,7 @@ const enhancedFeatures = [
     id: 1,
     title: "Next-Generation AI Matching",
     description: "Revolutionary artificial intelligence that understands your exact needs and matches you with the perfect service provider in under 30 seconds.",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F62f2ed47e345487a9c84004d484f2578?alt=media&token=25f2fd33-6b78-47d7-8391-f2c51ed72df8&apiKey=efd5169b47d04c9886e111b6074edfba",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
     category: "Technology",
     benefits: ["99.5% Match Accuracy", "Instant Results", "Predictive Quality"],
     icon: Zap,
@@ -25,7 +25,7 @@ const enhancedFeatures = [
     id: 2,
     title: "Premium Experience Design",
     description: "Every interaction is crafted for luxury and sophistication, ensuring your service experience exceeds expectations at every touchpoint.",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Ff2b7a918d1c34687a447612c8c1443b4?alt=media&token=773ba395-15fd-4e67-8e89-9e349cf2fd7a&apiKey=efd5169b47d04c9886e111b6074edfba",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     category: "Experience",
     benefits: ["White-Glove Service", "Luxury Standards", "Personalized Touch"],
     icon: Award,
@@ -35,7 +35,7 @@ const enhancedFeatures = [
     id: 3,
     title: "Advanced Technology Integration",
     description: "Cutting-edge tools and platforms that streamline service delivery, ensuring efficiency, transparency, and real-time communication.",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F72a2948a44714670986c189cb968e3f8?alt=media&token=a2c5e895-5704-4d6a-b707-19d7146bdfbc&apiKey=efd5169b47d04c9886e111b6074edfba",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
     category: "Innovation",
     benefits: ["Smart Tracking", "Real-Time Updates", "Digital Excellence"],
     icon: Globe,
@@ -45,7 +45,7 @@ const enhancedFeatures = [
     id: 4,
     title: "Elite Provider Network",
     description: "Exclusive access to the top 5% of service providers, all background-verified, insured, and committed to excellence.",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fa738b4a6dcb84cf0ab5403c036edd0fa?alt=media&token=75ceb629-d1c7-45bc-a925-ad7dd9607f22&apiKey=efd5169b47d04c9886e111b6074edfba",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     category: "Network",
     benefits: ["Top 5% Providers", "Full Verification", "Elite Standards"],
     icon: Users,
@@ -55,7 +55,7 @@ const enhancedFeatures = [
     id: 5,
     title: "Comprehensive Service Solutions",
     description: "From simple tasks to complex projects, our platform covers every service category with unmatched quality and reliability.",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F39067fd145574d73a22b2a1782cb82a7?alt=media&token=4103663f-9618-4cb2-971f-3d3936c5525d&apiKey=efd5169b47d04c9886e111b6074edfba",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
     category: "Services",
     benefits: ["End-to-End Solutions", "Quality Guaranteed", "Full Coverage"],
     icon: Shield,
@@ -65,7 +65,7 @@ const enhancedFeatures = [
     id: 6,
     title: "Smart Analytics & Insights",
     description: "Data-driven intelligence that continuously improves your service experience and provides actionable insights.",
-    image: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F0f02702335564a5995e1e145953fba30?alt=media&token=f89bd88c-4624-4816-ae6a-9e0ef03edc0d&apiKey=efd5169b47d04c9886e111b6074edfba",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
     category: "Analytics",
     benefits: ["Smart Insights", "Performance Tracking", "Predictive Analytics"],
     icon: TrendingUp,
@@ -229,7 +229,7 @@ export function EnhancedFeatureGallery() {
         <PremiumCard variant="glass" className="p-6 lg:p-8">
           <div className="flex flex-col sm:flex-row items-start gap-4 lg:gap-6">
             <Image
-              src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F58c68b3decc54e79ae8dbe240d3fa4e0?alt=media&token=38a445a1-6099-4aa3-8670-b11b59919ca0&apiKey=efd5169b47d04c9886e111b6074edfba"
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop"
               alt="Automated Excellence"
               width={120}
               height={120}
@@ -249,7 +249,7 @@ export function EnhancedFeatureGallery() {
         <PremiumCard variant="glass" className="p-6 lg:p-8">
           <div className="flex flex-col sm:flex-row items-start gap-4 lg:gap-6">
             <Image
-              src="https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F4e0f1330c53946eaab774bc379232073?alt=media&token=bef5edcf-c80d-4d9b-9616-ea09f6fa3d57&apiKey=efd5169b47d04c9886e111b6074edfba"
+              src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop"
               alt="Predictive Quality"
               width={120}
               height={120}

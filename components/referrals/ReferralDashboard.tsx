@@ -24,7 +24,34 @@ import {
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
+<<<<<<< HEAD
+import {
+  Share2,
+  Copy,
+  DollarSign,
+  Users,
+  TrendingUp,
+  Gift,
+  Calendar,
+  ExternalLink,
+  Mail,
+  Facebook,
+  Twitter,
+  QrCode,
+  Download,
+  Trophy,
+  CheckCircle,
+  Award,
+  Sparkles,
+  Clock,
+  MessageSquare,
+  Target,
+  Zap,
+  Link
+} from "lucide-react";
+=======
 import { Share2, Copy, TrendingUp, Gift, ExternalLink, Facebook, Twitter, QrCode, Download, Trophy, Award, Sparkles, Target, Zap } from "lucide-react";
+>>>>>>> origin/main
 import { format } from "date-fns";
 import { toast } from "sonner";
 

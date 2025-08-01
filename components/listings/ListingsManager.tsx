@@ -24,7 +24,7 @@ import {
   ListingStats,
 } from "@/lib/listings/types";
 import { useListingsClient } from "@/lib/listings/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 export function ListingsManager() {
   const { user } = useUser();

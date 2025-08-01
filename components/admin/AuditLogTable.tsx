@@ -30,7 +30,7 @@ import {
 import { Filter, Eye, Download, Activity, Database } from "lucide-react";
 import { format } from "date-fns";
 import { AuditLogEntry, useAdminClient } from "@/lib/admin/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 export function AuditLogTable() {
   const { toast } = useToast();

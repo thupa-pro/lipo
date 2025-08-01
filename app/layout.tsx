@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import React, { Suspense } from 'react';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import './globals.enhanced.css';
+import './globals.enhanced.2025.css';
+import './themes.2025.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
@@ -125,7 +128,16 @@ export default async function RootLayout({
           @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
         `}</style>
       </head>
+<<<<<<< HEAD
+      <body className={cn(
+        inter.className,
+        "min-h-screen bg-background font-sans antialiased theme-adaptive",
+        "selection:bg-primary/20 selection:text-primary-foreground",
+        "theme-glass" // Default to glass theme - can be changed dynamically
+      )}>
+=======
       <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
+>>>>>>> origin/main
         <ErrorBoundary>
           <ClerkProvider>
             <PerformanceProvider>
@@ -137,6 +149,52 @@ export default async function RootLayout({
                     enableSystem={false}
                     disableTransitionOnChange
                   >
+<<<<<<< HEAD
+                <div className="relative flex min-h-screen flex-col">
+                  {/* Enhanced Background Effects */}
+                  <div className="fixed inset-0 -z-10 overflow-hidden">
+                    {/* Primary gradient orbs */}
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-ai-primary/10 to-ai-accent/10 rounded-full blur-3xl animate-float" />
+                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-trust-primary/10 to-trust-accent/10 rounded-full blur-3xl animate-float-gentle" />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-premium-primary/8 to-premium-accent/8 rounded-full blur-3xl animate-pulse-glow" />
+
+                    {/* Secondary ambient light */}
+                    <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}} />
+                    <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-white/3 to-transparent rounded-full blur-2xl animate-float-gentle" style={{animationDelay: '4s'}} />
+
+                    {/* Neural pattern overlay */}
+                    <div className="absolute inset-0 opacity-5 dark:opacity-10"
+                         style={{
+                           backgroundImage: `radial-gradient(circle at 2px 2px, rgba(139, 92, 246, 0.3) 1px, transparent 0)`,
+                           backgroundSize: '50px 50px'
+                         }} />
+                  </div>
+
+                  {/* Enhanced Skip to main content for accessibility */}
+                  <a
+                    href="#main-content"
+                    className="skip-link focus-visible-ring btn-ai-primary z-maximum"
+                  >
+                    Skip to main content
+                  </a>
+
+                  {/* Enhanced Navigation */}
+                  <Suspense fallback={
+                    <div className="h-16 glass-nav animate-skeleton-pulse">
+                      <div className="container mx-auto px-4 h-full flex items-center justify-between">
+                        <div className="skeleton w-32 h-8 rounded-xl"></div>
+                        <div className="hidden md:flex gap-4">
+                          <div className="skeleton w-16 h-6 rounded-lg"></div>
+                          <div className="skeleton w-20 h-6 rounded-lg"></div>
+                          <div className="skeleton w-18 h-6 rounded-lg"></div>
+                        </div>
+                        <div className="skeleton w-24 h-8 rounded-xl"></div>
+                      </div>
+                    </div>
+                  }>
+                    <RoleAwareNavigation />
+                  </Suspense>
+=======
                     <CookieConsentProvider>
                       <div className="relative flex min-h-screen flex-col">
                         {/* Header with lazy-loaded navigation */}
@@ -165,6 +223,7 @@ export default async function RootLayout({
                           <Footer />
                         </Suspense>
                       </div>
+>>>>>>> origin/main
 
                       {/* Global components */}
                       <Toaster />

@@ -25,7 +25,7 @@ import { Progress } from '@/components/ui/progress';
 import { Wand2, Sparkles, Brain, ImageIcon, Tag, TrendingUp, AlertCircle, RefreshCw, Zap, Target } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceListing, ServiceCategory, ServicePricing } from '@/types/loconomy';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 
 interface AIListingGeneratorProps {
   tenantId: string;

@@ -22,7 +22,7 @@ import {
   getPlanColor,
   getPlanDisplayName
 } from "@/lib/subscription/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(

@@ -14,7 +14,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+<<<<<<< HEAD
+import {
+  Lightbulb,
+  ArrowRight,
+  MessageSquare,
+  Star
+} from "lucide-react";
+=======
 import { Lightbulb } from "lucide-react";
+>>>>>>> origin/main
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 

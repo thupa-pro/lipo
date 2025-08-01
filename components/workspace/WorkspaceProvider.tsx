@@ -16,7 +16,7 @@ import {
   WorkspaceContextType,
 } from "@/lib/workspace/types";
 import { useWorkspaceClient } from "@/lib/workspace/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 const WorkspaceContext = createContext<WorkspaceContextType | undefined>(
   undefined,

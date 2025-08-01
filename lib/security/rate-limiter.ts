@@ -1,70 +1,87 @@
-interface RateLimitConfig {
-  windowMs: number
-  maxRequests: number
-  keyGenerator?: (req: Request) => string
-}
+// Fallback rate limiter for when Redis is not available
+class InMemoryRateLimit {
+  private attempts: Map<string, { count: number; resetTime: number }> = new Map();
 
-class RateLimiter {
-  private store = new Map<string, { count: number; resetTime: number }>()
+  check(identifier: string, maxAttempts: number, windowMs: number) {
+    const now = Date.now();
+    const key = identifier;
+    const entry = this.attempts.get(key);
 
-  constructor(private config: RateLimitConfig) {}
-
-  async isAllowed(req: Request): Promise<{ allowed: boolean; resetTime?: number }> {
-    const key = this.config.keyGenerator?.(req) || this.getDefaultKey(req)
-    const now = Date.now()
-    const rateLimitData = this.store.get(key)
-
-    if (!rateLimitData || now > rateLimitData.resetTime) {
-      this.store.set(key, {
-        count: 1,
-        resetTime: now + this.config.windowMs,
-      })
-      return { allowed: true }
+    if (!entry || now > entry.resetTime) {
+      this.attempts.set(key, { count: 1, resetTime: now + windowMs });
+      return { success: true, remaining: maxAttempts - 1, reset: now + windowMs, limit: maxAttempts };
     }
 
-    rateLimitData.count++
-
-    if (rateLimitData.count > this.config.maxRequests) {
-      return {
-        allowed: false,
-        resetTime: rateLimitData.resetTime,
-      }
+    if (entry.count >= maxAttempts) {
+      return { success: false, remaining: 0, reset: entry.resetTime, limit: maxAttempts };
     }
 
-    return { allowed: true }
-  }
-
-  private getDefaultKey(req: Request): string {
-    const url = new URL(req.url)
-    const ip = req.headers.get("x-forwarded-for") || "anonymous"
-    return `${ip}:${url.pathname}`
-  }
-
-  cleanup(): void {
-    const now = Date.now()
-    for (const [key, data] of this.store.entries()) {
-      if (now > data.resetTime) {
-        this.store.delete(key)
-      }
-    }
+    entry.count++;
+    return { success: true, remaining: maxAttempts - entry.count, reset: entry.resetTime, limit: maxAttempts };
   }
 }
 
-export const apiRateLimiter = new RateLimiter({
-  windowMs: 60 * 1000, // 1 minute
-  maxRequests: 100,
-})
+const fallbackRateLimit = new InMemoryRateLimit();
 
-export const authRateLimiter = new RateLimiter({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  maxRequests: 5,
-})
-
-// Cleanup old entries every 5 minutes
-setInterval(
-  () => {
-    apiRateLimiter.cleanup()
-    authRateLimiter.cleanup()
+// Rate limiting configurations
+const rateLimitConfigs = {
+  auth_signin: {
+    requests: 5,
+    windowMs: 15 * 60 * 1000, // 15 minutes
   },
-  5 * 60 * 1000,
-)
+  auth_signup: {
+    requests: 3,
+    windowMs: 60 * 60 * 1000, // 1 hour
+  },
+  api_general: {
+    requests: 100,
+    windowMs: 60 * 1000, // 1 minute
+  },
+  password_reset: {
+    requests: 3,
+    windowMs: 60 * 60 * 1000, // 1 hour
+  },
+};
+
+export const rateLimit = {
+  async check(identifier: string, type: keyof typeof rateLimitConfigs) {
+    try {
+      // For now, use in-memory rate limiting as fallback
+      // In production, implement Redis-based rate limiting
+      const config = rateLimitConfigs[type];
+      if (!config) {
+        throw new Error(`Unknown rate limit type: ${type}`);
+      }
+
+      const result = fallbackRateLimit.check(identifier, config.requests, config.windowMs);
+      
+      return {
+        success: result.success,
+        remaining: result.remaining,
+        reset: result.reset,
+        limit: result.limit,
+      };
+    } catch (error) {
+      console.error('Rate limiting error:', error);
+      // Fail open in case of rate limiter issues
+      return {
+        success: true,
+        remaining: 1,
+        reset: Date.now() + 60000,
+        limit: 1,
+      };
+    }
+  },
+
+  async getRemainingAttempts(identifier: string, type: keyof typeof rateLimitConfigs) {
+    const result = await this.check(identifier, type);
+    return result.remaining;
+  },
+
+  async isBlocked(identifier: string, type: keyof typeof rateLimitConfigs) {
+    const result = await this.check(identifier, type);
+    return !result.success;
+  },
+};
+
+export { fallbackRateLimit };

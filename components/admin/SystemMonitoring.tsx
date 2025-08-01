@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Activity, Server, Database, TrendingUp, TrendingDown, Wifi, HardDrive, Cpu, MemoryStick } from "lucide-react";
 import { useAdminClient, formatSystemHealth } from "@/lib/admin/utils";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 interface SystemMetrics {
   cpu_usage: number;

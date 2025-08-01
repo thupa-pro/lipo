@@ -25,8 +25,8 @@ const eliteProviders = [
     location: "Silicon Valley, CA",
     verified: true,
     premium: true,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Fa738b4a6dcb84cf0ab5403c036edd0fa?alt=media&token=75ceb629-d1c7-45bc-a925-ad7dd9607f22&apiKey=efd5169b47d04c9886e111b6074edfba",
-    portfolio: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F72a2948a44714670986c189cb968e3f8?alt=media&token=a2c5e895-5704-4d6a-b707-19d7146bdfbc&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    portfolio: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
     badges: ["Top 1% Provider", "Technology Expert", "Premium Certified", "24/7 Available"],
     skills: ["Smart Home Setup", "Network Security", "IoT Integration", "Home Automation"],
     description: "Leading technology consultant specializing in cutting-edge smart home solutions and enterprise-grade security systems."
@@ -44,8 +44,8 @@ const eliteProviders = [
     location: "Manhattan, NY",
     verified: true,
     premium: true,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F176836cccfe44505b22a7c0166f9716b?alt=media&token=7e99e21a-99b3-40fa-844b-d53ac7d1e3bc&apiKey=efd5169b47d04c9886e111b6074edfba",
-    portfolio: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2Faa2fe923c2b44b578b941ca4ccef05fc?alt=media&token=8f332b48-f42a-4da1-bf72-61aed3b752dc&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b21c?w=150&h=150&fit=crop&crop=face",
+    portfolio: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
     badges: ["Award Winner", "Luxury Specialist", "Celebrity Trusted", "Media Featured"],
     skills: ["Space Planning", "Color Theory", "Luxury Materials", "Custom Furniture"],
     description: "Award-winning interior designer featured in Architectural Digest, specializing in high-end residential and commercial spaces."
@@ -63,8 +63,8 @@ const eliteProviders = [
     location: "Beverly Hills, CA",
     verified: true,
     premium: true,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F82f2111f93874f36a1f87ff804f998f0?alt=media&token=e4b0aec7-dde3-41d9-94da-858f6570bdc3&apiKey=efd5169b47d04c9886e111b6074edfba",
-    portfolio: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F263500866b0d47ffa0800929496a3299?alt=media&token=8c7896a0-2212-40eb-a3e5-a3c4b82965cc&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    portfolio: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
     badges: ["Master Certified", "Luxury Specialist", "Factory Trained", "Concierge Service"],
     skills: ["Performance Tuning", "Diagnostics", "Restoration", "Maintenance"],
     description: "Factory-certified master technician specializing in luxury and performance vehicles with over 15 years of experience."
@@ -82,8 +82,8 @@ const eliteProviders = [
     location: "Miami, FL",
     verified: true,
     premium: true,
-    avatar: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F0aea14b5972949d6ba27ec52e20efa7f?alt=media&token=46c4cc60-6820-4bc3-896f-4e0382180249&apiKey=efd5169b47d04c9886e111b6074edfba",
-    portfolio: "https://cdn.builder.io/o/assets%2Fefd5169b47d04c9886e111b6074edfba%2F49e1a5c64ff543e8a9765a63a2af3f24?alt=media&token=766164a4-0f23-4b5e-87c0-f9151bbd1d5e&apiKey=efd5169b47d04c9886e111b6074edfba",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    portfolio: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
     badges: ["Certified Coach", "Wellness Expert", "Nutrition Specialist", "Mindfulness Trainer"],
     skills: ["Life Coaching", "Nutrition Planning", "Fitness Training", "Stress Management"],
     description: "Certified wellness coach helping clients achieve optimal health through personalized lifestyle and nutrition programs."
